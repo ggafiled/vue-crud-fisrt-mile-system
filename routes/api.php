@@ -33,6 +33,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::put('profile', 'ProfileController@updateProfile');
     Route::get('role/list', 'RoleController@list');
     Route::post('change-password', 'ProfileController@changePassword');
+    Route::get('permission/list', 'PermissionController@list');
     Route::get('tag/list', 'TagController@list');
     Route::get('category/list', 'CategoryController@list');
     Route::post('product/upload', 'ProductController@upload');
@@ -41,6 +42,8 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'user' => 'UserController',
         'product' => 'ProductController',
         'category' => 'CategoryController',
-        'tag' => 'TagController'
+        'tag' => 'TagController',
+        'role' => 'RoleController',
+        'permission' => 'PermissionController'
     ]);
 });

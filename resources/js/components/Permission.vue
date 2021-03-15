@@ -5,7 +5,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">User List</h3>
+                            <h3 class="card-title">Role List</h3>
 
                             <div class="card-tools">
                                 <button
@@ -24,43 +24,30 @@
                                 <thead>
                                     <tr>
                                         <th>NO</th>
-                                        <th class="hidden">ID</th>
-                                        <!-- <th>Type</th> -->
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Email Verified?</th>
+                                        <th>Display Name</th>
+                                        <th>Description</th>
                                         <th>Created</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr
-                                        v-for="(user, index) in users.data"
-                                        :key="user.id"
+                                        v-for="(role, index) in roles.data"
+                                        :key="role.id"
                                     >
                                         <td>{{ index + 1 }}</td>
-                                        <td class="hidden">
-                                            {{ user.id }}
-                                        </td>
-
-                                        <!-- <td class="text-capitalize">
-                                            {{ user.type }}
-                                        </td> -->
                                         <td class="text-capitalize">
-                                            {{ user.name }}
+                                            {{ role.name }}
                                         </td>
-                                        <td>{{ user.email }}</td>
-                                        <td
-                                            :inner-html.prop="
-                                                user.email_verified_at | yesno
-                                            "
-                                        ></td>
-                                        <td>{{ user.created_at | myDate }}</td>
+                                        <td>{{ role.display_name }}</td>
+                                        <td>{{ role.description }}</td>
+                                        <td>{{ role.created_at | myDate }}</td>
 
                                         <td>
                                             <a
                                                 href="#"
-                                                @click.prevent="editModal(user)"
+                                                @click.prevent="editModal(role)"
                                             >
                                                 <i class="fa fa-edit blue"></i>
                                             </a>
@@ -68,7 +55,7 @@
                                             <a
                                                 href="#"
                                                 @click.prevent="
-                                                    deleteUser(user.id)
+                                                    deleteRole(role.id)
                                                 "
                                             >
                                                 <i class="fa fa-trash red"></i>
@@ -81,17 +68,13 @@
                         <!-- /.card-body -->
                         <div class="card-footer">
                             <pagination
-                                :data="users"
+                                :data="roles"
                                 @pagination-change-page="getResults"
                             ></pagination>
                         </div>
                     </div>
                     <!-- /.card -->
                 </div>
-            </div>
-
-            <div v-if="!$gate.isAdmin()">
-                <not-found></not-found>
             </div>
 
             <!-- Modal -->
@@ -107,10 +90,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                Create New User
+                                Create New Role
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                Update User's Info
+                                Update Role's Info
                             </h5>
                             <button
                                 type="button"
@@ -122,11 +105,11 @@
                             </button>
                         </div>
 
-                        <!-- <form @submit.prevent="createUser"> -->
+                        <!-- <form @submit.prevent="createRole"> -->
 
                         <form
                             @submit.prevent="
-                                editmode ? updateUser() : createUser()
+                                editmode ? updateRole() : createRole()
                             "
                         >
                             <div class="modal-body">
@@ -149,72 +132,57 @@
                                     ></has-error>
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
+                                    <label>Display Name</label>
                                     <input
-                                        v-model="form.email"
+                                        v-model="form.display_name"
                                         type="text"
-                                        name="email"
+                                        name="display_name"
                                         class="form-control"
                                         :class="{
                                             'is-invalid': form.errors.has(
-                                                'email'
+                                                'display_name'
                                             )
                                         }"
                                     />
                                     <has-error
                                         :form="form"
-                                        field="email"
+                                        field="display_name"
                                     ></has-error>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Password</label>
+                                    <label>Description</label>
                                     <input
-                                        v-model="form.password"
-                                        type="password"
-                                        name="password"
+                                        v-model="form.description"
+                                        type="text"
+                                        name="description"
                                         class="form-control"
                                         :class="{
                                             'is-invalid': form.errors.has(
-                                                'password'
+                                                'description'
                                             )
                                         }"
                                         autocomplete="false"
                                     />
                                     <has-error
                                         :form="form"
-                                        field="password"
+                                        field="description"
                                     ></has-error>
                                 </div>
-
                                 <div class="form-group">
-                                    <label>User Role</label>
-                                    <select
-                                        name="role"
-                                        v-model="form.role"
-                                        id="role"
-                                        class="form-control"
-                                        :class="{
-                                            'is-invalid': form.errors.has(
-                                                'role'
-                                            )
-                                        }"
-                                    >
-                                        <option value="" selected
-                                            >Select User Role</option
-                                        >
-                                        <option
-                                            v-for="role in roles.data"
-                                            :key="role.id"
-                                            :value="role.id"
-                                        >
-                                            {{ role.display_name }}
-                                        </option>
-                                    </select>
-
+                                    <label>Permissions</label>
+                                    <vue-tags-input
+                                        v-model="form.permission"
+                                        :tags="form.permission"
+                                        :autocomplete-items="filteredItems"
+                                        @tags-changed="
+                                            newTags =>
+                                                (form.permission = newTags)
+                                        "
+                                    />
                                     <has-error
                                         :form="form"
-                                        field="type"
+                                        field="permissions"
                                     ></has-error>
                                 </div>
                             </div>
@@ -253,21 +221,25 @@
 </template>
 
 <script>
+import VueTagsInput from "@johmun/vue-tags-input";
 export default {
+    components: {
+        VueTagsInput
+    },
     data() {
         return {
             editmode: false,
-            users: {},
-            roles: [],
+            roles: {},
             selected: "",
             form: new Form({
                 id: "",
-                role: "",
                 name: "",
-                email: "",
-                password: "",
-                email_verified_at: ""
-            })
+                display_name: "",
+                description: "",
+                permission: []
+            }),
+            permission: "",
+            autocompleteItems: []
         };
     },
     methods: {
@@ -275,39 +247,10 @@ export default {
             this.$Progress.start();
 
             axios
-                .get("api/user?page=" + page)
-                .then(({ data }) => (this.users = data.data));
+                .get("api/role?page=" + page)
+                .then(({ data }) => (this.roles = data.data));
 
             this.$Progress.finish();
-        },
-        updateUser() {
-            this.$Progress.start();
-            // console.log('Editing data');
-            this.form
-                .put("api/user/" + this.form.id)
-                .then(response => {
-                    // success
-                    $("#addNew").modal("hide");
-                    Toast.fire({
-                        icon: "success",
-                        title: response.data.message
-                    });
-                    this.$Progress.finish();
-                    //  Fire.$emit('AfterCreate');
-
-                    this.loadUsers();
-                })
-                .catch(() => {
-                    this.$Progress.fail();
-                });
-        },
-        editModal(user) {
-            this.editmode = true;
-            this.form.reset();
-            $("#addNew").modal("show");
-            user.role = user.roles[0].id;
-            console.log(user);
-            this.form.fill(user);
         },
         newModal() {
             this.editmode = false;
@@ -315,7 +258,7 @@ export default {
             this.form.reset();
             $("#addNew").modal("show");
         },
-        deleteUser(id) {
+        deleteRole(id) {
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -327,7 +270,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("api/user/" + id)
+                        .delete("api/role/" + id)
                         .then(() => {
                             Swal.fire(
                                 "Deleted!",
@@ -335,7 +278,8 @@ export default {
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
-                            this.loadUsers();
+                            this.loadRoles();
+                            this.loadPermissions();
                         })
                         .catch(data => {
                             Swal.fire("Failed!", data.message, "warning");
@@ -343,27 +287,68 @@ export default {
                 }
             });
         },
-        loadUsers() {
+        updateUser() {
+            this.$Progress.start();
+            // console.log('Editing data');
+            this.form
+                .put("api/role/" + this.form.id)
+                .then(response => {
+                    // success
+                    $("#addNew").modal("hide");
+                    Toast.fire({
+                        icon: "success",
+                        title: response.data.message
+                    });
+                    this.$Progress.finish();
+                    //  Fire.$emit('AfterCreate');
+
+                    this.loadRoles();
+                    this.loadPermissions();
+                })
+                .catch(() => {
+                    this.$Progress.fail();
+                });
+        },
+        editModal(role) {
+            this.editmode = true;
+            this.form.reset();
+            $("#addNew").modal("show");
+            // user.role = user.roles[0].id;
+            // console.log(role);
+            this.form.fill(role);
+        },
+        loadRoles() {
             this.$Progress.start();
 
             if (this.$gate.isAdmin()) {
                 axios
-                    .get("api/user")
-                    .then(({ data }) => (this.users = data.data));
+                    .get("api/role")
+                    .then(({ data }) => (this.roles = data.data));
             }
 
             this.$Progress.finish();
         },
-        loadRoles() {
-            axios
-                .get("api/role/list")
-                .then(({ data }) => (this.roles = data.data));
+        loadPermissions() {
+            this.$Progress.start();
+
+            if (this.$gate.isAdmin()) {
+                axios
+                    .get("/api/permission/list")
+                    .then(response => {
+                        this.autocompleteItems = response.data.data.map(a => {
+                            return { text: a.name, id: a.id };
+                        });
+                    })
+                    .catch(() => console.warn("Oh. Something went wrong"));
+            }
+
+            this.$Progress.finish();
         },
         createUser() {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
-                .post("api/user")
+                .post("api/role")
                 .then(response => {
                     $("#addNew").modal("hide");
 
@@ -373,7 +358,8 @@ export default {
                     });
 
                     this.$Progress.finish();
-                    this.loadUsers();
+                    this.loadRoles();
+                    this.loadPermissions();
                 })
                 .catch(() => {
                     Toast.fire({
@@ -384,13 +370,24 @@ export default {
         }
     },
     mounted() {
-        console.log("User Component mounted.");
+        console.log("Role Component mounted.");
     },
     created() {
         this.$Progress.start();
-        this.loadUsers();
         this.loadRoles();
+        this.loadPermissions();
         this.$Progress.finish();
+    },
+    computed: {
+        filteredItems() {
+            return this.autocompleteItems.filter(i => {
+                return (
+                    i.text
+                        .toLowerCase()
+                        .indexOf(this.permission.toLowerCase()) !== -1
+                );
+            });
+        }
     }
 };
 </script>

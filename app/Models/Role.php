@@ -9,9 +9,4 @@ class Role extends LaratrustRole
     protected $fillable = [
         'name', 'display_name', 'description'
     ];
-
-    public function permissions()
-	{
-		return $this->belongsToMany('App\Models\Permission');
-	}
 }

@@ -3,22 +3,22 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Role;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
-class RoleController extends BaseController
+class PermissionController extends BaseController
 {
-    protected $role = '';
+    protected $permission = '';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(Role $role)
+    public function __construct(Permission $permission)
     {
         $this->middleware('auth:api');
-        $this->role = $role;
+        $this->permission = $permission;
         $this->middleware('role:superadministrator|administrator')->only(['store','update','destroy']);
     }
 
@@ -32,8 +32,8 @@ class RoleController extends BaseController
         if (!\Gate::allows('isAdmin')) {
             return $this->unauthorizedResponse();
         }
-        $roles = $this->role->latest()->with('permissions')->paginate(10);
-        return $this->sendResponse($roles, 'Roles list');
+        $permissions = $this->permission->latest()->paginate(10);
+        return $this->sendResponse($permissions, 'Permission list');
     }
 
     /**
@@ -46,8 +46,8 @@ class RoleController extends BaseController
         if (!\Gate::allows('isAdmin')) {
             return $this->unauthorizedResponse();
         }
-        $roles = $this->role->paginate(20);
-        return $this->sendResponse($roles, 'Roles list');
+        $permissions = $this->permission->get(['name', 'id']);
+        return $this->sendResponse($permissions, 'Permission list');
     }
 
 
@@ -62,20 +62,13 @@ class RoleController extends BaseController
      */
     public function store(Request $request)
     {
-        $roles = $this->role->create([
+        $permissions = $this->permission->create([
             'name' => $request->get('name'),
             'display_name' => $request->get('display_name'),
             'description' => $request->get('description')
         ]);
 
-        // update pivot table
-        $role_ids = [];
-        foreach ($request->get('roles') as $role) {
-            $role_ids[] = $role['id'];
-        }
-        $roles->syncPermissions($role_ids);
-
-        return $this->sendResponse($roles, 'Role Created Successfully');
+        return $this->sendResponse($permissions, 'Permission Created Successfully');
     }
 
     /**
@@ -88,18 +81,11 @@ class RoleController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $roles = $this->role->findOrFail($id);
+        $permissions = $this->permission->findOrFail($id);
 
-        $roles->update($request->all());
+        $permissions->update($request->all());
 
-        // update pivot table
-        $role_ids = [];
-        foreach ($request->get('roles') as $role) {
-            $role_ids[] = $role['id'];
-        }
-        $roles->syncPermissions($role_ids);
-
-        return $this->sendResponse($roles, 'Role Information has been updated');
+        return $this->sendResponse($permissions, 'Permission Information has been updated');
     }
 
      public function destroy($id)
@@ -107,10 +93,10 @@ class RoleController extends BaseController
 
         $this->authorize('isAdmin');
 
-        $roles = $this->role->findOrFail($id);
+        $permissions = $this->permission->findOrFail($id);
 
-        $roles->delete();
+        $permissions->delete();
 
-        return $this->sendResponse($roles, 'Role has been Deleted');
+        return $this->sendResponse($permissions, 'Permission has been Deleted');
     }
 }

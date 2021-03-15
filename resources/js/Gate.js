@@ -46,7 +46,7 @@ export default class Gate {
                         .indexOf(val.toLowerCase()) !== -1
                     );
                 })
-                .every(function(e) {
+                .some(function(e) {
                     return e === true;
                 });
         }
