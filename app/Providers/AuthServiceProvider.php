@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
+use Laratrust;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -37,7 +38,10 @@ class AuthServiceProvider extends ServiceProvider
             // }
 
             // for simplicity
-            return $user->type === 'admin';
+            if(isset($user) && !Laratrust::hasRole(['superadministrator','administrator'])){
+                return false;
+            }
+            return true;
         });
 
         Gate::define('isUser', function ($user) {
@@ -46,7 +50,10 @@ class AuthServiceProvider extends ServiceProvider
             // }
 
             // for simplicity
-            return $user->type === 'user';
+            if(isset($user) && !Laratrust::hasRole(['guest','user'])){
+                return false;
+            }
+            return true;
         });
     }
 }

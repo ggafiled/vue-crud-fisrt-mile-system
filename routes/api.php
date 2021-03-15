@@ -1,8 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('version', function () {
-    return response()->json(['version' => config('app.version')]);
+    return response()->json(['role' => Role::all()]);
 });
-
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     Log::debug('User:' . serialize($request->user()));
@@ -29,6 +31,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('profile', 'ProfileController@profile');
     Route::put('profile', 'ProfileController@updateProfile');
+    Route::get('role/list', 'RoleController@list');
     Route::post('change-password', 'ProfileController@changePassword');
     Route::get('tag/list', 'TagController@list');
     Route::get('category/list', 'CategoryController@list');
@@ -38,6 +41,6 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'user' => 'UserController',
         'product' => 'ProductController',
         'category' => 'CategoryController',
-        'tag' => 'TagController',
+        'tag' => 'TagController'
     ]);
 });

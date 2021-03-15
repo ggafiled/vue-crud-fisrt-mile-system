@@ -4,58 +4,84 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require("./bootstrap");
+import "flag-icon-css/css/flag-icon.css";
+import "fullcalendar/dist/fullcalendar.css";
 
-window.Vue = require('vue');
-import moment from 'moment';
+window.Vue = require("vue");
+import moment from "moment";
 
-import { Form, HasError, AlertError } from 'vform';
+import { Form, HasError, AlertError } from "vform";
 window.Form = Form;
 
 import Gate from "./Gate";
-Vue.prototype.$gate = new Gate(window.user);
+var gate = new Gate(window.Laravel.user);
+Vue.prototype.$gate = gate;
 
-import Swal from 'sweetalert2';
+Vue.directive("can", function(el, binding) {
+    return Laravel.permissions.indexOf(binding.value) !== -1;
+});
 
+import Swal from "sweetalert2";
 
 const Toast = Swal.mixin({
     toast: true,
-    position: 'top-end',
+    position: "bottom-right",
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
-    onOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    onOpen: toast => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
     }
-  })
+});
 window.Swal = Swal;
 window.Toast = Toast;
 
-import VueProgressBar from 'vue-progressbar'
+/**
+ * FullCalendar imports and assigning
+ */
+import FullCalendar from "vue-full-calendar";
+Vue.use(FullCalendar);
+
+import VueProgressBar from "vue-progressbar";
 Vue.use(VueProgressBar, {
-    color: 'rgb(143, 255, 199)',
-    failedColor: 'red',
-    height: '3px'
-  });
+    color: "rgb(143, 255, 199)",
+    failedColor: "red",
+    height: "3px"
+});
 
-Vue.component(HasError.name, HasError)
-Vue.component(AlertError.name, AlertError)
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
 
+/**
+ * Vuex imports and assigning
+ */
+import store from "./vuex/store";
 
 /**
  * Routes imports and assigning
  */
-import VueRouter from 'vue-router';
+import VueRouter from "vue-router";
 Vue.use(VueRouter);
-import routes from './routes';
+import routes from "./routes";
 
 const router = new VueRouter({
-    mode: 'history',
+    mode: "history",
     routes
 });
+router.beforeEach((to, from, next) => {
+    if (gate.isAuthenticated()) {
+        if (!gate.hasPermissionsNeeded(to)) {
+            next("/dashboard");
+        } else {
+            next();
+        }
+    } else {
+        next("/login");
+    }
+});
 // Routes End
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -63,44 +89,43 @@ const router = new VueRouter({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- 
 // Components
-Vue.component('pagination', require('laravel-vue-pagination'));
-Vue.component('dashboard', require('./components/Dashboard.vue'));
+Vue.component("pagination", require("laravel-vue-pagination"));
+Vue.component("dashboard", require("./components/Dashboard.vue"));
 
 Vue.component(
-    'passport-clients',
-    require('./components/passport/Clients.vue').default
+    "passport-clients",
+    require("./components/passport/Clients.vue").default
 );
 
 Vue.component(
-    'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue').default
+    "passport-authorized-clients",
+    require("./components/passport/AuthorizedClients.vue").default
 );
 
 Vue.component(
-    'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue').default
+    "passport-personal-access-tokens",
+    require("./components/passport/PersonalAccessTokens.vue").default
 );
 
-Vue.component(
-    'not-found',
-    require('./components/NotFound.vue').default
-);
+Vue.component("not-found", require("./components/NotFound.vue").default);
 
 // Filter Section
 
-Vue.filter('myDate',function(created){
-    return moment(created).format('MMMM Do YYYY');
+Vue.filter("myDate", function(created) {
+    return moment(created).format("MMMM Do YYYY");
 });
 
-Vue.filter('yesno', value => (value ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>'));
+Vue.filter("yesno", value =>
+    value ?
+    '<i class="fas fa-check green"></i>' :
+    '<i class="fas fa-times red"></i>'
+);
 
 // end Filter
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
 const app = new Vue({
-    el: '#app',
-    router
+    el: "#app",
+    router,
+    store
 });

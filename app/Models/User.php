@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
+use Avatar;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-use App\Models\Role;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable // implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasApiTokens;
+    use LaratrustUserTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +21,7 @@ class User extends Authenticatable // implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type'
+        'name', 'email', 'password', 'image'
     ];
 
     /**
@@ -28,7 +30,7 @@ class User extends Authenticatable // implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password','remember_token', 'two_factor_secret', 'two_factor_recovery_codes',
     ];
 
     /**
@@ -50,28 +52,30 @@ class User extends Authenticatable // implements MustVerifyEmail
         return 'https://www.gravatar.com/avatar/' . md5(strtolower($this->email)) . '.jpg?s=200&d=mm';
     }
 
+    public function adminlte_profile_url()
+    {
+        return "profile";
+    }
+
+    public function adminlte_image()
+    {
+        return Avatar::create(auth()->user()->name)->setTheme('pastel')->toBase64();
+    }
+
     public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
+	{
+		return $this->belongsToMany('App\Models\Role');
+	}
 
-    /**
-     * Assigning User role
-     *
-     * @param \App\Models\Role $role
-     */
-    public function assignRole(Role $role)
-    {
-        return $this->roles()->save($role);
-    }
+	public function permissions()
+	{
+		return $this->belongsToMany('App\Models\Permission');
+	}
 
-    public function isAdmin()
+    public function toArray()
     {
-        return $this->roles()->where('name', 'Admin')->exists();
-    }
+        $attributes = $this->attributesToArray();
 
-    public function isUser()
-    {
-        return $this->roles()->where('name', 'User')->exists();
+        return array_merge($attributes, $this->relationsToArray());
     }
 }

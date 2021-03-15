@@ -178,6 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\ProductRepositoryServiceProvider::class,
+        Laravolt\Avatar\ServiceProvider::class,
+        Laratrust\LaratrustServiceProvider::class,
     ],
 
     /*
@@ -229,7 +231,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Laratrust'   => Laratrust\LaratrustFacade::class,
+        'Avatar'    => Laravolt\Avatar\Facade::class,
     ],
 
 ];

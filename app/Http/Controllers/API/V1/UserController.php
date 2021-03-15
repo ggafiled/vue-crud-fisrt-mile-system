@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use Auth;
 use App\Http\Requests\Users\UserRequest;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,6 +18,7 @@ class UserController extends BaseController
     public function __construct()
     {
         $this->middleware('auth:api');
+        $this->middleware('role:superadministrator|administrator')->only('store');
     }
 
     /**
@@ -30,7 +33,7 @@ class UserController extends BaseController
         }
         // $this->authorize('isAdmin');
 
-        $users = User::latest()->paginate(10);
+        $users = User::with('roles:id')->paginate(10);
 
         return $this->sendResponse($users, 'Users list');
     }
@@ -51,8 +54,10 @@ class UserController extends BaseController
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
-            'type' => $request['type'],
         ]);
+
+        $access = Role::find($request['role']);
+        $user->attachRole($access);
 
         return $this->sendResponse($user, 'User Created Successfully');
     }
@@ -75,6 +80,8 @@ class UserController extends BaseController
         }
 
         $user->update($request->all());
+        $access = Role::find($request['role']);
+        $user->syncRoles([$access]);
 
         return $this->sendResponse($user, 'User Information has been updated');
     }
