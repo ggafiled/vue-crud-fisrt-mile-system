@@ -290,7 +290,7 @@ return [
             'text' => 'Technician Opertor',
             'url'  => '/admin/settings',
             'icon' => 'fas fa-fw fa-poll-h',
-            'roles'  => ['superadministrator','administrator'],
+            'can'  => ['technician-opertor-create','technician-opertor-read','technician-opertor-update','technician-opertor-delete'],
         ],
 
         ['header' => 'USER'],
@@ -600,6 +600,21 @@ return [
                     'type' => 'css',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css',
+                ],
+            ],
+        ],
+        'ExcelFiltering' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//www.jqueryscript.net/demo/Excel-like-Bootstrap-Table-Sorting-Filtering-Plugin/excel-bootstrap-table-filter-bundle.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//www.jqueryscript.net/demo/Excel-like-Bootstrap-Table-Sorting-Filtering-Plugin/excel-bootstrap-table-filter-style.css',
                 ],
             ],
         ],

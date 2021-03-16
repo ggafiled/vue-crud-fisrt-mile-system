@@ -32,7 +32,9 @@ class RoleController extends BaseController
         if (!\Gate::allows('isAdmin')) {
             return $this->unauthorizedResponse();
         }
-        $roles = $this->role->latest()->with('permissions')->paginate(10);
+        $roles = $this->role->latest()->with(['permissions' => function($query) {
+            $query->select('id', 'name as text');
+        }])->paginate(10);
         return $this->sendResponse($roles, 'Roles list');
     }
 
@@ -63,17 +65,17 @@ class RoleController extends BaseController
     public function store(Request $request)
     {
         $roles = $this->role->create([
-            'name' => $request->get('name'),
+            'name' => strtolower($request->get('name')),
             'display_name' => $request->get('display_name'),
             'description' => $request->get('description')
         ]);
 
         // update pivot table
-        $role_ids = [];
-        foreach ($request->get('roles') as $role) {
-            $role_ids[] = $role['id'];
+        $permission_ids = [];
+        foreach ($request->get('permissions') as $permission) {
+            $permission_ids[] = $permission['id'];
         }
-        $roles->syncPermissions($role_ids);
+        $roles->syncPermissions($permission_ids);
 
         return $this->sendResponse($roles, 'Role Created Successfully');
     }
@@ -93,11 +95,11 @@ class RoleController extends BaseController
         $roles->update($request->all());
 
         // update pivot table
-        $role_ids = [];
-        foreach ($request->get('roles') as $role) {
-            $role_ids[] = $role['id'];
+        $permission_ids = [];
+        foreach ($request->get('permissions') as $permission) {
+            $permission_ids[] = $permission['id'];
         }
-        $roles->syncPermissions($role_ids);
+        $roles->syncPermissions($permission_ids);
 
         return $this->sendResponse($roles, 'Role Information has been updated');
     }

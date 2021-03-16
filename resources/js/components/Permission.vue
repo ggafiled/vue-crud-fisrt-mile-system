@@ -20,13 +20,13 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover">
+                            <table class="table table-hover table-permission">
                                 <thead>
                                     <tr>
-                                        <th>NO</th>
-                                        <th>Name</th>
-                                        <th>Display Name</th>
-                                        <th>Description</th>
+                                        <th id="no">NO</th>
+                                        <th id="name">Name</th>
+                                        <th id="display_name">Display Name</th>
+                                        <th id="description">Description</th>
                                         <th>Created</th>
                                         <th>Action</th>
                                     </tr>
@@ -172,12 +172,12 @@
                                 <div class="form-group">
                                     <label>Permissions</label>
                                     <vue-tags-input
-                                        v-model="form.permission"
-                                        :tags="form.permission"
+                                        v-model="permission"
+                                        :tags="form.permissions"
                                         :autocomplete-items="filteredItems"
                                         @tags-changed="
                                             newTags =>
-                                                (form.permission = newTags)
+                                                (form.permissions = newTags)
                                         "
                                     />
                                     <has-error
@@ -236,7 +236,7 @@ export default {
                 name: "",
                 display_name: "",
                 description: "",
-                permission: []
+                permissions: []
             }),
             permission: "",
             autocompleteItems: []
@@ -314,6 +314,7 @@ export default {
             this.form.reset();
             $("#addNew").modal("show");
             // user.role = user.roles[0].id;
+            // this.form.permission = role.permissions;
             // console.log(role);
             this.form.fill(role);
         },
@@ -344,7 +345,7 @@ export default {
 
             this.$Progress.finish();
         },
-        createUser() {
+        createRole() {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
@@ -358,6 +359,7 @@ export default {
                     });
 
                     this.$Progress.finish();
+                    this.form.reset();
                     this.loadRoles();
                     this.loadPermissions();
                 })
@@ -376,6 +378,7 @@ export default {
         this.$Progress.start();
         this.loadRoles();
         this.loadPermissions();
+        $("#table-permission").excelTableFilter();
         this.$Progress.finish();
     },
     computed: {

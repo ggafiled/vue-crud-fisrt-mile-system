@@ -20,6 +20,7 @@
     </title>
 
     <link rel="shortcut icon" href="/favicon.ico"  type='image/x-icon'>
+    <link rel="stylesheet" href="https://www.jqueryscript.net/demo/Excel-like-Bootstrap-Table-Sorting-Filtering-Plugin/excel-bootstrap-table-filter-style.css">
 
     {{-- Custom stylesheets (pre AdminLTE) --}}
     @yield('adminlte_css_pre')
@@ -115,6 +116,7 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
+    <script src="https://www.jqueryscript.net/demo/Excel-like-Bootstrap-Table-Sorting-Filtering-Plugin/excel-bootstrap-table-filter-bundle.js"></script>
     <script>
 
         function changeLang(value) {

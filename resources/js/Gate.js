@@ -21,7 +21,7 @@ export default class Gate {
     }
 
     iscurrentUser(value) {
-        return Laravel.user.roles[0].id === value ? false : true;
+        return Laravel.user.id === value ? false : true;
     }
 
     hasPermissionsNeeded(to) {

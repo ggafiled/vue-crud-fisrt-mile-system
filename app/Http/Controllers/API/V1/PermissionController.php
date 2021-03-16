@@ -63,7 +63,7 @@ class PermissionController extends BaseController
     public function store(Request $request)
     {
         $permissions = $this->permission->create([
-            'name' => $request->get('name'),
+            'name' => strtolower($request->get('name')),
             'display_name' => $request->get('display_name'),
             'description' => $request->get('description')
         ]);
