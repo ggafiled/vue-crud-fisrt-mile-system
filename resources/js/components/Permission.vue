@@ -20,13 +20,17 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover table-permission">
+                            <table
+                                class="table table-hover"
+                                ref="table-permission"
+                                id="table-permission"
+                            >
                                 <thead>
                                     <tr>
-                                        <th id="no">NO</th>
-                                        <th id="name">Name</th>
-                                        <th id="display_name">Display Name</th>
-                                        <th id="description">Description</th>
+                                        <th>NO</th>
+                                        <th>Name</th>
+                                        <th>Display Name</th>
+                                        <th>Description</th>
                                         <th>Created</th>
                                         <th>Action</th>
                                     </tr>
@@ -287,7 +291,7 @@ export default {
                 }
             });
         },
-        updateUser() {
+        updateRole() {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
@@ -378,7 +382,6 @@ export default {
         this.$Progress.start();
         this.loadRoles();
         this.loadPermissions();
-        $("#table-permission").excelTableFilter();
         this.$Progress.finish();
     },
     computed: {

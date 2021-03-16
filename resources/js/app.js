@@ -22,6 +22,10 @@ Vue.directive("can", function(el, binding) {
     return Laravel.permissions.indexOf(binding.value) !== -1;
 });
 
+Vue.nextTick().then(function() {
+    // do stuff
+});
+
 import Swal from "sweetalert2";
 
 const Toast = Swal.mixin({

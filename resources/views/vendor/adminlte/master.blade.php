@@ -116,7 +116,6 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
-    <script src="https://www.jqueryscript.net/demo/Excel-like-Bootstrap-Table-Sorting-Filtering-Plugin/excel-bootstrap-table-filter-bundle.js"></script>
     <script>
 
         function changeLang(value) {
@@ -128,7 +127,6 @@
         $(function () {
             $('.selectpicker').selectpicker();
             $('.dropdown-toggle').dropdown();
-
         });
     </script>
 
