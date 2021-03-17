@@ -3,6 +3,10 @@ export default [{
         component: require("./components/Dashboard.vue").default
     },
     {
+        path: "/building",
+        component: require("./components/building/Addbuilding.vue").default
+    },
+    {
         path: "/calendar",
         component: require("./components/calendar/Calendar.vue").default
     },
