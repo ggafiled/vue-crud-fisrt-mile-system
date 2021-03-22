@@ -238,22 +238,17 @@ return [
             'icon' => 'fas fa-fw fa-poll',
         ],
         [
-            'text' => 'Building List',
+            'text' => 'Building',
             'icon' => 'fas fa-fw fas fa-building',
             'can'  => ['building-create|building-read|building-update'],
             'submenu' => [
                 [
-                    'text' => 'Add Building',
-                    'url'  => '/building/create',
-                    'can'  => ['building-create']
-                ],
-                [
-                    'text' => 'Edit Table Building List',
+                    'text' => 'Building Managment',
                     'url'  => '/building',
-                    'can'  => ['building-update']
+                    'can'  => ['building-update','building-create','building-read']
                 ],
                 [
-                    'text' => 'Table Building List',
+                    'text' => 'Building List',
                     'url'  => '/building/list',
                     'can'  => ['building-read']
                 ],

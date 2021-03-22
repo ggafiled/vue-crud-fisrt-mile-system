@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +16,6 @@ use App\Models\Role;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::get('version', function () {
-    return response()->json(['role' => Role::all()]);
-});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     Log::debug('User:' . serialize($request->user()));
@@ -38,14 +33,13 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('category/list', 'CategoryController@list');
     Route::post('product/upload', 'ProductController@upload');
 
-
     Route::apiResources([
         'user' => 'UserController',
         'product' => 'ProductController',
         'category' => 'CategoryController',
         'tag' => 'TagController',
         'role' => 'RoleController',
-        'permission' => 'PermissionController'
+        'permission' => 'PermissionController',
+        'building' => 'BuildingController',
     ]);
 });
-

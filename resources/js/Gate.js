@@ -17,7 +17,7 @@ export default class Gate {
     }
 
     isAdminOrUser() {
-        return true;
+        return ["superadministrator", "administrator", "user"].indexOf(Laravel.user.roles[0].name) != -1;
     }
 
     iscurrentUser(value) {

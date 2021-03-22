@@ -3,24 +3,17 @@ export default [{
         component: require("./components/Dashboard.vue").default
     },
     {
-        path: "/building/create",
-        component: require("./components/building/Addbuilding.vue").default,
-        meta: {
-            roles: ["superadministrator", "administrator","user"]
-        }
-    },
-    {
         path: "/building",
-        component: require("./components/building/Editbilding.vue").default,
+        component: require("./components/building/Buildings.vue").default,
         meta: {
-            roles: ["superadministrator", "administrator"]
+            roles: ["superadministrator", "administrator", "user"]
         }
     },
     {
         path: "/building/list",
         component: require("./components/building/Addbuilding.vue").default,
         meta: {
-            roles: ["superadministrator", "administrator","user","guest"]
+            roles: ["superadministrator", "administrator", "user", "guest"]
         }
     },
     {
@@ -65,4 +58,6 @@ export default [{
         component: require("./components/product/Category.vue").default
     },
     { path: "*", component: require("./components/NotFound.vue").default }
+
+
 ];

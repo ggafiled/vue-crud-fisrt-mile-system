@@ -96,6 +96,7 @@ router.beforeEach((to, from, next) => {
 // Components
 Vue.component("pagination", require("laravel-vue-pagination"));
 Vue.component("dashboard", require("./components/Dashboard.vue"));
+// Vue.component("building", require("./components/Building.vue"));
 
 Vue.component(
     "passport-clients",
