@@ -25,7 +25,10 @@ try {
 window.axios = require("axios");
 
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+window.axios.defaults.headers.common.crossDomain = true;
+// window.axios.defaults.baseURL = "/api";
 
+window.moment = require("moment");
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -41,3 +44,5 @@ if (token) {
         "CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token"
     );
 }
+
+window.Pusher = require("pusher-js");

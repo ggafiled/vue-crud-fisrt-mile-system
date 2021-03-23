@@ -18,14 +18,6 @@ import Gate from "./Gate";
 var gate = new Gate(window.Laravel.user);
 Vue.prototype.$gate = gate;
 
-Vue.directive("can", function(el, binding) {
-    return Laravel.permissions.indexOf(binding.value) !== -1;
-});
-
-Vue.nextTick().then(function() {
-    // do stuff
-});
-
 import Swal from "sweetalert2";
 
 const Toast = Swal.mixin({
@@ -61,7 +53,7 @@ Vue.component(AlertError.name, AlertError);
 /**
  * Vuex imports and assigning
  */
-import store from "./vuex/store";
+import store from "./store/index";
 
 /**
  * Routes imports and assigning
@@ -75,15 +67,17 @@ const router = new VueRouter({
     routes
 });
 router.beforeEach((to, from, next) => {
-    if (gate.isAuthenticated()) {
-        if (!gate.hasPermissionsNeeded(to)) {
-            next("/dashboard");
-        } else {
-            next();
-        }
-    } else {
-        next("/login");
+    if (
+        to.matched.some(route => route.meta.requiresAuth) &&
+        !gate.isAuthenticated()
+    ) {
+        window.location.href = "/login";
+        return;
     }
+
+    if (!gate.hasPermissionsNeeded(to)) return next("/dashboard");
+
+    next();
 });
 // Routes End
 

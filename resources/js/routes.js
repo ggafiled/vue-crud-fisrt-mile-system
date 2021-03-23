@@ -1,18 +1,23 @@
 export default [{
         path: "/dashboard",
-        component: require("./components/Dashboard.vue").default
+        component: require("./components/Dashboard.vue").default,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: "/building",
         component: require("./components/building/Buildings.vue").default,
         meta: {
+            requiresAuth: true,
             roles: ["superadministrator", "administrator", "user"]
         }
     },
     {
         path: "/building/list",
-        component: require("./components/building/Addbuilding.vue").default,
+        component: require("./components/building/BuildingList.vue").default,
         meta: {
+            requiresAuth: true,
             roles: ["superadministrator", "administrator", "user", "guest"]
         }
     },
@@ -24,6 +29,7 @@ export default [{
         path: "/profile",
         component: require("./components/Profile.vue").default,
         meta: {
+            requiresAuth: true,
             permissions: ["profile-read", "profile-update"]
         }
     },
@@ -35,6 +41,7 @@ export default [{
         path: "/users",
         component: require("./components/Users.vue").default,
         meta: {
+            requiresAuth: true,
             roles: ["superadministrator", "administrator"]
         }
     },
@@ -42,6 +49,7 @@ export default [{
         path: "/permission",
         component: require("./components/Permission.vue").default,
         meta: {
+            requiresAuth: true,
             roles: ["superadministrator", "administrator"]
         }
     },
@@ -58,6 +66,4 @@ export default [{
         component: require("./components/product/Category.vue").default
     },
     { path: "*", component: require("./components/NotFound.vue").default }
-
-
 ];
