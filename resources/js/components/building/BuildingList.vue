@@ -5,6 +5,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
+<<<<<<< HEAD
                             <h3 class="card-title">
                                 Building Managment Table
                             </h3>
@@ -78,11 +79,29 @@
             <div v-if="!$gate.isAdmin()">
                 <not-found></not-found>
             </div>
+=======
+                            <h3 class="card-title">Building List</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <v-grid
+                                v-if="grid === 1"
+                                key="1"
+                                theme="compact"
+                                :source="rows"
+                                :columns="columns"
+                            ></v-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+>>>>>>> 4c71bd8b4cd0949c07d35609a0c1e7878836dc9f
         </div>
     </section>
 </template>
 
 <script>
+<<<<<<< HEAD
 export default {
     data() {
         return {
@@ -155,3 +174,33 @@ export default {
 </script>
 
 <style></style>
+=======
+import VGrid from "@revolist/vue-datagrid";
+export default {
+    name: "App",
+    data() {
+        return {
+            columns: [
+                {
+                    prop: "name",
+                    name: "First"
+                },
+                {
+                    prop: "details",
+                    name: "Second"
+                }
+            ],
+            rows: [
+                {
+                    name: "1",
+                    details: "Item 1"
+                }
+            ]
+        };
+    },
+    components: {
+        VGrid
+    }
+};
+</script>
+>>>>>>> 4c71bd8b4cd0949c07d35609a0c1e7878836dc9f

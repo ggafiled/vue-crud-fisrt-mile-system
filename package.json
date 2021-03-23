@@ -26,7 +26,12 @@
         "tailwindcss": "^2.0.3",
         "vue": "^2.6.12",
         "vue-template-compiler": "^2.6.12",
+<<<<<<< HEAD
         "vuetable-2": "^1.7.5"
+=======
+        "moment": "^2.22.2",
+        "pusher-js": "^4.2.2"
+>>>>>>> 4c71bd8b4cd0949c07d35609a0c1e7878836dc9f
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.2",
@@ -38,6 +43,10 @@
         "@fullcalendar/vue": "^5.5.0",
         "@johmun/vue-tags-input": "^2.1.0",
         "@revolist/vue-datagrid": "^2.9.9",
+<<<<<<< HEAD
+=======
+        "@revolist/vue3-datagrid": "^1.0.6",
+>>>>>>> 4c71bd8b4cd0949c07d35609a0c1e7878836dc9f
         "admin-lte": "^3.0.5",
         "bootstrap-select": "^1.13.18",
         "flag-icon-css": "^3.5.0",
