@@ -41,5 +41,8 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'role' => 'RoleController',
         'permission' => 'PermissionController',
         'building' => 'BuildingController',
+        'buildinglist' => 'BuildingListController',
+
+
     ]);
 });

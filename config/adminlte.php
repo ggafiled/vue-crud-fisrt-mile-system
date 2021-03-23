@@ -249,7 +249,7 @@ return [
                 ],
                 [
                     'text' => 'Building List',
-                    'url'  => '/building/list',
+                    'url'  => '/buildinglist',
                     'can'  => ['building-read']
                 ],
             ]
@@ -349,6 +349,21 @@ return [
             'active' => true,
             'files' => [
                 //js
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//unpkg.com/vuetable-2@1.6.0',
+                ],
                 [
                     'type' => 'js',
                     'asset' => false,
@@ -486,6 +501,7 @@ return [
                     'asset' => false,
                     'location' => '//cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css',
                 ],
+
             ],
         ],
         'ContextMenu' => [

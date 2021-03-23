@@ -10,8 +10,15 @@ export default [{
         }
     },
     {
-        path: "/building/list",
-        component: require("./components/building/Addbuilding.vue").default,
+        path: "/buildinglist",
+        component: require("./components/building/BuildingList.vue").default,
+        meta: {
+            roles: ["superadministrator", "administrator", "user", "guest"]
+        }
+    },
+    {
+        path: "/progress",
+        component: require("./components/building/TableBuilding.vue").default,
         meta: {
             roles: ["superadministrator", "administrator", "user", "guest"]
         }

@@ -46,7 +46,32 @@ class Buildingcontroller extends BaseController{
      */
     public function store(Request $request)
     {
-        //
+        $buidings = new Building([
+            'buildingId' => $request->input('buildingId'),
+            'fmCode' => $request->input('fmCode'),
+            'contactName' => $request->input('contactName'),
+            'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
+            'area' => $request->input('area'),
+            'floor' => $request->input('floor'),
+            'roomNumber' => $request->input('roomNumber'),
+            'numberLayer' => $request->input('numberLayer'),
+            'detailAdress' => $request->input('detailAdress'),
+            'province' => $request->input('province'),
+            'city' => $request->input('city'),
+            'postalCode' => $request->input('postalCode'),
+            'latitude' => $request->input('latitude'),
+            'longtude' => $request->input('longtude'),
+            'priceSquare' => $request->input('priceSquare'),
+            'workingTime' => $request->input('workingTime'),
+            'blance' => $request->input('blance'),
+            'developer' => $request->input('developer'),
+            'grade' => $request->input('grade'),
+            'note' => $request->input('note')
+        ]);
+        $buidings->save();
+
+        return response()->json('buidings created!');
     }
 
     /**
@@ -80,7 +105,10 @@ class Buildingcontroller extends BaseController{
      */
     public function update(Request $request, $id)
     {
-        //
+        $buildings = Building::find($id);
+        $buildings->update($request->all());
+
+        return response()->json('buildings updated!');
     }
 
     /**
@@ -91,6 +119,9 @@ class Buildingcontroller extends BaseController{
      */
     public function destroy($id)
     {
-        //
+        $building = Building::find($id);
+        $building->delete();
+
+        return response()->json('building deleted!');
     }
 }
