@@ -5,9 +5,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-<<<<<<< HEAD
                             <h3 class="card-title">
-                                Building Managment Table
+                                Building List Table
                             </h3>
                         </div>
                         <!-- /.card-header -->
@@ -24,7 +23,9 @@
                                         <th>Area</th>
                                         <th>Floor</th>
                                         <th>Room</th>
-                                        <th>Layer</th>
+                                        <th>Tower</th>
+                                        <th>province</th>
+                                        <th>City</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,6 +61,10 @@
                                         <td>{{ building.roomNumber }}</td>
 
                                         <td>{{ building.numberLayer }}</td>
+
+                                        <td>{{ building.province }}</td>
+
+                                        <td>{{ building.city }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -79,8 +84,6 @@
             <div v-if="!$gate.isAdmin()">
                 <not-found></not-found>
             </div>
-=======
-                            <h3 class="card-title">Building List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
@@ -95,13 +98,12 @@
                     </div>
                 </div>
             </div>
->>>>>>> 4c71bd8b4cd0949c07d35609a0c1e7878836dc9f
         </div>
     </section>
 </template>
 
 <script>
-<<<<<<< HEAD
+
 export default {
     data() {
         return {
@@ -174,33 +176,4 @@ export default {
 </script>
 
 <style></style>
-=======
-import VGrid from "@revolist/vue-datagrid";
-export default {
-    name: "App",
-    data() {
-        return {
-            columns: [
-                {
-                    prop: "name",
-                    name: "First"
-                },
-                {
-                    prop: "details",
-                    name: "Second"
-                }
-            ],
-            rows: [
-                {
-                    name: "1",
-                    details: "Item 1"
-                }
-            ]
-        };
-    },
-    components: {
-        VGrid
-    }
-};
-</script>
->>>>>>> 4c71bd8b4cd0949c07d35609a0c1e7878836dc9f
+

@@ -14,20 +14,8 @@ export default [{
         }
     },
     {
-<<<<<<< HEAD
         path: "/buildinglist",
         component: require("./components/building/BuildingList.vue").default,
-        meta: {
-            roles: ["superadministrator", "administrator", "user", "guest"]
-        }
-    },
-    {
-        path: "/progress",
-        component: require("./components/building/TableBuilding.vue").default,
-=======
-        path: "/building/list",
-        component: require("./components/building/BuildingList.vue").default,
->>>>>>> 4c71bd8b4cd0949c07d35609a0c1e7878836dc9f
         meta: {
             requiresAuth: true,
             roles: ["superadministrator", "administrator", "user", "guest"]

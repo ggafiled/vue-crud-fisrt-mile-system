@@ -4,13 +4,8 @@
             <div class="row" v-if="$gate.isAdmin()">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-<<<<<<< HEAD
+                        <div class="card-header">master
                             <h3 class="card-title">Building Managment Table</h3>
-=======
-                            <h3 class="card-title">Building Managment</h3>
->>>>>>> 4c71bd8b4cd0949c07d35609a0c1e7878836dc9f
-
                             <div class="card-tools">
                                 <button
                                     type="button"
@@ -24,7 +19,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover">
+                            <table id="example" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>NO</th>
@@ -776,6 +771,12 @@ export default {
         this.$Progress.start();
         this.loadBuildings();
         this.$Progress.finish();
+    },
+    dataTabel(){
+        $(document).ready(function() {
+        $('#example').DataTable();
+    },
+);
     }
 };
 </script>
