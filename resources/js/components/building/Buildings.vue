@@ -4,7 +4,7 @@
             <div class="row" v-if="$gate.isAdmin()">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">master
+                        <div class="card-header">
                             <h3 class="card-title">Building Managment Table</h3>
                             <div class="card-tools">
                                 <button
@@ -772,11 +772,8 @@ export default {
         this.loadBuildings();
         this.$Progress.finish();
     },
-    dataTabel(){
-        $(document).ready(function() {
-        $('#example').DataTable();
-    },
-);
+    mounted(){
+         $('example').DataTable();
     }
 };
 </script>

@@ -21,8 +21,8 @@
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
                             <table
-                                id="example1"
-                                class="table "
+                                id="example"
+                                class="table table-striped table-bordered"
                             >
                                 <thead>
                                     <tr>
@@ -400,6 +400,9 @@ export default {
         this.loadUsers();
         this.loadRoles();
         this.$Progress.finish();
+    },
+    mounted(){
+        $('example').DataTable();
     }
 };
 </script>

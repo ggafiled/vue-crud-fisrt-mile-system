@@ -11,7 +11,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover">
+                            <table table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -85,16 +85,6 @@
                 <not-found></not-found>
             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0">
-                            <v-grid
-                                v-if="grid === 1"
-                                key="1"
-                                theme="compact"
-                                :source="rows"
-                                :columns="columns"
-                            ></v-grid>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -157,12 +147,6 @@ export default {
 
             this.$Progress.finish();
         },
-        newModal() {
-            this.editmode = false;
-            this.selected = "";
-            this.form.reset();
-            $("#addNew").modal("show");
-        },
         mounted() {
             console.log("User Component mounted.");
         }
@@ -171,6 +155,9 @@ export default {
         this.$Progress.start();
         this.loadBuildings();
         this.$Progress.finish();
+    },
+     mounted(){
+        $('example').DataTable();
     }
 };
 </script>

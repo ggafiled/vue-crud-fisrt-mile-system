@@ -14,6 +14,17 @@ try {
     require("admin-lte");
     require("bootstrap-select");
     require("bootstrap-select/js/i18n/defaults-de_DE");
+    require("datatables.net-buttons/js/buttons.colVis.js");
+    require("datatables.net-buttons/js/buttons.html5.js");
+    require("datatables.net-buttons/js/buttons.flash.js");
+    require("datatables.net-buttons/js/buttons.print.js");
+    require("jquery");
+    require("datatables.net")();
+    require("datatables.net-buttons")();
+    require("jquery");
+    require("datatables.net")(window, $ );
+    require("datatables.net-buttons")( window, $ );
+
 } catch (e) {}
 
 /**

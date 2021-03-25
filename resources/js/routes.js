@@ -22,6 +22,22 @@ export default [{
         }
     },
     {
+        path: "/admin/settings",
+        component: require("./components/building/commingSoon.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user", "guest"]
+        }
+    },
+    {
+        path: "/progress",
+        component: require("./components/progress/Progress.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator"]
+        }
+    },
+    {
         path: "/calendar",
         component: require("./components/calendar/Calendar.vue").default
     },
@@ -35,7 +51,7 @@ export default [{
     },
     {
         path: "/developer",
-        component: require("./components/Developer.vue").default
+        component: require("./components/Developer.vue").default,
     },
     {
         path: "/users",

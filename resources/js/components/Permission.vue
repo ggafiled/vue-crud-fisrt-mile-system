@@ -21,7 +21,7 @@
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
                             <table
-                                class="table table-hover"
+                                class="table table-striped table-bordered"
                                 ref="table-permission"
                                 id="table-permission"
                             >
