@@ -268,12 +268,31 @@ return [
             'can'  => ['payments-create', 'payments-read']
         ],
         [
+            'text' => 'Fm Management',
+            'icon' => 'fas fa-fw fas fa-building',
+            'roles'  => ['superadministrator','administrator'],
+            'submenu' => [
+                [
+                    'text' => 'Planing Management',
+                    'url'  => '/planing',
+                    'roles'  => ['superadministrator','administrator'],
+                ],
+
+            ]
+        ],
+        [
             'text' => 'Status Opertor',
             'url'  => '/progress',
             'icon' => 'fas fa-fw fa-poll-h',
             'can'  => ['building-create|building-read|building-update']
 
 
+        ],
+        [
+            'text' => 'Resplice Opertor',
+            'url'  => '/resplice',
+            'icon' => 'fas fa-fw fa-calendar',
+            'roles'  => ['superadministrator','administrator'],
         ],
         [
             'text' => 'Calendar',

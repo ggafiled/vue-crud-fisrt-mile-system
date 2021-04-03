@@ -5,27 +5,42 @@ export default class Gate {
     }
 
     isAuthenticated() {
-        return typeof this.user != "undefined" && typeof this.user != null;
+        return (
+            typeof this.user !== "undefined" &&
+            typeof this.user !== null &&
+            typeof Laravel !== "undefined" &&
+            "user" in Laravel
+        );
     }
 
     isAdmin() {
-        return this.roles.indexOf(Laravel.user.roles[0].name) != -1;
+        return (
+            "user" in Laravel &&
+            this.roles.indexOf(Laravel.user.roles[0].name) != -1
+        );
     }
 
     isUser() {
-        return this.roles.indexOf(Laravel.user.roles[0].name) == -1;
+        return (
+            "user" in Laravel &&
+            this.roles.indexOf(Laravel.user.roles[0].name) == -1
+        );
     }
 
     isAdminOrUser() {
-        return ["superadministrator", "administrator", "user"].indexOf(Laravel.user.roles[0].name) != -1;
+        return (
+            "user" in Laravel && ["superadministrator", "administrator", "user"].indexOf(
+                Laravel.user.roles[0].name
+            ) != -1
+        );
     }
 
     iscurrentUser(value) {
-        return Laravel.user.id === value ? false : true;
+        return "user" in Laravel && Laravel.user.id === value ? false : true;
     }
 
     hasPermissionsNeeded(to) {
-        if (typeof to.meta.permissions != "undefined") {
+        if (typeof to.meta.permissions !== "undefined") {
             return to.meta.permissions
                 .map((val, index) => {
                     return (
@@ -37,7 +52,7 @@ export default class Gate {
                 });
         }
 
-        if (typeof to.meta.roles != "undefined") {
+        if (typeof to.meta.roles !== "undefined") {
             return to.meta.roles
                 .map((val, index) => {
                     return (
@@ -52,8 +67,8 @@ export default class Gate {
         }
 
         if (
-            typeof to.meta.roles == "undefined" ||
-            typeof to.meta.permissions == "undefined"
+            typeof to.meta.roles === "undefined" ||
+            typeof to.meta.permissions === "undefined"
         ) {
             return true;
         }

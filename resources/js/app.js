@@ -15,7 +15,7 @@ import { Form, HasError, AlertError } from "vform";
 window.Form = Form;
 
 import Gate from "./Gate";
-var gate = new Gate(window.Laravel.user);
+var gate = new Gate("user" in window.Laravel ? window.Laravel.user : []);
 Vue.prototype.$gate = gate;
 
 import Swal from "sweetalert2";
@@ -72,7 +72,7 @@ router.beforeEach((to, from, next) => {
         !gate.isAuthenticated()
     ) {
         window.location.href = "/login";
-        return;
+        return next(false);
     }
 
     if (!gate.hasPermissionsNeeded(to)) return next("/dashboard");

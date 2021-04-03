@@ -47,8 +47,27 @@ export default [{
         }
     },
     {
+        path: "/progress",
+        component: require("./components/progress/Progress.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user"]
+        }
+    },
+    {
+        path: "/planing",
+        component: require("./components/planing/Planing.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator"]
+        }
+    },
+    {
         path: "/calendar",
-        component: require("./components/calendar/Calendar.vue").default
+        component: require("./components/calendar/Calendar.vue").default,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: "/profile",
@@ -80,15 +99,24 @@ export default [{
     },
     {
         path: "/products",
-        component: require("./components/product/Products.vue").default
+        component: require("./components/product/Products.vue").default,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: "/product/tag",
-        component: require("./components/product/Tag.vue").default
+        component: require("./components/product/Tag.vue").default,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: "/product/category",
-        component: require("./components/product/Category.vue").default
+        component: require("./components/product/Category.vue").default,
+        meta: {
+            requiresAuth: true
+        }
     },
     { path: "*", component: require("./components/NotFound.vue").default }
 ];
