@@ -38,6 +38,15 @@ export default [{
         }
     },
     {
+        path: "/constarution",
+        component: require("./components/constarution/Constarution.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            permissions: ["constarution-create", "constarution-read"]
+        }
+    },
+    {
         path: "/calendar",
         component: require("./components/calendar/Calendar.vue").default
     },
@@ -51,7 +60,7 @@ export default [{
     },
     {
         path: "/developer",
-        component: require("./components/Developer.vue").default,
+        component: require("./components/Developer.vue").default
     },
     {
         path: "/users",

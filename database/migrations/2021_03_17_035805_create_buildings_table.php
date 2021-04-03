@@ -13,17 +13,18 @@ class CreateBuildingsTable extends Migration
      */
     public function up()
     {
-        Schema::enableForeignKeyConstraints();
+        Schema::disableForeignKeyConstraints();
         Schema::create('buildings', function (Blueprint $table) {
             $table->id();
             $table->string('buildingId')->index();
             $table->string('fmCode')->nullable();
             $table->string('contactName')->nullable();
             $table->string('phone')->nullable();
-            $table->string('email')->nullable();
             $table->string('area')->nullable();
             $table->integer('floor')->nullable();
             $table->integer('roomNumber')->nullable();
+            $table->string('contract')->nullable();
+            $table->string('contracttime')->nullable();
             $table->integer('numberLayer')->nullable();
             $table->string('detailAdress')->nullable();
             $table->string('province')->nullable();
@@ -39,6 +40,7 @@ class CreateBuildingsTable extends Migration
             $table->string('note')->nullable();
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

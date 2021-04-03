@@ -257,7 +257,7 @@ return [
 
         [
             'text' => 'Constarution',
-            'url'  => '/admin/settings',
+            'url'  => '/constarution',
             'icon' => 'fas fa-fw fa-poll',
             'can'  => ['constarution-create', 'constarution-read'],
         ],

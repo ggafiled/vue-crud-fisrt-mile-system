@@ -14,17 +14,17 @@ try {
     require("admin-lte");
     require("bootstrap-select");
     require("bootstrap-select/js/i18n/defaults-de_DE");
-    require("datatables.net-buttons/js/buttons.colVis.js");
-    require("datatables.net-buttons/js/buttons.html5.js");
-    require("datatables.net-buttons/js/buttons.flash.js");
-    require("datatables.net-buttons/js/buttons.print.js");
-    require("jquery");
-    require("datatables.net")();
-    require("datatables.net-buttons")();
-    require("jquery");
-    require("datatables.net")(window, $ );
-    require("datatables.net-buttons")( window, $ );
 
+    var dt = require("datatables.net-dt");
+    var buttons = require("datatables.net-buttons")();
+    require("datatables.net-buttons/js/buttons.colVis.js")();
+    require("datatables.net-buttons/js/buttons.html5.js")();
+    require("datatables.net-buttons/js/buttons.flash.js")();
+    require("datatables.net-buttons/js/buttons.print.js")();
+    require("datatables.net-dt/css/jquery.datatables.css");
+
+    //Custom theme
+    require("datatables.net-buttons-dt/css/buttons.datatables.css");
 } catch (e) {}
 
 /**
@@ -38,6 +38,15 @@ window.axios = require("axios");
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 window.axios.defaults.headers.common.crossDomain = true;
 // window.axios.defaults.baseURL = "/api";
+
+$.ajaxSetup({
+    headers: {
+        "X-Requested-With": "XMLHttpRequest",
+        crossDomain: true,
+        "X-CSRF-TOKEN": document.head.querySelector('meta[name="csrf-token"]')
+            .content
+    }
+});
 
 window.moment = require("moment");
 /**

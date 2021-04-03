@@ -18,8 +18,12 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0">
-                            <table id="example" class="table table-striped table-bordered">
+                        <div class="card-body table-responsive p-2">
+                            <table
+                                id="buildings"
+                                ref="buildings"
+                                class="table table-striped table-bordered"
+                            >
                                 <thead>
                                     <tr>
                                         <th>NO</th>
@@ -29,70 +33,9 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr
-                                        colspan="6"
-                                        v-cloak
-                                        v-if="!buildings"
-                                        class="align-content-center p-2"
-                                    >
-                                        No record on systems.
-                                    </tr>
-                                    <tr
-                                        v-for="(building,
-                                        index) in buildings.data"
-                                        :key="building.id"
-                                    >
-                                        <td>{{ index + 1 }}</td>
-                                        <td class="text-capitalize">
-                                            {{ building.buildingId }}
-                                        </td>
-                                        <td>{{ building.fmCode }}</td>
-
-                                        <td>{{ building.contactName }}</td>
-
-                                        <td>
-                                            <a
-                                                href="#"
-                                                @click.prevent="
-                                                    editModal(building)
-                                                "
-                                            >
-                                                <i class="fa fa-edit blue"></i>
-                                            </a>
-                                            <slot
-                                                v-if="
-                                                    $gate.iscurrentUser(
-                                                        building.id
-                                                    )
-                                                "
-                                            >
-                                                /
-                                                <a
-                                                    href="#"
-                                                    @click.prevent="
-                                                        deleteBuilding(
-                                                            building.id
-                                                        )
-                                                    "
-                                                >
-                                                    <i
-                                                        class="fa fa-trash red"
-                                                    ></i>
-                                                </a>
-                                            </slot>
-                                        </td>
-                                    </tr>
-                                </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer">
-                            <pagination
-                                :data="buildings"
-                                @pagination-change-page="getResults"
-                            ></pagination>
-                        </div>
                     </div>
                     <!-- /.card -->
                 </div>
@@ -418,9 +361,11 @@
                                             <input
                                                 v-model="form.postalCode"
                                                 type="text"
+                                                required
                                                 pattern="/^(?(^00000(|-0000))|(\d{5}(|-\d{4})))$/"
                                                 class="form-control"
-                                                placeholder="Enter your postalcode..."
+                                                placeholder="Enter your
+                                            postalcode..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'postalCode'
@@ -651,20 +596,14 @@ export default {
         ...mapState(["buildings"])
     },
     methods: {
-        getResults(page = 1) {
-            this.$Progress.start();
-
-            axios
-                .get("api/building?page=" + page)
-                .then(({ data }) => (this.$store.state.buildings = data.data));
-
-            this.$Progress.finish();
-        },
         loadBuildings() {
             this.$Progress.start();
 
             if (this.$gate.isAdmin()) {
                 this.$store.dispatch("GET_BUILDINGS");
+                $("#buildings")
+                    .DataTable()
+                    .ajax.reload();
             }
 
             this.$Progress.finish();
@@ -754,26 +693,69 @@ export default {
                 });
         }
     },
-    mounted() {
-        let pusher = new Pusher("914457", {
-            cluster: "ap1",
-            encrypted: false
-        });
-
-        //Subscribe to the channel we specified in our Adonis Application
-        let channel = pusher.subscribe("building-channel");
-
-        channel.bind("new-building", data => {
-            this.$store.commit("ADD_BUILDINGS", data.building);
-        });
-    },
     created() {
         this.$Progress.start();
         this.loadBuildings();
         this.$Progress.finish();
     },
-    mounted(){
-         $('example').DataTable();
+    mounted() {
+        var vm = this;
+        var table = $(this.$refs.buildings).DataTable({
+            dom: "Blfrtip",
+            ajax: "api/building",
+            responsive: true,
+            processing: true,
+            pageLength: 15,
+            lengthMenu: [
+                [10, 15, 25, 50, -1],
+                [10, 15, 25, 50, "All"]
+            ],
+            buttons: ["colvis", "copy", "csv", "print"],
+            columns: [
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
+                {
+                    data: "buildingId"
+                },
+                {
+                    data: "fmCode"
+                },
+                {
+                    data: "contactName"
+                },
+                {
+                    data: null,
+                    className: "dt-body-center",
+                    render: function(data, type, row, meta) {
+                        return "<a class='edit-building' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-building' href='#'> <i class='fa fa-trash red'></i> </a>";
+                    }
+                }
+            ]
+        });
+
+        $("tbody", this.$refs.buildings).on(
+            "click",
+            ".edit-building",
+            function() {
+                var tr = $(this).closest("tr");
+                var row = table.row(tr);
+                vm.editModal(row.data());
+            }
+        );
+
+        $("tbody", this.$refs.buildings).on(
+            "click",
+            ".delete-building",
+            function() {
+                var tr = $(this).closest("tr");
+                var row = table.row(tr);
+                vm.deleteBuilding(row.data().id);
+            }
+        );
     }
 };
 </script>

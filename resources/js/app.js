@@ -128,3 +128,15 @@ const app = new Vue({
     router,
     store
 });
+
+let pusher = new Pusher("914457", {
+    cluster: "ap1",
+    encrypted: false
+});
+
+//Subscribe to the channel we specified in our Adonis Application
+let channel = pusher.subscribe("building-channel");
+
+channel.bind("new-building", data => {
+    app.$store.commit("ADD_BUILDINGS", data.building);
+});

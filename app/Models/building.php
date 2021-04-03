@@ -9,7 +9,7 @@ class Building extends Model
 {
     protected $fillable = [
         'buildingId',
-        'fmCode', 'contactName', 'phone', 'email',
+        'fmCode', 'contactName', 'phone',
         'area', 'floor', 'roomNumber', 'numberLayer',
         'detailAdress', 'province', 'city', 'postalCode',
         'latitude', 'longtude', 'priceSquare', 'workingTime',

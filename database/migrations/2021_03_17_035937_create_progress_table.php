@@ -41,6 +41,12 @@ class CreateProgressTable extends Migration
             $table->string('areaCost')->nullable();
             $table->string('trueProvider')->nullable();
             $table->string('types')->nullable();
+            $table->date('totDate')->after('totProgress')->nullable();
+            $table->date('aisDate')->after('aisProgress')->nullable();
+            $table->date('3bbDate')->after('3bbProgress')->nullable();
+            $table->date('sinetDate')->after('sinetProgress')->nullable();
+            $table->date('fnDate')->after('fnProgress')->nullable();
+            $table->date('trueDate')->after('trueProgress')->nullable();
             $table->timestamps();
 
             $table->foreign('buildingId')

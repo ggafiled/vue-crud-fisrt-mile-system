@@ -24,7 +24,7 @@ class Buildingcontroller extends BaseController{
      */
     public function index()
     {
-        $buildings = Building::paginate(25);
+        $buildings = Building::all();
         return $this->sendResponse($buildings,'Buildings List');
     }
 

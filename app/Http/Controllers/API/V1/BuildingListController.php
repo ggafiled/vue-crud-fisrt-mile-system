@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Building;
 
-class buildingListController extends BaseController{
+class BuildingListController extends BaseController{
 
     public function __construct()
     {
@@ -22,7 +22,7 @@ class buildingListController extends BaseController{
      */
     public function index()
     {
-        $buildings = Building::paginate(25);
+        $buildings = Building::all();
         return $this->sendResponse($buildings,'Buildings List');
     }
 

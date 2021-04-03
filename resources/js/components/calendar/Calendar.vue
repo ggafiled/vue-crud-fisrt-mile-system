@@ -51,6 +51,10 @@ export default {
     },
     data() {
         return {
+            editmode: false,
+            form: new Form({
+                id: ""
+            }),
             calendarOptions: {
                 plugins: [dayGridPlugin, interactionPlugin],
                 initialView: "dayGridMonth",
@@ -65,6 +69,15 @@ export default {
     methods: {
         handleDateClick: function(arg) {
             alert("date click! " + arg.dateStr);
+            this.editmode = true;
+            this.form.reset();
+            $("#addNew").modal("show");
+            this.form.fill(building);
+        },
+        newModal() {
+            this.editmode = false;
+            this.form.reset();
+            $("#addNew").modal("show");
         }
     },
     mounted() {},
