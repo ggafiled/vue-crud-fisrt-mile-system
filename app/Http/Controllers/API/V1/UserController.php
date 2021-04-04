@@ -33,7 +33,7 @@ class UserController extends BaseController
         }
         // $this->authorize('isAdmin');
 
-        $users = User::with('roles:id')->paginate(10);
+        $users = User::with('roles:id')->get();
 
         return $this->sendResponse($users, 'Users list');
     }

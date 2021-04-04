@@ -92,7 +92,20 @@ export default {
                 [10, 15, 25, 50, -1],
                 [10, 15, 25, 50, "All"]
             ],
-            buttons: ["colvis", "copy", "csv", "print"],
+            buttons: [
+                "colvis",
+                "copy",
+                "csv",
+                "print",
+                {
+                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
+                    action: function(e, dt, node, config) {
+                        dt.columns()
+                            .search("")
+                            .draw();
+                    }
+                }
+            ],
             columns: [
                 {
                     data: null,

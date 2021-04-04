@@ -132,6 +132,7 @@
         $(function () {
             $('.selectpicker').selectpicker();
             $('.dropdown-toggle').dropdown();
+
         });
     </script>
 

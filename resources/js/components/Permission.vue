@@ -19,11 +19,11 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0">
+                        <div class="card-body table-responsive p-2">
                             <table
                                 class="table table-striped table-bordered"
-                                ref="table-permission"
-                                id="table-permission"
+                                ref="permission"
+                                id="permission"
                             >
                                 <thead>
                                     <tr>
@@ -35,47 +35,9 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr
-                                        v-for="(role, index) in roles.data"
-                                        :key="role.id"
-                                    >
-                                        <td>{{ index + 1 }}</td>
-                                        <td class="text-capitalize">
-                                            {{ role.name }}
-                                        </td>
-                                        <td>{{ role.display_name }}</td>
-                                        <td>{{ role.description }}</td>
-                                        <td>{{ role.created_at | myDate }}</td>
-
-                                        <td>
-                                            <a
-                                                href="#"
-                                                @click.prevent="editModal(role)"
-                                            >
-                                                <i class="fa fa-edit blue"></i>
-                                            </a>
-                                            /
-                                            <a
-                                                href="#"
-                                                @click.prevent="
-                                                    deleteRole(role.id)
-                                                "
-                                            >
-                                                <i class="fa fa-trash red"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer">
-                            <pagination
-                                :data="roles"
-                                @pagination-change-page="getResults"
-                            ></pagination>
-                        </div>
                     </div>
                     <!-- /.card -->
                 </div>
@@ -90,7 +52,7 @@
                 aria-labelledby="addNew"
                 aria-hidden="true"
             >
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog" role="dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
@@ -247,15 +209,6 @@ export default {
         };
     },
     methods: {
-        getResults(page = 1) {
-            this.$Progress.start();
-
-            axios
-                .get("api/role?page=" + page)
-                .then(({ data }) => (this.roles = data.data));
-
-            this.$Progress.finish();
-        },
         newModal() {
             this.editmode = false;
             this.selected = "";
@@ -375,9 +328,6 @@ export default {
                 });
         }
     },
-    mounted() {
-        console.log("Role Component mounted.");
-    },
     created() {
         this.$Progress.start();
         this.loadRoles();
@@ -394,6 +344,87 @@ export default {
                 );
             });
         }
+    },
+    mounted() {
+        console.log("Permission/Role Component mounted.");
+        var vm = this;
+        var table = $(this.$refs.permission).DataTable({
+            dom: "Blfrtip",
+            ajax: "api/role",
+            responsive: true,
+            processing: true,
+            autoWidth: true,
+            pageLength: 15,
+            lengthMenu: [
+                [10, 15, 25, 50, -1],
+                [10, 15, 25, 50, "All"]
+            ],
+            buttons: [
+                "colvis",
+                "copy",
+                "csv",
+                "print",
+                {
+                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
+                    action: function(e, dt, node, config) {
+                        dt.columns()
+                            .search("")
+                            .draw();
+                    }
+                }
+            ],
+            columns: [
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
+                {
+                    data: "name",
+                    className: "text-capitalize"
+                },
+                {
+                    data: "display_name"
+                },
+                {
+                    data: "description"
+                },
+                {
+                    data: "created_at",
+                    render: function(data, type, row, meta) {
+                        return moment(data.created_at).format("MMMM Do YYYY");
+                    }
+                },
+                {
+                    data: null,
+                    className: "dt-body-center",
+                    render: function(data, type, row, meta) {
+                        return "<a class='edit-permission' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-permission' href='#'> <i class='fa fa-trash red'></i> </a>";
+                    }
+                }
+            ]
+        });
+
+        $("tbody", this.$refs.permission).on(
+            "click",
+            ".edit-permission",
+            function() {
+                var tr = $(this).closest("tr");
+                var row = table.row(tr);
+                vm.editModal(row.data());
+            }
+        );
+
+        $("tbody", this.$refs.permission).on(
+            "click",
+            ".delete-permission",
+            function() {
+                var tr = $(this).closest("tr");
+                var row = table.row(tr);
+                vm.deleteRole(row.data().id);
+            }
+        );
     }
 };
 </script>

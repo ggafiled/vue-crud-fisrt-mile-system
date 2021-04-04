@@ -34,7 +34,7 @@ class RoleController extends BaseController
         }
         $roles = $this->role->latest()->with(['permissions' => function($query) {
             $query->select('id', 'name as text');
-        }])->paginate(10);
+        }])->get();
         return $this->sendResponse($roles, 'Roles list');
     }
 

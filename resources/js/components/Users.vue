@@ -19,9 +19,10 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-0">
+                        <div class="card-body table-responsive p-2">
                             <table
-                                id="example"
+                                id="users"
+                                ref="users"
                                 class="table table-striped table-bordered"
                             >
                                 <thead>
@@ -34,67 +35,9 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr
-                                        colspan="6"
-                                        v-cloak
-                                        v-if="!users"
-                                        class="align-content-center p-2"
-                                    >
-                                        No record on systems.
-                                    </tr>
-                                    <tr
-                                        v-for="(user, index) in users.data"
-                                        :key="user.id"
-                                    >
-                                        <td>{{ index + 1 }}</td>
-                                        <td class="text-capitalize">
-                                            {{ user.name }}
-                                        </td>
-                                        <td>{{ user.email }}</td>
-                                        <td
-                                            :inner-html.prop="
-                                                user.email_verified_at | yesno
-                                            "
-                                        ></td>
-                                        <td>{{ user.created_at | myDate }}</td>
-
-                                        <td>
-                                            <a
-                                                href="#"
-                                                @click.prevent="editModal(user)"
-                                            >
-                                                <i class="fa fa-edit blue"></i>
-                                            </a>
-                                            <slot
-                                                v-if="
-                                                    $gate.iscurrentUser(user.id)
-                                                "
-                                            >
-                                                /
-                                                <a
-                                                    href="#"
-                                                    @click.prevent="
-                                                        deleteUser(user.id)
-                                                    "
-                                                >
-                                                    <i
-                                                        class="fa fa-trash red"
-                                                    ></i>
-                                                </a>
-                                            </slot>
-                                        </td>
-                                    </tr>
-                                </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer">
-                            <pagination
-                                :data="users"
-                                @pagination-change-page="getResults"
-                            ></pagination>
-                        </div>
                     </div>
                     <!-- /.card -->
                 </div>
@@ -278,15 +221,6 @@ export default {
         };
     },
     methods: {
-        getResults(page = 1) {
-            this.$Progress.start();
-
-            axios
-                .get("api/user?page=" + page)
-                .then(({ data }) => (this.users = data.data));
-
-            this.$Progress.finish();
-        },
         updateUser() {
             this.$Progress.start();
             // console.log('Editing data');
@@ -354,9 +288,9 @@ export default {
             this.$Progress.start();
 
             if (this.$gate.isAdmin()) {
-                axios
-                    .get("api/user")
-                    .then(({ data }) => (this.users = data.data));
+                // axios
+                //     .get("api/user")
+                //     .then(({ data }) => (this.users = data.data));
             }
 
             this.$Progress.finish();
@@ -391,18 +325,109 @@ export default {
                 });
         }
     },
-    mounted() {
-        console.log("User Component mounted.");
-    },
-
     created() {
         this.$Progress.start();
         this.loadUsers();
         this.loadRoles();
         this.$Progress.finish();
     },
-    mounted(){
-        $('example').DataTable();
+    mounted() {
+        console.log("User Component mounted.");
+        var vm = this;
+        var table = $(this.$refs.users).DataTable({
+            dom: "Blfrtip",
+            ajax: "api/user",
+            responsive: true,
+            processing: true,
+            autoWidth: true,
+            pageLength: 15,
+            lengthMenu: [
+                [10, 15, 25, 50, -1],
+                [10, 15, 25, 50, "All"]
+            ],
+            buttons: {
+                buttons: [
+                    { extend: "colvis", className: "dt-button" },
+                    { extend: "copy", className: "dt-button" },
+                    { extend: "csv", className: "dt-button" },
+                    { extend: "print", className: "dt-button" },
+                    {
+                        text:
+                            "<i class='bi bi-x-square'></i> Email not verified yet?",
+                        action: function(e, dt, node, config) {
+                            dt.column(3)
+                                .search("red")
+                                .draw();
+                        }
+                    },
+                    {
+                        text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
+                        action: function(e, dt, node, config) {
+                            dt.columns()
+                                .search("")
+                                .draw();
+                        }
+                    }
+                ]
+            },
+            columns: [
+                {
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
+                {
+                    data: "name",
+                    className: "text-capitalize"
+                },
+                {
+                    data: "email",
+                    render: function(data, type, row, meta) {
+                        return (
+                            '<span><i class="fa fa-envelope pr-2"></i>' +
+                            data +
+                            "</span>"
+                        );
+                    }
+                },
+                {
+                    data: "email_verified_at",
+                    render: function(data, type, row, meta) {
+                        return data?.email_verified_at
+                            ? '<i class="fas fa-check green"></i><span class="invisible">green</span>'
+                            : '<i class="fas fa-times red"></i><span class="invisible">red</span>';
+                    }
+                },
+                {
+                    data: "created_at",
+                    render: function(data, type, row, meta) {
+                        return moment(data.created_at).format("MMMM Do YYYY");
+                    }
+                },
+                {
+                    data: null,
+                    className: "dt-body-center",
+                    render: function(data, type, row, meta) {
+                        return vm.$gate.iscurrentUser(data.id)
+                            ? "<a class='edit-users' href='#'><i class='fa fa-edit blue'></i> </a>"
+                            : "<a class='edit-users' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-users' href='#'> <i class='fa fa-trash red'></i> </a>";
+                    }
+                }
+            ]
+        });
+
+        $("tbody", this.$refs.users).on("click", ".edit-users", function() {
+            var tr = $(this).closest("tr");
+            var row = table.row(tr);
+            vm.editModal(row.data());
+        });
+
+        $("tbody", this.$refs.users).on("click", ".delete-users", function() {
+            var tr = $(this).closest("tr");
+            var row = table.row(tr);
+            vm.deleteUser(row.data().id);
+        });
     }
 };
 </script>

@@ -25,6 +25,9 @@ try {
 
     //Custom theme
     require("datatables.net-buttons-dt/css/buttons.datatables.css");
+
+    //Bootstrap icon
+    require("bootstrap-icons/font/bootstrap-icons.css");
 } catch (e) {}
 
 /**
