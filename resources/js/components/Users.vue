@@ -350,7 +350,11 @@ export default {
                     { extend: "colvis", className: "dt-button" },
                     { extend: "copy", className: "dt-button" },
                     { extend: "csv", className: "dt-button" },
-                    { extend: "print", className: "dt-button" },
+                    {
+                        extend: "print",
+                        className: "dt-button",
+                        text: "<i class='bi bi-printer mr-1'></i>Print"
+                    },
                     {
                         text:
                             "<i class='bi bi-x-square'></i> Email not verified yet?",
@@ -385,7 +389,7 @@ export default {
                     data: "email",
                     render: function(data, type, row, meta) {
                         return (
-                            '<span><i class="fa fa-envelope pr-2"></i>' +
+                            '<span><i class="bi bi-envelope pr-2"></i>' +
                             data +
                             "</span>"
                         );

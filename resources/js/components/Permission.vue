@@ -363,7 +363,10 @@ export default {
                 "colvis",
                 "copy",
                 "csv",
-                "print",
+                {
+                    extend: "print",
+                    text: "<i class='bi bi-printer mr-1'></i>Print"
+                },
                 {
                     text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
                     action: function(e, dt, node, config) {
