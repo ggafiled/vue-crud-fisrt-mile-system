@@ -16,33 +16,50 @@ class CreateConstarutionsTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('constarutions', function (Blueprint $table) {
             $table->id();
-            $table->string('buildingId')->index();
-            $table->integer('numberLayer')->nullable();
-            $table->integer('floor')->nullable();
-            $table->integer('roomNumber')->nullable();
-
-            $table->string('exploreDesign')->nullable();
-            $table->string('exploreDesignTeam')->nullable();
-            $table->date('exploreDesignDate')->nullable();
-            $table->string('exploreDesignBy')->nullable();
-            $table->date('exploreDesignDateBy')->nullable();
-
+            $table->bigInteger('building_id')->index();
+            $table->string('surveyDesing')->nullable();
+            $table->timestamp('surveyDesingTeam')->nullable();
+            $table->timestamp('surveyDesingDate')->nullable();
+            $table->timestamp('surveyDesingDateBy')->nullable();
+            $table->bigInteger('surveyDesingBy')->index();
             $table->string('ifcc')->nullable();
-            $table->string('ifccTeam')->nullable();
-            $table->date('ifccDate')->nullable();
-
+            $table->bigInteger('ifccTeam')->index();
+            $table->timestamp('ifccDate')->nullable();
             $table->string('wallBox')->nullable();
-            $table->string('wallBoxTeam')->nullable();
-            $table->date('wallBoxDate')->nullable();
-
+            $table->bigInteger('wallBoxTeam')->nullable();
+            $table->timestamp('wallBoxDate')->nullable();
             $table->string('microductD')->nullable();
-            $table->string('microductTeamD')->nullable();
-            $table->date('microductDateD')->nullable();
-
+            $table->bigInteger('microductTeamD')->nullable();
+            $table->timestamp('microductDateD')->nullable();
             $table->string('microductK')->nullable();
-            $table->string('microductTeamK')->nullable();
-            $table->date('microductDateK')->nullable();
+            $table->bigInteger('microductTeamK')->nullable();
+            $table->timestamp('microductDateK')->nullable();
             $table->timestamps();
+
+            // $table->foreign('building_id')
+            // ->references('id')
+            // ->on('buildings')
+            // ->onDelete('cascade');
+            // $table->foreign('surveyDesingBy')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
+            // $table->foreign('ifccTeam')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
+            // $table->foreign('wallBoxTeam')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
+            // $table->foreign('microductTeamD')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
+            // $table->foreign('microductTeamK')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
         });
     }
 

@@ -8,13 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class Progress extends Model
 {
     protected $fillable = [
-        'id','buildingId','fmProgress','dateProgress',
-        'totProgress','totDate',
-        'aisProgress','aisDate',
-        'Progress3bb','Date3bb',
-        'sinetProgress','sinetDate',
-        'fnProgress','fnDate',
-        'trueProgress','trueDate',
-        'update_at'
+        'building_id',
+        'fmProgress',
+        'dateFm',
+        'totProgress',
+        'dateTot',
+        'aisProgress',
+        'dateAis',
+        'Progress3bb',
+        'date3BB',
+        'sinetProgress',
+        'dateSinet',
+        'fnProgress',
+        'dateFn',
+        'trueProgress',
+        'dateTrue',
     ];
+
+    public function building()
+	{
+		return $this->hasMany('App\Models\Building','id','building_id');
+	}
 }

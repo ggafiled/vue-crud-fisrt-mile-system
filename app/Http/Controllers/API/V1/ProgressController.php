@@ -21,7 +21,7 @@ class ProgressController extends BaseController{
      */
     public function index()
     {
-        $progress = Progress::all();
+        $progress = Progress::with('building')->get();
         return $this->sendResponse($progress,'Progress List');
     }
 

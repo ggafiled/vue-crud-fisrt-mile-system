@@ -16,43 +16,27 @@ class CreateProgressTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('progress', function (Blueprint $table) {
             $table->id()->nullable();
-            $table->string('buildingId')->index();
-            $table->string('surveyTeam')->nullable();
-            $table->string('exploreDesig')->nullable();
-            $table->string('ifcc')->nullable();
-            $table->string('wallBox')->nullable();
-            $table->string('vertical')->nullable();
-            $table->string('diagonal')->nullable();
+            $table->bigInteger('building_id')->index();
             $table->string('fmProgress')->nullable();
-            $table->date('dateProgress')->nullable();
+            $table->timestamp('dateFm')->nullable();
             $table->string('totProgress')->nullable();
+            $table->timestamp('dateTot')->nullable();
             $table->string('aisProgress')->nullable();
-            $table->string('3bbProgress')->nullable();
+            $table->timestamp('dateAis')->nullable();
+            $table->string('Progress3bb')->nullable();
+            $table->timestamp('date3BB')->nullable();
             $table->string('sinetProgress')->nullable();
+            $table->timestamp('dateSinet')->nullable();
             $table->string('fnProgress')->nullable();
+            $table->timestamp('dateFn')->nullable();
             $table->string('trueProgress')->nullable();
-            $table->string('blow')->nullable();
-            $table->string('dateBlow')->nullable();
-            $table->string('splice')->nullable();
-            $table->string('dateSplice')->nullable();
-            $table->string('ready')->nullable();
-            $table->string('rail')->nullable();
-            $table->string('booth')->nullable();
-            $table->string('areaCost')->nullable();
-            $table->string('trueProvider')->nullable();
-            $table->string('types')->nullable();
-            $table->date('totDate')->after('totProgress')->nullable();
-            $table->date('aisDate')->after('aisProgress')->nullable();
-            $table->date('3bbDate')->after('3bbProgress')->nullable();
-            $table->date('sinetDate')->after('sinetProgress')->nullable();
-            $table->date('fnDate')->after('fnProgress')->nullable();
-            $table->date('trueDate')->after('trueProgress')->nullable();
+            $table->timestamp('dateTrue')->nullable();
             $table->timestamps();
 
-            $table->foreign('buildingId')
-                ->references('buildingId')
-                ->on('buildings')
-                ->onDelete('cascade');
+            // $table->foreign('building_id')
+            //     ->references('id')
+            //     ->on('buildings')
+            //     ->onDelete('cascade');
         });
     }
 

@@ -8,11 +8,41 @@ use Illuminate\Database\Eloquent\Model;
 class Building extends Model
 {
     protected $fillable = [
-        'buildingId',
-        'fmCode', 'contactName', 'phone',
-        'area', 'floor', 'roomNumber', 'numberLayer',
-        'detailAdress', 'province', 'city', 'postalCode',
-        'latitude', 'longtude', 'priceSquare', 'workingTime',
-        'blance', 'developer', 'grade', 'note'
+        'fmCode',
+        'member_id',
+        'buildingName',
+        'detailAdress',
+        'province',
+        'city',
+        'postalCode',
+        'zone',
+        'area',
+        'townNumber',
+        'floor',
+        'roomNumber',
+        'contract',
+        'contractTime',
+        'latitude',
+        'longtude',
+        'priceSquare',
+        'workingTime',
+        'blance',
+        'developer',
+        'grade',
     ];
+
+    public function member()
+	{
+		return $this->hasMany('App\Models\Member','id','member_id');
+	}
+
+    public function progress()
+	{
+		return $this->belongsTo('App\Models\Progress','building_id','id');
+	}
+
+    public function constarution()
+	{
+		return $this->belongsTo('App\Models\Constarution','building_id','id');
+	}
 }

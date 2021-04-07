@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Planing extends Model
 {
     protected $fillable = [
-        'name', 'lastName', 'phoneNumber1', 'phoneNumber2', 'buildingId',
-        'numberLayer', 'floor', 'roomNumber',    'isp', 'ispCode', 'memberNumber',
-        'Fees', 'confirming', 'Team',    'date',    'time',    'status', 'subStatus',
-        'dateConnect', 'dateDisconnect', 'update_at'
+        'building_id','isp','ispCode','fees','confirming','teams_id','remark','date','time','status','subStatus','dataConnect','dataDisconnect',
     ];
 }

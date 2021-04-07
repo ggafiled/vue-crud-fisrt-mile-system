@@ -8,18 +8,33 @@ use Illuminate\Database\Eloquent\Model;
 class Constarution extends Model
 {
     protected $fillable = [
-        'buildingId','numberLayer','roomNumber','floor',
-
-        'exploreDesign','exploreDesignTeam','exploreDesignDate',
-
-        'exploreDesignBy','exploreDesignDateBy',
-
-        'ifcc','ifccTeam','ifccDate',
-
-        'wallBox','wallBoxDate','wallBoxTeam',
-
-        'microductD','microductTeamD','microductDateD',
-
-        'microductK','microductTeamK','microductDateK',
+        'building_id',
+        'surveyDesing',
+        'surveyDesingTeam',
+        'surveyDesingDate',
+        'surveyDesingDateBy',
+        'surveyDesingBy',
+        'ifcc',
+        'ifccTeam',
+        'ifccDate',
+        'wallBox',
+        'wallBoxTeam',
+        'wallBoxDate',
+        'microductD',
+        'microductTeamD',
+        'microductDateD',
+        'microductK',
+        'microductTeamK',
+        'microductDateK',
     ];
+
+    public function building()
+	{
+		return $this->hasMany('App\Models\Building','id','building_id');
+	}
+
+    public function team()
+	{
+		return $this->hasMany('App\Models\Team','id','surveyDesingTeam');
+	}
 }

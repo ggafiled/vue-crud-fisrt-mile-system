@@ -22,7 +22,7 @@
                                         <th>ID</th>
                                         <th>Building Name</th>
                                         <th>Fm-Code</th>
-                                        <th>Content</th>
+                                        <th>Contact Name</th>
                                         <th>Phone</th>
                                         <th>Area</th>
                                         <th>Floor</th>
@@ -53,27 +53,27 @@ export default {
         return {
             form: new Form({
                 id: "",
-                buildingId: "",
                 fmCode: "",
-                contactName: "",
-                phone: "",
-                email: "",
-                area: "",
-                floor: "",
-                roomNumber: "",
-                numberLayer: "",
+                member_id: "",
+                buildingName: "",
                 detailAdress: "",
                 province: "",
                 city: "",
                 postalCode: "",
+                zone: "",
+                area: "",
+                townNumber: "",
+                floor: "",
+                roomNumber: "",
+                contract: "",
+                contractTime: "",
                 latitude: "",
                 longtude: "",
                 priceSquare: "",
                 workingTime: "",
                 blance: "",
                 developer: "",
-                grade: "",
-                note: ""
+                grade: ""
             })
         };
     },
@@ -116,14 +116,14 @@ export default {
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                { data: "buildingId" },
+                { data: "buildingName" },
                 { data: "fmCode" },
-                { data: "contactName" },
-                { data: "phone" },
+                { data: "member[0].name" },
+                { data: "member[0].phone1" },
                 { data: "area" },
                 { data: "floor" },
                 { data: "roomNumber" },
-                { data: "numberLayer" },
+                { data: "townNumber" },
                 { data: "province" },
                 { data: "city" }
             ]

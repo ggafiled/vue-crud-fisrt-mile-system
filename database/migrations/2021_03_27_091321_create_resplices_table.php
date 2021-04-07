@@ -16,19 +16,29 @@ class CreateResplicesTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('resplices', function (Blueprint $table) {
             $table->id();
-            $table->string('buildingId')->index();
-            $table->integer('numberLayer')->nullable();
-            $table->integer('floor')->nullable();
-            $table->integer('roomNumber')->nullable();
+            $table->bigInteger('building_id')->index();
             $table->string('zone')->index();
-            $table->string('technicianTeamStart')->index();
-            $table->date('startDate')->index();
-            $table->date('planDate')->index();
-            $table->date('planFinish')->index();
-            $table->date('planStart')->index();
-            $table->date('planComplete')->index();
-            $table->date('technicianTeamEnd')->index();
+            $table->bigInteger('technicianTeamStart')->index();
+            $table->timestamp('startDate')->nullable();
+            $table->timestamp('planDate')->nullable();
+            $table->timestamp('planFinish')->nullable();
+            $table->timestamp('planStart')->nullable();
+            $table->timestamp('planComplete')->nullable();
+            $table->bigInteger('technicianTeamEnd')->index();
             $table->timestamps();
+
+            // $table->foreign('building_id')
+            // ->references('id')
+            // ->on('buildings')
+            // ->onDelete('cascade');
+            // $table->foreign('technicianTeamStart')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
+            // $table->foreign('technicianTeamEnd')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
         });
     }
 

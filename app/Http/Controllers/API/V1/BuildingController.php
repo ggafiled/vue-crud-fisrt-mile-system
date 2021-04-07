@@ -24,7 +24,7 @@ class Buildingcontroller extends BaseController{
      */
     public function index()
     {
-        $buildings = Building::all();
+        $buildings = Building::with('member')->get();
         return $this->sendResponse($buildings,'Buildings List');
     }
 

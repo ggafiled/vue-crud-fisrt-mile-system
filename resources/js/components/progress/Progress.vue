@@ -96,14 +96,15 @@
                         >
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-2" v-show="editmode">
                                         <div class="form-group">
-                                            <label>Project Building ID</label>
+                                            <label>Building ID</label>
                                             <input
                                                 v-model="form.id"
                                                 type="text"
-                                                class="form-control disabled"
+                                                class="form-control"
                                                 placeholder="Enter your building id..."
+                                                readonly
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'id'
@@ -112,27 +113,34 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div
+                                        :class="[
+                                            editmode ? 'col-sm-10' : 'col-sm-12'
+                                        ]"
+                                    >
                                         <div class="form-group">
                                             <label>Building Name</label>
                                             <input
-                                                v-model="form.buildingId"
+                                                v-model="form.buildingName"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your building..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'buildingId'
+                                                        'buildingName'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="buildingId"
+                                                field="buildingName"
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-9">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
 
@@ -160,19 +168,19 @@
                                                 >วันที่เข้าวางโครงข่าย :</label
                                             >
                                             <input
-                                                v-model="form.dateProgress"
+                                                v-model="form.dateFn"
                                                 type="date"
                                                 class="form-control"
-                                                placeholder="Enter your dateProgress..."
+                                                placeholder="Enter your dateFn..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'dateProgress'
+                                                        'dateFn'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="dateProgress"
+                                                field="dateFn"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -204,23 +212,23 @@
                                         <div class="form-group">
                                             <label>TOT วันวางโครงข่าย :</label>
                                             <input
-                                                v-model="form.totDate"
+                                                v-model="form.dateTot"
                                                 type="date"
                                                 class="form-control"
-                                                placeholder="Enter your totDate..."
+                                                placeholder="Enter your dateTot..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'totDate'
+                                                        'dateTot'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="totDate"
+                                                field="dateTot"
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-9">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
 
@@ -246,19 +254,19 @@
                                         <div class="form-group">
                                             <label>AIS วันวางโครงข่าย :</label>
                                             <input
-                                                v-model="form.aisDate"
+                                                v-model="form.dateAis"
                                                 type="date"
                                                 class="form-control"
-                                                placeholder="Enter your aisDate..."
+                                                placeholder="Enter your dateAis..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'aisDate'
+                                                        'dateAis'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="aisDate"
+                                                field="dateAis"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -268,7 +276,7 @@
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>TOT Progress :</label>
+                                            <label>3BB Progress :</label>
                                             <input
                                                 v-model="form.Progress3bb"
                                                 type="text"
@@ -290,23 +298,23 @@
                                         <div class="form-group">
                                             <label>3BB วันวางโครงข่าย :</label>
                                             <input
-                                                v-model="form.Date3bb"
+                                                v-model="form.date3BB"
                                                 type="date"
                                                 class="form-control"
-                                                placeholder="Enter your Date3bb..."
+                                                placeholder="Enter your date3bb..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'Date3bb'
+                                                        'date3BB'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="Date3bb"
+                                                field="Date3BB"
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-9">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
 
@@ -334,19 +342,19 @@
                                                 >Sinet วันวางโครงข่าย :</label
                                             >
                                             <input
-                                                v-model="form.sinetDate"
+                                                v-model="form.dateSinet"
                                                 type="date"
                                                 class="form-control"
-                                                placeholder="Enter your sinetDate..."
+                                                placeholder="Enter your dateSinet..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'sinetDate'
+                                                        'dateSinet'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="sinetDate"
+                                                field="dateSinet"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -378,23 +386,23 @@
                                         <div class="form-group">
                                             <label>FN วันวางโครงข่าย :</label>
                                             <input
-                                                v-model="form.fnDate"
+                                                v-model="form.dateFn"
                                                 type="date"
                                                 class="form-control"
-                                                placeholder="Enter your fnDate..."
+                                                placeholder="Enter your dateFn..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'fnDate'
+                                                        'dateFn'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="fnDate"
+                                                field="dateFn"
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-9">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
 
@@ -420,19 +428,19 @@
                                         <div class="form-group">
                                             <label>True วันวางโครงข่าย :</label>
                                             <input
-                                                v-model="form.trueDate"
+                                                v-model="form.dateTrue"
                                                 type="date"
                                                 class="form-control"
-                                                placeholder="Enter your trueDate..."
+                                                placeholder="Enter your dateTrue..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'trueDate'
+                                                        'dateTrue'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="trueDate"
+                                                field="dateTrue"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -479,22 +487,22 @@ export default {
             selected: "",
             form: new Form({
                 id: "",
-                buildingId: "",
+                building_id: "",
+                buildingName: "",
                 fmProgress: "",
-                dateProgress: "",
+                dateFm: "",
                 totProgress: "",
-                totDate: "",
+                dateTot: "",
                 aisProgress: "",
-                aisDate: "",
+                dateAis: "",
                 Progress3bb: "",
-                Date3bb: "",
+                date3BB: "",
                 sinetProgress: "",
-                sinetDate: "",
+                dateSinet: "",
                 fnProgress: "",
-                fnDate: "",
+                dateFn: "",
                 trueProgress: "",
-                trueDate: "",
-                update_at: ""
+                dateTrue: ""
             })
         };
     },
@@ -532,6 +540,8 @@ export default {
         editModal(progress) {
             this.editmode = true;
             this.form.reset();
+            progress.buildingName = progress.building[0].buildingName;
+            console.log(progress);
             $("#addNew").modal("show");
             this.form.fill(progress);
         },
@@ -633,55 +643,55 @@ export default {
                     }
                 },
                 {
-                    data: "buildingId"
+                    data: "building[0].buildingName"
                 },
                 {
                     data: "fmProgress"
                 },
                 {
-                    data: "dateProgress"
+                    data: "dateFm"
                 },
                 {
                     data: "totProgress",
                     width: "10%"
                 },
                 {
-                    data: "totDate"
+                    data: "dateTot"
                 },
                 {
                     data: "aisProgress",
                     width: "10%"
                 },
                 {
-                    data: "aisDate"
+                    data: "dateAis"
                 },
                 {
                     data: "Progress3bb",
                     width: "10%"
                 },
                 {
-                    data: "Date3bb"
+                    data: "date3BB"
                 },
                 {
                     data: "sinetProgress",
                     width: "10%"
                 },
                 {
-                    data: "sinetDate"
+                    data: "dateSinet"
                 },
                 {
                     data: "fnProgress",
                     width: "10%"
                 },
                 {
-                    data: "fnDate"
+                    data: "dateFn"
                 },
                 {
                     data: "trueProgress",
                     width: "10%"
                 },
                 {
-                    data: "trueDate"
+                    data: "dateTrue"
                 },
                 {
                     data: null,
@@ -713,20 +723,20 @@ export default {
             }
         });
 
-        $("tbody", this.$refs.progress).on(
-            "click",
-            ".edit-progress",
-            function() {
-                var tr = $(this).closest("tr");
-                var row = table.row(tr);
-                vm.editModal(row.data());
-            }
-        );
+        $("tbody", this.$refs.progress).on("click", ".edit-progress", function(
+            e
+        ) {
+            e.preventDefault();
+            var tr = $(this).closest("tr");
+            var row = table.row(tr);
+            vm.editModal(row.data());
+        });
 
         $("tbody", this.$refs.progress).on(
             "click",
             ".delete-progress",
-            function() {
+            function(e) {
+                e.preventDefault();
                 var tr = $(this).closest("tr");
                 var row = table.row(tr);
                 vm.deleteProgress(row.data().id);
