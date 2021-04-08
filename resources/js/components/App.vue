@@ -1,12 +1,11 @@
 <template>
   <div>
-    <router-view></router-view>
     <vue-progress-bar></vue-progress-bar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-
 export default {
  
 };

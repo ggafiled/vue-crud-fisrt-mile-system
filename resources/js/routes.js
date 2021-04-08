@@ -90,6 +90,14 @@ export default [{
         }
     },
     {
+        path: "/team",
+        component: require("./components/team/Team.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator","user"]
+        }
+    },
+    {
         path: "/permission",
         component: require("./components/Permission.vue").default,
         meta: {

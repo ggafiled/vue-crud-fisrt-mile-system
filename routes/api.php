@@ -44,6 +44,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'buildinglist' => 'BuildingListController',
         'constarution' => 'ConstarutionController',
         'progress' => 'ProgressController',
-        'planing' => 'PlaningController'
+        'planing' => 'PlaningController',
+        'team' => 'TeamController',
     ]);
 });

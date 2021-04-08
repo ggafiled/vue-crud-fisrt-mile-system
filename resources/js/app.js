@@ -47,6 +47,11 @@ Vue.use(VueProgressBar, {
     height: "3px"
 });
 
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+
+Vue.use(Vuetify)
+
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
