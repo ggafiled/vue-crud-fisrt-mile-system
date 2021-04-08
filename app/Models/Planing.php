@@ -8,6 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Planing extends Model
 {
     protected $fillable = [
-        'building_id','isp','ispCode','fees','confirming','teams_id','remark','date','time','status','subStatus','dataConnect','dataDisconnect',
+        'building_id',
+        'isp',
+        'ispCode',
+        'fees',
+        'confirming',
+        'teams_id',
+        'remark',
+        'date',
+        'time',
+        'status',
+        'subStatus',
+        'dataConnect',
+        'dataDisconnect',
     ];
+
+    public function building()
+	{
+		return $this->hasMany('App\Models\Building','id','building_id');
+	}
 }

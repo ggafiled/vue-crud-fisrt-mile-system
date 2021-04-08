@@ -13,7 +13,6 @@ class CreateBuildingsTable extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::create('buildings', function (Blueprint $table) {
             $table->id();
             $table->string('fmCode')->nullable();
@@ -38,8 +37,10 @@ class CreateBuildingsTable extends Migration
             $table->string('developer')->nullable();
             $table->string('grade')->nullable();
             $table->timestamps();
+
+            $table->foreign('member_id')->references('id')->on('members')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
-        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -49,7 +50,6 @@ class CreateBuildingsTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('buildings');
     }
 }

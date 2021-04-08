@@ -27,18 +27,18 @@ class CreateResplicesTable extends Migration
             $table->bigInteger('technicianTeamEnd')->index();
             $table->timestamps();
 
-            // $table->foreign('building_id')
-            // ->references('id')
-            // ->on('buildings')
-            // ->onDelete('cascade');
-            // $table->foreign('technicianTeamStart')
-            // ->references('id')
-            // ->on('teams')
-            // ->onDelete('cascade');
-            // $table->foreign('technicianTeamEnd')
-            // ->references('id')
-            // ->on('teams')
-            // ->onDelete('cascade');
+            $table->foreign('building_id')
+            ->references('id')
+            ->on('buildings')
+            ->onDelete('cascade');
+            $table->foreign('technicianTeamStart')
+            ->references('id')
+            ->on('teams')
+            ->onDelete('cascade');
+            $table->foreign('technicianTeamEnd')
+            ->references('id')
+            ->on('teams')
+            ->onDelete('cascade');
         });
     }
 

@@ -34,11 +34,7 @@
 
         {{-- Content Wrapper --}}
         <div class="content-wrapper {{ config('adminlte.classes_content_wrapper') ?? '' }} p-3">
-
-            <router-view></router-view>
-
-            <vue-progress-bar></vue-progress-bar>
-
+            <app-view></app-view>
         </div>
 
         {{-- Footer --}}

@@ -235,10 +235,10 @@ return [
         [
             'text' => 'Dashboard',
             'url'  => '/dashboard',
-            'icon' => 'fas fa-fw fa-poll',
+            'icon' => 'fas fa-fw bi bi-kanban',
         ],
         [
-            'text' => 'Building',
+            'text' => 'Building List',
             'icon' => 'fas fa-fw fas fa-building',
             'can'  => ['building-create|building-read|building-update'],
             'submenu' => [
@@ -268,14 +268,19 @@ return [
             'can'  => ['payments-create', 'payments-read']
         ],
         [
-            'text' => 'Fm Management',
-            'icon' => 'fas fa-fw fas fa-building',
+            'text' => 'Planing List',
+            'icon' => 'fas fa-fw fas fa-address-book',
             'roles'  => ['superadministrator','administrator'],
             'submenu' => [
                 [
                     'text' => 'Planing Management',
                     'url'  => '/planing',
                     'roles'  => ['superadministrator','administrator'],
+                ],
+                [
+                    'text' => 'Planing List Table',
+                    'url'  => '/planning/list',
+                    'can'  => ['planning-read']
                 ],
 
             ]
@@ -318,6 +323,12 @@ return [
             'text' => 'User Role & Permission',
             'url'  => '/permission',
             'icon' => 'fas fa-eye',
+            'roles'  => ['superadministrator','administrator'],
+        ],
+        [
+            'text' => 'User Teams',
+            'url'  => '/team',
+            'icon' => 'bi bi-people',
             'roles'  => ['superadministrator','administrator'],
         ],
         [

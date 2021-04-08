@@ -33,10 +33,10 @@ class CreateProgressTable extends Migration
             $table->timestamp('dateTrue')->nullable();
             $table->timestamps();
 
-            // $table->foreign('building_id')
-            //     ->references('id')
-            //     ->on('buildings')
-            //     ->onDelete('cascade');
+            $table->foreign('building_id')
+                ->references('id')
+                ->on('buildings')
+                ->onDelete('cascade');
         });
     }
 

@@ -98,6 +98,11 @@ Vue.component(
 );
 
 Vue.component(
+    "app-view",
+    require("./components/App.vue").default
+);
+
+Vue.component(
     "passport-authorized-clients",
     require("./components/passport/AuthorizedClients.vue").default
 );

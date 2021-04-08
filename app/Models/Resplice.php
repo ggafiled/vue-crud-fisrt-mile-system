@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class resplice extends Model
 {
     protected $fillable = [
-        'building_id','zone','technicianTeamStart','startDate','planDate','planFinish','planStart','planComplete','taechincianTeamEnd',
+        'building_id',
+        'zone',
+        'technicianTeamStart',
+        'startDate',
+        'planDate',
+        'planFinish',
+        'planStart',
+        'planComplete',
+        'taechincianTeamEnd',
     ];
 }

@@ -13,7 +13,6 @@ class CreatePlaningsTable extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::create('planings', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('building_id')->index();
@@ -31,16 +30,15 @@ class CreatePlaningsTable extends Migration
             $table->timestamp('dateDisconnect')->nullable();
             $table->timestamps();
 
-            // $table->foreign('building_id')
-            // ->references('id')
-            // ->on('buildings')
-            // ->onDelete('cascade');
-            // $table->foreign('teams_id')
-            // ->references('id')
-            // ->on('teams')
-            // ->onDelete('cascade');
+            $table->foreign('building_id')
+            ->references('id')
+            ->on('buildings')
+            ->onDelete('cascade');
+            $table->foreign('teams_id')
+            ->references('id')
+            ->on('teams')
+            ->onDelete('cascade');
         });
-        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -50,7 +48,6 @@ class CreatePlaningsTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('planings');
     }
 }
