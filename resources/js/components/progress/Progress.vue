@@ -541,7 +541,6 @@ export default {
             this.editmode = true;
             this.form.reset();
             progress.buildingName = progress.building[0].buildingName;
-            console.log(progress);
             $("#addNew").modal("show");
             this.form.fill(progress);
         },

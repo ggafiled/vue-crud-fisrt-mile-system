@@ -39,6 +39,20 @@ class UserController extends BaseController
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list()
+    {
+        if (!\Gate::allows('isAdmin')) {
+            return $this->unauthorizedResponse();
+        }
+        $users = User::all();
+        return $this->sendResponse($users, 'Users list');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\Users\UserRequest  $request

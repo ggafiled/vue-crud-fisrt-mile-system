@@ -21,7 +21,7 @@ class TeamController extends BaseController{
      */
     public function index()
     {
-        $teams = Team::all();
+        $teams = Team::with('users')->get();
         return $this->sendResponse($teams,'Team List');
     }
 

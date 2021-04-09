@@ -596,6 +596,8 @@ export default {
             this.form.reset();
             building.contactName = building.member[0].name;
             building.phone = building.member[0].phone1;
+            building.workingTime = moment(building.workingTime).format("YYYY-MM-DD");
+            console.log(building);
             $("#addNew").modal("show");
             this.form.fill(building);
         },

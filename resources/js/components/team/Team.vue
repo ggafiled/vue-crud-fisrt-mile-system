@@ -29,7 +29,6 @@
                                 <thead>
                                     <tr>
                                         <th>NO</th>
-                                        <th>Name</th>
                                         <th>Display Name</th>
                                         <th>Description</th>
                                         <th>Created</th>
@@ -57,7 +56,7 @@
                 aria-labelledby="addNew"
                 aria-hidden="true"
             >
-                <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
@@ -143,19 +142,19 @@
                                     ></has-error>
                                 </div>
                                 <div class="form-group">
-                                    <label>Permissions</label>
+                                    <label>Member's of Team</label>
                                     <vue-tags-input
-                                        v-model="permission"
-                                        :tags="form.permissions"
+                                        v-model="user"
+                                        :tags="form.users"
                                         :autocomplete-items="filteredItems"
                                         @tags-changed="
                                             newTags =>
-                                                (form.permissions = newTags)
+                                                (form.users = newTags)
                                         "
                                     />
                                     <has-error
                                         :form="form"
-                                        field="permissions"
+                                        field="users"
                                     ></has-error>
                                 </div>
                             </div>
@@ -192,18 +191,24 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
+import VueTagsInput from "@johmun/vue-tags-input";
 export default {
+    components: {
+        VueTagsInput
+    },
     data() {
         return {
             editmode: false,
             selected: "",
+            user: "",
             form: new Form({
                 id: "",
                 name: "",
                 display_name: "",
                 description: "",
-                permissions: []
-            })
+                users: []
+            }),
+            autocompleteItems: []
         };
     },
     methods: {
@@ -211,7 +216,14 @@ export default {
             this.$Progress.start();
 
             if (this.$gate.isAdmin()) {
-                //To DO
+                axios
+                    .get("/api/user/list")
+                    .then(response => {
+                        this.autocompleteItems = response.data.data.map(a => {
+                            return { text: a.name, id: a.id };
+                        });
+                    })
+                    .catch(() => console.warn("Oh. Something went wrong"));
             }
 
             this.$Progress.finish();
@@ -301,7 +313,20 @@ export default {
                 });
         }
     },
-    created() {},
+    computed: {
+        filteredItems() {
+            return this.autocompleteItems.filter(i => {
+                return (
+                    i.text
+                        .toLowerCase()
+                        .indexOf(this.user.toLowerCase()) !== -1
+                );
+            });
+        }
+    },
+    created() {
+        this.loadTeam();
+    },
     mounted() {
         var vm = this;
         var table = $(this.$refs.team).DataTable({
@@ -339,11 +364,8 @@ export default {
                     }
                 },
                 {
-                    data: "name",
-                    className: "text-capitalize"
-                },
-                {
-                    data: "display_name"
+                    data: "display_name",
+                    className: "text-capitalize"                    
                 },
                 {
                     data: "description"
@@ -358,9 +380,7 @@ export default {
                     data: null,
                     className: "dt-body-center",
                     render: function(data, type, row, meta) {
-                        return vm.$gate.iscurrentUser(data.id)
-                            ? "<a class='edit-team' href='#'><i class='fa fa-edit blue'></i> </a>"
-                            : "<a class='edit-team' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-team' href='#'> <i class='fa fa-trash red'></i> </a>";
+                        return "<a class='edit-team' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-team' href='#'> <i class='fa fa-trash red'></i> </a>";
                     }
                 }
             ]
@@ -369,7 +389,8 @@ export default {
         $("tbody", this.$refs.team).on(
             "click",
             ".edit-team",
-            function() {
+            function(e) {
+                e.preventDefault();
                 var tr = $(this).closest("tr");
                 var row = table.row(tr);
                 vm.editModal(row.data());
@@ -379,7 +400,8 @@ export default {
         $("tbody", this.$refs.team).on(
             "click",
             ".delete-team",
-            function() {
+            function(e) {
+                e.preventDefault();
                 var tr = $(this).closest("tr");
                 var row = table.row(tr);
                 vm.deleteTeam(row.data().id);

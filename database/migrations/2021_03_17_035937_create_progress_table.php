@@ -15,8 +15,8 @@ class CreateProgressTable extends Migration
     {
         Schema::enableForeignKeyConstraints();
         Schema::create('progress', function (Blueprint $table) {
-            $table->id()->nullable();
-            $table->bigInteger('building_id')->index();
+            $table->bigIncrements('id');
+            $table->bigInteger('building_id')->unsigned();
             $table->string('fmProgress')->nullable();
             $table->timestamp('dateFm')->nullable();
             $table->string('totProgress')->nullable();

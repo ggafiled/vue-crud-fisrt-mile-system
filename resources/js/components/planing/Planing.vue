@@ -29,11 +29,11 @@
                                 <thead>
                                     <tr>
                                         <th>NO</th>
+                                        <th>Building Name</th>
                                         <th>Name/Company</th>
                                         <th>LastName</th>
                                         <th>Tel(main)</th>
-                                        <th>Tel(reserve)</th>
-                                        <th>Building Name</th>
+                                        <th>Tel(reserve)</th>                                        
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -90,19 +90,19 @@
                                         <div class="form-group">
                                             <label>Name/Company</label>
                                             <input
-                                                v-model="form.name"
+                                                v-model="form.buildingName"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your name..."
+                                                placeholder="Enter your buildingName..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'name'
+                                                        'buildingName'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="name"
+                                                field="buildingName"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -567,26 +567,19 @@ export default {
             selected: "",
             form: new Form({
                 id: "",
-                name: "",
-                lastName: "",
-                phoneNumber1: "",
-                phoneNumber2: "",
-                buildingId: "",
-                numberLayer: "",
-                floor: "",
-                roomNumber: "",
+                building_id: "",
                 isp: "",
                 ispCode: "",
-                memberNumber: "",
-                Fees: "",
+                fees: "",
                 confirming: "",
-                Team: "",
+                teams_id: "",
+                remark: "",
                 date: "",
                 time: "",
                 status: "",
                 subStatus: "",
                 dateConnect: "",
-                dateDisconnect: ""
+                dateDisconnect: "",
             })
         };
     },
@@ -624,6 +617,7 @@ export default {
         editModal(planing) {
             this.editmode = true;
             this.form.reset();
+            planing.buildingName = planing.building[0].buildingName;
             $("#addNew").modal("show");
             this.form.fill(planing);
         },
@@ -724,6 +718,9 @@ export default {
                     }
                 },
                 {
+                    data: "building[0].buildingName"
+                },
+                {
                     data: "name"
                 },
                 {
@@ -734,9 +731,6 @@ export default {
                 },
                 {
                     data: "phoneNumber2"
-                },
-                {
-                    data: "buildingId"
                 },
                 {
                     data: null,

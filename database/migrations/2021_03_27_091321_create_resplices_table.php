@@ -15,16 +15,16 @@ class CreateResplicesTable extends Migration
     {
         Schema::enableForeignKeyConstraints();
         Schema::create('resplices', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('building_id')->index();
+            $table->bigIncrements('id');
+            $table->bigInteger('building_id')->unsigned();
             $table->string('zone')->index();
-            $table->bigInteger('technicianTeamStart')->index();
+            $table->bigInteger('technicianTeamStart')->unsigned();
             $table->timestamp('startDate')->nullable();
             $table->timestamp('planDate')->nullable();
             $table->timestamp('planFinish')->nullable();
             $table->timestamp('planStart')->nullable();
             $table->timestamp('planComplete')->nullable();
-            $table->bigInteger('technicianTeamEnd')->index();
+            $table->bigInteger('technicianTeamEnd')->unsigned();
             $table->timestamps();
 
             $table->foreign('building_id')

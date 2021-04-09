@@ -21,5 +21,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductsTableSeeder::class);
         //duplicate product for data
         $this->call(ProductsTableSeeder::class);
+        \App\Models\Member::factory(50)->create();
+        \App\Models\Building::factory(200)->create();
+        \App\Models\Team::factory(20)->create();
+        \App\Models\Planing::factory(100)->create();
     }
 }

@@ -14,9 +14,9 @@ class CreateBuildingsTable extends Migration
     public function up()
     {
         Schema::create('buildings', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('fmCode')->nullable();
-            $table->bigInteger('member_id')->nullable();
+            $table->bigInteger('member_id')->unsigned();
             $table->string('buildingName')->nullable();
             $table->string('detailAdress')->nullable();
             $table->string('province')->nullable();

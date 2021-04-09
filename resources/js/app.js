@@ -47,11 +47,6 @@ Vue.use(VueProgressBar, {
     height: "3px"
 });
 
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
-
-Vue.use(Vuetify)
-
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
@@ -116,6 +111,8 @@ Vue.component(
     "passport-personal-access-tokens",
     require("./components/passport/PersonalAccessTokens.vue").default
 );
+
+Vue.component("window-portal", require("./components/WindowPortal.vue").default);
 
 Vue.component("not-found", require("./components/NotFound.vue").default);
 

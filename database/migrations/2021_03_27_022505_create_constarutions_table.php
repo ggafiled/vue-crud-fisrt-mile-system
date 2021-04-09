@@ -15,24 +15,24 @@ class CreateConstarutionsTable extends Migration
     {
         Schema::enableForeignKeyConstraints();
         Schema::create('constarutions', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('building_id')->index();
+            $table->bigIncrements('id');
+            $table->bigInteger('building_id')->unsigned();
             $table->string('surveyDesing')->nullable();
             $table->timestamp('surveyDesingTeam')->nullable();
             $table->timestamp('surveyDesingDate')->nullable();
             $table->timestamp('surveyDesingDateBy')->nullable();
-            $table->bigInteger('surveyDesingBy')->index();
+            $table->bigInteger('surveyDesingBy')->unsigned();
             $table->string('ifcc')->nullable();
-            $table->bigInteger('ifccTeam')->index();
+            $table->bigInteger('ifccTeam')->unsigned();
             $table->timestamp('ifccDate')->nullable();
             $table->string('wallBox')->nullable();
-            $table->bigInteger('wallBoxTeam')->nullable();
+            $table->bigInteger('wallBoxTeam')->unsigned();
             $table->timestamp('wallBoxDate')->nullable();
             $table->string('microductD')->nullable();
-            $table->bigInteger('microductTeamD')->nullable();
+            $table->bigInteger('microductTeamD')->unsigned();
             $table->timestamp('microductDateD')->nullable();
             $table->string('microductK')->nullable();
-            $table->bigInteger('microductTeamK')->nullable();
+            $table->bigInteger('microductTeamK')->unsigned();
             $table->timestamp('microductDateK')->nullable();
             $table->timestamps();
 

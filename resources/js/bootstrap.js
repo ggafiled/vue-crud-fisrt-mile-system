@@ -28,6 +28,7 @@ try {
 
     //Bootstrap icon
     require("bootstrap-icons/font/bootstrap-icons.css");
+    require('jquery-contextmenu');
 } catch (e) {}
 
 /**
