@@ -26,19 +26,20 @@ class CreateResplicesTable extends Migration
             $table->timestamp('planComplete')->nullable();
             $table->bigInteger('technicianTeamEnd')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('building_id')
             ->references('id')
             ->on('buildings')
             ->onDelete('cascade');
-            $table->foreign('technicianTeamStart')
-            ->references('id')
-            ->on('teams')
-            ->onDelete('cascade');
-            $table->foreign('technicianTeamEnd')
-            ->references('id')
-            ->on('teams')
-            ->onDelete('cascade');
+            // $table->foreign('technicianTeamStart')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
+            // $table->foreign('technicianTeamEnd')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
         });
     }
 

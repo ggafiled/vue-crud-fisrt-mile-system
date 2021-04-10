@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Mpociot\Teamwork\Traits\UsedByTeams;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Planing extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes,UsedByTeams;
     protected $fillable = [
         'building_id',
         'isp',
@@ -28,9 +30,4 @@ class Planing extends Model
 	{
 		return $this->hasMany('App\Models\Building','id','building_id');
 	}
-
-    public function users()
-    {
-        return $this->belongsToMany('App\Models\User','role_user');
-    }
 }

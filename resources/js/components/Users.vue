@@ -398,7 +398,7 @@ export default {
                 {
                     data: "email_verified_at",
                     render: function(data, type, row, meta) {
-                        return data?.email_verified_at
+                        return data !== null
                             ? '<i class="fas fa-check green"></i><span class="invisible">green</span>'
                             : '<i class="fas fa-times red"></i><span class="invisible">red</span>';
                     }
@@ -406,7 +406,7 @@ export default {
                 {
                     data: "created_at",
                     render: function(data, type, row, meta) {
-                        return moment(data.created_at).format("MMMM Do YYYY");
+                        return moment(data).format("MMMM Do YYYY");
                     }
                 },
                 {

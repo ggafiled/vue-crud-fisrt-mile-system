@@ -19,11 +19,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriesTableSeeder::class);
         $this->call(TagsTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
-        //duplicate product for data
-        $this->call(ProductsTableSeeder::class);
+
         \App\Models\Member::factory(50)->create();
         \App\Models\Building::factory(200)->create();
-        \App\Models\Team::factory(20)->create();
-        \App\Models\Planing::factory(100)->create();
+        \App\Models\User::factory(50)->create();
+        // \App\Models\Team::factory(20)->create();
+        // \App\Models\Team::factory(20)->create();
+        // \App\Models\Planing::factory(100)->create();
     }
 }

@@ -32,6 +32,7 @@ class CreateProgressTable extends Migration
             $table->string('trueProgress')->nullable();
             $table->timestamp('dateTrue')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('building_id')
                 ->references('id')

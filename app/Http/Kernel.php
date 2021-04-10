@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'role' => \Laratrust\Middleware\LaratrustRole::class,
         'permission' => \Laratrust\Middleware\LaratrustPermission::class,
         'ability' => \Laratrust\Middleware\LaratrustAbility::class,
+        'teamowner' => \Mpociot\Teamwork\Middleware\TeamOwner::class,
 
     ];
 }

@@ -20,7 +20,6 @@ class CreatePlaningsTable extends Migration
             $table->string('ispCode')->nullable();
             $table->string('fees')->nullable();
             $table->string('confirming')->nullable();
-            $table->bigInteger('team_id')->unsigned();
             $table->string('remark')->nullable();
             $table->timestamp('date')->nullable();
             $table->timestamp('time')->nullable();
@@ -29,14 +28,11 @@ class CreatePlaningsTable extends Migration
             $table->timestamp('dateConnect')->nullable();
             $table->timestamp('dateDisconnect')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('building_id')
             ->references('id')
             ->on('buildings')
-            ->onDelete('cascade');
-            $table->foreign('team_id')
-            ->references('id')
-            ->on('teams')
             ->onDelete('cascade');
         });
     }

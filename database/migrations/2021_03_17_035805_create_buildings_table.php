@@ -37,6 +37,7 @@ class CreateBuildingsTable extends Migration
             $table->string('developer')->nullable();
             $table->string('grade')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('member_id')->references('id')->on('members')
                 ->onUpdate('cascade')->onDelete('cascade');

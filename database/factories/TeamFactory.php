@@ -22,9 +22,8 @@ class TeamFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name, 
-            'display_name' =>$this->faker->company, 
-            'description' => $this->faker->sentence($nbWords = 6, $variableNbWords = true)
+            'owner_id' => $this->faker->numberBetween($min = 1, $max = 20),
+            'name' => $this->faker->name,
         ];
     }
 }

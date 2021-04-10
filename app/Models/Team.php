@@ -1,21 +1,10 @@
-<?php
-
+<?
 namespace App\Models;
 
-use Laratrust\Models\LaratrustTeam;
+use Mpociot\Teamwork\TeamworkTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Team extends LaratrustTeam
+class Team extends TeamworkTeam
 {
     use HasFactory;
-    public $guarded = [];
-
-    protected $fillable = [
-        'name', 'display_name', 'description'
-    ];
-
-    public function users()
-    {
-        return $this->belongsToMany('App\Models\User','role_user');
-    }
 }

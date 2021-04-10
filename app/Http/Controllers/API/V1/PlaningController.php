@@ -21,7 +21,7 @@ class PlaningController extends BaseController{
      */
     public function index()
     {
-        $planing = Planing::with(['building','users'])->get();
+        $planing = Planing::with(['building'])->allTeams()->get();
         return $this->sendResponse($planing,'Planing List');
     }
 

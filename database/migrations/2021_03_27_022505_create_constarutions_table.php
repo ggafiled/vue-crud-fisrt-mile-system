@@ -35,31 +35,32 @@ class CreateConstarutionsTable extends Migration
             $table->bigInteger('microductTeamK')->unsigned();
             $table->timestamp('microductDateK')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('building_id')
             ->references('id')
             ->on('buildings')
             ->onDelete('cascade');
-            $table->foreign('surveyDesingBy')
-            ->references('id')
-            ->on('teams')
-            ->onDelete('cascade');
-            $table->foreign('ifccTeam')
-            ->references('id')
-            ->on('teams')
-            ->onDelete('cascade');
-            $table->foreign('wallBoxTeam')
-            ->references('id')
-            ->on('teams')
-            ->onDelete('cascade');
-            $table->foreign('microductTeamD')
-            ->references('id')
-            ->on('teams')
-            ->onDelete('cascade');
-            $table->foreign('microductTeamK')
-            ->references('id')
-            ->on('teams')
-            ->onDelete('cascade');
+            // $table->foreign('surveyDesingBy')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
+            // $table->foreign('ifccTeam')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
+            // $table->foreign('wallBoxTeam')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
+            // $table->foreign('microductTeamD')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
+            // $table->foreign('microductTeamK')
+            // ->references('id')
+            // ->on('teams')
+            // ->onDelete('cascade');
         });
     }
 

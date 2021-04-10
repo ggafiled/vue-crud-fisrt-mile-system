@@ -24,6 +24,7 @@ class CreateMembersTable extends Migration
             $table->string('detailAdress')->nullable();
             $table->string('postalCode')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
