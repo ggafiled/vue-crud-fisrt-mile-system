@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Constarution extends Model
 {
     use SoftDeletes;
-    
+
     protected $fillable = [
         'building_id',
         'surveyDesing',

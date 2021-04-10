@@ -30,8 +30,7 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>Display Name</th>
-                                        <th>Description</th>
-                                        <th>Created</th>
+                                        <th>Created At</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -79,19 +78,18 @@
 
                         <form
                             @submit.prevent="
-                                editmode
-                                    ? updateTeam()
-                                    : createTeam()
+                                editmode ? updateTeam() : createTeam()
                             "
                         >
-                       <div class="modal-body">
+                            <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Name</label>
+                                    <label>Display Name</label>
                                     <input
                                         v-model="form.name"
                                         type="text"
                                         name="name"
                                         class="form-control"
+                                        placeholder="Your team name..."
                                         :class="{
                                             'is-invalid': form.errors.has(
                                                 'name'
@@ -104,52 +102,13 @@
                                     ></has-error>
                                 </div>
                                 <div class="form-group">
-                                    <label>Display Name</label>
-                                    <input
-                                        v-model="form.display_name"
-                                        type="text"
-                                        name="display_name"
-                                        class="form-control"
-                                        :class="{
-                                            'is-invalid': form.errors.has(
-                                                'display_name'
-                                            )
-                                        }"
-                                    />
-                                    <has-error
-                                        :form="form"
-                                        field="display_name"
-                                    ></has-error>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <input
-                                        v-model="form.description"
-                                        type="text"
-                                        name="description"
-                                        class="form-control"
-                                        :class="{
-                                            'is-invalid': form.errors.has(
-                                                'description'
-                                            )
-                                        }"
-                                        autocomplete="false"
-                                    />
-                                    <has-error
-                                        :form="form"
-                                        field="description"
-                                    ></has-error>
-                                </div>
-                                <div class="form-group">
                                     <label>Member's of Team</label>
                                     <vue-tags-input
                                         v-model="user"
                                         :tags="form.users"
                                         :autocomplete-items="filteredItems"
                                         @tags-changed="
-                                            newTags =>
-                                                (form.users = newTags)
+                                            newTags => (form.users = newTags)
                                         "
                                     />
                                     <has-error
@@ -214,7 +173,6 @@ export default {
     methods: {
         loadTeam() {
             this.$Progress.start();
-
             if (this.$gate.isAdmin()) {
                 axios
                     .get("/api/user/list")
@@ -225,7 +183,6 @@ export default {
                     })
                     .catch(() => console.warn("Oh. Something went wrong"));
             }
-
             this.$Progress.finish();
         },
         updateTeam() {
@@ -242,7 +199,6 @@ export default {
                     });
                     this.$Progress.finish();
                     //  Fire.$emit('AfterCreate');
-
                     this.loadTeam();
                 })
                 .catch(() => {
@@ -296,12 +252,10 @@ export default {
                 .post("api/team")
                 .then(response => {
                     $("#addNew").modal("hide");
-
                     Toast.fire({
                         icon: "success",
                         title: response.data.message
                     });
-
                     this.$Progress.finish();
                     this.loadTeam();
                 })
@@ -317,9 +271,7 @@ export default {
         filteredItems() {
             return this.autocompleteItems.filter(i => {
                 return (
-                    i.text
-                        .toLowerCase()
-                        .indexOf(this.user.toLowerCase()) !== -1
+                    i.text.toLowerCase().indexOf(this.user.toLowerCase()) !== -1
                 );
             });
         }
@@ -357,18 +309,15 @@ export default {
                 }
             ],
             columns: [
-                 {
+                {
                     data: null,
                     render: function(data, type, row, meta) {
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
                 {
-                    data: "display_name",
-                    className: "text-capitalize"                    
-                },
-                {
-                    data: "description"
+                    data: "name",
+                    className: "text-capitalize"
                 },
                 {
                     data: "created_at",
@@ -385,30 +334,18 @@ export default {
                 }
             ]
         });
-
-        $("tbody", this.$refs.team).on(
-            "click",
-            ".edit-team",
-            function(e) {
-                e.preventDefault();
-                var tr = $(this).closest("tr");
-                var row = table.row(tr);
-                vm.editModal(row.data());
-            }
-        );
-
-        $("tbody", this.$refs.team).on(
-            "click",
-            ".delete-team",
-            function(e) {
-                e.preventDefault();
-                var tr = $(this).closest("tr");
-                var row = table.row(tr);
-                vm.deleteTeam(row.data().id);
-            }
-        );
+        $("tbody", this.$refs.team).on("click", ".edit-team", function(e) {
+            e.preventDefault();
+            var tr = $(this).closest("tr");
+            var row = table.row(tr);
+            vm.editModal(row.data());
+        });
+        $("tbody", this.$refs.team).on("click", ".delete-team", function(e) {
+            e.preventDefault();
+            var tr = $(this).closest("tr");
+            var row = table.row(tr);
+            vm.deleteTeam(row.data().id);
+        });
     }
 };
 </script>
-
-<style></style>

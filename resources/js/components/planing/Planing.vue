@@ -30,10 +30,9 @@
                                     <tr>
                                         <th>NO</th>
                                         <th>Building Name</th>
-                                        <th>Name/Company</th>
-                                        <th>LastName</th>
-                                        <th>Tel(main)</th>
-                                        <th>Tel(reserve)</th>                                        
+                                        <th>Contact Name</th>
+                                        <th>Tel(Main)</th>
+                                        <th>Tel(Reserve)</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -85,15 +84,125 @@
                             "
                         >
                             <div class="modal-body">
-                                <div class="row">
+                                <div class="row" v-if="editmode">
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>MEMBER ID</label>
+                                            <input
+                                                v-model="form.member_id"
+                                                type="number"
+                                                class="form-control"
+                                                placeholder="Enter your member id..."
+                                                readonly
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'member_id'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="member_id"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Contact Name</label>
+                                            <input
+                                                v-model="form.contactName"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your contactName..."
+                                                readonly
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'contactName'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="contactName"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Name/Company</label>
+                                            <label>Phone Number(1)</label>
+                                            <input
+                                                v-model="form.phone1"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your phone number1..."
+                                                readonly
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'phone1'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="phone1"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Phone Number(2)</label>
+                                            <input
+                                                v-model="form.phone2"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your phone number2..."
+                                                readonly
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'phone2'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="phone2"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Building No</label>
+                                            <input
+                                                v-model="form.townNumber"
+                                                type="number"
+                                                class="form-control"
+                                                placeholder="Enter your townNumber..."
+                                                readonly
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'townNumber'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="townNumber"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Building Name</label>
                                             <input
                                                 v-model="form.buildingName"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your buildingName..."
+                                                readonly
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'buildingName'
@@ -106,120 +215,15 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>LastName</label>
-                                            <input
-                                                v-model="form.lastName"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your lastName..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'lastName'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="lastName"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>Phone Number(1)</label>
-                                            <input
-                                                v-model="form.phoneNumber1"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your phoneNumber1..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'phoneNumber1'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="phoneNumber1"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>Phone Number(2)</label>
-                                            <input
-                                                v-model="form.phoneNumber2"
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Enter your phoneNumber2..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'phoneNumber2'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="phoneNumber2"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label>Name/Company</label>
-                                            <input
-                                                v-model="form.buildingId"
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Enter your buildingId..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'buildingId'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="buildingId"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Building No</label>
-                                            <input
-                                                v-model="form.numberLayer"
-                                                type="number"
-                                                class="form-control"
-                                                placeholder="Enter your Building No..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'numberLayer'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="numberLayer"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>FLOOR</label>
                                             <input
-                                                v-model="form.buildingId"
+                                                v-model="form.floor"
                                                 type="number"
                                                 class="form-control"
                                                 placeholder="Enter your floor no..."
+                                                readonly
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'floor'
@@ -232,7 +236,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>ROOM</label>
                                             <input
@@ -240,6 +244,7 @@
                                                 type="number"
                                                 class="form-control"
                                                 placeholder="Enter your roomNumber..."
+                                                readonly
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'roomNumber'
@@ -295,49 +300,27 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>MEMBER NUMBER</label>
-                                            <input
-                                                v-model="form.memberNumber"
-                                                type="number"
-                                                class="form-control"
-                                                placeholder="Enter your memberNumber..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'memberNumber'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="memberNumber"
-                                            ></has-error>
-                                        </div>
-                                    </div>
+
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>FEES</label>
                                             <input
-                                                v-model="form.Fees"
-                                                type="number"
+                                                v-model="form.fees"
+                                                type="text"
                                                 class="form-control"
                                                 placeholder="Enter your Fees..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'Fees'
+                                                        'fees'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="Fees"
+                                                field="fees"
                                             ></has-error>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>CONFIRMING</label>
@@ -358,23 +341,39 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>TEAM</label>
-                                            <input
-                                                v-model="form.Team"
-                                                type="text"
+                                            <label>Operator Team</label>
+                                            <select
+                                                name="team_id"
+                                                v-model="form.team_id"
+                                                id="team_id"
                                                 class="form-control"
-                                                placeholder="Enter your Team..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'Team'
+                                                        'team_id'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option value="" selected
+                                                    >Select Operator
+                                                    Team</option
+                                                >
+                                                <option
+                                                    v-for="team in teams"
+                                                    :key="team.id"
+                                                    :value="team.id"
+                                                >
+                                                    {{ team.name }}
+                                                </option>
+                                            </select>
+
                                             <has-error
                                                 :form="form"
-                                                field="Team"
+                                                field="team_id"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -415,29 +414,6 @@
                                             <has-error
                                                 :form="form"
                                                 field="time"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label>REMARK</label>
-                                            <input
-                                                v-model="form.remark"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your remark..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'remark'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="remark"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -565,32 +541,44 @@ export default {
         return {
             editmode: false,
             selected: "",
+            teams: [],
             form: new Form({
                 id: "",
                 building_id: "",
+                buildingName: "",
+                contactName: "",
+                townNumber: "",
+                floor: "",
+                roomNumber: "",
+                contract: "",
+                contractTime: "",
+                member_id: "",
+                phone1: "",
+                phone2: "",
                 isp: "",
                 ispCode: "",
                 fees: "",
                 confirming: "",
-                teams_id: "",
+                team_id: "",
+                team: "",
                 remark: "",
                 date: "",
                 time: "",
                 status: "",
                 subStatus: "",
                 dateConnect: "",
-                dateDisconnect: "",
+                dateDisconnect: ""
             })
         };
     },
     methods: {
-        loadPlaning() {
+        loadTeams() {
             this.$Progress.start();
-
             if (this.$gate.isAdmin()) {
-                //To DO
+                axios
+                    .get("api/team/list")
+                    .then(({ data }) => (this.teams = data.data));
             }
-
             this.$Progress.finish();
         },
         updatePlaning() {
@@ -607,7 +595,6 @@ export default {
                     });
                     this.$Progress.finish();
                     //  Fire.$emit('AfterCreate');
-
                     this.loadPlaning();
                 })
                 .catch(() => {
@@ -617,7 +604,25 @@ export default {
         editModal(planing) {
             this.editmode = true;
             this.form.reset();
-            planing.buildingName = planing.building[0].buildingName;
+            // planing.buildingName = planing.building[0].buildingName;
+            planing.contactName =
+                planing.building[0].member[0].name +
+                "" +
+                planing.building[0].member[0].lastName;
+            planing.team = planing.teams[0].name;
+            planing = {
+                ...planing,
+                ...planing.building[0],
+                ...planing.building[0].member[0]
+            };
+            planing.time = moment(planing.time).format("HH:mm:ss");
+            planing.date = moment(planing.date).format("YYYY-MM-DD");
+            planing.dateConnect = moment(planing.dateConnect).format(
+                "YYYY-MM-DD"
+            );
+            planing.dateDisconnect = moment(planing.dateDisconnect).format(
+                "YYYY-MM-DD"
+            );
             $("#addNew").modal("show");
             this.form.fill(planing);
         },
@@ -662,12 +667,10 @@ export default {
                 .post("api/planing")
                 .then(response => {
                     $("#addNew").modal("hide");
-
                     Toast.fire({
                         icon: "success",
                         title: response.data.message
                     });
-
                     this.$Progress.finish();
                     this.loadPlaning();
                 })
@@ -679,7 +682,9 @@ export default {
                 });
         }
     },
-    created() {},
+    created() {
+        this.loadTeams();
+    },
     mounted() {
         var vm = this;
         var table = $(this.$refs.planing).DataTable({
@@ -696,7 +701,12 @@ export default {
             buttons: [
                 "colvis",
                 "copy",
-                "csv",
+                {
+                    extend: "csv",
+                    exportOptions: {
+                        columns: [2, 3, 4, ":visible"]
+                    }
+                },
                 {
                     extend: "print",
                     text: "<i class='bi bi-printer mr-1'></i>Print"
@@ -721,16 +731,20 @@ export default {
                     data: "building[0].buildingName"
                 },
                 {
-                    data: "name"
+                    data: null,
+                    render: function(data, type, row, meta) {
+                        return (
+                            data.building[0].member[0].name +
+                            " " +
+                            data.building[0].member[0].lastName
+                        );
+                    }
                 },
                 {
-                    data: "lastName"
+                    data: "building[0].member[0].phone1"
                 },
                 {
-                    data: "phoneNumber1"
-                },
-                {
-                    data: "phoneNumber2"
+                    data: "building[0].member[0].phone2"
                 },
                 {
                     data: null,
@@ -741,22 +755,22 @@ export default {
                 }
             ]
         });
-
-        $("tbody", this.$refs.planing).on("click", ".edit-planing", function() {
+        $("tbody", this.$refs.planing).on("click", ".edit-planing", function(
+            e
+        ) {
+            e.preventDefault();
             var tr = $(this).closest("tr");
             var row = table.row(tr);
             vm.editModal(row.data());
         });
-
-        $("tbody", this.$refs.planing).on(
-            "click",
-            ".delete-planing",
-            function() {
-                var tr = $(this).closest("tr");
-                var row = table.row(tr);
-                vm.deletePlaning(row.data().id);
-            }
-        );
+        $("tbody", this.$refs.planing).on("click", ".delete-planing", function(
+            e
+        ) {
+            e.preventDefault();
+            var tr = $(this).closest("tr");
+            var row = table.row(tr);
+            vm.deletePlaning(row.data().id);
+        });
     }
 };
 </script>

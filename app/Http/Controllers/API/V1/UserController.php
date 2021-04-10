@@ -48,7 +48,7 @@ class UserController extends BaseController
         if (!\Gate::allows('isAdmin')) {
             return $this->unauthorizedResponse();
         }
-        $users = User::all();
+        $users = User::get(['name', 'id']);
         return $this->sendResponse($users, 'Users list');
     }
 

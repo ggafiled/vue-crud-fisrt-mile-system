@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-
+use Carbon\Carbon;
 use App\Models\Building;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -36,12 +36,12 @@ class BuildingFactory extends Factory
             'townNumber' => $this->faker->randomDigit,
             'floor' => $this->faker->randomDigit,
             'roomNumber' => $this->faker->randomDigit,
-            'contract' => $this->faker->dateTime($max = 'now', $timezone = 'utc') ,
-            'contractTime' => $this->faker->dateTime($max = 'now', $timezone = 'utc'),
+            'contract' => Carbon::now()->format('Y-m-d H:i:s') ,
+            'contractTime' => Carbon::now()->format('Y-m-d H:i:s'),
             'latitude' => $this->faker->latitude($min = -90, $max = 90),
             'longtude' => $this->faker->longitude($min = -180, $max = 180),
             'priceSquare' => $this->faker->numberBetween($min = 100000, $max = 900000),
-            'workingTime' => $this->faker->dateTime($max = 'now', $timezone = 'utc'),
+            'workingTime' => Carbon::now()->format('Y-m-d H:i:s'),
             'blance' => $this->faker->numberBetween($min = 100000, $max = 900000),
             'developer' => NULL,
             'grade' => NULL

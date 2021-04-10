@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Planing extends Model
 {
-    use HasFactory,SoftDeletes,UsedByTeams;
+    use HasFactory,SoftDeletes;
     protected $fillable = [
         'building_id',
         'isp',
@@ -29,5 +29,10 @@ class Planing extends Model
     public function building()
 	{
 		return $this->hasMany('App\Models\Building','id','building_id');
+	}
+
+    public function teams()
+	{
+		return $this->hasMany('App\Models\Team','id','team_id');
 	}
 }

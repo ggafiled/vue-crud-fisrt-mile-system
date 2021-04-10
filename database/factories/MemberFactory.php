@@ -24,7 +24,7 @@ class MemberFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name' => $this->faker->firstName,
             'lastName' => $this->faker->lastName,
             'phone1' => $this->faker->phoneNumber,
             'phone2' => $this->faker->phoneNumber,

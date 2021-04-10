@@ -21,8 +21,27 @@ class TeamController extends BaseController{
      */
     public function index()
     {
-        $teams = Team::with('users')->get();
+        if (!\Gate::allows('isAdmin')) {
+            return $this->unauthorizedResponse();
+        }
+        $teams = Team::with(['users' => function($query) {
+            $query->select('id', 'name as text');
+        }])->get();
         return $this->sendResponse($teams,'Team List');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function list()
+    {
+        if (!\Gate::allows('isAdmin')) {
+            return $this->unauthorizedResponse();
+        }
+        $teams = Team::all();
+        return $this->sendResponse($teams, 'Team list');
     }
 
     /**

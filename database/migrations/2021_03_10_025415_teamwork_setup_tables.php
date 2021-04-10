@@ -17,7 +17,7 @@ class TeamworkSetupTables extends Migration
         });
 
         Schema::create(\Config::get('teamwork.teams_table'), function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->bigIncrements('id')->unsigned();
             $table->integer('owner_id')->unsigned()->nullable();
             $table->string('name');
             $table->timestamps();
@@ -25,7 +25,7 @@ class TeamworkSetupTables extends Migration
 
         Schema::create(\Config::get('teamwork.team_user_table'), function (Blueprint $table) {
             $table->bigInteger('user_id')->unsigned();
-            $table->integer('team_id')->unsigned();
+            $table->bigInteger('team_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')
@@ -43,7 +43,7 @@ class TeamworkSetupTables extends Migration
         Schema::create(\Config::get('teamwork.team_invites_table'), function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->integer('team_id')->unsigned();
+            $table->bigInteger('team_id')->unsigned();
             $table->enum('type', ['invite', 'request']);
             $table->string('email');
             $table->string('accept_token');
