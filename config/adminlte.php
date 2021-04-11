@@ -234,7 +234,7 @@ return [
         ['header' => 'MENU'],
         [
             'text' => 'Dashboard',
-            'url'  => '/dashboard',
+            'url'  => 'dashboard',
             'icon' => 'fas fa-fw bi bi-kanban',
         ],
         [

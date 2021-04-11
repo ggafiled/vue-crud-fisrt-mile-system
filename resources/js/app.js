@@ -97,10 +97,7 @@ Vue.component(
     require("./components/passport/Clients.vue").default
 );
 
-Vue.component(
-    "app-view",
-    require("./components/App.vue").default
-);
+Vue.component("app-view", require("./components/App.vue").default);
 
 Vue.component(
     "passport-authorized-clients",
@@ -112,7 +109,10 @@ Vue.component(
     require("./components/passport/PersonalAccessTokens.vue").default
 );
 
-Vue.component("window-portal", require("./components/WindowPortal.vue").default);
+Vue.component(
+    "window-portal",
+    require("./components/WindowPortal.vue").default
+);
 
 Vue.component("not-found", require("./components/NotFound.vue").default);
 
@@ -132,8 +132,8 @@ Vue.filter("yesno", value =>
 
 const app = new Vue({
     el: "#app",
-    router,
-    store
+    store,
+    router
 });
 
 let pusher = new Pusher("914457", {

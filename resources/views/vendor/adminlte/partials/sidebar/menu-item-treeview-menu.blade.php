@@ -1,8 +1,8 @@
-<li @if(isset($item['id'])) id="{{ $item['id'] }}" @endif class="nav-item has-treeview {{ $item['submenu_class'] }}" style="cursor: pointer;">
+<li @if(isset($item['id'])) id="{{ $item['id'] }}" @endif class="nav-item has-treeview {{ $item['submenu_class'] }}">
 
     {{-- Menu toggler --}}
-    <router-link tag="li" to="#" class="nav-link @if(isset($item['shift'])) {{ $item['shift'] }} @endif"
-        {!! $item['data-compiled'] ?? '' !!}>
+    <a class="nav-link {{ $item['class'] }} @if(isset($item['shift'])) {{ $item['shift'] }} @endif"
+       href="" {!! $item['data-compiled'] ?? '' !!}>
 
         <i class="{{ $item['icon'] ?? 'far fa-fw fa-circle' }} {{
             isset($item['icon_color']) ? 'text-'.$item['icon_color'] : ''
@@ -19,7 +19,7 @@
             @endif
         </p>
 
-    </router-link>
+    </a>
 
     {{-- Menu items --}}
     <ul class="nav nav-treeview">
