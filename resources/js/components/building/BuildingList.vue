@@ -1,93 +1,97 @@
 <template>
-  <section class="content">
-    <div class="container-fluid">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h2 class="card-title">Building List Table</h2>
-          </div>
-          <div class="card-header" >
-            <h2 class="card-title">มีสัญญา</h2>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <div class="table-responsive">
-              <table
-                id="buildinglist"
-                ref="buildinglist"
-                class="display nowrap"
-                style="width: 100%"
-              >
-                <thead>
-                  <tr class="info">
-                    <th></th>
-                    <th>Project Name</th>
-                    <th>Fm Code</th>
-                    <th>AreaN</th>
-                    <th>BBN</th>
-                    <th>Area3BB</th>
-                    <th>AreaTrue</th>
-                    <th>AreaTrueNew</th>
-                    <th>AreaAis</th>
-                    <th>AreaFiberNet</th>
-                    <th>Building Sum</th>
-                    <th>Floor Sum</th>
-                    <th>Room Sum</th>
-                    <th>Manager Name</th>
-                    <th>Phone</th>
-                    <th>Mail</th>
-                    <th>Corporation Name</th>
-                    <th>Phone</th>
-                    <th>Mail</th>
-                    <th>House Number</th>
-                    <th>Swine</th>
-                    <th>Alley</th>
-                    <th>Road</th>
-                    <th>District</th>
-                    <th>Province</th>
-                    <th>County</th>
-                    <th>PostalCode</th>
-                    <th>Longitude</th>
-                    <th>Latitude</th>
-                    <th>Fm-Progress</th>
-                    <th>TOT-Progress</th>
-                    <th>AIS-Progress</th>
-                    <th>3BB-Progress</th>
-                    <th>SINET-Progress</th>
-                    <th>FN-Progress</th>
-                    <th>TRUE-Progress</th>
-                    <th>ContractSell</th>
-                    <th>ContractDate</th>
-                    <th>SpendSpace</th>
-                    <th>ContractPeriod</th>
-                    <th>Condition</th>
-                    <th>Balance</th>
-                    <th>OperatingTime</th>
-                  </tr>
-                </thead>
-              </table>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Building List Table</h2>
+                    </div>
+                    <div class="card-header">
+                        <h2 class="card-title">มีสัญญา</h2>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table
+                                id="buildinglist"
+                                ref="buildinglist"
+                                class="display nowrap"
+                                style="width: 100%"
+                            >
+                                <thead>
+                                    <tr class="info">
+                                        <th></th>
+                                        <th>Project Name</th>
+                                        <th>Fm Code</th>
+                                        <th>AreaN</th>
+                                        <th>BBN</th>
+                                        <th>Area3BB</th>
+                                        <th>AreaTrue</th>
+                                        <th>AreaTrueNew</th>
+                                        <th>AreaAis</th>
+                                        <th>AreaFiberNet</th>
+                                        <th>Building Sum</th>
+                                        <th>Floor Sum</th>
+                                        <th>Room Sum</th>
+                                        <th>Manager Name</th>
+                                        <th>Phone</th>
+                                        <th>Mail</th>
+                                        <th>Corporation Name</th>
+                                        <th>Phone</th>
+                                        <th>Mail</th>
+                                        <th>House Number</th>
+                                        <th>Swine</th>
+                                        <th>Alley</th>
+                                        <th>Road</th>
+                                        <th>District</th>
+                                        <th>Province</th>
+                                        <th>County</th>
+                                        <th>PostalCode</th>
+                                        <th>Longitude</th>
+                                        <th>Latitude</th>
+                                        <th>Fm-Progress</th>
+                                        <th>TOT-Progress</th>
+                                        <th>AIS-Progress</th>
+                                        <th>3BB-Progress</th>
+                                        <th>SINET-Progress</th>
+                                        <th>FN-Progress</th>
+                                        <th>TRUE-Progress</th>
+                                        <th>ContractSell</th>
+                                        <th>ContractDate</th>
+                                        <th>SpendSpace</th>
+                                        <th>ContractPeriod</th>
+                                        <th>Condition</th>
+                                        <th>Balance</th>
+                                        <th>OperatingTime</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
 
-    <div v-if="!$gate.isAdmin()">
-      <not-found></not-found>
-    </div>
-  </section>
+        <div v-if="!$gate.isAdmin()">
+            <not-found></not-found>
+        </div>
+    </section>
 </template>
 
 <script>
 export default {
     computed: {
-    not_do_contract_yet(){
-        return $(this.$refs.buildinglist).DataTable().column(38).data().filter(function ( value, index ) {
-        return value == "ยังไม่ได้ทำสัญญา"? true:false;
-    } ).length;
-    }
+        not_do_contract_yet() {
+            return $(this.$refs.buildinglist)
+                .DataTable()
+                .column(38)
+                .data()
+                .filter(function(value, index) {
+                    return value == "ยังไม่ได้ทำสัญญา" ? true : false;
+                }).length;
+        }
     },
-   mounted() {
+    mounted() {
         console.log("buildings Component mounted.");
         var vm = this;
         var table = $(this.$refs.buildinglist).DataTable({
@@ -104,7 +108,7 @@ export default {
             scrollX: true,
             scrollCollapse: true,
             select: true,
-            pageLength: 10,
+            pageLength: 15,
             lengthMenu: [
                 [10, 15, 25, 50, -1],
                 [10, 15, 25, 50, "All"]
@@ -115,11 +119,8 @@ export default {
                     { extend: "colvis", className: "dt-button" },
                     { extend: "copy", className: "dt-button" },
                     { extend: "csv", className: "dt-button" },
-                    {
-                        extend: "excelHtml5",
-                        autoFilter: true,
-                        sheetName: "Exported data"
-                    },
+                    {extend: "excelHtml5", autoFilter: true,
+                    sheetName: "Exported data",className: "dt-button"},
                     {
                         extend: "print",
                         className: "dt-button",
@@ -315,13 +316,11 @@ export default {
                 {
                     data: "building[0].spendSpace",
                     render: function(data, type, row, meta) {
-                        if(data == "ยังไม่ได้ทำสัญญา"){
+                        if (data == "ยังไม่ได้ทำสัญญา") {
                             return (
-                            '<span class="text-danger">' +
-                            data +
-                            "</span>"
-                        );
-                        }else{
+                                '<span class="text-danger">' + data + "</span>"
+                            );
+                        } else {
                             return data;
                         }
                     }
