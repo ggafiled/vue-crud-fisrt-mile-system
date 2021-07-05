@@ -130,7 +130,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light ' ,
+    'classes_topnav' => 'navbar-white navbar-light ',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -238,79 +238,89 @@ return [
             'icon' => 'fas fa-fw bi bi-kanban',
         ],
         [
-            'text' => 'Building List',
+            'text' => 'Project List',
             'icon' => 'fas fa-fw fas fa-building',
             'can'  => ['building-create|building-read|building-update'],
             'submenu' => [
                 [
                     'text' => 'Building Managment',
                     'url'  => '/building',
-                    'can'  => ['building-update','building-create','building-read']
+                    'can'  => ['building-update', 'building-create', 'building-read']
                 ],
                 [
-                    'text' => 'Building List',
+                    'text' => 'Constarution Managment',
+                    'url'  => '/constarution',
+                    'can'  => ['building-update', 'building-create', 'building-read']
+                ],
+                [
+                    'text' => 'Progress Managment',
+                    'url'  => '/progress',
+                    'can'  => ['building-update', 'building-create', 'building-read']
+                ],
+            ]
+        ],
+        [
+            'text' => 'Reports Progress',
+            'icon' => 'fas fa-fw fas fa-clipboard-list',
+            'can'  => ['building-create|building-read|building-update'],
+            'submenu' => [
+                [
+                    'text' => 'Project Name Table',
                     'url'  => '/buildinglist',
+                    'can'  => ['building-read']
+                ],
+                [
+                    'text' => 'Project Tot Table',
+                    'url'  => '/buildingtot',
+                    'can'  => ['building-read']
+                ],
+                [
+                    'text' => 'Project 3BB Table',
+                    'url'  => '/building3bb',
+                    'can'  => ['building-read']
+                ],
+                [
+                    'text' => 'Project True Table',
+                    'url'  => '/buildingTrue',
+                    'can'  => ['building-read']
+                ],
+                [
+                    'text' => 'Project Ais Table',
+                    'url'  => '/buildingAis',
+                    'can'  => ['building-read']
+                ],
+                [
+                    'text' => 'Project FiberNet Table',
+                    'url'  => '/buildingFiberNet',
                     'can'  => ['building-read']
                 ],
             ]
         ],
 
-        [
-            'text' => 'Constarution',
-            'url'  => '/constarution',
-            'icon' => 'fas fa-fw fa-poll',
-            'can'  => ['constarution-create', 'constarution-read'],
-        ],
-        [
-            'text' => 'Building Payment',
-            'url'  => '/admin/settings',
-            'icon' => 'fas fa-fw fa-calendar-check',
-            'can'  => ['payments-create', 'payments-read']
-        ],
-        [
-            'text' => 'Planing List',
-            'icon' => 'fas fa-fw fas fa-address-book',
-            'roles'  => ['superadministrator','administrator'],
-            'submenu' => [
-                [
-                    'text' => 'Planing Management',
-                    'url'  => '/planing',
-                    'roles'  => ['superadministrator','administrator'],
-                ],
-                [
-                    'text' => 'Planing List Table',
-                    'url'  => '/planning/list',
-                    'can'  => ['planning-read']
-                ],
-
-            ]
-        ],
-        [
-            'text' => 'Status Opertor',
-            'url'  => '/progress',
-            'icon' => 'fas fa-fw fa-poll-h',
-            'can'  => ['building-create|building-read|building-update']
-
-
-        ],
-        [
-            'text' => 'Resplice Opertor',
-            'url'  => '/resplice',
-            'icon' => 'fas fa-fw fa-calendar',
-            'roles'  => ['superadministrator','administrator'],
-        ],
-        [
-            'text' => 'Calendar',
-            'url'  => '/calendar',
-            'icon' => 'fas fa-fw fa-calendar-alt',
-            'roles'  => ['superadministrator','administrator'],
-        ],
-        [
-            'text' => 'Technician Opertor',
-            'url'  => '/admin/settings',
-            'icon' => 'fas fa-fw fa-poll-h',
-            'can'  => ['technician-opertor-create','technician-opertor-read','technician-opertor-update','technician-opertor-delete'],
-        ],
+        // [
+        //     'text' => 'Building Payment',
+        //     'url'  => '/admin/settings',
+        //     'icon' => 'fas fa-fw fa-calendar-check',
+        //     'can'  => ['payments-create', 'payments-read']
+        // ],
+        // [
+        //     'text' => 'Resplice Opertor',
+        //     'url'  => '/resplice',
+        //     'icon' => 'fas fa-fw fa-calendar',
+        //     'roles'  => ['superadministrator','administrator'],
+        // ],
+        // [
+        //     'text' => 'Calendar',
+        //     'url'  => '/calendar',
+        //     'icon' => 'fas fa-fw fa-calendar-alt',
+        //     'roles'  => ['superadministrator','administrator'],
+        // ],
+        // [
+        //     'text' => 'Technician Opertor',
+        //     'url'  => '/admin/settings',
+        //     'icon' => 'fas fa-fw fa-poll-h',
+        //     'can'  => ['technician-opertor-create','technician-opertor-read','technician-opertor-update','technician-opertor-delete'],
+        // ],
 
         ['header' => 'USER'],
         [
@@ -323,20 +333,21 @@ return [
             'text' => 'User Role & Permission',
             'url'  => '/permission',
             'icon' => 'fas fa-eye',
-            'roles'  => ['superadministrator','administrator'],
+            'roles'  => ['superadministrator', 'administrator'],
         ],
-        [
-            'text' => 'User Teams',
-            'url'  => '/team',
-            'icon' => 'bi bi-people',
-            'roles'  => ['superadministrator','administrator'],
-        ],
+        // [
+        //     'text' => 'User Teams',
+        //     'url'  => '/team',
+        //     'icon' => 'bi bi-people',
+        //     'roles'  => ['superadministrator','administrator'],
+        // ],
         [
             'text' => 'User Management',
             'url'  => '/users',
             'icon' => 'fas fa-users',
-            'roles'  => ['superadministrator','administrator'],
+            'roles'  => ['superadministrator', 'administrator'],
         ],
+
     ],
 
     /*
@@ -378,6 +389,21 @@ return [
         'Datatables' => [
             'active' => true,
             'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/fixedcolumns/3.3.3/js/dataTables.fixedColumns.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/keytable/2.6.2/js/dataTables.keyTable.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js',
+                ],
                 //js
                 [
                     'type' => 'js',
@@ -402,12 +428,12 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//code.jquery.com/jquery-3.4.1.min.js',
+                    'location' => '//code.jquery.com/jquery-3.5.1.js',
                 ],
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js',
+                    'location' => '//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
@@ -448,11 +474,6 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js',
-                ],
-                [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => 'https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js',
                 ],
                 [
                     'type' => 'js',
@@ -505,6 +526,27 @@ return [
                     'location' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js',
                 ],
                 //css
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/fixedcolumns/3.3.3/css/fixedColumns.dataTables.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/select/1.3.3/css/select.dataTables.min.css',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/keytable/2.6.2/css/keyTable.dataTables.min.css',
+                ],
+
                 [
                     'type' => 'css',
                     'asset' => false,
@@ -611,6 +653,16 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                ],
+            ],
+        ],
+'fixedcolumns' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.datatables.net/fixedcolumns/3.2.1/js/dataTables.fixedColumns.min.js',
                 ],
             ],
         ],

@@ -5,34 +5,31 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box">
                         <span class="info-box-icon bg-info elevation-1"
-                            ><i class="fas fa-cog"></i
+                            ><i class="fas fa-city"></i
                         ></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">CPU Traffic</span>
-                            <span class="info-box-number">
-                                10
-                                <small>%</small>
-                            </span>
+                            <h5 class="info-box-text">Building Managment</h5>
+                            <a href="/building" class="small-box-footer"
+                                >Click <i class="fas fa-arrow-circle-right"></i
+                            ></a>
                         </div>
-                        <!-- /.info-box-content -->
                     </div>
-                    <!-- /.info-box -->
                 </div>
                 <!-- /.col -->
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box mb-3">
-                        <span class="info-box-icon bg-danger elevation-1"
-                            ><i class="fas fa-thumbs-up"></i
+                        <span class="info-box-icon bg-secondary elevation-1"
+                            ><i class="fas fa-car-battery"></i
                         ></span>
 
-                        <div class="info-box-content">
-                            <span class="info-box-text">Likes</span>
-                            <span class="info-box-number">41,410</span>
+                       <div class="info-box-content">
+                            <h5 class="info-box-text">Constarution Managment</h5>
+                            <a href="/constarution" class="small-box-footer"
+                                >Click <i class="fas fa-arrow-circle-right"></i
+                            ></a>
                         </div>
-                        <!-- /.info-box-content -->
                     </div>
-                    <!-- /.info-box -->
                 </div>
                 <!-- /.col -->
 
@@ -42,18 +39,17 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box mb-3">
                         <span class="info-box-icon bg-success elevation-1"
-                            ><i class="fas fa-shopping-cart"></i
+                            ><i class="fas fa-cog"></i
                         ></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Sales</span>
-                            <span class="info-box-number">760</span>
+                            <h5 class="info-box-text">Progress Managment</h5>
+                            <a href="/progress" class="small-box-footer"
+                                >Click <i class="fas fa-arrow-circle-right"></i
+                            ></a>
                         </div>
-                        <!-- /.info-box-content -->
                     </div>
-                    <!-- /.info-box -->
                 </div>
-                <!-- /.col -->
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box mb-3">
                         <span class="info-box-icon bg-warning elevation-1"
@@ -61,14 +57,15 @@
                         ></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">New Members</span>
-                            <span class="info-box-number">2,000</span>
+                            <h5 class="info-box-text">Planning Managment</h5>
+                            <a href="/commingsoon" class="small-box-footer"
+                                >Coming Soon... <i class="fas fa-arrow-circle-right"></i
+                            ></a>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->
                 </div>
-                <!-- /.col -->
             </div>
             <!-- /.row -->
 

@@ -1,57 +1,49 @@
 <template>
     <section class="content">
         <div class="container-fluid">
-            <div class="row" v-if="$gate.isAdmin()">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                PROGRESS TABLE LIST
-                            </h3>
-                            <div class="card-tools">
-                                <button
-                                    type="button"
-                                    class="btn btn-sm btn-primary"
-                                    @click="newModal"
-                                >
-                                    <i class="fa fa-plus-square"></i>
-                                    Add New
-                                </button>
-                            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            Building List Table
+                        </h2>
+                        <div class="card-tools">
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-primary"
+                                @click="newModal"
+                            >
+                                <i class="fa fa-plus-square"></i>
+                                Add New
+                            </button>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body table-responsive p-2">
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="table-responsive">
                             <table
                                 id="progress"
                                 ref="progress"
-                                class="table table-striped table-bordered"
+                                class="display nowrap"
+                                style="width:100%"
                             >
                                 <thead>
-                                    <tr>
-                                        <th>NO</th>
-                                        <th>Building</th>
+                                    <tr class="info">
+                                        <th></th>
+                                        <th>Project Name</th>
                                         <th>Fm-Progress</th>
-                                        <th>Network Laying Date</th>
-                                        <th width="5%">TOT</th>
-                                        <th>Network Laying Date TOT</th>
-                                        <th width="5%">AIS</th>
-                                        <th>Network Laying Date AIS</th>
-                                        <th width="5%">3BB</th>
-                                        <th>Network Laying Date 3BB</th>
-                                        <th width="5%">SINET</th>
-                                        <th>Network Laying Date SINET</th>
-                                        <th width="5%">FN</th>
-                                        <th>Network Laying Date FN</th>
-                                        <th width="5%">TRUE</th>
-                                        <th>Network Laying Date TRUE</th>
+                                        <th>TOT-Progress</th>
+                                        <th>AIS-Progress</th>
+                                        <th>3BB-Progress</th>
+                                        <th>SINET-Progress</th>
+                                        <th>FN-Progress</th>
+                                        <th>TRUE-Progress</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                             </table>
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
                 </div>
             </div>
 
@@ -119,21 +111,21 @@
                                         ]"
                                     >
                                         <div class="form-group">
-                                            <label>Building Name</label>
+                                            <label>Project Name</label>
                                             <input
-                                                v-model="form.buildingName"
+                                                v-model="form.projectName"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your building..."
+                                                placeholder="Enter your project..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'buildingName'
+                                                        'projectName'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="buildingName"
+                                                field="projectName"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -142,10 +134,8 @@
                                 <div class="row">
                                     <div class="col-sm-9">
                                         <div class="form-group">
-                                            <!-- ******************* EDIT TO SELECTION ******************* -->
-
                                             <label>FM Progress :</label>
-                                            <input
+                                            <select
                                                 v-model="form.fmProgress"
                                                 type="text"
                                                 class="form-control"
@@ -155,7 +145,40 @@
                                                         'fmProgress'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="fmProgress"
@@ -191,7 +214,7 @@
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>TOT Progress :</label>
-                                            <input
+                                            <select
                                                 v-model="form.totProgress"
                                                 type="text"
                                                 class="form-control"
@@ -201,7 +224,40 @@
                                                         'totProgress'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="totProgress"
@@ -233,7 +289,7 @@
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
 
                                             <label>AIS Progress :</label>
-                                            <input
+                                            <select
                                                 v-model="form.aisProgress"
                                                 type="text"
                                                 class="form-control"
@@ -243,7 +299,40 @@
                                                         'aisProgress'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="aisProgress"
@@ -277,20 +366,53 @@
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>3BB Progress :</label>
-                                            <input
-                                                v-model="form.Progress3bb"
+                                            <select
+                                                v-model="form.progress3bb"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your Progress3bb..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'Progress3bb'
+                                                        'progress3bb'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                             <has-error
                                                 :form="form"
-                                                field="Progress3bb"
+                                                field="progress3bb"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -301,7 +423,7 @@
                                                 v-model="form.date3BB"
                                                 type="date"
                                                 class="form-control"
-                                                placeholder="Enter your date3bb..."
+                                                placeholder="Enter your date3BB..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'date3BB'
@@ -310,7 +432,7 @@
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="Date3BB"
+                                                field="date3BB"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -319,7 +441,7 @@
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
 
                                             <label>Sinet Progress :</label>
-                                            <input
+                                            <select
                                                 v-model="form.sinetProgress"
                                                 type="text"
                                                 class="form-control"
@@ -329,7 +451,40 @@
                                                         'sinetProgress'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="sinetProgress"
@@ -365,7 +520,7 @@
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>FN Progress :</label>
-                                            <input
+                                            <select
                                                 v-model="form.fnProgress"
                                                 type="text"
                                                 class="form-control"
@@ -375,7 +530,41 @@
                                                         'fnProgress'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
+
                                             <has-error
                                                 :form="form"
                                                 field="fnProgress"
@@ -407,7 +596,7 @@
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
 
                                             <label>True Progress :</label>
-                                            <input
+                                            <select
                                                 v-model="form.trueProgress"
                                                 type="text"
                                                 class="form-control"
@@ -417,7 +606,40 @@
                                                         'trueProgress'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="trueProgress"
@@ -488,7 +710,7 @@ export default {
             form: new Form({
                 id: "",
                 building_id: "",
-                buildingName: "",
+                projectName: "",
                 fmProgress: "",
                 dateFm: "",
                 totProgress: "",
@@ -540,7 +762,7 @@ export default {
         editModal(progress) {
             this.editmode = true;
             this.form.reset();
-            progress.buildingName = progress.building[0].buildingName;
+            progress.projectName = progress.building[0].projectName;
             $("#addNew").modal("show");
             this.form.fill(progress);
         },
@@ -642,55 +864,28 @@ export default {
                     }
                 },
                 {
-                    data: "building[0].buildingName"
+                    data: "building[0].projectName"
                 },
                 {
                     data: "fmProgress"
                 },
                 {
-                    data: "dateFm"
+                    data: "totProgress"
                 },
                 {
-                    data: "totProgress",
-                    width: "10%"
+                    data: "aisProgress"
                 },
                 {
-                    data: "dateTot"
+                    data: "Progress3bb"
                 },
                 {
-                    data: "aisProgress",
-                    width: "10%"
+                    data: "sinetProgress"
                 },
                 {
-                    data: "dateAis"
+                    data: "fnProgress"
                 },
                 {
-                    data: "Progress3bb",
-                    width: "10%"
-                },
-                {
-                    data: "date3BB"
-                },
-                {
-                    data: "sinetProgress",
-                    width: "10%"
-                },
-                {
-                    data: "dateSinet"
-                },
-                {
-                    data: "fnProgress",
-                    width: "10%"
-                },
-                {
-                    data: "dateFn"
-                },
-                {
-                    data: "trueProgress",
-                    width: "10%"
-                },
-                {
-                    data: "dateTrue"
+                    data: "trueProgress"
                 },
                 {
                     data: null,

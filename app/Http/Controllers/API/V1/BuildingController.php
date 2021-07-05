@@ -24,8 +24,8 @@ class Buildingcontroller extends BaseController{
      */
     public function index()
     {
-        $buildings = Building::with('member')->get();
-        return $this->sendResponse($buildings,'Buildings List');
+        $building = Building::all();
+        return $this->sendResponse($building,'Building');
     }
 
     /**
@@ -47,27 +47,40 @@ class Buildingcontroller extends BaseController{
     public function store(Request $request)
     {
         $buidings = new Building([
-            'buildingId' => $request->input('buildingId'),
+            'projectName' => $request->input('projectName'),
+            'buildingSum' => $request->input('buildingSum'),
+            'floorSum' => $request->input('floorSum'),
+            'roomSum' => $request->input('roomSum'),
             'fmCode' => $request->input('fmCode'),
-            'contactName' => $request->input('contactName'),
-            'phone' => $request->input('phone'),
-            'email' => $request->input('email'),
-            'area' => $request->input('area'),
-            'floor' => $request->input('floor'),
-            'roomNumber' => $request->input('roomNumber'),
-            'numberLayer' => $request->input('numberLayer'),
-            'detailAdress' => $request->input('detailAdress'),
-            'province' => $request->input('province'),
-            'city' => $request->input('city'),
+            'nameManager' => $request->input('nameManager'),
+            'phoneManager' => $request->input('phoneManager'),
+            'mailManager' => $request->input('mailManager'),
+            'nameNiti' => $request->input('nameNiti'),
+            'phoneNiti' => $request->input('phoneNiti'),
+            'mailNiti' => $request->input('mailNiti'),
+            'houseNumber' => $request->input('houseNumber'),
+            'squadNumber' => $request->input('squadNumber'),
+            'alleyName' => $request->input('alleyName'),
+            'roadName' => $request->input('roadName'),
+            'districtName' => $request->input('districtName'),
+            'countyName' => $request->input('countyName'),
+            'provinceName' => $request->input('provinceName'),
             'postalCode' => $request->input('postalCode'),
+            'longitude' => $request->input('longitude'),
             'latitude' => $request->input('latitude'),
-            'longtude' => $request->input('longtude'),
-            'priceSquare' => $request->input('priceSquare'),
-            'workingTime' => $request->input('workingTime'),
-            'blance' => $request->input('blance'),
-            'developer' => $request->input('developer'),
-            'grade' => $request->input('grade'),
-            'note' => $request->input('note')
+            'contractSell' => $request->input('contractSell'),
+            'contractDate' => $request->input('contractDate'),
+            'spendSpace' => $request->input('spendSpace'),
+            'condition' => $request->input('condition'),
+            'contractPeriod' => $request->input('contractPeriod'),
+            'areaN' => $request->input('areaN'),
+            'bbN' => $request->input('bbN'),
+            'area3BB' => $request->input('area3BB'),
+            'areaTrue' => $request->input('areaTrue'),
+            'areaTrueNew' => $request->input('areaTrueNew'),
+            'areaAis' => $request->input('areaAis'),
+            'areaFiberNet' => $request->input('areaFiberNet'),
+            'operatingTime' => $request->input('operatingTime')
         ]);
         $buidings->save();
 

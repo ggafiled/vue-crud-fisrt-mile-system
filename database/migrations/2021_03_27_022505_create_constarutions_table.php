@@ -17,23 +17,22 @@ class CreateConstarutionsTable extends Migration
         Schema::create('constarutions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();
+            $table->string('desingBy')->nullable();
             $table->string('surveyDesing')->nullable();
-            $table->timestamp('surveyDesingTeam')->nullable();
             $table->timestamp('surveyDesingDate')->nullable();
-            $table->timestamp('surveyDesingDateBy')->nullable();
-            $table->bigInteger('surveyDesingBy')->unsigned();
             $table->string('ifcc')->nullable();
-            $table->bigInteger('ifccTeam')->unsigned();
             $table->timestamp('ifccDate')->nullable();
             $table->string('wallBox')->nullable();
-            $table->bigInteger('wallBoxTeam')->unsigned();
             $table->timestamp('wallBoxDate')->nullable();
+            $table->string('type')->nullable();
             $table->string('microductD')->nullable();
-            $table->bigInteger('microductTeamD')->unsigned();
             $table->timestamp('microductDateD')->nullable();
             $table->string('microductK')->nullable();
-            $table->bigInteger('microductTeamK')->unsigned();
             $table->timestamp('microductDateK')->nullable();
+            $table->string('fiberConvertion')->nullable();
+            $table->timestamp('fiberConvertionDateD')->nullable();
+            $table->string('blow')->nullable();
+            $table->string('splice')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
@@ -41,26 +40,6 @@ class CreateConstarutionsTable extends Migration
             ->references('id')
             ->on('buildings')
             ->onDelete('cascade');
-            // $table->foreign('surveyDesingBy')
-            // ->references('id')
-            // ->on('teams')
-            // ->onDelete('cascade');
-            // $table->foreign('ifccTeam')
-            // ->references('id')
-            // ->on('teams')
-            // ->onDelete('cascade');
-            // $table->foreign('wallBoxTeam')
-            // ->references('id')
-            // ->on('teams')
-            // ->onDelete('cascade');
-            // $table->foreign('microductTeamD')
-            // ->references('id')
-            // ->on('teams')
-            // ->onDelete('cascade');
-            // $table->foreign('microductTeamK')
-            // ->references('id')
-            // ->on('teams')
-            // ->onDelete('cascade');
         });
     }
 

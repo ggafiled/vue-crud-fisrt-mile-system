@@ -12,27 +12,26 @@ class Constarution extends Model
 
     protected $fillable = [
         'building_id',
+        'desingBy',
         'surveyDesing',
-        'surveyDesingTeam',
         'surveyDesingDate',
-        'surveyDesingDateBy',
-        'surveyDesingBy',
         'ifcc',
-        'ifccTeam',
         'ifccDate',
         'wallBox',
-        'wallBoxTeam',
         'wallBoxDate',
+        'type',
         'microductD',
-        'microductTeamD',
         'microductDateD',
         'microductK',
-        'microductTeamK',
         'microductDateK',
+        'fiberConvertion',
+        'fiberConvertionDateD',
+        'blow',
+        'splice',
     ];
 
     public function building()
-	{
-		return $this->hasMany('App\Models\Building','id','building_id');
-	}
+    {
+        return $this->hasMany('App\Models\Building', 'id', 'building_id');
+    }
 }

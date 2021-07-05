@@ -1,55 +1,45 @@
 <template>
     <section class="content">
         <div class="container-fluid">
-            <div class="row" v-if="$gate.isAdmin()">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                Constarution Managment Table
-                            </h3>
-                            <div class="card-tools">
-                                <button
-                                    type="button"
-                                    class="btn btn-sm btn-primary"
-                                    @click="newModal"
-                                >
-                                    <i class="fa fa-plus-square"></i>
-                                    Add New
-                                </button>
-                            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            Constarution List Table
+                        </h2>
+                        <div class="card-tools">
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-primary"
+                                @click="newModal"
+                            >
+                                <i class="fa fa-plus-square"></i>
+                                Add New
+                            </button>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body table-responsive p-2">
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="table-responsive">
                             <table
                                 id="constarution"
                                 ref="constarution"
-                                class="table table-striped table-bordered"
+                                class="display nowrap"
+                                style="width:100%"
                             >
                                 <thead>
-                                    <tr>
-                                        <th>NO</th>
-                                        <th>Building Name</th>
-                                        <th>Tower</th>
-                                        <th>Floor</th>
-                                        <th>Room</th>
-                                        <th>Survey&Desing</th>
-                                        <th>SurveyBy</th>
-                                        <th>SurveyDate</th>
-                                        <th>SurveyPlan</th>
-                                        <th>SurveyPlanDate</th>
+                                    <tr class="info">
+                                        <th></th>
+                                        <th>Project Name</th>
+                                        <th>DesingBy</th>
+                                        <th>SurveyDesing</th>
                                         <th>IFCC</th>
-                                        <th>InstalledBy</th>
-                                        <th>InstallDate</th>
                                         <th>WallBox</th>
-                                        <th>InstalledBy</th>
-                                        <th>InstallDate</th>
-                                        <th>Microduct(vertical)</th>
-                                        <th>InstalledBy</th>
-                                        <th>InstallDate</th>
-                                        <th>Microduct(diagonal)</th>
-                                        <th>InstalledBy</th>
-                                        <th>InstallDate</th>
+                                        <th>Microduct(แนวดิ่ง)</th>
+                                        <th>Microduct(ขว้าง)</th>
+                                        <th>FiberConvertion</th>
+                                        <th>Blow</th>
+                                        <th>Splice</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -104,14 +94,15 @@
                         >
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Project Building ID</label>
                                             <input
                                                 v-model="form.id"
                                                 type="text"
                                                 class="form-control disabled"
-                                                placeholder="Enter your building id..."
+                                                placeholder=""
+                                                disabled
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'id'
@@ -120,23 +111,23 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-10">
                                         <div class="form-group">
-                                            <label>Building Name</label>
+                                            <label>Project Name</label>
                                             <input
-                                                v-model="form.buildingId"
+                                                v-model="form.projectName"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your building..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'buildingId'
+                                                        'projectName'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="fmCode"
+                                                field="projectName"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -146,184 +137,126 @@
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>Tower</label>
-                                            <input
+                                            <label>Desing By</label>
+                                            <select
                                                 v-model="form.numberLayer"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your tower..."
+                                                placeholder="Enter your DesingBy..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'numberLayer'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >ทีมสำรวจ</option
+                                                >
+                                                <option
+                                                    value="คุณโอ๋ : 061 995 5389"
+                                                    >คุณโอ๋ : 061 995
+                                                    5389</option
+                                                >
+                                                <option
+                                                    value="คุณอ๋อง : 087 003 0777"
+                                                    >คุณอ๋อง : 087 003
+                                                    0777</option
+                                                >
+                                                <option
+                                                    value="คุณบอย : 094 826 5323"
+                                                    >คุณบอย : 094 826
+                                                    5323</option
+                                                >
+                                            </select>
                                             <has-error
                                                 :form="form"
-                                                field="numberLayer"
+                                                field="desingBy"
                                             ></has-error>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Floor</label>
-                                            <input
-                                                v-model="form.floor"
-                                                type="number"
-                                                class="form-control"
-                                                placeholder="Enter your floor..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'floor'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="floor"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <label>Room</label>
-                                            <input
-                                                v-model="form.roomNumber"
-                                                type="number"
-                                                class="form-control"
-                                                placeholder="Enter your room number..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'roomNumber'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="roomNumber"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>Survey&Desing</label>
-                                            <input
-                                                v-model="form.exploreDesign"
+                                            <select
+                                                v-model="form.surveyDesing"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your explore design..."
+                                                placeholder="Enter your SurveyDesing..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'exploreDesign'
+                                                        'surveyDesing'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                             <has-error
                                                 :form="form"
-                                                field="exploreDesign"
+                                                field="surveyDesing"
                                             ></has-error>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>SurveyBy</label>
-                                            <input
-                                                type="text"
-                                                v-model="form.exploreDesignTeam"
-                                                placeholder="Enter your survey by..."
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'exploreDesignTeam'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="exploreDesignTeam"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>SurveyDate</label>
+                                            <label>SurveyDesingDate</label>
                                             <input
-                                                v-model="form.exploreDesignDate"
+                                                v-model="form.surveyDesingDate"
                                                 type="date"
                                                 class="form-control"
+                                                placeholder="Enter your surveyDesingDate..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'exploreDesignDate'
+                                                        'surveyDesingDate'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="exploreDesignDate"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <hr />
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>SurveyPlan</label>
-                                            <input
-                                                v-model="form.exploreDesignBy"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your explore DesignBy..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'exploreDesignBy'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="exploreDesignBy"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>SurveyPlanDate</label>
-                                            <input
-                                                v-model="
-                                                    form.exploreDesignDateBy
-                                                "
-                                                type="date"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'exploreDesignDateBy'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="exploreDesignDateBy"
+                                                field="surveyDesingDate"
                                             ></has-error>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
+                                        <!-- text input -->
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>IFCC</label>
-                                            <input
+                                            <select
                                                 v-model="form.ifcc"
                                                 type="text"
                                                 class="form-control"
@@ -333,41 +266,53 @@
                                                         'ifcc'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="ifcc"
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <label>InstalledBy</label>
-                                            <input
-                                                v-model="form.ifccTeam"
-                                                type="text"
-                                                required
-                                                class="form-control"
-                                                placeholder="Enter your ifccTeam..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'ifccTeam'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="ifccTeam"
-                                            ></has-error>
-                                        </div>
-                                    </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>InstallDate</label>
+                                            <label>IFCC-Date</label>
                                             <input
-                                                v-model="form.ifccDate"
                                                 type="date"
+                                                v-model="form.ifccDate"
+                                                placeholder="Enter your survey by..."
                                                 class="form-control"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
@@ -381,24 +326,51 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>Wallbox</label>
-                                            <input
+                                            <label>WallBox</label>
+                                            <select
                                                 v-model="form.wallBox"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your wallBox..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'wallBox'
                                                     )
                                                 }"
-                                            />
+                                                ><option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="wallBox"
@@ -407,30 +379,11 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>WallBoxTeam</label>
+                                            <label>Wallbox-Date</label>
                                             <input
-                                                v-model="form.wallBoxTeam"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your wallBoxTeam..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'wallBoxTeam'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="wallBoxTeam"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>WallBoxDate</label>
-                                            <input
-                                                v-model="form.wallBoxDate"
                                                 type="date"
+                                                v-model="form.wallBoxDate"
+                                                placeholder="Enter your survey by..."
                                                 class="form-control"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
@@ -444,14 +397,35 @@
                                             ></has-error>
                                         </div>
                                     </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Type</label>
+                                            <input
+                                                type="text"
+                                                v-model="form.type"
+                                                placeholder="Enter your type..."
+                                                class="form-control"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'type'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="type"
+                                            ></has-error>
+                                        </div>
+                                    </div>
                                 </div>
 
+                                <hr />
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>Microduct(vertical)</label>
-                                            <input
+                                            <label>Microduct(แนวดิ่ง)</label>
+                                            <select
                                                 v-model="form.microductD"
                                                 type="text"
                                                 class="form-control"
@@ -461,7 +435,40 @@
                                                         'microductD'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="microductD"
@@ -470,27 +477,9 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>InstalledBy</label>
-                                            <input
-                                                v-model="form.microductTeamD"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your microductTeamD..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'microductTeamD'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="microductTeamD"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>InstallDate</label>
+                                            <label
+                                                >Microduct Date(แนวดิ่ง)</label
+                                            >
                                             <input
                                                 v-model="form.microductDateD"
                                                 type="date"
@@ -503,18 +492,14 @@
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="microductDateD"
+                                                field="exploreDesignDateBy"
                                             ></has-error>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>Microduct(diagonal)</label>
-                                            <input
+                                            <label>Microduct (แนวขว้าง)</label>
+                                            <select
                                                 v-model="form.microductK"
                                                 type="text"
                                                 class="form-control"
@@ -524,37 +509,52 @@
                                                         'microductK'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="microductK"
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>InstalledBy</label>
-                                            <input
-                                                v-model="form.microductTeamK"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your microductTeamK..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'microductTeamK'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="microductTeamK"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <label>InstallDate</label>
+                                            <!-- ******************* EDIT TO SELECTION ******************* -->
+                                            <label
+                                                >Microduct Date(แนวขว้าง)</label
+                                            >
                                             <input
                                                 v-model="form.microductDateK"
                                                 type="date"
@@ -566,10 +566,159 @@
                                                     )
                                                 }"
                                             />
+                                            <has-error
+                                                :form="form"
+                                                field="microductDateK"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <!-- ******************* EDIT TO SELECTION ******************* -->
+                                            <label>FiberConvertion</label>
+                                            <select
+                                                v-model="form.fiberConvertion"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your fiberConvertion..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'fiberConvertion'
+                                                    )
+                                                }"
+                                            >
+                                                <option disabled value=""
+                                                    >การดำเนินการสร้าง</option
+                                                >
+                                                <option value="รอเข้า Survey"
+                                                    >รอเข้า Survey</option
+                                                >
+                                                <option value="รอเข้าดำเนินการ"
+                                                    >รอเข้าดำเนินการ</option
+                                                >
+                                                <option value="กำลังดำเนินการ"
+                                                    >กำลังดำเนินการ</option
+                                                >
+                                                <option
+                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    >ดำเนิการแล้วเสร็จ</option
+                                                >
+                                                <option value="วางโครงข่ายแล้ว"
+                                                    >วางโครงข่ายแล้ว</option
+                                                >
+                                                <option
+                                                    value="กำลังสร้างพร้อมโครงการฯ"
+                                                    >กำลังสร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="สร้างพร้อมโครงการฯ"
+                                                    >สร้างพร้อมโครงการฯ</option
+                                                >
+                                                <option
+                                                    value="เชื่อมโครงข่ายแล้ว"
+                                                    >เชื่อมโครงข่ายแล้ว</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="fiberConvertion"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label
+                                                >FiberConvertionDate
+                                                (แนวดิ่ง)</label
+                                            >
+                                            <input
+                                                v-model="
+                                                    form.fiberConvertionDate
+                                                "
+                                                type="date"
+                                                class="form-control"
+                                                placeholder="Enter your fiberConvertionDate ..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'fiberConvertionDate '
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="fiberConvertionDate "
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <!-- ******************* EDIT TO SELECTION ******************* -->
+                                            <label>Blow</label>
+                                            <select
+                                                v-model="form.blow"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your blow..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'blow'
+                                                    )
+                                                }"
+                                            >
+                                                <option disabled value=""
+                                                    >Y/N Question</option
+                                                >
+                                                <option value="Completed"
+                                                    >Completed</option
+                                                >
+                                                <option value="On Progress"
+                                                    >On Progress</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="blow"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Splice</label>
+                                            <select
+                                                v-model="form.splice"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your splice..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'splice'
+                                                    )
+                                                }"
+                                            >
+                                                <option disabled value=""
+                                                    >Y/N Question</option
+                                                >
+                                                <option value="Completed"
+                                                    >Completed</option
+                                                >
+                                                <option value="On Progress"
+                                                    >On Progress</option
+                                                >
+                                                <option value="N/A">N/A</option>
+                                            </select>
                                         </div>
                                         <has-error
                                             :form="form"
-                                            field="microductDateK"
+                                            field="splice"
                                         ></has-error>
                                     </div>
                                 </div>
@@ -614,27 +763,25 @@ export default {
             selected: "",
             form: new Form({
                 id: "",
-                buildingId: "",
-                numberLayer: "",
-                roomNumber: "",
-                floor: "",
-                exploreDesign: "",
-                exploreDesignTeam: "",
-                exploreDesignDate: "",
-                exploreDesignBy: "",
-                exploreDesignDateBy: "",
+                building_id: "",
+                projectName: "",
+                desingBy: "",
+                surveyDesing: "",
+                surveyDesingDate: "",
+                surveyDesingDateBy: "",
                 ifcc: "",
-                ifccTeam: "",
                 ifccDate: "",
                 wallBox: "",
                 wallBoxDate: "",
-                wallBoxTeam: "",
+                type: "",
                 microductD: "",
-                microductTeamD: "",
                 microductDateD: "",
                 microductK: "",
-                microductTeamK: "",
-                microductDateK: ""
+                microductDateK: "",
+                fiberConvertion: "",
+                fiberConvertionDateD: "",
+                blow: "",
+                splice: ""
             })
         };
     },
@@ -672,6 +819,7 @@ export default {
         editModal(constarution) {
             this.editmode = true;
             this.form.reset();
+            constarution.projectName = constarution.building[0].projectName;
             $("#addNew").modal("show");
             this.form.fill(constarution);
         },
@@ -771,80 +919,39 @@ export default {
                     }
                 },
                 {
-                    data: "buildingId"
+                    data: "building[0].projectName"
                 },
                 {
-                    data: "numberLayer"
+                    data: "desingBy"
                 },
                 {
-                    data: "roomNumber"
+                    data: "surveyDesing"
                 },
                 {
-                    data: "floor"
+                    data: "ifcc"
                 },
                 {
-                    data: "exploreDesign"
+                    data: "wallBox"
                 },
                 {
-                    data: "exploreDesignTeam",
-                    visible: false
-                },
-                {
-                    data: "exploreDesignDate",
-                    visible: false
-                },
-                {
-                    data: "exploreDesignBy",
-                    visible: false
-                },
-                {
-                    data: "exploreDesignDateBy",
-                    visible: false
-                },
-                {
-                    data: "ifcc",
-                    visible: false
-                },
-                {
-                    data: "ifccTeam",
-                    visible: false
-                },
-                {
-                    data: "ifccDate",
-                    visible: false
-                },
-                {
-                    data: "wallBox",
-                    visible: false
-                },
-                {
-                    data: "wallBoxDate",
-                    visible: false
-                },
-                {
-                    data: "wallBoxTeam",
-                    visible: false
-                },
-                {
-                    data: "microductD",
-                    visible: false
-                },
-                {
-                    data: "microductTeamD",
-                    visible: false
-                },
-                {
-                    data: "microductDateD",
-                    visible: false
+                    data: "microductD"
+                    // visible: false
                 },
                 {
                     data: "microductK"
+                    // visible: false
                 },
                 {
-                    data: "microductTeamK"
+                    data: "fiberConvertion"
+                    // visible: false
                 },
                 {
-                    data: "microductDateK"
+                    data: "blow"
+                    // visible: false
+                },
+                {
+                    data: "splice"
+                    // visible: false
                 },
                 {
                     data: null,

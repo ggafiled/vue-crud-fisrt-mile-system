@@ -22,7 +22,7 @@ class ConstarutionController extends BaseController{
      */
     public function index()
     {
-        $constarution = Constarution::all();
+        $constarution = Constarution::with('building')->get();
         return $this->sendResponse($constarution,'Constarution List');
     }
 

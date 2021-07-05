@@ -22,7 +22,47 @@ export default [{
         }
     },
     {
-        path: "/admin/settings",
+        path: "/buildingtot",
+        component: require("./components/building/BuildingTot.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user", "guest"]
+        }
+    },
+    {
+        path: "/building3bb",
+        component: require("./components/building/Building3BB.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user", "guest"]
+        }
+    },
+    {
+        path: "/buildingTrue",
+        component: require("./components/building/BuildingTrue.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user", "guest"]
+        }
+    },
+    {
+        path: "/buildingAis",
+        component: require("./components/building/BuildingAis.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user", "guest"]
+        }
+    },
+    {
+        path: "/buildingFiberNet",
+        component: require("./components/building/BuildingFiberNet.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user", "guest"]
+        }
+    },
+    {
+        path: "/commingsoon",
         component: require("./components/building/commingSoon.vue").default,
         meta: {
             requiresAuth: true,

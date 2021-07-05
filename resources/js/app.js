@@ -9,6 +9,7 @@ import "flag-icon-css/css/flag-icon.css";
 import "fullcalendar/dist/fullcalendar.css";
 
 window.Vue = require("vue");
+window.axios = require("axios");
 import moment from "moment";
 
 import { Form, HasError, AlertError } from "vform";

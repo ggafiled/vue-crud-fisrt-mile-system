@@ -10,33 +10,42 @@ class Building extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable = [
+        'projectName',
+        'buildingSum',
+        'floorSum',
+        'roomSum',
         'fmCode',
-        'member_id',
-        'buildingName',
-        'detailAdress',
-        'province',
-        'city',
+        'nameManager',
+        'phoneManager',
+        'mailManager',
+        'nameNiti',
+        'phoneNiti',
+        'mailNiti',
+        'houseNumber',
+        'squadNumber',
+        'alleyName',
+        'roadName',
+        'districtName',
+        'countyName',
+        'provinceName',
         'postalCode',
-        'zone',
-        'area',
-        'townNumber',
-        'floor',
-        'roomNumber',
-        'contract',
-        'contractTime',
+        'longitude',
         'latitude',
-        'longtude',
-        'priceSquare',
-        'workingTime',
-        'blance',
-        'developer',
-        'grade',
+        'contractSell',
+        'contractDate',
+        'spendSpace',
+        'condition',
+        'contractPeriod',
+        'areaN',
+        'bbN',
+        'area3BB',
+        'areaTrue',
+        'areaTrueNew',
+        'areaAis',
+        'areaFiberNet',
+        'operatingTime',
     ];
 
-    public function member()
-	{
-		return $this->hasMany('App\Models\Member','id','member_id');
-	}
 
     public function progress()
 	{

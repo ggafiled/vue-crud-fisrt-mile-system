@@ -15,32 +15,44 @@ class CreateBuildingsTable extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('projectName')->nullable();
+            $table->string('buildingSum')->nullable();
+            $table->string('floorSum')->nullable();
+            $table->string('roomSum')->nullable();
             $table->string('fmCode')->nullable();
-            $table->bigInteger('member_id')->unsigned();
-            $table->string('buildingName')->nullable();
-            $table->string('detailAdress')->nullable();
-            $table->string('province')->nullable();
-            $table->string('city')->nullable();
-            $table->string('postalCode')->nullable();
-            $table->string('zone')->nullable();
-            $table->double('area')->nullable();
-            $table->integer('townNumber')->nullable();
-            $table->integer('floor')->nullable();
-            $table->integer('roomNumber')->nullable();
-            $table->timestamp('contract')->nullable();
-            $table->time('contractTime')->nullable();
-            $table->string('latitude')->nullable();
-            $table->string('longtude')->nullable();
-            $table->double('priceSquare')->nullable();
-            $table->timestamp('workingTime')->nullable();
-            $table->double('blance')->nullable();
-            $table->string('developer')->nullable();
-            $table->string('grade')->nullable();
+            $table->string('nameNiti')->nullable();
+            $table->string('phoneNiti')->nullable();
+            $table->string('mailNiti')->nullable();
+            $table->string('nameManager')->nullable();
+            $table->string('phoneManager')->nullable();
+            $table->string('mailManager')->nullable();
+            $table->string('houseNumber')->nullable();
+            $table->string('squadNumber')->nullable();
+            $table->string('alleyName')->nullable();
+            $table->string('roadName')->nullable();
+            $table->string('districtName')->nullable();
+            $table->string('provinceName')->nullable();
+            $table->string('countyName')->nullable();
+            $table->integer('postalCode')->nullable();
+            $table->double('longitude')->nullable();
+            $table->double('latitude')->nullable();
+            $table->string('contractSell')->nullable();
+            $table->date('contractDate')->nullable();
+            $table->string('spendSpace')->nullable();
+            $table->string('condition')->nullable();
+            $table->string('contractPeriod')->nullable();
+            $table->string('areaN')->nullable();
+            $table->string('bbN')->nullable();
+            $table->string('area3BB')->nullable();
+            $table->string('areaTrue')->nullable();
+            $table->string('areaTrueNew')->nullable();
+            $table->string('areaAis')->nullable();
+            $table->string('areaFiberNet')->nullable();
+            $table->string('operatingTime')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('member_id')->references('id')->on('members')
-                ->onUpdate('cascade')->onDelete('cascade');
+
         });
     }
 

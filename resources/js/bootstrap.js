@@ -21,6 +21,7 @@ try {
     require("datatables.net-buttons/js/buttons.html5.js")();
     require("datatables.net-buttons/js/buttons.flash.js")();
     require("datatables.net-buttons/js/buttons.print.js")();
+    require( 'datatables.net-fixedcolumns' );
     require("datatables.net-dt/css/jquery.datatables.css");
 
     //Custom theme

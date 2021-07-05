@@ -9,16 +9,16 @@ use Illuminate\Database\Eloquent\Model;
 class Progress extends Model
 {
     use SoftDeletes;
-    
+
     protected $fillable = [
-        'building_id',
+        'projectName',
         'fmProgress',
         'dateFm',
         'totProgress',
         'dateTot',
         'aisProgress',
         'dateAis',
-        'Progress3bb',
+        'progress3bb',
         'date3BB',
         'sinetProgress',
         'dateSinet',

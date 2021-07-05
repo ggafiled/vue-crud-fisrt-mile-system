@@ -5,15 +5,17 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Building;
+// use App\Models\Building;
+use App\Models\Progress;
 
-class BuildingListController extends BaseController{
+class BuildingListController extends BaseController
+{
 
     public function __construct()
     {
         $this->middleware('auth:api');
-        $this->middleware('role:superadministrator|administrator|user')->only(['index','create']);
-        $this->middleware('role:superadministrator|administrator')->only(['store','update','destroy']);
+        $this->middleware('role:superadministrator|administrator|user')->only(['index', 'create']);
+        $this->middleware('role:superadministrator|administrator')->only(['store', 'update', 'destroy']);
     }
     /**
      * Display a listing of the resource.
@@ -22,9 +24,10 @@ class BuildingListController extends BaseController{
      */
     public function index()
     {
-        $buildings = Building::with('member')->get();
-        return $this->sendResponse($buildings,'Buildings List');
+        $buildings = Progress::with('building')->get();
+        return $this->sendResponse($buildings, 'BuildingList');
     }
+
 
     /**
      * Show the form for creating a new resource.
