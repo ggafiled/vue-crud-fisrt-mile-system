@@ -22,7 +22,6 @@
                                         <th></th>
                                         <th>Project Name</th>
                                         <th>Area3BB</th>
-                                        <th>Building Sum</th>
                                         <th>Manager Name</th>
                                         <th>Phone</th>
                                         <th>Mail</th>
@@ -37,6 +36,7 @@
                                         <th>Province</th>
                                         <th>County</th>
                                         <th>PostalCode</th>
+                                        <th>Building Sum</th>
                                         <th>Floor Sum</th>
                                         <th>Room Sum</th>
                                         <th>Longitude</th>
@@ -228,7 +228,7 @@ export default {
                 },
                 {
                     data: "Progress3bb"
-                },
+                }
             ]
         });
     }

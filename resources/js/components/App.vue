@@ -15,4 +15,5 @@ export default {};
     background: #b0bec5 !important;
     color: #37474f !important;
 }
+.DTFC_LeftHeadWrapper th { background-color: white; }
 </style>

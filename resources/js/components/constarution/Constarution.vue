@@ -925,32 +925,168 @@ export default {
                     data: "desingBy"
                 },
                 {
-                    data: "surveyDesing"
+                    data: "surveyDesing",
+                    render: function(data, type, row, meta) {
+                        if (data == "ดำเนิการแล้วเสร็จ") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                 },
                 {
-                    data: "ifcc"
+                    data: "ifcc",
+                    render: function(data, type, row, meta) {
+                        if (data == "ดำเนิการแล้วเสร็จ") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                 },
                 {
-                    data: "wallBox"
+                    data: "wallBox",
+                    render: function(data, type, row, meta) {
+                        if (data == "ดำเนิการแล้วเสร็จ") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                 },
                 {
-                    data: "microductD"
+                    data: "microductD",
+                    render: function(data, type, row, meta) {
+                        if (data == "ดำเนิการแล้วเสร็จ") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                     // visible: false
                 },
                 {
-                    data: "microductK"
+                    data: "microductK",
+                    render: function(data, type, row, meta) {
+                        if (data == "ดำเนิการแล้วเสร็จ") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                     // visible: false
                 },
                 {
-                    data: "fiberConvertion"
+                    data: "fiberConvertion",
+                    render: function(data, type, row, meta) {
+                        if (data == "ดำเนิการแล้วเสร็จ") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                     // visible: false
                 },
                 {
-                    data: "blow"
+                    data: "blow",
+                    render: function(data, type, row, meta) {
+                        if (data == "ดำเนิการแล้วเสร็จ") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                     // visible: false
                 },
                 {
-                    data: "splice"
+                    data: "splice",
+                    render: function(data, type, row, meta) {
+                        if (data == "ดำเนิการแล้วเสร็จ") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                     // visible: false
                 },
                 {

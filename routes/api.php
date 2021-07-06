@@ -33,6 +33,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('team/list', 'TeamController@list');
     Route::get('tag/list', 'TagController@list');
     Route::get('category/list', 'CategoryController@list');
+    Route::get('buildinglist/nonContract', 'BuildingListController@nonContract');
     Route::post('product/upload', 'ProductController@upload');
 
 Route::apiResources([
@@ -48,6 +49,7 @@ Route::apiResources([
         'progress' => 'ProgressController',
         'planing' => 'PlaningController',
         'team' => 'TeamController',
+        'dashboard'=>'DashboardController'
     ]);
 
 });

@@ -867,25 +867,144 @@ export default {
                     data: "building[0].projectName"
                 },
                 {
-                    data: "fmProgress"
+                    data: "fmProgress",
+                    render: function(data, type, row, meta) {
+                        if (data == "วางโครงข่ายแล้ว") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                 },
                 {
-                    data: "totProgress"
+                    data: "totProgress",
+                    render: function(data, type, row, meta) {
+                        if (data == "เชื่อมโครงข่ายแล้ว") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                 },
                 {
-                    data: "aisProgress"
+                    data: "aisProgress",
+                    render: function(data, type, row, meta) {
+                        if (data == "เชื่อมโครงข่ายแล้ว") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                 },
                 {
-                    data: "Progress3bb"
+                    data: "Progress3bb",
+                    render: function(data, type, row, meta) {
+                        if (data == "เชื่อมโครงข่ายแล้ว") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                 },
                 {
-                    data: "sinetProgress"
+                    data: "sinetProgress",
+                    render: function(data, type, row, meta) {
+                        if (data == "เชื่อมโครงข่ายแล้ว") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                 },
                 {
-                    data: "fnProgress"
+                    data: "fnProgress",
+                    render: function(data, type, row, meta) {
+                        if (data == "เชื่อมโครงข่ายแล้ว") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                 },
                 {
-                    data: "trueProgress"
+                    data: "trueProgress",
+                    render: function(data, type, row, meta) {
+                        if (data == "เชื่อมโครงข่ายแล้ว") {
+                            return (
+                                '<span class="text-success">' + data + "</span>"
+                            );
+                        } else if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
                 },
                 {
                     data: null,

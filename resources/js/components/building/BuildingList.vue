@@ -6,8 +6,62 @@
                     <div class="card-header">
                         <h2 class="card-title">Building List Table</h2>
                     </div>
-                    <div class="card-header">
-                        <h2 class="card-title">มีสัญญา</h2>
+                    <div
+                        class="modal fade"
+                        id="nonContractAlert"
+                        tabindex="-1"
+                        role="dialog"
+                        aria-labelledby="nonContractAlert"
+                        aria-hidden="true"
+                    >
+                        <div
+                            class="modal-dialog modal-dialog-centered"
+                            role="document"
+                        >
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5
+                                        class="modal-title"
+                                        id="exampleModalLongTitle"
+                                    >
+                                        แจ้งเตือนทำสัญญา
+                                        <img
+                                            class="mx-auto"
+                                            src="https://www.oncb.go.th/welcomePage/welcomepage_canEdit/thainiyom/images/new-gif-image-6.gif"
+                                            width="48px"
+                                            height="28px"
+                                        />
+                                    </h5>
+                                    <button
+                                        type="button"
+                                        class="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close"
+                                    >
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                        <div
+                                            v-for="(item,index) in not_do_contract_yet"
+                                            :key="item.id"
+                                        >
+                                            {{ item.building[0].projectName }}
+                                        <hr v-if="index != not_do_contract_yet.length-1"/>
+                                        </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button
+                                        type="button"
+                                        class="btn btn-secondary"
+                                        data-dismiss="modal"
+                                    >
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -80,279 +134,630 @@
 
 <script>
 export default {
-    computed: {
-        not_do_contract_yet() {
-            return $(this.$refs.buildinglist)
-                .DataTable()
-                .column(38)
-                .data()
-                .filter(function(value, index) {
-                    return value == "ยังไม่ได้ทำสัญญา" ? true : false;
-                }).length;
-        }
+    data() {
+        return {
+            not_do_contract_yet: []
+        };
     },
-    mounted() {
-        console.log("buildings Component mounted.");
-        var vm = this;
-        var table = $(this.$refs.buildinglist).DataTable({
-            dom: "Blfrtip",
-            ajax: "api/buildinglist",
-            responsive: true,
-            processing: true,
-            autoWidth: true,
-            fixedHeader: true,
-            fixedColumns: true,
-            fixedColumns: {
-                leftColumns: 2
-            },
-            scrollX: true,
-            scrollCollapse: true,
-            select: true,
-            pageLength: 15,
-            lengthMenu: [
-                [10, 15, 25, 50, -1],
-                [10, 15, 25, 50, "All"]
-            ],
+    methods: {
+        async notdocontractyet() {
+            await axios
+                .get("/api/buildinglist/nonContract")
+                .then(response => {
+                    this.not_do_contract_yet = response.data.data;
+                    $("#nonContractAlert").modal("show");
+                })
+                .catch(() => console.warn("Oh. Something went wrong"));
+        },
+        async generateProgessTable() {
+            console.log("buildings Component mounted.");
+            var vm = this;
+            var table = await $(this.$refs.buildinglist).DataTable({
+                dom: "Blfrtip",
+                ajax: "api/buildinglist",
+                responsive: true,
+                processing: true,
+                autoWidth: true,
+                fixedHeader: true,
+                fixedColumns: true,
+                fixedColumns: {
+                    leftColumns: 2
+                },
+                scrollX: true,
+                scrollCollapse: true,
+                select: true,
+                pageLength: 15,
+                lengthMenu: [
+                    [10, 15, 25, 50, -1],
+                    [10, 15, 25, 50, "All"]
+                ],
 
-            buttons: {
-                buttons: [
-                    { extend: "colvis", className: "dt-button" },
-                    { extend: "copy", className: "dt-button" },
-                    { extend: "csv", className: "dt-button" },
-                    {extend: "excelHtml5", autoFilter: true,
-                    sheetName: "Exported data",className: "dt-button"},
+                buttons: {
+                    buttons: [
+                        { extend: "colvis", className: "dt-button" },
+                        { extend: "copy", className: "dt-button" },
+                        { extend: "csv", className: "dt-button" },
+                        {
+                            extend: "excelHtml5",
+                            autoFilter: true,
+                            sheetName: "Exported data",
+                            className: "dt-button"
+                        },
+                        {
+                            extend: "print",
+                            className: "dt-button",
+                            text: "<i class='bi bi-printer mr-1'></i>Print"
+                        },
+                        {
+                            className: "bg-danger",
+                            text:
+                                "<i class='bi bi-file-text mr-1'></i>ยังไม่ทำสัญญา",
+                            action: function(e, dt, node, config) {
+                                dt.columns(38)
+                                    .search("ยังไม่ได้ทำสัญญา")
+                                    .draw();
+                            }
+                        },
+                        {
+                            text:
+                                "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
+                            action: function(e, dt, node, config) {
+                                dt.columns()
+                                    .search("")
+                                    .draw();
+                            }
+                        }
+                    ]
+                },
+                columns: [
                     {
-                        extend: "print",
-                        className: "dt-button",
-                        text: "<i class='bi bi-printer mr-1'></i>Print"
+                        data: null,
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
                     },
                     {
-                        text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
-                        action: function(e, dt, node, config) {
-                            dt.columns()
-                                .search("")
-                                .draw();
-                        }
-                    }
-                ]
-            },
-            columns: [
-                {
-                    data: null,
-                    render: function(data, type, row, meta) {
-                        return meta.row + meta.settings._iDisplayStart + 1;
-                    }
-                },
-                {
-                    data: "building[0].projectName",
-                    className: "text-capitalize",
-                    render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-building pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
-                    }
-                },
-
-                {
-                    data: "building[0].fmCode"
-                },
-                {
-                    data: "building[0].areaN"
-                },
-                {
-                    data: "building[0].bbN"
-                },
-                {
-                    data: "building[0].area3BB"
-                },
-                {
-                    data: "building[0].areaTrue"
-                },
-                {
-                    data: "building[0].areaTrueNew"
-                },
-                {
-                    data: "building[0].areaAis"
-                },
-                {
-                    data: "building[0].areaFiberNet"
-                },
-                {
-                    data: "building[0].buildingSum"
-                },
-                {
-                    data: "building[0].floorSum"
-                },
-                {
-                    data: "building[0].roomSum"
-                },
-                {
-                    data: "building[0].nameManager",
-                    className: "text-capitalize",
-                    render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-file-person pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
-                    }
-                },
-                {
-                    data: "building[0].phoneManager",
-                    render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-phone pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
-                    }
-                },
-                {
-                    data: "building[0].mailManager",
-                    render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-envelope pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
-                    }
-                },
-                {
-                    data: "building[0].nameNiti",
-                    render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-file-person pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
-                    }
-                },
-                {
-                    data: "building[0].phoneNiti",
-                    render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-phone pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
-                    }
-                },
-                {
-                    data: "building[0].mailNiti",
-                    render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-envelope pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
-                    }
-                },
-                {
-                    data: "building[0].houseNumber"
-                },
-                {
-                    data: "building[0].squadNumber"
-                },
-                {
-                    data: "building[0].alleyName"
-                },
-                {
-                    data: "building[0].roadName"
-                },
-                {
-                    data: "building[0].districtName"
-                },
-                {
-                    data: "building[0].countyName"
-                },
-                {
-                    data: "building[0].provinceName"
-                },
-                {
-                    data: "building[0].postalCode"
-                },
-                {
-                    data: "building[0].longitude"
-                },
-                {
-                    data: "building[0].latitude"
-                },
-                {
-                    data: "fmProgress"
-                },
-                {
-                    data: "totProgress"
-                },
-                {
-                    data: "aisProgress"
-                },
-                {
-                    data: "Progress3bb"
-                },
-                {
-                    data: "sinetProgress"
-                },
-                {
-                    data: "fnProgress"
-                },
-                {
-                    data: "trueProgress"
-                },
-                {
-                    data: "building[0].contractSell",
-                    render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-person-badge pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
-                    }
-                },
-                {
-                    data: "building[0].contractDate"
-                },
-                {
-                    data: "building[0].spendSpace",
-                    render: function(data, type, row, meta) {
-                        if (data == "ยังไม่ได้ทำสัญญา") {
+                        data: "building[0].projectName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
                             return (
-                                '<span class="text-danger">' + data + "</span>"
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
                             );
-                        } else {
-                            return data;
+                        }
+                    },
+
+                    {
+                        data: "building[0].fmCode"
+                    },
+                    {
+                        data: "building[0].areaN"
+                    },
+                    {
+                        data: "building[0].bbN"
+                    },
+                    {
+                        data: "building[0].area3BB"
+                    },
+                    {
+                        data: "building[0].areaTrue"
+                    },
+                    {
+                        data: "building[0].areaTrueNew"
+                    },
+                    {
+                        data: "building[0].areaAis"
+                    },
+                    {
+                        data: "building[0].areaFiberNet"
+                    },
+                    {
+                        data: "building[0].buildingSum"
+                    },
+                    {
+                        data: "building[0].floorSum"
+                    },
+                    {
+                        data: "building[0].roomSum"
+                    },
+                    {
+                        data: "building[0].nameManager",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-file-person pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-file-person pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].phoneManager",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-phone pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].mailManager",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-envelope pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-envelope pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].nameNiti",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-file-person pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-file-person pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].phoneNiti",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-phone pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].mailNiti",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-envelope pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-envelope pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].houseNumber",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].squadNumber",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].alleyName",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].roadName",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].districtName",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-warning">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].countyName",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-warning">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].provinceName",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-warning">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].postalCode",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-warning">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].longitude",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-warning">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].latitude",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-warning">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "fmProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="text-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "totProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="text-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "aisProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="text-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "Progress3bb",
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="text-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "sinetProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="text-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "fnProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="text-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "trueProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="text-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].contractSell",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-file-person pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-file-person pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].contractDate"
+                    },
+                    {
+                        data: "building[0].spendSpace",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].condition"
+                    },
+                    {
+                        data: "building[0].contractPeriod"
+                    },
+                    {
+                        data: "building[0].balance",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-cash pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-cash pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "building[0].operatingTime",
+                        render: function(data, type, row, meta) {
+                            return (
+                                '<span><i class="bi bi-alarm pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
                         }
                     }
-                },
-                {
-                    data: "building[0].condition"
-                },
-                {
-                    data: "building[0].contractPeriod"
-                },
-                {
-                    data: "building[0].balance",
-                    render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-cash pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
-                    }
-                },
-                {
-                    data: "building[0].operatingTime",
-                    render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-alarm pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
-                    }
+                ],
+                initComplete: function(settings) {
+                    setTimeout(function() {
+                        vm.notdocontractyet();
+                    }, 0);
                 }
-            ]
-        });
+            });
+        }
+    },
+    async mounted() {
+        await this.generateProgessTable();
     }
 };
 </script>

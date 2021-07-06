@@ -28,6 +28,11 @@ class Progress extends Model
         'dateTrue',
     ];
 
+    public function non_contract() {
+        return $this->building()->where('spendSpace','=', 'ยังไม่ได้ทำสัญญา');
+    }
+
+
     public function building()
 	{
 		return $this->hasMany('App\Models\Building','id','building_id');

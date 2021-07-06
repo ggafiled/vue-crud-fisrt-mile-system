@@ -46,7 +46,6 @@ class Building extends Model
         'operatingTime',
     ];
 
-
     public function progress()
 	{
 		return $this->belongsTo('App\Models\Progress','building_id','id');
