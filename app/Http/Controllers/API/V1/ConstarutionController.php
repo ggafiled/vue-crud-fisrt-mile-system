@@ -31,9 +31,30 @@ class ConstarutionController extends BaseController{
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function store(Request $request)
     {
-        //
+        $constarution = new Constarution([
+            'building_id' => $request->input('building_id'),
+            'desingBy' => $request->input('desingBy'),
+            'surveyDesing' => $request->input('surveyDesing'),
+            'surveyDesingDate' => $request->input('surveyDesingDate'),
+            'ifcc' => $request->input('ifcc'),
+            'ifccDate' => $request->input('ifccDate'),
+            'wallBox' => $request->input('wallBox'),
+            'wallBoxDate' => $request->input('wallBoxDate'),
+            'type' => $request->input('type'),
+            'microductD' => $request->input('microductD'),
+            'microductDateD' => $request->input('microductDateD'),
+            'microductK' => $request->input('microductK'),
+            'microductDateK' => $request->input('microductDateK'),
+            'fiberConvertion' => $request->input('fiberConvertion'),
+            'fiberConvertionDateD' => $request->input('fiberConvertionDateD'),
+            'blow' => $request->input('blow'),
+            'splice' => $request->input('splice'),
+        ]);
+        $constarution->save();
+
+        return response()->json('constarution created!');
     }
 
     /**
@@ -42,10 +63,6 @@ class ConstarutionController extends BaseController{
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -78,7 +95,10 @@ class ConstarutionController extends BaseController{
      */
     public function update(Request $request, $id)
     {
-        //
+        $constarution = Constarution::find($id);
+        $constarution->update($request->all());
+
+        return response()->json('constarution updated!');
     }
 
     /**
@@ -89,6 +109,9 @@ class ConstarutionController extends BaseController{
      */
     public function destroy($id)
     {
-        //
+        $constarution = Constarution::find($id);
+        $constarution->delete();
+
+        return response()->json('constarution deleted!');
     }
 }

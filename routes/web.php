@@ -19,7 +19,7 @@ Route::post('locale/{locale}', function ($locale){
 Auth::routes(['verify' => true,'register' => false]);
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::get('/home', function () {

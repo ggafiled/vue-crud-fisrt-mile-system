@@ -5,7 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// use App\Models\Building;
+use App\Models\Building;
 use App\Models\Progress;
 
 class BuildingListController extends BaseController
@@ -24,9 +24,10 @@ class BuildingListController extends BaseController
      */
     public function index()
     {
-        $buildings = Progress::with('building')->get();
+        $buildings = Building::with('progress')->get();
         return $this->sendResponse($buildings, 'BuildingList');
     }
+
 
     public function nonContract()
     {

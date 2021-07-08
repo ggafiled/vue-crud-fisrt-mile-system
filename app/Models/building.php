@@ -10,6 +10,7 @@ class Building extends Model
 {
     use HasFactory,SoftDeletes;
     protected $fillable = [
+        'id',
         'projectName',
         'buildingSum',
         'floorSum',
@@ -48,7 +49,7 @@ class Building extends Model
 
     public function progress()
 	{
-		return $this->belongsTo('App\Models\Progress','building_id','id');
+		return $this->hasOne('App\Models\Progress','building_id','id');
 	}
 
     public function constarution()

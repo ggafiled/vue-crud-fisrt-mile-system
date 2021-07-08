@@ -46,7 +46,7 @@
                                             v-for="(item,index) in not_do_contract_yet"
                                             :key="item.id"
                                         >
-                                            {{ item.building[0].projectName }}
+                                            {{ item.building.projectName }}
                                         <hr v-if="index != not_do_contract_yet.length-1"/>
                                         </div>
 
@@ -217,7 +217,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].projectName",
+                        data: "projectName",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             return (
@@ -229,40 +229,40 @@ export default {
                     },
 
                     {
-                        data: "building[0].fmCode"
+                        data: "fmCode"
                     },
                     {
-                        data: "building[0].areaN"
+                        data: "areaN"
                     },
                     {
-                        data: "building[0].bbN"
+                        data: "bbN"
                     },
                     {
-                        data: "building[0].area3BB"
+                        data: "area3BB"
                     },
                     {
-                        data: "building[0].areaTrue"
+                        data: "areaTrue"
                     },
                     {
-                        data: "building[0].areaTrueNew"
+                        data: "areaTrueNew"
                     },
                     {
-                        data: "building[0].areaAis"
+                        data: "areaAis"
                     },
                     {
-                        data: "building[0].areaFiberNet"
+                        data: "areaFiberNet"
                     },
                     {
-                        data: "building[0].buildingSum"
+                        data: "buildingSum"
                     },
                     {
-                        data: "building[0].floorSum"
+                        data: "floorSum"
                     },
                     {
-                        data: "building[0].roomSum"
+                        data: "roomSum"
                     },
                     {
-                        data: "building[0].nameManager",
+                        data: "nameManager",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "") {
@@ -281,7 +281,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].phoneManager",
+                        data: "phoneManager",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -299,7 +299,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].mailManager",
+                        data: "mailManager",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -317,7 +317,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].nameNiti",
+                        data: "nameNiti",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -335,7 +335,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].phoneNiti",
+                        data: "phoneNiti",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -353,7 +353,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].mailNiti",
+                        data: "mailNiti",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -371,7 +371,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].houseNumber",
+                        data: "houseNumber",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -385,7 +385,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].squadNumber",
+                        data: "squadNumber",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -399,7 +399,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].alleyName",
+                        data: "alleyName",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -413,7 +413,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].roadName",
+                        data: "roadName",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -427,7 +427,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].districtName",
+                        data: "districtName",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -441,7 +441,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].countyName",
+                        data: "countyName",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -455,7 +455,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].provinceName",
+                        data: "provinceName",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -469,7 +469,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].postalCode",
+                        data: "postalCode",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -483,7 +483,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].longitude",
+                        data: "longitude",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -497,7 +497,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].latitude",
+                        data: "latitude",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -511,7 +511,7 @@ export default {
                         }
                     },
                     {
-                        data: "fmProgress",
+                        data: "progress.fmProgress",
                         render: function(data, type, row, meta) {
                             if (data == "วางโครงข่ายแล้ว") {
                                 return (
@@ -535,7 +535,7 @@ export default {
                         }
                     },
                     {
-                        data: "totProgress",
+                        data: "progress.totProgress",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -559,7 +559,7 @@ export default {
                         }
                     },
                     {
-                        data: "aisProgress",
+                        data: "progress.aisProgress",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -583,7 +583,7 @@ export default {
                         }
                     },
                     {
-                        data: "Progress3bb",
+                        data: "progress.Progress3bb",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -607,7 +607,7 @@ export default {
                         }
                     },
                     {
-                        data: "sinetProgress",
+                        data: "progress.sinetProgress",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -631,7 +631,7 @@ export default {
                         }
                     },
                     {
-                        data: "fnProgress",
+                        data: "progress.fnProgress",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -655,7 +655,7 @@ export default {
                         }
                     },
                     {
-                        data: "trueProgress",
+                        data: "progress.trueProgress",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -679,7 +679,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].contractSell",
+                        data: "contractSell",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -697,10 +697,10 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].contractDate"
+                        data: "contractDate"
                     },
                     {
-                        data: "building[0].spendSpace",
+                        data: "spendSpace",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
@@ -714,13 +714,13 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].condition"
+                        data: "condition"
                     },
                     {
-                        data: "building[0].contractPeriod"
+                        data: "contractPeriod"
                     },
                     {
-                        data: "building[0].balance",
+                        data: "balance",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -738,7 +738,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].operatingTime",
+                        data: "operatingTime",
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-alarm pr-2"></i>' +

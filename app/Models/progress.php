@@ -11,6 +11,8 @@ class Progress extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'id',
+        'building_id',
         'projectName',
         'fmProgress',
         'dateFm',
@@ -35,6 +37,6 @@ class Progress extends Model
 
     public function building()
 	{
-		return $this->hasMany('App\Models\Building','id','building_id');
+		return $this->hasOne('App\Models\Building','id','building_id');
 	}
 }

@@ -21,8 +21,10 @@ class ProgressController extends BaseController{
      */
     public function index()
     {
+
         $progress = Progress::with('building')->get();
-        return $this->sendResponse($progress,'Progress List');
+        return $this->sendResponse($progress,'Progress');
+
     }
 
     /**
@@ -43,7 +45,26 @@ class ProgressController extends BaseController{
      */
     public function store(Request $request)
     {
-        //
+        $progress = new Progress([
+            'building_id' => $request->input('building_id'),
+            'fmProgress' => $request->input('fmProgress'),
+            'dateFm' => $request->input('dateFm'),
+            'totProgress' => $request->input('totProgress'),
+            'dateTot' => $request->input('dateTot'),
+            'aisProgress' => $request->input('aisProgress'),
+            'dateAis' => $request->input('dateAis'),
+            'progress3bb' => $request->input('progress3bb'),
+            'date3BB' => $request->input('date3BB'),
+            'sinetProgress' => $request->input('sinetProgress'),
+            'dateSinet' => $request->input('dateSinet'),
+            'fnProgress' => $request->input('fnProgress'),
+            'dateFn' => $request->input('dateFn'),
+            'trueProgress' => $request->input('trueProgress'),
+            'dateTrue' => $request->input('dateTrue')
+        ]);
+        $progress->save();
+
+        return response()->json('progress created!');
     }
 
     /**
@@ -77,7 +98,10 @@ class ProgressController extends BaseController{
      */
     public function update(Request $request, $id)
     {
-        //
+        $progress = Progress::find($id);
+        $progress->update($request->all());
+
+        return response()->json('progress updated!');
     }
 
     /**
@@ -88,6 +112,9 @@ class ProgressController extends BaseController{
      */
     public function destroy($id)
     {
-        //
+        $progress = Progress::find($id);
+        $progress->delete();
+
+        return response()->json('progress deleted!');
     }
 }

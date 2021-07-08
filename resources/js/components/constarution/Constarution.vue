@@ -139,13 +139,13 @@
                                         <div class="form-group">
                                             <label>Desing By</label>
                                             <select
-                                                v-model="form.numberLayer"
+                                                v-model="form.desingBy"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your DesingBy..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'numberLayer'
+                                                        'desingBy'
                                                     )
                                                 }"
                                             >
@@ -625,7 +625,7 @@
                                             </select>
                                             <has-error
                                                 :form="form"
-                                                field="fiberConvertion"
+                                                field="microductD"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -922,7 +922,18 @@ export default {
                     data: "building[0].projectName"
                 },
                 {
-                    data: "desingBy"
+                    data: "desingBy",
+                    render: function(data, type, row, meta) {
+                        if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return data;
+                        }
+                    }
                 },
                 {
                     data: "surveyDesing",

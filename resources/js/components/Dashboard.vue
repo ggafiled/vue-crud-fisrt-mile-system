@@ -15,7 +15,7 @@
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></a>
-                                <div class="float-right">
+                                <!-- <div class="float-right">
                                     {{
                                         dashboardInfo.building
                                             .toString()
@@ -24,7 +24,7 @@
                                                 ","
                                             )
                                     }}
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></a>
-                                <div class="float-right">
+                                <!-- <div class="float-right">
                                     {{
                                         dashboardInfo.constarution
                                             .toString()
@@ -54,7 +54,7 @@
                                                 ","
                                             )
                                     }}
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></a>
-                                <div class="float-right">
+                                <!-- <div class="float-right">
                                     {{
                                         dashboardInfo.progress
                                             .toString()
@@ -88,7 +88,7 @@
                                                 ","
                                             )
                                     }}
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,14 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Progress All</span>
-                            <span class="info-box-number">5,200</span>
+                            <span class="info-box-number">{{
+                                        dashboardInfo.building
+                                            .toString()
+                                            .replace(
+                                                /\B(?=(\d{3})+(?!\d))/g,
+                                                ","
+                                            )
+                                    }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -166,7 +173,14 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Constarution</span>
-                            <span class="info-box-number">163,921</span>
+                            <span class="info-box-number"> {{
+                                        dashboardInfo.constarution
+                                            .toString()
+                                            .replace(
+                                                /\B(?=(\d{3})+(?!\d))/g,
+                                                ","
+                                            )
+                                    }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -177,7 +191,14 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Progress</span>
-                            <span class="info-box-number">163,921</span>
+                            <span class="info-box-number"> {{
+                                        dashboardInfo.progress
+                                            .toString()
+                                            .replace(
+                                                /\B(?=(\d{3})+(?!\d))/g,
+                                                ","
+                                            )
+                                    }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -212,7 +233,14 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">User</span>
-                            <span class="info-box-number">114,381</span>
+                            <span class="info-box-number">{{
+                                        dashboardInfo.user
+                                            .toString()
+                                            .replace(
+                                                /\B(?=(\d{3})+(?!\d))/g,
+                                                ","
+                                            )
+                                    }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -261,7 +289,7 @@ export default {
                 // searching: false,
                 columns: [
                     {
-                        data: "building[0].projectName",
+                        data: "projectName",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             return (
@@ -272,7 +300,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].contractDate",
+                        data: "contractDate",
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-alarm pr-2"></i>' +
@@ -282,7 +310,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].spendSpace",
+                        data: "spendSpace",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
@@ -296,10 +324,10 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].contractPeriod"
+                        data: "contractPeriod"
                     },
                     {
-                        data: "building[0].balance",
+                        data: "balance",
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-cash pr-2"></i>' +

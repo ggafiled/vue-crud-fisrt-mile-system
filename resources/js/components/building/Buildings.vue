@@ -30,6 +30,7 @@
                                         <th>Project Name</th>
                                         <th>Manager Name</th>
                                         <th>Phone</th>
+                                        <th>SpendSpace</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -1153,6 +1154,16 @@ export default {
                     text: "<i class='bi bi-printer mr-1'></i>Print"
                 },
                 {
+                            className: "bg-danger",
+                            text:
+                                "<i class='bi bi-file-text mr-1'></i>ยังไม่ทำสัญญา",
+                            action: function(e, dt, node, config) {
+                                dt.columns()
+                                    .search("ยังไม่ได้ทำสัญญา")
+                                    .draw();
+                            }
+                        },
+                {
                     text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
                     action: function(e, dt, node, config) {
                         dt.columns()
@@ -1177,6 +1188,9 @@ export default {
                 {
                     data: "phoneManager"
                 },
+{
+                    data: "spendSpace"
+                },
                 {
                     data: null,
                     className: "dt-body-center",
@@ -1184,7 +1198,14 @@ export default {
                         return "<a class='edit-building' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-building' href='#'> <i class='fa fa-trash red'></i> </a>";
                     }
                 }
-            ]
+            ],
+            "columnDefs": [
+                        {
+                            "targets": [ 4 ],
+                            "visible": false,
+                            "searchable": true
+                        }
+                    ]
         });
 
         $("tbody", this.$refs.buildings).on("click", ".edit-building", function(

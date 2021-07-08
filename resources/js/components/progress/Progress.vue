@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">
-                            Building List Table
+                            Progress List Table
                         </h2>
                         <div class="card-tools">
                             <button
@@ -284,6 +284,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
@@ -339,6 +340,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>AIS วันวางโครงข่าย :</label>
@@ -367,13 +369,13 @@
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>3BB Progress :</label>
                                             <select
-                                                v-model="form.progress3bb"
+                                                v-model="form.Progress3bb"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your Progress3bb..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'progress3bb'
+                                                        'Progress3bb'
                                                     )
                                                 }"
                                             >
@@ -412,10 +414,11 @@
                                             </select>
                                             <has-error
                                                 :form="form"
-                                                field="progress3bb"
+                                                field="Progress3bb"
                                             ></has-error>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>3BB วันวางโครงข่าย :</label>
@@ -728,12 +731,19 @@ export default {
             })
         };
     },
+    computed: {
+        ...mapGetters(["progress"]),
+        ...mapState(["progress"])
+    },
     methods: {
         loadProgress() {
             this.$Progress.start();
 
             if (this.$gate.isAdmin()) {
-                //To DO
+                 this.$store.dispatch("GET_BUILDINGS");
+                $("#progress")
+                    .DataTable()
+                    .ajax.reload();
             }
 
             this.$Progress.finish();
@@ -762,7 +772,7 @@ export default {
         editModal(progress) {
             this.editmode = true;
             this.form.reset();
-            progress.projectName = progress.building[0].projectName;
+            progress.projectName = progress.building.projectName;
             $("#addNew").modal("show");
             this.form.fill(progress);
         },
@@ -824,7 +834,11 @@ export default {
                 });
         }
     },
-    created() {},
+    created() {
+        this.$Progress.start();
+        this.loadBuildings();
+        this.$Progress.finish();
+    },
     mounted() {
         var vm = this;
         var table = $(this.$refs.progress).DataTable({
@@ -864,7 +878,7 @@ export default {
                     }
                 },
                 {
-                    data: "building[0].projectName"
+                    data: "building.projectName"
                 },
                 {
                     data: "fmProgress",

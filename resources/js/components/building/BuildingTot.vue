@@ -111,7 +111,7 @@ export default {
                     }
                 },
                 {
-                    data: "building[0].projectName",
+                    data: "projectName",
                     className: "text-capitalize",
                     render: function(data, type, row, meta) {
                         return (
@@ -122,13 +122,13 @@ export default {
                     }
                 },
                 {
-                    data: "building[0].areaN"
+                    data: "areaN"
                 },
                 {
-                    data: "building[0].bbN"
+                    data: "bbN"
                 },
                 {
-                    data: "building[0].nameManager",
+                    data: "nameManager",
                     className: "text-capitalize",
                     render: function(data, type, row, meta) {
                         return (
@@ -139,7 +139,7 @@ export default {
                     }
                 },
                 {
-                    data: "building[0].phoneManager",
+                    data: "phoneManager",
                     render: function(data, type, row, meta) {
                         return (
                             '<span><i class="bi bi-phone pr-2"></i>' +
@@ -149,7 +149,7 @@ export default {
                     }
                 },
                 {
-                    data: "building[0].mailManager",
+                    data: "mailManager",
                     render: function(data, type, row, meta) {
                         return (
                             '<span><i class="bi bi-envelope pr-2"></i>' +
@@ -159,7 +159,7 @@ export default {
                     }
                 },
                 {
-                    data: "building[0].nameNiti",
+                    data: "nameNiti",
                     render: function(data, type, row, meta) {
                         return (
                             '<span><i class="bi bi-file-person pr-2"></i>' +
@@ -169,7 +169,7 @@ export default {
                     }
                 },
                 {
-                    data: "building[0].phoneNiti",
+                    data: "phoneNiti",
                     render: function(data, type, row, meta) {
                         return (
                             '<span><i class="bi bi-phone pr-2"></i>' +
@@ -179,7 +179,7 @@ export default {
                     }
                 },
                 {
-                    data: "building[0].mailNiti",
+                    data: "mailNiti",
                     render: function(data, type, row, meta) {
                         return (
                             '<span><i class="bi bi-envelope pr-2"></i>' +
@@ -189,49 +189,49 @@ export default {
                     }
                 },
                 {
-                    data: "building[0].houseNumber"
+                    data: "houseNumber"
                 },
                 {
-                    data: "building[0].squadNumber"
+                    data: "squadNumber"
                 },
                 {
-                    data: "building[0].alleyName"
+                    data: "alleyName"
                 },
                 {
-                    data: "building[0].roadName"
+                    data: "roadName"
                 },
                 {
-                    data: "building[0].districtName"
+                    data: "districtName"
                 },
                 {
-                    data: "building[0].countyName"
+                    data: "countyName"
                 },
                 {
-                    data: "building[0].provinceName"
+                    data: "provinceName"
                 },
                 {
-                    data: "building[0].postalCode"
+                    data: "postalCode"
                 },
                 {
-                    data: "building[0].buildingSum"
+                    data: "buildingSum"
                 },
                 {
-                    data: "building[0].floorSum"
+                    data: "floorSum"
                 },
                 {
-                    data: "building[0].roomSum"
+                    data: "roomSum"
                 },
                 {
-                    data: "building[0].longitude"
+                    data: "longitude"
                 },
                 {
-                    data: "building[0].latitude"
+                    data: "latitude"
                 },
                 {
-                    data: "fmProgress"
+                    data: "progress[0].fmProgress"
                 },
                 {
-                    data: "totProgress"
+                    data: "progress[0].totProgress"
                 },
             ]
         });

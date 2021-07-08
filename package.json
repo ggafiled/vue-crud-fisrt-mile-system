@@ -18,17 +18,17 @@
         "jquery": "^3.6.0",
         "laravel-mix": "^5.0.9",
         "lodash": "^4.17.21",
+        "moment": "^2.22.2",
         "popper.js": "^1.12",
         "postcss": "^8.2.8",
+        "pusher-js": "^4.2.2",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.32.8",
         "sass-loader": "^7.3.1",
         "tailwindcss": "^2.0.3",
         "vue": "^2.6.12",
         "vue-template-compiler": "^2.6.12",
-        "vuetable-2": "^1.7.5",
-        "moment": "^2.22.2",
-        "pusher-js": "^4.2.2"
+        "vuetable-2": "^1.7.5"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.2",
@@ -91,6 +91,7 @@
         "laravel-vue-datatable": "^0.6.0",
         "laravel-vue-pagination": "^2.3.1",
         "moment": "^2.29.1",
+        "select2": "^4.1.0-rc.0",
         "sweetalert2": "^9.17.2",
         "vform": "^1.0.1",
         "vue-float-menu": "^1.9.0",
