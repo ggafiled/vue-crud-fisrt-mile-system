@@ -13,6 +13,7 @@ try {
     require("bootstrap");
     require("admin-lte");
     require("bootstrap-select");
+
     require("bootstrap-select/js/i18n/defaults-de_DE");
 
     var dt = require("datatables.net-dt");
@@ -23,9 +24,11 @@ try {
     require("datatables.net-buttons/js/buttons.print.js")();
     require( 'datatables.net-fixedcolumns' );
     require("datatables.net-dt/css/jquery.datatables.css");
+    require("datatables.net-select");
 
     //Custom theme
     require("datatables.net-buttons-dt/css/buttons.datatables.css");
+    require("jquery-datatables-checkboxes");
 
     //Bootstrap icon
     require("bootstrap-icons/font/bootstrap-icons.css");

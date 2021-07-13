@@ -41,6 +41,10 @@ window.Toast = Toast;
 import FullCalendar from "vue-full-calendar";
 Vue.use(FullCalendar);
 
+import Select2 from 'v-select2-component';
+
+Vue.component('Select2', Select2);
+
 import VueProgressBar from "vue-progressbar";
 Vue.use(VueProgressBar, {
     color: "rgb(143, 255, 199)",
@@ -116,6 +120,7 @@ Vue.component(
 );
 
 Vue.component("not-found", require("./components/NotFound.vue").default);
+
 
 // Filter Section
 

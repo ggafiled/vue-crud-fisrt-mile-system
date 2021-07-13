@@ -21,6 +21,7 @@
                                     <tr class="info">
                                         <th></th>
                                         <th>Project Name</th>
+                                        <th>ProjectAis Name</th>
                                         <th>AreaAis</th>
                                         <th>Manager Name</th>
                                         <th>Phone</th>
@@ -120,7 +121,9 @@ export default {
                         );
                     }
                 },
-
+                {
+                    data: "projectNameAis"
+                },
                 {
                     data: "areaAis"
                 },
@@ -225,10 +228,10 @@ export default {
                     data: "latitude"
                 },
                 {
-                    data: "progress[0].fmProgress"
+                    data: "progress.fmProgress"
                 },
                 {
-                    data: "progress[0].aisProgress"
+                    data: "progress.aisProgress"
                 }
             ]
         });

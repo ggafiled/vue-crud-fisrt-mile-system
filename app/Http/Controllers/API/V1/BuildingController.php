@@ -48,6 +48,11 @@ class Buildingcontroller extends BaseController{
     {
         $buidings = new Building([
             'projectName' => $request->input('projectName'),
+            'projectNameTot' => $request->input('projectNameTot'),
+            'projectName3bb' => $request->input('projectName3bb'),
+            'projectNameTrue' => $request->input('projectNameTrue'),
+            'projectNameAis' => $request->input('projectNameAis'),
+            'projectNameFiberNet' => $request->input('projectNameFiberNet'),
             'buildingSum' => $request->input('buildingSum'),
             'floorSum' => $request->input('floorSum'),
             'roomSum' => $request->input('roomSum'),
@@ -70,9 +75,11 @@ class Buildingcontroller extends BaseController{
             'latitude' => $request->input('latitude'),
             'contractSell' => $request->input('contractSell'),
             'contractDate' => $request->input('contractDate'),
+            'contractDateEnd' => $request->input('contractDateEnd'),
             'spendSpace' => $request->input('spendSpace'),
             'condition' => $request->input('condition'),
             'contractPeriod' => $request->input('contractPeriod'),
+            'reNewContact' => $request->input('reNewContact'),
             'areaN' => $request->input('areaN'),
             'bbN' => $request->input('bbN'),
             'area3BB' => $request->input('area3BB'),
@@ -83,7 +90,6 @@ class Buildingcontroller extends BaseController{
             'operatingTime' => $request->input('operatingTime')
         ]);
         $buidings->save();
-
         return response()->json('buidings created!');
     }
 

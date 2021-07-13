@@ -97,6 +97,93 @@
                                             />
                                         </div>
                                     </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project Tot Name</label>
+                                            <input
+                                                v-model="form.projectNameTot"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameTot'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project 3bb Name</label>
+                                            <input
+                                                v-model="form.projectName3bb"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectName3bb'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project True Name</label>
+                                            <input
+                                                v-model="form.projectNameTrue"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameTrue'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project Ais Name</label>
+                                            <input
+                                                v-model="form.projectNameAis"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameAis'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project FiberNet Name</label>
+                                            <input
+                                                v-model="
+                                                    form.projectNameFiberNet
+                                                "
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameFiberNet'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>FmCode</label>
@@ -180,7 +267,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <hr />
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
@@ -560,6 +647,26 @@
                                             ></has-error>
                                         </div>
                                     </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Contract Date End</label>
+                                            <input
+                                                v-model="form.contractDateEnd"
+                                                type="date"
+                                                class="form-control"
+                                                placeholder="Enter your contract date..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'contractDateEnd'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="contractDateEnd"
+                                            ></has-error>
+                                        </div>
+                                    </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>SpendSpace</label>
@@ -595,8 +702,7 @@
                                                     value="ชำระรายปีแบบขั้นบันได"
                                                     >ชำระรายปีแบบขั้นบันได</option
                                                 >
-                                                <option
-                                                    value="ยังไม่ได้ทำสัญญา"
+                                                <option value="ยังไม่ได้ทำสัญญา"
                                                     >ยังไม่ได้ทำสัญญา</option
                                                 >
                                             </select>
@@ -990,6 +1096,11 @@ export default {
             form: new Form({
                 id: "",
                 projectName: "",
+                projectNameTot: "",
+                projectName3bb: "",
+                projectNameAis: "",
+                projectNameTrue: "",
+                projectNameFiberNet: "",
                 buildingSum: "",
                 floorSum: "",
                 roomSum: "",
@@ -1012,8 +1123,11 @@ export default {
                 latitude: "",
                 contractSell: "",
                 contractDate: "",
+                contractDateEnd: "",
                 spendSpace: "",
                 condition: "",
+                contractPeriod: "",
+                reNewContact: "",
                 areaN: "",
                 bbN: "",
                 area3BB: "",
@@ -1140,6 +1254,7 @@ export default {
             ajax: "api/building",
             responsive: true,
             processing: true,
+            autoWidth: true,
             pageLength: 15,
             lengthMenu: [
                 [10, 15, 25, 50, -1],
@@ -1154,15 +1269,51 @@ export default {
                     text: "<i class='bi bi-printer mr-1'></i>Print"
                 },
                 {
-                            className: "bg-danger",
-                            text:
-                                "<i class='bi bi-file-text mr-1'></i>ยังไม่ทำสัญญา",
-                            action: function(e, dt, node, config) {
-                                dt.columns()
-                                    .search("ยังไม่ได้ทำสัญญา")
-                                    .draw();
-                            }
-                        },
+                    className: "bg-danger",
+                    text: "<i class='bi bi-file-text mr-1'></i>ยังไม่ทำสัญญา",
+                    action: function(e, dt, node, config) {
+                        dt.columns(4)
+                            .search("ยังไม่ได้ทำสัญญา")
+                            .draw();
+                    }
+                },
+                {
+                    text:
+                        "<i class='bi bi-list-check mr-1'></i>แสดงที่เลือกไว้",
+                    action: function(e, dt, node, config) {
+                        console.info("button: Display Select Item");
+                        var rowsel = dt
+                            .rows({ selected: true })
+                            .data()
+                            .map(function(item) {
+                                return item.id;
+                            })
+                            .join(",");
+                        if (!rowsel.length) {
+                            return Swal.fire({
+                                title: "ไม่มีเรดคอร์ดที่เลือก",
+                                text: "กรุณาเลือกเรดคอร์ดก่อน",
+                                timer: 2000,
+                                showCancelButton: false,
+                                showConfirmButton: false
+                            });
+                        }
+                        $.fn.dataTable.ext.search.pop();
+                        $.fn.dataTable.ext.search.push(function(
+                            settings,
+                            data,
+                            dataIndex
+                        ) {
+                            return $(vm.table.row(dataIndex).node()).hasClass(
+                                "selected"
+                            )
+                                ? true
+                                : false;
+                        });
+
+                        vm.table.draw();
+                    }
+                },
                 {
                     text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
                     action: function(e, dt, node, config) {
@@ -1173,14 +1324,16 @@ export default {
                 }
             ],
             columns: [
+                { data: null, defaultContent: "", className: "dt-body-center" },
                 {
-                    data: null,
-                    render: function(data, type, row, meta) {
-                        return meta.row + meta.settings._iDisplayStart + 1;
+                    data: "projectName",
+                    render: function(data, type, full, meta) {
+                        return (
+                            "<div class='text-wrap' style='max-width: 250px;'>" +
+                            data +
+                            "</div>"
+                        );
                     }
-                },
-                {
-                    data: "projectName"
                 },
                 {
                     data: "nameManager"
@@ -1188,7 +1341,7 @@ export default {
                 {
                     data: "phoneManager"
                 },
-{
+                {
                     data: "spendSpace"
                 },
                 {
@@ -1199,13 +1352,24 @@ export default {
                     }
                 }
             ],
-            "columnDefs": [
-                        {
-                            "targets": [ 4 ],
-                            "visible": false,
-                            "searchable": true
-                        }
-                    ]
+            columnDefs: [
+                {
+                    targets: 0,
+                    searchable: false,
+                    orderable: false,
+                    className: "dt-body-center",
+                    checkboxes: {
+                        selectRow: true
+                    }
+                },
+                {
+                    targets: [4],
+                    visible: false,
+                    searchable: true
+                }
+            ],
+            select: { selector: "td:not(:last-child)", style: "os" },
+            order: [[1, "desc"]]
         });
 
         $("tbody", this.$refs.buildings).on("click", ".edit-building", function(

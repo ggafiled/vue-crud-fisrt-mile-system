@@ -21,6 +21,7 @@
                                     <tr class="info">
                                         <th></th>
                                         <th>Project Name</th>
+                                        <th>ProjectTrue Name</th>
                                         <th>AreaTrue</th>
                                         <th>AreaTrueNew</th>
                                         <th>Manager Name</th>
@@ -120,6 +121,9 @@ export default {
                             "</span>"
                         );
                     }
+                },
+                {
+                    data: "projectNameTrue"
                 },
                 {
                     data: "areaTrue"
@@ -228,10 +232,10 @@ export default {
                     data: "latitude"
                 },
                 {
-                    data: "progress[0].fmProgress"
+                    data: "progress.fmProgress"
                 },
                 {
-                    data: "progress[0].trueProgress"
+                    data: "progress.trueProgress"
                 }
             ]
         });

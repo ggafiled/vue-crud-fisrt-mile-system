@@ -21,6 +21,7 @@
                                     <tr class="info">
                                         <th></th>
                                         <th>Project Name</th>
+                                        <th>ProjectTot Name</th>
                                         <th>AreaN</th>
                                         <th>BBN</th>
                                         <th>Manager Name</th>
@@ -120,6 +121,9 @@ export default {
                             "</span>"
                         );
                     }
+                },
+                {
+                    data: "projectNameTot"
                 },
                 {
                     data: "areaN"
@@ -228,11 +232,11 @@ export default {
                     data: "latitude"
                 },
                 {
-                    data: "progress[0].fmProgress"
+                    data: "progress.fmProgress"
                 },
                 {
-                    data: "progress[0].totProgress"
-                },
+                    data: "progress.totProgress"
+                }
             ]
         });
     }

@@ -83,7 +83,8 @@
 
                         <form
                             @submit.prevent="
-                                editmode ? updateProgress() : createProgress()
+                                editmode ? updateProgress()
+                                : createProgress()
                             "
                         >
                             <div class="modal-body">
@@ -110,19 +111,14 @@
                                             editmode ? 'col-sm-10' : 'col-sm-12'
                                         ]"
                                     >
-                                        <div class="form-group">
+                                         <div class="form-group">
                                             <label>Project Name</label>
-                                            <input
-                                                v-model="form.projectName"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your project..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'projectName'
-                                                    )
-                                                }"
-                                            />
+                                            <Select2
+                                                v-model="form.building_id"
+                                                :options="building"
+                                                :settings="settings"
+                                            >
+                                            </Select2>
                                             <has-error
                                                 :form="form"
                                                 field="projectName"
@@ -212,7 +208,6 @@
                                 <div class="row">
                                     <div class="col-sm-9">
                                         <div class="form-group">
-                                            <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>TOT Progress :</label>
                                             <select
                                                 v-model="form.totProgress"
@@ -288,7 +283,6 @@
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-
                                             <label>AIS Progress :</label>
                                             <select
                                                 v-model="form.aisProgress"
@@ -441,8 +435,6 @@
                                     </div>
                                     <div class="col-sm-9">
                                         <div class="form-group">
-                                            <!-- ******************* EDIT TO SELECTION ******************* -->
-
                                             <label>Sinet Progress :</label>
                                             <select
                                                 v-model="form.sinetProgress"
@@ -521,7 +513,6 @@
                                 <div class="row">
                                     <div class="col-sm-9">
                                         <div class="form-group">
-                                            <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>FN Progress :</label>
                                             <select
                                                 v-model="form.fnProgress"
@@ -705,11 +696,20 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
+import Select2 from "v-select2-component";
 export default {
+    components: { Select2 },
     data() {
         return {
             editmode: false,
             selected: "",
+            building: [],
+            settings: {
+                placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
+                allowClear: true,
+                dropdownParent: ".modal"
+            },
+            sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
             form: new Form({
                 id: "",
                 building_id: "",
@@ -736,11 +736,19 @@ export default {
         ...mapState(["progress"])
     },
     methods: {
+        loadBuildings() {
+            axios.get("api/building").then(
+                response =>
+                    (this.building = response.data.data.map(a => {
+                        return { text: a.projectName, id: a.id };
+                    }))
+            );
+        },
         loadProgress() {
             this.$Progress.start();
 
             if (this.$gate.isAdmin()) {
-                 this.$store.dispatch("GET_BUILDINGS");
+                this.$store.dispatch("GET_BUILDINGS");
                 $("#progress")
                     .DataTable()
                     .ajax.reload();

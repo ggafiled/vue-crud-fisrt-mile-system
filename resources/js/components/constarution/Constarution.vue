@@ -4,9 +4,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">
-                            Constarution List Table
-                        </h2>
+                        <h2 class="card-title">Constarution List Table</h2>
                         <div class="card-tools">
                             <button
                                 type="button"
@@ -25,7 +23,7 @@
                                 id="constarution"
                                 ref="constarution"
                                 class="display nowrap"
-                                style="width:100%"
+                                style="width: 100%"
                             >
                                 <thead>
                                     <tr class="info">
@@ -94,7 +92,7 @@
                         >
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-2" v-show="editmode">
                                         <div class="form-group">
                                             <label>Project Building ID</label>
                                             <input
@@ -111,20 +109,19 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-sm-10">
+                                    <div
+                                        :class="
+                                            editmode ? 'col-sm-10' : 'col-sm-12'
+                                        "
+                                    >
                                         <div class="form-group">
                                             <label>Project Name</label>
-                                            <input
-                                                v-model="form.projectName"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your building..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'projectName'
-                                                    )
-                                                }"
-                                            />
+                                            <Select2
+                                                v-model="form.building_id"
+                                                :options="building"
+                                                :settings="settings"
+                                            >
+                                            </Select2>
                                             <has-error
                                                 :form="form"
                                                 field="projectName"
@@ -154,19 +151,19 @@
                                                 >
                                                 <option
                                                     value="คุณโอ๋ : 061 995 5389"
-                                                    >คุณโอ๋ : 061 995
-                                                    5389</option
                                                 >
+                                                    คุณโอ๋ : 061 995 5389
+                                                </option>
                                                 <option
                                                     value="คุณอ๋อง : 087 003 0777"
-                                                    >คุณอ๋อง : 087 003
-                                                    0777</option
                                                 >
+                                                    คุณอ๋อง : 087 003 0777
+                                                </option>
                                                 <option
                                                     value="คุณบอย : 094 826 5323"
-                                                    >คุณบอย : 094 826
-                                                    5323</option
                                                 >
+                                                    คุณบอย : 094 826 5323
+                                                </option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -202,23 +199,27 @@
                                                 >
                                                 <option
                                                     value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
                                                 >
+                                                    ดำเนิการแล้วเสร็จ
+                                                </option>
                                                 <option value="วางโครงข่ายแล้ว"
                                                     >วางโครงข่ายแล้ว</option
                                                 >
                                                 <option
                                                     value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
                                                 >
+                                                    กำลังสร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
                                                 >
+                                                    สร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
                                                 >
+                                                    เชื่อมโครงข่ายแล้ว
+                                                </option>
                                                 <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
@@ -281,23 +282,27 @@
                                                 >
                                                 <option
                                                     value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
                                                 >
+                                                    ดำเนิการแล้วเสร็จ
+                                                </option>
                                                 <option value="วางโครงข่ายแล้ว"
                                                     >วางโครงข่ายแล้ว</option
                                                 >
                                                 <option
                                                     value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
                                                 >
+                                                    กำลังสร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
                                                 >
+                                                    สร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
                                                 >
+                                                    เชื่อมโครงข่ายแล้ว
+                                                </option>
                                                 <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
@@ -338,7 +343,8 @@
                                                         'wallBox'
                                                     )
                                                 }"
-                                                ><option disabled value=""
+                                            >
+                                                <option disabled value=""
                                                     >การดำเนินการสร้าง</option
                                                 >
                                                 <option value="รอเข้า Survey"
@@ -352,23 +358,27 @@
                                                 >
                                                 <option
                                                     value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
                                                 >
+                                                    ดำเนิการแล้วเสร็จ
+                                                </option>
                                                 <option value="วางโครงข่ายแล้ว"
                                                     >วางโครงข่ายแล้ว</option
                                                 >
                                                 <option
                                                     value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
                                                 >
+                                                    กำลังสร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
                                                 >
+                                                    สร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
                                                 >
+                                                    เชื่อมโครงข่ายแล้ว
+                                                </option>
                                                 <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
@@ -450,23 +460,27 @@
                                                 >
                                                 <option
                                                     value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
                                                 >
+                                                    ดำเนิการแล้วเสร็จ
+                                                </option>
                                                 <option value="วางโครงข่ายแล้ว"
                                                     >วางโครงข่ายแล้ว</option
                                                 >
                                                 <option
                                                     value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
                                                 >
+                                                    กำลังสร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
                                                 >
+                                                    สร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
                                                 >
+                                                    เชื่อมโครงข่ายแล้ว
+                                                </option>
                                                 <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
@@ -524,23 +538,27 @@
                                                 >
                                                 <option
                                                     value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
                                                 >
+                                                    ดำเนิการแล้วเสร็จ
+                                                </option>
                                                 <option value="วางโครงข่ายแล้ว"
                                                     >วางโครงข่ายแล้ว</option
                                                 >
                                                 <option
                                                     value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
                                                 >
+                                                    กำลังสร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
                                                 >
+                                                    สร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
                                                 >
+                                                    เชื่อมโครงข่ายแล้ว
+                                                </option>
                                                 <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
@@ -604,23 +622,27 @@
                                                 >
                                                 <option
                                                     value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
                                                 >
+                                                    ดำเนิการแล้วเสร็จ
+                                                </option>
                                                 <option value="วางโครงข่ายแล้ว"
                                                     >วางโครงข่ายแล้ว</option
                                                 >
                                                 <option
                                                     value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
                                                 >
+                                                    กำลังสร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
                                                 >
+                                                    สร้างพร้อมโครงการฯ
+                                                </option>
                                                 <option
                                                     value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
                                                 >
+                                                    เชื่อมโครงข่ายแล้ว
+                                                </option>
                                                 <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
@@ -756,11 +778,21 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
+import Select2 from "v-select2-component";
+
 export default {
+    components: { Select2 },
     data() {
         return {
             editmode: false,
             selected: "",
+            building: [],
+            settings: {
+                placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
+                allowClear: true,
+                dropdownParent: ".modal"
+            },
+            sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
             form: new Form({
                 id: "",
                 building_id: "",
@@ -786,6 +818,14 @@ export default {
         };
     },
     methods: {
+        loadBuildings() {
+            axios.get("api/building").then(
+                response =>
+                    (this.building = response.data.data.map(a => {
+                        return { text: a.projectName, id: a.id };
+                    }))
+            );
+        },
         loadConstarution() {
             this.$Progress.start();
 
@@ -864,7 +904,6 @@ export default {
                 .post("api/constarution")
                 .then(response => {
                     $("#addNew").modal("hide");
-
                     Toast.fire({
                         icon: "success",
                         title: response.data.message
@@ -881,7 +920,11 @@ export default {
                 });
         }
     },
-    created() {},
+    created() {
+        this.$Progress.start();
+        this.loadBuildings();
+        this.$Progress.finish();
+    },
     mounted() {
         var vm = this;
         var table = $(this.$refs.constarution).DataTable({
@@ -894,6 +937,14 @@ export default {
                 [10, 15, 25, 50, -1],
                 [10, 15, 25, 50, "All"]
             ],
+            fixedHeader: true,
+            fixedColumns: true,
+            fixedColumns: {
+                leftColumns: 0,
+                rightColumns: 1
+            },
+            scrollX: true,
+            scrollCollapse: true,
             buttons: [
                 "colvis",
                 "copy",
@@ -912,12 +963,7 @@ export default {
                 }
             ],
             columns: [
-                {
-                    data: null,
-                    render: function(data, type, row, meta) {
-                        return meta.row + meta.settings._iDisplayStart + 1;
-                    }
-                },
+                { data: null, defaultContent: "", className: "dt-body-center" },
                 {
                     data: "building[0].projectName"
                 },
@@ -1107,7 +1153,20 @@ export default {
                         return "<a class='edit-constarution' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-constarution' href='#'> <i class='fa fa-trash red'></i> </a>";
                     }
                 }
-            ]
+            ],
+            columnDefs: [
+                {
+                    targets: 0,
+                    searchable: false,
+                    orderable: false,
+                    className: "dt-body-center",
+                    checkboxes: {
+                        selectRow: true
+                    }
+                }
+            ],
+            select: { selector: "td:not(:last-child)", style: "os" },
+            order: [[1, "desc"]]
         });
 
         $("tbody", this.$refs.constarution).on(
@@ -1132,5 +1191,3 @@ export default {
     }
 };
 </script>
-
-<style></style>

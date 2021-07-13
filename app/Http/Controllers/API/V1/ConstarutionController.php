@@ -56,7 +56,6 @@ class ConstarutionController extends BaseController{
 
         return response()->json('constarution created!');
     }
-
     /**
      * Store a newly created resource in storage.
      *

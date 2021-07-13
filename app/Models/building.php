@@ -12,6 +12,11 @@ class Building extends Model
     protected $fillable = [
         'id',
         'projectName',
+        'projectNameTot',
+        'projectName3bb',
+        'projectNameTrue',
+        'projectNameAis',
+        'projectNameFiberNet',
         'buildingSum',
         'floorSum',
         'roomSum',
@@ -34,9 +39,11 @@ class Building extends Model
         'latitude',
         'contractSell',
         'contractDate',
+        'contractDateEnd',
         'spendSpace',
         'condition',
         'contractPeriod',
+        'reNewContact',
         'areaN',
         'bbN',
         'area3BB',
@@ -56,4 +63,8 @@ class Building extends Model
 	{
 		return $this->belongsTo('App\Models\Constarution','building_id','id');
 	}
+
+    public function get_building() {
+        return $this->building()->where('building_id');
+    }
 }

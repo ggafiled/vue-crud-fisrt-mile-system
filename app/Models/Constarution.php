@@ -27,7 +27,7 @@ class Constarution extends Model
         'fiberConvertion',
         'fiberConvertionDateD',
         'blow',
-        'splice',
+        'splice'
     ];
 
     public function building()
