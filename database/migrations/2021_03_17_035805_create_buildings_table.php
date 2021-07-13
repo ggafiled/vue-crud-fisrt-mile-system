@@ -16,6 +16,11 @@ class CreateBuildingsTable extends Migration
         Schema::create('buildings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('projectName')->nullable();
+            $table->string('projectNameTot')->nullable();
+            $table->string('projectName3bb')->nullable();
+            $table->string('projectNameTrue')->nullable();
+            $table->string('projectNameAis')->nullable();
+            $table->string('projectNameFiberNet')->nullable();
             $table->string('buildingSum')->nullable();
             $table->string('floorSum')->nullable();
             $table->string('roomSum')->nullable();
@@ -38,9 +43,12 @@ class CreateBuildingsTable extends Migration
             $table->double('latitude')->nullable();
             $table->string('contractSell')->nullable();
             $table->date('contractDate')->nullable();
+            $table->date('contractDateEnd')->nullable();
             $table->string('spendSpace')->nullable();
             $table->string('condition')->nullable();
             $table->string('contractPeriod')->nullable();
+            $table->string('reNewContact')->nullable();
+            $table->string('balance')->nullable();
             $table->string('areaN')->nullable();
             $table->string('bbN')->nullable();
             $table->string('area3BB')->nullable();
@@ -51,8 +59,6 @@ class CreateBuildingsTable extends Migration
             $table->string('operatingTime')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
-
         });
     }
 

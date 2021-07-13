@@ -42,14 +42,20 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                        <div
-                                            v-for="(item,index) in not_do_contract_yet"
-                                            :key="item.id"
-                                        >
-                                            {{ item.building.projectName }}
-                                        <hr v-if="index != not_do_contract_yet.length-1"/>
-                                        </div>
-
+                                    <div
+                                        v-for="(item,
+                                        index) in not_do_contract_yet"
+                                        :key="item.id"
+                                    >
+                                        {{ item.building.projectName }}
+                                        <hr
+                                            v-if="
+                                                index !=
+                                                    not_do_contract_yet.length -
+                                                        1
+                                            "
+                                        />
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button
@@ -76,6 +82,11 @@
                                     <tr class="info">
                                         <th></th>
                                         <th>Project Name</th>
+                                        <th>Project Name Tot</th>
+                                        <th>Project Name 3BB</th>
+                                        <th>Project Name True</th>
+                                        <th>Project Name Ais</th>
+                                        <th>Project Name FiberNet</th>
                                         <th>Fm Code</th>
                                         <th>AreaN</th>
                                         <th>BBN</th>
@@ -112,8 +123,10 @@
                                         <th>TRUE-Progress</th>
                                         <th>ContractSell</th>
                                         <th>ContractDate</th>
+                                        <th>ContractDateEnd</th>
                                         <th>SpendSpace</th>
                                         <th>ContractPeriod</th>
+                                        <th>reNewContact</th>
                                         <th>Condition</th>
                                         <th>Balance</th>
                                         <th>OperatingTime</th>
@@ -227,7 +240,21 @@ export default {
                             );
                         }
                     },
-
+                    {
+                        data: "projectNameTot"
+                    },
+                    {
+                        data: "projectName3bb"
+                    },
+                    {
+                        data: "projectNameTrue"
+                    },
+                    {
+                        data: "projectNameAis"
+                    },
+                    {
+                        data: "projectNameFiberNet"
+                    },
                     {
                         data: "fmCode"
                     },
@@ -700,6 +727,9 @@ export default {
                         data: "contractDate"
                     },
                     {
+                        data: "contractDateEnd"
+                    },
+                    {
                         data: "spendSpace",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
@@ -714,10 +744,13 @@ export default {
                         }
                     },
                     {
-                        data: "condition"
+                        data: "contractPeriod"
                     },
                     {
-                        data: "contractPeriod"
+                        data: "reNewContact"
+                    },
+                    {
+                        data: "condition"
                     },
                     {
                         data: "balance",

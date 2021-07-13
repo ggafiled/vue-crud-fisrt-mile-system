@@ -130,10 +130,12 @@
                                     <thead>
                                         <tr class="info">
                                             <th>ProjectName</th>
-                                            <th>DateContact</th>
-                                            <th>SpendSpace</th>
-                                            <th>ContractPeriod</th>
-                                            <th>Balance</th>
+                                            <th>FM-Progress</th>
+                                            <th>TOT-Progress</th>
+                                            <th>AIS-Progress</th>
+                                            <th>3BB-Progress</th>
+                                            <th>FN-Progress</th>
+                                            <th>TRUE-Progress</th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -156,13 +158,10 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Progress All</span>
                             <span class="info-box-number">{{
-                                        dashboardInfo.building
-                                            .toString()
-                                            .replace(
-                                                /\B(?=(\d{3})+(?!\d))/g,
-                                                ","
-                                            )
-                                    }}</span>
+                                dashboardInfo.building
+                                    .toString()
+                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                            }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -173,14 +172,13 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Constarution</span>
-                            <span class="info-box-number"> {{
-                                        dashboardInfo.constarution
-                                            .toString()
-                                            .replace(
-                                                /\B(?=(\d{3})+(?!\d))/g,
-                                                ","
-                                            )
-                                    }}</span>
+                            <span class="info-box-number">
+                                {{
+                                    dashboardInfo.constarution
+                                        .toString()
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                }}</span
+                            >
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -191,14 +189,13 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Progress</span>
-                            <span class="info-box-number"> {{
-                                        dashboardInfo.progress
-                                            .toString()
-                                            .replace(
-                                                /\B(?=(\d{3})+(?!\d))/g,
-                                                ","
-                                            )
-                                    }}</span>
+                            <span class="info-box-number">
+                                {{
+                                    dashboardInfo.progress
+                                        .toString()
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                }}</span
+                            >
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -234,13 +231,10 @@
                         <div class="info-box-content">
                             <span class="info-box-text">User</span>
                             <span class="info-box-number">{{
-                                        dashboardInfo.user
-                                            .toString()
-                                            .replace(
-                                                /\B(?=(\d{3})+(?!\d))/g,
-                                                ","
-                                            )
-                                    }}</span>
+                                dashboardInfo.user
+                                    .toString()
+                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                            }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -300,40 +294,293 @@ export default {
                         }
                     },
                     {
-                        data: "contractDate",
+                        data: "progress.fmProgress",
                         render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-alarm pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
-                    },
-                    {
-                        data: "spendSpace",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
+                            if (data == "") {
                                 return (
-                                    '<span class="text-danger">' +
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
                                     data +
                                     "</span>"
                                 );
                             } else {
-                                return data;
+                                return "<span>" + data + "</span>";
                             }
                         }
                     },
                     {
-                        data: "contractPeriod"
+                        data: "progress.totProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ดำเนิการแล้วเสร็จ") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "กำลังดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "รอเข้าดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "TOT วางโครงข่ายเอง") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                     },
                     {
-                        data: "balance",
+                        data: "progress.aisProgress",
                         render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-cash pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ดำเนิการแล้วเสร็จ") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "กำลังดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "รอเข้าดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "AIS วางโครงข่ายเอง") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "progress.Progress3bb",
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ดำเนิการแล้วเสร็จ") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "กำลังดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "รอเข้าดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "3bb วางโครงข่ายเอง") {
+                                return (
+                                    '<span class="badge badge-orange">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "progress.fnProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ดำเนิการแล้วเสร็จ") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "กำลังดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "รอเข้าดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "fn วางโครงข่ายเอง") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "progress.trueProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ดำเนิการแล้วเสร็จ") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "กำลังดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "รอเข้าดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ทรู วางโครงข่ายเอง") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
                         }
                     }
                 ]
