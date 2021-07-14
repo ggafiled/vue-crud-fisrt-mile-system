@@ -38,6 +38,7 @@
                                         <th>FiberConvertion</th>
                                         <th>Blow</th>
                                         <th>Splice</th>
+                                        <th>Update</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -984,11 +985,7 @@ export default {
                 {
                     data: "surveyDesing",
                     render: function(data, type, row, meta) {
-                        if (data == "ดำเนิการแล้วเสร็จ") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                         if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -996,7 +993,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -1004,11 +1001,7 @@ export default {
                 {
                     data: "ifcc",
                     render: function(data, type, row, meta) {
-                        if (data == "ดำเนิการแล้วเสร็จ") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                         if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1016,7 +1009,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -1024,11 +1017,7 @@ export default {
                 {
                     data: "wallBox",
                     render: function(data, type, row, meta) {
-                        if (data == "ดำเนิการแล้วเสร็จ") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                        if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1036,7 +1025,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -1044,11 +1033,7 @@ export default {
                 {
                     data: "microductD",
                     render: function(data, type, row, meta) {
-                        if (data == "ดำเนิการแล้วเสร็จ") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                        if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1056,7 +1041,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -1065,11 +1050,7 @@ export default {
                 {
                     data: "microductK",
                     render: function(data, type, row, meta) {
-                        if (data == "ดำเนิการแล้วเสร็จ") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                        if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1077,7 +1058,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -1086,11 +1067,7 @@ export default {
                 {
                     data: "fiberConvertion",
                     render: function(data, type, row, meta) {
-                        if (data == "ดำเนิการแล้วเสร็จ") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                        if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1098,7 +1075,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -1107,11 +1084,7 @@ export default {
                 {
                     data: "blow",
                     render: function(data, type, row, meta) {
-                        if (data == "ดำเนิการแล้วเสร็จ") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                        if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1119,7 +1092,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -1128,11 +1101,7 @@ export default {
                 {
                     data: "splice",
                     render: function(data, type, row, meta) {
-                        if (data == "ดำเนิการแล้วเสร็จ") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                        if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1140,11 +1109,17 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
                     // visible: false
+                },
+                {
+                    data: "updated_at",
+                    render: function(data, type, row, meta) {
+                        return moment(data).format("MM/DD/YYYY HH:MM");
+                    }
                 },
                 {
                     data: null,

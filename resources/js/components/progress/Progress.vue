@@ -38,6 +38,7 @@
                                         <th>SINET-Progress</th>
                                         <th>FN-Progress</th>
                                         <th>TRUE-Progress</th>
+                                        <th>Update</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -885,17 +886,13 @@ export default {
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                {
+                 {
                     data: "building.projectName"
                 },
                 {
                     data: "fmProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "วางโครงข่ายแล้ว") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                         if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -903,7 +900,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -911,11 +908,7 @@ export default {
                 {
                     data: "totProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "เชื่อมโครงข่ายแล้ว") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                         if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -923,19 +916,16 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
+
                 },
                 {
                     data: "aisProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "เชื่อมโครงข่ายแล้ว") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                         if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -943,7 +933,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -951,11 +941,7 @@ export default {
                 {
                     data: "Progress3bb",
                     render: function(data, type, row, meta) {
-                        if (data == "เชื่อมโครงข่ายแล้ว") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                         if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -963,7 +949,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -971,11 +957,7 @@ export default {
                 {
                     data: "sinetProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "เชื่อมโครงข่ายแล้ว") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                         if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -983,7 +965,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -991,11 +973,7 @@ export default {
                 {
                     data: "fnProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "เชื่อมโครงข่ายแล้ว") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                         if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1003,7 +981,7 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
                     }
@@ -1011,11 +989,7 @@ export default {
                 {
                     data: "trueProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "เชื่อมโครงข่ายแล้ว") {
-                            return (
-                                '<span class="text-success">' + data + "</span>"
-                            );
-                        } else if (data == "") {
+                         if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1023,9 +997,15 @@ export default {
                             );
                         } else {
                             return (
-                                '<span class="text-warning">' + data + "</span>"
+                                '<span>' + data + "</span>"
                             );
                         }
+                    }
+                },
+                {
+                    data: "updated_at",
+                    render: function(data, type, row, meta) {
+                        return moment(data).format("MM/DD/YYYY HH:MM");
                     }
                 },
                 {
