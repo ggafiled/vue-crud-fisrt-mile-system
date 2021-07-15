@@ -43,7 +43,7 @@ services:
 
     environment:
       MYSQL_DATABASE: laravel
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 1234567
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:

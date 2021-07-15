@@ -153,3 +153,7 @@ let channel = pusher.subscribe("building-channel");
 channel.bind("new-building", data => {
     app.$store.commit("ADD_BUILDINGS", data.building);
 });
+
+if (inBrowser && window.Vue) {
+    window.Vue.use(VueRouter);
+  }
