@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Controllers\Controller;
 use App\Models\Building;
 use App\Models\Constarution;
-use App\Models\progress;
-use App\Models\user;
+use App\Models\Progress;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends BaseController
@@ -34,7 +33,7 @@ class DashboardController extends BaseController
             'building'=>Building::get()->count(),
             'constarution'=>Constarution::get()->count(),
             'progress'=>Progress::get()->count(),
-            'user'=>user::get()->count()
+            'user'=>User::get()->count()
         ];
 
         return $this->sendResponse($dashboard, 'Dashboard Info');
