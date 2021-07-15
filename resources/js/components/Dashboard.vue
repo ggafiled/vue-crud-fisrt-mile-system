@@ -160,7 +160,7 @@
                             <span class="info-box-number">{{
                                 dashboardInfo.building
                                     .toString()
-                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || 0
                             }}</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -176,7 +176,7 @@
                                 {{
                                     dashboardInfo.constarution
                                         .toString()
-                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || 0
                                 }}</span
                             >
                         </div>
@@ -193,7 +193,7 @@
                                 {{
                                     dashboardInfo.progress
                                         .toString()
-                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || 0
                                 }}</span
                             >
                         </div>
@@ -233,7 +233,7 @@
                             <span class="info-box-number">{{
                                 dashboardInfo.user
                                     .toString()
-                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || 0
                             }}</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -260,12 +260,16 @@ export default {
     },
     methods: {
         async getDashboardInfo() {
-            await axios
+            try {
+                await axios
                 .get("/api/dashboard")
                 .then(response => {
                     this.dashboardInfo = response.data.data;
                 })
                 .catch(() => console.warn("Oh. Something went wrong"));
+            } catch (error) {
+                 console.error(error.message)
+            }
         },
         async generateDashboardTable() {
             console.log("buildings Component mounted.");
