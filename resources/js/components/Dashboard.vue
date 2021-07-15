@@ -276,6 +276,7 @@ export default {
             var vm = this;
             var table = await $(this.$refs.buildinglist).DataTable({
                 ajax: "api/buildinglist",
+                "cache": true,
                 pageLength: 10,
                 lengthMenu: [
                     [10, 15, 25, 50, -1],
