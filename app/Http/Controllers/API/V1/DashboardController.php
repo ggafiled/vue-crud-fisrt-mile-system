@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Building;
+
 use App\Models\Constarution;
 use App\Models\progress;
 use App\Models\user;
@@ -31,7 +31,7 @@ class DashboardController extends BaseController
     {
         //จะทำให้ดูอันเดียวจากนั้นถ้าจะเพิ่มก็เพิ่มใน array เอา
         $dashboard = [
-            'building'=>Building::get()->count(),
+            'building'=>0,
             'constarution'=>Constarution::get()->count(),
             'progress'=>Progress::get()->count(),
             'user'=>user::get()->count()
