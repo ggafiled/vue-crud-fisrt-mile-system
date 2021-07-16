@@ -88,7 +88,7 @@ return [
     'layout_topnav' => null,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => true,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
 
     /*
@@ -245,16 +245,19 @@ return [
                 [
                     'text' => 'Building Managment',
                     'url'  => '/building',
+                    'icon' => 'fas fa-fw bi bi-building',
                     'can'  => ['building-update', 'building-create', 'building-read']
                 ],
                 [
                     'text' => 'Constarution Managment',
                     'url'  => '/constarution',
+                    'icon' => 'fas fa-fw bi bi-aspect-ratio',
                     'can'  => ['building-update', 'building-create', 'building-read']
                 ],
                 [
                     'text' => 'Progress Managment',
                     'url'  => '/progress',
+                    'icon' => 'fas fa-fw fas fa-tasks',
                     'can'  => ['building-update', 'building-create', 'building-read']
                 ],
             ]
@@ -267,31 +270,37 @@ return [
                 [
                     'text' => 'Project Name Table',
                     'url'  => '/buildinglist',
+                    'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
                     'text' => 'Project Tot Table',
                     'url'  => '/buildingtot',
+                    'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
                     'text' => 'Project 3BB Table',
                     'url'  => '/building3bb',
+                    'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
                     'text' => 'Project True Table',
                     'url'  => '/buildingTrue',
+                    'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
                     'text' => 'Project Ais Table',
                     'url'  => '/buildingAis',
+                    'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
                     'text' => 'Project FiberNet Table',
                     'url'  => '/buildingFiberNet',
+                    'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
             ]

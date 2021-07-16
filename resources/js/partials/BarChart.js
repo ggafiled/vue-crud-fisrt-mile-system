@@ -1,21 +1,15 @@
-import { Bar, mixins } from 'vue-chartjs'
-const { reactiveProp } = mixins
+import { Bar, mixins } from "vue-chartjs";
+import zoomPlugin from "chartjs-plugin-zoom";
+
+Chart.plugins.unregister(zoomPlugin);
 
 export default {
     extends: Bar,
-    mixins: [reactiveProp],
-    props: ['options'],
+    mixins: [mixins.reactiveProp],
+    props: ["data", "options"],
     mounted() {
-        // this.chartData is created in the mixin.
-        // If you want to pass options please create a local options object
-        let chart = {
-            labels: ['January', 'February'],
-            datasets: [{
-                label: 'Data One',
-                backgroundColor: '#f87979',
-                data: [40, 20]
-            }]
-        }
-        this.renderChart(chart, this.options)
+        // Overwriting base render method with actual data.
+        this.addPlugin(zoomPlugin);
+        this.renderChart(this.data, this.options);
     }
-}
+};

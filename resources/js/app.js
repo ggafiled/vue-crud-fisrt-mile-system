@@ -41,36 +41,9 @@ window.Toast = Toast;
 import FullCalendar from "vue-full-calendar";
 Vue.use(FullCalendar);
 
-import ECharts from 'vue-echarts'
-import { use } from 'echarts/core'
+import Select2 from "v-select2-component";
 
-// import ECharts modules manually to reduce bundle size
-import {
-    CanvasRenderer
-} from 'echarts/renderers'
-import {
-    BarChart
-} from 'echarts/charts'
-import {
-    GridComponent,
-    TooltipComponent,
-    TitleComponent
-} from 'echarts/components'
-
-use([
-    CanvasRenderer,
-    BarChart,
-    GridComponent,
-    TooltipComponent,
-    TitleComponent
-]);
-
-// register globally (or you can do it locally)
-Vue.component('v-chart', ECharts)
-
-import Select2 from 'v-select2-component';
-
-Vue.component('Select2', Select2);
+Vue.component("Select2", Select2);
 
 import VueProgressBar from "vue-progressbar";
 Vue.use(VueProgressBar, {
@@ -147,7 +120,6 @@ Vue.component(
 );
 
 Vue.component("not-found", require("./components/NotFound.vue").default);
-
 
 // Filter Section
 

@@ -35,7 +35,6 @@
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></a>
-
                             </div>
                         </div>
                     </div>
@@ -60,7 +59,6 @@
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></a>
-
                             </div>
                         </div>
                     </div>
@@ -93,8 +91,8 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <bar-chart
-:chart-data=
-                                :options="{ responsive: true }"
+                                :data="chart_dp_groub_of_countyName"
+                                :options="options"
                             ></bar-chart>
                         </div>
                         <!-- /.card-body -->
@@ -104,9 +102,9 @@
                 </div>
                 <!-- /.col -->
 
-                <div class="col-md-4">
+                <div class="col-md-4 my-auto">
                     <!-- Info Boxes Style 2 -->
-                    <div class="info-box mb-3 bg-info">
+                    <div class="info-box bg-info">
                         <span class="info-box-icon"
                             ><i class="far fa-building"></i
                         ></span>
@@ -121,7 +119,7 @@
                         </div>
                         <!-- /.info-box-content -->
                     </div>
-                    <div class="info-box mb-3 bg-secondary">
+                    <div class="info-box bg-secondary">
                         <span class="info-box-icon"
                             ><i class="fas fa-car-battery"></i
                         ></span>
@@ -141,7 +139,7 @@
                         </div>
                         <!-- /.info-box-content -->
                     </div>
-                    <div class="info-box mb-3 bg-success">
+                    <div class="info-box bg-success">
                         <span class="info-box-icon"
                             ><i class="fas fa-cog"></i
                         ></span>
@@ -161,7 +159,7 @@
                         </div>
                         <!-- /.info-box-content -->
                     </div>
-                    <div class="info-box mb-3 bg-warning">
+                    <div class="info-box bg-warning">
                         <span class="info-box-icon"
                             ><i class="fas fa-address-card"></i
                         ></span>
@@ -181,7 +179,7 @@
                         </div>
                         <!-- /.info-box-content -->
                     </div>
-                    <div class="info-box mb-3 bg-danger">
+                    <div class="info-box bg-danger">
                         <span class="info-box-icon"
                             ><i class="fas fa-user"></i
                         ></span>
@@ -247,14 +245,45 @@
 </template>
 
 <script>
-import BarChart from "../partials/BarChart.js";
+import BarChart from "../partials/BarChart";
 export default {
     components: {
         BarChart
     },
     data() {
         return {
-            dashboardInfo: []
+            dashboardInfo: [],
+            chart_dp_groub_of_countyName: {},
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: "index"
+                },
+                plugins: {
+                    legend: {
+                        title: {
+                            display: true,
+                            text: "County Bound Area"
+                        }
+                    },
+                    zoom: {
+                        zoom: {
+                            wheel: {
+                                enabled: true
+                            },
+                            pinch: {
+                                enabled: true
+                            },
+                            mode: "xy"
+                        },
+                        animation: {
+                            duration: 1000,
+                            easing: "easeOutCubic"
+                        }
+                    }
+                }
+            }
         };
     },
     methods: {
@@ -263,6 +292,24 @@ export default {
                 .get("/api/dashboard")
                 .then(response => {
                     this.dashboardInfo = response.data.data;
+                    this.chart_dp_groub_of_countyName = {
+                        labels: response.data.data.chart_dp_groub_of_countyName.map(
+                            obj => {
+                                return obj["countyName"];
+                            }
+                        ),
+                        datasets: [
+                            {
+                                label: "County Bound",
+                                backgroundColor: "#f87979",
+                                data: response.data.data.chart_dp_groub_of_countyName.map(
+                                    obj => {
+                                        return obj["total"];
+                                    }
+                                )
+                            }
+                        ]
+                    };
                 })
                 .catch(() => console.warn("Oh. Something went wrong"));
         },

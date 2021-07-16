@@ -22,7 +22,7 @@ try {
     require("datatables.net-buttons/js/buttons.html5.js")();
     require("datatables.net-buttons/js/buttons.flash.js")();
     require("datatables.net-buttons/js/buttons.print.js")();
-    require( 'datatables.net-fixedcolumns' );
+    require("datatables.net-fixedcolumns");
     require("datatables.net-dt/css/jquery.datatables.css");
     require("datatables.net-select");
 
@@ -32,7 +32,7 @@ try {
 
     //Bootstrap icon
     require("bootstrap-icons/font/bootstrap-icons.css");
-    require('jquery-contextmenu');
+    require("jquery-contextmenu");
 } catch (e) {}
 
 /**
