@@ -105,7 +105,7 @@
                                                 v-model="form.projectNameTot"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your building..."
+                                                placeholder="Enter your building tot..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'projectNameTot'
@@ -121,7 +121,7 @@
                                                 v-model="form.projectName3bb"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your building..."
+                                                placeholder="Enter your building 3bb..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'projectName3bb'
@@ -140,7 +140,7 @@
                                                 v-model="form.projectNameTrue"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your building..."
+                                                placeholder="Enter your building true..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'projectNameTrue'
@@ -156,7 +156,7 @@
                                                 v-model="form.projectNameAis"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your building..."
+                                                placeholder="Enter your building ais..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'projectNameAis'
@@ -174,7 +174,7 @@
                                                 "
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your building..."
+                                                placeholder="Enter your building fibernet..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'projectNameFiberNet'
@@ -690,22 +690,27 @@
                                                 >
                                                 <option
                                                     value="แบ่งรายได้ทุกเดือน"
-                                                    >แบ่งรายได้ทุกเดือน</option
                                                 >
+                                                    แบ่งรายได้ทุกเดือน
+                                                </option>
                                                 <option value="ชำระรายปี"
                                                     >ชำระรายปี</option
                                                 >
                                                 <option
                                                     value="ชำระรายปีแล้วแบ่งรายได้"
-                                                    >ชำระรายปีแล้วแบ่งรายได้</option
                                                 >
+                                                    ชำระรายปีแล้วแบ่งรายได้
+                                                </option>
                                                 <option
                                                     value="ชำระรายปีแบบขั้นบันได"
-                                                    >ชำระรายปีแบบขั้นบันได</option
                                                 >
-                                                <option value="ยังไม่ได้ทำสัญญา"
-                                                    >ยังไม่ได้ทำสัญญา</option
+                                                    ชำระรายปีแบบขั้นบันได
+                                                </option>
+                                                <option
+                                                    value="ยังไม่ได้ทำสัญญา"
                                                 >
+                                                    ยังไม่ได้ทำสัญญา
+                                                </option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -873,20 +878,24 @@
                                                 >
                                                 <option
                                                     value="BMA 1 (North West)"
-                                                    >BMA 1 (North West)</option
                                                 >
+                                                    BMA 1 (North West)
+                                                </option>
                                                 <option
                                                     value="BMA 2 (South West)"
-                                                    >BMA 2 (South West)</option
                                                 >
+                                                    BMA 2 (South West)
+                                                </option>
                                                 <option
                                                     value="BMA 3 (North East)"
-                                                    >BMA 3 (North East)</option
                                                 >
+                                                    BMA 3 (North East)
+                                                </option>
                                                 <option
                                                     value="BMA 4 (South East)"
-                                                    >BMA 4 (South East)</option
                                                 >
+                                                    BMA 4 (South East)
+                                                </option>
                                                 <option value="BMA 5 (Central)"
                                                     >BMA 5 (Central)</option
                                                 >
@@ -917,20 +926,24 @@
                                                 >
                                                 <option
                                                     value="BMA 1 (North West)"
-                                                    >BMA 1 (North West)</option
                                                 >
+                                                    BMA 1 (North West)
+                                                </option>
                                                 <option
                                                     value="BMA 2 (South West)"
-                                                    >BMA 2 (South West)</option
                                                 >
+                                                    BMA 2 (South West)
+                                                </option>
                                                 <option
                                                     value="BMA 3 (North East)"
-                                                    >BMA 3 (North East)</option
                                                 >
+                                                    BMA 3 (North East)
+                                                </option>
                                                 <option
                                                     value="BMA 4 (South East)"
-                                                    >BMA 4 (South East)</option
                                                 >
+                                                    BMA 4 (South East)
+                                                </option>
                                                 <option value="BMA 5 (Central)"
                                                     >BMA 5 (Central)</option
                                                 >
@@ -1010,40 +1023,46 @@
                                                     )
                                                 }"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกเวลาในการปฏิบัติงาน</option
-                                                >
+                                                <option disabled value="">
+                                                    เลือกเวลาในการปฏิบัติงาน
+                                                </option>
                                                 <option
                                                     value="จันทร์ - ศุกร์ (9.00 - 17.00 น)"
-                                                    >จันทร์ - ศุกร์ (9.00 -
-                                                    17.00 น)</option
                                                 >
+                                                    จันทร์ - ศุกร์ (9.00 - 17.00
+                                                    น)
+                                                </option>
                                                 <option
                                                     value="จันทร์ - เสาร์ (9.00 - 17.00 น)"
-                                                    >จันทร์ - เสาร์ (9.00 -
-                                                    17.00 น)</option
                                                 >
+                                                    จันทร์ - เสาร์ (9.00 - 17.00
+                                                    น)
+                                                </option>
                                                 <option
                                                     value="จันทร์ - ศุกร์ และเสาร์ครึ่งวันช่วงเช้า"
-                                                    >จันทร์ - ศุกร์
-                                                    และเสาร์ครึ่งวันช่วงเช้า</option
                                                 >
+                                                    จันทร์ - ศุกร์
+                                                    และเสาร์ครึ่งวันช่วงเช้า
+                                                </option>
                                                 <option
                                                     value="จันทร์ - ศุกร์ และเสาร์ครึ่งวันช่วงบ่าย"
-                                                    >จันทร์ - ศุกร์
-                                                    และเสาร์ครึ่งวันช่วงบ่าย</option
                                                 >
+                                                    จันทร์ - ศุกร์
+                                                    และเสาร์ครึ่งวันช่วงบ่าย
+                                                </option>
                                                 <option
                                                     value="จันทร์ - ศุกร์ และวันเสาร์ ประสาน นิติฯ ก่อน"
-                                                    >จันทร์ - ศุกร์ และวันเสาร์
-                                                    ประสาน นิติฯ ก่อน</option
                                                 >
+                                                    จันทร์ - ศุกร์ และวันเสาร์
+                                                    ประสาน นิติฯ ก่อน
+                                                </option>
                                                 <option
                                                     value="จันทร์ - ศุกร์ และวันเสาร์-อาทิตย์ ประสาน นิติฯ ก่อน"
-                                                    >จันทร์ - ศุกร์
-                                                    และวันเสาร์-อาทิตย์ ประสาน
-                                                    นิติฯ ก่อน</option
                                                 >
+                                                    จันทร์ - ศุกร์
+                                                    และวันเสาร์-อาทิตย์ ประสาน
+                                                    นิติฯ ก่อน
+                                                </option>
                                                 <option value="ทุกวัน"
                                                     >ทุกวัน</option
                                                 >
@@ -1147,14 +1166,12 @@ export default {
     methods: {
         loadBuildings() {
             this.$Progress.start();
-
             if (this.$gate.isAdmin()) {
                 this.$store.dispatch("GET_BUILDINGS");
                 $("#buildings")
                     .DataTable()
                     .ajax.reload();
             }
-
             this.$Progress.finish();
         },
         updateBuilding() {
@@ -1171,7 +1188,6 @@ export default {
                     });
                     this.$Progress.finish();
                     //  Fire.$emit('AfterCreate');
-
                     this.loadBuildings();
                 })
                 .catch(() => {
@@ -1226,12 +1242,10 @@ export default {
                 .post("api/building")
                 .then(response => {
                     $("#addNew").modal("hide");
-
                     Toast.fire({
                         icon: "success",
                         title: response.data.message
                     });
-
                     this.$Progress.finish();
                     this.loadBuildings();
                 })
@@ -1305,22 +1319,26 @@ export default {
                             data,
                             dataIndex
                         ) {
-                            return $(vm.table.row(dataIndex).node()).hasClass(
+                            return $(table.row(dataIndex).node()).hasClass(
                                 "selected"
                             )
                                 ? true
                                 : false;
                         });
-
-                        vm.table.draw();
+                        table.draw();
                     }
                 },
                 {
-                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
+                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
                     action: function(e, dt, node, config) {
+                        console.info("button: Clear");
+                        $.fn.dataTable.ext.search.pop();
+                        dt.search("").draw();
                         dt.columns()
                             .search("")
                             .draw();
+                        dt.rows().deselect();
+                        dt.ajax.reload();
                     }
                 }
             ],
@@ -1328,11 +1346,12 @@ export default {
                 { data: null, defaultContent: "", className: "dt-body-center" },
                 {
                     data: "projectName",
-                    render: function(data, type, full, meta) {
+                    className: "text-capitalize",
+                    render: function(data, type, row, meta) {
                         return (
-                            "<div class='text-wrap' style='max-width: 250px;'>" +
+                            '<span><i class="bi bi-building pr-2"></i>' +
                             data +
-                            "</div>"
+                            "</span>"
                         );
                     }
                 },
@@ -1378,7 +1397,6 @@ export default {
             select: { selector: "td:not(:last-child)", style: "os" },
             order: [[1, "desc"]]
         });
-
         $("tbody", this.$refs.buildings).on("click", ".edit-building", function(
             e
         ) {
@@ -1387,7 +1405,6 @@ export default {
             var row = table.row(tr);
             vm.editModal(row.data());
         });
-
         $("tbody", this.$refs.buildings).on(
             "click",
             ".delete-building",

@@ -118,10 +118,6 @@ export default [{
         }
     },
     {
-        path: "/developer",
-        component: require("./components/Developer.vue").default
-    },
-    {
         path: "/users",
         component: require("./components/Users.vue").default,
         meta: {
@@ -143,27 +139,6 @@ export default [{
         meta: {
             requiresAuth: true,
             roles: ["superadministrator", "administrator"]
-        }
-    },
-    {
-        path: "/products",
-        component: require("./components/product/Products.vue").default,
-        meta: {
-            requiresAuth: true
-        }
-    },
-    {
-        path: "/product/tag",
-        component: require("./components/product/Tag.vue").default,
-        meta: {
-            requiresAuth: true
-        }
-    },
-    {
-        path: "/product/category",
-        component: require("./components/product/Category.vue").default,
-        meta: {
-            requiresAuth: true
         }
     },
     { path: "*", component: require("./components/NotFound.vue").default }

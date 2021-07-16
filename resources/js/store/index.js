@@ -14,7 +14,3 @@ export default new Vuex.Store({
     getters,
     actions
 });
-
-if (inBrowser && window.Vue) {
-    window.Vue.use(VueRouter);
-  }

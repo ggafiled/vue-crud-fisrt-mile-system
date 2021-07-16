@@ -15,16 +15,6 @@
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></a>
-                                <!-- <div class="float-right">
-                                    {{
-                                        dashboardInfo.building
-                                            .toString()
-                                            .replace(
-                                                /\B(?=(\d{3})+(?!\d))/g,
-                                                ","
-                                            )
-                                    }}
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -45,16 +35,6 @@
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></a>
-                                <!-- <div class="float-right">
-                                    {{
-                                        dashboardInfo.constarution
-                                            .toString()
-                                            .replace(
-                                                /\B(?=(\d{3})+(?!\d))/g,
-                                                ","
-                                            )
-                                    }}
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -79,16 +59,6 @@
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></a>
-                                <!-- <div class="float-right">
-                                    {{
-                                        dashboardInfo.progress
-                                            .toString()
-                                            .replace(
-                                                /\B(?=(\d{3})+(?!\d))/g,
-                                                ","
-                                            )
-                                    }}
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -120,26 +90,7 @@
                     <div class="card">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table
-                                    id="buildinglist"
-                                    ref="buildinglist"
-                                    class="display nowrap"
-                                    style="width:100%"
-                                >
-                                    <thead>
-                                        <tr class="info">
-                                            <th>ProjectName</th>
-                                            <th>FM-Progress</th>
-                                            <th>TOT-Progress</th>
-                                            <th>AIS-Progress</th>
-                                            <th>3BB-Progress</th>
-                                            <th>FN-Progress</th>
-                                            <th>TRUE-Progress</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
+                              <v-chart autoresize :option="option"/>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -160,7 +111,7 @@
                             <span class="info-box-number">{{
                                 dashboardInfo.building
                                     .toString()
-                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || 0
                             }}</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -176,7 +127,10 @@
                                 {{
                                     dashboardInfo.constarution
                                         .toString()
-                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                        .replace(
+                                            /\B(?=(\d{3})+(?!\d))/g,
+                                            ","
+                                        ) || 0
                                 }}</span
                             >
                         </div>
@@ -193,7 +147,10 @@
                                 {{
                                     dashboardInfo.progress
                                         .toString()
-                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                        .replace(
+                                            /\B(?=(\d{3})+(?!\d))/g,
+                                            ","
+                                        ) || 0
                                 }}</span
                             >
                         </div>
@@ -206,48 +163,81 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Planing</span>
-                            <span class="info-box-number">114,381</span>
+                            <span class="info-box-number">
+                                {{
+                                    dashboardInfo.planing
+                                        .toString()
+                                        .replace(
+                                            /\B(?=(\d{3})+(?!\d))/g,
+                                            ","
+                                        ) || 0
+                                }}</span
+                            >
                         </div>
                         <!-- /.info-box-content -->
                     </div>
-                    <!-- /.info-box -->
-                    <div class="info-box mb-3 bg-success">
-                        <span class="info-box-icon"
-                            ><i class="bi bi-cash"></i
-                        ></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text">Balance</span>
-                            <span class="info-box-number">92,050</span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
                     <div class="info-box mb-3 bg-danger">
                         <span class="info-box-icon"
-                            ><i class="fas fa-users"></i
+                            ><i class="fas fa-user"></i
                         ></span>
 
                         <div class="info-box-content">
                             <span class="info-box-text">User</span>
-                            <span class="info-box-number">{{
-                                dashboardInfo.user
-                                    .toString()
-                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                            }}</span>
+                            <span class="info-box-number">
+                                {{
+                                    dashboardInfo.user
+                                        .toString()
+                                        .replace(
+                                            /\B(?=(\d{3})+(?!\d))/g,
+                                            ","
+                                        ) || 0
+                                }}</span
+                            >
                         </div>
                         <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->
+                    <!-- /.info-box-content -->
                 </div>
-                <!-- /.col -->
+                <!-- /.info-box -->
             </div>
-            <!-- /.row -->
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-md-8">
+                <!-- MAP & BOX PANE -->
+                <div class="card">
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table
+                                id="buildinglist"
+                                ref="buildinglist"
+                                class="display nowrap"
+                                style="width:100%"
+                            >
+                                <thead>
+                                    <tr class="info">
+                                        <th>ProjectName</th>
+                                        <th>FM-Progress</th>
+                                        <th>TOT-Progress</th>
+                                        <th>AIS-Progress</th>
+                                        <th>3BB-Progress</th>
+                                        <th>FN-Progress</th>
+                                        <th>TRUE-Progress</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                <!-- /.card -->
+            </div>
         </div>
         <!--/. container-fluid -->
-        <div class="container-fluid" v-else>
-            Hello.
-        </div>
     </section>
 </template>
 
@@ -255,7 +245,53 @@
 export default {
     data() {
         return {
-            dashboardInfo: []
+            dashboardInfo: [],
+            option: {
+                textStyle: {
+                    fontFamily: 'Inter, "Helvetica Neue", Arial, sans-serif'
+                },
+                title: {
+                    text: "Traffic Sources",
+                    left: "center"
+                },
+                tooltip: {
+                    trigger: "item",
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                legend: {
+                    orient: "vertical",
+                    left: "left",
+                    data: [
+                        "Direct",
+                        "Email",
+                        "Ad Networks",
+                        "Video Ads",
+                        "Search Engines"
+                    ]
+                },
+                series: [
+                    {
+                        name: "Traffic Sources",
+                        type: "pie",
+                        radius: "55%",
+                        center: ["50%", "60%"],
+                        data: [
+                            { value: 335, name: "Direct" },
+                            { value: 310, name: "Email" },
+                            { value: 234, name: "Ad Networks" },
+                            { value: 135, name: "Video Ads" },
+                            { value: 1548, name: "Search Engines" }
+                        ],
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: "rgba(0, 0, 0, 0.5)"
+                            }
+                        }
+                    }
+                ]
+            }
         };
     },
     methods: {
