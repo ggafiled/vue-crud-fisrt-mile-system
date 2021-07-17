@@ -87,11 +87,30 @@
                 <!-- Left col -->
                 <div class="col-md-8">
                     <!-- MAP & BOX PANE -->
-                    <div class="card">
-                        <!-- /.card-header -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="far fa-chart-bar"></i>
+                                Group of county Area Chart
+                            </h3>
+                            <div class="card-tools">
+                                <div class="btn-group">
+                                    <button
+                                        type="button"
+                                        id="btn_county_refresh"
+                                        class="btn btn-light btn-sm active"
+                                        @click="refreshCountyChart"
+                                    >
+                                       <div>
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                       </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <bar-chart
-                                :data="chart_dp_groub_of_countyName"
+                                :chartData="chart_dp_groub_of_countyName"
                                 :options="options"
                             ></bar-chart>
                         </div>
@@ -102,7 +121,7 @@
                 </div>
                 <!-- /.col -->
 
-                <div class="col-md-4 my-auto">
+                <div class="col-md-4">
                     <!-- Info Boxes Style 2 -->
                     <div class="info-box bg-info">
                         <span class="info-box-icon"
@@ -205,39 +224,71 @@
                 <!-- /.info-box -->
             </div>
             <!-- /.col -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-md-8">
-                <!-- MAP & BOX PANE -->
-                <div class="card">
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table
-                                id="buildinglist"
-                                ref="buildinglist"
-                                class="display nowrap"
-                                style="width:100%"
-                            >
-                                <thead>
-                                    <tr class="info">
-                                        <th>ProjectName</th>
-                                        <th>FM-Progress</th>
-                                        <th>TOT-Progress</th>
-                                        <th>AIS-Progress</th>
-                                        <th>3BB-Progress</th>
-                                        <th>FN-Progress</th>
-                                        <th>TRUE-Progress</th>
-                                    </tr>
-                                </thead>
-                            </table>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-fw fas fa-tasks"></i>
+                                Progress status Chart
+                            </h3>
+                            <div class="card-tools">
+                                <div class="btn-group">
+                                    <button
+                                        type="button"
+                                        id="btn_progress_refresh"
+                                        class="btn btn-light btn-sm active"
+                                        @click="refreshProgressChart"
+                                    >
+                                        <div>
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+                        <div class="card-body">
+                            <horizontal-bar-chart
+                                id="progress_chart"
+                                ref="progress_chart"
+                                :chartData="chart_dp_groub_of_progress"
+                                :options="options2"
+                            ></horizontal-bar-chart>
+                        </div>
+                        <!-- /.card-body-->
                     </div>
-                    <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
-                <!-- /.card -->
+                <div class="col-md-4">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-fw fas fa-tasks"></i>
+                                Progress PolarArea Chart
+                            </h3>
+                            <div class="card-tools">
+                                <div class="btn-group">
+                                    <button
+                                        type="button"
+                                        id="btn_progress_doughnut_refresh"
+                                        class="btn btn-light btn-sm active"
+                                        @click="refreshDoughnutChart"
+                                    >
+                                        <div>
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <polar-area-chart
+                                :chartData="chart_dp_groub_of_progress"
+                                :options="options2"
+                            ></polar-area-chart>
+                        </div>
+                        <!-- /.card-body-->
+                    </div>
+                </div>
             </div>
         </div>
         <!--/. container-fluid -->
@@ -246,14 +297,20 @@
 
 <script>
 import BarChart from "../partials/BarChart";
+import HorizontalBarChart from "../partials/HorizontalBarChart";
+import PolarAreaChart from "../partials/PolarAreChart";
+import anime from "animejs/lib/anime.es.js";
 export default {
     components: {
-        BarChart
+        BarChart,
+        HorizontalBarChart,
+        PolarAreaChart
     },
     data() {
         return {
             dashboardInfo: [],
             chart_dp_groub_of_countyName: {},
+            chart_dp_groub_of_progress: {},
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
@@ -281,6 +338,63 @@ export default {
                             duration: 1000,
                             easing: "easeOutCubic"
                         }
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                var label =
+                                    data.datasets[tooltipItem.datasetIndex]
+                                        .label || "";
+
+                                if (label) {
+                                    label += ": ";
+                                }
+                                label += isNaN(tooltipItem.yLabel)
+                                    ? "0"
+                                    : tooltipItem.yLabel;
+                                return label;
+                            }
+                        }
+                    }
+                }
+            },
+            options2: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {},
+                interaction: {
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [
+                        {
+                            stacked: true,
+                            gridLines: {
+                                offsetGridLines: true
+                            }
+                        }
+                    ],
+                    yAxes: [
+                        {
+                            stacked: true
+                        }
+                    ]
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var label =
+                                data.datasets[tooltipItem.datasetIndex].label ||
+                                "";
+
+                            if (label) {
+                                label += ": ";
+                            }
+                            label += isNaN(tooltipItem.xLabel)
+                                ? "0"
+                                : tooltipItem.xLabel;
+                            return label;
+                        }
                     }
                 }
             }
@@ -301,7 +415,7 @@ export default {
                         datasets: [
                             {
                                 label: "County Bound",
-                                backgroundColor: "#f87979",
+                                backgroundColor: "#FF6767",
                                 data: response.data.data.chart_dp_groub_of_countyName.map(
                                     obj => {
                                         return obj["total"];
@@ -310,332 +424,117 @@ export default {
                             }
                         ]
                     };
+                    this.chart_dp_groub_of_progress = {
+                        labels: Object.keys(
+                            response.data.data.chart_dp_groub_of_progress
+                        ),
+                        datasets: [
+                            {
+                                label: "กำลังดำเนินการ",
+                                backgroundColor: "#ED602B",
+                                data: Object.keys(
+                                    response.data.data
+                                        .chart_dp_groub_of_progress
+                                ).map(item => {
+                                    return response.data.data.chart_dp_groub_of_progress[
+                                        item
+                                    ]
+                                        .filter(e => {
+                                            return e.name == "กำลังดำเนินการ";
+                                        })
+                                        .map(e => {
+                                            return e.total;
+                                        })[0];
+                                })
+                            },
+                            {
+                                label: "รอเข้าดำเนินการ",
+                                backgroundColor: "#F0802C",
+                                data: Object.keys(
+                                    response.data.data
+                                        .chart_dp_groub_of_progress
+                                ).map(item => {
+                                    return response.data.data.chart_dp_groub_of_progress[
+                                        item
+                                    ]
+                                        .filter(e => {
+                                            return e.name == "รอเข้าดำเนินการ";
+                                        })
+                                        .map(e => {
+                                            return e.total;
+                                        })[0];
+                                })
+                            },
+                            {
+                                label: "วางโครงข่ายแล้ว",
+                                backgroundColor: "#F3E252",
+                                data: Object.keys(
+                                    response.data.data
+                                        .chart_dp_groub_of_progress
+                                ).map(item => {
+                                    return response.data.data.chart_dp_groub_of_progress[
+                                        item
+                                    ]
+                                        .filter(e => {
+                                            return e.name == "วางโครงข่ายแล้ว";
+                                        })
+                                        .map(e => {
+                                            return e.total;
+                                        })[0];
+                                })
+                            },
+                            {
+                                label: "เชื่อมโครงข่ายแล้ว",
+                                backgroundColor: "#059BFF",
+                                data: Object.keys(
+                                    response.data.data
+                                        .chart_dp_groub_of_progress
+                                ).map(item => {
+                                    return response.data.data.chart_dp_groub_of_progress[
+                                        item
+                                    ]
+                                        .filter(e => {
+                                            return (
+                                                e.name == "เชื่อมโครงข่ายแล้ว"
+                                            );
+                                        })
+                                        .map(e => {
+                                            return e.total;
+                                        })[0];
+                                })
+                            }
+                        ]
+                    };
                 })
                 .catch(() => console.warn("Oh. Something went wrong"));
         },
-        async generateDashboardTable() {
-            console.log("buildings Component mounted.");
-            var vm = this;
-            var table = await $(this.$refs.buildinglist).DataTable({
-                ajax: "api/buildinglist",
-                pageLength: 10,
-                lengthMenu: [
-                    [10, 15, 25, 50, -1],
-                    [10, 15, 25, 50, "All"]
-                ],
-                // paging:false,
-                ordering: false,
-                info: false,
-                // searching: false,
-                columns: [
-                    {
-                        data: "projectName",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
-                    },
-                    {
-                        data: "progress.fmProgress",
-                        render: function(data, type, row, meta) {
-                            if (data == "") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else if (data == "วางโครงข่ายแล้ว") {
-                                return (
-                                    '<span class="badge badge-success">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "progress.totProgress",
-                        render: function(data, type, row, meta) {
-                            if (data == "เชื่อมโครงข่ายแล้ว") {
-                                return (
-                                    '<span class="badge badge-success">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "ดำเนิการแล้วเสร็จ") {
-                                return (
-                                    '<span class="badge badge-primary">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "กำลังดำเนินการ") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "รอเข้าดำเนินการ") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "TOT วางโครงข่ายเอง") {
-                                return (
-                                    '<span class="badge badge-primary">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "วางโครงข่ายแล้ว") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span class="text-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            }
-                        }
-                    },
-                    {
-                        data: "progress.aisProgress",
-                        render: function(data, type, row, meta) {
-                            if (data == "เชื่อมโครงข่ายแล้ว") {
-                                return (
-                                    '<span class="badge badge-success">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "ดำเนิการแล้วเสร็จ") {
-                                return (
-                                    '<span class="badge badge-primary">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "กำลังดำเนินการ") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "รอเข้าดำเนินการ") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "AIS วางโครงข่ายเอง") {
-                                return (
-                                    '<span class="badge badge-success">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "วางโครงข่ายแล้ว") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span class="text-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            }
-                        }
-                    },
-                    {
-                        data: "progress.Progress3bb",
-                        render: function(data, type, row, meta) {
-                            if (data == "เชื่อมโครงข่ายแล้ว") {
-                                return (
-                                    '<span class="badge badge-success">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "ดำเนิการแล้วเสร็จ") {
-                                return (
-                                    '<span class="badge badge-primary">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "กำลังดำเนินการ") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "รอเข้าดำเนินการ") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "3bb วางโครงข่ายเอง") {
-                                return (
-                                    '<span class="badge badge-orange">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "วางโครงข่ายแล้ว") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span class="text-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            }
-                        }
-                    },
-                    {
-                        data: "progress.fnProgress",
-                        render: function(data, type, row, meta) {
-                            if (data == "เชื่อมโครงข่ายแล้ว") {
-                                return (
-                                    '<span class="badge badge-success">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "ดำเนิการแล้วเสร็จ") {
-                                return (
-                                    '<span class="badge badge-primary">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "กำลังดำเนินการ") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "รอเข้าดำเนินการ") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "fn วางโครงข่ายเอง") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "วางโครงข่ายแล้ว") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span class="text-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            }
-                        }
-                    },
-                    {
-                        data: "progress.trueProgress",
-                        render: function(data, type, row, meta) {
-                            if (data == "เชื่อมโครงข่ายแล้ว") {
-                                return (
-                                    '<span class="badge badge-success">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "ดำเนิการแล้วเสร็จ") {
-                                return (
-                                    '<span class="badge badge-primary">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "กำลังดำเนินการ") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "รอเข้าดำเนินการ") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "วางโครงข่ายแล้ว") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "ทรู วางโครงข่ายเอง") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span class="text-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            }
-                        }
-                    }
-                ]
+        refreshProgressChart() {
+            anime({
+                targets: "#btn_progress_refresh div",
+                rotate: "1turn",
+                duration: 8000
             });
+            this.$emit("updateHorizontalBarChart");
+        },
+         refreshCountyChart() {
+            anime({
+                targets: "#btn_county_refresh div",
+                rotate: "1turn",
+                duration: 8000
+            });
+            this.$emit("updateBarChart");
+        },
+        refreshDoughnutChart() {
+            anime({
+                targets: "#btn_progress_doughnut_refresh div",
+                rotate: "1turn",
+                duration: 8000
+            });
+            this.$emit("updateDoughnutChart");
         }
     },
     async mounted() {
         await this.getDashboardInfo();
-        await this.generateDashboardTable();
     }
 };
 </script>
