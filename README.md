@@ -8,6 +8,7 @@
 A very simple Laravel 8 + Vue 2 + AdminLTE 3 based Curd Starter template for SPA Application.
 
 <p align="center">
+<img src="https://sv1.picz.in.th/images/2021/02/11/o138qN.png" alt="Company Logo" width="140px" height="50px">
 <img src="https://imgur.com/iziSh2w.jpg">
 <img src="https://imgur.com/aimNt19.jpg">
 <img src="https://imgur.com/2D5onIP.jpg">
