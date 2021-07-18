@@ -68,7 +68,10 @@
 <script>
     var options = {
         minimizeIcon: 'fa-compress-arrows-alt',
-        maximizeIcon: 'fa-expand-arrows-alt'
+        maximizeIcon: 'fa-expand-arrows-alt',
+        autoCollapseSize: 992,
+        enableRemember: false,
+        noTransitionAfterReload: true
     };
 
     function changeLang(value) {
@@ -102,6 +105,13 @@
         } else if (document.documentElement.msRequestFullscreen) {
             document.documentElement.msRequestFullscreen();
         }
+
+        if($('body').hasClass('sidebar-collapse')){
+            $('body').removeClass('sidebar-collapse')
+            $('body').addClass('sidebar-collapse')
+        }else{
+            $('body').addClass('sidebar-collapse')
+        }
         $('[data-widget="fullscreen"] i').removeClass(options.maximizeIcon).addClass(options.minimizeIcon);
     }
 
@@ -118,7 +128,8 @@
 
     $("#fullscreen").on("click", function (e) {
         e.preventDefault();
-        if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement ||
+        if (document.fullscreenElement || document.mozFullScreenElement || document
+            .webkitFullscreenElement ||
             document
             .msFullscreenElement) {
             windowed();
@@ -136,7 +147,7 @@
         }
     });
 
-    $("#navbar-search-close").on("click", function (e){
+    $("#navbar-search-close").on("click", function (e) {
         searchClose();
     })
 

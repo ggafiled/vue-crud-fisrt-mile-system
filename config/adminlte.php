@@ -256,6 +256,7 @@ return [
             'text' => 'Dashboard',
             'url'  => 'dashboard',
             'icon' => 'fas fa-fw bi bi-kanban',
+            'active' => ['dashboard', 'dashboard/*']
         ],
         [
             'text' => 'Project List',
@@ -325,32 +326,6 @@ return [
                 ],
             ]
         ],
-
-        // [
-        //     'text' => 'Building Payment',
-        //     'url'  => '/admin/settings',
-        //     'icon' => 'fas fa-fw fa-calendar-check',
-        //     'can'  => ['payments-create', 'payments-read']
-        // ],
-        // [
-        //     'text' => 'Resplice Opertor',
-        //     'url'  => '/resplice',
-        //     'icon' => 'fas fa-fw fa-calendar',
-        //     'roles'  => ['superadministrator','administrator'],
-        // ],
-        // [
-        //     'text' => 'Calendar',
-        //     'url'  => '/calendar',
-        //     'icon' => 'fas fa-fw fa-calendar-alt',
-        //     'roles'  => ['superadministrator','administrator'],
-        // ],
-        // [
-        //     'text' => 'Technician Opertor',
-        //     'url'  => '/admin/settings',
-        //     'icon' => 'fas fa-fw fa-poll-h',
-        //     'can'  => ['technician-opertor-create','technician-opertor-read','technician-opertor-update','technician-opertor-delete'],
-        // ],
-
         ['header' => 'USER'],
         [
             'text' => 'User Information',

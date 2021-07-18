@@ -55,7 +55,8 @@ export default [{
     },
     {
         path: "/buildingFiberNet",
-        component: require("./components/building/BuildingFiberNet.vue").default,
+        component: require("./components/building/BuildingFiberNet.vue")
+            .default,
         meta: {
             requiresAuth: true,
             roles: ["superadministrator", "administrator", "user", "guest"]
@@ -130,7 +131,7 @@ export default [{
         component: require("./components/team/Team.vue").default,
         meta: {
             requiresAuth: true,
-            roles: ["superadministrator", "administrator","user"]
+            roles: ["superadministrator", "administrator", "user"]
         }
     },
     {

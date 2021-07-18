@@ -1,9 +1,9 @@
 <template>
     <section class="content">
         <div class="container-fluid" v-if="$gate.isAdmin()">
-            <div class="row ">
+            <div class="row mb-lg-3">
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box">
+                    <div class="info-box shadow">
                         <span class="info-box-icon bg-info elevation-1"
                             ><i class="fas fa-city"></i
                         ></span>
@@ -21,7 +21,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box mb-3">
+                    <div class="info-box shadow mb-3 ">
                         <span class="info-box-icon bg-secondary elevation-1"
                             ><i class="fas fa-car-battery"></i
                         ></span>
@@ -45,7 +45,7 @@
                 <div class="clearfix hidden-md-up"></div>
 
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box mb-3">
+                    <div class="info-box shadow mb-3">
                         <span class="info-box-icon bg-success elevation-1"
                             ><i class="fas fa-cog"></i
                         ></span>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box mb-3">
+                    <div class="info-box shadow mb-3">
                         <span class="info-box-icon bg-warning elevation-1"
                             ><i class="fas fa-users"></i
                         ></span>
@@ -306,6 +306,7 @@ import BarChart from "../partials/BarChart";
 import HorizontalBarChart from "../partials/HorizontalBarChart";
 import PolarAreaChart from "../partials/PolarAreChart";
 import anime from "animejs/lib/anime.es.js";
+import pattern from "patternomaly";
 export default {
     title: "Dashboard -",
     components: {
@@ -422,7 +423,7 @@ export default {
                         datasets: [
                             {
                                 label: "County Bound",
-                                backgroundColor: "#FF6767",
+                                backgroundColor: '#FF6767',
                                 data: response.data.data.chart_dp_groub_of_countyName.map(
                                     obj => {
                                         return obj["total"];
@@ -438,7 +439,7 @@ export default {
                         datasets: [
                             {
                                 label: "กำลังดำเนินการ",
-                                backgroundColor: "#ED602B",
+                                backgroundColor: pattern.draw('diagonal-right-left', '#ED602B'),
                                 data: Object.keys(
                                     response.data.data
                                         .chart_dp_groub_of_progress
@@ -456,7 +457,7 @@ export default {
                             },
                             {
                                 label: "รอเข้าดำเนินการ",
-                                backgroundColor: "#F0802C",
+                                backgroundColor: pattern.draw('diagonal-right-left', '#F0802C'),
                                 data: Object.keys(
                                     response.data.data
                                         .chart_dp_groub_of_progress
@@ -474,7 +475,7 @@ export default {
                             },
                             {
                                 label: "วางโครงข่ายแล้ว",
-                                backgroundColor: "#F3E252",
+                                backgroundColor: pattern.draw('diagonal-right-left', '#F3E252'),
                                 data: Object.keys(
                                     response.data.data
                                         .chart_dp_groub_of_progress
@@ -492,7 +493,7 @@ export default {
                             },
                             {
                                 label: "เชื่อมโครงข่ายแล้ว",
-                                backgroundColor: "#059BFF",
+                                backgroundColor: pattern.draw('diagonal-right-left', '#059BFF'),
                                 data: Object.keys(
                                     response.data.data
                                         .chart_dp_groub_of_progress

@@ -9,13 +9,14 @@ window._ = require("lodash");
 try {
     window.Popper = require("popper.js").default;
     window.$ = window.jQuery = require("jquery");
-    window.anime = require("animejs");
+    window.animejs = require("animejs");
 
     require("bootstrap");
     require("admin-lte");
     require("bootstrap-select");
     require("google-palette");
     require("animejs");
+    require("patternomaly");
 
     require("bootstrap-select/js/i18n/defaults-de_DE");
 

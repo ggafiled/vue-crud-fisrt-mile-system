@@ -55,4 +55,7 @@ export default {};
     height: 100% !important;
     vertical-align: middle !important;
 }
+.shadow {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%) !important;
+}
 </style>
