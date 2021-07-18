@@ -1089,6 +1089,7 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 export default {
+    title: "All -",
     data() {
         return {
             editmode: false,

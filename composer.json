@@ -22,7 +22,8 @@
         "lcobucci/jwt": "^3.4",
         "mpociot/teamwork": "^6.1",
         "pusher/pusher-php-server": "^6.0",
-        "santigarcor/laratrust": "^6.3"
+        "santigarcor/laratrust": "^6.3",
+        "spatie/laravel-activitylog": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

@@ -35,6 +35,9 @@ const Toast = Swal.mixin({
 window.Swal = Swal;
 window.Toast = Toast;
 
+import titleMixin from "./partials/mixins/title";
+Vue.mixin(titleMixin);
+
 /**
  * FullCalendar imports and assigning
  */

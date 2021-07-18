@@ -50706,6 +50706,10 @@ select.selectpicker {
   color: white !important;
 }
 
+.navbar-search-block .input-group {
+  min-width: 100% !important;
+}
+
 .blue {
   color: #3490dc;
 }

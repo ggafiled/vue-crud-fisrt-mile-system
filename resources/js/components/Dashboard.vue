@@ -307,6 +307,7 @@ import HorizontalBarChart from "../partials/HorizontalBarChart";
 import PolarAreaChart from "../partials/PolarAreChart";
 import anime from "animejs/lib/anime.es.js";
 export default {
+    title: "Dashboard -",
     components: {
         BarChart,
         HorizontalBarChart,
@@ -517,10 +518,7 @@ export default {
         refreshProgressChart() {
             anime({
                 targets: "#btn_progress_refresh div",
-                keyframes: [
-                    { rotate: "1turn" },
-                    { rotate: "0deg" }
-                ],
+                keyframes: [{ rotate: "1turn" }, { rotate: "0deg" }],
                 duration: 1000,
                 easing: "linear"
             });
@@ -529,10 +527,7 @@ export default {
         refreshCountyChart() {
             anime({
                 targets: "#btn_county_refresh div",
-                keyframes: [
-                    { rotate: "1turn" },
-                    { rotate: "0deg" }
-                ],
+                keyframes: [{ rotate: "1turn" }, { rotate: "0deg" }],
                 duration: 1000,
                 easing: "linear"
             });
@@ -541,10 +536,7 @@ export default {
         refreshDoughnutChart() {
             anime({
                 targets: "#btn_progress_doughnut_refresh div",
-                keyframes: [
-                    { rotate: "1turn" },
-                    { rotate: "0deg" }
-                ],
+                keyframes: [{ rotate: "1turn" }, { rotate: "0deg" }],
                 duration: 1000,
                 easing: "linear"
             });

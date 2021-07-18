@@ -31,11 +31,5 @@ Route::get('/users', function () {
 })->middleware(['auth','password.confirm']);
 
 Route::get('/{vue_capture?}', function () {
-    return view('home');
+    return view('home')->with("title","Fist Mile ERP System");
 })->where('vue_capture', '[\/\w\.-]*');
-
-
-
-
-
-

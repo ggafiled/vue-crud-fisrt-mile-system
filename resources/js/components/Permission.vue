@@ -189,6 +189,7 @@
 <script>
 import VueTagsInput from "@johmun/vue-tags-input";
 export default {
+    title: "Permission -",
     components: {
         VueTagsInput
     },

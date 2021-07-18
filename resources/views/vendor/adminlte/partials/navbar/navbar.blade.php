@@ -17,8 +17,12 @@
     {{-- Navbar right links --}}
     <ul class="navbar-nav ml-auto">
 
+        @if(config('adminlte.language_bar'))
+
+        {{-- Custom language bar --}}
         @include('partials.language-select')
 
+        @endif
         {{-- Custom right links --}}
         @yield('content_top_nav_right')
 

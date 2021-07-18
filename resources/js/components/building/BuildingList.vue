@@ -174,6 +174,7 @@
 
 <script>
 export default {
+    title: "List -",
     data() {
         return {
             not_do_contract_yet: [],
@@ -357,24 +358,59 @@ export default {
                         }
                     },
                     {
-                        title: "Project Name TOT",
-                        data: "projectName"
+                        title: "TOT Project Name",
+                        data: "projectName",
+                        render: function(data, type, row, meta) {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
                     },
                     {
-                        title: "Project Name 3BB",
-                        data: "projectName"
+                        title: "3BB Project Name",
+                        data: "projectName",
+                        render: function(data, type, row, meta) {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
                     },
                     {
-                        title: "Project Name TRUE",
-                        data: "projectName"
+                        title: "True Project Name",
+                        data: "projectName",
+                        render: function(data, type, row, meta) {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
                     },
                     {
-                        title: "Project Name Ais",
-                        data: "projectName"
+                        title: "AIS Project Name",
+                        data: "projectName",
+                        render: function(data, type, row, meta) {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
                     },
                     {
-                        title: "Project Name FiberNet",
-                        data: "projectName"
+                        title: "FiberNet Project Name",
+                        data: "projectName",
+                        render: function(data, type, row, meta) {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
                     },
                     {
                         data: "fmCode"

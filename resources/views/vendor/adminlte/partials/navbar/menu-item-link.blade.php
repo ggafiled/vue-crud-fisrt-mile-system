@@ -1,24 +1,26 @@
-<li @if(isset($item['id'])) id="{{ $item['id'] }}" @endif class="nav-item">
-    <router-link class="nav-link {{ $item['class'] }}" to="{{ $item['href'] }}">
-        @if(isset($item['target'])) target="{{ $item['target'] }}" @endif
-        {!! $item['data-compiled'] ?? '' !!}>
+<li @isset($item['id']) id="{{ $item['id'] }}" @endisset class="nav-item">
+
+    <router-link class="nav-link" to="{{ $item['href'] }}"
+       @isset($item['target']) target="{{ $item['target'] }}" @endisset
+       {!! $item['data-compiled'] ?? '' !!}>
 
         {{-- Icon (optional) --}}
-        @if(isset($item['icon']))
-        <i class="{{ $item['icon'] }} {{
+        @isset($item['icon'])
+            <i class="{{ $item['icon'] }} {{
                 isset($item['icon_color']) ? 'text-' . $item['icon_color'] : ''
             }}"></i>
-        @endif
+        @endisset
 
         {{-- Text --}}
         {{ $item['text'] }}
 
         {{-- Label (optional) --}}
-        @if(isset($item['label']))
-        <span class="badge badge-{{ $item['label_color'] ?? 'primary' }}">
-            {{ $item['label'] }}
-        </span>
-        @endif
+        @isset($item['label'])
+            <span class="badge badge-{{ $item['label_color'] ?? 'primary' }}">
+                {{ $item['label'] }}
+            </span>
+        @endisset
+
     </router-link>
 
 </li>

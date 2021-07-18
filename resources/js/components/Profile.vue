@@ -240,6 +240,7 @@
 
 <script>
 export default {
+    title: "Profile -",
     data() {
         return {
             form: new Form({

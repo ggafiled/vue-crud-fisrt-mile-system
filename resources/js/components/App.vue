@@ -18,6 +18,9 @@ export default {};
 .DTFC_LeftHeadWrapper th {
     background-color: white;
 }
+.DTFC_RightHeadWrapper th {
+    background-color: white;
+}
 .cursor-pointer {
     cursor: pointer;
 }
