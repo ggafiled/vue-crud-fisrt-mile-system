@@ -1,7 +1,7 @@
 # Fist Mile ERP System (Laravel+Vue Crud Starter)
 
-[![Build Status](https://dev.azure.com/anowarhossain/laravel-vue-crud-starter/_apis/build/status/AnowarCST.laravel-vue-crud-starter?branchName=master)](https://dev.azure.com/anowarhossain/laravel-vue-crud-starter/_build/latest?definitionId=6&branchName=master)
-<img src="https://sv1.picz.in.th/images/2021/02/11/o138qN.png" alt="Company Logo" width="140px" height="50px">
+[![Build Status](https://dev.azure.com/anowarhossain/laravel-vue-crud-starter/_apis/build/status/AnowarCST.laravel-vue-crud-starter?branchName=master)]
+<img src="https://sv1.picz.in.th/images/2021/02/11/o138qN.png" alt="Company Logo" width="140px" height="50px"/>
 
 ## About Repository
 
