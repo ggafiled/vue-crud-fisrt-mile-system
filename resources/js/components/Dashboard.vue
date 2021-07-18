@@ -101,9 +101,11 @@
                                         class="btn btn-light btn-sm active"
                                         @click="refreshCountyChart"
                                     >
-                                       <div>
-                                            <i class="bi bi-arrow-clockwise"></i>
-                                       </div>
+                                        <div>
+                                            <i
+                                                class="bi bi-arrow-clockwise"
+                                            ></i>
+                                        </div>
                                     </button>
                                 </div>
                             </div>
@@ -241,7 +243,9 @@
                                         @click="refreshProgressChart"
                                     >
                                         <div>
-                                            <i class="bi bi-arrow-clockwise"></i>
+                                            <i
+                                                class="bi bi-arrow-clockwise"
+                                            ></i>
                                         </div>
                                     </button>
                                 </div>
@@ -274,7 +278,9 @@
                                         @click="refreshDoughnutChart"
                                     >
                                         <div>
-                                            <i class="bi bi-arrow-clockwise"></i>
+                                            <i
+                                                class="bi bi-arrow-clockwise"
+                                            ></i>
                                         </div>
                                     </button>
                                 </div>
@@ -511,24 +517,36 @@ export default {
         refreshProgressChart() {
             anime({
                 targets: "#btn_progress_refresh div",
-                rotate: "1turn",
-                duration: 8000
+                keyframes: [
+                    { rotate: "1turn" },
+                    { rotate: "0deg" }
+                ],
+                duration: 1000,
+                easing: "linear"
             });
             this.$emit("updateHorizontalBarChart");
         },
-         refreshCountyChart() {
+        refreshCountyChart() {
             anime({
                 targets: "#btn_county_refresh div",
-                rotate: "1turn",
-                duration: 8000
+                keyframes: [
+                    { rotate: "1turn" },
+                    { rotate: "0deg" }
+                ],
+                duration: 1000,
+                easing: "linear"
             });
             this.$emit("updateBarChart");
         },
         refreshDoughnutChart() {
             anime({
                 targets: "#btn_progress_doughnut_refresh div",
-                rotate: "1turn",
-                duration: 8000
+                keyframes: [
+                    { rotate: "1turn" },
+                    { rotate: "0deg" }
+                ],
+                duration: 1000,
+                easing: "linear"
             });
             this.$emit("updateDoughnutChart");
         }
