@@ -260,6 +260,12 @@ return [
                     'icon' => 'fas fa-fw fas fa-tasks',
                     'can'  => ['building-update', 'building-create', 'building-read']
                 ],
+ [
+                    'text' => 'Planning Managment',
+                    'url'  => '/planing',
+                    'icon' => 'fas fa-fw fas fa-list-alt',
+                    'can'  => ['building-update', 'building-create', 'building-read']
+                ],
             ]
         ],
         [
@@ -729,7 +735,8 @@ return [
     |
     | Here we can enable the Livewire support.
     |
-    | For detailed instructions you can look the livewire here:
+
+  | For detailed instructions you can look the livewire here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/9.-Other-Configuration
     */
 

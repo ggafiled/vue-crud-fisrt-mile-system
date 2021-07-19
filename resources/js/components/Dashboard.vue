@@ -71,8 +71,8 @@
 
                         <div class="info-box-content">
                             <h5 class="info-box-text">Planning Managment</h5>
-                            <a href="/commingsoon" class="small-box-footer"
-                                >Coming Soon...
+                            <a href="/planing" class="small-box-footer"
+                                >Click
                                 <i class="fas fa-arrow-circle-right"></i
                             ></a>
                         </div>
