@@ -31,6 +31,7 @@
                                         <th>Manager Name</th>
                                         <th>Phone</th>
                                         <th>SpendSpace</th>
+                                        <th>UpDate</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -1350,8 +1351,14 @@ export default {
                 {
                     data: "spendSpace"
                 },
+               {
+                    data: "updated_at",
+                    render: function(data, type, row, meta) {
+                        return moment(data).format("MM/DD/YYYY HH:MM");
+                    }
+                },
                 {
-                    data: null,
+                data: null,
                     className: "dt-body-center",
                     render: function(data, type, row, meta) {
                         return "<a class='edit-building' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-building' href='#'> <i class='fa fa-trash red'></i> </a>";

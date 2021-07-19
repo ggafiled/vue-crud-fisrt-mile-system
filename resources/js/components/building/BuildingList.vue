@@ -1035,8 +1035,8 @@ export default {
                                     data +
                                     "</span>"
                                 );
-                            } else if (!data.length) {
-                                return "ไม่ได้ระบุ";
+                            // } else if (!data.length) {
+                            //     return "ไม่ได้ระบุ";
                             } else {
                                 return data;
                             }
