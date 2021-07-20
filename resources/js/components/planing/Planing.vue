@@ -1,26 +1,25 @@
 <template>
     <section class="content">
         <div class="container-fluid">
-            <div class="row" v-if="$gate.isAdmin()">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                PLANING MANAGEMENT
-                            </h3>
-                            <div class="card-tools">
-                                <button
-                                    type="button"
-                                    class="btn btn-sm btn-primary"
-                                    @click="newModal"
-                                >
-                                    <i class="fa fa-plus-square"></i>
-                                    Add New
-                                </button>
-                            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            PLANING MANAGEMENT
+                        </h3>
+                        <div class="card-tools">
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-primary"
+                                @click="newModal"
+                            >
+                                <i class="fa fa-plus-square"></i>
+                                Add New
+                            </button>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table
                                 id="planing"
@@ -40,6 +39,17 @@
                                         <th>floor</th>
                                         <th>room</th>
                                         <th>isp</th>
+                                        <th>agent</th>
+                                        <th>circuit</th>
+                                        <th>entrance Fee</th>
+                                        <th>jobType</th>
+                                        <th>appointment date</th>
+                                        <th>appointment time</th>
+                                        <th>technician planing</th>
+                                        <th>idRequired</th>
+                                        <th>status</th>
+                                        <th>subStatus</th>
+                                        <th>remark</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -48,7 +58,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
             <div v-if="!$gate.isAdmin()">
                 <not-found></not-found>
@@ -275,7 +284,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>ISP</label>
-                                            <input
+                                            <select
                                                 v-model="form.isp"
                                                 type="text"
                                                 class="form-control"
@@ -285,7 +294,26 @@
                                                         'isp'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >เลือก isp</option
+                                                >
+                                                <option value="AIS">
+                                                    AIS
+                                                </option>
+                                                <option value="TRUE">
+                                                    TRUE
+                                                </option>
+                                                <option value="3BB">
+                                                    3BB
+                                                </option>
+                                                <option value="TOT">
+                                                    TOT
+                                                </option>
+                                                <option value="FN">
+                                                    FN
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="isp"
@@ -738,6 +766,51 @@ export default {
                     text: "<i class='bi bi-printer mr-1'></i>Print"
                 },
                 {
+                    className: "bg-success",
+                    text: "<i class='bi bi-file-text mr-1'></i>AIS",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("AIS")
+                            .draw();
+                    }
+                },
+                {
+                    className: "bg-danger",
+                    text: "<i class='bi bi-file-text mr-1'></i>TRUE",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("TRUE")
+                            .draw();
+                    }
+                },
+                {
+                    className: "bg-primary",
+                    text: "<i class='bi bi-file-text mr-1'></i>TOT",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("TOT")
+                            .draw();
+                    }
+                },
+                {
+                    className: "bg-warning",
+                    text: "<i class='bi bi-file-text mr-1'></i>FN",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("FN")
+                            .draw();
+                    }
+                },
+                {
+                    className: "bg-danger",
+                    text: "<i class='bi bi-file-text mr-1'></i>3BB",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("3BB")
+                            .draw();
+                    }
+                },
+                {
                     text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
                     action: function(e, dt, node, config) {
                         dt.columns()
@@ -752,7 +825,7 @@ export default {
                     data: "name"
                 },
                 {
-                    data: "surname",
+                    data: "surname"
                 },
                 {
                     data: "tel"
@@ -773,7 +846,123 @@ export default {
                     data: "room"
                 },
                 {
-                    data: "isp"
+                    data: "isp",
+                    render: function(data, type, row, meta) {
+                        if (data == "AIS") {
+                            return (
+                                '<span class="badge badge-success">' +
+                                data +
+                                "</span>"
+                            );
+                        } else if (data == "TOT") {
+                            return (
+                                '<span class="badge badge-primary">' +
+                                data +
+                                "</span>"
+                            );
+                        } else if (data == "3BB") {
+                            return (
+                                '<span class="badge badge-danger">' +
+                                data +
+                                "</span>"
+                            );
+                        } else if (data == "TRUE") {
+                            return (
+                                '<span class="badge badge-danger">' +
+                                data +
+                                "</span>"
+                            );
+                        } else if (data == "FN") {
+                            return (
+                                '<span class="badge badge-warning">' +
+                                data +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
+                    }
+                },
+                {
+                    data: "agent",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data   +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "circuit"
+                },
+                {
+                    data: "entranceFee"
+                    ,
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data + "฿"  +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "jobType",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data   +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "appointmentDate"
+                },
+                {
+                    data: "appointmentTime"
+                },
+                {
+                    data: "technicianPlaning"
+                },
+                {
+                    data: "idRequired"
+                },
+                {
+                    data: "status"
+                },
+                {
+                    data: "subStatus"
+                },
+                {
+                    data: "reMark"
                 },
                 {
                     data: null,
@@ -798,15 +987,11 @@ export default {
             order: [[1, "desc"]]
         });
 
-        $("tbody", this.$refs.planing).on(
-            "click",
-            ".edit-planing",
-            function() {
-                var tr = $(this).closest("tr");
-                var row = table.row(tr);
-                vm.editModal(row.data());
-            }
-        );
+        $("tbody", this.$refs.planing).on("click", ".edit-planing", function() {
+            var tr = $(this).closest("tr");
+            var row = table.row(tr);
+            vm.editModal(row.data());
+        });
 
         $("tbody", this.$refs.planing).on(
             "click",
