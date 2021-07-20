@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlanningTable extends Migration
+class CreatePlaningsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,14 @@ class CreatePlanningTable extends Migration
     public function up()
     {
         Schema::enableForeignKeyConstraints();
-        Schema::create('planning', function (Blueprint $table) {
+        Schema::create('planings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();
             $table->string('name')->nullable();
             $table->string('surname')->nullable();
             $table->string('tel')->nullable();
             $table->string('tel2')->nullable();
-            $table->string('building')->nullable();
+            $table->string('theBuilding')->nullable();
             $table->string('floor')->nullable();
             $table->string('room')->nullable();
             $table->string('isp')->nullable();
@@ -54,6 +54,9 @@ class CreatePlanningTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('planning');
+        Schema::dropIfExists('planings');
     }
 }
+
+
+

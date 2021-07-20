@@ -12,18 +12,25 @@ class Planing extends Model
     use HasFactory,SoftDeletes;
     protected $fillable = [
         'building_id',
+        'name',
+        'surname',
+        'tel',
+        'tel2',
+        'theBuilding',
+        'floor',
+        'room',
         'isp',
-        'ispCode',
-        'fees',
-        'confirming',
-        'team_id',
-        'remark',
-        'date',
-        'time',
+        'agent',
+        'circuit',
+        'entranceFee',
+        'jobType',
+        'appointmentDate',
+        'appointmentTime',
+        'technicianPlaning',
+        'idRequired',
         'status',
         'subStatus',
-        'dateConnect',
-        'dateDisconnect',
+        'reMark',
     ];
 
     public function building()
@@ -31,8 +38,4 @@ class Planing extends Model
 		return $this->hasMany('App\Models\Building','id','building_id');
 	}
 
-    public function teams()
-	{
-		return $this->hasMany('App\Models\Team','id','team_id');
-	}
 }

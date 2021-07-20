@@ -886,7 +886,7 @@ export default {
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }
                 },
-                 {
+                {
                     data: "building.projectName"
                 },
                 {

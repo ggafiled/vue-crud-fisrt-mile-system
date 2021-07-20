@@ -64,6 +64,11 @@ class Building extends Model
 		return $this->belongsTo('App\Models\Constarution','building_id','id');
 	}
 
+    public function planning()
+	{
+		return $this->belongsTo('App\Models\planning','building_id','id');
+	}
+
     public function get_building() {
         return $this->building()->where('building_id');
     }
