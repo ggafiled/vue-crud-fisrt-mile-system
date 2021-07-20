@@ -4,9 +4,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">
+                        <h3 class="card-title">
+                            <i class="fas fa-fw bi bi-building"></i>
                             Building Fiber Net Table
-                        </h2>
+                        </h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

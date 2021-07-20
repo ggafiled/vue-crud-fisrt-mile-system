@@ -147,9 +147,9 @@ return [
 
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => true,
-    'sidebar_collapse_auto_size' => true,
+    'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => true,
-    'sidebar_collapse_remember_no_transition' => true,
+    'sidebar_collapse_remember_no_transition' => false,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
@@ -281,6 +281,12 @@ return [
                     'icon' => 'fas fa-fw fas fa-tasks',
                     'can'  => ['building-update', 'building-create', 'building-read']
                 ],
+                 [
+                    'text' => 'Planning Managment',
+                    'url'  => '/planing',
+                    'icon' => 'fas fa-fw fas fa-list-alt',
+                    'can'  => ['building-update', 'building-create', 'building-read']
+                ],
             ]
         ],
         [
@@ -295,7 +301,7 @@ return [
                     'can'  => ['building-read']
                 ],
                 [
-                    'text' => 'Project Tot Table',
+                    'text' => 'Project TOT Table',
                     'url'  => '/buildingtot',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
@@ -307,13 +313,13 @@ return [
                     'can'  => ['building-read']
                 ],
                 [
-                    'text' => 'Project True Table',
+                    'text' => 'Project TRUE Table',
                     'url'  => '/buildingTrue',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
-                    'text' => 'Project Ais Table',
+                    'text' => 'Project AIS Table',
                     'url'  => '/buildingAis',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
@@ -336,7 +342,7 @@ return [
         [
             'text' => 'User Role & Permission',
             'url'  => '/permission',
-            'icon' => 'fas fa-eye',
+            'icon' => 'bi bi-layers',
             'roles'  => ['superadministrator', 'administrator'],
         ],
         // [
@@ -348,7 +354,7 @@ return [
         [
             'text' => 'User Management',
             'url'  => '/users',
-            'icon' => 'fas fa-users',
+            'icon' => 'bi bi-people',
             'roles'  => ['superadministrator', 'administrator'],
         ],
     ],

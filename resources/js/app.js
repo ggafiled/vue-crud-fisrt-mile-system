@@ -35,6 +35,12 @@ const Toast = Swal.mixin({
 window.Swal = Swal;
 window.Toast = Toast;
 
+import VueMeta from "vue-meta";
+Vue.use(VueMeta);
+
+/**
+ * Custom mixins function to rename title.
+ */
 import titleMixin from "./partials/mixins/title";
 Vue.mixin(titleMixin);
 

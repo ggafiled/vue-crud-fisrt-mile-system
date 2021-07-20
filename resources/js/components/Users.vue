@@ -5,8 +5,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">User List</h3>
-
+                            <h3 class="card-title"><i class="bi bi-people"></i> User List</h3>
                             <div class="card-tools">
                                 <button
                                     type="button"
@@ -451,13 +450,14 @@ export default {
                         return moment(data).format("MMMM Do YYYY");
                     }
                 },
+
                 {
                     data: null,
                     className: "dt-body-center",
                     render: function(data, type, row, meta) {
                         return vm.$gate.iscurrentUser(data.id)
-                            ? "<a class='edit-users' href='#'><i class='fa fa-edit blue'></i> </a>"
-                            : "<a class='edit-users' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-users' href='#'> <i class='fa fa-trash red'></i> </a>";
+                            ? "<a class='edit-users btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a>"
+                            : "<a class='edit-users btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-users btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }
                 }
             ],

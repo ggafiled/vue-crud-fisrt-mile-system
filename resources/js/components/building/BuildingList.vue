@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">Building List Table</h2>
+                        <h class="card-title"><i class="fas fa-fw bi bi-building"></i>Building List Table</h>
                     </div>
                     <div
                         class="modal fade"

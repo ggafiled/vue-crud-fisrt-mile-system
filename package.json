@@ -105,6 +105,7 @@
         "vue-chartjs": "^3.5.1",
         "vue-float-menu": "^1.9.0",
         "vue-full-calendar": "^2.8.1-0",
+        "vue-meta": "^2.4.0",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.5.1",
         "vue-select2": "^0.2.6",

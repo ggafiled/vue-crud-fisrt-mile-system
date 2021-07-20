@@ -4,9 +4,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">
-                            Building True Table
-                        </h2>
+                        <h3 class="card-title">
+                            <i class="fas fa-fw bi bi-building"></i>
+                            Building TRUE Table
+                        </h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

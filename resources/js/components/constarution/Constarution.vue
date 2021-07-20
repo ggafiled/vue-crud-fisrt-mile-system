@@ -4,7 +4,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">Constarution List Table</h2>
+                        <h2 class="card-title">
+                            <i class="fas fa-fw bi bi-aspect-ratio"></i>
+                            Constarution List Table</h2>
                         <div class="card-tools">
                             <button
                                 type="button"
@@ -956,56 +958,55 @@ export default {
                     text: "<i class='bi bi-printer mr-1'></i>Print"
                 },
                 {
-                            text:
-                                "<i class='bi bi-list-check mr-1'></i>แสดงที่เลือกไว้",
-                            action: function(e, dt, node, config) {
-                                console.info("button: Display Select Item");
-                                var rowsel = dt
-                                    .rows({ selected: true })
-                                    .data()
-                                    .map(function(item) {
-                                        return item.id;
-                                    })
-                                    .join(",");
-                                if (!rowsel.length) {
-                                    return Swal.fire({
-                                        title: "ไม่มีเรดคอร์ดที่เลือก",
-                                        text: "กรุณาเลือกเรดคอร์ดก่อน",
-                                        timer: 2000,
-                                        showCancelButton: false,
-                                        showConfirmButton: false
-                                    });
-                                }
-                                $.fn.dataTable.ext.search.pop();
-                                $.fn.dataTable.ext.search.push(function(
-                                    settings,
-                                    data,
-                                    dataIndex
-                                ) {
-                                    return $(
-                                        table.row(dataIndex).node()
-                                    ).hasClass("selected")
-                                        ? true
-                                        : false;
-                                });
-
-                                table.draw();
-                            }
-                        },
-                        {
-                            text:
-                                "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
-                            action: function(e, dt, node, config) {
-                                console.info("button: Clear");
-                                $.fn.dataTable.ext.search.pop();
-                                dt.search("").draw();
-                                dt.columns()
-                                    .search("")
-                                    .draw();
-                                dt.rows().deselect();
-                                dt.ajax.reload();
-                            }
+                    text:
+                        "<i class='bi bi-list-check mr-1'></i>แสดงที่เลือกไว้",
+                    action: function(e, dt, node, config) {
+                        console.info("button: Display Select Item");
+                        var rowsel = dt
+                            .rows({ selected: true })
+                            .data()
+                            .map(function(item) {
+                                return item.id;
+                            })
+                            .join(",");
+                        if (!rowsel.length) {
+                            return Swal.fire({
+                                title: "ไม่มีเรดคอร์ดที่เลือก",
+                                text: "กรุณาเลือกเรดคอร์ดก่อน",
+                                timer: 2000,
+                                showCancelButton: false,
+                                showConfirmButton: false
+                            });
                         }
+                        $.fn.dataTable.ext.search.pop();
+                        $.fn.dataTable.ext.search.push(function(
+                            settings,
+                            data,
+                            dataIndex
+                        ) {
+                            return $(table.row(dataIndex).node()).hasClass(
+                                "selected"
+                            )
+                                ? true
+                                : false;
+                        });
+
+                        table.draw();
+                    }
+                },
+                {
+                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                    action: function(e, dt, node, config) {
+                        console.info("button: Clear");
+                        $.fn.dataTable.ext.search.pop();
+                        dt.search("").draw();
+                        dt.columns()
+                            .search("")
+                            .draw();
+                        dt.rows().deselect();
+                        dt.ajax.reload();
+                    }
+                }
             ],
             columns: [
                 { data: null, defaultContent: "", className: "dt-body-center" },
@@ -1029,32 +1030,28 @@ export default {
                 {
                     data: "surveyDesing",
                     render: function(data, type, row, meta) {
-                         if (data == "") {
+                        if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
                                 "</span>"
                             );
                         } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                            return "<span>" + data + "</span>";
                         }
                     }
                 },
                 {
                     data: "ifcc",
                     render: function(data, type, row, meta) {
-                         if (data == "") {
+                        if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
                                 "</span>"
                             );
                         } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                            return "<span>" + data + "</span>";
                         }
                     }
                 },
@@ -1068,9 +1065,7 @@ export default {
                                 "</span>"
                             );
                         } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                            return "<span>" + data + "</span>";
                         }
                     }
                 },
@@ -1084,9 +1079,7 @@ export default {
                                 "</span>"
                             );
                         } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                            return "<span>" + data + "</span>";
                         }
                     }
                     // visible: false
@@ -1101,9 +1094,7 @@ export default {
                                 "</span>"
                             );
                         } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                            return "<span>" + data + "</span>";
                         }
                     }
                     // visible: false
@@ -1118,9 +1109,7 @@ export default {
                                 "</span>"
                             );
                         } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                            return "<span>" + data + "</span>";
                         }
                     }
                     // visible: false
@@ -1135,9 +1124,7 @@ export default {
                                 "</span>"
                             );
                         } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                            return "<span>" + data + "</span>";
                         }
                     }
                     // visible: false
@@ -1152,9 +1139,7 @@ export default {
                                 "</span>"
                             );
                         } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                            return "<span>" + data + "</span>";
                         }
                     }
                     // visible: false
@@ -1169,7 +1154,7 @@ export default {
                     data: null,
                     className: "dt-body-center",
                     render: function(data, type, row, meta) {
-                        return "<a class='edit-constarution' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-constarution' href='#'> <i class='fa fa-trash red'></i> </a>";
+                        return "<a class='edit-constarution btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-constarution btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }
                 }
             ],

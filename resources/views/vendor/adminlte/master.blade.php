@@ -8,6 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta property="og:url"                content="https://www.firstmile.work" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:title"              content="ติดต่อสอบถามข้อมูลบริษัทได้ที่ Firstmile.work" />
+    <meta property="og:description"        content="ครบวงจรการติดตั้งเครือข่ายไร้สาย วางแผนและจัดการได้ถูกจุด" />
+    <meta property="og:image"              content="https://sv1.picz.in.th/images/2021/02/11/o138qN.png" />
 
     {{-- Custom Meta Tags --}}
     @yield('meta_tags')

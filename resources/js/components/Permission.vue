@@ -5,7 +5,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Role List</h3>
+                            <h3 class="card-title"><i class="bi bi-layers"></i> User Role & Permission</h3>
 
                             <div class="card-tools">
                                 <button
@@ -445,7 +445,7 @@ export default {
                     data: null,
                     className: "dt-body-center",
                     render: function(data, type, row, meta) {
-                        return "<a class='edit-permission' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-permission' href='#'> <i class='fa fa-trash red'></i> </a>";
+                        return "<a class='edit-permission btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-permission btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }
                 }
             ],

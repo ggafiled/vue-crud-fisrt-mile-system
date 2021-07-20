@@ -5,7 +5,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Building Managment Table</h3>
+                            <h3 class="card-title"><i class="fas fa-fw bi bi-building"></i> Building Managment Table</h3>
                             <div class="card-tools">
                                 <button
                                     type="button"
@@ -1261,6 +1261,14 @@ export default {
                 [10, 15, 25, 50, -1],
                 [10, 15, 25, 50, "All"]
             ],
+            fixedHeader: true,
+            fixedColumns: true,
+            fixedColumns: {
+                leftColumns: 0,
+                rightColumns: 1
+            },
+            scrollX: true,
+            scrollCollapse: true,
             buttons: [
                 "colvis",
                 "copy",
@@ -1316,31 +1324,30 @@ export default {
                     }
                 },
                 {
-                            text:
-                                "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
-                            action: function(e, dt, node, config) {
-                                console.info("button: Clear");
-                                $.fn.dataTable.ext.search.pop();
-                                dt.search("").draw();
-                                dt.columns()
-                                    .search("")
-                                    .draw();
-                                dt.rows().deselect();
-                                dt.ajax.reload();
-                            }
-                        }
+                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                    action: function(e, dt, node, config) {
+                        console.info("button: Clear");
+                        $.fn.dataTable.ext.search.pop();
+                        dt.search("").draw();
+                        dt.columns()
+                            .search("")
+                            .draw();
+                        dt.rows().deselect();
+                        dt.ajax.reload();
+                    }
+                }
             ],
             columns: [
                 { data: null, defaultContent: "", className: "dt-body-center" },
                 {
                     data: "projectName",
                     render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
+                        return (
+                            '<span><i class="bi bi-building pr-2"></i>' +
+                            data +
+                            "</span>"
+                        );
+                    }
                 },
                 {
                     data: "nameManager"
@@ -1355,7 +1362,7 @@ export default {
                     data: null,
                     className: "dt-body-center",
                     render: function(data, type, row, meta) {
-                        return "<a class='edit-building' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-building' href='#'> <i class='fa fa-trash red'></i> </a>";
+                        return "<a class='edit-building btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-building btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }
                 }
             ],
@@ -1368,11 +1375,6 @@ export default {
                     checkboxes: {
                         selectRow: true
                     }
-                },
-                {
-                    targets: [4],
-                    visible: false,
-                    searchable: true
                 }
             ],
             select: { selector: "td:not(:last-child)", style: "os" },
@@ -1401,5 +1403,3 @@ export default {
     }
 };
 </script>
-
-<style></style>

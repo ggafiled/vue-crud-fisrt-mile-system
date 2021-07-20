@@ -14,7 +14,7 @@
         @yield('content_top_nav_left')
     </ul>
 
-    <div class="d-none d-lg-inline d-md-inline text-uppercase mx-auto my-auto" style="color: #cecdcd">
+    <div class="d-none d-lg-inline text-uppercase mx-auto my-auto" style="color: #cecdcd">
         <h4>
             {{ config('adminlte.title', 'Fist Mile ERP System') }}
 

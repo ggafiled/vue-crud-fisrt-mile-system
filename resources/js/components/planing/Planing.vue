@@ -1,46 +1,62 @@
 <template>
     <section class="content">
         <div class="container-fluid">
-            <div class="row" v-if="$gate.isAdmin()">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                PLANING MANAGEMENT
-                            </h3>
-                            <div class="card-tools">
-                                <button
-                                    type="button"
-                                    class="btn btn-sm btn-primary"
-                                    @click="newModal"
-                                >
-                                    <i class="fa fa-plus-square"></i>
-                                    Add New
-                                </button>
-                            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-fw fas fa-list-alt"></i>
+                            PLANING MANAGEMENT
+                        </h3>
+                        <div class="card-tools">
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-primary"
+                                @click="newModal"
+                            >
+                                <i class="fa fa-plus-square"></i>
+                                Add New
+                            </button>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body table-responsive p-2">
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="table-responsive">
                             <table
                                 id="planing"
                                 ref="planing"
-                                class="table table-striped table-bordered"
+                                class="display nowrap"
+                                style="width:100%"
                             >
                                 <thead>
-                                    <tr>
+                                    <tr class="info">
                                         <th>NO</th>
-                                        <th>Building Name</th>
-                                        <th>Contact Name</th>
-                                        <th>Tel(Main)</th>
-                                        <th>Tel(Reserve)</th>
+                                        <th>name</th>
+                                        <th>surname</th>
+                                        <th>tel</th>
+                                        <th>tel2</th>
+                                        <th>building name</th>
+                                        <th>building</th>
+                                        <th>floor</th>
+                                        <th>room</th>
+                                        <th>isp</th>
+                                        <th>agent</th>
+                                        <th>circuit</th>
+                                        <th>entrance Fee</th>
+                                        <th>jobType</th>
+                                        <th>appointment date</th>
+                                        <th>appointment time</th>
+                                        <th>technician planing</th>
+                                        <th>idRequired</th>
+                                        <th>status</th>
+                                        <th>subStatus</th>
+                                        <th>remark</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                             </table>
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
                 </div>
             </div>
 
@@ -84,146 +100,156 @@
                             "
                         >
                             <div class="modal-body">
-                                <div class="row" v-if="editmode">
-                                    <div class="col-sm-2">
+                                <div class="row">
+                                    <div class="col-sm-2" v-show="editmode">
                                         <div class="form-group">
-                                            <label>MEMBER ID</label>
+                                            <label>Building ID</label>
                                             <input
-                                                v-model="form.member_id"
-                                                type="number"
-                                                class="form-control"
-                                                placeholder="Enter your member id..."
-                                                readonly
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'member_id'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="member_id"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Contact Name</label>
-                                            <input
-                                                v-model="form.contactName"
+                                                v-model="form.id"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your contactName..."
+                                                placeholder="Enter your building id..."
                                                 readonly
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'contactName'
+                                                        'id'
                                                     )
                                                 }"
                                             />
-                                            <has-error
-                                                :form="form"
-                                                field="contactName"
-                                            ></has-error>
                                         </div>
                                     </div>
-
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Phone Number(1)</label>
+                                            <label>Name</label>
                                             <input
-                                                v-model="form.phone1"
+                                                v-model="form.name"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your phone number1..."
-                                                readonly
+                                                placeholder="Enter your Name..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'phone1'
+                                                        'name'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="phone1"
+                                                field="name"
                                             ></has-error>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Phone Number(2)</label>
+                                            <label>Surname</label>
                                             <input
-                                                v-model="form.phone2"
+                                                v-model="form.surname"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your phone number2..."
-                                                readonly
+                                                placeholder="Enter your surname..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'phone2'
+                                                        'surname'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="phone2"
+                                                field="surname"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Tel</label>
+                                            <input
+                                                v-model="form.tel"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your tel..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'tel'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="tel"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Tel2</label>
+                                            <input
+                                                v-model="form.tel2"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your tel2..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'tel2'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="tel2"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div
+                                        :class="[
+                                            editmode ? 'col-sm-10' : 'col-sm-12'
+                                        ]"
+                                    >
+                                        <div class="form-group">
+                                            <label>Project Name</label>
+                                            <Select2
+                                                v-model="form.building_id"
+                                                :options="building"
+                                                :settings="settings"
+                                            >
+                                            </Select2>
+                                            <has-error
+                                                :form="form"
+                                                field="projectName"
                                             ></has-error>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Building No</label>
+                                            <label>Building</label>
                                             <input
-                                                v-model="form.townNumber"
-                                                type="number"
-                                                class="form-control"
-                                                placeholder="Enter your townNumber..."
-                                                readonly
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'townNumber'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="townNumber"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Building Name</label>
-                                            <input
-                                                v-model="form.buildingName"
+                                                v-model="form.theBuilding"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your buildingName..."
-                                                readonly
+                                                placeholder="Enter your building..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'buildingName'
+                                                        'theBuilding'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="buildingName"
+                                                field="theBuilding"
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>FLOOR</label>
+                                            <label>Floor</label>
                                             <input
                                                 v-model="form.floor"
-                                                type="number"
+                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your floor no..."
-                                                readonly
+                                                placeholder="Enter your floor..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'floor'
@@ -236,108 +262,62 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>ROOM</label>
+                                            <label>Room</label>
                                             <input
-                                                v-model="form.roomNumber"
-                                                type="number"
+                                                v-model="form.room"
+                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your roomNumber..."
-                                                readonly
+                                                placeholder="Enter your room..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'roomNumber'
+                                                        'room'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="roomNumber"
+                                                field="room"
                                             ></has-error>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>ISP</label>
-                                            <input
+                                            <select
                                                 v-model="form.isp"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your ISP..."
+                                                placeholder="Enter your isp..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'isp'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >เลือก isp</option
+                                                >
+                                                <option value="AIS">
+                                                    AIS
+                                                </option>
+                                                <option value="TRUE">
+                                                    TRUE
+                                                </option>
+                                                <option value="3BB">
+                                                    3BB
+                                                </option>
+                                                <option value="TOT">
+                                                    TOT
+                                                </option>
+                                                <option value="FN">
+                                                    FN
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="isp"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>ISP CODE</label>
-                                            <input
-                                                v-model="form.ispCode"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your ISP CODE..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'ispCode'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="ispCode"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>FEES</label>
-                                            <input
-                                                v-model="form.fees"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your Fees..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'fees'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="fees"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>CONFIRMING</label>
-                                            <input
-                                                v-model="form.confirming"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your confirming..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'confirming'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="confirming"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -346,74 +326,61 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Operator Team</label>
-                                            <select
-                                                name="team_id"
-                                                v-model="form.team_id"
-                                                id="team_id"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'team_id'
-                                                    )
-                                                }"
-                                            >
-                                                <option value="" selected
-                                                    >Select Operator
-                                                    Team</option
-                                                >
-                                                <option
-                                                    v-for="team in teams"
-                                                    :key="team.id"
-                                                    :value="team.id"
-                                                >
-                                                    {{ team.name }}
-                                                </option>
-                                            </select>
-
-                                            <has-error
-                                                :form="form"
-                                                field="team_id"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>DATE</label>
+                                            <label>Agent</label>
                                             <input
-                                                v-model="form.date"
-                                                type="date"
+                                                v-model="form.agent"
+                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your date..."
+                                                placeholder="Enter your agent..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'date'
+                                                        'agent'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="date"
+                                                field="agent"
                                             ></has-error>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>TIME</label>
+                                            <label>Circuit</label>
                                             <input
-                                                v-model="form.time"
-                                                type="time"
+                                                v-model="form.circuit"
+                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your time..."
+                                                placeholder="Enter your circuit..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'time'
+                                                        'circuit'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="time"
+                                                field="circuit"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>EntranceFee</label>
+                                            <input
+                                                v-model="form.entranceFee"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your entrance fee..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'entranceFee'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="entranceFee"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -422,7 +389,110 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>STATUS</label>
+                                            <label>JobType</label>
+                                            <input
+                                                v-model="form.jobType"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your jobType..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'jobType'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="jobType"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Appointment Date</label>
+                                            <input
+                                                v-model="form.appointmentDate"
+                                                type="date"
+                                                class="form-control"
+                                                placeholder="Enter your appointmentDate..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'appointmentDate'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="appointmentDate"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Appointment Time</label>
+                                            <input
+                                                v-model="form.appointmentTime"
+                                                type="time"
+                                                class="form-control"
+                                                placeholder="Enter your appointment time..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'appointmentTime'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="appointmentTime"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Technician Planing</label>
+                                            <input
+                                                v-model="form.technicianPlaning"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your technician planing..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'technicianPlaning'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="technicianPlaning"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>ID Required</label>
+                                            <input
+                                                v-model="form.idRequired"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your idRequired..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'idRequired'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="idRequired"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Status</label>
                                             <input
                                                 v-model="form.status"
                                                 type="text"
@@ -440,63 +510,46 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>SUP STATUS</label>
+                                            <label>Sub Status</label>
                                             <input
-                                                v-model="form.supStatus"
+                                                v-model="form.subStatus"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your supStatus..."
+                                                placeholder="Enter your sub status..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'supStatus'
+                                                        'subStatus'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="supStatus"
+                                                field="subStatus"
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label>DATE CONNECT</label>
+                                            <label>Remark</label>
                                             <input
-                                                v-model="form.dateConnect"
-                                                type="date"
+                                                v-model="form.reMark"
+                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your dateConnect..."
+                                                placeholder="Enter your reMark..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'dateConnect'
+                                                        'reMark'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="dateConnect"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>DATE DISCONNECT</label>
-                                            <input
-                                                v-model="form.dateDisconnect"
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Enter your dateDisconnect..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'dateDisconnect'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="dateDisconnect"
+                                                field="reMark"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -536,49 +589,63 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
+import Select2 from "v-select2-component";
+
 export default {
+    components: { Select2 },
     data() {
         return {
             editmode: false,
             selected: "",
-            teams: [],
+            building: [],
+            settings: {
+                placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
+                allowClear: true,
+                dropdownParent: ".modal"
+            },
+            sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
             form: new Form({
                 id: "",
                 building_id: "",
-                buildingName: "",
-                contactName: "",
-                townNumber: "",
+                projectName: "",
+                name: "",
+                surname: "",
+                tel: "",
+                tel2: "",
+                theBuilding: "",
                 floor: "",
-                roomNumber: "",
-                contract: "",
-                contractTime: "",
-                member_id: "",
-                phone1: "",
-                phone2: "",
+                room: "",
                 isp: "",
-                ispCode: "",
-                fees: "",
-                confirming: "",
-                team_id: "",
-                team: "",
-                remark: "",
-                date: "",
-                time: "",
+                agent: "",
+                circuit: "",
+                entranceFee: "",
+                jobType: "",
+                appointmentDate: "",
+                appointmentTime: "",
+                technicianPlaning: "",
+                idRequired: "",
                 status: "",
                 subStatus: "",
-                dateConnect: "",
-                dateDisconnect: ""
+                reMark: ""
             })
         };
     },
     methods: {
-        loadTeams() {
+        loadBuildings() {
+            axios.get("api/building").then(
+                response =>
+                    (this.building = response.data.data.map(a => {
+                        return { text: a.projectName, id: a.id };
+                    }))
+            );
+        },
+        loadPlaning() {
             this.$Progress.start();
+
             if (this.$gate.isAdmin()) {
-                axios
-                    .get("api/team/list")
-                    .then(({ data }) => (this.teams = data.data));
+                //To DO
             }
+
             this.$Progress.finish();
         },
         updatePlaning() {
@@ -595,6 +662,7 @@ export default {
                     });
                     this.$Progress.finish();
                     //  Fire.$emit('AfterCreate');
+
                     this.loadPlaning();
                 })
                 .catch(() => {
@@ -604,25 +672,7 @@ export default {
         editModal(planing) {
             this.editmode = true;
             this.form.reset();
-            // planing.buildingName = planing.building[0].buildingName;
-            planing.contactName =
-                planing.building[0].member[0].name +
-                "" +
-                planing.building[0].member[0].lastName;
-            planing.team = planing.teams[0].name;
-            planing = {
-                ...planing,
-                ...planing.building[0],
-                ...planing.building[0].member[0]
-            };
-            planing.time = moment(planing.time).format("HH:mm:ss");
-            planing.date = moment(planing.date).format("YYYY-MM-DD");
-            planing.dateConnect = moment(planing.dateConnect).format(
-                "YYYY-MM-DD"
-            );
-            planing.dateDisconnect = moment(planing.dateDisconnect).format(
-                "YYYY-MM-DD"
-            );
+            planing.projectName = planing.building[0].projectName;
             $("#addNew").modal("show");
             this.form.fill(planing);
         },
@@ -652,7 +702,7 @@ export default {
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
-                            this.loadPlaning();
+                            this.loadPlanings();
                         })
                         .catch(data => {
                             Swal.fire("Failed!", data.message, "warning");
@@ -671,6 +721,7 @@ export default {
                         icon: "success",
                         title: response.data.message
                     });
+
                     this.$Progress.finish();
                     this.loadPlaning();
                 })
@@ -683,7 +734,9 @@ export default {
         }
     },
     created() {
-        this.loadTeams();
+        this.$Progress.start();
+        this.loadBuildings();
+        this.$Progress.finish();
     },
     mounted() {
         var vm = this;
@@ -692,24 +745,71 @@ export default {
             ajax: "api/planing",
             responsive: true,
             processing: true,
-            autoWidth: true,
             pageLength: 15,
             lengthMenu: [
                 [10, 15, 25, 50, -1],
                 [10, 15, 25, 50, "All"]
             ],
+            fixedHeader: true,
+            fixedColumns: true,
+            fixedColumns: {
+                leftColumns: 0,
+                rightColumns: 1
+            },
+            scrollX: true,
+            scrollCollapse: true,
             buttons: [
                 "colvis",
                 "copy",
-                {
-                    extend: "csv",
-                    exportOptions: {
-                        columns: [2, 3, 4, ":visible"]
-                    }
-                },
+                "csv",
                 {
                     extend: "print",
                     text: "<i class='bi bi-printer mr-1'></i>Print"
+                },
+                {
+                    className: "bg-success",
+                    text: "<i class='bi bi-file-text mr-1'></i>AIS",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("AIS")
+                            .draw();
+                    }
+                },
+                {
+                    className: "bg-danger",
+                    text: "<i class='bi bi-file-text mr-1'></i>TRUE",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("TRUE")
+                            .draw();
+                    }
+                },
+                {
+                    className: "bg-primary",
+                    text: "<i class='bi bi-file-text mr-1'></i>TOT",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("TOT")
+                            .draw();
+                    }
+                },
+                {
+                    className: "bg-warning",
+                    text: "<i class='bi bi-file-text mr-1'></i>FN",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("FN")
+                            .draw();
+                    }
+                },
+                {
+                    className: "bg-danger",
+                    text: "<i class='bi bi-file-text mr-1'></i>3BB",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("3BB")
+                            .draw();
+                    }
                 },
                 {
                     text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
@@ -721,56 +821,175 @@ export default {
                 }
             ],
             columns: [
+                { data: null, defaultContent: "", className: "dt-body-center" },
                 {
-                    data: null,
+                    data: "name"
+                },
+                {
+                    data: "surname"
+                },
+                {
+                    data: "tel"
+                },
+                {
+                    data: "tel2"
+                },
+                {
+                    data: "building[0].projectName"
+                },
+                {
+                    data: "theBuilding"
+                },
+                {
+                    data: "floor"
+                },
+                {
+                    data: "room"
+                },
+                {
+                    data: "isp",
                     render: function(data, type, row, meta) {
-                        return meta.row + meta.settings._iDisplayStart + 1;
+                        if (data == "AIS") {
+                            return (
+                                '<span class="badge badge-success">' +
+                                data +
+                                "</span>"
+                            );
+                        } else if (data == "TOT") {
+                            return (
+                                '<span class="badge badge-primary">' +
+                                data +
+                                "</span>"
+                            );
+                        } else if (data == "3BB") {
+                            return (
+                                '<span class="badge badge-danger">' +
+                                data +
+                                "</span>"
+                            );
+                        } else if (data == "TRUE") {
+                            return (
+                                '<span class="badge badge-danger">' +
+                                data +
+                                "</span>"
+                            );
+                        } else if (data == "FN") {
+                            return (
+                                '<span class="badge badge-warning">' +
+                                data +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span class="text-warning">' + data + "</span>"
+                            );
+                        }
                     }
                 },
                 {
-                    data: "building[0].buildingName"
-                },
-                {
-                    data: null,
+                    data: "agent",
                     render: function(data, type, row, meta) {
-                        return (
-                            data.building[0].member[0].name +
-                            " " +
-                            data.building[0].member[0].lastName
-                        );
+                        if (data == "") {
+                            return (
+                                '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return "<span>" + data + "</span>";
+                        }
                     }
                 },
                 {
-                    data: "building[0].member[0].phone1"
+                    data: "circuit"
                 },
                 {
-                    data: "building[0].member[0].phone2"
+                    data: "entranceFee",
+                    render: function(data, type, row, meta) {
+                        if (data == "") {
+                            return (
+                                '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return "<span>" + data + "฿" + "</span>";
+                        }
+                    }
+                },
+                {
+                    data: "jobType",
+                    render: function(data, type, row, meta) {
+                        if (data == "") {
+                            return (
+                                '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return "<span>" + data + "</span>";
+                        }
+                    }
+                },
+                {
+                    data: "appointmentDate"
+                },
+                {
+                    data: "appointmentTime"
+                },
+                {
+                    data: "technicianPlaning"
+                },
+                {
+                    data: "idRequired"
+                },
+                {
+                    data: "status"
+                },
+                {
+                    data: "subStatus"
+                },
+                {
+                    data: "reMark"
                 },
                 {
                     data: null,
                     className: "dt-body-center",
                     render: function(data, type, row, meta) {
-                        return "<a class='edit-planing' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-planing' href='#'> <i class='fa fa-trash red'></i> </a>";
+                        return "<a class='edit-planing btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-planing btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }
                 }
-            ]
+            ],
+            columnDefs: [
+                {
+                    targets: 0,
+                    searchable: false,
+                    orderable: false,
+                    className: "dt-body-center",
+                    checkboxes: {
+                        selectRow: true
+                    }
+                }
+            ],
+            select: { selector: "td:not(:last-child)", style: "os" },
+            order: [[1, "desc"]]
         });
-        $("tbody", this.$refs.planing).on("click", ".edit-planing", function(
-            e
-        ) {
-            e.preventDefault();
+
+        $("tbody", this.$refs.planing).on("click", ".edit-planing", function() {
             var tr = $(this).closest("tr");
             var row = table.row(tr);
             vm.editModal(row.data());
         });
-        $("tbody", this.$refs.planing).on("click", ".delete-planing", function(
-            e
-        ) {
-            e.preventDefault();
-            var tr = $(this).closest("tr");
-            var row = table.row(tr);
-            vm.deletePlaning(row.data().id);
-        });
+
+        $("tbody", this.$refs.planing).on(
+            "click",
+            ".delete-planing",
+            function() {
+                var tr = $(this).closest("tr");
+                var row = table.row(tr);
+                vm.deletePlaning(row.data().id);
+            }
+        );
     }
 };
 </script>

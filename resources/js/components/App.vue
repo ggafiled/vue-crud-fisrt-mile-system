@@ -58,4 +58,13 @@ export default {};
 .shadow {
     box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%) !important;
 }
+ .card-title{
+    font-size:1.3rem !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.dt-checkboxes-cell input[type=checkbox] {
+    cursor: pointer !important;
+}
 </style>
