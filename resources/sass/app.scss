@@ -16,6 +16,8 @@
 @import "~bootstrap-select/sass/bootstrap-select.scss";
 // @import "~@fullcalendar/core/main.css";
 @import "~@fullcalendar/daygrid/main.css";
+@import "~vuetify/dist/vuetify.min.css";
+@import "~@mdi/font/scss/materialdesignicons.scss";
 .navbar-laravel {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -70,6 +72,20 @@
     color: $cyan;
 }
 
-// .content-header{
-//   padding: 10px 0.5rem !important;
-// }
+.c-icon {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+}
+
+.c-icon-ais:before {
+    content: "\e800";
+}
+
+@font-face {
+    font-family: "fontello";
+    src: url("/fonts/fontello.eot");
+    src: url("/fonts/fontello.eot") format("embedded-opentype"), url("/fonts/fontello.woff2") format("woff2"), url("/fonts/fontello.woff") format("woff"), url("/fonts/fontello.ttf") format("truetype"), url("/fonts/fontello.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}

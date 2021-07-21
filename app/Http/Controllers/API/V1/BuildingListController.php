@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\API\V1\BaseController;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Building;
 use App\Models\Progress;
+use Exception;
+
 
 class BuildingListController extends BaseController
 {
@@ -24,18 +25,25 @@ class BuildingListController extends BaseController
      */
     public function index()
     {
-        $buildings = Building::with('progress')->get();
-        return $this->sendResponse($buildings, 'BuildingList');
+        try {
+            $buildings = Building::with('progress')->get();
+            return $this->sendResponse($buildings, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($buildings, trans('actions.get.fialed'));
+        }
     }
 
 
     public function nonContract()
     {
-        $buildings_non_contract = Progress::whereHas('building', function ($query) {
-            $query->where('spendSpace','=','ยังไม่ได้ทำสัญญา');
-       })->with('building')->get();
-
-        return $this->sendResponse($buildings_non_contract, 'BuildingList nonContract');
+        try {
+            $buildings_non_contract = Progress::whereHas('building', function ($query) {
+                $query->where('spendSpace', '=', 'ยังไม่ได้ทำสัญญา');
+            })->with('building')->get();
+            return $this->sendResponse($buildings_non_contract, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($buildings_non_contract, trans('actions.get.fialed'));
+        }
     }
 
 
@@ -46,7 +54,7 @@ class BuildingListController extends BaseController
      */
     public function create()
     {
-        //
+
     }
 
     /**

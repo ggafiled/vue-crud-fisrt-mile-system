@@ -18,14 +18,16 @@
                             </div>
                         </div>
                         <!-- /.card-header -->
-                        <div class="card-body table-responsive p-2">
+                        <div class="card-body">
+                            <div class="table-responsive">
                             <table
                                 id="buildings"
                                 ref="buildings"
-                                class="table table-striped table-bordered"
+                                class="display nowrap"
+                                style="width: 100%"
                             >
                                 <thead>
-                                    <tr class="info">
+                                   <tr class="info">
                                         <th></th>
                                         <th>Project Name</th>
                                         <th>Manager Name</th>
@@ -35,6 +37,7 @@
                                     </tr>
                                 </thead>
                             </table>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -1161,7 +1164,7 @@ export default {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("api/building/" + this.form.id)
+                .put("/api/building/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -1203,7 +1206,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("api/building/" + id)
+                        .delete("/api/building/" + id)
                         .then(() => {
                             Swal.fire(
                                 "Deleted!",
@@ -1223,7 +1226,7 @@ export default {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
-                .post("api/building")
+                .post("/api/building")
                 .then(response => {
                     $("#addNew").modal("hide");
 
@@ -1252,7 +1255,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.buildings).DataTable({
             dom: "Blfrtip",
-            ajax: "api/building",
+            ajax: "/api/building",
             responsive: true,
             processing: true,
             autoWidth: true,

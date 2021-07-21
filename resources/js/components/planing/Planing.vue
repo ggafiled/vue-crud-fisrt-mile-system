@@ -812,13 +812,56 @@ export default {
                     }
                 },
                 {
-                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
-                    action: function(e, dt, node, config) {
-                        dt.columns()
-                            .search("")
-                            .draw();
-                    }
-                }
+                            text:
+                                "<i class='bi bi-list-check mr-1'></i>แสดงที่เลือกไว้",
+                            action: function(e, dt, node, config) {
+                                console.info("button: Display Select Item");
+                                var rowsel = dt
+                                    .rows({ selected: true })
+                                    .data()
+                                    .map(function(item) {
+                                        return item.id;
+                                    })
+                                    .join(",");
+                                if (!rowsel.length) {
+                                    return Swal.fire({
+                                        title: "ไม่มีเรดคอร์ดที่เลือก",
+                                        text: "กรุณาเลือกเรดคอร์ดก่อน",
+                                        timer: 2000,
+                                        showCancelButton: false,
+                                        showConfirmButton: false
+                                    });
+                                }
+                                $.fn.dataTable.ext.search.pop();
+                                $.fn.dataTable.ext.search.push(function(
+                                    settings,
+                                    data,
+                                    dataIndex
+                                ) {
+                                    return $(
+                                        table.row(dataIndex).node()
+                                    ).hasClass("selected")
+                                        ? true
+                                        : false;
+                                });
+
+                                table.draw();
+                            }
+                        },
+                        {
+                            text:
+                                "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                            action: function(e, dt, node, config) {
+                                console.info("button: Clear");
+                                $.fn.dataTable.ext.search.pop();
+                                dt.search("").draw();
+                                dt.columns()
+                                    .search("")
+                                    .draw();
+                                dt.rows().deselect();
+                                dt.ajax.reload();
+                            }
+                        }
             ],
             columns: [
                 { data: null, defaultContent: "", className: "dt-body-center" },

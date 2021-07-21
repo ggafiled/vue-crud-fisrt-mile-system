@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use Exception;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class RoleController extends BaseController
     {
         $this->middleware('auth:api');
         $this->role = $role;
-        $this->middleware('role:superadministrator|administrator')->only(['store','update','destroy']);
+        $this->middleware('role:superadministrator|administrator')->only(['store', 'update', 'destroy']);
     }
 
     /**
@@ -29,13 +30,17 @@ class RoleController extends BaseController
      */
     public function index()
     {
-        if (!\Gate::allows('isAdmin')) {
-            return $this->unauthorizedResponse();
+        try {
+            if (!\Gate::allows('isAdmin')) {
+                return $this->unauthorizedResponse();
+            }
+            $roles = $this->role->latest()->with(['permissions' => function ($query) {
+                $query->select('id', 'name as text');
+            }])->get();
+            return $this->sendResponse($roles, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($roles, trans('actions.get.fialed'));
         }
-        $roles = $this->role->latest()->with(['permissions' => function($query) {
-            $query->select('id', 'name as text');
-        }])->get();
-        return $this->sendResponse($roles, 'Roles list');
     }
 
     /**
@@ -45,11 +50,16 @@ class RoleController extends BaseController
      */
     public function list()
     {
-        if (!\Gate::allows('isAdmin')) {
-            return $this->unauthorizedResponse();
+
+        try {
+            if (!\Gate::allows('isAdmin')) {
+                return $this->unauthorizedResponse();
+            }
+            $roles = $this->role->paginate(20);
+            return $this->sendResponse($roles, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($roles, trans('actions.get.fialed'));
         }
-        $roles = $this->role->paginate(20);
-        return $this->sendResponse($roles, 'Roles list');
     }
 
 
@@ -64,20 +74,24 @@ class RoleController extends BaseController
      */
     public function store(Request $request)
     {
-        $roles = $this->role->create([
-            'name' => strtolower($request->get('name')),
-            'display_name' => $request->get('display_name'),
-            'description' => $request->get('description')
-        ]);
 
-        // update pivot table
-        $permission_ids = [];
-        foreach ($request->get('permissions') as $permission) {
-            $permission_ids[] = $permission['id'];
+        try {
+            $roles = $this->role->create([
+                'name' => strtolower($request->get('name')),
+                'display_name' => $request->get('display_name'),
+                'description' => $request->get('description')
+            ]);
+
+            // update pivot table
+            $permission_ids = [];
+            foreach ($request->get('permissions') as $permission) {
+                $permission_ids[] = $permission['id'];
+            }
+            $roles->syncPermissions($permission_ids);
+            return $this->sendResponse($roles, trans('actions.created.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($roles, trans('actions.created.fialed'));
         }
-        $roles->syncPermissions($permission_ids);
-
-        return $this->sendResponse($roles, 'Role Created Successfully');
     }
 
     /**
@@ -90,29 +104,33 @@ class RoleController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $roles = $this->role->findOrFail($id);
 
-        $roles->update($request->all());
+        try {
+            $roles = $this->role->findOrFail($id);
 
-        // update pivot table
-        $permission_ids = [];
-        foreach ($request->get('permissions') as $permission) {
-            $permission_ids[] = $permission['id'];
+            $roles->update($request->all());
+
+            // update pivot table
+            $permission_ids = [];
+            foreach ($request->get('permissions') as $permission) {
+                $permission_ids[] = $permission['id'];
+            }
+            $roles->syncPermissions($permission_ids);
+            return $this->sendResponse($roles, trans('actions.updated.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($roles, trans('actions.updated.fialed'));
         }
-        $roles->syncPermissions($permission_ids);
-
-        return $this->sendResponse($roles, 'Role Information has been updated');
     }
 
-     public function destroy($id)
+    public function destroy($id)
     {
-
-        $this->authorize('isAdmin');
-
-        $roles = $this->role->findOrFail($id);
-
-        $roles->delete();
-
-        return $this->sendResponse($roles, 'Role has been Deleted');
+        try {
+            $this->authorize('isAdmin');
+            $roles = $this->role->findOrFail($id);
+            $roles->delete();
+            return $this->sendResponse($roles, trans('actions.destroy.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($roles, trans('actions.destroy.fialed'));
+        }
     }
 }

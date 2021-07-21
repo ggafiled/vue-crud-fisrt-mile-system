@@ -148,9 +148,9 @@ return [
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
-    'sidebar_collapse_remember' => true,
-    'sidebar_collapse_remember_no_transition' => false,
-    'sidebar_scrollbar_theme' => 'os-theme-light',
+    'sidebar_collapse_remember' => false,
+    'sidebar_collapse_remember_no_transition' => true,
+    'sidebar_scrollbar_theme' => 'os-theme-none',
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
     'sidebar_nav_animation_speed' => 300,
@@ -172,7 +172,7 @@ return [
     'right_sidebar_theme' => 'dark',
     'right_sidebar_slide' => true,
     'right_sidebar_push' => true,
-    'right_sidebar_scrollbar_theme' => 'os-theme-light',
+    'right_sidebar_scrollbar_theme' => 'os-theme-none',
     'right_sidebar_scrollbar_auto_hide' => 'l',
 
     /*
@@ -220,7 +220,8 @@ return [
     | Language bar selection.
     |
     */
-    'language_bar' => true,
+    'language_bar_enable' => true,
+    'tabbed_iframe_enable' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -238,7 +239,7 @@ return [
         // Navbar items:
         [
             'type'         => 'navbar-search',
-            'text'         => 'search',
+            'text'         => 'Global search',
             'topnav_right' => true,
         ],
         [
@@ -254,7 +255,7 @@ return [
        ['header' => 'MENU'],
         [
             'text' => 'Dashboard',
-            'url'  => 'dashboard',
+            'url'  => '/dashboard',
             'icon' => 'fas fa-fw bi bi-kanban',
             'active' => ['dashboard', 'dashboard/*']
         ],
@@ -278,7 +279,7 @@ return [
                 [
                     'text' => 'Progress Managment',
                     'url'  => '/progress',
-                    'icon' => 'fas fa-fw fas fa-tasks',
+                    'icon' => 'mdi mdi-18px mdi-progress-wrench',
                     'can'  => ['building-update', 'building-create', 'building-read']
                 ],
                  [
@@ -296,41 +297,47 @@ return [
             'submenu' => [
                 [
                     'text' => 'Project Name Table',
-                    'url'  => '/buildinglist',
+                    'url'  => '/building/all',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
                     'text' => 'Project TOT Table',
-                    'url'  => '/buildingtot',
+                    'url'  => '/building/tot',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
                     'text' => 'Project 3BB Table',
-                    'url'  => '/building3bb',
+                    'url'  => '/building/3bb',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
                     'text' => 'Project TRUE Table',
-                    'url'  => '/buildingTrue',
+                    'url'  => '/building/true',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
                     'text' => 'Project AIS Table',
-                    'url'  => '/buildingAis',
+                    'url'  => '/building/ais',
                     'icon' => 'fas fa-fw fas fa-file-alt',
+                    // 'icon' => 'c-icon c-icon-ais',
                     'can'  => ['building-read']
                 ],
                 [
                     'text' => 'Project FiberNet Table',
-                    'url'  => '/buildingFiberNet',
+                    'url'  => '/building/fibernet',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
             ]
+        ],
+        [
+            'text' => 'Issue Tickets',
+            'url'  => '/issue-tickets',
+            'icon' => 'mdi mdi-ticket-confirmation-outline'
         ],
         ['header' => 'USER'],
         [

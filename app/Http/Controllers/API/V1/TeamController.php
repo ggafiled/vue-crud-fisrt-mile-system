@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use Exception;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Team;
 
-class TeamController extends BaseController{
+class TeamController extends BaseController
+{
 
     public function __construct()
     {
         $this->middleware('auth:api');
-        $this->middleware('role:superadministrator|administrator|user')->only(['create','store','update','destroy']);
+        $this->middleware('role:superadministrator|administrator|user')->only(['create', 'store', 'update', 'destroy']);
     }
     /**
      * Display a listing of the resource.
@@ -21,13 +23,17 @@ class TeamController extends BaseController{
      */
     public function index()
     {
-        if (!\Gate::allows('isAdmin')) {
-            return $this->unauthorizedResponse();
+        try {
+            if (!\Gate::allows('isAdmin')) {
+                return $this->unauthorizedResponse();
+            }
+            $teams = Team::with(['users' => function ($query) {
+                $query->select('id', 'name as text');
+            }])->get();
+            return $this->sendError($teams, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($teams, trans('actions.get.fialed'));
         }
-        $teams = Team::with(['users' => function($query) {
-            $query->select('id', 'name as text');
-        }])->get();
-        return $this->sendResponse($teams,'Team List');
     }
 
     /**
@@ -37,11 +43,15 @@ class TeamController extends BaseController{
      */
     public function list()
     {
-        if (!\Gate::allows('isAdmin')) {
-            return $this->unauthorizedResponse();
+        try {
+            if (!\Gate::allows('isAdmin')) {
+                return $this->unauthorizedResponse();
+            }
+            $teams = Team::all();
+            return $this->sendResponse($teams, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($teams, trans('actions.get.fialed'));
         }
-        $teams = Team::all();
-        return $this->sendResponse($teams, 'Team list');
     }
 
     /**

@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use Exception;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Requests\Users\ChangePasswordRequest;
 use App\Http\Requests\Users\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class ProfileController extends Controller
+class ProfileController extends BaseController
 {
     /**
      * Create a new controller instance.
@@ -27,12 +29,12 @@ class ProfileController extends Controller
      */
     public function profile()
     {
-        $response = [
-            'success' => true,
-            'data'    => auth('api')->user(),
-            'message' => 'User Profile',
-        ];
-        return response()->json($response, 200);
+        try {
+            $user = auth('api')->user();
+            return $this->sendResponse($user, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($user, trans('actions.get.fialed'));
+        }
     }
 
 
@@ -46,16 +48,13 @@ class ProfileController extends Controller
      */
     public function updateProfile(ProfileUpdateRequest $request)
     {
-        $user = auth('api')->user();
-
-        $user->update($request->all());
-
-        $response = [
-            'success' => true,
-            'data'    => $user,
-            'message' => 'Profile has been updated',
-        ];
-        return response()->json($response, 200);
+        try {
+            $user = auth('api')->user();
+            $user->update($request->all());
+            return $this->sendResponse($user, trans('actions.updated.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($user, trans('actions.updated.fialed'));
+        }
     }
 
 
@@ -68,13 +67,11 @@ class ProfileController extends Controller
      */
     public function changePassword(ChangePasswordRequest $request)
     {
-        User::find(auth('api')->user()->id)->update(['password' => Hash::make($request->new_password)]);
-
-        $response = [
-            'success' => true,
-            'data'    => [],
-            'message' => 'Password Has been updated',
-        ];
-        return response()->json($response, 200);
+        try {
+            $user = User::find(auth('api')->user()->id)->update(['password' => Hash::make($request->new_password)]);
+            return $this->sendResponse($user, trans('actions.updated.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($user, trans('actions.updated.fialed'));
+        }
     }
 }

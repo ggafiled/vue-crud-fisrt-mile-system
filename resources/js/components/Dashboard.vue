@@ -11,10 +11,10 @@
                         <div class="info-box-content">
                             <h5 class="info-box-text">Building Managment</h5>
                             <div>
-                                <a href="/building" class="small-box-footer"
+                                <router-link to="/building" class="small-box-footer"
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
-                                ></a>
+                                ></router-link>
                             </div>
                         </div>
                     </div>
@@ -31,10 +31,10 @@
                                 Constarution Managment
                             </h5>
                             <div>
-                                <a href="/constarution" class="small-box-footer"
+                                <router-link to="/constarution" class="small-box-footer"
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
-                                ></a>
+                                ></router-link>
                             </div>
                         </div>
                     </div>
@@ -55,10 +55,10 @@
                                 Progress Managment
                             </h5>
                             <div>
-                                <a href="/progress" class="small-box-footer"
+                                <router-link to="/progress" class="small-box-footer"
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
-                                ></a>
+                                ></router-link>
                             </div>
                         </div>
                     </div>
@@ -71,10 +71,10 @@
 
                         <div class="info-box-content">
                             <h5 class="info-box-text">Planning Managment</h5>
-                            <a href="/planing" class="small-box-footer"
+                            <router-link to="/planing" class="small-box-footer"
                                 >Click
                                 <i class="fas fa-arrow-circle-right"></i
-                            ></a>
+                            ></router-link>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -231,7 +231,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <i class="fas fa-fw fas fa-tasks"></i>
+                                <i class="mdi mdi-progress-wrench"></i>
                                 Progress status Chart
                             </h3>
                             <div class="card-tools">
@@ -266,7 +266,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <i class="fas fa-fw fas fa-tasks"></i>
+                                <i class="mdi mdi-progress-wrench"></i>
                                 Progress PolarArea Chart
                             </h3>
                             <div class="card-tools">

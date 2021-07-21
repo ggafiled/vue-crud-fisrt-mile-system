@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <i class="fas fa-fw fas fa-tasks"></i>
+                            <span class="mdi mdi-progress-wrench"></span>
                             Progress List Table
                         </h3>
                         <div class="card-tools">
@@ -879,21 +879,63 @@ export default {
                     text: "<i class='bi bi-printer mr-1'></i>Print"
                 },
                 {
-                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
-                    action: function(e, dt, node, config) {
-                        dt.columns()
-                            .search("")
-                            .draw();
-                    }
-                }
+                            text:
+                                "<i class='bi bi-list-check mr-1'></i>แสดงที่เลือกไว้",
+                            action: function(e, dt, node, config) {
+                                console.info("button: Display Select Item");
+                                var rowsel = dt
+                                    .rows({ selected: true })
+                                    .data()
+                                    .map(function(item) {
+                                        return item.id;
+                                    })
+                                    .join(",");
+                                if (!rowsel.length) {
+                                    return Swal.fire({
+                                        title: "ไม่มีเรดคอร์ดที่เลือก",
+                                        text: "กรุณาเลือกเรดคอร์ดก่อน",
+                                        timer: 2000,
+                                        showCancelButton: false,
+                                        showConfirmButton: false
+                                    });
+                                }
+                                $.fn.dataTable.ext.search.pop();
+                                $.fn.dataTable.ext.search.push(function(
+                                    settings,
+                                    data,
+                                    dataIndex
+                                ) {
+                                    return $(
+                                        table.row(dataIndex).node()
+                                    ).hasClass("selected")
+                                        ? true
+                                        : false;
+                                });
+
+                                table.draw();
+                            }
+                        },
+                        {
+                            text:
+                                "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                            action: function(e, dt, node, config) {
+                                console.info("button: Clear");
+                                $.fn.dataTable.ext.search.pop();
+                                dt.search("").draw();
+                                dt.columns()
+                                    .search("")
+                                    .draw();
+                                dt.rows().deselect();
+                                dt.ajax.reload();
+                            }
+                        }
             ],
             columns: [
                 {
-                    data: null,
-                    render: function(data, type, row, meta) {
-                        return meta.row + meta.settings._iDisplayStart + 1;
-                    }
-                },
+                        data: null,
+                        defaultContent: "",
+                        className: "dt-body-center"
+                    },
                 {
                     data: "building.projectName"
                 },
@@ -1028,7 +1070,20 @@ export default {
                             }
                         });
                 }, 0);
-            }
+            },
+            columnDefs: [
+                    {
+                        targets: 0,
+                        searchable: false,
+                        orderable: false,
+                        className: "dt-body-center",
+                        checkboxes: {
+                            selectRow: true
+                        }
+                    }
+                ],
+                select: { selector: "td:not(:last-child)", style: "os" },
+                order: [[1, "desc"]],
         });
 
         $("tbody", this.$refs.progress).on("click", ".edit-progress", function(

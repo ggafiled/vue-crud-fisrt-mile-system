@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use Exception;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -21,8 +22,12 @@ class PlaningController extends BaseController{
      */
     public function index()
     {
-        $planing = Planing::with(['building.member','teams'])->get();
-        return $this->sendResponse($planing,'Planing List');
+        try {
+            $planing = Planing::with(['building.member','teams'])->get();
+            return $this->sendResponse($planing, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($planing, trans('actions.get.fialed'));
+        }
     }
 
     /**

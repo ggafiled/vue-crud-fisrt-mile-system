@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use Exception;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Progress;
 
-class ProgressController extends BaseController{
+class ProgressController extends BaseController
+{
 
     public function __construct()
     {
         $this->middleware('auth:api');
-        $this->middleware('role:superadministrator|administrator|user')->only(['create','store','update','destroy']);
+        $this->middleware('role:superadministrator|administrator|user')->only(['create', 'store', 'update', 'destroy']);
     }
     /**
      * Display a listing of the resource.
@@ -21,10 +23,12 @@ class ProgressController extends BaseController{
      */
     public function index()
     {
-
-        $progress = Progress::with('building')->get();
-        return $this->sendResponse($progress,'Progress');
-
+        try {
+            $progress = Progress::with('building')->get();
+            return $this->sendResponse($progress, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($progress, trans('actions.get.fialed'));
+        }
     }
 
     /**
@@ -45,26 +49,29 @@ class ProgressController extends BaseController{
      */
     public function store(Request $request)
     {
-        $progress = new Progress([
-            'building_id' => $request->input('building_id'),
-            'fmProgress' => $request->input('fmProgress'),
-            'dateFm' => $request->input('dateFm'),
-            'totProgress' => $request->input('totProgress'),
-            'dateTot' => $request->input('dateTot'),
-            'aisProgress' => $request->input('aisProgress'),
-            'dateAis' => $request->input('dateAis'),
-            'progress3bb' => $request->input('progress3bb'),
-            'date3BB' => $request->input('date3BB'),
-            'sinetProgress' => $request->input('sinetProgress'),
-            'dateSinet' => $request->input('dateSinet'),
-            'fnProgress' => $request->input('fnProgress'),
-            'dateFn' => $request->input('dateFn'),
-            'trueProgress' => $request->input('trueProgress'),
-            'dateTrue' => $request->input('dateTrue')
-        ]);
-        $progress->save();
-
-        return response()->json('progress created!');
+        try {
+            $progress = new Progress([
+                'building_id' => $request->input('building_id'),
+                'fmProgress' => $request->input('fmProgress'),
+                'dateFm' => $request->input('dateFm'),
+                'totProgress' => $request->input('totProgress'),
+                'dateTot' => $request->input('dateTot'),
+                'aisProgress' => $request->input('aisProgress'),
+                'dateAis' => $request->input('dateAis'),
+                'progress3bb' => $request->input('progress3bb'),
+                'date3BB' => $request->input('date3BB'),
+                'sinetProgress' => $request->input('sinetProgress'),
+                'dateSinet' => $request->input('dateSinet'),
+                'fnProgress' => $request->input('fnProgress'),
+                'dateFn' => $request->input('dateFn'),
+                'trueProgress' => $request->input('trueProgress'),
+                'dateTrue' => $request->input('dateTrue')
+            ]);
+            $progress->save();
+            return $this->sendResponse($progress, trans('actions.created.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($progress, trans('actions.created.fialed'));
+        }
     }
 
     /**
@@ -98,10 +105,14 @@ class ProgressController extends BaseController{
      */
     public function update(Request $request, $id)
     {
-        $progress = Progress::find($id);
-        $progress->update($request->all());
 
-        return response()->json('progress updated!');
+        try {
+            $progress = Progress::find($id);
+            $progress->update($request->all());
+            return $this->sendResponse($progress, trans('actions.updated.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($progress, trans('actions.updated.fialed'));
+        }
     }
 
     /**
@@ -112,9 +123,13 @@ class ProgressController extends BaseController{
      */
     public function destroy($id)
     {
-        $progress = Progress::find($id);
-        $progress->delete();
+        try {
+            $progress = Progress::find($id);
+            $progress->delete();
 
-        return response()->json('progress deleted!');
+            return $this->sendResponse($progress, trans('actions.destroy.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($progress, trans('actions.destroy.fialed'));
+        }
     }
 }

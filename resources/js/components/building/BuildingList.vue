@@ -239,12 +239,12 @@ export default {
                 })
                 .catch(() => console.warn("Oh. Something went wrong"));
         },
-        async generateProgessTable() {
+        async generateBuildingListTable() {
             console.log("buildings Component mounted.");
             var vm = this;
             var table = await $(this.$refs.buildinglist).DataTable({
                 dom: "Blfrtip",
-                ajax: "api/buildinglist",
+                ajax: "/api/buildinglist",
                 responsive: true,
                 processing: true,
                 autoWidth: true,
@@ -1138,7 +1138,7 @@ export default {
         }
     },
     async mounted() {
-        await this.generateProgessTable();
+        await this.generateBuildingListTable();
     }
 };
 </script>

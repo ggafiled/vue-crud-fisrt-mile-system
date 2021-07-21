@@ -25,7 +25,7 @@
     {{-- Navbar right links --}}
     <ul class="navbar-nav ml-auto">
 
-        @if(config('adminlte.language_bar'))
+        @if(config('adminlte.language_bar_enable'))
 
         {{-- Custom language bar --}}
         @include('partials.language-select')

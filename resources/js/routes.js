@@ -14,7 +14,7 @@ export default [{
         }
     },
     {
-        path: "/buildinglist",
+        path: "/building/all",
         component: require("./components/building/BuildingList.vue").default,
         meta: {
             requiresAuth: true,
@@ -22,7 +22,7 @@ export default [{
         }
     },
     {
-        path: "/buildingtot",
+        path: "/building/tot",
         component: require("./components/building/BuildingTot.vue").default,
         meta: {
             requiresAuth: true,
@@ -30,7 +30,7 @@ export default [{
         }
     },
     {
-        path: "/building3bb",
+        path: "/building/3bb",
         component: require("./components/building/Building3BB.vue").default,
         meta: {
             requiresAuth: true,
@@ -38,7 +38,7 @@ export default [{
         }
     },
     {
-        path: "/buildingTrue",
+        path: "/building/true",
         component: require("./components/building/BuildingTrue.vue").default,
         meta: {
             requiresAuth: true,
@@ -46,7 +46,7 @@ export default [{
         }
     },
     {
-        path: "/buildingAis",
+        path: "/building/ais",
         component: require("./components/building/BuildingAis.vue").default,
         meta: {
             requiresAuth: true,
@@ -54,7 +54,7 @@ export default [{
         }
     },
     {
-        path: "/buildingFiberNet",
+        path: "/building/fibernet",
         component: require("./components/building/BuildingFiberNet.vue")
             .default,
         meta: {
@@ -101,6 +101,14 @@ export default [{
         meta: {
             requiresAuth: true,
             roles: ["superadministrator", "administrator"]
+        }
+    },
+    {
+        path: "/issue-tickets",
+        component: require("./components/issue/IssueTickets.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user"]
         }
     },
     {

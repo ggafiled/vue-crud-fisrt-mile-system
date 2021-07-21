@@ -3,29 +3,34 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\API\V1\BaseController;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Building;
+use Illuminate\Http\Request;
+use Exception;
 
-class Buildingcontroller extends BaseController{
 
+class Buildingcontroller extends BaseController
+{
 
     public function __construct()
     {
         $this->middleware('auth:api');
-        $this->middleware('role:superadministrator|administrator|user')->only(['index','create']);
-        $this->middleware('role:superadministrator|administrator')->only(['store','update','destroy']);
+        $this->middleware('role:superadministrator|administrator|user')->only(['index', 'create']);
+        $this->middleware('role:superadministrator|administrator')->only(['store', 'update', 'destroy']);
     }
 
     /**
-    * Display a listing of the resource.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $building = Building::all();
-        return $this->sendResponse($building,'Building');
+        $buidings = Building::all();
+        return $this->sendResponse($buidings, trans('actions.get.success'));
+        try {
+        } catch (Exception $ex) {
+            return $this->sendError($buidings, trans('actions.get.fialed'));
+        }
     }
 
     /**
@@ -46,51 +51,55 @@ class Buildingcontroller extends BaseController{
      */
     public function store(Request $request)
     {
-        $buidings = new Building([
-            'projectName' => $request->input('projectName'),
-            'projectNameTot' => $request->input('projectNameTot'),
-            'projectName3bb' => $request->input('projectName3bb'),
-            'projectNameTrue' => $request->input('projectNameTrue'),
-            'projectNameAis' => $request->input('projectNameAis'),
-            'projectNameFiberNet' => $request->input('projectNameFiberNet'),
-            'buildingSum' => $request->input('buildingSum'),
-            'floorSum' => $request->input('floorSum'),
-            'roomSum' => $request->input('roomSum'),
-            'fmCode' => $request->input('fmCode'),
-            'nameManager' => $request->input('nameManager'),
-            'phoneManager' => $request->input('phoneManager'),
-            'mailManager' => $request->input('mailManager'),
-            'nameNiti' => $request->input('nameNiti'),
-            'phoneNiti' => $request->input('phoneNiti'),
-            'mailNiti' => $request->input('mailNiti'),
-            'houseNumber' => $request->input('houseNumber'),
-            'squadNumber' => $request->input('squadNumber'),
-            'alleyName' => $request->input('alleyName'),
-            'roadName' => $request->input('roadName'),
-            'districtName' => $request->input('districtName'),
-            'countyName' => $request->input('countyName'),
-            'provinceName' => $request->input('provinceName'),
-            'postalCode' => $request->input('postalCode'),
-            'longitude' => $request->input('longitude'),
-            'latitude' => $request->input('latitude'),
-            'contractSell' => $request->input('contractSell'),
-            'contractDate' => $request->input('contractDate'),
-            'contractDateEnd' => $request->input('contractDateEnd'),
-            'spendSpace' => $request->input('spendSpace'),
-            'condition' => $request->input('condition'),
-            'contractPeriod' => $request->input('contractPeriod'),
-            'reNewContact' => $request->input('reNewContact'),
-            'areaN' => $request->input('areaN'),
-            'bbN' => $request->input('bbN'),
-            'area3BB' => $request->input('area3BB'),
-            'areaTrue' => $request->input('areaTrue'),
-            'areaTrueNew' => $request->input('areaTrueNew'),
-            'areaAis' => $request->input('areaAis'),
-            'areaFiberNet' => $request->input('areaFiberNet'),
-            'operatingTime' => $request->input('operatingTime')
-        ]);
-        $buidings->save();
-        return response()->json('buidings created!');
+        try {
+            $buidings = new Building([
+                'projectName' => $request->input('projectName'),
+                'projectNameTot' => $request->input('projectNameTot'),
+                'projectName3bb' => $request->input('projectName3bb'),
+                'projectNameTrue' => $request->input('projectNameTrue'),
+                'projectNameAis' => $request->input('projectNameAis'),
+                'projectNameFiberNet' => $request->input('projectNameFiberNet'),
+                'buildingSum' => $request->input('buildingSum'),
+                'floorSum' => $request->input('floorSum'),
+                'roomSum' => $request->input('roomSum'),
+                'fmCode' => $request->input('fmCode'),
+                'nameManager' => $request->input('nameManager'),
+                'phoneManager' => $request->input('phoneManager'),
+                'mailManager' => $request->input('mailManager'),
+                'nameNiti' => $request->input('nameNiti'),
+                'phoneNiti' => $request->input('phoneNiti'),
+                'mailNiti' => $request->input('mailNiti'),
+                'houseNumber' => $request->input('houseNumber'),
+                'squadNumber' => $request->input('squadNumber'),
+                'alleyName' => $request->input('alleyName'),
+                'roadName' => $request->input('roadName'),
+                'districtName' => $request->input('districtName'),
+                'countyName' => $request->input('countyName'),
+                'provinceName' => $request->input('provinceName'),
+                'postalCode' => $request->input('postalCode'),
+                'longitude' => $request->input('longitude'),
+                'latitude' => $request->input('latitude'),
+                'contractSell' => $request->input('contractSell'),
+                'contractDate' => $request->input('contractDate'),
+                'contractDateEnd' => $request->input('contractDateEnd'),
+                'spendSpace' => $request->input('spendSpace'),
+                'condition' => $request->input('condition'),
+                'contractPeriod' => $request->input('contractPeriod'),
+                'reNewContact' => $request->input('reNewContact'),
+                'areaN' => $request->input('areaN'),
+                'bbN' => $request->input('bbN'),
+                'area3BB' => $request->input('area3BB'),
+                'areaTrue' => $request->input('areaTrue'),
+                'areaTrueNew' => $request->input('areaTrueNew'),
+                'areaAis' => $request->input('areaAis'),
+                'areaFiberNet' => $request->input('areaFiberNet'),
+                'operatingTime' => $request->input('operatingTime'),
+            ]);
+            $buidings->save();
+            return $this->sendResponse($buidings, trans('actions.created.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($buidings, trans('actions.created.fialed'));
+        }
     }
 
     /**
@@ -124,10 +133,13 @@ class Buildingcontroller extends BaseController{
      */
     public function update(Request $request, $id)
     {
-        $buildings = Building::find($id);
-        $buildings->update($request->all());
-
-        return response()->json('buildings updated!');
+        try {
+            $buildings = Building::find($id);
+            $buildings->update($request->all());
+            return $this->sendResponse($buildings, trans('actions.updated.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($buildings, trans('actions.updated.fialed'));
+        }
     }
 
     /**
@@ -138,9 +150,12 @@ class Buildingcontroller extends BaseController{
      */
     public function destroy($id)
     {
-        $building = Building::find($id);
-        $building->delete();
-
-        return response()->json('building deleted!');
+        try {
+            $building = Building::find($id);
+            $building->delete();
+            return $this->sendResponse($building, trans('actions.destroy.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($building, trans('actions.destroy.fialed'));
+        }
     }
 }

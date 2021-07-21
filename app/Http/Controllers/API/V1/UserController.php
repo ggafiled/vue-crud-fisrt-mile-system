@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\V1;
 
 use Auth;
+use Exception;
 use App\Http\Requests\Users\UserRequest;
 use App\Models\Role;
 use App\Models\User;
@@ -28,14 +29,20 @@ class UserController extends BaseController
      */
     public function index()
     {
-        if (!\Gate::allows('isAdmin')) {
-            return $this->unauthorizedResponse();
+
+        try {
+            if (!\Gate::allows('isAdmin')) {
+                return $this->unauthorizedResponse();
+            }
+            // $this->authorize('isAdmin');
+
+            $users = User::with('roles:id')->get();
+
+            return $this->sendResponse($users, 'Users list');
+            return $this->sendResponse($users, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($users, trans('actions.get.fialed'));
         }
-        // $this->authorize('isAdmin');
-
-        $users = User::with('roles:id')->get();
-
-        return $this->sendResponse($users, 'Users list');
     }
 
     /**
@@ -45,11 +52,15 @@ class UserController extends BaseController
      */
     public function list()
     {
-        if (!\Gate::allows('isAdmin')) {
-            return $this->unauthorizedResponse();
+        try {
+            if (!\Gate::allows('isAdmin')) {
+                return $this->unauthorizedResponse();
+            }
+            $users = User::get(['name', 'id']);
+            return $this->sendResponse($users, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($users, trans('actions.get.fialed'));
         }
-        $users = User::get(['name', 'id']);
-        return $this->sendResponse($users, 'Users list');
     }
 
     /**
@@ -64,16 +75,19 @@ class UserController extends BaseController
      */
     public function store(UserRequest $request)
     {
-        $user = User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-        ]);
+        try {
+            $user = User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+            ]);
 
-        $access = Role::find($request['role']);
-        $user->attachRole($access);
-
-        return $this->sendResponse($user, 'User Created Successfully');
+            $access = Role::find($request['role']);
+            $user->attachRole($access);
+            return $this->sendResponse($user, trans('actions.created.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($user, trans('actions.created.fialed'));
+        }
     }
 
     /**
@@ -87,17 +101,20 @@ class UserController extends BaseController
      */
     public function update(UserRequest $request, $id)
     {
-        $user = User::findOrFail($id);
+        try {
+            $user = User::findOrFail($id);
 
-        if (!empty($request->password)) {
-            $request->merge(['password' => Hash::make($request['password'])]);
+            if (!empty($request->password)) {
+                $request->merge(['password' => Hash::make($request['password'])]);
+            }
+
+            $user->update($request->all());
+            $access = Role::find($request['role']);
+            $user->syncRoles([$access]);
+            return $this->sendResponse($user, trans('actions.updated.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($user, trans('actions.updated.fialed'));
         }
-
-        $user->update($request->all());
-        $access = Role::find($request['role']);
-        $user->syncRoles([$access]);
-
-        return $this->sendResponse($user, 'User Information has been updated');
     }
 
     /**
@@ -108,14 +125,16 @@ class UserController extends BaseController
      */
     public function destroy($id)
     {
+        try {
+            $this->authorize('isAdmin');
 
-        $this->authorize('isAdmin');
+            $user = User::findOrFail($id);
+            // delete the user
 
-        $user = User::findOrFail($id);
-        // delete the user
-
-        $user->delete();
-
-        return $this->sendResponse([$user], 'User has been Deleted');
+            $user->delete();
+            return $this->sendResponse($user, trans('actions.destroy.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($user, trans('actions.destroy.fialed'));
+        }
     }
 }
