@@ -891,116 +891,347 @@ export default {
                 },
                 {
                     data: "fmProgress",
-                    render: function(data, type, row, meta) {
-                         if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
                         }
-                    }
                 },
                 {
                     data: "totProgress",
-                    render: function(data, type, row, meta) {
-                         if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ดำเนิการแล้วเสร็จ") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "กำลังดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "รอเข้าดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "TOT วางโครงข่ายเอง") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
                         }
-                    }
-
                 },
                 {
                     data: "aisProgress",
-                    render: function(data, type, row, meta) {
-                         if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ดำเนิการแล้วเสร็จ") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "กำลังดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "รอเข้าดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "AIS วางโครงข่ายเอง") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
                         }
-                    }
                 },
                 {
                     data: "Progress3bb",
-                    render: function(data, type, row, meta) {
-                         if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ดำเนิการแล้วเสร็จ") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "กำลังดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "รอเข้าดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "3bb วางโครงข่ายเอง") {
+                                return (
+                                    '<span class="badge badge-orange">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
                         }
-                    }
                 },
                 {
                     data: "sinetProgress",
-                    render: function(data, type, row, meta) {
-                         if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ดำเนิการแล้วเสร็จ") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "กำลังดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "รอเข้าดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "AIS วางโครงข่ายเอง") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
                         }
-                    }
                 },
                 {
                     data: "fnProgress",
-                    render: function(data, type, row, meta) {
-                         if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ดำเนิการแล้วเสร็จ") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "กำลังดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "รอเข้าดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "fn วางโครงข่ายเอง") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
                         }
-                    }
                 },
                 {
                     data: "trueProgress",
-                    render: function(data, type, row, meta) {
-                         if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return (
-                                '<span>' + data + "</span>"
-                            );
+                        render: function(data, type, row, meta) {
+                            if (data == "เชื่อมโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ดำเนิการแล้วเสร็จ") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "กำลังดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "รอเข้าดำเนินการ") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "วางโครงข่ายแล้ว") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ทรู วางโครงข่ายเอง") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
                         }
-                    }
                 },
                 {
                     data: "updated_at",

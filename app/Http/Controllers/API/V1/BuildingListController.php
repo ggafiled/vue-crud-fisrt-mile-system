@@ -32,8 +32,8 @@ class BuildingListController extends BaseController
     public function nonContract()
     {
         $buildings_non_contract = Progress::whereHas('building', function ($query) {
-            $query->where('spendSpace','=','ยังไม่ได้ทำสัญญา');
-       })->with('building')->get();
+            $query->where('spendSpace', '=', 'ยังไม่ได้ทำสัญญา');
+        })->with('building')->get();
 
         return $this->sendResponse($buildings_non_contract, 'BuildingList nonContract');
     }

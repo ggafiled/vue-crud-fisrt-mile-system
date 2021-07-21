@@ -472,7 +472,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>ID Required</label>
-                                            <input
+                                            <select
                                                 v-model="form.idRequired"
                                                 type="text"
                                                 class="form-control"
@@ -482,7 +482,29 @@
                                                         'idRequired'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >เลือก ID Required</option
+                                                >
+                                                <option value="AIS">
+                                                    AIS
+                                                </option>
+                                                <option value="TRUE">
+                                                    TRUE
+                                                </option>
+                                                <option value="3BB">
+                                                    3BB
+                                                </option>
+                                                <option value="TOT">
+                                                    TOT
+                                                </option>
+                                                <option value="FN">
+                                                    FN
+                                                </option>
+                                                <option value="None">
+                                                    None
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="idRequired"
@@ -492,7 +514,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Status</label>
-                                            <input
+                                            <select
                                                 v-model="form.status"
                                                 type="text"
                                                 class="form-control"
@@ -502,7 +524,30 @@
                                                         'status'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >เลือก status</option
+                                                >
+                                                <option value="สำเร็จ">
+                                                    สำเร็จ
+                                                </option>
+                                                <option
+                                                    value="ลูกค้าเลื่อนหน้างาน"
+                                                >
+                                                    ลูกค้าเลื่อนหน้างาน
+                                                </option>
+                                                <option value="นิติฯไม่อนุญาต">
+                                                    นิติฯไม่อนุญาต
+                                                </option>
+                                                <option value="ติดปัญหาหน้างาน">
+                                                    ติดปัญหาหน้างาน
+                                                </option>
+                                                <option
+                                                    value="อื่นๆ โปรดระบุในรีมาร์ค"
+                                                >
+                                                    อื่นๆ โปรดระบุในรีมาร์ค
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="status"
@@ -887,61 +932,48 @@ export default {
                 },
                 {
                     data: "agent",
-                        render: function(data, type, row, meta) {
-                            if (data == "") {
-                                return (
-                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span>' +
-                                    data   +
-                                    "</span>"
-                                );
-                            }
+                    render: function(data, type, row, meta) {
+                        if (data == "") {
+                            return (
+                                '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return "<span>" + data + "</span>";
                         }
+                    }
                 },
                 {
                     data: "circuit"
                 },
                 {
-                    data: "entranceFee"
-                    ,
-                        render: function(data, type, row, meta) {
-                            if (data == "") {
-                                return (
-                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span>' +
-                                    data + "฿"  +
-                                    "</span>"
-                                );
-                            }
+                    data: "entranceFee",
+                    render: function(data, type, row, meta) {
+                        if (data == "") {
+                            return (
+                                '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return "<span>" + data + "฿" + "</span>";
                         }
+                    }
                 },
                 {
                     data: "jobType",
-                        render: function(data, type, row, meta) {
-                            if (data == "") {
-                                return (
-                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span>' +
-                                    data   +
-                                    "</span>"
-                                );
-                            }
+                    render: function(data, type, row, meta) {
+                        if (data == "") {
+                            return (
+                                '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return "<span>" + data + "</span>";
                         }
+                    }
                 },
                 {
                     data: "appointmentDate"
