@@ -38,6 +38,14 @@ class BuildingListController extends BaseController
         return $this->sendResponse($buildings_non_contract, 'BuildingList nonContract');
     }
 
+    public function notifyContractDate()
+    {
+        $buildings_non_contract = Progress::whereHas('building', function ($query) {
+            $query->where('spendSpace', '=', 'ยังไม่ได้ทำสัญญา');
+        })->with('building')->get();
+
+        return $this->sendResponse($buildings_non_contract, 'BuildingList notifyContractDate');
+    }
 
     /**
      * Show the form for creating a new resource.

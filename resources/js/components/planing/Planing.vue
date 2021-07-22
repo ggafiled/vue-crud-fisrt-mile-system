@@ -35,6 +35,14 @@
                                         <th>tel</th>
                                         <th>tel2</th>
                                         <th>building name</th>
+                                        <th>House Number</th>
+                                        <th>Swine</th>
+                                        <th>Alley</th>
+                                        <th>Road</th>
+                                        <th>District</th>
+                                        <th>Province</th>
+                                        <th>County</th>
+                                        <th>PostalCode</th>
                                         <th>building</th>
                                         <th>floor</th>
                                         <th>room</th>
@@ -50,6 +58,7 @@
                                         <th>status</th>
                                         <th>subStatus</th>
                                         <th>remark</th>
+                                        <th>updated</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -157,7 +166,11 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div
+                                        :class="[
+                                            editmode ? 'col-sm-2' : 'col-sm-3'
+                                        ]"
+                                    >
                                         <div class="form-group">
                                             <label>Tel</label>
                                             <input
@@ -177,7 +190,11 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div
+                                        :class="[
+                                            editmode ? 'col-sm-2' : 'col-sm-3'
+                                        ]"
+                                    >
                                         <div class="form-group">
                                             <label>Tel2</label>
                                             <input
@@ -201,7 +218,7 @@
                                 <div class="row">
                                     <div
                                         :class="[
-                                            editmode ? 'col-sm-10' : 'col-sm-12'
+                                            editmode ? 'col-sm-12' : 'col-sm-12'
                                         ]"
                                     >
                                         <div class="form-group">
@@ -797,7 +814,7 @@ export default {
             fixedHeader: true,
             fixedColumns: true,
             fixedColumns: {
-                leftColumns: 0,
+                leftColumns: 2,
                 rightColumns: 1
             },
             scrollX: true,
@@ -834,6 +851,15 @@ export default {
                     action: function(e, dt, node, config) {
                         dt.column(9)
                             .search("TOT")
+                            .draw();
+                    }
+                },
+                {
+                    className: "bg-danger",
+                    text: "<i class='bi bi-file-text mr-1'></i>FINET",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("FINET")
                             .draw();
                     }
                 },
@@ -880,6 +906,30 @@ export default {
                 },
                 {
                     data: "building[0].projectName"
+                },
+                {
+                    data: "building[0].houseNumber"
+                },
+                {
+                    data: "building[0].squadNumber"
+                },
+                {
+                    data: "building[0].alleyName"
+                },
+                {
+                    data: "building[0].roadName"
+                },
+                {
+                    data: "building[0].districtName"
+                },
+                {
+                    data: "building[0].countyName"
+                },
+                {
+                    data: "building[0].provinceName"
+                },
+                {
+                    data: "building[0].postalCode"
                 },
                 {
                     data: "theBuilding"
@@ -995,6 +1045,12 @@ export default {
                 },
                 {
                     data: "reMark"
+                },
+                {
+                    data: "updated_at",
+                    render: function(data, type, row, meta) {
+                        return moment(data).format("MM/DD/YYYY HH:MM");
+                    }
                 },
                 {
                     data: null,

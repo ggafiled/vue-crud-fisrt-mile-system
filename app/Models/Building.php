@@ -66,7 +66,7 @@ class Building extends Model
 
     public function planning()
 	{
-		return $this->belongsTo('App\Models\planning','building_id','id');
+		return $this->hasMany('App\Models\planning','building_id','id');
 	}
 
     public function get_building() {

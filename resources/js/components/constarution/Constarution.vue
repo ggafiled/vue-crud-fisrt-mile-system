@@ -941,7 +941,7 @@ export default {
             fixedHeader: true,
             fixedColumns: true,
             fixedColumns: {
-                leftColumns: 0,
+                leftColumns: 2,
                 rightColumns: 1
             },
             scrollX: true,
