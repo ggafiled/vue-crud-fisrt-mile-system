@@ -4,7 +4,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h class="card-title"><i class="fas fa-fw bi bi-building"></i>Building List Table</h>
+                        <h3 class="card-title">
+                            <i class="fas fa-fw bi bi-building"></i>
+                            {{ translate('building.all.header') }}
+                        </h3>
                     </div>
                     <div
                         class="modal fade"
@@ -24,7 +27,7 @@
                                         class="modal-title"
                                         id="exampleModalLongTitle"
                                     >
-                                        แจ้งเตือนทำสัญญา
+                                        {{ translate('building.alert.contract_notification') }}
                                         <img
                                             class="mx-auto"
                                             src="https://www.oncb.go.th/welcomePage/welcomepage_canEdit/thainiyom/images/new-gif-image-6.gif"
@@ -80,8 +83,7 @@
                                             <span
                                                 class="cursor-pointer "
                                                 style="user-select: none;"
-                                                >อย่าแสดงข้อความนี้อีก
-                                                (ในวันนี้)</span
+                                                >{{ translate('building.alert.do_not_show_today') }}</span
                                             >
                                         </label>
                                     </div>
@@ -90,7 +92,7 @@
                                         class="btn btn-secondary"
                                         data-dismiss="modal"
                                     >
-                                        Close
+                                        {{ translate('building.actions.close') }}
                                     </button>
                                 </div>
                             </div>

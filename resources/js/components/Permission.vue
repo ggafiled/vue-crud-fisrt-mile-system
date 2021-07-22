@@ -5,7 +5,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="bi bi-layers"></i> User Role & Permission</h3>
+                            <h3 class="card-title"><i class="bi bi-layers mr-1"></i>{{ translate('permission.header') }}</h3>
 
                             <div class="card-tools">
                                 <button
@@ -14,7 +14,7 @@
                                     @click="newModal"
                                 >
                                     <i class="fa fa-plus-square"></i>
-                                    Add New
+                                    {{ translate('permission.addnew') }}
                                 </button>
                             </div>
                         </div>
@@ -56,10 +56,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                Create New Role
+                                {{ translate('permission.create.header') }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                Update Role's Info
+                                 {{ translate('permission.update.header') }}
                             </h5>
                             <button
                                 type="button"
@@ -158,21 +158,21 @@
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    Close
+                                     {{ translate('permission.actions.close') }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    Update
+                                    {{ translate('permission.actions.update') }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    Create
+                                    {{ translate('permission.actions.create') }}
                                 </button>
                             </div>
                         </form>

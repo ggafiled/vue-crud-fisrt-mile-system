@@ -11,7 +11,7 @@
                                         class="nav-link"
                                         href="#activity"
                                         data-toggle="tab"
-                                        >Activity</a
+                                        >{{ translate('profile.header.activity') }}</a
                                     >
                                 </li>
                                 <li class="nav-item">
@@ -19,7 +19,7 @@
                                         class="nav-link active show"
                                         href="#settings"
                                         data-toggle="tab"
-                                        >Settings</a
+                                        >{{ translate('profile.header.settings') }}</a
                                     >
                                 </li>
                                 <li class="nav-item">
@@ -27,7 +27,7 @@
                                         class="nav-link"
                                         href="#change-password"
                                         data-toggle="tab"
-                                        >Change Password</a
+                                        >{{ translate('profile.header.change_password') }}</a
                                     >
                                 </li>
                             </ul>
@@ -38,7 +38,7 @@
                                 <!-- Activity Tab -->
                                 <div class="tab-pane" id="activity">
                                     <h3 class="text-center">
-                                        Display User Activity
+                                        {{ translate('profile.display_user_activity') }}
                                     </h3>
                                 </div>
                                 <!-- Setting Tab -->
@@ -51,7 +51,7 @@
                                             <label
                                                 for="inputName"
                                                 class="col-sm-2 control-label"
-                                                >Name</label
+                                                >{{ translate('profile.form.name') }}</label
                                             >
 
                                             <div class="col-sm-12">
@@ -77,7 +77,7 @@
                                             <label
                                                 for="inputEmail"
                                                 class="col-sm-2 control-label"
-                                                >Email</label
+                                                >{{ translate('profile.form.email') }}</label
                                             >
 
                                             <div class="col-sm-12">
@@ -105,12 +105,12 @@
                                                     type="submit"
                                                     class="btn btn-success"
                                                 >
-                                                    Update Profile
+                                                    {{ translate('profile.actions.update_profile') }}
                                                 </button>
                                                 <div
                                                     class="float-right d-sm-inline text-muted"
                                                 >
-                                                    Member since:
+                                                    {{ translate('profile.form.member_since') }}
                                                     <span>{{
                                                         form.created_at | myDate
                                                     }}</span>
@@ -127,7 +127,7 @@
                                             <label
                                                 for="current_password"
                                                 class="col-sm-2 control-label"
-                                                >Current Password</label
+                                                >{{ translate('profile.form.current_password') }}</label
                                             >
 
                                             <div class="col-sm-12">
@@ -155,7 +155,7 @@
                                             <label
                                                 for="new_password"
                                                 class="col-sm-2 control-label"
-                                                >New Password</label
+                                                >{{ translate('profile.form.new_password') }}</label
                                             >
 
                                             <div class="col-sm-12">
@@ -182,7 +182,7 @@
                                             <label
                                                 for="confirm_password"
                                                 class="col-sm-2 control-label"
-                                                >Confirm Password</label
+                                                >{{ translate('profile.form.confirm_password') }}</label
                                             >
 
                                             <div class="col-sm-12">
@@ -218,7 +218,7 @@
                                                     type="submit"
                                                     class="btn btn-success"
                                                 >
-                                                    Update Password
+                                                    {{ translate('profile.actions.update_password') }}
                                                 </button>
                                             </div>
                                         </div>

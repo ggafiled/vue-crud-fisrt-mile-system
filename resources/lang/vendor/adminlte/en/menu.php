@@ -16,4 +16,27 @@ return [
     'important'                     => 'Important',
     'warning'                       => 'Warning',
     'information'                   => 'Information',
+    'menu'                          => 'MENU',
+    'project_list'                  => 'Project List',
+    'global_search'                 => 'Global search',
+    'search'                        => 'Search',
+    'dashboard'                     => 'Dashboard',
+    'building_managment'            => 'Building Managment',
+    'constitution_managment'        => 'Constitution Managment',
+    'progress_managment'            => 'Progress Managment',
+    'planning_managment'            => 'Planning Managment',
+    'reports_progress'              => 'Reports Progress',
+    'project_tot_table'             => 'Project TOT Table',
+    'project_3bb_table'             => 'Project 3BB Table',
+    'project_true_table'            => 'Project TRUE Table',
+    'project_ais_table'             => 'Project AIS Table',
+    'project_fibernet_table'        => 'Project Fiber Net Table',
+    'project_name_table'            => 'Project List Table',
+    'issue_tickets'                 => 'Issue Tickets',
+    'user'                          => 'USER',
+    'user_information'              => 'User Information',
+    'user_role_permission'          => 'User Role & Permission',
+    'user_management'               => 'User Management'
+
+
 ];

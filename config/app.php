@@ -180,6 +180,7 @@ return [
         App\Providers\ProductRepositoryServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
+        Tohidplus\Translation\TranslationServiceProvider::class,
     ],
 
     /*

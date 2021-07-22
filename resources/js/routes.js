@@ -79,8 +79,8 @@ export default [{
         }
     },
     {
-        path: "/constarution",
-        component: require("./components/constarution/Constarution.vue")
+        path: "/constitution",
+        component: require("./components/constitution/Constitution.vue")
             .default,
         meta: {
             requiresAuth: true,

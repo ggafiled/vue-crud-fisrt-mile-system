@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="fas fa-fw bi bi-building"></i>
-                            Building 3BB Table
+                            {{ translate('building.3bb.header') }}
                         </h3>
                     </div>
                     <!-- /.card-header -->

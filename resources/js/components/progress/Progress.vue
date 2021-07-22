@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <span class="mdi mdi-progress-wrench"></span>
-                            Progress List Table
+                            {{ translate('progress.header') }}
                         </h3>
                         <div class="card-tools">
                             <button
@@ -15,7 +15,7 @@
                                 @click="newModal"
                             >
                                 <i class="fa fa-plus-square"></i>
-                                Add New
+                                {{ translate('progress.addnew') }}
                             </button>
                         </div>
                     </div>
@@ -66,10 +66,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                Create New Progress
+                                {{ translate('progress.create.header') }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                Update Progress's Info
+                                {{ translate('progress.update.header') }}
                             </h5>
                             <button
                                 type="button"
@@ -670,21 +670,21 @@
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    Close
+                                    {{ translate('progress.actions.close') }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    Update
+                                    {{ translate('progress.actions.update') }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    Create
+                                    {{ translate('progress.actions.create') }}
                                 </button>
                             </div>
                         </form>

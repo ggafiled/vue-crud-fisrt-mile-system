@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="fas fa-fw bi bi-building"></i>
-                            Building Fiber Net Table
+                           {{ translate('building.fibernet.header') }}
                         </h3>
                     </div>
                     <!-- /.card-header -->

@@ -239,7 +239,7 @@ return [
         // Navbar items:
         [
             'type'         => 'navbar-search',
-            'text'         => 'Global search',
+            'text'         => 'global_search',
             'topnav_right' => true,
         ],
         [
@@ -254,36 +254,36 @@ return [
         ],
        ['header' => 'MENU'],
         [
-            'text' => 'Dashboard',
+            'text' => 'dashboard',
             'url'  => '/dashboard',
             'icon' => 'fas fa-fw bi bi-kanban',
             'active' => ['dashboard', 'dashboard/*']
         ],
         [
-            'text' => 'Project List',
+            'text' => 'project_list',
             'icon' => 'fas fa-fw fas fa-building',
             'can'  => ['building-create|building-read|building-update'],
             'submenu' => [
                 [
-                    'text' => 'Building Managment',
+                    'text' => 'building_managment',
                     'url'  => '/building',
                     'icon' => 'fas fa-fw bi bi-building',
                     'can'  => ['building-update', 'building-create', 'building-read']
                 ],
                 [
-                    'text' => 'Constarution Managment',
-                    'url'  => '/constarution',
+                    'text' => 'constitution_managment',
+                    'url'  => '/constitution',
                     'icon' => 'fas fa-fw bi bi-aspect-ratio',
                     'can'  => ['building-update', 'building-create', 'building-read']
                 ],
                 [
-                    'text' => 'Progress Managment',
+                    'text' => 'progress_managment',
                     'url'  => '/progress',
                     'icon' => 'mdi mdi-18px mdi-progress-wrench',
                     'can'  => ['building-update', 'building-create', 'building-read']
                 ],
                  [
-                    'text' => 'Planning Managment',
+                    'text' => 'planning_managment',
                     'url'  => '/planing',
                     'icon' => 'fas fa-fw fas fa-list-alt',
                     'can'  => ['building-update', 'building-create', 'building-read']
@@ -291,43 +291,43 @@ return [
             ]
         ],
         [
-            'text' => 'Reports Progress',
+            'text' => 'reports_progress',
             'icon' => 'fas fa-fw fas fa-clipboard-list',
             'can'  => ['building-create|building-read|building-update'],
             'submenu' => [
                 [
-                    'text' => 'Project Name Table',
+                    'text' => 'project_name_table',
                     'url'  => '/building/all',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
-                    'text' => 'Project TOT Table',
+                    'text' => 'project_tot_table',
                     'url'  => '/building/tot',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
-                    'text' => 'Project 3BB Table',
+                    'text' => 'project_3bb_table',
                     'url'  => '/building/3bb',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
-                    'text' => 'Project TRUE Table',
+                    'text' => 'project_true_table',
                     'url'  => '/building/true',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
                 ],
                 [
-                    'text' => 'Project AIS Table',
+                    'text' => 'project_ais_table',
                     'url'  => '/building/ais',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     // 'icon' => 'c-icon c-icon-ais',
                     'can'  => ['building-read']
                 ],
                 [
-                    'text' => 'Project FiberNet Table',
+                    'text' => 'project_fibernet_table',
                     'url'  => '/building/fibernet',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'can'  => ['building-read']
@@ -335,19 +335,19 @@ return [
             ]
         ],
         [
-            'text' => 'Issue Tickets',
+            'text' => 'issue_tickets',
             'url'  => '/issue-tickets',
             'icon' => 'mdi mdi-ticket-confirmation-outline'
         ],
-        ['header' => 'USER'],
+        ['header' => 'user'],
         [
-            'text' => 'User Information',
+            'text' => 'user_information',
             'url'  => '/profile',
             'icon' => 'fas fa-fw fa-user',
             'can'  => ['profile-update', 'profile-read', 'password-update'],
         ],
         [
-            'text' => 'User Role & Permission',
+            'text' => 'user_role_permission',
             'url'  => '/permission',
             'icon' => 'bi bi-layers',
             'roles'  => ['superadministrator', 'administrator'],
@@ -359,7 +359,7 @@ return [
         //     'roles'  => ['superadministrator','administrator'],
         // ],
         [
-            'text' => 'User Management',
+            'text' => 'user_management',
             'url'  => '/users',
             'icon' => 'bi bi-people',
             'roles'  => ['superadministrator', 'administrator'],

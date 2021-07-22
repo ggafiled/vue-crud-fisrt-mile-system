@@ -9,9 +9,13 @@
                         ></span>
 
                         <div class="info-box-content">
-                            <h5 class="info-box-text">Building Managment</h5>
+                            <h5 class="info-box-text">
+                                {{ translate("dashboard.building_managment") }}
+                            </h5>
                             <div>
-                                <router-link to="/building" class="small-box-footer"
+                                <router-link
+                                    to="/building"
+                                    class="small-box-footer"
                                     >Click
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></router-link>
@@ -28,11 +32,17 @@
 
                         <div class="info-box-content">
                             <h5 class="info-box-text">
-                                Constarution Managment
+                                {{
+                                    translate(
+                                        "dashboard.constarution_managment"
+                                    )
+                                }}
                             </h5>
                             <div>
-                                <router-link to="/constarution" class="small-box-footer"
-                                    >Click
+                                <router-link
+                                    to="/constarution"
+                                    class="small-box-footer"
+                                    >{{ translate("dashboard.actions.click") }}
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></router-link>
                             </div>
@@ -52,11 +62,13 @@
 
                         <div class="info-box-content">
                             <h5 class="info-box-text">
-                                Progress Managment
+                                {{ translate("dashboard.progress_managment") }}
                             </h5>
                             <div>
-                                <router-link to="/progress" class="small-box-footer"
-                                    >Click
+                                <router-link
+                                    to="/progress"
+                                    class="small-box-footer"
+                                    >{{ translate("dashboard.actions.click") }}
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></router-link>
                             </div>
@@ -70,9 +82,11 @@
                         ></span>
 
                         <div class="info-box-content">
-                            <h5 class="info-box-text">Planning Managment</h5>
+                            <h5 class="info-box-text">
+                                {{ translate("dashboard.planning_managment") }}
+                            </h5>
                             <router-link to="/planing" class="small-box-footer"
-                                >Click
+                                >{{ translate("dashboard.actions.click") }}
                                 <i class="fas fa-arrow-circle-right"></i
                             ></router-link>
                         </div>
@@ -91,7 +105,7 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="far fa-chart-bar"></i>
-                                Group of county Area Chart
+                                {{ translate("dashboard.charts.group_of_county_area_chart") }}
                             </h3>
                             <div class="card-tools">
                                 <div class="btn-group">
@@ -131,7 +145,9 @@
                         ></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Progress All</span>
+                            <span class="info-box-text">
+                                {{ translate("dashboard.info_box.progress_all") }}
+                            </span>
                             <span class="info-box-number">{{
                                 dashboardInfo.building
                                     .toString()
@@ -146,7 +162,9 @@
                         ></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Constarution</span>
+                            <span class="info-box-text">
+                                {{ translate("dashboard.info_box.constarution") }}
+                            </span>
                             <span class="info-box-number">
                                 {{
                                     dashboardInfo.constarution
@@ -166,7 +184,9 @@
                         ></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Progress</span>
+                            <span class="info-box-text">
+                                {{ translate("dashboard.info_box.progress") }}
+                            </span>
                             <span class="info-box-number">
                                 {{
                                     dashboardInfo.progress
@@ -186,7 +206,9 @@
                         ></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Planing</span>
+                            <span class="info-box-text">
+                                {{ translate("dashboard.info_box.planing") }}
+                            </span>
                             <span class="info-box-number">
                                 {{
                                     dashboardInfo.planing
@@ -206,7 +228,9 @@
                         ></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">User</span>
+                            <span class="info-box-text">
+                                {{ translate("dashboard.info_box.user") }}
+                            </span>
                             <span class="info-box-number">
                                 {{
                                     dashboardInfo.user
@@ -232,7 +256,7 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="mdi mdi-progress-wrench"></i>
-                                Progress status Chart
+                                {{ translate("dashboard.charts.progress_status_chart") }}
                             </h3>
                             <div class="card-tools">
                                 <div class="btn-group">
@@ -267,7 +291,7 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="mdi mdi-progress-wrench"></i>
-                                Progress PolarArea Chart
+                                {{ translate("dashboard.charts.progress_polarArea_chart") }}
                             </h3>
                             <div class="card-tools">
                                 <div class="btn-group">
@@ -423,7 +447,7 @@ export default {
                         datasets: [
                             {
                                 label: "County Bound",
-                                backgroundColor: '#FF6767',
+                                backgroundColor: "#FF6767",
                                 data: response.data.data.chart_dp_groub_of_countyName.map(
                                     obj => {
                                         return obj["total"];
@@ -439,7 +463,10 @@ export default {
                         datasets: [
                             {
                                 label: "กำลังดำเนินการ",
-                                backgroundColor: pattern.draw('diagonal-right-left', '#ED602B'),
+                                backgroundColor: pattern.draw(
+                                    "diagonal-right-left",
+                                    "#ED602B"
+                                ),
                                 data: Object.keys(
                                     response.data.data
                                         .chart_dp_groub_of_progress
@@ -457,7 +484,10 @@ export default {
                             },
                             {
                                 label: "รอเข้าดำเนินการ",
-                                backgroundColor: pattern.draw('diagonal-right-left', '#F0802C'),
+                                backgroundColor: pattern.draw(
+                                    "diagonal-right-left",
+                                    "#F0802C"
+                                ),
                                 data: Object.keys(
                                     response.data.data
                                         .chart_dp_groub_of_progress
@@ -475,7 +505,10 @@ export default {
                             },
                             {
                                 label: "วางโครงข่ายแล้ว",
-                                backgroundColor: pattern.draw('diagonal-right-left', '#F3E252'),
+                                backgroundColor: pattern.draw(
+                                    "diagonal-right-left",
+                                    "#F3E252"
+                                ),
                                 data: Object.keys(
                                     response.data.data
                                         .chart_dp_groub_of_progress
@@ -493,7 +526,10 @@ export default {
                             },
                             {
                                 label: "เชื่อมโครงข่ายแล้ว",
-                                backgroundColor: pattern.draw('diagonal-right-left', '#059BFF'),
+                                backgroundColor: pattern.draw(
+                                    "diagonal-right-left",
+                                    "#059BFF"
+                                ),
                                 data: Object.keys(
                                     response.data.data
                                         .chart_dp_groub_of_progress

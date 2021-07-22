@@ -5,7 +5,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fas fa-fw bi bi-building"></i> Building Managment Table</h3>
+                            <h3 class="card-title">
+                                <i class="fas fa-fw bi bi-building"></i>
+                                {{ translate('building.header') }}
+                            </h3>
                             <div class="card-tools">
                                 <button
                                     type="button"
@@ -13,7 +16,7 @@
                                     @click="newModal"
                                 >
                                     <i class="fa fa-plus-square"></i>
-                                    Add New
+                                    {{ translate('building.addnew') }}
                                 </button>
                             </div>
                         </div>
@@ -60,10 +63,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                Create New Building
+                                {{ translate('building.create.header') }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                Update Bulding's Info
+                                {{ translate('building.update.header') }}
                             </h5>
                             <button
                                 type="button"
@@ -1058,27 +1061,27 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
+                           <div class="modal-footer">
                                 <button
                                     type="button"
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    Close
+                                    {{ translate('building.actions.close') }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    Update
+                                    {{ translate('building.actions.update') }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    Create
+                                    {{ translate('building.actions.create') }}
                                 </button>
                             </div>
                         </form>

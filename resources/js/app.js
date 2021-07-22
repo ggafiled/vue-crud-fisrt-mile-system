@@ -10,6 +10,7 @@ import "fullcalendar/dist/fullcalendar.css";
 
 window.Vue = require("vue");
 window.axios = require("axios");
+window.tranlate = require("./VueTranslation/Translation").default.translate;
 import moment from "moment";
 
 import { Form, HasError, AlertError } from "vform";
@@ -18,6 +19,9 @@ window.Form = Form;
 import Gate from "./Gate";
 var gate = new Gate("user" in window.Laravel ? window.Laravel.user : []);
 Vue.prototype.$gate = gate;
+
+// If you want to use it in your vue components
+Vue.prototype.translate = require("./VueTranslation/Translation").default.translate;
 
 import Swal from "sweetalert2";
 

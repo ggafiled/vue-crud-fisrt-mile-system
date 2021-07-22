@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="fas fa-fw fas fa-list-alt"></i>
-                            PLANING MANAGEMENT
+                            {{ translate('planing.header') }}
                         </h3>
                         <div class="card-tools">
                             <button
@@ -15,7 +15,7 @@
                                 @click="newModal"
                             >
                                 <i class="fa fa-plus-square"></i>
-                                Add New
+                                {{ translate('planing.addnew') }}
                             </button>
                         </div>
                     </div>
@@ -77,10 +77,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                Create New Planing
+                                {{ translate('planing.create.header') }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                Update Planing's Info
+                                {{ translate('planing.update.header') }}
                             </h5>
                             <button
                                 type="button"
@@ -562,21 +562,21 @@
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    Close
+                                    {{ translate('planing.actions.close') }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    Update
+                                    {{ translate('planing.actions.update') }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    Create
+                                    {{ translate('planing.actions.create') }}
                                 </button>
                             </div>
                         </form>
@@ -640,16 +640,16 @@ export default {
             );
         },
         loadPlaning() {
-            this.$Progress.start();
+            this.$planing.start();
 
             if (this.$gate.isAdmin()) {
                 //To DO
             }
 
-            this.$Progress.finish();
+            this.$planing.finish();
         },
         updatePlaning() {
-            this.$Progress.start();
+            this.$planing.start();
             // console.log('Editing data');
             this.form
                 .put("api/planing/" + this.form.id)
@@ -660,13 +660,13 @@ export default {
                         icon: "success",
                         title: response.data.message
                     });
-                    this.$Progress.finish();
+                    this.$planing.finish();
                     //  Fire.$emit('AfterCreate');
 
                     this.loadPlaning();
                 })
                 .catch(() => {
-                    this.$Progress.fail();
+                    this.$planing.fail();
                 });
         },
         editModal(planing) {
@@ -722,7 +722,7 @@ export default {
                         title: response.data.message
                     });
 
-                    this.$Progress.finish();
+                    this.$planing.finish();
                     this.loadPlaning();
                 })
                 .catch(() => {
@@ -734,9 +734,9 @@ export default {
         }
     },
     created() {
-        this.$Progress.start();
+        this.$planing.start();
         this.loadBuildings();
-        this.$Progress.finish();
+        this.$planing.finish();
     },
     mounted() {
         var vm = this;

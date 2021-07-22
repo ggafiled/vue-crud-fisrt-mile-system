@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="fas fa-fw bi bi-building"></i>
-                            Building AIS Table
+                           {{ translate('building.ais.header') }}
                         </h3>
                     </div>
                     <!-- /.card-header -->
