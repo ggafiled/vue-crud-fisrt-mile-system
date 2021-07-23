@@ -814,7 +814,7 @@ export default {
             fixedHeader: true,
             fixedColumns: true,
             fixedColumns: {
-                leftColumns: 2,
+                leftColumns: 3,
                 rightColumns: 1
             },
             scrollX: true,
@@ -893,52 +893,308 @@ export default {
             columns: [
                 { data: null, defaultContent: "", className: "dt-body-center" },
                 {
-                    data: "name"
+                    data: "name",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "surname"
+                    data: "surname",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "tel"
+                    data: "tel",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "tel2"
+                    data: "tel2",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-file-person pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-file-person pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "building[0].projectName"
+                    data: "building[0].projectName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "building[0].houseNumber"
+                    data: "building[0].houseNumber",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "building[0].squadNumber"
+                    data: "building[0].squadNumber",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "building[0].alleyName"
+                    data: "building[0].alleyName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "building[0].roadName"
+                    data: "building[0].roadName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "building[0].districtName"
+                    data: "building[0].districtName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "building[0].countyName"
+                    data: "building[0].countyName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "building[0].provinceName"
+                    data: "building[0].provinceName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "building[0].postalCode"
+                    data: "building[0].postalCode",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "theBuilding"
+                    data: "theBuilding",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "floor"
+                    data: "floor",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "room"
+                    data: "room",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
                     data: "isp",
@@ -995,7 +1251,23 @@ export default {
                     }
                 },
                 {
-                    data: "circuit"
+                    data: "circuit",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
                     data: "entranceFee",
@@ -1026,25 +1298,137 @@ export default {
                     }
                 },
                 {
-                    data: "appointmentDate"
+                    data: "appointmentDate",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "appointmentTime"
+                    data: "appointmentTime",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "technicianPlaning"
+                    data: "technicianPlaning",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "idRequired"
+                    data: "idRequired",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "status"
+                    data: "status",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "subStatus"
+                    data: "subStatus",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "reMark"
+                    data: "reMark",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
                     data: "updated_at",

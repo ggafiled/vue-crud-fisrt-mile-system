@@ -42,8 +42,8 @@ import FullCalendar from "vue-full-calendar";
 Vue.use(FullCalendar);
 
 import Select2 from "v-select2-component";
-
 Vue.component("Select2", Select2);
+
 
 import VueProgressBar from "vue-progressbar";
 Vue.use(VueProgressBar, {
@@ -128,9 +128,9 @@ Vue.filter("myDate", function(created) {
 });
 
 Vue.filter("yesno", value =>
-    value ?
-    '<i class="fas fa-check green"></i>' :
-    '<i class="fas fa-times red"></i>'
+    value
+        ? '<i class="fas fa-check green"></i>'
+        : '<i class="fas fa-times red"></i>'
 );
 
 // end Filter
