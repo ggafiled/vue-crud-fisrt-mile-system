@@ -38,7 +38,10 @@ return [
         'delete_building_cancel_button_text'    => 'ยกเลิก',
         'delete_building_confirm_button_text' => 'ใช่, ลบเลย',
         'comfirm_delete_title' => 'ลบเลย!',
-        'confirm_delete_message' => 'เรดคอร์ดดังกล่าวถูกลบเรียบร้อยแล้ว'
+        'confirm_delete_message' => 'เรดคอร์ดดังกล่าวถูกลบเรียบร้อยแล้ว',
+        'display_selected_record_title' => 'แสดงที่เลือกไว้',
+        'display_selected_record_empty_title' => 'ไม่มีเรคคอร์ดที่เลือก',
+        'display_selected_record_empty_text' => 'กรุณาเลือกเรคคอร์ดก่อน',
     ]
 
 ];

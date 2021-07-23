@@ -5,7 +5,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="bi bi-layers mr-1"></i>{{ translate('permission.header') }}</h3>
+                            <h3 class="card-title">
+                                <i class="bi bi-layers mr-1"></i
+                                >{{ translate("permission.header") }}
+                            </h3>
 
                             <div class="card-tools">
                                 <button
@@ -14,7 +17,7 @@
                                     @click="newModal"
                                 >
                                     <i class="fa fa-plus-square"></i>
-                                    {{ translate('permission.addnew') }}
+                                    {{ translate("permission.addnew") }}
                                 </button>
                             </div>
                         </div>
@@ -56,10 +59,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                {{ translate('permission.create.header') }}
+                                {{ translate("permission.create.header") }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                 {{ translate('permission.update.header') }}
+                                {{ translate("permission.update.header") }}
                             </h5>
                             <button
                                 type="button"
@@ -158,21 +161,21 @@
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                     {{ translate('permission.actions.close') }}
+                                    {{ translate("permission.actions.close") }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    {{ translate('permission.actions.update') }}
+                                    {{ translate("permission.actions.update") }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    {{ translate('permission.actions.create') }}
+                                    {{ translate("permission.actions.create") }}
                                 </button>
                             </div>
                         </form>
@@ -218,13 +221,21 @@ export default {
         },
         deleteRole(item) {
             Swal.fire({
-                title: window.translate('permission.alert.delete_building_title'),
-                text: window.translate('permission.alert.delete_building_text') + ` [${item.name.replace(/\b\w/g, l => l.toUpperCase())}]`,
+                title: window.translate(
+                    "permission.alert.delete_building_title"
+                ),
+                text:
+                    window.translate("permission.alert.delete_building_text") +
+                    ` [${item.name.replace(/\b\w/g, l => l.toUpperCase())}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                cancelButtonText: window.translate('permission.alert.delete_building_cancel_button_text'),
-                confirmButtonText: window.translate('permission.alert.delete_building_confirm_button_text')
+                cancelButtonText: window.translate(
+                    "permission.alert.delete_building_cancel_button_text"
+                ),
+                confirmButtonText: window.translate(
+                    "permission.alert.delete_building_confirm_button_text"
+                )
             }).then(result => {
                 // Send request to the server
                 if (result.value) {
@@ -232,8 +243,12 @@ export default {
                         .delete("api/role/" + item.id)
                         .then(() => {
                             Swal.fire(
-                                window.translate('permission.alert.comfirm_delete_title'),
-                                window.translate('permission.alert.confirm_delete_message'),
+                                window.translate(
+                                    "permission.alert.comfirm_delete_title"
+                                ),
+                                window.translate(
+                                    "permission.alert.confirm_delete_message"
+                                ),
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
@@ -361,19 +376,37 @@ export default {
                 [10, 15, 25, 50, -1],
                 [10, 15, 25, 50, "All"]
             ],
+            select: true,
             buttons: [
                 "colvis",
-                "copy",
-                "csv",
+                {
+                    extend: "copy",
+                    text: "<i class='bi bi-clipboard mr-1'></i>Copy",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
+                    }
+                },
+                {
+                    extend: "excelHtml5",
+                    autoFilter: true,
+                    sheetName: "Building",
+                    text: "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
+                    }
+                },
                 {
                     extend: "print",
                     text: "<i class='bi bi-printer mr-1'></i>Print"
                 },
                 {
                     text:
-                        "<i class='bi bi-list-check mr-1'></i>แสดงที่เลือกไว้",
+                        "<i class='bi bi-list-check mr-1'></i>" +
+                        window.translate(
+                            "datatables.alert.display_selected_record_title"
+                        ) +
+                        "",
                     action: function(e, dt, node, config) {
-                        console.info("button: Display Select Item");
                         var rowsel = dt
                             .rows({ selected: true })
                             .data()
@@ -383,8 +416,12 @@ export default {
                             .join(",");
                         if (!rowsel.length) {
                             return Swal.fire({
-                                title: "ไม่มีเรดคอร์ดที่เลือก",
-                                text: "กรุณาเลือกเรดคอร์ดก่อน",
+                                title: window.translate(
+                                    "datatables.alert.display_selected_record_empty_title"
+                                ),
+                                text: window.translate(
+                                    "datatables.alert.display_selected_record_empty_text"
+                                ),
                                 timer: 2000,
                                 showCancelButton: false,
                                 showConfirmButton: false
@@ -424,7 +461,7 @@ export default {
                 {
                     data: null,
                     defaultContent: "",
-                    className: "dt-body-center"
+                    className: "dt-body-center notexport"
                 },
                 {
                     data: "name",
@@ -444,7 +481,7 @@ export default {
                 },
                 {
                     data: null,
-                    className: "dt-body-center",
+                    className: "dt-body-center notexport",
                     render: function(data, type, row, meta) {
                         return "<a class='edit-permission btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-permission btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }

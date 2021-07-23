@@ -7,7 +7,7 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="fas fa-fw bi bi-building"></i>
-                                {{ translate('building.header') }}
+                                {{ translate("building.header") }}
                             </h3>
                             <div class="card-tools">
                                 <button
@@ -16,31 +16,31 @@
                                     @click="newModal"
                                 >
                                     <i class="fa fa-plus-square"></i>
-                                    {{ translate('building.addnew') }}
+                                    {{ translate("building.addnew") }}
                                 </button>
                             </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="table-responsive">
-                            <table
-                                id="buildings"
-                                ref="buildings"
-                                class="display nowrap"
-                                style="width: 100%"
-                            >
-                                <thead>
-                                   <tr class="info">
-                                        <th></th>
-                                        <th>Project Name</th>
-                                        <th>Manager Name</th>
-                                        <th>Phone</th>
-                                        <th>SpendSpace</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
+                                <table
+                                    id="buildings"
+                                    ref="buildings"
+                                    class="display nowrap"
+                                    style="width: 100%"
+                                >
+                                    <thead>
+                                        <tr class="info">
+                                            <th></th>
+                                            <th>Project Name</th>
+                                            <th>Manager Name</th>
+                                            <th>Phone</th>
+                                            <th>SpendSpace</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -63,10 +63,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                {{ translate('building.create.header') }}
+                                {{ translate("building.create.header") }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                {{ translate('building.update.header') }}
+                                {{ translate("building.update.header") }}
                             </h5>
                             <button
                                 type="button"
@@ -1061,27 +1061,27 @@
                                     </div>
                                 </div>
                             </div>
-                           <div class="modal-footer">
+                            <div class="modal-footer">
                                 <button
                                     type="button"
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    {{ translate('building.actions.close') }}
+                                    {{ translate("building.actions.close") }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    {{ translate('building.actions.update') }}
+                                    {{ translate("building.actions.update") }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    {{ translate('building.actions.create') }}
+                                    {{ translate("building.actions.create") }}
                                 </button>
                             </div>
                         </form>
@@ -1199,13 +1199,19 @@ export default {
         },
         deleteBuilding(item) {
             Swal.fire({
-                title: window.translate('building.alert.delete_building_title'),
-                text: window.translate('building.alert.delete_building_text') + ` [${item.projectName}]`,
+                title: window.translate("building.alert.delete_building_title"),
+                text:
+                    window.translate("building.alert.delete_building_text") +
+                    ` [${item.projectName}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                cancelButtonText: window.translate('building.alert.delete_building_cancel_button_text'),
-                confirmButtonText: window.translate('building.alert.delete_building_confirm_button_text')
+                cancelButtonText: window.translate(
+                    "building.alert.delete_building_cancel_button_text"
+                ),
+                confirmButtonText: window.translate(
+                    "building.alert.delete_building_confirm_button_text"
+                )
             }).then(result => {
                 // Send request to the server
                 if (result.value) {
@@ -1213,8 +1219,12 @@ export default {
                         .delete("/api/building/" + item.id)
                         .then(() => {
                             Swal.fire(
-                                window.translate('building.alert.comfirm_delete_title'),
-                                window.translate('building.alert.confirm_delete_message'),
+                                window.translate(
+                                    "building.alert.comfirm_delete_title"
+                                ),
+                                window.translate(
+                                    "building.alert.confirm_delete_message"
+                                ),
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
@@ -1276,10 +1286,25 @@ export default {
             },
             scrollX: true,
             scrollCollapse: true,
+            select: true,
             buttons: [
                 "colvis",
-                "copy",
-                "csv",
+                {
+                    extend: "copy",
+                    text: "<i class='bi bi-clipboard mr-1'></i>Copy",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
+                    }
+                },
+                {
+                    extend: "excelHtml5",
+                    autoFilter: true,
+                    sheetName: "Building",
+                    text: "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
+                    }
+                },
                 {
                     extend: "print",
                     text: "<i class='bi bi-printer mr-1'></i>Print"
@@ -1295,9 +1320,10 @@ export default {
                 },
                 {
                     text:
-                        "<i class='bi bi-list-check mr-1'></i>แสดงที่เลือกไว้",
+                        "<i class='bi bi-list-check mr-1'></i>"+ window.translate(
+                                    "datatables.alert.display_selected_record_title"
+                                ) +"",
                     action: function(e, dt, node, config) {
-                        console.info("button: Display Select Item");
                         var rowsel = dt
                             .rows({ selected: true })
                             .data()
@@ -1307,8 +1333,12 @@ export default {
                             .join(",");
                         if (!rowsel.length) {
                             return Swal.fire({
-                                title: "ไม่มีเรดคอร์ดที่เลือก",
-                                text: "กรุณาเลือกเรดคอร์ดก่อน",
+                                title: window.translate(
+                                    "datatables.alert.display_selected_record_empty_title"
+                                ) ,
+                                text: window.translate(
+                                    "datatables.alert.display_selected_record_empty_text"
+                                ),
                                 timer: 2000,
                                 showCancelButton: false,
                                 showConfirmButton: false
@@ -1345,7 +1375,11 @@ export default {
                 }
             ],
             columns: [
-                { data: null, defaultContent: "", className: "dt-body-center" },
+                {
+                    data: null,
+                    defaultContent: "",
+                    className: "dt-body-center notexport"
+                },
                 {
                     data: "projectName",
                     render: function(data, type, row, meta) {
@@ -1357,17 +1391,59 @@ export default {
                     }
                 },
                 {
-                    data: "nameManager"
+                    data: "nameManager",
+                    className: "text-capitalize",
+                    render: function(data, type, row, meta) {
+                        if (data == "" || data == null || typeof(data) == undefined) {
+                            return (
+                                '<span class="text-danger"><i class="bi bi-file-person pr-2"></i>' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span><i class="bi bi-file-person pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
+                    }
                 },
                 {
-                    data: "phoneManager"
+                    data: "phoneManager",
+                    render: function(data, type, row, meta) {
+                        if (data == "" || data == null || typeof(data) == undefined) {
+                            return (
+                                '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else {
+                            return (
+                                '<span><i class="bi bi-phone pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
+                    }
                 },
                 {
-                    data: "spendSpace"
+                    data: "spendSpace",
+                    render: function(data, type, row, meta) {
+                        if (data == "ยังไม่ได้ทำสัญญา") {
+                            return (
+                                '<span class="text-danger">' + data + "</span>"
+                            );
+                        } else if (!data.length) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return data;
+                        }
+                    }
                 },
                 {
                     data: null,
-                    className: "dt-body-center",
+                    className: "dt-body-center notexport",
                     render: function(data, type, row, meta) {
                         return "<a class='edit-building btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-building btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }

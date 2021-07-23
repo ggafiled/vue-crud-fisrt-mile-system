@@ -6,8 +6,8 @@
                     <div class="card-header">
                         <h2 class="card-title">
                             <i class="fas fa-fw bi bi-aspect-ratio"></i>
-                            {{ translate('constitution.header') }}
-                            </h2>
+                            {{ translate("constitution.header") }}
+                        </h2>
                         <div class="card-tools">
                             <button
                                 type="button"
@@ -15,7 +15,7 @@
                                 @click="newModal"
                             >
                                 <i class="fa fa-plus-square"></i>
-                                {{ translate('constitution.addnew') }}
+                                {{ translate("constitution.addnew") }}
                             </button>
                         </div>
                     </div>
@@ -70,10 +70,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                 {{ translate('constitution.create.header') }}
+                                {{ translate("constitution.create.header") }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                {{ translate('constitution.update.header') }}
+                                {{ translate("constitution.update.header") }}
                             </h5>
                             <button
                                 type="button"
@@ -749,27 +749,33 @@
                                     </div>
                                 </div>
                             </div>
-                           <div class="modal-footer">
+                            <div class="modal-footer">
                                 <button
                                     type="button"
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    {{ translate('constitution.actions.close') }}
+                                    {{
+                                        translate("constitution.actions.close")
+                                    }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    {{ translate('constitution.actions.update') }}
+                                    {{
+                                        translate("constitution.actions.update")
+                                    }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    {{ translate('constitution.actions.create') }}
+                                    {{
+                                        translate("constitution.actions.create")
+                                    }}
                                 </button>
                             </div>
                         </form>
@@ -877,13 +883,22 @@ export default {
         deleteConstarution(item) {
             item.projectName = item.building[0].projectName;
             Swal.fire({
-                title: window.translate('constitution.alert.delete_building_title'),
-                text: window.translate('constitution.alert.delete_building_text') + ` [${item.projectName}]`,
+                title: window.translate(
+                    "constitution.alert.delete_building_title"
+                ),
+                text:
+                    window.translate(
+                        "constitution.alert.delete_building_text"
+                    ) + ` [${item.projectName}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                cancelButtonText: window.translate('constitution.alert.delete_building_cancel_button_text'),
-                confirmButtonText: window.translate('constitution.alert.delete_building_confirm_button_text')
+                cancelButtonText: window.translate(
+                    "constitution.alert.delete_building_cancel_button_text"
+                ),
+                confirmButtonText: window.translate(
+                    "constitution.alert.delete_building_confirm_button_text"
+                )
             }).then(result => {
                 // Send request to the server
                 if (result.value) {
@@ -891,8 +906,12 @@ export default {
                         .delete("api/constarution/" + item.id)
                         .then(() => {
                             Swal.fire(
-                                window.translate('constitution.alert.comfirm_delete_title'),
-                                window.translate('constitution.alert.confirm_delete_message'),
+                                window.translate(
+                                    "constitution.alert.comfirm_delete_title"
+                                ),
+                                window.translate(
+                                    "constitution.alert.confirm_delete_message"
+                                ),
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
@@ -952,19 +971,37 @@ export default {
             },
             scrollX: true,
             scrollCollapse: true,
+            select: true,
             buttons: [
                 "colvis",
-                "copy",
-                "csv",
+                {
+                    extend: "copy",
+                    text: "<i class='bi bi-clipboard mr-1'></i>Copy",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
+                    }
+                },
+                {
+                    extend: "excelHtml5",
+                    autoFilter: true,
+                    sheetName: "Building",
+                    text: "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
+                    }
+                },
                 {
                     extend: "print",
                     text: "<i class='bi bi-printer mr-1'></i>Print"
                 },
                 {
                     text:
-                        "<i class='bi bi-list-check mr-1'></i>แสดงที่เลือกไว้",
+                        "<i class='bi bi-list-check mr-1'></i>" +
+                        window.translate(
+                            "datatables.alert.display_selected_record_title"
+                        ) +
+                        "",
                     action: function(e, dt, node, config) {
-                        console.info("button: Display Select Item");
                         var rowsel = dt
                             .rows({ selected: true })
                             .data()
@@ -974,8 +1011,12 @@ export default {
                             .join(",");
                         if (!rowsel.length) {
                             return Swal.fire({
-                                title: "ไม่มีเรดคอร์ดที่เลือก",
-                                text: "กรุณาเลือกเรดคอร์ดก่อน",
+                                title: window.translate(
+                                    "datatables.alert.display_selected_record_empty_title"
+                                ),
+                                text: window.translate(
+                                    "datatables.alert.display_selected_record_empty_text"
+                                ),
                                 timer: 2000,
                                 showCancelButton: false,
                                 showConfirmButton: false
@@ -1012,7 +1053,7 @@ export default {
                 }
             ],
             columns: [
-                { data: null, defaultContent: "", className: "dt-body-center" },
+                { data: null, defaultContent: "", className: "dt-body-center notexport" },
                 {
                     data: "building[0].projectName"
                 },
@@ -1155,7 +1196,7 @@ export default {
                 },
                 {
                     data: null,
-                    className: "dt-body-center",
+                    className: "dt-body-center notexport",
                     render: function(data, type, row, meta) {
                         return "<a class='edit-constarution btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-constarution btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }

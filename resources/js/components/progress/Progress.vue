@@ -872,51 +872,71 @@ export default {
             },
             scrollX: true,
             scrollCollapse: true,
+            select: true,
             buttons: [
                 "colvis",
-                "copy",
-                "csv",
+                {
+                    extend: "copy",
+                    text: "<i class='bi bi-clipboard mr-1'></i>Copy",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
+                    }
+                },
+                {
+                    extend: "excelHtml5",
+                    autoFilter: true,
+                    sheetName: "Building",
+                    text: "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
+                    }
+                },
                 {
                     extend: "print",
                     text: "<i class='bi bi-printer mr-1'></i>Print"
                 },
                 {
-                            text:
-                                "<i class='bi bi-list-check mr-1'></i>แสดงที่เลือกไว้",
-                            action: function(e, dt, node, config) {
-                                console.info("button: Display Select Item");
-                                var rowsel = dt
-                                    .rows({ selected: true })
-                                    .data()
-                                    .map(function(item) {
-                                        return item.id;
-                                    })
-                                    .join(",");
-                                if (!rowsel.length) {
-                                    return Swal.fire({
-                                        title: "ไม่มีเรดคอร์ดที่เลือก",
-                                        text: "กรุณาเลือกเรดคอร์ดก่อน",
-                                        timer: 2000,
-                                        showCancelButton: false,
-                                        showConfirmButton: false
-                                    });
-                                }
-                                $.fn.dataTable.ext.search.pop();
-                                $.fn.dataTable.ext.search.push(function(
-                                    settings,
-                                    data,
-                                    dataIndex
-                                ) {
-                                    return $(
-                                        table.row(dataIndex).node()
-                                    ).hasClass("selected")
-                                        ? true
-                                        : false;
-                                });
+                    text:
+                        "<i class='bi bi-list-check mr-1'></i>"+ window.translate(
+                                    "datatables.alert.display_selected_record_title"
+                                ) +"",
+                    action: function(e, dt, node, config) {
+                        var rowsel = dt
+                            .rows({ selected: true })
+                            .data()
+                            .map(function(item) {
+                                return item.id;
+                            })
+                            .join(",");
+                        if (!rowsel.length) {
+                            return Swal.fire({
+                                title: window.translate(
+                                    "datatables.alert.display_selected_record_empty_title"
+                                ) ,
+                                text: window.translate(
+                                    "datatables.alert.display_selected_record_empty_text"
+                                ),
+                                timer: 2000,
+                                showCancelButton: false,
+                                showConfirmButton: false
+                            });
+                        }
+                        $.fn.dataTable.ext.search.pop();
+                        $.fn.dataTable.ext.search.push(function(
+                            settings,
+                            data,
+                            dataIndex
+                        ) {
+                            return $(table.row(dataIndex).node()).hasClass(
+                                "selected"
+                            )
+                                ? true
+                                : false;
+                        });
 
-                                table.draw();
-                            }
-                        },
+                        table.draw();
+                    }
+                },
                         {
                             text:
                                 "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
@@ -936,7 +956,7 @@ export default {
                 {
                         data: null,
                         defaultContent: "",
-                        className: "dt-body-center"
+                        className: "dt-body-center notexport"
                     },
                 {
                     data: "building.projectName"
@@ -1047,7 +1067,7 @@ export default {
                 },
                 {
                     data: null,
-                    className: "dt-body-center",
+                    className: "dt-body-center notexport",
                     render: function(data, type, row, meta) {
                         return "<a class='edit-progress btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-progress btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }

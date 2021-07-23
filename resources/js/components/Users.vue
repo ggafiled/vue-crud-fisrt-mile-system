@@ -5,7 +5,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="bi bi-people mr-1"></i>{{ translate('user.header') }}</h3>
+                            <h3 class="card-title">
+                                <i class="bi bi-people mr-1"></i
+                                >{{ translate("user.header") }}
+                            </h3>
                             <div class="card-tools">
                                 <button
                                     type="button"
@@ -13,7 +16,7 @@
                                     @click="newModal"
                                 >
                                     <i class="fa fa-plus-square"></i>
-                                    {{ translate('user.addnew') }}
+                                    {{ translate("user.addnew") }}
                                 </button>
                             </div>
                         </div>
@@ -59,10 +62,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                {{ translate('user.create.header') }}
+                                {{ translate("user.create.header") }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                {{ translate('user.update.header') }}
+                                {{ translate("user.update.header") }}
                             </h5>
                             <button
                                 type="button"
@@ -176,21 +179,21 @@
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    {{ translate('user.actions.close') }}
+                                    {{ translate("user.actions.close") }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    {{ translate('user.actions.update') }}
+                                    {{ translate("user.actions.update") }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    {{ translate('user.actions.create') }}
+                                    {{ translate("user.actions.create") }}
                                 </button>
                             </div>
                         </form>
@@ -258,13 +261,21 @@ export default {
         },
         deleteUser(item) {
             Swal.fire({
-                title: window.translate('permission.alert.delete_building_title'),
-                text: window.translate('permission.alert.delete_building_text') + ` [${item.name.replace(/\b\w/g, l => l.toUpperCase()) }]`,
+                title: window.translate(
+                    "permission.alert.delete_building_title"
+                ),
+                text:
+                    window.translate("permission.alert.delete_building_text") +
+                    ` [${item.name.replace(/\b\w/g, l => l.toUpperCase())}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                cancelButtonText: window.translate('permission.alert.delete_building_cancel_button_text'),
-                confirmButtonText: window.translate('permission.alert.delete_building_confirm_button_text')
+                cancelButtonText: window.translate(
+                    "permission.alert.delete_building_cancel_button_text"
+                ),
+                confirmButtonText: window.translate(
+                    "permission.alert.delete_building_confirm_button_text"
+                )
             }).then(result => {
                 // Send request to the server
                 if (result.value) {
@@ -272,8 +283,12 @@ export default {
                         .delete("api/user/" + item.id)
                         .then(() => {
                             Swal.fire(
-                                window.translate('permission.alert.comfirm_delete_title'),
-                                window.translate('permission.alert.confirm_delete_message'),
+                                window.translate(
+                                    "permission.alert.comfirm_delete_title"
+                                ),
+                                window.translate(
+                                    "permission.alert.confirm_delete_message"
+                                ),
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
@@ -346,82 +361,105 @@ export default {
                 [10, 15, 25, 50, -1],
                 [10, 15, 25, 50, "All"]
             ],
-            buttons: {
-                buttons: [
-                    { extend: "colvis", className: "dt-button" },
-                    { extend: "copy", className: "dt-button" },
-                    { extend: "csv", className: "dt-button" },
-                    {
-                        extend: "print",
-                        className: "dt-button",
-                        text: "<i class='bi bi-printer mr-1'></i>Print"
-                    },
-                    {
-                        text:
-                            "<i class='bi bi-x-square'></i> Email not verified yet?",
-                        action: function(e, dt, node, config) {
-                            dt.column(3)
-                                .search("red")
-                                .draw();
-                        }
-                    },
-                    {
-                        text:
-                            "<i class='bi bi-list-check mr-1'></i>แสดงที่เลือกไว้",
-                        action: function(e, dt, node, config) {
-                            console.info("button: Display Select Item");
-                            var rowsel = dt
-                                .rows({ selected: true })
-                                .data()
-                                .map(function(item) {
-                                    return item.id;
-                                })
-                                .join(",");
-                            if (!rowsel.length) {
-                                return Swal.fire({
-                                    title: "ไม่มีเรดคอร์ดที่เลือก",
-                                    text: "กรุณาเลือกเรดคอร์ดก่อน",
-                                    timer: 2000,
-                                    showCancelButton: false,
-                                    showConfirmButton: false
-                                });
-                            }
-                            $.fn.dataTable.ext.search.pop();
-                            $.fn.dataTable.ext.search.push(function(
-                                settings,
-                                data,
-                                dataIndex
-                            ) {
-                                return $(table.row(dataIndex).node()).hasClass(
-                                    "selected"
-                                )
-                                    ? true
-                                    : false;
-                            });
-
-                            table.draw();
-                        }
-                    },
-                    {
-                        text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
-                        action: function(e, dt, node, config) {
-                            console.info("button: Clear");
-                            $.fn.dataTable.ext.search.pop();
-                            dt.search("").draw();
-                            dt.columns()
-                                .search("")
-                                .draw();
-                            dt.rows().deselect();
-                            dt.ajax.reload();
-                        }
+            select: true,
+            buttons: [
+                "colvis",
+                {
+                    extend: "copy",
+                    text: "<i class='bi bi-clipboard mr-1'></i>Copy",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
                     }
-                ]
-            },
+                },
+                {
+                    extend: "excelHtml5",
+                    autoFilter: true,
+                    sheetName: "Building",
+                    text: "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
+                    }
+                },
+                {
+                    extend: "print",
+                    className: "dt-button",
+                    text: "<i class='bi bi-printer mr-1'></i>Print",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
+                    }
+                },
+                {
+                    text:
+                        "<i class='bi bi-x-square'></i> Email not verified yet?",
+                    action: function(e, dt, node, config) {
+                        dt.column(3)
+                            .search("red")
+                            .draw();
+                    }
+                },
+                {
+                    text:
+                        "<i class='bi bi-list-check mr-1'></i>" +
+                        window.translate(
+                            "datatables.alert.display_selected_record_title"
+                        ) +
+                        "",
+                    action: function(e, dt, node, config) {
+                        var rowsel = dt
+                            .rows({ selected: true })
+                            .data()
+                            .map(function(item) {
+                                return item.id;
+                            })
+                            .join(",");
+                        if (!rowsel.length) {
+                            return Swal.fire({
+                                title: window.translate(
+                                    "datatables.alert.display_selected_record_empty_title"
+                                ),
+                                text: window.translate(
+                                    "datatables.alert.display_selected_record_empty_text"
+                                ),
+                                timer: 2000,
+                                showCancelButton: false,
+                                showConfirmButton: false
+                            });
+                        }
+                        $.fn.dataTable.ext.search.pop();
+                        $.fn.dataTable.ext.search.push(function(
+                            settings,
+                            data,
+                            dataIndex
+                        ) {
+                            return $(table.row(dataIndex).node()).hasClass(
+                                "selected"
+                            )
+                                ? true
+                                : false;
+                        });
+
+                        table.draw();
+                    }
+                },
+                {
+                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                    action: function(e, dt, node, config) {
+                        console.info("button: Clear");
+                        $.fn.dataTable.ext.search.pop();
+                        dt.search("").draw();
+                        dt.columns()
+                            .search("")
+                            .draw();
+                        dt.rows().deselect();
+                        dt.ajax.reload();
+                    }
+                }
+            ],
             columns: [
                 {
                     data: null,
                     defaultContent: "",
-                    className: "dt-body-center"
+                    className: "dt-body-center notexport"
                 },
                 {
                     data: "name",
@@ -454,7 +492,7 @@ export default {
 
                 {
                     data: null,
-                    className: "dt-body-center",
+                    className: "dt-body-center notexport",
                     render: function(data, type, row, meta) {
                         return vm.$gate.iscurrentUser(data.id)
                             ? "<a class='edit-users btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a>"

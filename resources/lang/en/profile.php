@@ -38,7 +38,10 @@ return [
         'delete_building_cancel_button_text'    => 'Cancel',
         'delete_building_confirm_button_text' => 'Yes, delete it!',
         'comfirm_delete_title' => 'Deleted!',
-        'confirm_delete_message' => 'Your record has been deleted.'
+        'confirm_delete_message' => 'Your record has been deleted.',
+        'display_selected_record_title' => 'Display Select Items',
+        'display_selected_record_empty_title' => 'No record selected.',
+        'display_selected_record_empty_text' => 'Please select a record first.',
     ]
 
 ];

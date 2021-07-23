@@ -10,6 +10,7 @@ try {
     window.Popper = require("popper.js").default;
     window.$ = window.jQuery = require("jquery");
     window.animejs = require("animejs");
+    window.JSZip = require("jszip");
 
     require("bootstrap");
     require("admin-lte");
@@ -37,6 +38,8 @@ try {
     //Bootstrap icon
     require("bootstrap-icons/font/bootstrap-icons.css");
     require("jquery-contextmenu");
+
+    $.fn.dataTable.Buttons.jszip(JSZip);
 } catch (e) {}
 
 /**
