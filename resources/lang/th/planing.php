@@ -26,5 +26,13 @@ return [
         'update' => 'อัพเดต',
         'create' => 'สร้าง'
     ],
+    'alert' => [
+        'delete_building_title' => 'คุณแน่ใจไหม?',
+        'delete_building_text' => 'คุณจะไม่สามารถย้อนกลับการกระทำนี้ได้!',
+        'delete_building_cancel_button_text'    => 'ยกเลิก',
+        'delete_building_confirm_button_text' => 'ใช่, ลบเลย',
+        'comfirm_delete_title' => 'ลบเลย!',
+        'confirm_delete_message' => 'เรดคอร์ดดังกล่าวถูกลบเรียบร้อยแล้ว'
+    ]
 
 ];

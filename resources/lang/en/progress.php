@@ -26,5 +26,13 @@ return [
         'update' => 'Update',
         'create' => 'Create'
     ],
+    'alert' => [
+        'delete_building_title' => 'Are you sure?',
+        'delete_building_text' => 'You won\'t be able to revert this!',
+        'delete_building_cancel_button_text'    => 'Cancel',
+        'delete_building_confirm_button_text' => 'Yes, delete it!',
+        'comfirm_delete_title' => 'Deleted!',
+        'confirm_delete_message' => 'Your record has been deleted.'
+    ]
 
 ];

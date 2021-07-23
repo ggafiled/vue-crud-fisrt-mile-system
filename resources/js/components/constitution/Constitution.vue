@@ -874,23 +874,25 @@ export default {
             this.form.reset();
             $("#addNew").modal("show");
         },
-        deleteConstarution(id) {
+        deleteConstarution(item) {
+            item.projectName = item.building[0].projectName;
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
+                title: window.translate('constitution.alert.delete_building_title'),
+                text: window.translate('constitution.alert.delete_building_text') + ` [${item.projectName}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                confirmButtonText: "Yes, delete it!"
+                cancelButtonText: window.translate('constitution.alert.delete_building_cancel_button_text'),
+                confirmButtonText: window.translate('constitution.alert.delete_building_confirm_button_text')
             }).then(result => {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("api/constarution/" + id)
+                        .delete("api/constarution/" + item.id)
                         .then(() => {
                             Swal.fire(
-                                "Deleted!",
-                                "Your file has been deleted.",
+                                window.translate('constitution.alert.comfirm_delete_title'),
+                                window.translate('constitution.alert.confirm_delete_message'),
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
@@ -1177,7 +1179,8 @@ export default {
         $("tbody", this.$refs.constarution).on(
             "click",
             ".edit-constarution",
-            function() {
+            function(e) {
+                e.preventDefault();
                 var tr = $(this).closest("tr");
                 var row = table.row(tr);
                 vm.editModal(row.data());
@@ -1187,10 +1190,11 @@ export default {
         $("tbody", this.$refs.constarution).on(
             "click",
             ".delete-constarution",
-            function() {
+            function(e) {
+                e.preventDefault();
                 var tr = $(this).closest("tr");
                 var row = table.row(tr);
-                vm.deleteConstarution(row.data().id);
+                vm.deleteConstarution(row.data());
             }
         );
     }

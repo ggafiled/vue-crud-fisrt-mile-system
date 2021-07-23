@@ -791,23 +791,25 @@ export default {
             this.form.reset();
             $("#addNew").modal("show");
         },
-        deleteProgress(id) {
+        deleteProgress(item) {
+            item.projectName = item.building.projectName;
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
+                title: window.translate('progress.alert.delete_building_title'),
+                text: window.translate('progress.alert.delete_building_text') + ` [${item.projectName}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                confirmButtonText: "Yes, delete it!"
+                cancelButtonText: window.translate('progress.alert.delete_building_cancel_button_text'),
+                confirmButtonText: window.translate('progress.alert.delete_building_confirm_button_text')
             }).then(result => {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("api/progress/" + id)
+                        .delete("api/progress/" + item.id)
                         .then(() => {
                             Swal.fire(
-                                "Deleted!",
-                                "Your file has been deleted.",
+                                window.translate('progress.alert.comfirm_delete_title'),
+                                window.translate('progress.alert.confirm_delete_message'),
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
@@ -1102,7 +1104,7 @@ export default {
                 e.preventDefault();
                 var tr = $(this).closest("tr");
                 var row = table.row(tr);
-                vm.deleteProgress(row.data().id);
+                vm.deleteProgress(row.data());
             }
         );
     }

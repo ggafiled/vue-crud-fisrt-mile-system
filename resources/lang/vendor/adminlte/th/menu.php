@@ -36,5 +36,6 @@ return [
     'user'                          => 'ผู้ใช้งาน',
     'user_information'              => 'ข้อมูลโปรไฟล์',
     'user_role_permission'          => 'บทบาท & สิทธิ์การเข้าใช้งาน',
-    'user_management'               => 'จัดการผู้ใช้งาน'
+    'user_management'               => 'จัดการผู้ใช้งาน',
+    'console_log'                   => 'คอนโซล'
 ];

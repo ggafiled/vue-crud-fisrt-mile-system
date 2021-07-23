@@ -36,7 +36,8 @@ return [
     'user'                          => 'USER',
     'user_information'              => 'User Information',
     'user_role_permission'          => 'User Role & Permission',
-    'user_management'               => 'User Management'
+    'user_management'               => 'User Management',
+    'console_log'                   => 'Console log'
 
 
 ];

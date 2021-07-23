@@ -339,6 +339,11 @@ return [
             'url'  => '/issue-tickets',
             'icon' => 'mdi mdi-ticket-confirmation-outline'
         ],
+        [
+            'text' => 'console_log',
+            'url'  => '/console-log',
+            'icon' => 'mdi mdi-console'
+        ],
         ['header' => 'user'],
         [
             'text' => 'user_information',

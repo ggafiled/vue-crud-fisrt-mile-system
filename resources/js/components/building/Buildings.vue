@@ -1197,23 +1197,24 @@ export default {
             this.form.reset();
             $("#addNew").modal("show");
         },
-        deleteBuilding(id) {
+        deleteBuilding(item) {
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
+                title: window.translate('building.alert.delete_building_title'),
+                text: window.translate('building.alert.delete_building_text') + ` [${item.projectName}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                confirmButtonText: "Yes, delete it!"
+                cancelButtonText: window.translate('building.alert.delete_building_cancel_button_text'),
+                confirmButtonText: window.translate('building.alert.delete_building_confirm_button_text')
             }).then(result => {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("/api/building/" + id)
+                        .delete("/api/building/" + item.id)
                         .then(() => {
                             Swal.fire(
-                                "Deleted!",
-                                "Your file has been deleted.",
+                                window.translate('building.alert.comfirm_delete_title'),
+                                window.translate('building.alert.confirm_delete_message'),
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
@@ -1262,7 +1263,7 @@ export default {
             responsive: true,
             processing: true,
             autoWidth: true,
-            pageLength: 15,
+            pageLength: 10,
             lengthMenu: [
                 [10, 15, 25, 50, -1],
                 [10, 15, 25, 50, "All"]
@@ -1403,7 +1404,7 @@ export default {
                 e.preventDefault();
                 var tr = $(this).closest("tr");
                 var row = table.row(tr);
-                vm.deleteBuilding(row.data().id);
+                vm.deleteBuilding(row.data());
             }
         );
     }

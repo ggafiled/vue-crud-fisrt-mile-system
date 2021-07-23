@@ -10,7 +10,7 @@ import "fullcalendar/dist/fullcalendar.css";
 
 window.Vue = require("vue");
 window.axios = require("axios");
-window.tranlate = require("./VueTranslation/Translation").default.translate;
+window.translate = require("./VueTranslation/Translation").default.translate;
 import moment from "moment";
 
 import { Form, HasError, AlertError } from "vform";

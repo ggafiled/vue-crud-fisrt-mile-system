@@ -112,6 +112,14 @@ export default [{
         }
     },
     {
+        path: "/console-log",
+        component: require("./components/consolelog/ConsoleLog.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator"]
+        }
+    },
+    {
         path: "/calendar",
         component: require("./components/calendar/Calendar.vue").default,
         meta: {
