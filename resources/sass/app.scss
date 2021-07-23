@@ -18,6 +18,8 @@
 @import "~@fullcalendar/daygrid/main.css";
 @import "~vuetify/dist/vuetify.min.css";
 @import "~@mdi/font/scss/materialdesignicons.scss";
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
 .navbar-laravel {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

@@ -74,6 +74,15 @@ class User extends Authenticatable // implements MustVerifyEmail
 		return $this->belongsToMany('App\Models\Permission');
 	}
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
     public function toArray()
     {
         $attributes = $this->attributesToArray();
