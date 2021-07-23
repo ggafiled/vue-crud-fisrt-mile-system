@@ -16,7 +16,7 @@
                                 <router-link
                                     to="/building"
                                     class="small-box-footer"
-                                    >Click
+                                    >{{ translate("dashboard.actions.click") }}
                                     <i class="fas fa-arrow-circle-right"></i
                                 ></router-link>
                             </div>
