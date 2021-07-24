@@ -37,8 +37,6 @@ class UserController extends BaseController
             // $this->authorize('isAdmin');
 
             $users = User::with('roles:id')->get();
-
-            return $this->sendResponse($users, 'Users list');
             return $this->sendResponse($users, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError($users, trans('actions.get.fialed'));

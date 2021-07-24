@@ -1,6 +1,6 @@
 <template>
     <section class="content">
-        <div class="container-fluid" v-if="$gate.isAdmin()">
+        <div class="container-fluid">
             <div class="row mb-lg-3">
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box shadow">

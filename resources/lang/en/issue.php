@@ -14,6 +14,8 @@ return [
     */
 
     'header' => 'Issue Tickets Management',
+    'header_user' => 'Your Issue Tickets Management',
+    'header_show' => 'Issue Tickets ID:',
     'addnew' => 'Add New',
     'create' => [
         'header' => 'Create New Issue Tickets',

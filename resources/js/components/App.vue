@@ -67,4 +67,7 @@ export default {};
 .dt-checkboxes-cell input[type=checkbox] {
     cursor: pointer !important;
 }
+div.ag-theme-alpine div.ag-row {
+    font-size: 16px !important;
+}
 </style>

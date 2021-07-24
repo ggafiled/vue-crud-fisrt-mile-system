@@ -14,10 +14,10 @@ class Comment extends Model
     ];
     public function ticket()
     {
-        return $this->belongsTo(Ticket::class);
+        return $this->belongsTo('App\Models\Ticket');
     }
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\User');
     }
 }

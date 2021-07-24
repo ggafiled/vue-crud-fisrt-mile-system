@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Controllers\Controller;
+use Auth;
+use Exception;
+use App\Models\Ticket;
+use App\Http\Controllers\API\V1\BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
-class TicketsController extends Controller
+class TicketsController extends BaseController
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,19 @@ class TicketsController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            if (!\Gate::allows('isAdmin')) {
+                $tickets = Ticket::where('user_id', Auth::user()->id)->with(['category','comments','user'])->get();
+                return $this->sendResponse($tickets, trans('actions.get.success'));
+            }
+            // $this->authorize('isAdmin');
+
+            $tickets = Ticket::with(['category','comments','user'])->get();
+
+            return $this->sendResponse($tickets, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($tickets, trans('actions.get.fialed') . $ex->getMessage());
+        }
     }
 
     /**
@@ -46,7 +68,22 @@ class TicketsController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            if (!\Gate::allows('isAdmin')) {
+                $tickets = Ticket::where('ticket_id','=', $id)->with(['category','comments','user'])->firstOrFail();
+                if($tickets->user_id != Auth::user()->id){
+                    return $this->unauthorizedResponse();
+                }
+                return $this->sendResponse($tickets, trans('actions.get.success'));
+            }
+            // $this->authorize('isAdmin');
+
+            $tickets = Ticket::where('ticket_id', $id)->with(['category','comments','user'])->get();
+
+            return $this->sendResponse($tickets, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($tickets, trans('actions.get.fialed') . $ex->getMessage());
+        }
     }
 
     /**

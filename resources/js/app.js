@@ -68,6 +68,21 @@ Vue.use(VueProgressBar, {
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
+// ตรงนี้เพิ่มมาเพื่อแก้ปัญาตัว adminlte กับ router-link ไม่ active path ที่มีอะไรต่อท้ายเพิ่มจากที่กำหนดใน adminlte.config ให้
+// หากจะใช้ก็แค่เพิ่ม attribute : active_url ในไฟล์ adminlte.config โดยใส่เป็น path เริ่มต้นที่จะให้แมทช์
+Vue.directive("active-when", {
+    bind(el, binding, vnode) {
+        // console.log(binding.expression);
+        var regexActiveRoute = new RegExp(
+            "/([/]?" + binding.expression + "[/]?([A-Z0-9]*)?)/"
+        );
+        if (regexActiveRoute.test(window.location.pathname)) {
+            // console.log(el);
+            $(el).addClass("router-link-exact-active");
+        }
+    }
+});
+
 /**
  * Vuex imports and assigning
  */

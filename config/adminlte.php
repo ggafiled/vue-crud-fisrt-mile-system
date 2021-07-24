@@ -257,92 +257,92 @@ return [
             'text' => 'dashboard',
             'url'  => '/dashboard',
             'icon' => 'fas fa-fw bi bi-kanban',
-            'active' => ['dashboard', 'dashboard/*']
         ],
         [
             'text' => 'project_list',
             'icon' => 'fas fa-fw fas fa-building',
-            'can'  => ['building-create|building-read|building-update'],
             'submenu' => [
                 [
                     'text' => 'building_managment',
                     'url'  => '/building',
                     'icon' => 'fas fa-fw bi bi-building',
-                    'can'  => ['building-update', 'building-create', 'building-read']
+                    'roles'  => ["superadministrator", "administrator", "user"]
                 ],
                 [
                     'text' => 'constitution_managment',
                     'url'  => '/constitution',
                     'icon' => 'fas fa-fw bi bi-aspect-ratio',
-                    'can'  => ['building-update', 'building-create', 'building-read']
+                    'can'  => ["constarution-create", "constarution-read"]
                 ],
                 [
                     'text' => 'progress_managment',
                     'url'  => '/progress',
                     'icon' => 'mdi mdi-18px mdi-progress-wrench',
-                    'can'  => ['building-update', 'building-create', 'building-read']
+                    'roles'  => ["superadministrator", "administrator"]
                 ],
                  [
                     'text' => 'planning_managment',
                     'url'  => '/planing',
                     'icon' => 'fas fa-fw fas fa-list-alt',
-                    'can'  => ['building-update', 'building-create', 'building-read']
+                    'roles'  => ["superadministrator", "administrator"]
                 ],
             ]
         ],
         [
             'text' => 'reports_progress',
             'icon' => 'fas fa-fw fas fa-clipboard-list',
-            'can'  => ['building-create|building-read|building-update'],
+            'roles'  => ["superadministrator", "administrator", "user", "guest"],
             'submenu' => [
                 [
                     'text' => 'project_name_table',
                     'url'  => '/building/all',
                     'icon' => 'fas fa-fw fas fa-file-alt',
-                    'can'  => ['building-read']
+                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
                 [
                     'text' => 'project_tot_table',
                     'url'  => '/building/tot',
                     'icon' => 'fas fa-fw fas fa-file-alt',
-                    'can'  => ['building-read']
+                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
                 [
                     'text' => 'project_3bb_table',
                     'url'  => '/building/3bb',
                     'icon' => 'fas fa-fw fas fa-file-alt',
-                    'can'  => ['building-read']
+                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
                 [
                     'text' => 'project_true_table',
                     'url'  => '/building/true',
                     'icon' => 'fas fa-fw fas fa-file-alt',
-                    'can'  => ['building-read']
+                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
                 [
                     'text' => 'project_ais_table',
                     'url'  => '/building/ais',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     // 'icon' => 'c-icon c-icon-ais',
-                    'can'  => ['building-read']
+                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
                 [
                     'text' => 'project_fibernet_table',
                     'url'  => '/building/fibernet',
                     'icon' => 'fas fa-fw fas fa-file-alt',
-                    'can'  => ['building-read']
+                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
             ]
         ],
         [
             'text' => 'issue_tickets',
             'url'  => '/issue-tickets',
-            'icon' => 'mdi mdi-ticket-confirmation-outline'
+            'icon' => 'mdi mdi-ticket-confirmation-outline',
+            'active_url' => 'issue-tickets'
         ],
         [
             'text' => 'console_log',
             'url'  => '/console-log',
-            'icon' => 'mdi mdi-console'
+            'icon' => 'mdi mdi-console',
+            'roles'  => ["superadministrator", "administrator"]
         ],
         ['header' => 'user'],
         [

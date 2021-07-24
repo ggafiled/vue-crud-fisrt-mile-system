@@ -1,7 +1,7 @@
 <template>
     <section class="content">
         <div class="container-fluid">
-            <div class="row" v-if="$gate.isAdmin()">
+            <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -44,10 +44,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div v-if="!$gate.isAdmin()">
-                <not-found></not-found>
             </div>
 
             <!-- Modal -->

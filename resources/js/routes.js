@@ -107,8 +107,14 @@ export default [{
         path: "/issue-tickets",
         component: require("./components/issue/IssueTickets.vue").default,
         meta: {
-            requiresAuth: true,
-            roles: ["superadministrator", "administrator", "user"]
+            requiresAuth: true
+        }
+    },
+    {
+        path: "/issue-tickets/:id",
+        component: require("./components/issue/IssueTicketShow.vue").default,
+        meta: {
+            requiresAuth: true
         }
     },
     {
