@@ -13,7 +13,7 @@
     <meta property="og:type"               content="website" />
     <meta property="og:title"              content="ติดต่อสอบถามข้อมูลบริษัทได้ที่ Firstmile.work" />
     <meta property="og:description"        content="ครบวงจรการติดตั้งเครือข่ายไร้สาย วางแผนและจัดการได้ถูกจุด" />
-    <meta property="og:image"              content="https://sv1.picz.in.th/images/2021/02/11/o138qN.png" />
+    <meta property="og:image"              content="/images/logo.png" />
     <meta property="og:image:width" content="350" />
     <meta property="og:image:height" content="350" />
 

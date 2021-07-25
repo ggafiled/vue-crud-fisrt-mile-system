@@ -16,6 +16,8 @@ return [
     'header' => 'จัดการข้อมูลตั๋วปัญหา',
     'header_user' => 'จัดการข้อมูลตั๋วปัญหาของคุณ',
     'header_show' => 'ตั๋วปัญหา หมายเลข:',
+    'header_description_show' => 'คำอธิบาย',
+    'header_activity_show' => 'กิจกรรม',
     'addnew' => 'แจ้งปัญหาใหม่',
     'create' => [
         'header' => 'แจ้งปัญหาใหม่',
@@ -26,7 +28,8 @@ return [
     'actions' => [
         'close' => 'ปิด',
         'update' => 'อัพเดต',
-        'create' => 'สร้าง'
+        'create' => 'สร้าง',
+        'reply_message' => 'ตอบกลับ'
     ],
     'alert' => [
         'contract_notification' => 'แจ้งเตือนยังไม่ทำสัญญา',

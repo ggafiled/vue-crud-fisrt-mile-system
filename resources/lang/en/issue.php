@@ -16,6 +16,8 @@ return [
     'header' => 'Issue Tickets Management',
     'header_user' => 'Your Issue Tickets Management',
     'header_show' => 'Issue Tickets ID:',
+    'header_description_show' => 'Description',
+    'header_activity_show' => 'Activity',
     'addnew' => 'Add New',
     'create' => [
         'header' => 'Create New Issue Tickets',
@@ -26,7 +28,8 @@ return [
     'actions' => [
         'close' => 'Close',
         'update' => 'Update',
-        'create' => 'Create'
+        'create' => 'Create',
+        'reply_message' => 'Reply'
     ],
     'alert' => [
         'contract_notification' => 'Contract Notification Alert',

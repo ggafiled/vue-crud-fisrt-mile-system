@@ -33,14 +33,7 @@
     @endif
 
     {{-- Content Wrapper --}}
-    <div class="content-wrapper {{ config('adminlte.classes_content_wrapper') ?? '' }}">
-
-        {{-- Content Header --}}
-        @hasSection('content_header')
-        <div class="content-header">
-
-        </div>
-        @endif
+    <div class="content-wrapper pt-3 {{ config('adminlte.classes_content_wrapper') ?? '' }}">
 
         {{-- Main Content --}}
         <div class="content">
