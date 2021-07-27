@@ -181,6 +181,7 @@ return [
         Laravolt\Avatar\ServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         Tohidplus\Translation\TranslationServiceProvider::class,
+        Spatie\Activitylog\ActivitylogServiceProvider::class,
     ],
 
     /*

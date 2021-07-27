@@ -33,6 +33,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Email Verified?</th>
+                                        <th>Delected</th>
                                         <th>Created</th>
                                         <th>Action</th>
                                     </tr>
@@ -172,6 +173,40 @@
                                         field="role"
                                     ></has-error>
                                 </div>
+                                <div class="form-group">
+                                    <label>Account Status</label>
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            value="1"
+                                            v-model="form.account_status"
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="inlineRadio1"
+                                            >Enable</label
+                                        >
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            value="2"
+                                            v-model="form.account_status"
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="inlineRadio2"
+                                            >Disable</label
+                                        >
+                                    </div>
+
+                                    <has-error
+                                        :form="form"
+                                        field="account_status"
+                                    ></has-error>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button
@@ -219,7 +254,8 @@ export default {
                 name: "",
                 email: "",
                 password: "",
-                email_verified_at: ""
+                email_verified_at: "",
+                account_status: ""
             })
         };
     },
@@ -250,6 +286,7 @@ export default {
             this.form.reset();
             $("#addNew").modal("show");
             user.role = user.roles[0].id;
+            user.account_status = user.deleted_at == null || user.deleted_at == "" ? 1 : 2;
             console.log(user);
             this.form.fill(user);
         },
@@ -303,11 +340,9 @@ export default {
         loadUsers() {
             this.$Progress.start();
 
-            if (this.$gate.isAdmin()) {
-                // axios
-                //     .get("api/user")
-                //     .then(({ data }) => (this.users = data.data));
-            }
+            $("#users")
+                .DataTable()
+                .ajax.reload();
 
             this.$Progress.finish();
         },
@@ -343,7 +378,6 @@ export default {
     },
     created() {
         this.$Progress.start();
-        this.loadUsers();
         this.loadRoles();
         this.$Progress.finish();
     },
@@ -484,6 +518,14 @@ export default {
                     }
                 },
                 {
+                    data: "deleted_at",
+                    render: function(data, type, row, meta) {
+                        return data !== null
+                            ? '<i class="fas fa-times red"></i><span class="invisible">disable</span>'
+                            : '<i class="fas fa-check green"></i><span class="invisible">enable</span>';
+                    }
+                },
+                {
                     data: "created_at",
                     render: function(data, type, row, meta) {
                         return moment(data).format("MMMM Do YYYY");
@@ -515,13 +557,15 @@ export default {
             order: [[1, "desc"]]
         });
 
-        $("tbody", this.$refs.users).on("click", ".edit-users", function() {
+        $("tbody", this.$refs.users).on("click", ".edit-users", function(e) {
+            e.preventDefault();
             var tr = $(this).closest("tr");
             var row = table.row(tr);
             vm.editModal(row.data());
         });
 
-        $("tbody", this.$refs.users).on("click", ".delete-users", function() {
+        $("tbody", this.$refs.users).on("click", ".delete-users", function(e) {
+            e.preventDefault();
             var tr = $(this).closest("tr");
             var row = table.row(tr);
             vm.deleteUser(row.data());
