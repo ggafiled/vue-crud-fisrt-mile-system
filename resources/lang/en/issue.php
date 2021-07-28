@@ -29,7 +29,8 @@ return [
         'close' => 'Close',
         'update' => 'Update',
         'create' => 'Create',
-        'reply_message' => 'Reply'
+        'reply_message' => 'Chat',
+        'close_ticket' => 'Finish Task'
     ],
     'alert' => [
         'contract_notification' => 'Contract Notification Alert',

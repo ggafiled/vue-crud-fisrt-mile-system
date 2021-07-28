@@ -10,6 +10,8 @@ import "fullcalendar/dist/fullcalendar.css";
 
 window.Vue = require("vue");
 window.axios = require("axios");
+const { shortText } = require("limit-text-js");
+window.shortText = shortText;
 window.translate = require("./VueTranslation/Translation").default.translate;
 import moment from "moment";
 
@@ -19,6 +21,8 @@ window.Form = Form;
 import Gate from "./Gate";
 var gate = new Gate("user" in window.Laravel ? window.Laravel.user : []);
 Vue.prototype.$gate = gate;
+
+Vue.prototype.$shortText = shortText;
 
 // If you want to use it in your vue components
 Vue.prototype.translate = require("./VueTranslation/Translation").default.translate;
@@ -41,6 +45,12 @@ window.Toast = Toast;
 
 import VueMeta from "vue-meta";
 Vue.use(VueMeta);
+
+import Vuetify from "vuetify";
+Vue.use(Vuetify);
+
+import VueTimeline from "@growthbunker/vuetimeline";
+Vue.use(VueTimeline);
 
 /**
  * Custom mixins function to rename title.
@@ -94,6 +104,7 @@ import store from "./store/index";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 import routes from "./routes";
+import Vue from "vue";
 
 const router = new VueRouter({
     mode: "history",
@@ -166,7 +177,8 @@ Vue.filter("yesno", value =>
 const app = new Vue({
     el: "#app",
     store,
-    router
+    router,
+    vuetify: new Vuetify()
 });
 
 let pusher = new Pusher("914457", {

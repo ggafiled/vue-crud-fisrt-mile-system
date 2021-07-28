@@ -11,7 +11,6 @@ try {
     window.$ = window.jQuery = require("jquery");
     window.animejs = require("animejs");
     window.JSZip = require("jszip");
-
     require("bootstrap");
     require("admin-lte");
     require("bootstrap-select");

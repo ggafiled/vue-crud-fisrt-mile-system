@@ -209,6 +209,7 @@ export default {
                 field: "status",
                 headerName: "Status",
                 sortable: true,
+                sort: 'desc',
                 filter: true,
                 flex: 1,
                 cellRenderer: params => {

@@ -13,7 +13,7 @@ class Ticket extends Model
     use HasFactory, LogsActivity;
 
     protected $fillable = [
-        'user_id', 'category_id', 'ticket_id', 'title', 'priority', 'message', 'status'
+        'user_id', 'category_id', 'ticket_id', 'assigned_to','title', 'priority', 'message', 'status'
     ];
 
     public function getActivitylogOptions(): LogOptions
@@ -37,5 +37,9 @@ class Ticket extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User','user_id','id');
+    }
+    public function assigned_to()
+    {
+        return $this->belongsTo('App\Models\User','assigned_to','id');
     }
 }

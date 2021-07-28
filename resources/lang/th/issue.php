@@ -29,7 +29,8 @@ return [
         'close' => 'ปิด',
         'update' => 'อัพเดต',
         'create' => 'สร้าง',
-        'reply_message' => 'ตอบกลับ'
+        'reply_message' => 'สนทนา',
+        'close_ticket' => 'ปิดงาน'
     ],
     'alert' => [
         'contract_notification' => 'แจ้งเตือนยังไม่ทำสัญญา',
