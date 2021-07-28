@@ -26,12 +26,12 @@ class TicketsController extends BaseController
     {
         try {
             if (!\Gate::allows('isAdmin')) {
-                $tickets = Ticket::where('user_id', Auth::user()->id)->with(['category','comments','user'])->get();
+                $tickets = Ticket::where('user_id', Auth::user()->id)->with(['category','comments','user','assigned_to'])->get();
                 return $this->sendResponse($tickets, trans('actions.get.success'));
             }
             // $this->authorize('isAdmin');
 
-            $tickets = Ticket::with(['category','comments','user'])->get();
+            $tickets = Ticket::with(['category','comments','user','assigned_to'])->get();
 
             return $this->sendResponse($tickets, trans('actions.get.success'));
         } catch (Exception $ex) {
