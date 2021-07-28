@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\Activitylog\LogOptions;
 
 
 class Ticket extends Model
@@ -15,16 +13,6 @@ class Ticket extends Model
     protected $fillable = [
         'user_id', 'category_id', 'ticket_id', 'assigned_to','title', 'priority', 'message', 'status'
     ];
-
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-        ->useLogName('tickets.logs')
-        ->setDescriptionForEvent(fn(string $eventName) => "This record has been {$eventName}")
-        ->logOnly(['title', 'priority','message','status'])
-        ->logOnlyDirty();
-        // Chain fluent methods for configuration options
-    }
 
     public function category()
     {

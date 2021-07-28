@@ -11,13 +11,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
 use Mpociot\Teamwork\Traits\UserHasTeams;
-use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\Activitylog\LogOptions;
 
 class User extends Authenticatable // implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasApiTokens,UserHasTeams,SoftDeletes;
-    use LaratrustUserTrait, LogsActivity;
+    use LaratrustUserTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -45,16 +43,6 @@ class User extends Authenticatable // implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-        ->useLogName('users.logs')
-        ->setDescriptionForEvent(fn(string $eventName) => "This record has been {$eventName}")
-        ->logOnly(['name', 'email','roles'])
-        ->logOnlyDirty();
-        // Chain fluent methods for configuration options
-    }
 
      /**
      * Get the profile photo URL attribute.

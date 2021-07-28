@@ -1,7 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use \Spatie\Activitylog\Models\Activity;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +17,6 @@ Route::post('locale/{locale}', function ($locale){
 })->name('locale');
 
 Auth::routes(['verify' => true,'register' => false]);
-
-Route::get('/logs', function () {
-    return Activity::all();
-});
 
 Route::get('/', function () {
     return redirect('/login');
