@@ -21,14 +21,15 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \
+    cron
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install extensions
 RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
-RUN docker-php-ext-configure gd --with-gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ --with-png=/usr/include/
+RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
 RUN docker-php-ext-install gd
 
 # Install Postgre PDO
@@ -43,6 +44,11 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
 COPY . /var/www
+
+# Add crontab to directory
+ADD schedule/crontab /etc/cron.d/cron
+RUN chmod 0644 /etc/cron.d/cron
+RUN touch /var/log/cron.log
 
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
