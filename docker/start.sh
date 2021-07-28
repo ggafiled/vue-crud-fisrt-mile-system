@@ -1,3 +1,3 @@
 #!/bin/bash
 php-fpm
-echo "cron starting…" && (cron) && : > /var/log/cron.log && tail -f /var/log/cron.log
+echo "cron starting…" && (cron) && : > /var/log/app/cron.log && tail -f /var/log/app/cron.log
