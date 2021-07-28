@@ -44,8 +44,6 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
 COPY . /var/www
-ADD docker/start.sh /
-RUN chmod +x /start.sh
 
 # Add crontab to directory
 ADD schedule/crontab /etc/cron.d/cron
@@ -61,4 +59,4 @@ USER www
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 
-RUN /start.sh
+CMD ["php7.4-fpm"]
