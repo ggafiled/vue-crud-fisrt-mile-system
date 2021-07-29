@@ -5,8 +5,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <i class="fas fa-fw fas fa-list-alt"></i>
-                            {{ translate("planing.header") }}
+                            PLANING MANAGEMENT
                         </h3>
                         <div class="card-tools">
                             <button
@@ -15,7 +14,7 @@
                                 @click="newModal"
                             >
                                 <i class="fa fa-plus-square"></i>
-                                {{ translate("planing.addnew") }}
+                                Add New
                             </button>
                         </div>
                     </div>
@@ -36,6 +35,14 @@
                                         <th>tel</th>
                                         <th>tel2</th>
                                         <th>building name</th>
+                                        <th>House Number</th>
+                                        <th>Swine</th>
+                                        <th>Alley</th>
+                                        <th>Road</th>
+                                        <th>District</th>
+                                        <th>Province</th>
+                                        <th>County</th>
+                                        <th>PostalCode</th>
                                         <th>building</th>
                                         <th>floor</th>
                                         <th>room</th>
@@ -51,6 +58,7 @@
                                         <th>status</th>
                                         <th>subStatus</th>
                                         <th>remark</th>
+                                        <th>updated</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -77,10 +85,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                {{ translate("planing.create.header") }}
+                                Create New Planing
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                {{ translate("planing.update.header") }}
+                                Update Planing's Info
                             </h5>
                             <button
                                 type="button"
@@ -158,7 +166,11 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div
+                                        :class="[
+                                            editmode ? 'col-sm-2' : 'col-sm-3'
+                                        ]"
+                                    >
                                         <div class="form-group">
                                             <label>Tel</label>
                                             <input
@@ -178,7 +190,11 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div
+                                        :class="[
+                                            editmode ? 'col-sm-2' : 'col-sm-3'
+                                        ]"
+                                    >
                                         <div class="form-group">
                                             <label>Tel2</label>
                                             <input
@@ -202,7 +218,7 @@
                                 <div class="row">
                                     <div
                                         :class="[
-                                            editmode ? 'col-sm-10' : 'col-sm-12'
+                                            editmode ? 'col-sm-12' : 'col-sm-12'
                                         ]"
                                     >
                                         <div class="form-group">
@@ -473,7 +489,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>ID Required</label>
-                                            <input
+                                            <select
                                                 v-model="form.idRequired"
                                                 type="text"
                                                 class="form-control"
@@ -483,7 +499,29 @@
                                                         'idRequired'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >เลือก ID Required</option
+                                                >
+                                                <option value="AIS">
+                                                    AIS
+                                                </option>
+                                                <option value="TRUE">
+                                                    TRUE
+                                                </option>
+                                                <option value="3BB">
+                                                    3BB
+                                                </option>
+                                                <option value="TOT">
+                                                    TOT
+                                                </option>
+                                                <option value="FN">
+                                                    FN
+                                                </option>
+                                                <option value="None">
+                                                    None
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="idRequired"
@@ -493,7 +531,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Status</label>
-                                            <input
+                                            <select
                                                 v-model="form.status"
                                                 type="text"
                                                 class="form-control"
@@ -503,7 +541,30 @@
                                                         'status'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >เลือก status</option
+                                                >
+                                                <option value="สำเร็จ">
+                                                    สำเร็จ
+                                                </option>
+                                                <option
+                                                    value="ลูกค้าเลื่อนหน้างาน"
+                                                >
+                                                    ลูกค้าเลื่อนหน้างาน
+                                                </option>
+                                                <option value="นิติฯไม่อนุญาต">
+                                                    นิติฯไม่อนุญาต
+                                                </option>
+                                                <option value="ติดปัญหาหน้างาน">
+                                                    ติดปัญหาหน้างาน
+                                                </option>
+                                                <option
+                                                    value="อื่นๆ โปรดระบุในรีมาร์ค"
+                                                >
+                                                    อื่นๆ โปรดระบุในรีมาร์ค
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="status"
@@ -562,21 +623,21 @@
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    {{ translate("planing.actions.close") }}
+                                    Close
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    {{ translate("planing.actions.update") }}
+                                    Update
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    {{ translate("planing.actions.create") }}
+                                    Create
                                 </button>
                             </div>
                         </form>
@@ -640,16 +701,16 @@ export default {
             );
         },
         loadPlaning() {
-            this.$planing.start();
+            this.$Progress.start();
 
             if (this.$gate.isAdmin()) {
                 //To DO
             }
 
-            this.$planing.finish();
+            this.$Progress.finish();
         },
         updatePlaning() {
-            this.$planing.start();
+            this.$Progress.start();
             // console.log('Editing data');
             this.form
                 .put("api/planing/" + this.form.id)
@@ -660,13 +721,13 @@ export default {
                         icon: "success",
                         title: response.data.message
                     });
-                    this.$planing.finish();
+                    this.$Progress.finish();
                     //  Fire.$emit('AfterCreate');
 
                     this.loadPlaning();
                 })
                 .catch(() => {
-                    this.$planing.fail();
+                    this.$Progress.fail();
                 });
         },
         editModal(planing) {
@@ -682,35 +743,23 @@ export default {
             this.form.reset();
             $("#addNew").modal("show");
         },
-        deletePlaning(item) {
-            item.projectName = item.building[0].projectName;
+        deletePlaning(id) {
             Swal.fire({
-                title: window.translate("planing.alert.delete_building_title"),
-                text:
-                    window.translate("planing.alert.delete_building_text") +
-                    ` [${item.projectName}]`,
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                cancelButtonText: window.translate(
-                    "planing.alert.delete_building_cancel_button_text"
-                ),
-                confirmButtonText: window.translate(
-                    "planing.alert.delete_building_confirm_button_text"
-                )
+                confirmButtonText: "Yes, delete it!"
             }).then(result => {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("api/planing/" + item.id)
+                        .delete("api/planing/" + id)
                         .then(() => {
                             Swal.fire(
-                                window.translate(
-                                    "planing.alert.comfirm_delete_title"
-                                ),
-                                window.translate(
-                                    "planing.alert.confirm_delete_message"
-                                ),
+                                "Deleted!",
+                                "Your file has been deleted.",
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
@@ -734,7 +783,7 @@ export default {
                         title: response.data.message
                     });
 
-                    this.$planing.finish();
+                    this.$Progress.finish();
                     this.loadPlaning();
                 })
                 .catch(() => {
@@ -746,9 +795,9 @@ export default {
         }
     },
     created() {
-        this.$planing.start();
+        this.$Progress.start();
         this.loadBuildings();
-        this.$planing.finish();
+        this.$Progress.finish();
     },
     mounted() {
         var vm = this;
@@ -765,30 +814,15 @@ export default {
             fixedHeader: true,
             fixedColumns: true,
             fixedColumns: {
-                leftColumns: 0,
+                leftColumns: 3,
                 rightColumns: 1
             },
             scrollX: true,
             scrollCollapse: true,
-            select: true,
             buttons: [
                 "colvis",
-                {
-                    extend: "copy",
-                    text: "<i class='bi bi-clipboard mr-1'></i>Copy",
-                    exportOptions: {
-                        columns: "th:not(.notexport)"
-                    }
-                },
-                {
-                    extend: "excelHtml5",
-                    autoFilter: true,
-                    sheetName: "Building",
-                    text: "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
-                    exportOptions: {
-                        columns: "th:not(.notexport)"
-                    }
-                },
+                "copy",
+                "csv",
                 {
                     extend: "print",
                     text: "<i class='bi bi-printer mr-1'></i>Print"
@@ -821,6 +855,15 @@ export default {
                     }
                 },
                 {
+                    className: "bg-danger",
+                    text: "<i class='bi bi-file-text mr-1'></i>FINET",
+                    action: function(e, dt, node, config) {
+                        dt.column(9)
+                            .search("FINET")
+                            .draw();
+                    }
+                },
+                {
                     className: "bg-warning",
                     text: "<i class='bi bi-file-text mr-1'></i>FN",
                     action: function(e, dt, node, config) {
@@ -839,88 +882,319 @@ export default {
                     }
                 },
                 {
-                    text:
-                        "<i class='bi bi-list-check mr-1'></i>" +
-                        window.translate(
-                            "datatables.alert.display_selected_record_title"
-                        ) +
-                        "",
+                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
                     action: function(e, dt, node, config) {
-                        var rowsel = dt
-                            .rows({ selected: true })
-                            .data()
-                            .map(function(item) {
-                                return item.id;
-                            })
-                            .join(",");
-                        if (!rowsel.length) {
-                            return Swal.fire({
-                                title: window.translate(
-                                    "datatables.alert.display_selected_record_empty_title"
-                                ),
-                                text: window.translate(
-                                    "datatables.alert.display_selected_record_empty_text"
-                                ),
-                                timer: 2000,
-                                showCancelButton: false,
-                                showConfirmButton: false
-                            });
-                        }
-                        $.fn.dataTable.ext.search.pop();
-                        $.fn.dataTable.ext.search.push(function(
-                            settings,
-                            data,
-                            dataIndex
-                        ) {
-                            return $(table.row(dataIndex).node()).hasClass(
-                                "selected"
-                            )
-                                ? true
-                                : false;
-                        });
-
-                        table.draw();
-                    }
-                },
-                {
-                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
-                    action: function(e, dt, node, config) {
-                        console.info("button: Clear");
-                        $.fn.dataTable.ext.search.pop();
-                        dt.search("").draw();
                         dt.columns()
                             .search("")
                             .draw();
-                        dt.rows().deselect();
-                        dt.ajax.reload();
                     }
                 }
             ],
             columns: [
-                { data: null, defaultContent: "", className: "dt-body-center notexport" },
+                { data: null, defaultContent: "", className: "dt-body-center" },
                 {
-                    data: "name"
+                    data: "name",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "surname"
+                    data: "surname",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "tel"
+                    data: "tel",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "tel2"
+                    data: "tel2",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-file-person pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-file-person pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "building[0].projectName"
+                    data: "building[0].projectName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "theBuilding"
+                    data: "building[0].houseNumber",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "floor"
+                    data: "building[0].squadNumber",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "room"
+                    data: "building[0].alleyName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "building[0].roadName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "building[0].districtName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "building[0].countyName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "building[0].provinceName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "building[0].postalCode",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "theBuilding",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "floor",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "room",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
                     data: "isp",
@@ -977,7 +1251,23 @@ export default {
                     }
                 },
                 {
-                    data: "circuit"
+                    data: "circuit",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
                     data: "entranceFee",
@@ -1008,31 +1298,149 @@ export default {
                     }
                 },
                 {
-                    data: "appointmentDate"
+                    data: "appointmentDate",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "appointmentTime"
+                    data: "appointmentTime",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "technicianPlaning"
+                    data: "technicianPlaning",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "idRequired"
+                    data: "idRequired",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "status"
+                    data: "status",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "subStatus"
+                    data: "subStatus",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                 },
                 {
-                    data: "reMark"
+                    data: "reMark",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                },
+                {
+                    data: "updated_at",
+                    render: function(data, type, row, meta) {
+                        return moment(data).format("MM/DD/YYYY HH:MM");
+                    }
                 },
                 {
                     data: null,
-                    className: "dt-body-center notexport",
+                    className: "dt-body-center",
                     render: function(data, type, row, meta) {
-                        return "<a class='edit-planing btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-planing btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
+                        return "<a class='edit-planing' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-planing' href='#'> <i class='fa fa-trash red'></i> </a>";
                     }
                 }
             ],
@@ -1051,23 +1459,21 @@ export default {
             order: [[1, "desc"]]
         });
 
-        $("tbody", this.$refs.planing).on("click", ".edit-planing", function(
-            e
-        ) {
-            e.preventDefault();
+        $("tbody", this.$refs.planing).on("click", ".edit-planing", function() {
             var tr = $(this).closest("tr");
             var row = table.row(tr);
             vm.editModal(row.data());
         });
 
-        $("tbody", this.$refs.planing).on("click", ".delete-planing", function(
-            e
-        ) {
-            e.preventDefault();
-            var tr = $(this).closest("tr");
-            var row = table.row(tr);
-            vm.deletePlaning(row.data());
-        });
+        $("tbody", this.$refs.planing).on(
+            "click",
+            ".delete-planing",
+            function() {
+                var tr = $(this).closest("tr");
+                var row = table.row(tr);
+                vm.deletePlaning(row.data().id);
+            }
+        );
     }
 };
 </script>
