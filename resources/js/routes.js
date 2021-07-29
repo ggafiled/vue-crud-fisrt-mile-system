@@ -92,7 +92,7 @@ export default [{
         component: require("./components/progress/Progress.vue").default,
         meta: {
             requiresAuth: true,
-            roles: ["superadministrator", "administrator", "user"]
+            roles: ["superadministrator", "administrator"]
         }
     },
     {

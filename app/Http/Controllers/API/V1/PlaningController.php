@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use Exception;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -22,12 +21,8 @@ class PlaningController extends BaseController{
      */
     public function index()
     {
-        try {
-            $planing = Planing::with(['building.member','teams'])->get();
-            return $this->sendResponse($planing, trans('actions.get.success'));
-        } catch (Exception $ex) {
-            return $this->sendError($planing, trans('actions.get.fialed'));
-        }
+        $Planing = Planing::with('building')->get();
+        return $this->sendResponse($Planing,'planing List');
     }
 
     /**
@@ -48,10 +43,34 @@ class PlaningController extends BaseController{
      */
     public function store(Request $request)
     {
-        //
+        $Planing = new Planing([
+            'building_id' => $request->input('building_id'),
+            'name' => $request->input('name'),
+            'surname' => $request->input('surname'),
+            'tel' => $request->input('tel'),
+            'tel2' => $request->input('tel2'),
+            'theBuilding' => $request->input('theBuilding'),
+            'floor' => $request->input('floor'),
+            'room' => $request->input('room'),
+            'isp' => $request->input('isp'),
+            'agent' => $request->input('agent'),
+            'circuit' => $request->input('circuit'),
+            'entranceFee' => $request->input('entranceFee'),
+            'jobType' => $request->input('jobType'),
+            'appointmentDate' => $request->input('appointmentDate'),
+            'appointmentTime' => $request->input('appointmentTime'),
+            'technicianPlaning' => $request->input('technicianPlaning'),
+            'idRequired' => $request->input('idRequired'),
+            'status' => $request->input('status'),
+            'subStatus' => $request->input('subStatus'),
+            'reMark' => $request->input('reMark')
+        ]);
+        $Planing->save();
+
+        return response()->json('Planing created!');
     }
 
-    /**
+    /**\
      * Display the specified resource.
      *
      * @param  int  $id
@@ -82,7 +101,10 @@ class PlaningController extends BaseController{
      */
     public function update(Request $request, $id)
     {
-        //
+        $Planing = Planing::find($id);
+        $Planing->update($request->all());
+
+        return response()->json('Planing updated!');
     }
 
     /**
@@ -93,6 +115,9 @@ class PlaningController extends BaseController{
      */
     public function destroy($id)
     {
-        //
+        $Planing = Planing::find($id);
+        $Planing->delete();
+
+        return response()->json('Planing deleted!');
     }
 }
