@@ -15,6 +15,7 @@ services:
     volumes:
       - ./:/var/www
       - ./:/var/log/app
+      - ./:/var/run/
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network

@@ -55,7 +55,7 @@ A very simple Laravel 8 + Vue 2 + AdminLTE 3 based Curd Starter template for SPA
 
 -   `docker-compose up -d`
 -   `docker exec -it vue-starter /bin/bash`
--   `composer install`
+-   `composer install --ignore-platform-reqs`
 -   `cp .env.example .env`
 -   `php artisan key:generate`
 -   `php artisan migrate`
