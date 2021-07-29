@@ -8,7 +8,6 @@ use App\Http\Requests\Users\UserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Spatie\Activitylog\Facades\LogBatch;
 
 class UserController extends BaseController
 {
@@ -75,7 +74,6 @@ class UserController extends BaseController
     public function store(UserRequest $request)
     {
         try {
-            LogBatch::startBatch();
             $user = User::create([
                 'name' => $request['name'],
                 'email' => $request['email'],
@@ -84,7 +82,6 @@ class UserController extends BaseController
 
             $access = Role::find($request['role']);
             $user->attachRole($access);
-            LogBatch::endBatch();
             return $this->sendResponse($user, trans('actions.created.success'));
         } catch (Exception $ex) {
             return $this->sendError($user, trans('actions.created.fialed'));
@@ -103,7 +100,6 @@ class UserController extends BaseController
     public function update(UserRequest $request, $id)
     {
         try {
-            LogBatch::startBatch();
             $user = User::findOrFail($id);
 
             if (!empty($request->password)) {
@@ -113,7 +109,6 @@ class UserController extends BaseController
             $user->update($request->all());
             $access = Role::find($request['role']);
             $user->syncRoles([$access]);
-            LogBatch::endBatch();
             return $this->sendResponse($user, trans('actions.updated.success'));
         } catch (Exception $ex) {
             return $this->sendError($user, trans('actions.updated.fialed'));
