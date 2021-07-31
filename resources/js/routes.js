@@ -14,6 +14,14 @@ export default [{
         }
     },
     {
+        path: "/student/create",
+        component: require("./components/createStudent.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user"]
+        }
+    },
+    {
         path: "/buildinglist",
         component: require("./components/building/BuildingList.vue").default,
         meta: {

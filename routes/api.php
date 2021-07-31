@@ -22,13 +22,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/areas', 'App\Http\Controllers\AreaController@index');
+Route::get('/bbns', 'App\Http\Controllers\BbnController@index');
+
+Route::get('/classes', 'App\Http\Controllers\ClassesController@index');
+Route::get('/sections', 'App\Http\Controllers\SectionController@index');
 
 Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('profile', 'ProfileController@profile');
     Route::put('profile', 'ProfileController@updateProfile');
     Route::get('role/list', 'RoleController@list');
     Route::post('change-password', 'ProfileController@changePassword');
-    Route::get('permission/list','PermissionController@list');
+    Route::get('permission/list', 'PermissionController@list');
     Route::get('user/list', 'UserController@list');
     Route::get('team/list', 'TeamController@list');
     Route::get('tag/list', 'TagController@list');
@@ -36,7 +41,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('buildinglist/nonContract', 'BuildingListController@nonContract');
     Route::post('product/upload', 'ProductController@upload');
 
-Route::apiResources([
+    Route::apiResources([
         'user' => 'UserController',
         'product' => 'ProductController',
         'category' => 'CategoryController',
@@ -49,7 +54,6 @@ Route::apiResources([
         'progress' => 'ProgressController',
         'planing' => 'PlaningController',
         'team' => 'TeamController',
-        'dashboard'=>'DashboardController'
+        'dashboard' => 'DashboardController'
     ]);
 });
-

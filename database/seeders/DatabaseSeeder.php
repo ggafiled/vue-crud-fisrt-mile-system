@@ -16,9 +16,11 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         // $this->call(UsersTableSeeder::class);
         $this->call(LaratrustSeeder::class);
-        $this->call(CategoriesTableSeeder::class);
-        $this->call(TagsTableSeeder::class);
-        $this->call(ProductsTableSeeder::class);
+        $this->call(AreaSeeder::class);
+        $this->call(BbnSeeder::class);
+        $this->call(ClassesSeeder::class);
+        $this->call(SectionsSeeder::class);
+
 
         // \App\Models\Member::factory(50)->create();
         // \App\Models\Building::factory(200)->create();

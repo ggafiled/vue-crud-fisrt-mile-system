@@ -758,8 +758,22 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>AreaN</label>
-                                            <input
+                                            <label for="status">AreaN</label>
+                                            <select
+                                                class="form-control"
+                                                v-model="selectedClass"
+                                            >
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in areas"
+                                                    :key="item.id"
+                                                    >{{ item.name }}</option
+                                                >
+                                            </select>
+                                            <!-- <input
                                                 v-model="form.areaN"
                                                 type="text"
                                                 class="form-control"
@@ -773,13 +787,27 @@
                                             <has-error
                                                 :form="form"
                                                 field="areaN"
-                                            ></has-error>
+                                            ></has-error> -->
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>BBN</label>
-                                            <input
+                                            <label for="status">BBN</label>
+                                            <select
+                                                class="form-control"
+                                                required
+                                            >
+                                                <option value=""
+                                                    >Select a Section</option
+                                                >
+                                                <option
+                                                    v-for="bbn in bbns"
+                                                    :key="bbn.id"
+                                                    :value="bbn.id"
+                                                    >{{ bbn.name }}</option
+                                                >
+                                            </select>
+                                            <!-- <input
                                                 v-model="form.bbN"
                                                 type="text"
                                                 class="form-control"
@@ -793,7 +821,7 @@
                                             <has-error
                                                 :form="form"
                                                 field="bbN"
-                                            ></has-error>
+                                            ></has-error> -->
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
@@ -1092,6 +1120,9 @@ import { mapGetters, mapState } from "vuex";
 export default {
     data() {
         return {
+            areas: {},
+            bbns: {},
+            selectedClass: "",
             editmode: false,
             selected: "",
             form: new Form({
@@ -1139,6 +1170,24 @@ export default {
                 operatingTime: ""
             })
         };
+    },
+    watch: {
+        selectedClass: function(value) {
+            this.loadBuildings();
+            axios
+                .get("/api/bbns?area_id=" + this.selectedClass)
+                .then(response => {
+                    // console.log(response.data);
+                    this.bbns = response.data.data;
+                });
+        }
+    },
+    mounted() {
+        this.loadBuildings();
+        axios.get("/api/areas").then
+        (response => {
+            this.areas = response.data.data;
+        });
     },
     computed: {
         ...mapGetters(["buildings"]),
@@ -1316,31 +1365,30 @@ export default {
                     }
                 },
                 {
-                            text:
-                                "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
-                            action: function(e, dt, node, config) {
-                                console.info("button: Clear");
-                                $.fn.dataTable.ext.search.pop();
-                                dt.search("").draw();
-                                dt.columns()
-                                    .search("")
-                                    .draw();
-                                dt.rows().deselect();
-                                dt.ajax.reload();
-                            }
-                        }
+                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                    action: function(e, dt, node, config) {
+                        console.info("button: Clear");
+                        $.fn.dataTable.ext.search.pop();
+                        dt.search("").draw();
+                        dt.columns()
+                            .search("")
+                            .draw();
+                        dt.rows().deselect();
+                        dt.ajax.reload();
+                    }
+                }
             ],
             columns: [
                 { data: null, defaultContent: "", className: "dt-body-center" },
                 {
                     data: "projectName",
                     render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
+                        return (
+                            '<span><i class="bi bi-building pr-2"></i>' +
+                            data +
+                            "</span>"
+                        );
+                    }
                 },
                 {
                     data: "nameManager"
@@ -1351,14 +1399,14 @@ export default {
                 {
                     data: "spendSpace"
                 },
-               {
+                {
                     data: "updated_at",
                     render: function(data, type, row, meta) {
                         return moment(data).format("MM/DD/YYYY HH:MM");
                     }
                 },
                 {
-                data: null,
+                    data: null,
                     className: "dt-body-center",
                     render: function(data, type, row, meta) {
                         return "<a class='edit-building' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-building' href='#'> <i class='fa fa-trash red'></i> </a>";
