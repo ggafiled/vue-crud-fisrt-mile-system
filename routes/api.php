@@ -18,10 +18,12 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    Log::debug('User:' . serialize($request->user()));
+Log::debug('User:' . serialize($request->user()));
     return $request->user();
 });
 
+Route::get('/areas', 'App\Http\Controllers\AreaController@index');
+Route::get('/bbns', 'App\Http\Controllers\BbnController@index');
 
 Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('profile', 'ProfileController@profile');
