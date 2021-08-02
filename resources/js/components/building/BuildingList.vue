@@ -245,7 +245,7 @@ export default {
                 .get("/api/buildinglist/nonContract")
                 .then(response => {
                     this.not_do_contract_yet = response.data.data;
-                    if (!this.hideNonContract) {
+                    if (!this.hideNonContract && this.not_do_contract_yet.length > 0) {
                         $("#nonContractAlert").modal("show");
                     }
                 })

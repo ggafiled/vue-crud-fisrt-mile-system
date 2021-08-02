@@ -3,7 +3,7 @@
         <div class="form-group">
             <div class="col-sm-10">
                 <label>AREA *</label>
-                <select class="form-control" v-model="selectedClass">
+                <select class="form-control" v-model="areaN">
                     <option value="">Select a Class</option>
                     <option
                         :value="item.id"
@@ -33,20 +33,18 @@
 export default {
     data() {
         return {
-
                 areas: {},
                 bbns: {},
-                selectedClass: ""
+                areaN: "",
+                bbN: ""
         };
     },
     watch: {
-        selectedClass: function(value) {
-            axios
-                .get("/api/bbns?area_id=" + this.selectedClass)
-                .then(response => {
-                    // console.log(response.data);
-                    this.bbns = response.data.data;
-                });
+        areaN: function(value) {
+            axios.get("/api/bbns?area_id=" + this.areaN).then(response => {
+                // console.log(response.data);
+                this.bbns = response.data.data;
+            });
         }
     },
     mounted() {

@@ -169,7 +169,7 @@ export default [{
         component: require("./components/area3bb.vue").default,
         meta: {
             requiresAuth: true,
-            roles: ["superadministrator", "administrator", "user"]
+            roles: ["superadministrator"]
         }
     },
     { path: "*", component: require("./components/NotFound.vue").default }

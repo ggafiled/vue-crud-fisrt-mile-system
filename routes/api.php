@@ -22,10 +22,9 @@ Log::debug('User:' . serialize($request->user()));
     return $request->user();
 });
 
-Route::get('/areas', 'App\Http\Controllers\AreaController@index');
-Route::get('/bbns', 'App\Http\Controllers\BbnController@index');
-
 Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
+    Route::get('areas', 'AreaController@index');
+    Route::get('bbns', 'BbnController@index');
     Route::get('profile', 'ProfileController@profile');
     Route::put('profile', 'ProfileController@updateProfile');
     Route::get('role/list', 'RoleController@list');
