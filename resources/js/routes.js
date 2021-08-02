@@ -164,7 +164,7 @@ export default [{
             roles: ["superadministrator", "administrator"]
         }
     },
- {
+    {
         path: "/area/3bb",
         component: require("./components/area3bb.vue").default,
         meta: {
