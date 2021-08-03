@@ -26,7 +26,11 @@ services:
     tty: true
     ports:
       - "80:80"
-        #  - "4431:443"
+        #  - "4431:443"]
+    labels:
+      ofelia.enabled: "true"
+      ofelia.job-exec.datecron.schedule: "@every 5s"
+      ofelia.job-exec.datecron.command: "uname -a"
     volumes:
       - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
@@ -52,17 +56,16 @@ services:
       - app-network
 
   #Schedular Service
-  scheduler:
-    image: vue-starter
-    command: ./bin/run-scheduler.sh
-    container_name: scheduler_laravel_api
-    restart: unless-stopped
-    working_dir: /var/www
+  ofelia:
+    image: mcuadros/ofelia:latest
+    depends_on:
+      - webserver
+    command: daemon --docker
     volumes:
-      - ./:/var/www
-      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
-    networks:
-      - app-network
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      ofelia.job-local.my-test-job.schedule: "@hourly"
+      ofelia.job-local.my-test-job.command: "./bin/run-scheduler.sh"
 
   #adminer for db access
   adminer:
