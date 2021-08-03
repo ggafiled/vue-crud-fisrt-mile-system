@@ -53,7 +53,7 @@ services:
 
   #Schedular Service
   scheduler:
-    image: laravel-api
+    image: vue-starter
     command: ./bin/run-scheduler.sh
     container_name: scheduler_laravel_api
     restart: unless-stopped
