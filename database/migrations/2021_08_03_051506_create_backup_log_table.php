@@ -13,7 +13,7 @@ class CreateBackupLogTable extends Migration
      */
     public function up()
     {
-        Schema::table('backup', function (Blueprint $table) {
+        Schema::create('backup', function (Blueprint $table) {
             $table->id();
             $table->string('chanel');
             $table->string('message');
