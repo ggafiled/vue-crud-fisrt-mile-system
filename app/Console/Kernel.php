@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\DatabaseBackUp'
+        'App\Console\Commands\DatabaseBackUp',
     ];
 
     /**
@@ -24,7 +24,22 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('database:backup')->hourly();
+        $schedule->command('database:backup')
+            ->hourly()
+            ->onSuccess(function () use ($schedule) {
+                DB::table('backup')->insert([
+                    ['chanel' => 'backup_log',
+                    'message' => 'auto run schedule command database:backup',
+                    'status'  => 'success']
+                ]);
+            })
+            ->onFailure(function () {
+                DB::table('backup')->insert([
+                    ['chanel' => 'backup_log',
+                    'message' => 'error auto run schedule command database:backup',
+                    'status'  => 'failed']
+                ]);
+            });
     }
 
     /**
@@ -34,7 +49,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }

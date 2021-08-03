@@ -45,11 +45,6 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 # Copy existing application directory contents
 COPY . /var/www
 
-# Add crontab to directory
-ADD schedule/crontab /etc/cron.d/cron
-RUN chmod 0644 /etc/cron.d/cron
-RUN touch /var/log/cron.log
-
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
 

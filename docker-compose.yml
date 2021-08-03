@@ -14,8 +14,6 @@ services:
     working_dir: /var/www
     volumes:
       - ./:/var/www
-      - ./:/var/log/app
-      - ./:/var/run/
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
@@ -50,6 +48,19 @@ services:
       SERVICE_NAME: mysql
     volumes:
       - dbdata:/var/lib/mysql
+    networks:
+      - app-network
+
+  #Schedular Service
+  scheduler:
+    image: laravel-api
+    command: ./bin/run-scheduler.sh
+    container_name: scheduler_laravel_api
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
 
