@@ -29,8 +29,8 @@ services:
         #  - "4431:443"]
     labels:
       ofelia.enabled: "true"
-      ofelia.job-exec.datecron.schedule: "@every 5s"
-      ofelia.job-exec.datecron.command: "uname -a"
+      ofelia.job-exec.datecron.schedule: "@every 1m"
+      ofelia.job-exec.datecron.command: "php artisan schedule:run --verbose --no-interaction"
     volumes:
       - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
@@ -64,9 +64,7 @@ services:
     volumes:
       - ./:/var/www
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    labels:
-      ofelia.job-local.my-test-job.schedule: "@every 1m"
-      ofelia.job-local.my-test-job.command: "/usr/local/etc/php /var/www/artisan schedule:run --verbose --no-interaction"
+
   #adminer for db access
   adminer:
     image: adminer:latest
