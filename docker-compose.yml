@@ -17,7 +17,7 @@ services:
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     labels:
       ofelia.enabled: "true"
-      ofelia.job-exec.datecron.schedule: "@every 1m"
+      ofelia.job-exec.datecron.schedule: "@daily"
       ofelia.job-exec.datecron.command: "php artisan schedule:run --verbose --no-interaction"
     networks:
       - app-network

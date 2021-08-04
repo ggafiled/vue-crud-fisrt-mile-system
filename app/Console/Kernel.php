@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('database:backup')
-            ->everyMinute()
+            ->daily()
             ->then(function () use ($schedule) {
                 Backup::create([
                     'chanel' => 'backup_log',
