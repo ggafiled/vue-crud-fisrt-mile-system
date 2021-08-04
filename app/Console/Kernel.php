@@ -27,18 +27,11 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('database:backup')
             ->everyMinute()
-            ->onSuccess(function () use ($schedule) {
+            ->then(function () use ($schedule) {
                 DB::table('backup')->insert([
                     ['chanel' => 'backup_log',
                     'message' => 'auto run schedule command database:backup',
                     'status'  => 'success']
-                ]);
-            })
-            ->onFailure(function () {
-                DB::table('backup')->insert([
-                    ['chanel' => 'backup_log',
-                    'message' => 'error auto run schedule command database:backup',
-                    'status'  => 'failed']
                 ]);
             });
     }
