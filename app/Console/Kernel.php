@@ -32,9 +32,7 @@ class Kernel extends ConsoleKernel
                 DB::table('backup')->insert([
                     ['chanel' => 'backup_log',
                     'message' => 'auto run schedule command database:backup',
-                    'status'  => 'success',
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now()]
+                    'status'  => 'success']
                 ]);
             });
     }

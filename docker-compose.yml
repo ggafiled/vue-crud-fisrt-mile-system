@@ -62,7 +62,6 @@ services:
       - webserver
     command: daemon --docker
     volumes:
-      - ./:/var/www
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
   #adminer for db access
