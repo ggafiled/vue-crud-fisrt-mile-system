@@ -65,7 +65,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
       ofelia.job-local.my-test-job.schedule: "@every 1m"
-      ofelia.job-local.my-test-job.command: "php /var/www/artisan schedule:run --verbose --no-interaction"
+      ofelia.job-local.my-test-job.command: "/usr/bin/php /var/www/artisan schedule:run --verbose --no-interaction"
   #adminer for db access
   adminer:
     image: adminer:latest
