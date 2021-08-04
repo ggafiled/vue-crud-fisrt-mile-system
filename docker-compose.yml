@@ -30,7 +30,7 @@ services:
     labels:
       ofelia.enabled: "true"
       ofelia.job-exec.datecron.schedule: "@every 1m"
-      ofelia.job-exec.datecron.command: "php artisan schedule:run --verbose --no-interaction"
+      ofelia.job-exec.datecron.command: "/usr/bin/php artisan schedule:run --verbose --no-interaction"
     volumes:
       - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
