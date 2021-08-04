@@ -15,6 +15,10 @@ services:
     volumes:
       - ./:/var/www
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    labels:
+      ofelia.enabled: "true"
+      ofelia.job-exec.datecron.schedule: "@every 1m"
+      ofelia.job-exec.datecron.command: "php artisan schedule:run --verbose --no-interaction"
     networks:
       - app-network
 
@@ -27,10 +31,6 @@ services:
     ports:
       - "80:80"
         #  - "4431:443"]
-    labels:
-      ofelia.enabled: "true"
-      ofelia.job-exec.datecron.schedule: "@every 1m"
-      ofelia.job-exec.datecron.command: "/usr/bin/php artisan schedule:run --verbose --no-interaction"
     volumes:
       - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/

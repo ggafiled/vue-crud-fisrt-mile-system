@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use DB;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -27,11 +28,22 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('database:backup')
             ->everyMinute()
-            ->then(function () use ($schedule) {
+            ->onSuccess(function () use ($schedule) {
                 DB::table('backup')->insert([
                     ['chanel' => 'backup_log',
                     'message' => 'auto run schedule command database:backup',
-                    'status'  => 'success']
+                    'status'  => 'success',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()]
+                ]);
+            })
+            ->onFailure(function () {
+                DB::table('backup')->insert([
+                    ['chanel' => 'backup_log',
+                    'message' => 'auto run schedule command database:backup',
+                    'status'  => 'success',
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()]
                 ]);
             });
     }
