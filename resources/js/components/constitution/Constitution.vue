@@ -785,7 +785,6 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 import Select2 from "v-select2-component";
-
 export default {
     title: "Constarution -",
     components: { Select2 },
@@ -846,7 +845,7 @@ export default {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("api/constarution/" + this.form.id)
+                .put("/api/constarution/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");

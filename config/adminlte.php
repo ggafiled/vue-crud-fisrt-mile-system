@@ -330,12 +330,12 @@ return [
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
-                [
-                    'text' => 'Dynamic Dependent Dropdown',
-                    'url'  => '/area/3bb',
-                    'icon' => 'fas fa-fw fas fa-file-alt',
-                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
-                ],
+                // [
+                //     'text' => 'Dynamic Dependent Dropdown',
+                //     'url'  => '/area/3bb',
+                //     'icon' => 'fas fa-fw fas fa-file-alt',
+                //     'roles'  => ["superadministrator", "administrator", "user", "guest"],
+                // ],
             ]
         ],
         [

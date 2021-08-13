@@ -105,13 +105,11 @@ class ProgressController extends BaseController
      */
     public function update(Request $request, $id)
     {
-
-        try {
+       {
             $progress = Progress::find($id);
             $progress->update($request->all());
             return $this->sendResponse($progress, trans('actions.updated.success'));
-        } catch (Exception $ex) {
-            return $this->sendError($progress, trans('actions.updated.fialed'));
+
         }
     }
 
