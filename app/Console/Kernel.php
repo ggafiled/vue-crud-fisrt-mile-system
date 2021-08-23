@@ -2,7 +2,6 @@
 
 namespace App\Console;
 
-use App\Models\Backup;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -27,13 +26,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('database:backup')
             ->daily()
-            ->then(function () use ($schedule) {
-                Backup::create([
-                    'chanel' => 'backup_log',
-                    'message' => 'auto run schedule command database:backup',
-                    'status'  => 'success'
-                ]);
-            });
+            ->runInBackground()
+            ->withoutOverlapping();
     }
 
     /**

@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Backup extends Model
 {
     use HasFactory;
+    protected $table = "backup";
     protected $fillable = ['id','chanel','message','status'];
 }

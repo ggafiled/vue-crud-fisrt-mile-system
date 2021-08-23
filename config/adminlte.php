@@ -338,12 +338,12 @@ return [
                 ],
             ]
         ],
-        [
-            'text' => 'issue_tickets',
-            'url'  => '/issue-tickets',
-            'icon' => 'mdi mdi-ticket-confirmation-outline',
-            'active_url' => 'issue-tickets'
-        ],
+        // [
+        //     'text' => 'issue_tickets',
+        //     'url'  => '/issue-tickets',
+        //     'icon' => 'mdi mdi-ticket-confirmation-outline',
+        //     'active_url' => 'issue-tickets'
+        // ],
         [
             'text' => 'console_log',
             'url'  => '/console-log',

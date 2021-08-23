@@ -19,14 +19,31 @@
                                     <div class="col-8">
                                         <p>
                                             Assuming that this timestamp is in
-                                            <b>seconds</b>:
-                                            <b>GMT:</b> วันWednesdayที่ 28 July
-                                            2021 เวลา 9:12:42
+                                            <b>{{
+                                                backup.created_at
+                                                    | moment("from", "now")
+                                            }}</b>
+                                            <b>GMT:</b>
+                                            {{
+                                                backup.created_at
+                                                    | moment(
+                                                        "dddd, MMMM Do YYYY, h:mm:ss a"
+                                                    )
+                                            }}
                                         </p>
                                         <p>
-                                            <b>Your time zone:</b> วันพุธที่ 28
-                                            กรกฎาคม 2021 เวลา 16:12:42 GMT+07:00
-                                            <b>Relative:</b> A few seconds ago
+                                            <b>Your time zone:</b>
+                                            {{
+                                                backup.created_at
+                                                    | moment(
+                                                        "dddd, MMMM Do YYYY, h:mm:ss a"
+                                                    )
+                                            }}
+                                            <b>Relative:</b>
+                                            {{
+                                                backup.created_at
+                                                    | moment("from", "now")
+                                            }}
                                         </p>
                                     </div>
                                     <div class="col-4">
@@ -34,10 +51,13 @@
                                             class="icon-status float-right pr-5"
                                         >
                                             <svg
+                                                v-if="
+                                                    backup.status == 'success'
+                                                "
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 width="56"
                                                 height="56"
-                                                fill="currentColor"
+                                                fill="green"
                                                 class="bi bi-shield-check"
                                                 viewBox="0 0 16 16"
                                             >
@@ -46,6 +66,32 @@
                                                 />
                                                 <path
                                                     d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                                                />
+                                            </svg>
+
+                                            <svg
+                                                v-else
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="56"
+                                                height="56"
+                                                fill="red"
+                                                class="bi bi-shield-check"
+                                                viewBox="0 0 16 16"
+                                            >
+                                                <path
+                                                    d="M250 583 c-41 -38 -241 -389 -247 -433 -5 -43 25 -96 63 -110 33 -13
+                                                    475 -13 508 0 38 14 68 67 63 110 -6 45 -206 394 -247 433 -23 20 -41 27 -70
+                                                    27 -29 0 -47 -7 -70 -27z m100 -33 c17 -9 222 -354 234 -396 4 -13 -1 -30 -15
+                                                    -47 l-20 -27 -229 0 -229 0 -20 27 c-14 17 -19 34 -15 47 11 38 216 386 233
+                                                    396 21 12 38 12 61 0z"
+                                                />
+                                                <path
+                                                    d="M297 424 c-9 -9 -9 -156 -1 -178 3 -9 14 -16 25 -16 23 0 31 41 27
+                                                    130 -3 57 -6 65 -23 68 -12 2 -24 0 -28 -4z"
+                                                />
+                                                <path
+                                                    d="M294 186 c-10 -26 4 -48 28 -44 17 2 23 10 23 28 0 18 -6 26 -23 28
+                                                    -13 2 -25 -3 -28 -12z"
                                                 />
                                             </svg>
                                         </div>
@@ -81,10 +127,20 @@ export default {
     title: "Console -",
     components: { AgGridVue },
     data() {
-        return {};
+        return {
+            backup: {}
+        };
     },
-    methods: {},
-    mounted() {}
+    methods: {
+        async checkHealthy() {
+            await axios.get("api/backup").then(response => {
+                this.backup = response.data.data;
+            });
+        }
+    },
+    mounted() {
+        this.checkHealthy();
+    }
 };
 </script>
 

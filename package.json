@@ -111,6 +111,7 @@
         "vue-float-menu": "^1.9.0",
         "vue-full-calendar": "^2.8.1-0",
         "vue-meta": "^2.4.0",
+        "vue-moment": "^4.1.0",
         "vue-progressbar": "^0.7.5",
         "vue-property-decorator": "^8.0.0",
         "vue-router": "^3.5.1",

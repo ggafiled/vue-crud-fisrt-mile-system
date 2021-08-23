@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Carbon\Carbon;
+use DB;
+use Exception;
 use Illuminate\Console\Command;
 
 class DatabaseBackUp extends Command
@@ -38,13 +40,29 @@ class DatabaseBackUp extends Command
      */
     public function handle()
     {
-        $filename = "backup-" . Carbon::now()->format('Y-m-d'). strtotime(Carbon::now()) . ".gz";
+        try {
+            $filename = "backup-" . Carbon::now()->format('Y-m-d') . strtotime(Carbon::now()) . ".gz";
+            $command = "mysqldump --user=" . env('DB_USERNAME') . " --password=" . env('DB_PASSWORD') . " --host=" . env('DB_HOST') . " " . env('DB_DATABASE') . "  | gzip > " . storage_path() . "/app/backup/" . $filename;
+            $returnVar = null;
+            $output = null;
 
-        $command = "mysqldump --user=" . env('DB_USERNAME') ." --password=" . env('DB_PASSWORD') . " --host=" . env('DB_HOST') . " " . env('DB_DATABASE') . "  | gzip > " . storage_path() . "/app/backup/" . $filename;
-
-        $returnVar = NULL;
-        $output  = NULL;
-
-        exec($command, $output, $returnVar);
+            exec($command, $output, $returnVar);
+        } catch (Exception $ex) {
+            DB::table('backup')->insert([
+                'chanel' => 'backup_log',
+                'message' => $ex->getMessage(),
+                'status' => 'failure',
+                'created_at' =>  Carbon::now(),
+                'updated_at' =>  Carbon::now()
+            ]);
+        } finally {
+            DB::table('backup')->insert([
+                'chanel' => 'backup_log',
+                'message' => 'auto run schedule command database:backup',
+                'status' => 'success',
+                'created_at' =>  Carbon::now(),
+                'updated_at' =>  Carbon::now()
+            ]);
+        }
     }
 }

@@ -43,6 +43,8 @@ const Toast = Swal.mixin({
 window.Swal = Swal;
 window.Toast = Toast;
 
+Vue.use(require("vue-moment"));
+
 import VueMeta from "vue-meta";
 Vue.use(VueMeta);
 
