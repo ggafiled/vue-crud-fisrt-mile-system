@@ -42,6 +42,11 @@ class ConstarutionController extends BaseController
         try {
             $constarution = new Constarution([
                 'building_id' => $request->input('building_id'),
+                'projectNameTot' => $request->input('projectNameTot'),
+                'projectName3bb' => $request->input('projectName3bb'),
+                'projectNameTrue' => $request->input('projectNameTrue'),
+                'projectNameAis' => $request->input('projectNameAis'),
+                'projectNameFiberNet' => $request->input('projectNameFiberNet'),
                 'desingBy' => $request->input('desingBy'),
                 'surveyDesing' => $request->input('surveyDesing'),
                 'surveyDesingDate' => $request->input('surveyDesingDate'),

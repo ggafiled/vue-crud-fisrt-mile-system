@@ -985,7 +985,13 @@ export default {
                 {
                     data: "totProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -999,7 +1005,13 @@ export default {
                 {
                     data: "aisProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1013,7 +1025,13 @@ export default {
                 {
                     data: "Progress3bb",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1027,7 +1045,13 @@ export default {
                 {
                     data: "sinetProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1041,7 +1065,13 @@ export default {
                 {
                     data: "fnProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1055,7 +1085,13 @@ export default {
                 {
                     data: "trueProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +

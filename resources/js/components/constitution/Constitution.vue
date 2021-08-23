@@ -131,6 +131,93 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project Tot Name</label>
+                                            <input
+                                                v-model="form.projectNameTot"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameTot'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project 3bb Name</label>
+                                            <input
+                                                v-model="form.projectName3bb"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectName3bb'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project True Name</label>
+                                            <input
+                                                v-model="form.projectNameTrue"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameTrue'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project Ais Name</label>
+                                            <input
+                                                v-model="form.projectNameAis"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameAis'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project FiberNet Name</label>
+                                            <input
+                                                v-model="
+                                                    form.projectNameFiberNet
+                                                "
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameFiberNet'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
@@ -410,17 +497,27 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Type</label>
-                                            <input
-                                                type="text"
+                                            <select
                                                 v-model="form.type"
-                                                placeholder="Enter your type..."
+                                                type="text"
                                                 class="form-control"
+                                                placeholder="Enter your type..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'type'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >Y/N Question</option
+                                                >
+                                                <option value="Microduct"
+                                                    >Microduct</option
+                                                >
+                                                <option value="FiberConvertion"
+                                                    >FiberConvertion</option
+                                                >
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="type"
@@ -428,15 +525,24 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <hr />
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>Microduct(แนวดิ่ง)</label>
+                                            <label
+                                                :hidden="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
+                                                >Microduct(แนวดิ่ง)</label
+                                            >
                                             <select
                                                 v-model="form.microductD"
+                                                :disabled="form.type == ''"
+                                                :hidden="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your microductD..."
@@ -492,10 +598,19 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label
+                                                :hidden="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
                                                 >Microduct Date(แนวดิ่ง)</label
                                             >
                                             <input
                                                 v-model="form.microductDateD"
+                                                :hidden="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
+                                                :disabled="form.type == ''"
                                                 type="date"
                                                 class="form-control"
                                                 :class="{
@@ -512,9 +627,20 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Microduct (แนวขว้าง)</label>
+                                            <label
+                                                :hidden="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
+                                                >Microduct (แนวขว้าง)</label
+                                            >
                                             <select
                                                 v-model="form.microductK"
+                                                :disabled="form.type == ''"
+                                                :hidden="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your microductK..."
@@ -567,14 +693,24 @@
                                             ></has-error>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label
+                                                :hidden="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
                                                 >Microduct Date(แนวขว้าง)</label
                                             >
                                             <input
                                                 v-model="form.microductDateK"
+                                                :hidden="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
+                                                :disabled="form.type == ''"
                                                 type="date"
                                                 class="form-control"
                                                 placeholder="Enter your microductDateK..."
@@ -591,14 +727,22 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>FiberConvertion</label>
+                                            <label
+                                                :hidden="
+                                                    form.type == 'Microduct'
+                                                "
+                                                >FiberConvertion</label
+                                            >
                                             <select
                                                 v-model="form.fiberConvertion"
+                                                :hidden="
+                                                    form.type == 'Microduct'
+                                                "
+                                                :disabled="form.type == ''"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your fiberConvertion..."
@@ -654,6 +798,9 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label
+                                                :hidden="
+                                                    form.type == 'Microduct'
+                                                "
                                                 >FiberConvertionDate
                                                 (แนวดิ่ง)</label
                                             >
@@ -661,6 +808,10 @@
                                                 v-model="
                                                     form.fiberConvertionDate
                                                 "
+                                                :hidden="
+                                                    form.type == 'Microduct'
+                                                "
+                                                :disabled="form.type == ''"
                                                 type="date"
                                                 class="form-control"
                                                 placeholder="Enter your fiberConvertionDate ..."
@@ -1048,7 +1199,11 @@ export default {
                 }
             ],
             columns: [
-                { data: null, defaultContent: "", className: "dt-body-center notexport" },
+                {
+                    data: null,
+                    defaultContent: "",
+                    className: "dt-body-center notexport"
+                },
                 {
                     data: "building[0].projectName"
                 },
@@ -1061,8 +1216,14 @@ export default {
                                 "ไม่ได้กรอกข้อมูล" +
                                 "</span>"
                             );
+                        } else if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
                         } else {
-                            return data;
+                            return "<span>" + data + "</span>";
                         }
                     }
                 },
@@ -1070,6 +1231,12 @@ export default {
                     data: "surveyDesing",
                     render: function(data, type, row, meta) {
                         if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == null) {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1089,6 +1256,12 @@ export default {
                                 "ไม่ได้กรอกข้อมูล" +
                                 "</span>"
                             );
+                        } else if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
                         } else {
                             return "<span>" + data + "</span>";
                         }
@@ -1103,6 +1276,12 @@ export default {
                                 "ไม่ได้กรอกข้อมูล" +
                                 "</span>"
                             );
+                        } else if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
                         } else {
                             return "<span>" + data + "</span>";
                         }
@@ -1112,6 +1291,12 @@ export default {
                     data: "microductD",
                     render: function(data, type, row, meta) {
                         if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == null) {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1132,6 +1317,12 @@ export default {
                                 "ไม่ได้กรอกข้อมูล" +
                                 "</span>"
                             );
+                        } else if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
                         } else {
                             return "<span>" + data + "</span>";
                         }
@@ -1142,6 +1333,12 @@ export default {
                     data: "fiberConvertion",
                     render: function(data, type, row, meta) {
                         if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == null) {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1162,6 +1359,12 @@ export default {
                                 "ไม่ได้กรอกข้อมูล" +
                                 "</span>"
                             );
+                        } else if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
                         } else {
                             return "<span>" + data + "</span>";
                         }
@@ -1172,6 +1375,12 @@ export default {
                     data: "splice",
                     render: function(data, type, row, meta) {
                         if (data == "") {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == null) {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +

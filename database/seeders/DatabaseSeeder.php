@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call(LaratrustSeeder::class);
         $this->call(AreaSeeder::class);
         $this->call(BbnSeeder::class);
+        $this->call(TechnicianSeeder::class);
+        $this->call(GeneratingactionSeeder::class);
+        $this->call(OperaterSeeder::class);
         \App\Models\Category::factory(10)->create();
         \App\Models\Ticket::factory(20)->create();
         // \App\Models\Building::factory(200)->create();
