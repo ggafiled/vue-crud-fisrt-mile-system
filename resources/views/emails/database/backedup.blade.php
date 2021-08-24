@@ -24,7 +24,7 @@
             color-scheme: light dark;
             supported-color-schemes: light dark;
         }
-        
+
         html,
         body {
             margin: 0 auto !important;
@@ -32,52 +32,52 @@
             height: 100% !important;
             width: 100% !important;
         }
-        
+
         * {
             -ms-text-size-adjust: 100%;
             -webkit-text-size-adjust: 100%;
         }
         /* What it does: Centers email on Android 4.4 */
-        
+
         div[style*="margin: 16px 0"] {
             margin: 0 !important;
         }
         /* What it does: forces Samsung Android mail clients to use the ent=
 ire viewport */
-        
+
         #MessageViewBody,
         #MessageWebViewDiv {
             width: 100% !important;
         }
-        
+
         table,
         td {
             mso-table-lspace: 0pt !important;
             mso-table-rspace: 0pt !important;
         }
-        
+
         th {
             font-weight: normal;
         }
-        
+
         table {
             border-spacing: 0 !important;
             border-collapse: collapse !important;
             table-layout: fixed !important;
             margin: 0 auto !important;
         }
-        
+
         a {
             text-decoration: none;
         }
-        
+
         img {
             -ms-interpolation-mode: bicubic;
         }
-        
+
         a[x-apple-data-detectors],
         /* iOS */
-        
+
         .unstyle-auto-detected-links a,
         .aBn {
             border-bottom: 0 !important;
@@ -89,16 +89,16 @@ ire viewport */
             font-weight: inherit !important;
             line-height: inherit !important;
         }
-        
+
         .im {
             color: inherit !important;
         }
-        
+
         .a6S {
             display: none !important;
             opacity: 0.01 !important;
         }
-        
+
         img.g-img+div {
             display: none !important;
         }
@@ -107,21 +107,21 @@ hub.com/TedGoas/Cerberus/issues/89  */
         /* Create one of these media queries for each additional viewport s=
 ize you'd like to fix */
         /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
-        
+
         @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
             u~div .email-container {
                 min-width: 320px !important;
             }
         }
         /* iPhone 6, 6S, 7, 8, and X */
-        
+
         @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
             u~div .email-container {
                 min-width: 375px !important;
             }
         }
         /* iPhone 6+, 7+, and 8+ */
-        
+
         @media only screen and (min-device-width: 414px) {
             u~div .email-container {
                 min-width: 414px !important;
@@ -131,19 +131,19 @@ ize you'd like to fix */
 
     <style>
         /* What it does: Hover styles for buttons */
-        
+
         .button-td,
         .button-a {
             transition: all 100ms ease-in;
         }
-        
+
         .button-td-primary:hover,
         .button-a-primary:hover {
             background: #be242b !important;
             border-color: #be242b !important;
         }
         /* Media Queries */
-        
+
         @media screen and (max-width: 600px) {
             .email-container {
                 width: 100% !important;
@@ -230,13 +230,31 @@ readability */
                                             0 0 10px;">Hey Administrator,</h1>
                                         <p>Automatically process to backup database,</p>
                                         <p>
-                                            Assuming that
-                                            <b>GMT:</b> วัน Wednesday ที่ 28 July 2021 เวลา 9:12:42
-                                            <b>Your time zone:</b> วันพุธที่ 28 กรกฎาคม 2021 เวลา 16:12:42 GMT+07:00
-                                            <b>Relative:</b> A few seconds ago
+                                            Assuming that this timestamp is in
+                                            <b>{{
+                                                \Carbon\Carbon::parse($backup->created_at, 'UTC')->diffForHumans();
+                                            }}</b><br/>
+                                            <b>GMT:</b>
+                                            {{
+                                               \Carbon\Carbon::parse($backup->created_at, 'UTC')->locale('th')->isoFormat('MMMM Do YYYY, h:mm:ss a');
+                                            }}
                                         </p>
                                         <p>
-                                            <b>***Status</b> <span style="color: green;">SUSCESS</span><br/>
+                                            <b>Your time zone:</b>
+                                            {{
+                                                \Carbon\Carbon::parse($backup->created_at, 'UTC')->locale('th');
+                                            }}
+                                            <b>Relative:</b>
+                                            {{
+                                                \Carbon\Carbon::parse($backup->created_at, 'UTC')->locale('th')->isoFormat('MMMM Do YYYY, h:mm:ss a');
+                                            }}
+                                        </p>
+                                        <p>
+                                            @if($backup->status == "success")
+                                            <b>***Status</b> <span style="color: green;">SUCCESS</span><br/>
+                                            @else
+                                            <b>***Status</b> <span style="color: red;">FAILURE : {{ $backup->message }}</span><br/>
+                                            @endif
                                             <b>***Attachment</b> plaese dowload following link below.
                                         </p>
                                     </td>

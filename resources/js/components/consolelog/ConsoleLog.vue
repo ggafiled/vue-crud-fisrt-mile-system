@@ -14,7 +14,14 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-3 pt-2">
-                            <div class="card-text">
+                            <div class="card-text" v-if="!backup">
+                                <div class="row">
+                                    <div class="col-12">
+                                        >> Seems you not backup database yet?
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-text" v-else>
                                 <div class="row">
                                     <div class="col-8">
                                         <p>
@@ -51,7 +58,7 @@
                                             class="icon-status float-right pr-5"
                                         >
                                             <svg
-                                                v-if="
+                                                v-show="
                                                     backup.status == 'success'
                                                 "
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -70,29 +77,26 @@
                                             </svg>
 
                                             <svg
-                                                v-else
+                                                v-show="
+                                                    backup.status == 'failure'
+                                                "
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                width="56"
-                                                height="56"
-                                                fill="red"
-                                                class="bi bi-shield-check"
-                                                viewBox="0 0 16 16"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                width="56pt"
+                                                height="56pt"
+                                                viewBox="0 0 56 56"
+                                                version="1.1"
                                             >
-                                                <path
-                                                    d="M250 583 c-41 -38 -241 -389 -247 -433 -5 -43 25 -96 63 -110 33 -13
-                                                    475 -13 508 0 38 14 68 67 63 110 -6 45 -206 394 -247 433 -23 20 -41 27 -70
-                                                    27 -29 0 -47 -7 -70 -27z m100 -33 c17 -9 222 -354 234 -396 4 -13 -1 -30 -15
-                                                    -47 l-20 -27 -229 0 -229 0 -20 27 c-14 17 -19 34 -15 47 11 38 216 386 233
-                                                    396 21 12 38 12 61 0z"
-                                                />
-                                                <path
-                                                    d="M297 424 c-9 -9 -9 -156 -1 -178 3 -9 14 -16 25 -16 23 0 31 41 27
-                                                    130 -3 57 -6 65 -23 68 -12 2 -24 0 -28 -4z"
-                                                />
-                                                <path
-                                                    d="M294 186 c-10 -26 4 -48 28 -44 17 2 23 10 23 28 0 18 -6 26 -23 28
-                                                    -13 2 -25 -3 -28 -12z"
-                                                />
+                                                <g id="surface1">
+                                                    <path
+                                                        style=" stroke:none;fill-rule:nonzero;fill:rgb(84.313725%,15.686275%,15.686275%);fill-opacity:1;"
+                                                        d="M 56 28 C 56 43.464844 43.464844 56 28 56 C 12.535156 56 0 43.464844 0 28 C 0 12.535156 12.535156 0 28 0 C 43.464844 0 56 12.535156 56 28 Z M 56 28 "
+                                                    />
+                                                    <path
+                                                        style=" stroke:none;fill-rule:nonzero;fill:rgb(90.196078%,90.196078%,90.196078%);fill-opacity:1;"
+                                                        d="M 25.375 43.75 L 30.625 43.75 L 30.625 38.5 L 25.375 38.5 Z M 25.375 10.5 L 25.375 33.25 L 30.625 33.25 L 30.625 10.5 Z M 25.375 10.5 "
+                                                    />
+                                                </g>
                                             </svg>
                                         </div>
                                     </div>

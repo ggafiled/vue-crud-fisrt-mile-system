@@ -2,8 +2,11 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BackedUpDatabase;
 use Carbon\Carbon;
 use DB;
+use App\Models\Backup;
 use Exception;
 use Illuminate\Console\Command;
 
@@ -48,21 +51,23 @@ class DatabaseBackUp extends Command
 
             exec($command, $output, $returnVar);
         } catch (Exception $ex) {
-            DB::table('backup')->insert([
+            $result = Backup::create([
                 'chanel' => 'backup_log',
                 'message' => $ex->getMessage(),
                 'status' => 'failure',
                 'created_at' =>  Carbon::now(),
                 'updated_at' =>  Carbon::now()
             ]);
+            Mail::to(env("MAIL_ADMINISTRATOR"))->send(new BackedUpDatabase($result));
         } finally {
-            DB::table('backup')->insert([
+            $result = Backup::create([
                 'chanel' => 'backup_log',
                 'message' => 'auto run schedule command database:backup',
                 'status' => 'success',
                 'created_at' =>  Carbon::now(),
                 'updated_at' =>  Carbon::now()
             ]);
+            Mail::to(env("MAIL_ADMINISTRATOR"))->send(new BackedUpDatabase($result, $filename));
         }
     }
 }
