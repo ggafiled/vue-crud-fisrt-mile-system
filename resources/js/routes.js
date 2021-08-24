@@ -172,5 +172,13 @@ export default [{
             roles: ["superadministrator"]
         }
     },
+    {
+        path: "/data/validation",
+        component: require("./components/datavalidation/datavalidation.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
     { path: "*", component: require("./components/NotFound.vue").default }
 ];

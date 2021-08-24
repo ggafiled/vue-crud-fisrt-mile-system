@@ -131,6 +131,92 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project Tot Name</label>
+                                            <input
+                                                v-model="form.projectNameTot"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameTot'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project 3bb Name</label>
+                                            <input
+                                                v-model="form.projectName3bb"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectName3bb'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project True Name</label>
+                                            <input
+                                                v-model="form.projectNameTrue"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameTrue'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project Ais Name</label>
+                                            <input
+                                                v-model="form.projectNameAis"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameAis'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Project FiberNet Name</label>
+                                            <input
+                                                v-model="
+                                                    form.projectNameFiberNet
+                                                "
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your building..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameFiberNet'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
@@ -1049,7 +1135,11 @@ export default {
                 }
             ],
             columns: [
-                { data: null, defaultContent: "", className: "dt-body-center notexport" },
+                {
+                    data: null,
+                    defaultContent: "",
+                    className: "dt-body-center notexport"
+                },
                 {
                     data: "building[0].projectName"
                 },

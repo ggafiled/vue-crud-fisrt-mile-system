@@ -375,6 +375,12 @@ return [
             'icon' => 'bi bi-people',
             'roles'  => ['superadministrator', 'administrator'],
         ],
+        [
+            'text' => 'Data Validation',
+            'url'  => '/data/validation',
+            'icon' => 'bi bi-gear-fill',
+            'roles'  => ['superadministrator', 'administrator'],
+        ],
     ],
 
     /*
