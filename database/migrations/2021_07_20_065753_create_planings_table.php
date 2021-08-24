@@ -17,7 +17,11 @@ class CreatePlaningsTable extends Migration
         Schema::create('planings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();
-            $table->bigInteger('technicians_id')->unsigned();
+            $table->bigInteger('technician_id')->unsigned();
+            $table->bigInteger('problemsolution_id')->unsigned();
+            $table->bigInteger('teamtechnician_id')->unsigned();
+            $table->bigInteger('callver_id')->unsigned();
+            $table->bigInteger('callverstatus_id')->unsigned();
             $table->string('name')->nullable();
             $table->string('surname')->nullable();
             $table->string('tel')->nullable();
@@ -45,6 +49,25 @@ class CreatePlaningsTable extends Migration
             ->on('buildings')
             ->onDelete('cascade');
 
+            $table->foreign('problemsolution_id')
+            ->references('id')
+            ->on('problem_solutions')
+            ->onDelete('cascade');
+
+            $table->foreign('teamtechnician_id')
+            ->references('id')
+            ->on('technicians')
+            ->onDelete('cascade');
+
+            $table->foreign('callver_id')
+            ->references('id')
+            ->on('callvers')
+            ->onDelete('cascade');
+
+            $table->foreign('callverstatus_id')
+            ->references('id')
+            ->on('callverstatuses')
+            ->onDelete('cascade');
         });
     }
 

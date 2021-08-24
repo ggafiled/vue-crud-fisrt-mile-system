@@ -13,7 +13,7 @@ class CaretaPaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Payments', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('paymentType')->nullable();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CaretaPaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Payments');
+        Schema::dropIfExists('payments');
     }
 }

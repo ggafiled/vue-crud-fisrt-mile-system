@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\worktimes;
-class WorkTimeSeederSeeder extends Seeder
+class WorkTimeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
