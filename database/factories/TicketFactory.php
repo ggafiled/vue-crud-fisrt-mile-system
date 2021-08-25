@@ -23,7 +23,7 @@ class TicketFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween($min = 1, $max = 4),
-            'category_id' => $this->faker->numberBetween($min = 1, $max = 10),
+            't_category_id' => $this->faker->numberBetween($min = 1, $max = 10),
             'ticket_id' => $this->faker->regexify('[A-Z0-9]{10}'),
             'title' => $this->faker->text,
             'priority' => $this->faker->randomElement($array = array ('low','medium','high')),

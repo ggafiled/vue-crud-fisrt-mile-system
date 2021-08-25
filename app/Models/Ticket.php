@@ -11,12 +11,12 @@ class Ticket extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'category_id', 'ticket_id', 'assigned_to','title', 'priority', 'message', 'status'
+        'user_id', 't_category_id', 'ticket_id', 'assigned_to','title', 'priority', 'message', 'status'
     ];
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Category','category_id','id' );
+        return $this->belongsTo('App\Models\Category','t_category_id','id' );
     }
     public function comments()
     {
