@@ -12,11 +12,6 @@ class Building extends Model
     protected $fillable = [
         'id',
         'projectName',
-        'projectNameTot',
-        'projectName3bb',
-        'projectNameTrue',
-        'projectNameAis',
-        'projectNameFiberNet',
         'buildingSum',
         'floorSum',
         'roomSum',

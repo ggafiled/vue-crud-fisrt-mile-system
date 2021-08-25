@@ -18,19 +18,19 @@ class CreateProgressTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();
             $table->string('fmProgress')->nullable();
-            $table->timestamp('dateFm')->nullable();
+            $table->date('dateFm')->nullable();
             $table->string('totProgress')->nullable();
-            $table->timestamp('dateTot')->nullable();
+            $table->date('dateTot')->nullable();
             $table->string('aisProgress')->nullable();
-            $table->timestamp('dateAis')->nullable();
+            $table->date('dateAis')->nullable();
             $table->string('Progress3bb')->nullable();
-            $table->timestamp('date3BB')->nullable();
+            $table->date('date3BB')->nullable();
             $table->string('sinetProgress')->nullable();
-            $table->timestamp('dateSinet')->nullable();
+            $table->date('dateSinet')->nullable();
             $table->string('fnProgress')->nullable();
-            $table->timestamp('dateFn')->nullable();
+            $table->date('dateFn')->nullable();
             $table->string('trueProgress')->nullable();
-            $table->timestamp('dateTrue')->nullable();
+            $table->date('dateTrue')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

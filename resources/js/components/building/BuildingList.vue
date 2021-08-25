@@ -389,7 +389,7 @@ export default {
                     },
                     {
                         title: "TOT Project Name",
-                        data: "projectName",
+                        data: "projectNameTot",
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-building pr-2"></i>' +
@@ -400,7 +400,7 @@ export default {
                     },
                     {
                         title: "3BB Project Name",
-                        data: "projectName",
+                        data: "projectName3bb",
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-building pr-2"></i>' +
@@ -411,7 +411,7 @@ export default {
                     },
                     {
                         title: "True Project Name",
-                        data: "projectName",
+                        data: "projectNameTrue",
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-building pr-2"></i>' +
@@ -422,7 +422,7 @@ export default {
                     },
                     {
                         title: "AIS Project Name",
-                        data: "projectName",
+                        data: "projectNameAis",
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-building pr-2"></i>' +
@@ -433,7 +433,7 @@ export default {
                     },
                     {
                         title: "FiberNet Project Name",
-                        data: "projectName",
+                        data: "projectNameFiberNet",
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-building pr-2"></i>' +

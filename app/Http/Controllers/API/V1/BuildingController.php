@@ -54,11 +54,6 @@ class Buildingcontroller extends BaseController
         try {
             $buidings = new Building([
                 'projectName' => $request->input('projectName'),
-                'projectNameTot' => $request->input('projectNameTot'),
-                'projectName3bb' => $request->input('projectName3bb'),
-                'projectNameTrue' => $request->input('projectNameTrue'),
-                'projectNameAis' => $request->input('projectNameAis'),
-                'projectNameFiberNet' => $request->input('projectNameFiberNet'),
                 'buildingSum' => $request->input('buildingSum'),
                 'floorSum' => $request->input('floorSum'),
                 'roomSum' => $request->input('roomSum'),

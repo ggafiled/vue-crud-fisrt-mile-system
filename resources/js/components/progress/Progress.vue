@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <span class="mdi mdi-progress-wrench"></span>
-                            {{ translate('progress.header') }}
+                            {{ translate("progress.header") }}
                         </h3>
                         <div class="card-tools">
                             <button
@@ -15,7 +15,7 @@
                                 @click="newModal"
                             >
                                 <i class="fa fa-plus-square"></i>
-                                {{ translate('progress.addnew') }}
+                                {{ translate("progress.addnew") }}
                             </button>
                         </div>
                     </div>
@@ -62,10 +62,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                {{ translate('progress.create.header') }}
+                                {{ translate("progress.create.header") }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                {{ translate('progress.update.header') }}
+                                {{ translate("progress.update.header") }}
                             </h5>
                             <button
                                 type="button"
@@ -666,21 +666,21 @@
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    {{ translate('progress.actions.close') }}
+                                    {{ translate("progress.actions.close") }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    {{ translate('progress.actions.update') }}
+                                    {{ translate("progress.actions.update") }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    {{ translate('progress.actions.create') }}
+                                    {{ translate("progress.actions.create") }}
                                 </button>
                             </div>
                         </form>
@@ -692,7 +692,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+// import { mapGetters, mapState } from "vuex";
 import Select2 from "v-select2-component";
 export default {
     components: { Select2 },
@@ -728,10 +728,10 @@ export default {
             })
         };
     },
-    computed: {
-        ...mapGetters(["progress"]),
-        ...mapState(["progress"])
-    },
+    // computed: {
+    //     ...mapGetters(["progress"]),
+    //     ...mapState(["progress"])
+    // },
     methods: {
         loadBuildings() {
             axios.get("api/building").then(
@@ -757,7 +757,7 @@ export default {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("api/progress/" + this.form.id)
+                .put("/api/progress/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -777,7 +777,7 @@ export default {
         editModal(progress) {
             this.editmode = true;
             this.form.reset();
-            progress.projectName = progress.building.projectName;
+            progress.projectName = progress.projectName;
             $("#addNew").modal("show");
             this.form.fill(progress);
         },
@@ -788,15 +788,21 @@ export default {
             $("#addNew").modal("show");
         },
         deleteProgress(item) {
-            item.projectName = item.building.projectName;
+            item.projectName = item.projectName;
             Swal.fire({
-                title: window.translate('progress.alert.delete_building_title'),
-                text: window.translate('progress.alert.delete_building_text') + ` [${item.projectName}]`,
+                title: window.translate("progress.alert.delete_building_title"),
+                text:
+                    window.translate("progress.alert.delete_building_text") +
+                    ` [${item.projectName}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                cancelButtonText: window.translate('progress.alert.delete_building_cancel_button_text'),
-                confirmButtonText: window.translate('progress.alert.delete_building_confirm_button_text')
+                cancelButtonText: window.translate(
+                    "progress.alert.delete_building_cancel_button_text"
+                ),
+                confirmButtonText: window.translate(
+                    "progress.alert.delete_building_confirm_button_text"
+                )
             }).then(result => {
                 // Send request to the server
                 if (result.value) {
@@ -804,8 +810,12 @@ export default {
                         .delete("api/progress/" + item.id)
                         .then(() => {
                             Swal.fire(
-                                window.translate('progress.alert.comfirm_delete_title'),
-                                window.translate('progress.alert.confirm_delete_message'),
+                                window.translate(
+                                    "progress.alert.comfirm_delete_title"
+                                ),
+                                window.translate(
+                                    "progress.alert.confirm_delete_message"
+                                ),
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
@@ -893,9 +903,11 @@ export default {
                 },
                 {
                     text:
-                        "<i class='bi bi-list-check mr-1'></i>"+ window.translate(
-                                    "datatables.alert.display_selected_record_title"
-                                ) +"",
+                        "<i class='bi bi-list-check mr-1'></i>" +
+                        window.translate(
+                            "datatables.alert.display_selected_record_title"
+                        ) +
+                        "",
                     action: function(e, dt, node, config) {
                         var rowsel = dt
                             .rows({ selected: true })
@@ -908,7 +920,7 @@ export default {
                             return Swal.fire({
                                 title: window.translate(
                                     "datatables.alert.display_selected_record_empty_title"
-                                ) ,
+                                ),
                                 text: window.translate(
                                     "datatables.alert.display_selected_record_empty_text"
                                 ),
@@ -933,27 +945,26 @@ export default {
                         table.draw();
                     }
                 },
-                        {
-                            text:
-                                "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
-                            action: function(e, dt, node, config) {
-                                console.info("button: Clear");
-                                $.fn.dataTable.ext.search.pop();
-                                dt.search("").draw();
-                                dt.columns()
-                                    .search("")
-                                    .draw();
-                                dt.rows().deselect();
-                                dt.ajax.reload();
-                            }
-                        }
+                {
+                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                    action: function(e, dt, node, config) {
+                        console.info("button: Clear");
+                        $.fn.dataTable.ext.search.pop();
+                        dt.search("").draw();
+                        dt.columns()
+                            .search("")
+                            .draw();
+                        dt.rows().deselect();
+                        dt.ajax.reload();
+                    }
+                }
             ],
             columns: [
                 {
-                        data: null,
-                        defaultContent: "",
-                        className: "dt-body-center notexport"
-                    },
+                    data: null,
+                    defaultContent: "",
+                    className: "dt-body-center notexport"
+                },
                 {
                     data: "building.projectName"
                 },
@@ -974,7 +985,13 @@ export default {
                 {
                     data: "totProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -988,7 +1005,13 @@ export default {
                 {
                     data: "aisProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1002,7 +1025,13 @@ export default {
                 {
                     data: "Progress3bb",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1016,7 +1045,13 @@ export default {
                 {
                     data: "sinetProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1030,7 +1065,13 @@ export default {
                 {
                     data: "fnProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1044,7 +1085,13 @@ export default {
                 {
                     data: "trueProgress",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
+                        if (data == null) {
+                            return (
+                                '<span class="text-danger">' +
+                                "ไม่ได้กรอกข้อมูล" +
+                                "</span>"
+                            );
+                        } else if (data == "") {
                             return (
                                 '<span class="text-danger">' +
                                 "ไม่ได้กรอกข้อมูล" +
@@ -1090,18 +1137,18 @@ export default {
                 }, 0);
             },
             columnDefs: [
-                    {
-                        targets: 0,
-                        searchable: false,
-                        orderable: false,
-                        className: "dt-body-center",
-                        checkboxes: {
-                            selectRow: true
-                        }
+                {
+                    targets: 0,
+                    searchable: false,
+                    orderable: false,
+                    className: "dt-body-center",
+                    checkboxes: {
+                        selectRow: true
                     }
-                ],
-                select: { selector: "td:not(:last-child)", style: "os" },
-                order: [[1, "desc"]],
+                }
+            ],
+            select: { selector: "td:not(:last-child)", style: "os" },
+            order: [[1, "desc"]]
         });
 
         $("tbody", this.$refs.progress).on("click", ".edit-progress", function(

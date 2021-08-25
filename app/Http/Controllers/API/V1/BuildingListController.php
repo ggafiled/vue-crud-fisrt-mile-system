@@ -6,6 +6,7 @@ use App\Http\Controllers\API\V1\BaseController;
 use Illuminate\Http\Request;
 use App\Models\Building;
 use App\Models\Progress;
+use Carbon\Carbon;
 use Exception;
 
 
@@ -54,7 +55,6 @@ class BuildingListController extends BaseController
      */
     public function create()
     {
-
     }
 
     /**
@@ -111,5 +111,15 @@ class BuildingListController extends BaseController
     public function destroy($id)
     {
         //
+    }
+
+    public function contactAlret()
+    {
+        try {
+            $contact_alret = Building::where('contractDateEnd', '<=', Carbon::now()->addDays(60))->get();
+            return $this->sendResponse($contact_alret, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($contact_alret, trans('actions.get.fialed'));
+        }
     }
 }

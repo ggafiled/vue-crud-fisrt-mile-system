@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Area3BB;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
