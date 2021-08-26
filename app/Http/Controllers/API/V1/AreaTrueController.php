@@ -30,4 +30,60 @@ class AreaTrueController extends BaseController
             return $this->sendError($areaTrue, trans('actions.get.fialed'));
         }
     }
+
+
+/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        try {
+            $areaTrue = new AreaTrue([
+                'AreaTrue' => $request->input('AreaTrue'),
+            ]);
+            $areaTrue->save();
+            return $this->sendResponse($areaTrue, trans('actions.created.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($areaTrue, trans('actions.created.fialed'));
+        }
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        try {
+            $areaTrue = AreaTrue::find($id);
+            $areaTrue->update($request->all());
+            return $this->sendResponse($areaTrue, trans('actions.updated.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($areaTrue, trans('actions.updated.fialed'));
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try {
+            $areaTrue = AreaTrue::find($id);
+            $areaTrue->delete();
+            return $this->sendResponse($areaTrue, trans('actions.destroy.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($areaTrue, trans('actions.destroy.fialed'));
+        }
+    }
 }

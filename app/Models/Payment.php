@@ -11,7 +11,10 @@ class Payment extends Model
     use HasFactory,SoftDeletes;
     protected $fillable = [
         'id',
-        'paymentType'
+        'paymentType',
+        'created_at',
+        'updated_at',
+        'deleted_at'
     ];
 
     public function building()

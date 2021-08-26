@@ -30,4 +30,59 @@ class AreaAisController extends BaseController
             return $this->sendError($areaAis, trans('actions.get.fialed'));
         }
     }
+
+/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        try {
+            $areaAis = new AreaAis([
+                'areaAis' => $request->input('areaAis'),
+            ]);
+            $areaAis->save();
+            return $this->sendResponse($areaAis, trans('actions.created.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($areaAis, trans('actions.created.fialed'));
+        }
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        try {
+            $areaAis = AreaAis::find($id);
+            $areaAis->update($request->all());
+            return $this->sendResponse($areaAis, trans('actions.updated.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($areaAis, trans('actions.updated.fialed'));
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try {
+            $areaAis = AreaAis::find($id);
+            $areaAis->delete();
+            return $this->sendResponse($areaAis, trans('actions.destroy.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($areaAis, trans('actions.destroy.fialed'));
+        }
+    }
 }

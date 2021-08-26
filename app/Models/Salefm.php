@@ -8,14 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Salefm extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
     protected $fillable = [
         'id',
-        'nameSale'
+        'nameSale',
+        'created_at',
+        'updated_at',
+        'deleted_at'
     ];
 
     public function building()
-	{
-		return $this->hasOne('App\Models\Building','nameSale_id','id');
-	}
+    {
+        return $this->hasOne('App\Models\Building', 'nameSale_id', 'id');
+    }
 }

@@ -30,4 +30,59 @@ class AreaFiberNetController extends BaseController
             return $this->sendError($areaFiberNet, trans('actions.get.fialed'));
         }
     }
+
+/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        try {
+            $areaFiberNet = new AreaFiberNet([
+                'AreaTrue' => $request->input('AreaTrue'),
+            ]);
+            $areaFiberNet->save();
+            return $this->sendResponse($areaFiberNet, trans('actions.created.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($areaFiberNet, trans('actions.created.fialed'));
+        }
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        try {
+            $areaFiberNet = AreaFiberNet::find($id);
+            $areaFiberNet->update($request->all());
+            return $this->sendResponse($areaFiberNet, trans('actions.updated.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($areaFiberNet, trans('actions.updated.fialed'));
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try {
+            $areaFiberNet = AreaFiberNet::find($id);
+            $areaFiberNet->delete();
+            return $this->sendResponse($areaFiberNet, trans('actions.destroy.success'));
+        } catch (Exception $ex) {
+            return $this->sendError($areaFiberNet, trans('actions.destroy.fialed'));
+        }
+    }
 }
