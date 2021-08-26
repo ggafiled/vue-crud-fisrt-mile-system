@@ -381,6 +381,12 @@ return [
             'icon' => 'bi bi-gear-fill',
             'roles'  => ['superadministrator', 'administrator'],
         ],
+        [
+            'text' => 'Select2',
+            'url'  => '/Select2',
+            'icon' => 'bi bi-gear-fill',
+            'roles'  => ['superadministrator', 'administrator'],
+        ],
     ],
 
     /*

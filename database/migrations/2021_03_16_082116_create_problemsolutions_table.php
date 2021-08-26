@@ -17,6 +17,7 @@ class CreateProblemsolutionsTable extends Migration
             $table->id();
             $table->string('problemSolution')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

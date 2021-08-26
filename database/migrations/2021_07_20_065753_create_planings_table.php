@@ -36,7 +36,6 @@ class CreatePlaningsTable extends Migration
             $table->string('jobType')->nullable();
             $table->date('appointmentDate')->nullable();
             $table->time('appointmentTime')->nullable();
-            $table->string('technicianPlaning')->nullable();
             $table->string('idRequired')->nullable();
             $table->string('status')->nullable();
             $table->string('subStatus')->nullable();

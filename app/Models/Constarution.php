@@ -12,6 +12,11 @@ class Constarution extends Model
 
     protected $fillable = [
         'building_id',
+        'projectNameTot',
+        'projectName3bb',
+        'projectNameTrue',
+        'projectNameAis',
+        'projectNameFiberNet',
         'desingBy',
         'surveyDesing',
         'surveyDesingDate',

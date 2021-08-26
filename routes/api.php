@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-Log::debug('User:' . serialize($request->user()));
+    Log::debug('User:' . serialize($request->user()));
     return $request->user();
 });
 
@@ -29,7 +29,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::put('profile', 'ProfileController@updateProfile');
     Route::get('role/list', 'RoleController@list');
     Route::post('change-password', 'ProfileController@changePassword');
-    Route::get('permission/list','PermissionController@list');
+    Route::get('permission/list', 'PermissionController@list');
     Route::get('user/list', 'UserController@list');
     Route::get('team/list', 'TeamController@list');
     Route::get('buildinglist/nonContract', 'BuildingListController@nonContract');
@@ -39,17 +39,21 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     // Route::get('tickets/{ticket_id}', 'TicketsController@show'); // แสดงหน้าตั๋วอันเดียวตาม ไอดี ที่ส่งมา
     Route::post('comment', 'CommentsController@postComment');
 
-Route::apiResources([
+    Route::apiResources([
         'user' => 'UserController',
         'role' => 'RoleController',
         'permission' => 'PermissionController',
         'building' => 'BuildingController',
+        'area3bb' => 'Area3BBController',
+        'areatrue' => 'AreaTrueController',
+        'areaais' => 'AreaAisController',
+        'areafibernet' => 'AreaFiberNetController',
         'buildinglist' => 'BuildingListController',
         'constarution' => 'ConstarutionController',
         'progress' => 'ProgressController',
         'planing' => 'PlaningController',
         'team' => 'TeamController',
-        'dashboard'=>'DashboardController',
+        'dashboard' => 'DashboardController',
         // 'tickets' => 'TicketsController',
         'backup' => 'BackupController'
     ]);

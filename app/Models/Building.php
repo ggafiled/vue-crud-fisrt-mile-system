@@ -8,25 +8,30 @@ use Illuminate\Database\Eloquent\Model;
 
 class Building extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
     protected $fillable = [
         'id',
+        'area3BB_id',
+        'areaAis_id',
+        'areaFiberNet_id',
+        'areaTrue_id',
+        'workTime_id',
+        'salefm_id',
+        'payment_id',
+        'operater_id',
+        'providertrue_id',
+        'teamserway_id',
         'projectName',
-        'projectNameTot',
-        'projectName3bb',
-        'projectNameTrue',
-        'projectNameAis',
-        'projectNameFiberNet',
         'buildingSum',
         'floorSum',
         'roomSum',
         'fmCode',
-        'nameManager',
-        'phoneManager',
-        'mailManager',
         'nameNiti',
         'phoneNiti',
         'mailNiti',
+        'nameManager',
+        'phoneManager',
+        'mailManager',
         'houseNumber',
         'squadNumber',
         'alleyName',
@@ -41,35 +46,79 @@ class Building extends Model
         'contractDate',
         'contractDateEnd',
         'spendSpace',
-        'condition',
         'contractPeriod',
         'reNewContact',
         'areaN',
         'bbN',
-        'area3BB',
-        'areaTrue',
-        'areaTrueNew',
-        'areaAis',
-        'areaFiberNet',
-        'operatingTime',
     ];
 
     public function progress()
-	{
-		return $this->hasOne('App\Models\Progress','building_id','id');
-	}
+    {
+        return $this->hasOne('App\Models\Progress', 'building_id', 'id');
+    }
 
     public function constarution()
-	{
-		return $this->belongsTo('App\Models\Constarution','building_id','id');
-	}
+    {
+        return $this->belongsTo('App\Models\Constarution', 'building_id', 'id');
+    }
 
     public function planning()
-	{
-		return $this->belongsTo('App\Models\planning','building_id','id');
-	}
+    {
+        return $this->belongsTo('App\Models\planning', 'building_id', 'id');
+    }
 
-    public function get_building() {
+    public function get_building()
+    {
         return $this->building()->where('building_id');
+    }
+
+    public function area3bb()
+    {
+        return $this->hasOne('App\Models\Area3BB', 'id', 'area3BB_id');
+    }
+
+    public function areaAis()
+    {
+        return $this->hasOne('App\Models\AreaAis', 'id', 'areaAis_id');
+    }
+
+    public function areaFiberNet()
+    {
+        return $this->hasOne('App\Models\AreaFiberNet', 'id', 'areaFibetNet_id');
+    }
+
+    public function areaTrue()
+    {
+        return $this->hasOne('App\Models\AreaTrue', 'id', 'areaTrue_id');
+    }
+
+    public function workTime()
+    {
+        return $this->hasOne('App\Models\Worktime', 'id', 'workTime_id');
+    }
+
+    public function Salefm()
+    {
+        return $this->hasOne('App\Models\Salefm', 'id', 'salefm_id');
+    }
+
+    public function Payment()
+    {
+        return $this->hasOne('App\Models\Payment', 'id', 'payment_id');
+    }
+
+    public function Operater()
+    {
+        return $this->hasOne('App\Models\Operter', 'id', 'operater_id');
+    }
+
+    public function Providertrue()
+    {
+        return $this->hasOne('App\Models\Providertrue', 'id', 'providertrue_id');
+    }
+
+    public function Teamserway()
+    {
+        return $this->hasOne('App\Models\Teamserway', 'id', 'teamserway_id');
     }
 }

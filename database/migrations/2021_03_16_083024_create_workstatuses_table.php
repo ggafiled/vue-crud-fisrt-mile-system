@@ -17,6 +17,7 @@ class CreateWorkstatusesTable extends Migration
             $table->id();
             $table->string('workStatus')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

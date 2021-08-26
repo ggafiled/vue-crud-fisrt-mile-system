@@ -45,6 +45,11 @@ class PlaningController extends BaseController{
     {
         $Planing = new Planing([
             'building_id' => $request->input('building_id'),
+            'technician_id' => $request->input('technician_id'),
+            'problemsolution_id' => $request->input('problemsolution_id'),
+            'teamtechnician_id' => $request->input('teamtechnician_id'),
+            'callver_id' => $request->input('callver_id'),
+            'callverstatus_id' => $request->input('callverstatus_id'),
             'name' => $request->input('name'),
             'surname' => $request->input('surname'),
             'tel' => $request->input('tel'),

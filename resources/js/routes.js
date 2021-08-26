@@ -180,5 +180,13 @@ export default [{
             roles: ["superadministrator"]
         }
     },
+    {
+        path: "/Select2",
+        component: require("./components/Select2/Select2.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
     { path: "*", component: require("./components/NotFound.vue").default }
 ];

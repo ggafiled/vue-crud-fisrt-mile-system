@@ -728,55 +728,12 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Area3BB</label>
-                                            <select
-                                                v-model="form.area3BB"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your area 3b..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'area3BB'
-                                                    )
-                                                }"
+                                            <Select2
+                                                v-model="form.area3BB_id"
+                                                :options="area3bb"
+                                                :settings="settings"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกพื้นที่</option
-                                                >
-                                                <option value="RO 1"
-                                                    >RO 1</option
-                                                >
-                                                <option value="RO 2"
-                                                    >RO 2</option
-                                                >
-                                                <option value="RO 3"
-                                                    >RO 3</option
-                                                >
-                                                <option value="RO 4"
-                                                    >RO 4</option
-                                                >
-                                                <option value="RO 5"
-                                                    >RO 5</option
-                                                >
-                                                <option value="RO 6"
-                                                    >RO 6</option
-                                                >
-                                                <option value="RO 7"
-                                                    >RO 7</option
-                                                >
-                                                <option value="RO 8"
-                                                    >RO 8</option
-                                                >
-                                                <option value="RO 9"
-                                                    >RO 9</option
-                                                >
-                                                <option value="RO 10"
-                                                    >RO 10</option
-                                                >
-                                                <option value="RO 10/1"
-                                                    >RO 10/1</option
-                                                >
-                                                <option value="N/A">N/A</option>
-                                            </select>
+                                            </Select2>
                                             <has-error
                                                 :form="form"
                                                 field="area3BB"
@@ -786,45 +743,12 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>AreaTrue</label>
-                                            <select
-                                                v-model="form.areaTrue"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your area Tr..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'areaTrue'
-                                                    )
-                                                }"
+                                            <Select2
+                                                v-model="form.areaTrue_id"
+                                                :options="areaTrue"
+                                                :settings="settings"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกพื้นที่</option
-                                                >
-                                                <option
-                                                    value="BMA 1 (North West)"
-                                                >
-                                                    BMA 1 (North West)
-                                                </option>
-                                                <option
-                                                    value="BMA 2 (South West)"
-                                                >
-                                                    BMA 2 (South West)
-                                                </option>
-                                                <option
-                                                    value="BMA 3 (North East)"
-                                                >
-                                                    BMA 3 (North East)
-                                                </option>
-                                                <option
-                                                    value="BMA 4 (South East)"
-                                                >
-                                                    BMA 4 (South East)
-                                                </option>
-                                                <option value="BMA 5 (Central)"
-                                                    >BMA 5 (Central)</option
-                                                >
-                                                <option value="N/A">N/A</option>
-                                            </select>
+                                            </Select2>
                                             <has-error
                                                 :form="form"
                                                 field="areaTrue"
@@ -834,45 +758,12 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>AreaTrueNew</label>
-                                            <select
-                                                v-model="form.areaTrueNew"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your area Tr..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'areaTrueNew'
-                                                    )
-                                                }"
+                                            <Select2
+                                                v-model="form.areaTrue_id"
+                                                :options="areatrue"
+                                                :settings="settings"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกพื้นที่</option
-                                                >
-                                                <option
-                                                    value="BMA 1 (North West)"
-                                                >
-                                                    BMA 1 (North West)
-                                                </option>
-                                                <option
-                                                    value="BMA 2 (South West)"
-                                                >
-                                                    BMA 2 (South West)
-                                                </option>
-                                                <option
-                                                    value="BMA 3 (North East)"
-                                                >
-                                                    BMA 3 (North East)
-                                                </option>
-                                                <option
-                                                    value="BMA 4 (South East)"
-                                                >
-                                                    BMA 4 (South East)
-                                                </option>
-                                                <option value="BMA 5 (Central)"
-                                                    >BMA 5 (Central)</option
-                                                >
-                                                <option value="N/A">N/A</option>
-                                            </select>
+                                            </Select2>
                                             <has-error
                                                 :form="form"
                                                 field="areaTrueNew"
@@ -882,23 +773,12 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>AreaAis</label>
-                                            <select
-                                                v-model="form.areaAis"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your area A.."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'areaAis'
-                                                    )
-                                                }"
+                                            <Select2
+                                                v-model="form.areaAis_id"
+                                                :options="areaAis"
+                                                :settings="settings"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกพื้นที่</option
-                                                >
-                                                <option value="Yes">Yes</option>
-                                                <option value="N/A">N/A</option>
-                                            </select>
+                                            </Select2>
                                             <has-error
                                                 :form="form"
                                                 field="areaAis"
@@ -910,23 +790,12 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Area FiberNet</label>
-                                            <select
-                                                v-model="form.areaFiberNet"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your area F..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'areaFiberNet'
-                                                    )
-                                                }"
+                                            <Select2
+                                                v-model="form.areaFibetNet_id"
+                                                :options="areaFiberNet"
+                                                :settings="settings"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกพื้นที่</option
-                                                >
-                                                <option value="Yes">Yes</option>
-                                                <option value="N/A">N/A</option>
-                                            </select>
+                                            </Select2>
                                             <has-error
                                                 :form="form"
                                                 field="areaFiberNet"
@@ -1119,6 +988,38 @@ export default {
             }
 
             this.$Progress.finish();
+        },
+        loadArea3bbs() {
+            axios.get("api/area3bb").then(
+                response =>
+                    (this.area3bb = response.data.data.map(a => {
+                        return { text: a.area3BB, id: a.id };
+                    }))
+            );
+        },
+        loadAreaTrues() {
+            axios.get("api/areatrue").then(
+                response =>
+                    (this.areaTrue = response.data.data.map(a => {
+                        return { text: a.areaTrue, id: a.id };
+                    }))
+            );
+        },
+        loadAreaAis() {
+            axios.get("api/areaais").then(
+                response =>
+                    (this.areaAis = response.data.data.map(a => {
+                        return { text: a.areaAis, id: a.id };
+                    }))
+            );
+        },
+        loadAreaFiberNet() {
+            axios.get("api/areafibernet").then(
+                response =>
+                    (this.areaFiberNet = response.data.data.map(a => {
+                        return { text: a.areaFiberNet, id: a.id };
+                    }))
+            );
         },
         updateBuilding() {
             this.$Progress.start();
@@ -1455,6 +1356,10 @@ export default {
     created() {
         this.$Progress.start();
         this.loadBuildings();
+        this.loadArea3bbs();
+        this.loadAreaTrues();
+        this.loadAreaAis();
+        this.loadAreaFiberNet();
         this.$Progress.finish();
     },
     mounted() {

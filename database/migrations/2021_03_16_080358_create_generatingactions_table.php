@@ -17,6 +17,7 @@ class CreateGeneratingactionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('status')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
