@@ -174,7 +174,8 @@ export default [{
     },
     {
         path: "/data/validation",
-        component: require("./components/datavalidation/datavalidation.vue").default,
+        component: require("./components/datavalidation/Datavalidation.vue")
+            .default,
         meta: {
             requiresAuth: true,
             roles: ["superadministrator"]
