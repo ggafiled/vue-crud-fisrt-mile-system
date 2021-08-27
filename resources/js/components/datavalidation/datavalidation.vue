@@ -56,19 +56,17 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="https://codelapan.com/post/cara-install-ssl-certificate-di-xampp"
+                                                href="/data/contract_sell"
                                                 class="post-title"
-                                                >Cara Install SSL Certificate di
-                                                XAMPP</a
+                                                >Contract Sell(CRED)</a
                                             >
                                             <div
                                                 class="d-flex justify-content-between mt-3"
                                             >
                                                 <small class="text-muted"
-                                                    >6 Oktober 2020</small
+                                                    >แก้ไขข้อมูลชื่อเซลล์ที่ติดต่อ</small
                                                 >
-                                                <small class="text-muted"
-                                                    >1981 views
+                                                <small class="text-muted">
                                                 </small>
                                             </div>
                                         </li>
@@ -76,19 +74,109 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="https://codelapan.com/post/cara-install-ssl-certificate-di-xampp"
+                                                href="/data/spend_space"
                                                 class="post-title"
-                                                >Cara Install SSL Certificate di
-                                                XAMPP</a
+                                                >SpendSpace(CRED)</a
                                             >
                                             <div
                                                 class="d-flex justify-content-between mt-3"
                                             >
                                                 <small class="text-muted"
-                                                    >6 Oktober 2020</small
+                                                    >แก้ไขข้อมูลการชำระรายปี</small
                                                 >
+                                                <small class="text-muted">
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li
+                                            class="list-group-item bg-transparent"
+                                        >
+                                            <a href="/data/area_3bb" class="post-title"
+                                                >Area 3BB(CRED)</a
+                                            >
+                                            <div
+                                                class="d-flex justify-content-between mt-3"
+                                            >
                                                 <small class="text-muted"
-                                                    >1981 views
+                                                    >แก้ไขข้อมูลพื้นที่
+                                                    3บีบี</small
+                                                >
+                                                <small class="text-muted">
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li
+                                            class="list-group-item bg-transparent"
+                                        >
+                                            <a
+                                                href="/data/area_true"
+                                                class="post-title"
+                                                >Area True(CRED)</a
+                                            >
+                                            <div
+                                                class="d-flex justify-content-between mt-3"
+                                            >
+                                                <small class="text-muted"
+                                                    >แก้ไขข้อมูลพื้นที่
+                                                    ทรู</small
+                                                >
+                                                <small class="text-muted">
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li
+                                            class="list-group-item bg-transparent"
+                                        >
+                                            <a href="/data/area_ais" class="post-title"
+                                                >Area Ais(CRED)</a
+                                            >
+                                            <div
+                                                class="d-flex justify-content-between mt-3"
+                                            >
+                                                <small class="text-muted"
+                                                    >แก้ไขข้อมูลพื้นที่
+                                                    เอไอเอส</small
+                                                >
+                                                <small class="text-muted">
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li
+                                            class="list-group-item bg-transparent"
+                                        >
+                                            <a
+                                                href="/data/area_fibernet"
+                                                class="post-title"
+                                                >Area FiberNet(CRED)</a
+                                            >
+                                            <div
+                                                class="d-flex justify-content-between mt-3"
+                                            >
+                                                <small class="text-muted"
+                                                    >แก้ไขข้อมูลพื้นที่
+                                                    ไฟเบอร์เน็ต</small
+                                                >
+                                                <small class="text-muted">
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li
+                                            class="list-group-item bg-transparent"
+                                        >
+                                            <a
+                                                href="/data/operating_time"
+                                                class="post-title"
+                                                >Operating Time(CRED)</a
+                                            >
+                                            <div
+                                                class="d-flex justify-content-between mt-3"
+                                            >
+                                                <small class="text-muted"
+                                                    >แก้ไขข้อมูลพื้นที่
+                                                    เวลาเข้างาน</small
+                                                >
+                                                <small class="text-muted">
+
                                                 </small>
                                             </div>
                                         </li>
@@ -140,10 +228,10 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="https://codelapan.com/post/cara-install-ssl-certificate-di-xampp"
+                                                href="Contract Sell"
                                                 class="post-title"
-                                                >Cara Install SSL Certificate
-                                                didsdd5895 XAMPP</a
+                                                >Create/Edit/delete(Contract
+                                                Sell)</a
                                             >
                                             <div
                                                 class="d-flex justify-content-between mt-3"

@@ -181,5 +181,68 @@ export default [{
             roles: ["superadministrator"]
         }
     },
+    {
+        path: "/data/contract_sell",
+        component: require("./components/datavalidation/building/contractsell.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
+    {
+        path: "/data/spend_space",
+        component: require("./components/datavalidation/building/spendspace.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
+    {
+        path: "/data/area_3bb",
+        component: require("./components/datavalidation/building/area3bb.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
+    {
+        path: "/data/area_true",
+        component: require("./components/datavalidation/building/areatrue.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
+    {
+        path: "/data/area_ais",
+        component: require("./components/datavalidation/building/areaais.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
+    {
+        path: "/data/area_fibernet",
+        component: require("./components/datavalidation/building/areafibernet.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
+    {
+        path: "/data/operating_time",
+        component: require("./components/datavalidation/building/opertingtime.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
     { path: "*", component: require("./components/NotFound.vue").default }
 ];

@@ -525,20 +525,15 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Contract Sell</label>
-                                            <input
-                                                v-model="form.contractSell"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your contract..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'contractSell'
-                                                    )
-                                                }"
-                                            />
+                                            <Select2
+                                                v-model="form.payment_id"
+                                                :options="nameSale"
+                                                :settings="settings"
+                                            >
+                                            </Select2>
                                             <has-error
                                                 :form="form"
-                                                field="contractSell"
+                                                field="nameSale"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -585,50 +580,15 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>SpendSpace</label>
-                                            <select
-                                                v-model="form.spendSpace"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your spendspace..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'spendSpace'
-                                                    )
-                                                }"
+                                            <Select2
+                                                v-model="form.payment_id"
+                                                :options="paymentType"
+                                                :settings="settings"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกรูปแบบการชำระ</option
-                                                >
-                                                <option value="ไม่แบ่งรายได้"
-                                                    >ไม่แบ่งรายได้</option
-                                                >
-                                                <option
-                                                    value="แบ่งรายได้ทุกเดือน"
-                                                >
-                                                    แบ่งรายได้ทุกเดือน
-                                                </option>
-                                                <option value="ชำระรายปี"
-                                                    >ชำระรายปี</option
-                                                >
-                                                <option
-                                                    value="ชำระรายปีแล้วแบ่งรายได้"
-                                                >
-                                                    ชำระรายปีแล้วแบ่งรายได้
-                                                </option>
-                                                <option
-                                                    value="ชำระรายปีแบบขั้นบันได"
-                                                >
-                                                    ชำระรายปีแบบขั้นบันได
-                                                </option>
-                                                <option
-                                                    value="ยังไม่ได้ทำสัญญา"
-                                                >
-                                                    ยังไม่ได้ทำสัญญา
-                                                </option>
-                                            </select>
+                                            </Select2>
                                             <has-error
                                                 :form="form"
-                                                field="spendSpace"
+                                                field="paymentType"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -728,55 +688,12 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Area3BB</label>
-                                            <select
-                                                v-model="form.area3BB"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your area 3b..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'area3BB'
-                                                    )
-                                                }"
+                                            <Select2
+                                                v-model="form.area3BB_id"
+                                                :options="area3BB"
+                                                :settings="settings"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกพื้นที่</option
-                                                >
-                                                <option value="RO 1"
-                                                    >RO 1</option
-                                                >
-                                                <option value="RO 2"
-                                                    >RO 2</option
-                                                >
-                                                <option value="RO 3"
-                                                    >RO 3</option
-                                                >
-                                                <option value="RO 4"
-                                                    >RO 4</option
-                                                >
-                                                <option value="RO 5"
-                                                    >RO 5</option
-                                                >
-                                                <option value="RO 6"
-                                                    >RO 6</option
-                                                >
-                                                <option value="RO 7"
-                                                    >RO 7</option
-                                                >
-                                                <option value="RO 8"
-                                                    >RO 8</option
-                                                >
-                                                <option value="RO 9"
-                                                    >RO 9</option
-                                                >
-                                                <option value="RO 10"
-                                                    >RO 10</option
-                                                >
-                                                <option value="RO 10/1"
-                                                    >RO 10/1</option
-                                                >
-                                                <option value="N/A">N/A</option>
-                                            </select>
+                                            </Select2>
                                             <has-error
                                                 :form="form"
                                                 field="area3BB"
@@ -786,45 +703,12 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>AreaTrue</label>
-                                            <select
-                                                v-model="form.areaTrue"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your area Tr..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'areaTrue'
-                                                    )
-                                                }"
+                                            <Select2
+                                                v-model="form.areaTrue_id"
+                                                :options="areaTrue"
+                                                :settings="settings"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกพื้นที่</option
-                                                >
-                                                <option
-                                                    value="BMA 1 (North West)"
-                                                >
-                                                    BMA 1 (North West)
-                                                </option>
-                                                <option
-                                                    value="BMA 2 (South West)"
-                                                >
-                                                    BMA 2 (South West)
-                                                </option>
-                                                <option
-                                                    value="BMA 3 (North East)"
-                                                >
-                                                    BMA 3 (North East)
-                                                </option>
-                                                <option
-                                                    value="BMA 4 (South East)"
-                                                >
-                                                    BMA 4 (South East)
-                                                </option>
-                                                <option value="BMA 5 (Central)"
-                                                    >BMA 5 (Central)</option
-                                                >
-                                                <option value="N/A">N/A</option>
-                                            </select>
+                                            </Select2>
                                             <has-error
                                                 :form="form"
                                                 field="areaTrue"
@@ -850,24 +734,20 @@
                                                 >
                                                 <option
                                                     value="BMA 1 (North West)"
+                                                    >BMA 1 (North West)</option
                                                 >
-                                                    BMA 1 (North West)
-                                                </option>
                                                 <option
                                                     value="BMA 2 (South West)"
+                                                    >BMA 2 (South West)</option
                                                 >
-                                                    BMA 2 (South West)
-                                                </option>
                                                 <option
                                                     value="BMA 3 (North East)"
+                                                    >BMA 3 (North East)</option
                                                 >
-                                                    BMA 3 (North East)
-                                                </option>
                                                 <option
                                                     value="BMA 4 (South East)"
+                                                    >BMA 4 (South East)</option
                                                 >
-                                                    BMA 4 (South East)
-                                                </option>
                                                 <option value="BMA 5 (Central)"
                                                     >BMA 5 (Central)</option
                                                 >
@@ -882,23 +762,12 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>AreaAis</label>
-                                            <select
-                                                v-model="form.areaAis"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your area A.."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'areaAis'
-                                                    )
-                                                }"
+                                            <Select2
+                                                v-model="form.areaAis_id"
+                                                :options="areaAis"
+                                                :settings="settings"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกพื้นที่</option
-                                                >
-                                                <option value="Yes">Yes</option>
-                                                <option value="N/A">N/A</option>
-                                            </select>
+                                            </Select2>
                                             <has-error
                                                 :form="form"
                                                 field="areaAis"
@@ -910,23 +779,12 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Area FiberNet</label>
-                                            <select
-                                                v-model="form.areaFiberNet"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your area F..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'areaFiberNet'
-                                                    )
-                                                }"
+                                            <Select2
+                                                v-model="form.areaFibetNet_id"
+                                                :options="areaFiberNet"
+                                                :settings="settings"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกพื้นที่</option
-                                                >
-                                                <option value="Yes">Yes</option>
-                                                <option value="N/A">N/A</option>
-                                            </select>
+                                            </Select2>
                                             <has-error
                                                 :form="form"
                                                 field="areaFiberNet"
@@ -936,64 +794,15 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Operating Time</label>
-                                            <select
-                                                v-model="form.operatingTime"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your operatingTime..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'operatingTime'
-                                                    )
-                                                }"
+                                            <Select2
+                                                v-model="form.workTime_id"
+                                                :options="workTime"
+                                                :settings="settings"
                                             >
-                                                <option disabled value="">
-                                                    เลือกเวลาในการปฏิบัติงาน
-                                                </option>
-                                                <option
-                                                    value="จันทร์ - ศุกร์ (9.00 - 17.00 น)"
-                                                >
-                                                    จันทร์ - ศุกร์ (9.00 - 17.00
-                                                    น)
-                                                </option>
-                                                <option
-                                                    value="จันทร์ - เสาร์ (9.00 - 17.00 น)"
-                                                >
-                                                    จันทร์ - เสาร์ (9.00 - 17.00
-                                                    น)
-                                                </option>
-                                                <option
-                                                    value="จันทร์ - ศุกร์ และเสาร์ครึ่งวันช่วงเช้า"
-                                                >
-                                                    จันทร์ - ศุกร์
-                                                    และเสาร์ครึ่งวันช่วงเช้า
-                                                </option>
-                                                <option
-                                                    value="จันทร์ - ศุกร์ และเสาร์ครึ่งวันช่วงบ่าย"
-                                                >
-                                                    จันทร์ - ศุกร์
-                                                    และเสาร์ครึ่งวันช่วงบ่าย
-                                                </option>
-                                                <option
-                                                    value="จันทร์ - ศุกร์ และวันเสาร์ ประสาน นิติฯ ก่อน"
-                                                >
-                                                    จันทร์ - ศุกร์ และวันเสาร์
-                                                    ประสาน นิติฯ ก่อน
-                                                </option>
-                                                <option
-                                                    value="จันทร์ - ศุกร์ และวันเสาร์-อาทิตย์ ประสาน นิติฯ ก่อน"
-                                                >
-                                                    จันทร์ - ศุกร์
-                                                    และวันเสาร์-อาทิตย์ ประสาน
-                                                    นิติฯ ก่อน
-                                                </option>
-                                                <option value="ทุกวัน"
-                                                    >ทุกวัน</option
-                                                >
-                                            </select>
+                                            </Select2>
                                             <has-error
                                                 :form="form"
-                                                field="operatingTime"
+                                                field="workTime"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -1043,11 +852,13 @@ export default {
             form: new Form({
                 id: "",
                 projectName: "",
-                projectNameTot: "",
-                projectName3bb: "",
-                projectNameAis: "",
-                projectNameTrue: "",
-                projectNameFiberNet: "",
+                nameSale: "",
+                paymentType: "",
+                area3BB: "",
+                areaTrue: "",
+                areaAis: "",
+                areaFiberNet: "",
+                workTime: "",
                 buildingSum: "",
                 floorSum: "",
                 roomSum: "",
@@ -1068,21 +879,13 @@ export default {
                 postalCode: "",
                 longitude: "",
                 latitude: "",
-                contractSell: "",
                 contractDate: "",
                 contractDateEnd: "",
-                spendSpace: "",
                 condition: "",
                 contractPeriod: "",
                 reNewContact: "",
                 areaN: "",
-                bbN: "",
-                area3BB: "",
-                areaTrue: "",
-                areaTrueNew: "",
-                areaAis: "",
-                areaFiberNet: "",
-                operatingTime: ""
+                bbN: ""
             })
         };
     },
@@ -1119,6 +922,62 @@ export default {
             }
 
             this.$Progress.finish();
+        },
+        loadArea3bbs() {
+            axios.get("api/area3bb").then(
+                response =>
+                    (this.area3BB = response.data.data.map(a => {
+                        return { text: a.area3BB, id: a.id };
+                    }))
+            );
+        },
+        loadAreaTrues() {
+            axios.get("api/areatrue").then(
+                response =>
+                    (this.areaTrue = response.data.data.map(a => {
+                        return { text: a.areaTrue, id: a.id };
+                    }))
+            );
+        },
+        loadAreaAis() {
+            axios.get("api/areaais").then(
+                response =>
+                    (this.areaAis = response.data.data.map(a => {
+                        return { text: a.areaAis, id: a.id };
+                    }))
+            );
+        },
+        loadAreaFiberNet() {
+            axios.get("api/areafibernet").then(
+                response =>
+                    (this.areaFiberNet = response.data.data.map(a => {
+                        return { text: a.areaFiberNet, id: a.id };
+                    }))
+            );
+        },
+        loadWorktime() {
+            axios.get("api/worktime").then(
+                response =>
+                    (this.workTime = response.data.data.map(a => {
+                        return { text: a.workTime, id: a.id };
+                    }))
+            );
+        },
+        loadPayment() {
+            axios.get("api/payment").then(
+                response =>
+                    (this.paymentType = response.data.data.map(a => {
+                        return { text: a.paymentType, id: a.id };
+                    }))
+            );
+        },
+        loadSaleFm() {
+            axios.get("api/salefm").then(
+                response =>
+                    (this.nameSale = response.data.data.map(a => {
+                        return { text: a.nameSale, id: a.id };
+                    }))
+            );
         },
         updateBuilding() {
             this.$Progress.start();
@@ -1455,6 +1314,13 @@ export default {
     created() {
         this.$Progress.start();
         this.loadBuildings();
+        this.loadArea3bbs();
+        this.loadAreaTrues();
+        this.loadAreaAis();
+        this.loadAreaFiberNet();
+        this.loadWorktime();
+        this.loadPayment();
+        this.loadSaleFm();
         this.$Progress.finish();
     },
     mounted() {

@@ -15,8 +15,9 @@ class CreateAreaFiberNetsTable extends Migration
     {
         Schema::create('area_fiber_nets', function (Blueprint $table) {
             $table->id();
-            $table->string('areaFibetNet')->nullable();
+            $table->string('areaFiberNet')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

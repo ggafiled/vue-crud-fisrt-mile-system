@@ -51,7 +51,6 @@ class CreateBuildingsTable extends Migration
             $table->date('contractDate')->nullable();
             $table->date('contractDateEnd')->nullable();
             $table->string('spendSpace')->nullable();
-            $table->string('condition')->nullable();
             $table->string('contractPeriod')->nullable();
             $table->string('reNewContact')->nullable();
             $table->string('balance')->nullable();

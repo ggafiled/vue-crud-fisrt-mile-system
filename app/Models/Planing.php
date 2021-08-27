@@ -14,6 +14,10 @@ class Planing extends Model
 
     protected $fillable = [
         'building_id',
+        'problemsolution_id',
+        'technician_id',
+        'callver_id',
+        'callverstatus_id',
         'name',
         'surname',
         'tel',
@@ -28,7 +32,6 @@ class Planing extends Model
         'jobType',
         'appointmentDate',
         'appointmentTime',
-        'technicianPlaning',
         'idRequired',
         'status',
         'subStatus',
@@ -49,4 +52,25 @@ class Planing extends Model
 		return $this->hasMany('App\Models\Building','id','building_id');
 	}
 
+    public function Problemsolution()
+	{
+		return $this->hasOne('App\Models\Problemsolution','id','problemsolution_id');
+	}
+
+    public function Technician()
+	{
+		return $this->hasOne('App\Models\Technician','id','technician_id');
+	}
+
+    public function Callver()
+	{
+		return $this->hasOne('App\Models\Callver','id','callver_id');
+	}
+
+    public function Callverstatus()
+	{
+		return $this->hasOne('App\Models\Callverstatus','id','callverstatus_id');
+	}
+
 }
+

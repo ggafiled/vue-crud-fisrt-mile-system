@@ -13,14 +13,14 @@ class AreaFibetNetSeeder extends Seeder
      */
     public function run()
     {
-        $areaFibetNets = [
+        $areaFiberNets = [
             [
-                'areaFibetNet' => 'YES',
+                'areaFiberNet' => 'YES',
             ],
             [
-                'areaFibetNet' => 'N/A',
+                'areaFiberNet' => 'N/A',
             ],
         ];
-        AreaFiberNet::insert($areaFibetNets);
+        AreaFiberNet::insert($areaFiberNets);
     }
 }

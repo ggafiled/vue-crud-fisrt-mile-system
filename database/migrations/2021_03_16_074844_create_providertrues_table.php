@@ -17,6 +17,7 @@ class CreateProvidertruesTable extends Migration
             $table->id();
             $table->string('providerTrue')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
