@@ -244,5 +244,41 @@ export default [{
             roles: ["superadministrator"]
         }
     },
+    {
+        path: "/data/problemsolution",
+        component: require("./components/datavalidation/planning/problemsolution.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
+    {
+        path: "/data/technician",
+        component: require("./components/datavalidation/planning/technician.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
+    {
+        path: "/data/callver",
+        component: require("./components/datavalidation/planning/callver.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
+    {
+        path: "/data/callverstatus",
+        component: require("./components/datavalidation/planning/callverstatus.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
     { path: "*", component: require("./components/NotFound.vue").default }
 ];
