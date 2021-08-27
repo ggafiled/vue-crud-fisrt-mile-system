@@ -6,6 +6,7 @@ use Auth;
 use Exception;
 use App\Http\Requests\Users\UserRequest;
 use App\Models\Role;
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -82,6 +83,11 @@ class UserController extends BaseController
 
             $access = Role::find($request['role']);
             $user->attachRole($access);
+
+            if((int) $request->input("account_status") === 2){
+                $user->delete();
+            }
+
             return $this->sendResponse($user, trans('actions.created.success'));
         } catch (Exception $ex) {
             return $this->sendError($user, trans('actions.created.fialed'));
@@ -100,13 +106,20 @@ class UserController extends BaseController
     public function update(UserRequest $request, $id)
     {
         try {
-            $user = User::findOrFail($id);
+            $user = User::withTrashed()->findOrFail($id);
 
             if (!empty($request->password)) {
                 $request->merge(['password' => Hash::make($request['password'])]);
             }
 
-            $user->update($request->all());
+            if((int) $request->input("account_status") === 1){
+                $user->deleted_at = null;
+            }else{
+                $user->deleted_at = Carbon::now();
+            }
+
+             $user->update($request->all());
+
             $access = Role::find($request['role']);
             $user->syncRoles([$access]);
             return $this->sendResponse($user, trans('actions.updated.success'));

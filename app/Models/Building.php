@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Building extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes, LogsActivity;
+
     protected $fillable = [
         'id',
         'projectName',
@@ -53,6 +56,15 @@ class Building extends Model
         'areaFiberNet',
         'operatingTime',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}")
+        ->useLogName('building')
+        ->logOnlyDirty();
+        // Chain fluent methods for configuration options
+    }
 
     public function progress()
 	{

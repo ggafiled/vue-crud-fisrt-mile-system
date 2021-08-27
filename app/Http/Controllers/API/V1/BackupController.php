@@ -13,6 +13,7 @@ class BackupController extends BaseController
     public function __construct()
     {
         $this->middleware('auth:api');
+        $this->middleware('role:superadministrator|administrator');
     }
 
     /**

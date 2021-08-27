@@ -4,10 +4,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div
-                            class="card-header d-flex justify-content-between text-dark fw-bold fs-5"
-                        >
-                            DataValidation
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i
+                                    class="mdi mdi-cog-outline mr-1"
+                                ></i>
+                                {{ translate("DataValidation") }}
+                            </h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-3 pt-2 ">

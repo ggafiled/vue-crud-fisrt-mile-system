@@ -11,11 +11,12 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
 use Mpociot\Teamwork\Traits\UserHasTeams;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class User extends Authenticatable // implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, HasApiTokens,UserHasTeams,SoftDeletes;
-    use LaratrustUserTrait;
+    use HasFactory, Notifiable, HasApiTokens, UserHasTeams, SoftDeletes, LaratrustUserTrait, LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -32,7 +33,7 @@ class User extends Authenticatable // implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password','remember_token', 'two_factor_secret', 'two_factor_recovery_codes',
+        'password', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes',
     ];
 
     /**
@@ -44,7 +45,17 @@ class User extends Authenticatable // implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-     /**
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}")
+        ->logOnly(['name', 'email', 'password'])
+        ->useLogName('users')
+        ->logOnlyDirty();
+        // Chain fluent methods for configuration options
+    }
+
+    /**
      * Get the profile photo URL attribute.
      *
      * @return string
@@ -65,14 +76,14 @@ class User extends Authenticatable // implements MustVerifyEmail
     }
 
     public function roles()
-	{
-		return $this->belongsToMany('App\Models\Role');
-	}
+    {
+        return $this->belongsToMany('App\Models\Role');
+    }
 
-	public function permissions()
-	{
-		return $this->belongsToMany('App\Models\Permission');
-	}
+    public function permissions()
+    {
+        return $this->belongsToMany('App\Models\Permission');
+    }
 
     public function comments()
     {

@@ -50,6 +50,7 @@ class DatabaseBackUp extends Command
             $output = null;
 
             exec($command, $output, $returnVar);
+            activity('backup')->log('Backup, automatic processing. Dump new file already.');
         } catch (Exception $ex) {
             $result = Backup::create([
                 'chanel' => 'backup_log',
@@ -58,6 +59,7 @@ class DatabaseBackUp extends Command
                 'created_at' =>  Carbon::now(),
                 'updated_at' =>  Carbon::now()
             ]);
+            activity('backup')->log("Backup, automatic processing failure. because $ex->getMessage()");
             Mail::to(env("MAIL_ADMINISTRATOR"))->send(new BackedUpDatabase($result));
         } finally {
             $result = Backup::create([
@@ -68,6 +70,7 @@ class DatabaseBackUp extends Command
                 'updated_at' =>  Carbon::now()
             ]);
             Mail::to(env("MAIL_ADMINISTRATOR"))->send(new BackedUpDatabase($result, $filename));
+            activity('backup')->log("Backup, automatic processing success. and send email to ".env("MAIL_ADMINISTRATOR")." already.");
         }
     }
 }

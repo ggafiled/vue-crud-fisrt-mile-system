@@ -51,6 +51,7 @@ Route::apiResources([
         'team' => 'TeamController',
         'dashboard'=>'DashboardController',
         // 'tickets' => 'TicketsController',
-        'backup' => 'BackupController'
+        'backup' => 'BackupController',
+        'logs' => 'LogsController',
     ]);
 });

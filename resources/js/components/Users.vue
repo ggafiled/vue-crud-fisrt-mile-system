@@ -33,7 +33,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Email Verified?</th>
-                                        <th>Delected</th>
+                                        <th>Avaiable</th>
                                         <th>Created</th>
                                         <th>Action</th>
                                     </tr>
@@ -175,28 +175,31 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Account Status</label>
-                                    <div class="form-check form-check-inline">
+
+                                    <div class="form-check form-check-inline cursor-pointer">
                                         <input
-                                            class="form-check-input"
+                                            class="form-check-input cursor-pointer"
                                             type="radio"
-                                            value="1"
+                                            id="inlineRadio1"
+                                            value=1
                                             v-model="form.account_status"
                                         />
                                         <label
-                                            class="form-check-label"
+                                            class="form-check-label cursor-pointer"
                                             for="inlineRadio1"
                                             >Enable</label
                                         >
                                     </div>
-                                    <div class="form-check form-check-inline">
+                                    <div class="form-check form-check-inline cursor-pointer">
                                         <input
-                                            class="form-check-input"
+                                            class="form-check-input cursor-pointer"
+                                            id="inlineRadio2"
                                             type="radio"
-                                            value="2"
+                                            value=2
                                             v-model="form.account_status"
                                         />
                                         <label
-                                            class="form-check-label"
+                                            class="form-check-label cursor-pointer"
                                             for="inlineRadio2"
                                             >Disable</label
                                         >
@@ -255,14 +258,15 @@ export default {
                 email: "",
                 password: "",
                 email_verified_at: "",
-                account_status: ""
+                account_status: 1
             })
         };
     },
     methods: {
         updateUser() {
             this.$Progress.start();
-            // console.log('Editing data');
+            console.log('update data');
+            console.log(this.form);
             this.form
                 .put("api/user/" + this.form.id)
                 .then(response => {
@@ -287,6 +291,7 @@ export default {
             $("#addNew").modal("show");
             user.role = user.roles[0].id;
             user.account_status = user.deleted_at == null || user.deleted_at == "" ? 1 : 2;
+            console.log('Editing data');
             console.log(user);
             this.form.fill(user);
         },
@@ -354,6 +359,7 @@ export default {
         createUser() {
             if (this.selected == null || this.selected == undefined)
                 return false;
+            console.log(this.form);
             this.form
                 .post("api/user")
                 .then(response => {

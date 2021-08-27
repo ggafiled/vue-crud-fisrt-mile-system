@@ -41,7 +41,8 @@ class UserRequest extends FormRequest
             'role' => 'required|exists:roles,id',
             'name' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users',
-            'password' => 'required|string|min:6'
+            'password' => 'required|string|min:6',
+            'account_status' => 'integer|in:1,2',
         ];
     }
 
@@ -56,7 +57,8 @@ class UserRequest extends FormRequest
             'role' => 'required|exists:roles,id',
             'name' => 'sometimes|string|max:191',
             'email' => 'sometimes|string|email|max:191|unique:users,email,' . $this->get('id'),
-            'password' => 'string|min:6'
+            'password' => 'string|min:6',
+            'account_status' => 'integer|in:1,2',
         ];
     }
 }
