@@ -108,16 +108,20 @@
                     </div>
                     <!-- /.card -->
                     <ag-grid-vue
-                        id="myGrid"
-                        style="width: 100%;height: 300px"
-                        class="ag-theme-balham"
-                        rowSelection="multiple"
-                        :enableRangeSelection="true"
-                        :allowContextMenuWithControlKey="true"
-                        :pagination="true"
-                        :paginationPageSize="15"
-                    >
-                    </ag-grid-vue>
+                                id="myGrid"
+                                style="width: 100%;height: 300px"
+                                class="ag-theme-balham"
+                                :gridOptions="gridOptions"
+                                :columnDefs="columnDefs"
+                                :rowData="rowData"
+                                rowSelection="multiple"
+                                :enableRangeSelection="true"
+                                :allowContextMenuWithControlKey="true"
+                                :getContextMenuItems="getContextMenuItems"
+                                :pagination="true"
+                                :paginationPageSize="15"
+                            >
+                            </ag-grid-vue>
                 </div>
             </div>
         </div>
@@ -132,7 +136,13 @@ export default {
     components: { AgGridVue },
     data() {
         return {
-            backup: {}
+            backup: {},
+            searchText: "",
+            gridApi: null,
+            columnDefs: null,
+            rowData: null,
+            gridOptions: {},
+            vm: null
         };
     },
     methods: {
@@ -140,10 +150,157 @@ export default {
             await axios.get("api/backup").then(response => {
                 this.backup = response.data.data;
             });
+        },
+        loadActivityLogs() {
+            axios.get("api/logs").then(response => {
+                this.rowData = response.data.data;
+            });
+        },
+        getContextMenuItems(params) {
+            var result = [
+                "copy",
+                "separator",
+                {
+                    name: "Open new window",
+                    shortcut: 'Alt + T',
+                    action: function() {
+                        console.log(params.node.data.ticket_id);
+                        window.open(`/issue-tickets/${params.node.data.ticket_id}`,'_blank');
+                    },
+                    icon: '<i class="mdi mdi-open-in-new"></i>',
+                    cssClasses: ["redFont", "bold"]
+                },
+                "separator",
+                "chartRange"
+            ];
+            return result;
+        },
+        onBtExport() {
+            this.gridApi.exportDataAsExcel();
+        },
+        onIpChange(e) {
+            console.log(this.searchText);
+            this.gridApi.setQuickFilter(this.searchText);
+        },
+        clearSearchText() {
+            this.searchText = "";
+            this.gridApi.setQuickFilter("");
+            this.gridApi.setFilterModel(null);
         }
+    },
+    beforeMount() {
+        this.columnDefs = [
+            {
+                headerCheckboxSelection: true,
+                checkboxSelection: true,
+                width: 50,
+                resizable: true,
+                suppressSizeToFit: true,
+                suppressMenu: true,
+                suppressSorting: true
+            },
+            {
+                field: "log_name",
+                headerName: "Log Name",
+                sortable: true,
+                filter: true,
+                width: 120,
+                cellRenderer: params => {
+                    // put the value in bold
+                    return (
+                        '<span><i class="bi bi-file-text mr-1"></i>' +
+                        params.value +
+                        "</span>"
+                    );
+                }
+            },
+            {
+                field: "description",
+                headerName: "Description",
+                sortable: true,
+                filter: true,
+                resizable: true,
+            },
+            {
+                field: "subject_type ",
+                headerName: "Subject Type ",
+                sortable: true,
+                resizable: true,
+                filter: true
+            },
+            {
+                field: "event",
+                headerName: "Event",
+                sortable: true,
+                resizable: true,
+                filter: true,
+            },
+            {
+                field: "subject_id ",
+                headerName: "Subject Id ",
+                sortable: true,
+                resizable: true,
+                filter: true
+            },
+            {
+                field: "causer_type",
+                headerName: "Causer Type",
+                sortable: true,
+                resizable: true,
+                filter: true,
+                flex: 1
+            },
+            {
+                field: "causer_id",
+                headerName: "Causer Id",
+                sortable: true,
+                resizable: true,
+                filter: true,
+                flex: 1
+            },
+            {
+                field: "properties",
+                headerName: "Properties",
+                sortable: true,
+                filter: true,
+                resizable: true,
+                flex: 1,
+                cellRenderer: params => {
+                    return (
+                        '<span><i class="bi bi-person mr-1"></i>' +
+                        JSON.stringify(params.value.attributes) +
+                        "</span>"
+                    );
+                }
+            },
+            {
+                field: "batch_uuid",
+                headerName: "Causer Type",
+                sortable: true,
+                resizable: true,
+                filter: true,
+                flex: 1
+            },
+            {
+                field: "created_at",
+                headerName: "Created At",
+                sortable: true,
+                filter: true,
+                flex: 1,
+                cellRenderer: params => {
+                    return moment(params.value).format("MM/DD/YYYY HH:MM");
+                }
+            }
+        ];
+        this.loadActivityLogs();
     },
     mounted() {
         this.checkHealthy();
+        this.vm = this;
+        this.gridApi = this.gridOptions.api;
+        this.gridApi.setDomLayout("autoHeight");
+        this.gridApi.sizeColumnsToFit();
+        document.querySelector("#myGrid").style.height = "";
     }
 };
 </script>

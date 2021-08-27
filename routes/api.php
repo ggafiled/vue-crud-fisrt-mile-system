@@ -62,6 +62,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'callver' => 'CallverController',
         'callverstatus' => 'CallverstatusController',
         // 'tickets' => 'TicketsController',
-        'backup' => 'BackupController'
+        'backup' => 'BackupController',
+        'logs' => 'LogsController',
     ]);
 });

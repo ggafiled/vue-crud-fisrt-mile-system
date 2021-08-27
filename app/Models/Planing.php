@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Planing extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes, LogsActivity;
+
     protected $fillable = [
         'building_id',
         'problemsolution_id',
@@ -34,6 +37,15 @@ class Planing extends Model
         'subStatus',
         'reMark',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}")
+        ->useLogName('planing')
+        ->logOnlyDirty();
+        // Chain fluent methods for configuration options
+    }
 
     public function building()
 	{
