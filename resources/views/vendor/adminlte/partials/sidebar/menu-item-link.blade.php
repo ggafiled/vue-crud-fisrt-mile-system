@@ -2,7 +2,9 @@
 
     <router-link class="nav-link"
        to="{{ $item['url'] }}"
-        @isset($item['active_url']) v-active-when="{{ $item['active_url'] }}" @endisset {{-- v-active-when ทำเพิ่มเอง --}}
+        @isset($item['active_url'])
+        v-active-when="{{ $item['active_url'] }}"
+        @endisset {{-- v-active-when ทำเพิ่มเอง --}}
        @isset($item['target']) target="{{ $item['target'] }}" @endisset
        {!! $item['data-compiled'] ?? '' !!}>
 

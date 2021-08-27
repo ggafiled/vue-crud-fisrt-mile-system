@@ -28,9 +28,12 @@ class LogsController extends BaseController
         }
 
         try {
-            $activity = Activity::all();
+            $data = [
+                "activity" => Activity::all(),
+                "log_chanel" => Activity::select("log_name")->distinct()->get()
+            ];
 
-            return $this->sendResponse($activity, trans('actions.get.success'));
+            return $this->sendResponse($data, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.fialed') . $ex->getMessage());
         }

@@ -377,9 +377,10 @@ return [
         ],
         [
             'text' => 'Data Validation',
-            'url'  => '/data/validation',
+            'url'  => '/settings',
             'icon' => 'bi bi-gear-fill',
             'roles'  => ['superadministrator', 'administrator'],
+            'active_url' => 'settings'
         ],
     ],
 
