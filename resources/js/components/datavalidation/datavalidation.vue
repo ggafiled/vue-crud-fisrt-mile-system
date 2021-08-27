@@ -176,7 +176,6 @@
                                                     เวลาเข้างาน</small
                                                 >
                                                 <small class="text-muted">
-
                                                 </small>
                                             </div>
                                         </li>
@@ -228,19 +227,17 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="Contract Sell"
+                                                href="/data/problemsolution"
                                                 class="post-title"
-                                                >Create/Edit/delete(Contract
-                                                Sell)</a
+                                                >Problemsolution(CRED)</a
                                             >
                                             <div
                                                 class="d-flex justify-content-between mt-3"
                                             >
                                                 <small class="text-muted"
-                                                    >6 Oktober 2020</small
+                                                    >แก้ไขข้อมูลปัญหาและวิธีการแก้ไข</small
                                                 >
-                                                <small class="text-muted"
-                                                    >1981 views
+                                                <small class="text-muted">
                                                 </small>
                                             </div>
                                         </li>
@@ -248,19 +245,53 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="https://codelapan.com/post/cara-install-ssl-certificate-di-xampp"
+                                                href="/data/technician"
                                                 class="post-title"
-                                                >Cara Install SSL Certificate di
-                                                XAMPP</a
+                                                >Technician(CRED)</a
                                             >
                                             <div
                                                 class="d-flex justify-content-between mt-3"
                                             >
                                                 <small class="text-muted"
-                                                    >6 Oktober 2020</small
+                                                    >แก้ไขข้อมูลทีมช่าง</small
                                                 >
+                                                <small class="text-muted">
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li
+                                            class="list-group-item bg-transparent"
+                                        >
+                                            <a
+                                                href="/data/callver"
+                                                class="post-title"
+                                                >Callver(CRED)</a
+                                            >
+                                            <div
+                                                class="d-flex justify-content-between mt-3"
+                                            >
                                                 <small class="text-muted"
-                                                    >1981 views
+                                                    >แก้ไขข้อมูลจำนวนการติดต่อ</small
+                                                >
+                                                <small class="text-muted">
+                                                </small>
+                                            </div>
+                                        </li>
+                                        <li
+                                            class="list-group-item bg-transparent"
+                                        >
+                                            <a
+                                                href="/data/callverstatus"
+                                                class="post-title"
+                                                >Callver Status(CRED)</a
+                                            >
+                                            <div
+                                                class="d-flex justify-content-between mt-3"
+                                            >
+                                                <small class="text-muted"
+                                                    >แก้ไขข้อมูลสถานะการติดต่อ</small
+                                                >
+                                                <small class="text-muted">
                                                 </small>
                                             </div>
                                         </li>
