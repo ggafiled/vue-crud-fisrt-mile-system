@@ -56,7 +56,7 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="/data/contract_sell"
+                                                href="/settings/contract_sell"
                                                 class="post-title"
                                                 >Contract Sell(CRED)</a
                                             >
@@ -74,7 +74,7 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="/data/spend_space"
+                                                href="/settings/spend_space"
                                                 class="post-title"
                                                 >SpendSpace(CRED)</a
                                             >
@@ -91,9 +91,7 @@
                                         <li
                                             class="list-group-item bg-transparent"
                                         >
-                                            <a
-                                                href="/data/area_3bb"
-                                                class="post-title"
+                                            <a href="/settings/area_3bb" class="post-title"
                                                 >Area 3BB(CRED)</a
                                             >
                                             <div
@@ -111,7 +109,7 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="/data/area_true"
+                                                href="/settings/area_true"
                                                 class="post-title"
                                                 >Area True(CRED)</a
                                             >
@@ -129,9 +127,7 @@
                                         <li
                                             class="list-group-item bg-transparent"
                                         >
-                                            <a
-                                                href="/data/area_ais"
-                                                class="post-title"
+                                            <a href="/settings/area_ais" class="post-title"
                                                 >Area Ais(CRED)</a
                                             >
                                             <div
@@ -149,7 +145,7 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="/data/area_fibernet"
+                                                href="/settings/area_fibernet"
                                                 class="post-title"
                                                 >Area FiberNet(CRED)</a
                                             >
@@ -168,7 +164,7 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="/data/operating_time"
+                                                href="/settings/operating_time"
                                                 class="post-title"
                                                 >Operating Time(CRED)</a
                                             >

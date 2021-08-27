@@ -107,9 +107,78 @@
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
-                    <ag-grid-vue
+                    <div class="card">
+                        <div class="card-body p-3 pt-2">
+                            <div class="card-tools p-0 pb-2">
+                                <div
+                                    class="form-inline align-content-between justify-content-between flex-fill flex-grow-1"
+                                >
+                                    <div
+                                        class="form-inline align-content-between"
+                                    >
+                                        <button
+                                            type="button"
+                                            class="btn btn-md btn-outline-success mr-0 mr-lg-2 mr-md-2"
+                                            @click="onBtExport"
+                                        >
+                                            <i
+                                                class="bi bi-file-earmark-excel mr-1"
+                                            ></i>
+                                            Excel
+                                        </button>
+                                        <div
+                                            class="form-inline"
+                                            style="width:200px; max-width:100%;"
+                                        >
+                                            <multiselect
+                                                v-model="selectDefault"
+                                                :options="selectOptions"
+                                                :searchable="true"
+                                                :close-on-select="true"
+                                                :show-labels="false"
+                                                @select="onSelect"
+                                                placeholder="Default: Logs Chanel"
+                                            ></multiselect>
+                                        </div>
+                                    </div>
+                                    <div class="form-inline">
+                                        <div
+                                            class="input-group"
+                                            style="background-color: #F2F2F2;"
+                                        >
+                                            <input
+                                                class="form-control"
+                                                type="search"
+                                                placeholder="Type: ticket name"
+                                                v-model="searchText"
+                                                @input="onIpChange"
+                                            />
+
+                                            <div class="input-group-append">
+                                                <button
+                                                    class="btn btn-light"
+                                                    style="border: 1px solid gray;"
+                                                    @click="onIpChange"
+                                                >
+                                                    <i
+                                                        class="fas fa-search"
+                                                    ></i>
+                                                </button>
+                                                <button
+                                                    class="btn btn-light"
+                                                    style="border: 1px solid gray;border-radius: 0px 8px 8px 0px;"
+                                                    @click="clearSearchText"
+                                                >
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ag-grid-vue
                                 id="myGrid"
-                                style="width: 100%;height: 300px"
+                                style="width: 100%;height: 100%"
                                 class="ag-theme-balham"
                                 :gridOptions="gridOptions"
                                 :columnDefs="columnDefs"
@@ -122,6 +191,8 @@
                                 :paginationPageSize="15"
                             >
                             </ag-grid-vue>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -129,11 +200,12 @@
 </template>
 
 <script>
+import Multiselect from "vue-multiselect";
 import "ag-grid-enterprise";
 import { AgGridVue } from "ag-grid-vue";
 export default {
     title: "Console -",
-    components: { AgGridVue },
+    components: { AgGridVue, Multiselect },
     data() {
         return {
             backup: {},
@@ -141,6 +213,8 @@ export default {
             gridApi: null,
             columnDefs: null,
             rowData: null,
+            selectDefault: "",
+            selectOptions: [],
             gridOptions: {},
             vm: null
         };
@@ -151,10 +225,16 @@ export default {
                 this.backup = response.data.data;
             });
         },
-        loadActivityLogs() {
-            axios.get("api/logs").then(response => {
-                this.rowData = response.data.data;
+        async loadActivityLogs() {
+            await axios.get("api/logs").then(response => {
+                this.rowData = response.data.data.activity;
+                this.selectOptions = response.data.data.log_chanel.map(a => {
+                    return a.log_name.replace(/\b\w/g, l => l.toUpperCase());
+                });
             });
+        },
+        onSelect(option){
+            this.gridApi.setQuickFilter(option);
         },
         getContextMenuItems(params) {
             var result = [
@@ -162,16 +242,17 @@ export default {
                 "separator",
                 {
                     name: "Open new window",
-                    shortcut: 'Alt + T',
+                    shortcut: "Alt + T",
                     action: function() {
                         console.log(params.node.data.ticket_id);
-                        window.open(`/issue-tickets/${params.node.data.ticket_id}`,'_blank');
+                        window.open(
+                            `/issue-tickets/${params.node.data.ticket_id}`,
+                            "_blank"
+                        );
                     },
                     icon: '<i class="mdi mdi-open-in-new"></i>',
                     cssClasses: ["redFont", "bold"]
-                },
-                "separator",
-                "chartRange"
+                }
             ];
             return result;
         },
@@ -179,11 +260,11 @@ export default {
             this.gridApi.exportDataAsExcel();
         },
         onIpChange(e) {
-            console.log(this.searchText);
             this.gridApi.setQuickFilter(this.searchText);
         },
         clearSearchText() {
             this.searchText = "";
+            this.selectDefault = "";
             this.gridApi.setQuickFilter("");
             this.gridApi.setFilterModel(null);
         }
@@ -219,7 +300,7 @@ export default {
                 headerName: "Description",
                 sortable: true,
                 filter: true,
-                resizable: true,
+                resizable: true
             },
             {
                 field: "subject_type ",
@@ -233,7 +314,7 @@ export default {
                 headerName: "Event",
                 sortable: true,
                 resizable: true,
-                filter: true,
+                filter: true
             },
             {
                 field: "subject_id ",
@@ -308,6 +389,7 @@ export default {
 <style lang="scss" scoped>
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+@import "~vue-multiselect/dist/vue-multiselect.min.css";
 .card-text {
     p {
         padding: 0;
