@@ -189,39 +189,18 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="https://codelapan.com/post/cara-install-ssl-certificate-di-xampp"
+                                                href="/data/generatingaction"
                                                 class="post-title"
-                                                >Cara Install SSL Certificate
-                                                didsdd5895 XAMPP</a
+                                                >Generatingaction(CRED)</a
                                             >
                                             <div
                                                 class="d-flex justify-content-between mt-3"
                                             >
                                                 <small class="text-muted"
-                                                    >6 Oktober 2020</small
+                                                    >แก้ไขข้อมูลสถานะการเชื่อมโครงข่าย</small
                                                 >
                                                 <small class="text-muted"
-                                                    >1981 views
-                                                </small>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a
-                                                href="https://codelapan.com/post/cara-install-ssl-certificate-di-xampp"
-                                                class="post-title"
-                                                >Cara Install SSL Certificate di
-                                                XAMPP</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >6 Oktober 2020</small
-                                                >
-                                                <small class="text-muted"
-                                                    >1981 views
+                                                    >
                                                 </small>
                                             </div>
                                         </li>

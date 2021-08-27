@@ -17,19 +17,19 @@ class CreateProgressTable extends Migration
         Schema::create('progress', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();
-            $table->string('fmProgress')->nullable();
+            $table->bigInteger('statusFm_id')->nullable();
             $table->timestamp('dateFm')->nullable();
-            $table->string('totProgress')->nullable();
+            $table->bigInteger('statusTot_id')->nullable();
             $table->timestamp('dateTot')->nullable();
-            $table->string('aisProgress')->nullable();
+            $table->bigInteger('statusAis_id')->nullable();
             $table->timestamp('dateAis')->nullable();
-            $table->string('Progress3bb')->nullable();
+            $table->bigInteger('status3BB_id')->nullable();
             $table->timestamp('date3BB')->nullable();
-            $table->string('sinetProgress')->nullable();
+            $table->bigInteger('statusSinet_id')->nullable();
             $table->timestamp('dateSinet')->nullable();
-            $table->string('fnProgress')->nullable();
+            $table->bigInteger('statusFn_id')->nullable();
             $table->timestamp('dateFn')->nullable();
-            $table->string('trueProgress')->nullable();
+            $table->bigInteger('statusTrue_id')->nullable();
             $table->timestamp('dateTrue')->nullable();
             $table->timestamps();
             $table->softDeletes();
@@ -37,6 +37,41 @@ class CreateProgressTable extends Migration
             $table->foreign('building_id')
                 ->references('id')
                 ->on('buildings')
+                ->onDelete('cascade');
+
+            $table->foreign('statusFm_id')
+                ->references('id')
+                ->on('generatingactions')
+                ->onDelete('cascade');
+
+            $table->foreign('statusTot_id')
+                ->references('id')
+                ->on('generatingactions')
+                ->onDelete('cascade');
+
+            $table->foreign('statusAis_id')
+                ->references('id')
+                ->on('generatingactions')
+                ->onDelete('cascade');
+
+            $table->foreign('status3BB_id')
+                ->references('id')
+                ->on('generatingactions')
+                ->onDelete('cascade');
+
+            $table->foreign('statusSinet_id')
+                ->references('id')
+                ->on('generatingactions')
+                ->onDelete('cascade');
+
+            $table->foreign('statusFn_id')
+                ->references('id')
+                ->on('generatingactions')
+                ->onDelete('cascade');
+
+            $table->foreign('statusTrue_id')
+                ->references('id')
+                ->on('generatingactions')
                 ->onDelete('cascade');
         });
     }

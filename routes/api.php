@@ -61,6 +61,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'technician' => 'TechnicianController',
         'callver' => 'CallverController',
         'callverstatus' => 'CallverstatusController',
+        'generatingaction' => 'GeneratingactionController',
         // 'tickets' => 'TicketsController',
         'backup' => 'BackupController',
         'logs' => 'LogsController',

@@ -528,7 +528,6 @@
                                             <Select2
                                                 v-model="form.payment_id"
                                                 :options="nameSale"
-                                                :settings="settings"
                                             >
                                             </Select2>
                                             <has-error
@@ -583,7 +582,6 @@
                                             <Select2
                                                 v-model="form.payment_id"
                                                 :options="paymentType"
-                                                :settings="settings"
                                             >
                                             </Select2>
                                             <has-error
@@ -691,7 +689,6 @@
                                             <Select2
                                                 v-model="form.area3BB_id"
                                                 :options="area3BB"
-                                                :settings="settings"
                                             >
                                             </Select2>
                                             <has-error
@@ -706,7 +703,6 @@
                                             <Select2
                                                 v-model="form.areaTrue_id"
                                                 :options="areaTrue"
-                                                :settings="settings"
                                             >
                                             </Select2>
                                             <has-error
@@ -765,7 +761,6 @@
                                             <Select2
                                                 v-model="form.areaAis_id"
                                                 :options="areaAis"
-                                                :settings="settings"
                                             >
                                             </Select2>
                                             <has-error
@@ -782,7 +777,6 @@
                                             <Select2
                                                 v-model="form.areaFibetNet_id"
                                                 :options="areaFiberNet"
-                                                :settings="settings"
                                             >
                                             </Select2>
                                             <has-error
@@ -797,7 +791,6 @@
                                             <Select2
                                                 v-model="form.workTime_id"
                                                 :options="workTime"
-                                                :settings="settings"
                                             >
                                             </Select2>
                                             <has-error
@@ -1003,7 +996,6 @@ export default {
         editModal(building) {
             this.editmode = true;
             this.form.reset();
-            console.log(building);
             $("#addNew").modal("show");
             this.form.fill(building);
         },
@@ -1258,7 +1250,7 @@ export default {
                                     data +
                                     "</span>"
                                 );
-                            } else if (!data.length) {
+                            } else if (data="") {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;

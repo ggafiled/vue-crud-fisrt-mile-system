@@ -10,7 +10,7 @@ use Spatie\Activitylog\LogOptions;
 
 class Building extends Model
 {
-    use HasFactory,SoftDeletes, LogsActivity;
+    use HasFactory, SoftDeletes, LogsActivity;
 
     protected $fillable = [
         'id',
@@ -58,9 +58,9 @@ class Building extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}")
-        ->useLogName('building')
-        ->logOnlyDirty();
+            ->setDescriptionForEvent(fn (string $eventName) => "This model has been {$eventName}")
+            ->useLogName('building')
+            ->logOnlyDirty();
         // Chain fluent methods for configuration options
     }
 

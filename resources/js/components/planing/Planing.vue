@@ -831,7 +831,7 @@ export default {
                     className: "bg-success",
                     text: "<i class='bi bi-file-text mr-1'></i>AIS",
                     action: function(e, dt, node, config) {
-                        dt.column(9)
+                        dt.column(17)
                             .search("AIS")
                             .draw();
                     }
@@ -840,7 +840,7 @@ export default {
                     className: "bg-danger",
                     text: "<i class='bi bi-file-text mr-1'></i>TRUE",
                     action: function(e, dt, node, config) {
-                        dt.column(9)
+                        dt.column(17)
                             .search("TRUE")
                             .draw();
                     }
@@ -849,7 +849,7 @@ export default {
                     className: "bg-primary",
                     text: "<i class='bi bi-file-text mr-1'></i>TOT",
                     action: function(e, dt, node, config) {
-                        dt.column(9)
+                        dt.column(17)
                             .search("TOT")
                             .draw();
                     }
@@ -858,7 +858,7 @@ export default {
                     className: "bg-danger",
                     text: "<i class='bi bi-file-text mr-1'></i>FINET",
                     action: function(e, dt, node, config) {
-                        dt.column(9)
+                        dt.column(17)
                             .search("FINET")
                             .draw();
                     }
@@ -867,7 +867,7 @@ export default {
                     className: "bg-warning",
                     text: "<i class='bi bi-file-text mr-1'></i>FN",
                     action: function(e, dt, node, config) {
-                        dt.column(9)
+                        dt.column(17)
                             .search("FN")
                             .draw();
                     }
@@ -876,7 +876,7 @@ export default {
                     className: "bg-danger",
                     text: "<i class='bi bi-file-text mr-1'></i>3BB",
                     action: function(e, dt, node, config) {
-                        dt.column(9)
+                        dt.column(17)
                             .search("3BB")
                             .draw();
                     }

@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Generatingaction extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'id',
+        'status',
+
+    ];
 }
+
+

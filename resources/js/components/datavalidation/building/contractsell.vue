@@ -156,7 +156,7 @@ export default {
         },
         updateBuilding() {
             this.$Progress.start();
-            // console.log('Editing data');
+            console.log('Editing data');
             this.form
                 .put("/api/salefm/" + this.form.id)
                 .then(response => {
@@ -206,7 +206,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("/api/payment/" + item.id)
+                        .delete("/api/salefm/" + item.id)
                         .then(() => {
                             Swal.fire(
                                 window.translate(
@@ -226,7 +226,7 @@ export default {
                 }
             });
         },
-        createSaleFm() {
+        createBuilding() {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form

@@ -280,5 +280,14 @@ export default [{
             roles: ["superadministrator"]
         }
     },
+    {
+        path: "/data/generatingaction",
+        component: require("./components/datavalidation/progress/generatingaction.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator"]
+        }
+    },
     { path: "*", component: require("./components/NotFound.vue").default }
 ];

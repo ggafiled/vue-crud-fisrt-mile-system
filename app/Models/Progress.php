@@ -48,4 +48,5 @@ class Progress extends Model
 	{
 		return $this->hasOne('App\Models\Building','id','building_id');
 	}
+
 }
