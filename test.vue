@@ -6,7 +6,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                {{ translate("Area True") }}
+                                {{ translate("Area Ais") }}
                             </h3>
                             <div class="card-tools">
                                 <button
@@ -31,7 +31,7 @@
                                     <thead>
                                         <tr class="info">
                                             <th></th>
-                                            <th>Area True</th>
+                                            <th>AreaAIS</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
                                             <th>Avaiable</th>
@@ -83,15 +83,15 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label>Area True</label>
+                                            <label>Area AIS</label>
                                             <input
-                                                v-model="form.areaTrue"
+                                                v-model="form.areaAis"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your name area true..."
+                                                placeholder="Enter your name area ais..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'areaTrue'
+                                                        'areaAis'
                                                     )
                                                 }"
                                             />
@@ -132,14 +132,14 @@
 
 <script>
 export default {
-    title: "Area True",
+    title: "Area Fibernet",
     data() {
         return {
             editmode: false,
             selected: "",
             form: new Form({
                 id: "",
-                areaTrue: "",
+                areaAis: "",
                 created_at: "",
                 updated: "",
                 deleted_at: ""
@@ -151,7 +151,7 @@ export default {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("/areatrue/" + this.form.id)
+                .put("/areaais/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -186,7 +186,7 @@ export default {
                 title: window.translate("building.alert.delete_building_title"),
                 text:
                     window.translate("building.alert.delete_building_text") +
-                    ` [${item.areatrue}]`,
+                    ` [${item.areaAis}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
@@ -200,7 +200,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("/areatrue/" + item.id)
+                        .delete("/areaais/" + item.id)
                         .then(() => {
                             Swal.fire(
                                 window.translate(
@@ -226,7 +226,7 @@ export default {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
-                .post("/areatrue")
+                .post("/areaais")
                 .then(response => {
                     $("#addNew").modal("hide");
                     Toast.fire({
@@ -246,7 +246,7 @@ export default {
             var vm = this;
             var table = $(this.$refs.items).DataTable({
                 dom: "Blfrtip",
-                ajax: "/api/areatrue",
+                ajax: "/api/areaais",
                 responsive: true,
                 processing: true,
                 autoWidth: true,
@@ -297,7 +297,7 @@ export default {
                         className: "dt-body-center notexport"
                     },
                     {
-                        data: "areaTrue"
+                        data: "areaAis"
                     },
                     {
                         data: "created_at",

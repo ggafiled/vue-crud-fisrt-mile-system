@@ -83,7 +83,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label>AreaAis</label>
+                                            <label>Area AIS</label>
                                             <input
                                                 v-model="form.areaAis"
                                                 type="text"
@@ -149,6 +149,7 @@ export default {
     methods: {
         updateItem() {
             this.$Progress.start();
+            // console.log('Editing data');
             this.form
                 .put("/areaais/" + this.form.id)
                 .then(response => {
@@ -162,6 +163,7 @@ export default {
                         .DataTable()
                         .ajax.reload();
                     this.$Progress.finish();
+                    //  Fire.$emit('AfterCreate');
                 })
                 .catch(() => {
                     this.$Progress.fail();
@@ -179,12 +181,12 @@ export default {
             this.form.reset();
             $("#addNew").modal("show");
         },
-        deleteBuilding(item) {
+        deleteItem(item) {
             Swal.fire({
                 title: window.translate("building.alert.delete_building_title"),
                 text:
                     window.translate("building.alert.delete_building_text") +
-                    ` [${item.area3BB}]`,
+                    ` [${item.areaAis}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
@@ -232,7 +234,6 @@ export default {
                         title: response.data.message
                     });
                     this.$Progress.finish();
-                    this.loadBuildings();
                 })
                 .catch(() => {
                     Toast.fire({
@@ -240,134 +241,139 @@ export default {
                         title: "Some error occured! Please try again"
                     });
                 });
+        },
+        generateTable() {
+            var vm = this;
+            var table = $(this.$refs.items).DataTable({
+                dom: "Blfrtip",
+                ajax: "/api/areaais",
+                responsive: true,
+                processing: true,
+                autoWidth: true,
+                pageLength: 5,
+                lengthMenu: [
+                    [5, 10, 15, 25, 50, -1],
+                    [5, 10, 15, 25, 50, "All"]
+                ],
+                scrollX: true,
+                scrollCollapse: true,
+                select: true,
+                buttons: [
+                    {
+                        extend: "copy",
+                        text: "<i class='bi bi-clipboard mr-1'></i>Copy",
+                        exportOptions: {
+                            columns: "th:not(.notexport)"
+                        }
+                    },
+                    {
+                        extend: "excelHtml5",
+                        autoFilter: true,
+                        sheetName: "Building",
+                        text:
+                            "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+                        exportOptions: {
+                            columns: "th:not(.notexport)"
+                        }
+                    },
+                    {
+                        text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                        action: function(e, dt, node, config) {
+                            console.info("button: Clear");
+                            $.fn.dataTable.ext.search.pop();
+                            dt.search("").draw();
+                            dt.columns()
+                                .search("")
+                                .draw();
+                            dt.rows().deselect();
+                            dt.ajax.reload();
+                        }
+                    }
+                ],
+                columns: [
+                    {
+                        data: null,
+                        defaultContent: "",
+                        className: "dt-body-center notexport"
+                    },
+                    {
+                        data: "areaAis"
+                    },
+                    {
+                        data: "created_at",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ปรากฏ" +
+                                    "</span>"
+                                );
+                            } else {
+                                return moment(data).format("MM/DD/YYYY HH:MM");
+                            }
+                        }
+                    },
+                    {
+                        data: "updated_at",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ปรากฏ" +
+                                    "</span>"
+                                );
+                            } else {
+                                return moment(data).format("MM/DD/YYYY HH:MM");
+                            }
+                        }
+                    },
+                    {
+                        data: "deleted_at",
+                        render: function(data, type, row, meta) {
+                            return data !== null
+                                ? '<i class="fas fa-times red"></i><span class="invisible">disable</span>'
+                                : '<i class="fas fa-check green"></i><span class="invisible">enable</span>';
+                        }
+                    },
+                    {
+                        data: null,
+                        className: "dt-body-center notexport",
+                        render: function(data, type, row, meta) {
+                            return "<a class='edit-items btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-items btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
+                        }
+                    }
+                ],
+                columnDefs: [
+                    {
+                        targets: 0,
+                        searchable: false,
+                        orderable: false,
+                        className: "dt-body-center",
+                        checkboxes: {
+                            selectRow: true
+                        }
+                    }
+                ],
+                select: { selector: "td:not(:last-child)", style: "os" },
+                order: [[1, "desc"]]
+            });
+            $("tbody", this.$refs.items).on("click", ".edit-items", function(
+                e
+            ) {
+                e.preventDefault();
+                var tr = $(this).closest("tr");
+                var row = table.row(tr);
+                vm.editModal(row.data());
+            });
+            $("tbody", this.$refs.items).on("click", ".delete-items", function(
+                e
+            ) {
+                e.preventDefault();
+                var tr = $(this).closest("tr");
+                var row = table.row(tr);
+                vm.deleteItem(row.data());
+            });
         }
-    },
-    generateTable() {
-        var vm = this;
-        var table = $(this.$refs.items).DataTable({
-            dom: "Blfrtip",
-            ajax: "/api/areaais",
-            responsive: true,
-            processing: true,
-            autoWidth: true,
-            pageLength: 5,
-            lengthMenu: [
-                [5, 10, 15, 25, 50, -1],
-                [5, 10, 15, 25, 50, "All"]
-            ],
-            scrollX: true,
-            scrollCollapse: true,
-            select: true,
-            buttons: [
-                {
-                    extend: "copy",
-                    text: "<i class='bi bi-clipboard mr-1'></i>Copy",
-                    exportOptions: {
-                        columns: "th:not(.notexport)"
-                    }
-                },
-                {
-                    extend: "excelHtml5",
-                    autoFilter: true,
-                    sheetName: "Building",
-                    text: "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
-                    exportOptions: {
-                        columns: "th:not(.notexport)"
-                    }
-                },
-                {
-                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
-                    action: function(e, dt, node, config) {
-                        console.info("button: Clear");
-                        $.fn.dataTable.ext.search.pop();
-                        dt.search("").draw();
-                        dt.columns()
-                            .search("")
-                            .draw();
-                        dt.rows().deselect();
-                        dt.ajax.reload();
-                    }
-                }
-            ],
-            columns: [
-                {
-                    data: null,
-                    defaultContent: "",
-                    className: "dt-body-center notexport"
-                },
-                {
-                    data: "areaAis"
-                },
-                {
-                    data: "created_at",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ยังไม่มีข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return moment(data).format("MM/DD/YYYY HH:MM");
-                        }
-                    }
-                },
-                {
-                    data: "updated_at",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ยังไม่มีข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return moment(data).format("MM/DD/YYYY HH:MM");
-                        }
-                    }
-                },
-                {
-                    data: "deleted_at",
-                    render: function(data, type, row, meta) {
-                        return data !== null
-                            ? '<i class="fas fa-times red"></i><span class="invisible">disable</span>'
-                            : '<i class="fas fa-check green"></i><span class="invisible">enable</span>';
-                    }
-                },
-                {
-                    data: null,
-                    className: "dt-body-center notexport",
-                    render: function(data, type, row, meta) {
-                        return "<a class='edit-items btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-items btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
-                    }
-                }
-            ],
-            columnDefs: [
-                {
-                    targets: 0,
-                    searchable: false,
-                    orderable: false,
-                    className: "dt-body-center",
-                    checkboxes: {
-                        selectRow: true
-                    }
-                }
-            ],
-            select: { selector: "td:not(:last-child)", style: "os" },
-            order: [[1, "desc"]]
-        });
-        $("tbody", this.$refs.items).on("click", ".edit-items", function(e) {
-            e.preventDefault();
-            var tr = $(this).closest("tr");
-            var row = table.row(tr);
-            vm.editModal(row.data());
-        });
-        $("tbody", this.$refs.items).on("click", ".delete-items", function(e) {
-            e.preventDefault();
-            var tr = $(this).closest("tr");
-            var row = table.row(tr);
-            vm.deleteBuilding(row.data());
-        });
     },
     created() {
         this.$Progress.start();
