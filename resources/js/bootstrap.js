@@ -58,9 +58,9 @@ $.ajaxSetup({
         "X-Requested-With": "XMLHttpRequest",
         crossDomain: true,
         "X-CSRF-TOKEN": document.head.querySelector('meta[name="csrf-token"]')
-            .content,
-        "baseURL": "/api"
-    }
+            .content
+    },
+    url: "/api"
 });
 
 window.moment = require("moment");

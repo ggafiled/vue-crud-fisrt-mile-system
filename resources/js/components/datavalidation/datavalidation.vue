@@ -9,6 +9,15 @@
                                 <i class="mdi mdi-cog-outline mr-1"></i>
                                 {{ translate("DataValidation") }}
                             </h3>
+                            <div class="card-tools">
+                                <button
+                                    type="button"
+                                    class="btn btn-tool"
+                                    data-card-widget="collapse"
+                                >
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-3 pt-2 ">
@@ -67,7 +76,10 @@
                                             :details="item.details"
                                         ></list-group-item>
                                     </div>
-                                    <div id="constarution" class="tab-pane fade">
+                                    <div
+                                        id="constarution"
+                                        class="tab-pane fade"
+                                    >
                                         <list-group-item
                                             v-for="item in tabs.constarution"
                                             :key="item.id"
@@ -116,7 +128,7 @@ export default {
 
                     {
                         id: 2,
-                        route: "/settings/spend_spacetitle",
+                        route: "/settings/spend_space",
                         title: "SpendSpace(CRED)",
                         details: "แก้ไขข้อมูลการชำระรายปี"
                     },
@@ -183,7 +195,7 @@ export default {
                     }
                 ],
                 progress: [
-                     {
+                    {
                         id: 1,
                         route: "/settings/generatingaction",
                         title: "Generatingaction(CRED)",

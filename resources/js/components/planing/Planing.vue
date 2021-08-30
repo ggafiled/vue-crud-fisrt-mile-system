@@ -647,7 +647,7 @@ export default {
     var vm = this;
     var table = $(this.$refs.planing).DataTable({
       dom: "Blfrtip",
-      ajax: "/planing",
+      ajax: "/api/planing",
       responsive: true,
       processing: true,
       pageLength: 15,

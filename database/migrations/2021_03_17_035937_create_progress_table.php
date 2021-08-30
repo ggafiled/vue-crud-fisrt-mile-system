@@ -17,19 +17,19 @@ class CreateProgressTable extends Migration
         Schema::create('progress', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();
-            $table->bigInteger('statusFm_id')->nullable();
+            $table->bigInteger('statusFm_id')->unsigned();
             $table->timestamp('dateFm')->nullable();
-            $table->bigInteger('statusTot_id')->nullable();
+            $table->bigInteger('statusTot_id')->unsigned();
             $table->timestamp('dateTot')->nullable();
-            $table->bigInteger('statusAis_id')->nullable();
+            $table->bigInteger('statusAis_id')->unsigned();
             $table->timestamp('dateAis')->nullable();
-            $table->bigInteger('status3BB_id')->nullable();
+            $table->bigInteger('status3BB_id')->unsigned();
             $table->timestamp('date3BB')->nullable();
-            $table->bigInteger('statusSinet_id')->nullable();
+            $table->bigInteger('statusSinet_id')->unsigned();
             $table->timestamp('dateSinet')->nullable();
-            $table->bigInteger('statusFn_id')->nullable();
+            $table->bigInteger('statusFn_id')->unsigned();
             $table->timestamp('dateFn')->nullable();
-            $table->bigInteger('statusTrue_id')->nullable();
+            $table->bigInteger('statusTrue_id')->unsigned();
             $table->timestamp('dateTrue')->nullable();
             $table->timestamps();
             $table->softDeletes();

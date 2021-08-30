@@ -392,7 +392,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.users).DataTable({
             dom: "Blfrtip",
-            ajax: "/user",
+            ajax: "/api/user",
             responsive: true,
             processing: true,
             autoWidth: true,

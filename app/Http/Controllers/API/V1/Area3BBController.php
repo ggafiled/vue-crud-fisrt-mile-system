@@ -4,8 +4,8 @@ namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\API\V1\BaseController;
 use App\Models\Area3bb;
-use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Http\Request;
 
 class Area3BBController extends BaseController
 {
@@ -16,40 +16,38 @@ class Area3BBController extends BaseController
         $this->middleware('role:superadministrator|administrator')->only(['store', 'update', 'destroy']);
     }
 
- /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $area3BB = Area3bb::all();
-        return $this->sendResponse($area3BB, trans('actions.get.success'));
         try {
+            $area3BB = Area3bb::orderBy('updated_at','asc')->get();
+            return $this->sendResponse($area3BB, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError($area3BB, trans('actions.get.fialed'));
         }
     }
 
 /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+ * Store a newly created resource in storage.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
     public function store(Request $request)
     {
         try {
-            $area3BB = new Area3bb([
-                'paymentType' => $request->input('paymentType'),
+            $area3BB = Area3bb::create([
+                'area3BB' => $request->input('area3BB'),
             ]);
-            $area3BB->save();
             return $this->sendResponse($area3BB, trans('actions.created.success'));
         } catch (Exception $ex) {
             return $this->sendError($area3BB, trans('actions.created.fialed'));
         }
     }
-
 
     /**
      * Update the specified resource in storage.

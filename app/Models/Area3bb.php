@@ -11,7 +11,7 @@ class Area3bb extends Model
     use HasFactory,SoftDeletes;
     protected $fillable = [
         'id',
-        'area3BB'
+        'area3BB',
     ];
 
     public function building()

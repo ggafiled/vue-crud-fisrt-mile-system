@@ -259,7 +259,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.buildings).DataTable({
             dom: "Blfrtip",
-            ajax: "/areaais",
+            ajax: "/api/areaais",
             responsive: true,
             processing: true,
             autoWidth: true,

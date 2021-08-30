@@ -165,14 +165,6 @@ export default [{
         }
     },
     {
-        path: "/area/3bb",
-        component: require("./components/area3bb.vue").default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator"]
-        }
-    },
-    {
         path: "/settings",
         component: require("./components/datavalidation/Datavalidation.vue")
             .default,
