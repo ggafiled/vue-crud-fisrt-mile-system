@@ -5,7 +5,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Area FiberNet
+                            <h3 class="card-title">
+                                {{ translate("Area FiberNet") }}
+                            </h3>
                             <div class="card-tools">
                                 <button
                                     type="button"
@@ -29,7 +31,7 @@
                                     <thead>
                                         <tr class="info">
                                             <th></th>
-                                            <th>AreaFiberNet/th>
+                                            <th>AreaFiberNet/th></th>
                                             <th>Created_at</th>
                                             <th>Updated</th>
                                             <th>Deleted_at</th>

@@ -6,9 +6,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                <i
-                                    class="mdi mdi-cog-outline mr-1"
-                                ></i>
+                                <i class="mdi mdi-cog-outline mr-1"></i>
                                 {{ translate("DataValidation") }}
                             </h3>
                         </div>
@@ -27,8 +25,8 @@
                                     <li>
                                         <a
                                             data-toggle="tab"
-                                            href="#menu2"
-                                            class="nav-link disabled"
+                                            href="#constarution"
+                                            class="nav-link"
                                             >Constarution</a
                                         >
                                     </li>
@@ -52,228 +50,40 @@
                                 <br />
                                 <div class="tab-content">
                                     <div id="building" class="tab-pane active">
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a
-                                                href="contract_sell"
-                                                class="post-title"
-                                                >Contract Sell(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลชื่อเซลล์ที่ติดต่อ</small
-                                                >
-                                                <small class="text-muted">
-                                                </small>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a
-                                                href="/settings/spend_space"
-                                                class="post-title"
-                                                >SpendSpace(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลการชำระรายปี</small
-                                                >
-                                                <small class="text-muted">
-                                                </small>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a href="/settings/area_3bb" class="post-title"
-                                                >Area 3BB(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลพื้นที่
-                                                    3บีบี</small
-                                                >
-                                                <small class="text-muted">
-                                                </small>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a
-                                                href="/settings/area_true"
-                                                class="post-title"
-                                                >Area True(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลพื้นที่
-                                                    ทรู</small
-                                                >
-                                                <small class="text-muted">
-                                                </small>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a href="/settings/area_ais" class="post-title"
-                                                >Area Ais(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลพื้นที่
-                                                    เอไอเอส</small
-                                                >
-                                                <small class="text-muted">
-                                                </small>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a
-                                                href="/settings/area_fibernet"
-                                                class="post-title"
-                                                >Area FiberNet(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลพื้นที่
-                                                    ไฟเบอร์เน็ต</small
-                                                >
-                                                <small class="text-muted">
-                                                </small>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a
-                                                href="/settings/operating_time"
-                                                class="post-title"
-                                                >Operating Time(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลพื้นที่
-                                                    เวลาเข้างาน</small
-                                                >
-                                                <small class="text-muted">
-                                                </small>
-                                            </div>
-                                        </li>
+                                        <list-group-item
+                                            v-for="item in tabs.building"
+                                            :key="item.id"
+                                            :route="item.route"
+                                            :title="item.title"
+                                            :details="item.details"
+                                        ></list-group-item>
                                     </div>
                                     <div id="progress" class="tab-pane fade">
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a
-                                                href="/data/generatingaction"
-                                                class="post-title"
-                                                >Generatingaction(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลสถานะการเชื่อมโครงข่าย</small
-                                                >
-                                                <small class="text-muted"
-                                                    >
-                                                </small>
-                                            </div>
-                                        </li>
+                                        <list-group-item
+                                            v-for="item in tabs.progress"
+                                            :key="item.id"
+                                            :route="item.route"
+                                            :title="item.title"
+                                            :details="item.details"
+                                        ></list-group-item>
+                                    </div>
+                                    <div id="constarution" class="tab-pane fade">
+                                        <list-group-item
+                                            v-for="item in tabs.constarution"
+                                            :key="item.id"
+                                            :route="item.route"
+                                            :title="item.title"
+                                            :details="item.details"
+                                        ></list-group-item>
                                     </div>
                                     <div id="planing" class="tab-pane fade">
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a
-                                                href="/data/problemsolution"
-                                                class="post-title"
-                                                >Problemsolution(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลปัญหาและวิธีการแก้ไข</small
-                                                >
-                                                <small class="text-muted">
-                                                </small>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a
-                                                href="/data/technician"
-                                                class="post-title"
-                                                >Technician(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลทีมช่าง</small
-                                                >
-                                                <small class="text-muted">
-                                                </small>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a
-                                                href="/data/callver"
-                                                class="post-title"
-                                                >Callver(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลจำนวนการติดต่อ</small
-                                                >
-                                                <small class="text-muted">
-                                                </small>
-                                            </div>
-                                        </li>
-                                        <li
-                                            class="list-group-item bg-transparent"
-                                        >
-                                            <a
-                                                href="/data/callverstatus"
-                                                class="post-title"
-                                                >Callver Status(CRED)</a
-                                            >
-                                            <div
-                                                class="d-flex justify-content-between mt-3"
-                                            >
-                                                <small class="text-muted"
-                                                    >แก้ไขข้อมูลสถานะการติดต่อ</small
-                                                >
-                                                <small class="text-muted">
-                                                </small>
-                                            </div>
-                                        </li>
+                                        <list-group-item
+                                            v-for="item in tabs.planing"
+                                            :key="item.id"
+                                            :route="item.route"
+                                            :title="item.title"
+                                            :details="item.details"
+                                        ></list-group-item>
                                     </div>
                                 </div>
                             </div>
@@ -284,6 +94,105 @@
                 </div>
             </div>
         </div>
+        <router-view />
     </section>
 </template>
-r
+<script>
+import ListGroupItem from "../partials/ListGroupItem";
+export default {
+    components: {
+        ListGroupItem
+    },
+    data() {
+        return {
+            tabs: {
+                building: [
+                    {
+                        id: 1,
+                        route: "/settings/contract_sell",
+                        title: "Contract Sell(CRED)",
+                        details: "แก้ไขข้อมูลชื่อเซลล์ที่ติดต่อ"
+                    },
+
+                    {
+                        id: 2,
+                        route: "/settings/spend_spacetitle",
+                        title: "SpendSpace(CRED)",
+                        details: "แก้ไขข้อมูลการชำระรายปี"
+                    },
+
+                    {
+                        id: 3,
+                        route: "/settings/area_3bb",
+                        title: "Area 3BB(CRED)",
+                        details: "แก้ไขข้อมูลพื้นที่ 3บีบี"
+                    },
+
+                    {
+                        id: 4,
+                        route: "/settings/area_true",
+                        title: "Area True(CRED)",
+                        details: "แก้ไขข้อมูลพื้นที่ทรู"
+                    },
+
+                    {
+                        id: 5,
+                        route: "/settings/area_ais",
+                        title: "Area Ais(CRED)",
+                        details: "แก้ไขข้อมูลพื้นที่เอไอเอส"
+                    },
+
+                    {
+                        id: 6,
+                        route: "/settings/area_fibernet",
+                        title: "Area FiberNet(CRED)",
+                        details: "แก้ไขข้อมูลพื้นที่ไฟเบอร์เน็ต"
+                    },
+
+                    {
+                        id: 7,
+                        route: "/settings/operating_time",
+                        title: "Operating Time(CRED)",
+                        details: "แก้ไขข้อมูลพื้นที่เวลาเข้างาน"
+                    }
+                ],
+                planing: [
+                    {
+                        id: 1,
+                        route: "/settings/problemsolution",
+                        title: "Problemsolution(CRED)",
+                        details: "แก้ไขข้อมูลปัญหาและวิธีการแก้ไข"
+                    },
+                    {
+                        id: 2,
+                        route: "/settings/technician",
+                        title: "Technician(CRED)",
+                        details: "แก้ไขข้อมูลทีมช่าง"
+                    },
+                    {
+                        id: 3,
+                        route: "/settings/callver",
+                        title: "Callver(CRED)",
+                        details: "แก้ไขข้อมูลจำนวนการติดต่อ"
+                    },
+                    {
+                        id: 4,
+                        route: "/settings/callverstatus",
+                        title: "Callver Status(CRED)",
+                        details: "แก้ไขข้อมูลสถานะการติดต่อ"
+                    }
+                ],
+                progress: [
+                     {
+                        id: 1,
+                        route: "/settings/generatingaction",
+                        title: "Generatingaction(CRED)",
+                        details: "แก้ไขข้อมูลสถานะการเชื่อมโครงข่าย"
+                    }
+                ],
+                constarution: []
+            }
+        };
+    }
+};
+</script>

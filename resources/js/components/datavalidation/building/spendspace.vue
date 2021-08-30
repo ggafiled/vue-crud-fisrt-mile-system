@@ -5,7 +5,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Spend Space
+                            <h3 class="card-title">
+                                {{ translate("Spend Space") }}
+                            </h3>
                             <div class="card-tools">
                                 <button
                                     type="button"

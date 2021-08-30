@@ -5,7 +5,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Technician
+                            <h3 class="card-title">
+                                {{ translate("Technician") }}
+                            </h3>
                             <div class="card-tools">
                                 <button
                                     type="button"

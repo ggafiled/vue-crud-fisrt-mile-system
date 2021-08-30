@@ -182,109 +182,65 @@ export default [{
         },
         children: [{
                 path: "contract_sell",
-                component: require("./components/datavalidation/building/contractsell.vue")
+                component: require("./components/datavalidation/building/ContractSell.vue")
                     .default
             },
             {
                 path: "spend_space",
-                component: require("./components/datavalidation/building/spendspace.vue")
-                    .default,
-                meta: {
-                    requiresAuth: true,
-                    roles: ["superadministrator"]
-                }
+                component: require("./components/datavalidation/building/SpendSpace.vue")
+                    .default
             },
             {
                 path: "area_3bb",
-                component: require("./components/datavalidation/building/area3bb.vue")
-                    .default,
-                meta: {
-                    requiresAuth: true,
-                    roles: ["superadministrator"]
-                }
+                component: require("./components/datavalidation/building/Area3bb.vue")
+                    .default
             },
             {
                 path: "area_true",
-                component: require("./components/datavalidation/building/areatrue.vue")
-                    .default,
-                meta: {
-                    requiresAuth: true,
-                    roles: ["superadministrator"]
-                }
+                component: require("./components/datavalidation/building/AreaTrue.vue")
+                    .default
             },
             {
                 path: "area_ais",
-                component: require("./components/datavalidation/building/areaais.vue")
-                    .default,
-                meta: {
-                    requiresAuth: true,
-                    roles: ["superadministrator"]
-                }
+                component: require("./components/datavalidation/building/AreaAis.vue")
+                    .default
             },
             {
                 path: "area_fibernet",
-                component: require("./components/datavalidation/building/areafibernet.vue")
-                    .default,
-                meta: {
-                    requiresAuth: true,
-                    roles: ["superadministrator"]
-                }
+                component: require("./components/datavalidation/building/AreaFibernet.vue")
+                    .default
             },
             {
                 path: "operating_time",
-                component: require("./components/datavalidation/building/opertingtime.vue")
-                    .default,
-                meta: {
-                    requiresAuth: true,
-                    roles: ["superadministrator"]
-                }
+                component: require("./components/datavalidation/building/OpertingTime.vue")
+                    .default
+            },
+            {
+                path: "problemsolution",
+                component: require("./components/datavalidation/planning/ProblemSolution.vue")
+                    .default
+            },
+            {
+                path: "technician",
+                component: require("./components/datavalidation/planning/Technician.vue")
+                    .default
+            },
+            {
+                path: "callver",
+                component: require("./components/datavalidation/planning/Callver.vue")
+                    .default
+            },
+            {
+                path: "callverstatus",
+                component: require("./components/datavalidation/planning/CallverStatus.vue")
+                    .default
+            },
+            {
+                path: "generatingaction",
+                component: require("./components/datavalidation/progress/Generatingaction.vue")
+                    .default
             }
         ]
     },
-    {
-        path: "/data/problemsolution",
-        component: require("./components/datavalidation/planning/problemsolution.vue")
-            .default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator"]
-        }
-    },
-    {
-        path: "/data/technician",
-        component: require("./components/datavalidation/planning/technician.vue")
-            .default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator"]
-        }
-    },
-    {
-        path: "/data/callver",
-        component: require("./components/datavalidation/planning/callver.vue")
-            .default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator"]
-        }
-    },
-    {
-        path: "/data/callverstatus",
-        component: require("./components/datavalidation/planning/callverstatus.vue")
-            .default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator"]
-        }
-    },
-    {
-        path: "/data/generatingaction",
-        component: require("./components/datavalidation/progress/generatingaction.vue")
-            .default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator"]
-        }
-    },
     { path: "*", component: require("./components/NotFound.vue").default }
-];];
+];

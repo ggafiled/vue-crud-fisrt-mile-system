@@ -5,7 +5,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Generatingaction
+                            <h3 class="card-title">
+                                {{ translate("Generatingaction") }}
+                            </h3>
                             <div class="card-tools">
                                 <button
                                     type="button"

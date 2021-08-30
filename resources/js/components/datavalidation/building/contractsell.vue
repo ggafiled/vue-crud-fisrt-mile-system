@@ -5,7 +5,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Contract Sell
+                            <h3 class="card-title">
+                                {{ translate("Contract Sell") }}
+                            </h3>
                             <div class="card-tools">
                                 <button
                                     type="button"
@@ -156,7 +158,7 @@ export default {
         },
         updateBuilding() {
             this.$Progress.start();
-            console.log('Editing data');
+            console.log("Editing data");
             this.form
                 .put("/salefm/" + this.form.id)
                 .then(response => {

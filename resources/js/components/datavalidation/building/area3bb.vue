@@ -5,7 +5,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Area 3BB
+                            <h3 class="card-title">
+                                {{ translate("Area 3BB") }}
+                            </h3>
                             <div class="card-tools">
                                 <button
                                     type="button"
@@ -125,7 +127,7 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 export default {
-    title: "All -",
+    title: "Area 3BB",
     data() {
         return {
             editmode: false,
