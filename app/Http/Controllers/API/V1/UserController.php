@@ -55,7 +55,7 @@ class UserController extends BaseController
             if (!\Gate::allows('isAdmin')) {
                 return $this->unauthorizedResponse();
             }
-            $users = User::get(['name', 'id']);
+            $users = User::withTrashed()->get(['name', 'id']);
             return $this->sendResponse($users, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError($users, trans('actions.get.fialed'));
@@ -139,7 +139,7 @@ class UserController extends BaseController
         try {
             $this->authorize('isAdmin');
 
-            $user = User::findOrFail($id);
+            $user = User::withTrashed()->findOrFail($id);
             // delete the user
 
             $user->delete();

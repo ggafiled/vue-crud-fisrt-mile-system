@@ -5,7 +5,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Technician
+                            <h3 class="card-title">
+                                {{ translate("Technician") }}
+                            </h3>
                             <div class="card-tools">
                                 <button
                                     type="button"
@@ -295,7 +297,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.buildings).DataTable({
             dom: "Blfrtip",
-            ajax: "/technician",
+            ajax: "/api/technician",
             responsive: true,
             processing: true,
             autoWidth: true,

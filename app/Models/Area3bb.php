@@ -10,7 +10,7 @@ class Area3bb extends Model
 {
     protected $fillable = [
         'id',
-        'area3BB'
+        'area3BB',
     ];
 
 }

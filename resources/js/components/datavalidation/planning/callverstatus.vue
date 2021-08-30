@@ -5,7 +5,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Callver Status
+                            <h3 class="card-title">
+                                {{ translate("Callver Status") }}
+                            </h3>
                             <div class="card-tools">
                                 <button
                                     type="button"
@@ -257,7 +259,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.buildings).DataTable({
             dom: "Blfrtip",
-            ajax: "/callverstatus",
+            ajax: "/api/callverstatus",
             responsive: true,
             processing: true,
             autoWidth: true,

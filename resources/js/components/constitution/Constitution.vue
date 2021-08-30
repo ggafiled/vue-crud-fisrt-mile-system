@@ -1037,7 +1037,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.constarution).DataTable({
             dom: "Blfrtip",
-            ajax: "/constarution",
+            ajax: "/api/constarution",
             responsive: true,
             processing: true,
             pageLength: 15,

@@ -308,7 +308,7 @@ export default {
 
             if (this.$gate.isAdmin()) {
                 axios
-                    .get("//permission/list")
+                    .get("/permission/list")
                     .then(response => {
                         this.autocompleteItems = response.data.data.map(a => {
                             return { text: a.name, id: a.id };
@@ -367,7 +367,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.permission).DataTable({
             dom: "Blfrtip",
-            ajax: "/role",
+            ajax: "/api/role",
             responsive: true,
             processing: true,
             autoWidth: true,

@@ -14,7 +14,7 @@ class CreateGeneratingactionsTable extends Migration
     public function up()
     {
         Schema::create('generatingactions', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('status')->nullable();
             $table->timestamps();
             $table->softDeletes();

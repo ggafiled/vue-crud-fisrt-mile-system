@@ -5,7 +5,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Callver
+                            <h3 class="card-title">
+                                {{ translate("Callver") }}
+                            </h3>
+
                             <div class="card-tools">
                                 <button
                                     type="button"
@@ -257,7 +260,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.buildings).DataTable({
             dom: "Blfrtip",
-            ajax: "/callver",
+            ajax: "/api/callver",
             responsive: true,
             processing: true,
             autoWidth: true,

@@ -283,7 +283,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.team).DataTable({
             dom: "Blfrtip",
-            ajax: "/team",
+            ajax: "/api/team",
             responsive: true,
             processing: true,
             pageLength: 15,

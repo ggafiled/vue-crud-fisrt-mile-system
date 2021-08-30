@@ -69,7 +69,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.buildinglist).DataTable({
             dom: "Blfrtip",
-            ajax: "/buildinglist",
+            ajax: "/api/buildinglist",
             responsive: true,
             processing: true,
             autoWidth: true,

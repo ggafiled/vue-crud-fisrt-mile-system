@@ -850,7 +850,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.progress).DataTable({
             dom: "Blfrtip",
-            ajax: "/progress",
+            ajax: "/api/progress",
             responsive: true,
             processing: true,
             autoWidth: true,
