@@ -17,6 +17,7 @@ class CreateAreaAisTable extends Migration
             $table->id();
             $table->string('areaAis')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

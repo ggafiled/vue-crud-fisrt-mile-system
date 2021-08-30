@@ -17,6 +17,7 @@ class CreateCallverstatusesTable extends Migration
             $table->id();
             $table->string('callVerStatus')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

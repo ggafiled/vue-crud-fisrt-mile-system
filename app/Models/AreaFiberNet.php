@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class AreaFiberNet extends Model
 {
-    use HasFactory,SoftDeletes;
     protected $fillable = [
         'id',
         'areaFiberNet'

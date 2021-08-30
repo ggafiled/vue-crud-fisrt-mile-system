@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Area3bb extends Model
 {
-    use HasFactory,SoftDeletes;
     protected $fillable = [
         'id',
         'area3BB'

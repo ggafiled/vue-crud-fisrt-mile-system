@@ -105,7 +105,11 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="far fa-chart-bar"></i>
-                                {{ translate("dashboard.charts.group_of_county_area_chart") }}
+                                {{
+                                    translate(
+                                        "dashboard.charts.group_of_county_area_chart"
+                                    )
+                                }}
                             </h3>
                             <div class="card-tools">
                                 <div class="btn-group">
@@ -146,7 +150,9 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">
-                                {{ translate("dashboard.info_box.progress_all") }}
+                                {{
+                                    translate("dashboard.info_box.progress_all")
+                                }}
                             </span>
                             <span class="info-box-number">{{
                                 dashboardInfo.building
@@ -163,7 +169,9 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">
-                                {{ translate("dashboard.info_box.constarution") }}
+                                {{
+                                    translate("dashboard.info_box.constarution")
+                                }}
                             </span>
                             <span class="info-box-number">
                                 {{
@@ -256,7 +264,11 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="mdi mdi-progress-wrench"></i>
-                                {{ translate("dashboard.charts.progress_status_chart") }}
+                                {{
+                                    translate(
+                                        "dashboard.charts.progress_status_chart"
+                                    )
+                                }}
                             </h3>
                             <div class="card-tools">
                                 <div class="btn-group">
@@ -291,7 +303,11 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="mdi mdi-progress-wrench"></i>
-                                {{ translate("dashboard.charts.progress_polarArea_chart") }}
+                                {{
+                                    translate(
+                                        "dashboard.charts.progress_polarArea_chart"
+                                    )
+                                }}
                             </h3>
                             <div class="card-tools">
                                 <div class="btn-group">
