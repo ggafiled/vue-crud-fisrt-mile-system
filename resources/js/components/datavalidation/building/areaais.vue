@@ -23,8 +23,8 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table
-                                    id="buildings"
-                                    ref="buildings"
+                                    id="items"
+                                    ref="items"
                                     class="display nowrap"
                                     style="width: 100%"
                                 >
@@ -74,6 +74,11 @@
                         </div>
 
                         <!-- <form @submit.prevent="createUser"> -->
+                        <form
+                            @submit.prevent="
+                                editmode ? updateItem() : createItem()
+                            "
+                        >
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -125,7 +130,6 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
 export default {
     title: "Area AIS",
     data() {
@@ -141,24 +145,9 @@ export default {
             })
         };
     },
-    computed: {
-        ...mapGetters(["buildings"]),
-        ...mapState(["buildings"])
-    },
     methods: {
-        loadBuildings() {
+        updateItem() {
             this.$Progress.start();
-            if (this.$gate.isAdmin()) {
-                this.$store.dispatch("GET_BUILDINGS");
-                $("#buildings")
-                    .DataTable()
-                    .ajax.reload();
-            }
-            this.$Progress.finish();
-        },
-        updateBuilding() {
-            this.$Progress.start();
-            // console.log('Editing data');
             this.form
                 .put("/areaais/" + this.form.id)
                 .then(response => {
@@ -168,20 +157,20 @@ export default {
                         icon: "success",
                         title: response.data.message
                     });
+                     $("#items")
+                        .DataTable()
+                        .ajax.reload();
                     this.$Progress.finish();
-                    //  Fire.$emit('AfterCreate');
-                    this.loadBuildings();
                 })
                 .catch(() => {
                     this.$Progress.fail();
                 });
         },
-        editModal(building) {
+        editModal(item) {
             this.editmode = true;
             this.form.reset();
-            console.log(building);
             $("#addNew").modal("show");
-            this.form.fill(building);
+            this.form.fill(item);
         },
         newModal() {
             this.editmode = false;
@@ -220,7 +209,9 @@ export default {
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
-                            this.loadBuildings();
+                             $("#items")
+                                .DataTable()
+                                .ajax.reload();
                         })
                         .catch(data => {
                             Swal.fire("Failed!", data.message, "warning");
@@ -228,7 +219,7 @@ export default {
                 }
             });
         },
-        createAreaAis() {
+        createItem() {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
@@ -250,29 +241,55 @@ export default {
                 });
         }
     },
-    created() {
-        this.$Progress.start();
-        this.loadBuildings();
-        this.$Progress.finish();
-    },
-    mounted() {
-        var vm = this;
-        var table = $(this.$refs.buildings).DataTable({
+    generateTable() {
+            var vm = this;
+            var table = $(this.$refs.items).DataTable({
             dom: "Blfrtip",
             ajax: "/api/areaais",
             responsive: true,
             processing: true,
             autoWidth: true,
-            pageLength: 10,
-            lengthMenu: [
-                [10, 15, 25, 50, -1],
-                [10, 15, 25, 50, "All"]
-            ],
-            scrollX: true,
-            scrollCollapse: true,
-            select: true,
-
-            columns: [
+             pageLength: 5,
+                lengthMenu: [
+                    [5, 10, 15, 25, 50, -1],
+                    [5, 10, 15, 25, 50, "All"]
+                ],
+                scrollX: true,
+                scrollCollapse: true,
+                select: true,
+                buttons: [
+                    {
+                        extend: "copy",
+                        text: "<i class='bi bi-clipboard mr-1'></i>Copy",
+                        exportOptions: {
+                            columns: "th:not(.notexport)"
+                        }
+                    },
+                    {
+                        extend: "excelHtml5",
+                        autoFilter: true,
+                        sheetName: "Building",
+                        text:
+                            "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+                        exportOptions: {
+                            columns: "th:not(.notexport)"
+                        }
+                    },
+                    {
+                        text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                        action: function(e, dt, node, config) {
+                            console.info("button: Clear");
+                            $.fn.dataTable.ext.search.pop();
+                            dt.search("").draw();
+                            dt.columns()
+                                .search("")
+                                .draw();
+                            dt.rows().deselect();
+                            dt.ajax.reload();
+                        }
+                    }
+                ],
+                columns: [
                 {
                     data: null,
                     defaultContent: "",
@@ -309,19 +326,13 @@ export default {
                         }
                     }
                 },
-                {
+               {
                     data: "deleted_at",
                     render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ยังไม่มีข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return moment(data).format("MM/DD/YYYY HH:MM");
+                            return data !== null
+                                ? '<i class="fas fa-times red"></i><span class="invisible">disable</span>'
+                                : '<i class="fas fa-check green"></i><span class="invisible">enable</span>';
                         }
-                    }
                 },
                 {
                     data: null,
@@ -345,7 +356,7 @@ export default {
             select: { selector: "td:not(:last-child)", style: "os" },
             order: [[1, "desc"]]
         });
-        $("tbody", this.$refs.buildings).on("click", ".edit-building", function(
+        $("tbody", this.$refs.items).on("click", ".edit-items", function(
             e
         ) {
             e.preventDefault();
@@ -353,16 +364,20 @@ export default {
             var row = table.row(tr);
             vm.editModal(row.data());
         });
-        $("tbody", this.$refs.buildings).on(
-            "click",
-            ".delete-building",
-            function(e) {
+         $("tbody", this.$refs.items).on("click", ".delete-items", function(e) {
                 e.preventDefault();
                 var tr = $(this).closest("tr");
                 var row = table.row(tr);
                 vm.deleteBuilding(row.data());
             }
         );
+    },
+    created() {
+        this.$Progress.start();
+        this.$Progress.finish();
+    },
+    mounted() {
+        this.generateTable();
     }
 };
 </script>

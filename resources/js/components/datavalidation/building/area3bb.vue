@@ -328,13 +328,13 @@ export default {
                         }
                     },
                     {
-                    data: "deleted_at",
-                    render: function(data, type, row, meta) {
-                        return data !== null
-                            ? '<i class="fas fa-times red"></i><span class="invisible">disable</span>'
-                            : '<i class="fas fa-check green"></i><span class="invisible">enable</span>';
-                    }
-                },
+                        data: "deleted_at",
+                        render: function(data, type, row, meta) {
+                            return data !== null
+                                ? '<i class="fas fa-times red"></i><span class="invisible">disable</span>'
+                                : '<i class="fas fa-check green"></i><span class="invisible">enable</span>';
+                        }
+                    },
                     {
                         data: null,
                         className: "dt-body-center notexport",
