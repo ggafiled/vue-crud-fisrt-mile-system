@@ -17,7 +17,6 @@ class CreateArea3bbsTable extends Migration
             $table->id();
             $table->string('area3BB')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

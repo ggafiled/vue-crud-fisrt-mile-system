@@ -17,7 +17,6 @@ class CreateTeamserwaysTable extends Migration
             $table->id();
             $table->string('nameSerway')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

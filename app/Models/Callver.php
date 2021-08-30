@@ -13,9 +13,4 @@ class Callver extends Model
         'id',
         'callVer'
     ];
-
-    public function planing()
-	{
-		return $this->hasOne('App\Models\Planing','callver_id','id');
-	}
 }

@@ -14,8 +14,4 @@ class AreaTrue extends Model
         'areaTrue'
     ];
 
-    public function building()
-	{
-		return $this->hasOne('App\Models\Building','areaTrue_id','id');
-	}
 }

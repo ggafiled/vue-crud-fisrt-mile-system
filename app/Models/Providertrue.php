@@ -14,8 +14,4 @@ class Providertrue extends Model
         'providerTrue'
     ];
 
-    public function building()
-	{
-		return $this->hasOne('App\Models\Building','providertrue_id','id');
-	}
 }

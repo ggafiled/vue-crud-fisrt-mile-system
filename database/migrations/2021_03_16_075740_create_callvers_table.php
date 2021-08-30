@@ -17,7 +17,6 @@ class CreateCallversTable extends Migration
             $table->id();
             $table->string('callVer')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

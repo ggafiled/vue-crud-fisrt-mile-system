@@ -17,7 +17,6 @@ class CreateSalefmsTable extends Migration
             $table->id();
             $table->string('nameSale')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

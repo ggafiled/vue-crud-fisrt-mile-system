@@ -19,7 +19,6 @@ class CreateTechniciansTable extends Migration
             $table->string('phoneTechnician')->nullable();
             $table->string('emailTechnician')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

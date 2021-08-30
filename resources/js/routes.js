@@ -287,4 +287,5 @@ export default [{
         }
     },
     { path: "*", component: require("./components/NotFound.vue").default }
-];];
+];
+

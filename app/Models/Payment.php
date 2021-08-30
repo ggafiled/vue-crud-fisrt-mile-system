@@ -17,8 +17,4 @@ class Payment extends Model
         'deleted_at'
     ];
 
-    public function building()
-	{
-		return $this->hasOne('App\Models\Building','payment_id','id');
-	}
 }

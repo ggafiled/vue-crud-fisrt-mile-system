@@ -17,7 +17,6 @@ class CreateAreaTruesTable extends Migration
             $table->id();
             $table->string('areaTrue')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
