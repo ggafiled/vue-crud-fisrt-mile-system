@@ -31,10 +31,10 @@
                                     <thead>
                                         <tr class="info">
                                             <th></th>
-                                            <th>AreaFiberNet/th></th>
-                                            <th>Created_at</th>
-                                            <th>Updated</th>
-                                            <th>Deleted_at</th>
+                                            <th>AreaFiberNet</th>
+                                            <th>Created At</th>
+                                            <th>Updated At</th>
+                                            <th>Avaiable</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -75,9 +75,7 @@
 
                         <!-- <form @submit.prevent="createUser"> -->
                         <form
-                            @submit.prevent="
-                                editmode ? updateItem() : createItem()
-                            "
+                            @submit.prevent="editmode ? updateItem() : createItem()"
                         >
                             <div class="modal-body">
                                 <div class="row">
@@ -211,7 +209,7 @@ export default {
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
-                             $("#items")
+                            $("#items")
                                 .DataTable()
                                 .ajax.reload();
                         })
@@ -330,16 +328,16 @@ export default {
                 {
                     data: "deleted_at",
                     render: function(data, type, row, meta) {
-                            return data !== null
-                                ? '<i class="fas fa-times red"></i><span class="invisible">disable</span>'
-                                : '<i class="fas fa-check green"></i><span class="invisible">enable</span>';
-                        }
+                        return data !== null
+                            ? '<i class="fas fa-times red"></i><span class="invisible">disable</span>'
+                            : '<i class="fas fa-check green"></i><span class="invisible">enable</span>';
+                    }
                 },
                 {
                     data: null,
                     className: "dt-body-center notexport",
                     render: function(data, type, row, meta) {
-                        return "<a class='edit-building btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-building btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
+                        return "<a class='edit-items btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-items btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }
                 }
             ],

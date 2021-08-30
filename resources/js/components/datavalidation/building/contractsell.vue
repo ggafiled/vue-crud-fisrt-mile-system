@@ -139,7 +139,7 @@ export default {
             selected: "",
             form: new Form({
                 id: "",
-                area3BB: "",
+                nameSale: "",
                 created_at: "",
                 updated: "",
                 deleted_at: ""
@@ -297,7 +297,7 @@ export default {
                         className: "dt-body-center notexport"
                     },
                     {
-                        data: "area3BB"
+                        data: "nameSale"
                     },
                     {
                         data: "created_at",

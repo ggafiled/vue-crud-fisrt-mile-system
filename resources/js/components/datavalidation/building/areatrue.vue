@@ -23,8 +23,8 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table
-                                    id="buildings"
-                                    ref="buildings"
+                                    id="items"
+                                    ref="items"
                                     class="display nowrap"
                                     style="width: 100%"
                                 >
@@ -242,7 +242,7 @@ export default {
     },
     generateTable() {
         var vm = this;
-        var table = $(this.$refs.buildings).DataTable({
+        var table = $(this.$refs.items).DataTable({
             dom: "Blfrtip",
             ajax: "/api/areatrue",
             responsive: true,
@@ -306,7 +306,7 @@ export default {
                     data: null,
                     className: "dt-body-center notexport",
                     render: function(data, type, row, meta) {
-                        return "<a class='edit-building btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-building btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
+                        return "<a class='edit-items btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-items btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }
                 }
             ],

@@ -31,10 +31,10 @@
                                     <thead>
                                         <tr class="info">
                                             <th></th>
-                                            <th>AreaAIS/th></th>
-                                            <th>Created_at</th>
-                                            <th>Updated</th>
-                                            <th>Deleted_at</th>
+                                            <th>AreaAIS</th>
+                                            <th>Created At</th>
+                                            <th>Updated At</th>
+                                            <th>Avaiable</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -79,49 +79,50 @@
                                 editmode ? updateItem() : createItem()
                             "
                         >
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label>AreaAis</label>
-                                        <input
-                                            v-model="form.areaAis"
-                                            type="text"
-                                            class="form-control"
-                                            placeholder="Enter your name area ais..."
-                                            :class="{
-                                                'is-invalid': form.errors.has(
-                                                    'areaAis'
-                                                )
-                                            }"
-                                        />
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>AreaAis</label>
+                                            <input
+                                                v-model="form.areaAis"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your name area ais..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'areaAis'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button
-                                type="button"
-                                class="btn btn-secondary"
-                                data-dismiss="modal"
-                            >
-                                {{ translate("building.actions.close") }}
-                            </button>
-                            <button
-                                v-show="editmode"
-                                type="submit"
-                                class="btn btn-success"
-                            >
-                                {{ translate("building.actions.update") }}
-                            </button>
-                            <button
-                                v-show="!editmode"
-                                type="submit"
-                                class="btn btn-primary"
-                            >
-                                {{ translate("building.actions.create") }}
-                            </button>
-                        </div>
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-dismiss="modal"
+                                >
+                                    {{ translate("building.actions.close") }}
+                                </button>
+                                <button
+                                    v-show="editmode"
+                                    type="submit"
+                                    class="btn btn-success"
+                                >
+                                    {{ translate("building.actions.update") }}
+                                </button>
+                                <button
+                                    v-show="!editmode"
+                                    type="submit"
+                                    class="btn btn-primary"
+                                >
+                                    {{ translate("building.actions.create") }}
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -157,7 +158,7 @@ export default {
                         icon: "success",
                         title: response.data.message
                     });
-                     $("#items")
+                    $("#items")
                         .DataTable()
                         .ajax.reload();
                     this.$Progress.finish();
@@ -209,7 +210,7 @@ export default {
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
-                             $("#items")
+                            $("#items")
                                 .DataTable()
                                 .ajax.reload();
                         })
@@ -242,54 +243,53 @@ export default {
         }
     },
     generateTable() {
-            var vm = this;
-            var table = $(this.$refs.items).DataTable({
+        var vm = this;
+        var table = $(this.$refs.items).DataTable({
             dom: "Blfrtip",
             ajax: "/api/areaais",
             responsive: true,
             processing: true,
             autoWidth: true,
-             pageLength: 5,
-                lengthMenu: [
-                    [5, 10, 15, 25, 50, -1],
-                    [5, 10, 15, 25, 50, "All"]
-                ],
-                scrollX: true,
-                scrollCollapse: true,
-                select: true,
-                buttons: [
-                    {
-                        extend: "copy",
-                        text: "<i class='bi bi-clipboard mr-1'></i>Copy",
-                        exportOptions: {
-                            columns: "th:not(.notexport)"
-                        }
-                    },
-                    {
-                        extend: "excelHtml5",
-                        autoFilter: true,
-                        sheetName: "Building",
-                        text:
-                            "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
-                        exportOptions: {
-                            columns: "th:not(.notexport)"
-                        }
-                    },
-                    {
-                        text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
-                        action: function(e, dt, node, config) {
-                            console.info("button: Clear");
-                            $.fn.dataTable.ext.search.pop();
-                            dt.search("").draw();
-                            dt.columns()
-                                .search("")
-                                .draw();
-                            dt.rows().deselect();
-                            dt.ajax.reload();
-                        }
+            pageLength: 5,
+            lengthMenu: [
+                [5, 10, 15, 25, 50, -1],
+                [5, 10, 15, 25, 50, "All"]
+            ],
+            scrollX: true,
+            scrollCollapse: true,
+            select: true,
+            buttons: [
+                {
+                    extend: "copy",
+                    text: "<i class='bi bi-clipboard mr-1'></i>Copy",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
                     }
-                ],
-                columns: [
+                },
+                {
+                    extend: "excelHtml5",
+                    autoFilter: true,
+                    sheetName: "Building",
+                    text: "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+                    exportOptions: {
+                        columns: "th:not(.notexport)"
+                    }
+                },
+                {
+                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                    action: function(e, dt, node, config) {
+                        console.info("button: Clear");
+                        $.fn.dataTable.ext.search.pop();
+                        dt.search("").draw();
+                        dt.columns()
+                            .search("")
+                            .draw();
+                        dt.rows().deselect();
+                        dt.ajax.reload();
+                    }
+                }
+            ],
+            columns: [
                 {
                     data: null,
                     defaultContent: "",
@@ -326,19 +326,19 @@ export default {
                         }
                     }
                 },
-               {
+                {
                     data: "deleted_at",
                     render: function(data, type, row, meta) {
-                            return data !== null
-                                ? '<i class="fas fa-times red"></i><span class="invisible">disable</span>'
-                                : '<i class="fas fa-check green"></i><span class="invisible">enable</span>';
-                        }
+                        return data !== null
+                            ? '<i class="fas fa-times red"></i><span class="invisible">disable</span>'
+                            : '<i class="fas fa-check green"></i><span class="invisible">enable</span>';
+                    }
                 },
                 {
                     data: null,
                     className: "dt-body-center notexport",
                     render: function(data, type, row, meta) {
-                        return "<a class='edit-building btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-building btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
+                        return "<a class='edit-items btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-items btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                     }
                 }
             ],
@@ -356,21 +356,18 @@ export default {
             select: { selector: "td:not(:last-child)", style: "os" },
             order: [[1, "desc"]]
         });
-        $("tbody", this.$refs.items).on("click", ".edit-items", function(
-            e
-        ) {
+        $("tbody", this.$refs.items).on("click", ".edit-items", function(e) {
             e.preventDefault();
             var tr = $(this).closest("tr");
             var row = table.row(tr);
             vm.editModal(row.data());
         });
-         $("tbody", this.$refs.items).on("click", ".delete-items", function(e) {
-                e.preventDefault();
-                var tr = $(this).closest("tr");
-                var row = table.row(tr);
-                vm.deleteBuilding(row.data());
-            }
-        );
+        $("tbody", this.$refs.items).on("click", ".delete-items", function(e) {
+            e.preventDefault();
+            var tr = $(this).closest("tr");
+            var row = table.row(tr);
+            vm.deleteBuilding(row.data());
+        });
     },
     created() {
         this.$Progress.start();

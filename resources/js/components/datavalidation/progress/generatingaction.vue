@@ -297,7 +297,7 @@ export default {
                         className: "dt-body-center notexport"
                     },
                     {
-                        data: "area3BB"
+                        data: "status"
                     },
                     {
                         data: "created_at",
