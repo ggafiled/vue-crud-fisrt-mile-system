@@ -14,8 +14,4 @@ class Problemsolution extends Model
         'problemSolution'
     ];
 
-    public function planing()
-	{
-		return $this->hasOne('App\Models\Planing','problemsolution_id','id');
-	}
 }

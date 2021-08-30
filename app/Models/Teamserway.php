@@ -14,8 +14,4 @@ class Teamserway extends Model
         'nameSerway'
     ];
 
-    public function building()
-	{
-		return $this->hasOne('App\Models\Building','teamserway_id','id');
-	}
 }

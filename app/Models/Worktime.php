@@ -13,9 +13,4 @@ class Worktime extends Model
         'id',
         'workTime'
     ];
-
-    public function building()
-	{
-		return $this->hasOne('App\Models\Building','workTime_id','id');
-	}
 }

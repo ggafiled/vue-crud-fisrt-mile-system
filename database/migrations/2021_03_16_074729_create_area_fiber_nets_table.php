@@ -17,7 +17,6 @@ class CreateAreaFiberNetsTable extends Migration
             $table->id();
             $table->string('areaFiberNet')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

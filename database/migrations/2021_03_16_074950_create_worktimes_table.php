@@ -17,7 +17,6 @@ class CreateWorktimesTable extends Migration
             $table->id();
             $table->string('workTime')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

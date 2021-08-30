@@ -24,6 +24,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('areas', 'AreaController@index');
+    Route::get('aises', 'AreaAisController@index');
+    Route::get('area3bbs', 'Area3BBController@index');
+    Route::get('areaTrues', 'AreaTrueController@index');
+    Route::get('areaAises', 'AreaAisController@index');
+    Route::get('areaFiberNets', 'AreaFiberNetController@index');
+    Route::get('workTimes', 'WorkTimeController@index');
+    Route::get('saleFms', 'NameSaleController@index');
+    Route::get('spendSpaces', 'PaymentController@index');
     Route::get('bbns', 'BbnController@index');
     Route::get('profile', 'ProfileController@profile');
     Route::put('profile', 'ProfileController@updateProfile');

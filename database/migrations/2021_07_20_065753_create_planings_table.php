@@ -17,11 +17,6 @@ class CreatePlaningsTable extends Migration
         Schema::create('planings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();
-            $table->bigInteger('technician_id')->unsigned();
-            $table->bigInteger('problemsolution_id')->unsigned();
-            $table->bigInteger('teamtechnician_id')->unsigned();
-            $table->bigInteger('callver_id')->unsigned();
-            $table->bigInteger('callverstatus_id')->unsigned();
             $table->string('name')->nullable();
             $table->string('surname')->nullable();
             $table->string('tel')->nullable();
@@ -40,32 +35,18 @@ class CreatePlaningsTable extends Migration
             $table->string('status')->nullable();
             $table->string('subStatus')->nullable();
             $table->string('reMark')->nullable();
+
+            $table->string('technician')->nullable();
+            $table->string('problemsolution')->nullable();
+            $table->string('teamtechnician')->nullable();
+            $table->string('callver')->nullable();
+            $table->string('callverstatus')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('building_id')
             ->references('id')
             ->on('buildings')
-            ->onDelete('cascade');
-
-            $table->foreign('problemsolution_id')
-            ->references('id')
-            ->on('problemsolutions')
-            ->onDelete('cascade');
-
-            $table->foreign('teamtechnician_id')
-            ->references('id')
-            ->on('technicians')
-            ->onDelete('cascade');
-
-            $table->foreign('callver_id')
-            ->references('id')
-            ->on('callvers')
-            ->onDelete('cascade');
-
-            $table->foreign('callverstatus_id')
-            ->references('id')
-            ->on('callverstatuses')
             ->onDelete('cascade');
         });
     }
@@ -81,3 +62,5 @@ class CreatePlaningsTable extends Migration
         Schema::dropIfExists('planings');
     }
 }
+
+

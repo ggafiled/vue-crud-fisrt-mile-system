@@ -14,8 +14,4 @@ class Operater extends Model
         'operaterName'
     ];
 
-    public function building()
-	{
-		return $this->hasOne('App\Models\Building','operater_id','id');
-	}
 }

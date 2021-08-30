@@ -14,8 +14,4 @@ class AreaAis extends Model
         'areaAis'
     ];
 
-    public function building()
-	{
-		return $this->hasOne('App\Models\Building','areaAis_id','id');
-	}
 }

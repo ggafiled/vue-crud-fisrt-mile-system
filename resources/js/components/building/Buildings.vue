@@ -525,14 +525,24 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Contract Sell</label>
-                                            <Select2
-                                                v-model="form.payment_id"
-                                                :options="nameSale"
+                                            <select
+                                                class="form-control"
+                                                v-model="form.contractSell"
                                             >
-                                            </Select2>
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in saleFms"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.nameSale }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
-                                                field="nameSale"
+                                                field="contractSell"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -579,14 +589,24 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>SpendSpace</label>
-                                            <Select2
-                                                v-model="form.payment_id"
-                                                :options="paymentType"
+                                            <select
+                                                class="form-control"
+                                                v-model="form.spendSpace"
                                             >
-                                            </Select2>
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in spendSpaces"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.paymentType }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
-                                                field="paymentType"
+                                                field="spendSpace"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -685,12 +705,22 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Area3BB</label>
-                                            <Select2
-                                                v-model="form.area3BB_id"
-                                                :options="area3BB"
+                                            <label>Area3BB *</label>
+                                            <select
+                                                class="form-control"
+                                                v-model="form.area3BB"
                                             >
-                                            </Select2>
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in area3bbs"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.area3BB }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="area3BB"
@@ -700,11 +730,21 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>AreaTrue</label>
-                                            <Select2
-                                                v-model="form.areaTrue_id"
-                                                :options="areaTrue"
+                                            <select
+                                                class="form-control"
+                                                v-model="form.areaTrue"
                                             >
-                                            </Select2>
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in areaTrues"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.areaTrue }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="areaTrue"
@@ -730,20 +770,24 @@
                                                 >
                                                 <option
                                                     value="BMA 1 (North West)"
-                                                    >BMA 1 (North West)</option
                                                 >
+                                                    BMA 1 (North West)
+                                                </option>
                                                 <option
                                                     value="BMA 2 (South West)"
-                                                    >BMA 2 (South West)</option
                                                 >
+                                                    BMA 2 (South West)
+                                                </option>
                                                 <option
                                                     value="BMA 3 (North East)"
-                                                    >BMA 3 (North East)</option
                                                 >
+                                                    BMA 3 (North East)
+                                                </option>
                                                 <option
                                                     value="BMA 4 (South East)"
-                                                    >BMA 4 (South East)</option
                                                 >
+                                                    BMA 4 (South East)
+                                                </option>
                                                 <option value="BMA 5 (Central)"
                                                     >BMA 5 (Central)</option
                                                 >
@@ -758,11 +802,21 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>AreaAis</label>
-                                            <Select2
-                                                v-model="form.areaAis_id"
-                                                :options="areaAis"
+                                            <select
+                                                class="form-control"
+                                                v-model="form.areaAis"
                                             >
-                                            </Select2>
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in areaAises"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.areaAis }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="areaAis"
@@ -774,11 +828,21 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Area FiberNet</label>
-                                            <Select2
-                                                v-model="form.areaFibetNet_id"
-                                                :options="areaFiberNet"
+                                            <select
+                                                class="form-control"
+                                                v-model="form.areaFiberNet"
                                             >
-                                            </Select2>
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in areaFiberNets"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.areaFiberNet }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="areaFiberNet"
@@ -788,14 +852,24 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Operating Time</label>
-                                            <Select2
-                                                v-model="form.workTime_id"
-                                                :options="workTime"
+                                            <select
+                                                class="form-control"
+                                                v-model="form.operatingTime"
                                             >
-                                            </Select2>
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in workTimes"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.workTime }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
-                                                field="workTime"
+                                                field="operatingTime"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -842,16 +916,20 @@ export default {
             selected: "",
             areas: [],
             bbns: [],
+            area3bbs: [],
+            areaTrues: [],
+            areaAises: [],
+            areaFiberNets: [],
+            workTimes: [],
+            saleFms: [],
             form: new Form({
                 id: "",
                 projectName: "",
-                nameSale: "",
-                paymentType: "",
-                area3BB: "",
-                areaTrue: "",
-                areaAis: "",
-                areaFiberNet: "",
-                workTime: "",
+                projectNameTot: "",
+                projectName3bb: "",
+                projectNameAis: "",
+                projectNameTrue: "",
+                projectNameFiberNet: "",
                 buildingSum: "",
                 floorSum: "",
                 roomSum: "",
@@ -872,13 +950,21 @@ export default {
                 postalCode: "",
                 longitude: "",
                 latitude: "",
+                contractSell: "",
                 contractDate: "",
                 contractDateEnd: "",
+                spendSpace: "",
                 condition: "",
                 contractPeriod: "",
                 reNewContact: "",
                 areaN: "",
-                bbN: ""
+                bbN: "",
+                area3BB: "",
+                areaTrue: "",
+                areaTrueNew: "",
+                areaAis: "",
+                areaFiberNet: "",
+                operatingTime: ""
             })
         };
     },
@@ -899,84 +985,61 @@ export default {
         }
     },
     methods: {
+        loadSaleFm() {
+            axios.get("/saleFms").then(response => {
+                this.saleFms = response.data.data;
+            });
+        },
+        loadSpendSpace() {
+            axios.get("/spendSpaces").then(response => {
+                this.spendSpaces = response.data.data;
+            });
+        },
         loadArea() {
             axios.get("/areas").then(response => {
                 this.areas = response.data.data;
             });
         },
+        loadArea3BB() {
+            axios.get("/area3bbs").then(response => {
+                this.area3bbs = response.data.data;
+            });
+        },
+        loadAreaTrue() {
+            axios.get("/areaTrues").then(response => {
+                this.areaTrues = response.data.data;
+            });
+        },
+        loadAreaAis() {
+            axios.get("/areaAises").then(response => {
+                this.areaAises = response.data.data;
+            });
+        },
+        loadAreaFiberNet() {
+            axios.get("/areaFiberNets").then(response => {
+                this.areaFiberNets = response.data.data;
+            });
+        },
+        loadWorkTime() {
+            axios.get("/workTimes").then(response => {
+                this.workTimes = response.data.data;
+            });
+        },
         loadBuildings() {
             this.$Progress.start();
-
             if (this.$gate.isAdmin()) {
                 this.$store.dispatch("GET_BUILDINGS");
                 $("#buildings")
                     .DataTable()
                     .ajax.reload();
             }
-
             this.$Progress.finish();
-        },
-        loadArea3bbs() {
-            axios.get("/area3bb").then(
-                response =>
-                    (this.area3BB = response.data.data.map(a => {
-                        return { text: a.area3BB, id: a.id };
-                    }))
-            );
-        },
-        loadAreaTrues() {
-            axios.get("/areatrue").then(
-                response =>
-                    (this.areaTrue = response.data.data.map(a => {
-                        return { text: a.areaTrue, id: a.id };
-                    }))
-            );
-        },
-        loadAreaAis() {
-            axios.get("/areaais").then(
-                response =>
-                    (this.areaAis = response.data.data.map(a => {
-                        return { text: a.areaAis, id: a.id };
-                    }))
-            );
-        },
-        loadAreaFiberNet() {
-            axios.get("/areafibernet").then(
-                response =>
-                    (this.areaFiberNet = response.data.data.map(a => {
-                        return { text: a.areaFiberNet, id: a.id };
-                    }))
-            );
-        },
-        loadWorktime() {
-            axios.get("/worktime").then(
-                response =>
-                    (this.workTime = response.data.data.map(a => {
-                        return { text: a.workTime, id: a.id };
-                    }))
-            );
-        },
-        loadPayment() {
-            axios.get("/payment").then(
-                response =>
-                    (this.paymentType = response.data.data.map(a => {
-                        return { text: a.paymentType, id: a.id };
-                    }))
-            );
-        },
-        loadSaleFm() {
-            axios.get("/salefm").then(
-                response =>
-                    (this.nameSale = response.data.data.map(a => {
-                        return { text: a.nameSale, id: a.id };
-                    }))
-            );
         },
         updateBuilding() {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("/building/" + this.form.id)
+                .put("/api/building/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -986,7 +1049,6 @@ export default {
                     });
                     this.$Progress.finish();
                     //  Fire.$emit('AfterCreate');
-
                     this.loadBuildings();
                 })
                 .catch(() => {
@@ -996,6 +1058,7 @@ export default {
         editModal(building) {
             this.editmode = true;
             this.form.reset();
+            console.log(building);
             $("#addNew").modal("show");
             this.form.fill(building);
         },
@@ -1024,7 +1087,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("/building/" + item.id)
+                        .delete("/api/building/" + item.id)
                         .then(() => {
                             Swal.fire(
                                 window.translate(
@@ -1048,15 +1111,13 @@ export default {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
-                .post("/building")
+                .post("/api/building")
                 .then(response => {
                     $("#addNew").modal("hide");
-
                     Toast.fire({
                         icon: "success",
                         title: response.data.message
                     });
-
                     this.$Progress.finish();
                     this.loadBuildings();
                 })
@@ -1137,7 +1198,7 @@ export default {
                                     return item.id;
                                 })
                                 .join(",");
-                            if (!rowsel.length) {
+                            if (!rowsel) {
                                 return Swal.fire({
                                     title: window.translate(
                                         "datatables.alert.display_selected_record_empty_title"
@@ -1162,7 +1223,6 @@ export default {
                                     ? true
                                     : false;
                             });
-
                             table.draw();
                         }
                     },
@@ -1250,7 +1310,7 @@ export default {
                                     data +
                                     "</span>"
                                 );
-                            } else if (data="") {
+                            } else if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1279,7 +1339,6 @@ export default {
                 select: { selector: "td:not(:last-child)", style: "os" },
                 order: [[1, "desc"]]
             });
-
             $("tbody", this.$refs.buildings).on(
                 "click",
                 ".edit-building",
@@ -1290,7 +1349,6 @@ export default {
                     vm.editModal(row.data());
                 }
             );
-
             $("tbody", this.$refs.buildings).on(
                 "click",
                 ".delete-building",
@@ -1306,17 +1364,17 @@ export default {
     created() {
         this.$Progress.start();
         this.loadBuildings();
-        this.loadArea3bbs();
-        this.loadAreaTrues();
-        this.loadAreaAis();
-        this.loadAreaFiberNet();
-        this.loadWorktime();
-        this.loadPayment();
-        this.loadSaleFm();
         this.$Progress.finish();
     },
     mounted() {
+        this.loadSaleFm();
+        this.loadSpendSpace();
         this.loadArea();
+        this.loadArea3BB();
+        this.loadAreaTrue();
+        this.loadAreaAis();
+        this.loadAreaFiberNet();
+        this.loadWorkTime();
         this.generateTable();
     }
 };

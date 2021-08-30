@@ -17,7 +17,6 @@ class CreateOperatersTable extends Migration
             $table->id();
             $table->string('operaterName')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

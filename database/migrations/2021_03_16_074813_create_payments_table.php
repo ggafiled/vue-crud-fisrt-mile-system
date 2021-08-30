@@ -17,7 +17,6 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->string('paymentType')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

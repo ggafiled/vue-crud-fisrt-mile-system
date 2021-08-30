@@ -17,8 +17,5 @@ class Salefm extends Model
         'deleted_at'
     ];
 
-    public function building()
-    {
-        return $this->hasOne('App\Models\Building', 'nameSale_id', 'id');
-    }
+
 }
