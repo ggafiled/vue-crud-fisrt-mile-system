@@ -892,7 +892,7 @@ export default {
     watch: {
         areaN: function(value) {
             this.form.bbN = "";
-            axios.get("/api/bbns?area_id=" + this.form.areaN).then(response => {
+            axios.get("/bbns?area_id=" + this.form.areaN).then(response => {
                 // console.log(response.data);
                 this.bbns = response.data.data;
             });
@@ -900,7 +900,7 @@ export default {
     },
     methods: {
         loadArea() {
-            axios.get("/api/areas").then(response => {
+            axios.get("/areas").then(response => {
                 this.areas = response.data.data;
             });
         },
@@ -917,7 +917,7 @@ export default {
             this.$Progress.finish();
         },
         loadArea3bbs() {
-            axios.get("api/area3bb").then(
+            axios.get("/area3bb").then(
                 response =>
                     (this.area3BB = response.data.data.map(a => {
                         return { text: a.area3BB, id: a.id };
@@ -925,7 +925,7 @@ export default {
             );
         },
         loadAreaTrues() {
-            axios.get("api/areatrue").then(
+            axios.get("/areatrue").then(
                 response =>
                     (this.areaTrue = response.data.data.map(a => {
                         return { text: a.areaTrue, id: a.id };
@@ -933,7 +933,7 @@ export default {
             );
         },
         loadAreaAis() {
-            axios.get("api/areaais").then(
+            axios.get("/areaais").then(
                 response =>
                     (this.areaAis = response.data.data.map(a => {
                         return { text: a.areaAis, id: a.id };
@@ -941,7 +941,7 @@ export default {
             );
         },
         loadAreaFiberNet() {
-            axios.get("api/areafibernet").then(
+            axios.get("/areafibernet").then(
                 response =>
                     (this.areaFiberNet = response.data.data.map(a => {
                         return { text: a.areaFiberNet, id: a.id };
@@ -949,7 +949,7 @@ export default {
             );
         },
         loadWorktime() {
-            axios.get("api/worktime").then(
+            axios.get("/worktime").then(
                 response =>
                     (this.workTime = response.data.data.map(a => {
                         return { text: a.workTime, id: a.id };
@@ -957,7 +957,7 @@ export default {
             );
         },
         loadPayment() {
-            axios.get("api/payment").then(
+            axios.get("/payment").then(
                 response =>
                     (this.paymentType = response.data.data.map(a => {
                         return { text: a.paymentType, id: a.id };
@@ -965,7 +965,7 @@ export default {
             );
         },
         loadSaleFm() {
-            axios.get("api/salefm").then(
+            axios.get("/salefm").then(
                 response =>
                     (this.nameSale = response.data.data.map(a => {
                         return { text: a.nameSale, id: a.id };
@@ -976,7 +976,7 @@ export default {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("/api/building/" + this.form.id)
+                .put("/building/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -1024,7 +1024,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("/api/building/" + item.id)
+                        .delete("/building/" + item.id)
                         .then(() => {
                             Swal.fire(
                                 window.translate(
@@ -1048,7 +1048,7 @@ export default {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
-                .post("/api/building")
+                .post("/building")
                 .then(response => {
                     $("#addNew").modal("hide");
 
@@ -1071,7 +1071,7 @@ export default {
             var vm = this;
             var table = $(this.$refs.buildings).DataTable({
                 dom: "Blfrtip",
-                ajax: "/api/building",
+                ajax: "/building",
                 responsive: true,
                 processing: true,
                 autoWidth: true,

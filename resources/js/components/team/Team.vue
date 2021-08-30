@@ -175,7 +175,7 @@ export default {
             this.$Progress.start();
             if (this.$gate.isAdmin()) {
                 axios
-                    .get("/api/user/list")
+                    .get("/user/list")
                     .then(response => {
                         this.autocompleteItems = response.data.data.map(a => {
                             return { text: a.name, id: a.id };
@@ -189,7 +189,7 @@ export default {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("api/team/" + this.form.id)
+                .put("/team/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -229,7 +229,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("api/team/" + id)
+                        .delete("/team/" + id)
                         .then(() => {
                             Swal.fire(
                                 "Deleted!",
@@ -249,7 +249,7 @@ export default {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
-                .post("api/team")
+                .post("/team")
                 .then(response => {
                     $("#addNew").modal("hide");
                     Toast.fire({
@@ -283,7 +283,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.team).DataTable({
             dom: "Blfrtip",
-            ajax: "api/team",
+            ajax: "/team",
             responsive: true,
             processing: true,
             pageLength: 15,

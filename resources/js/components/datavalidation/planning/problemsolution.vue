@@ -158,7 +158,7 @@ export default {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("/api/problemsolution/" + this.form.id)
+                .put("/problemsolution/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -206,7 +206,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("/api/problemsolution/" + item.id)
+                        .delete("/problemsolution/" + item.id)
                         .then(() => {
                             Swal.fire(
                                 window.translate(
@@ -230,7 +230,7 @@ export default {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
-                .post("/api/problemsolution")
+                .post("/problemsolution")
                 .then(response => {
                     $("#addNew").modal("hide");
                     Toast.fire({
@@ -257,7 +257,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.buildings).DataTable({
             dom: "Blfrtip",
-            ajax: "/api/problemsolution",
+            ajax: "/problemsolution",
             responsive: true,
             processing: true,
             autoWidth: true,

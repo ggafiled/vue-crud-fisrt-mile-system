@@ -229,7 +229,7 @@ export default {
     },
     methods: {
         loadTickets() {
-            axios.get("api/tickets").then(response => {
+            axios.get("/tickets").then(response => {
                 this.rowData = response.data.data;
             });
         },

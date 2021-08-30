@@ -734,7 +734,7 @@ export default {
     },
     methods: {
         loadBuildings() {
-            axios.get("api/building").then(
+            axios.get("/building").then(
                 response =>
                     (this.building = response.data.data.map(a => {
                         return { text: a.projectName, id: a.id };
@@ -757,7 +757,7 @@ export default {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("api/progress/" + this.form.id)
+                .put("/progress/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -801,7 +801,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("api/progress/" + item.id)
+                        .delete("/progress/" + item.id)
                         .then(() => {
                             Swal.fire(
                                 window.translate('progress.alert.comfirm_delete_title'),
@@ -821,7 +821,7 @@ export default {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
-                .post("api/progress")
+                .post("/progress")
                 .then(response => {
                     $("#addNew").modal("hide");
 
@@ -850,7 +850,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.progress).DataTable({
             dom: "Blfrtip",
-            ajax: "api/progress",
+            ajax: "/progress",
             responsive: true,
             processing: true,
             autoWidth: true,

@@ -221,12 +221,12 @@ export default {
     },
     methods: {
         async checkHealthy() {
-            await axios.get("api/backup").then(response => {
+            await axios.get("/backup").then(response => {
                 this.backup = response.data.data;
             });
         },
         async loadActivityLogs() {
-            await axios.get("api/logs").then(response => {
+            await axios.get("/logs").then(response => {
                 this.rowData = response.data.data.activity;
                 this.selectOptions = response.data.data.log_chanel.map(a => {
                     return a.log_name.replace(/\b\w/g, l => l.toUpperCase());

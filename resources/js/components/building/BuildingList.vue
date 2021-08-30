@@ -242,7 +242,7 @@ export default {
     methods: {
         async notdocontractyet() {
             await axios
-                .get("/api/buildinglist/nonContract")
+                .get("/buildinglist/nonContract")
                 .then(response => {
                     this.not_do_contract_yet = response.data.data;
                     if (!this.hideNonContract && this.not_do_contract_yet.length > 0) {
@@ -256,7 +256,7 @@ export default {
             var vm = this;
             var table = await $(this.$refs.buildinglist).DataTable({
                 dom: "Blfrtip",
-                ajax: "/api/buildinglist",
+                ajax: "/buildinglist",
                 responsive: true,
                 processing: true,
                 autoWidth: true,

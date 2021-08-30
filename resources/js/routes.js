@@ -183,11 +183,7 @@ export default [{
         children: [{
                 path: "contract_sell",
                 component: require("./components/datavalidation/building/contractsell.vue")
-                    .default,
-                meta: {
-                    requiresAuth: true,
-                    roles: ["superadministrator"]
-                }
+                    .default
             },
             {
                 path: "spend_space",
@@ -291,4 +287,4 @@ export default [{
         }
     },
     { path: "*", component: require("./components/NotFound.vue").default }
-];
+];];

@@ -912,7 +912,7 @@ export default {
     },
     methods: {
         loadBuildings() {
-            axios.get("api/building").then(
+            axios.get("/building").then(
                 response =>
                     (this.building = response.data.data.map(a => {
                         return { text: a.projectName, id: a.id };
@@ -932,7 +932,7 @@ export default {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("api/constarution/" + this.form.id)
+                .put("/constarution/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -985,7 +985,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("api/constarution/" + item.id)
+                        .delete("/constarution/" + item.id)
                         .then(() => {
                             Swal.fire(
                                 window.translate(
@@ -1009,7 +1009,7 @@ export default {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
-                .post("api/constarution")
+                .post("/constarution")
                 .then(response => {
                     $("#addNew").modal("hide");
                     Toast.fire({
@@ -1037,7 +1037,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.constarution).DataTable({
             dom: "Blfrtip",
-            ajax: "api/constarution",
+            ajax: "/constarution",
             responsive: true,
             processing: true,
             pageLength: 15,

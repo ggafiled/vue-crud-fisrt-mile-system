@@ -298,7 +298,7 @@ export default {
     methods: {
         loadTicketsByID(id) {
             if (this.$route.params.id !== id) return;
-            axios.get(`/api/tickets/${id}`).then(async response => {
+            axios.get(`/tickets/${id}`).then(async response => {
                 this.ticket = response.data.data[0];
                 console.log(this.ticket);
             });
@@ -325,7 +325,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     axios
-                        .delete("api/ticket/" + item.id)
+                        .delete("/ticket/" + item.id)
                         .then(() => {
                             Swal.fire(
                                 window.translate(

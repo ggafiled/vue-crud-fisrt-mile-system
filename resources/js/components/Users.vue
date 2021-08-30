@@ -268,7 +268,7 @@ export default {
             console.log('update data');
             console.log(this.form);
             this.form
-                .put("api/user/" + this.form.id)
+                .put("/user/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -322,7 +322,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("api/user/" + item.id)
+                        .delete("/user/" + item.id)
                         .then(() => {
                             Swal.fire(
                                 window.translate(
@@ -353,7 +353,7 @@ export default {
         },
         loadRoles() {
             axios
-                .get("api/role/list")
+                .get("/role/list")
                 .then(({ data }) => (this.roles = data.data));
         },
         createUser() {
@@ -361,7 +361,7 @@ export default {
                 return false;
             console.log(this.form);
             this.form
-                .post("api/user")
+                .post("/user")
                 .then(response => {
                     $("#addNew").modal("hide");
 
@@ -392,7 +392,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.users).DataTable({
             dom: "Blfrtip",
-            ajax: "api/user",
+            ajax: "/user",
             responsive: true,
             processing: true,
             autoWidth: true,

@@ -262,7 +262,7 @@ export default {
                 this.form.password = undefined;
             }
             this.form
-                .put("api/profile")
+                .put("/profile")
                 .then(data => {
                     this.$Progress.finish();
                     Toast.fire({
@@ -283,7 +283,7 @@ export default {
         updatePassword() {
             this.$Progress.start();
             this.form
-                .post("api/change-password")
+                .post("/change-password")
                 .then(data => {
                     //  Fire.$emit('AfterCreate');
                     this.$Progress.finish();
@@ -310,7 +310,7 @@ export default {
     created() {
         this.$Progress.start();
 
-        axios.get("api/profile").then(({ data }) => this.form.fill(data.data));
+        axios.get("/profile").then(({ data }) => this.form.fill(data.data));
 
         this.$Progress.finish();
     }

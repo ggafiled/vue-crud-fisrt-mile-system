@@ -56,7 +56,7 @@
                                             class="list-group-item bg-transparent"
                                         >
                                             <a
-                                                href="/settings/contract_sell"
+                                                href="contract_sell"
                                                 class="post-title"
                                                 >Contract Sell(CRED)</a
                                             >
@@ -286,3 +286,4 @@
         </div>
     </section>
 </template>
+r

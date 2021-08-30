@@ -435,7 +435,7 @@ export default {
     methods: {
         async getDashboardInfo() {
             await axios
-                .get("/api/dashboard")
+                .get("/dashboard")
                 .then(response => {
                     this.dashboardInfo = response.data.data;
                     this.chart_dp_groub_of_countyName = {

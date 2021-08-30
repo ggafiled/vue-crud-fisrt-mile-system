@@ -240,7 +240,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("api/role/" + item.id)
+                        .delete("/role/" + item.id)
                         .then(() => {
                             Swal.fire(
                                 window.translate(
@@ -265,7 +265,7 @@ export default {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("api/role/" + this.form.id)
+                .put("/role/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -297,7 +297,7 @@ export default {
 
             if (this.$gate.isAdmin()) {
                 axios
-                    .get("api/role")
+                    .get("/role")
                     .then(({ data }) => (this.roles = data.data));
             }
 
@@ -308,7 +308,7 @@ export default {
 
             if (this.$gate.isAdmin()) {
                 axios
-                    .get("/api/permission/list")
+                    .get("//permission/list")
                     .then(response => {
                         this.autocompleteItems = response.data.data.map(a => {
                             return { text: a.name, id: a.id };
@@ -323,7 +323,7 @@ export default {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
-                .post("api/role")
+                .post("/role")
                 .then(response => {
                     $("#addNew").modal("hide");
 
@@ -367,7 +367,7 @@ export default {
         var vm = this;
         var table = $(this.$refs.permission).DataTable({
             dom: "Blfrtip",
-            ajax: "api/role",
+            ajax: "/role",
             responsive: true,
             processing: true,
             autoWidth: true,

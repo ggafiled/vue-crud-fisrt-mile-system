@@ -41,14 +41,14 @@ export default {
     },
     watch: {
         areaN: function(value) {
-            axios.get("/api/bbns?area_id=" + this.areaN).then(response => {
+            axios.get("/bbns?area_id=" + this.areaN).then(response => {
                 // console.log(response.data);
                 this.bbns = response.data.data;
             });
         }
     },
     mounted() {
-        axios.get("/api/areas").then(response => {
+        axios.get("/areas").then(response => {
             this.areas = response.data.data;
         });
     }
