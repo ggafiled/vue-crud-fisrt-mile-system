@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <span class="mdi mdi-progress-wrench"></span>
-                            {{ translate('progress.header') }}
+                            {{ translate("progress.header") }}
                         </h3>
                         <div class="card-tools">
                             <button
@@ -15,7 +15,7 @@
                                 @click="newModal"
                             >
                                 <i class="fa fa-plus-square"></i>
-                                {{ translate('progress.addnew') }}
+                                {{ translate("progress.addnew") }}
                             </button>
                         </div>
                     </div>
@@ -62,10 +62,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                {{ translate('progress.create.header') }}
+                                {{ translate("progress.create.header") }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                {{ translate('progress.update.header') }}
+                                {{ translate("progress.update.header") }}
                             </h5>
                             <button
                                 type="button"
@@ -129,48 +129,19 @@
                                         <div class="form-group">
                                             <label>FM Progress :</label>
                                             <select
-                                                v-model="form.fmProgress"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your fmProgress..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'fmProgress'
-                                                    )
-                                                }"
+                                                v-model="form.fmProgress"
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
-                                                >
-                                                <option value="N/A">N/A</option>
+                                                    {{ item.status }}
+                                                </option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -207,48 +178,19 @@
                                         <div class="form-group">
                                             <label>TOT Progress :</label>
                                             <select
-                                                v-model="form.totProgress"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your totProgress..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'totProgress'
-                                                    )
-                                                }"
+                                                v-model="form.totProgress"
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
-                                                >
-                                                <option value="N/A">N/A</option>
+                                                    {{ item.status }}
+                                                </option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -282,48 +224,19 @@
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>AIS Progress :</label>
                                             <select
-                                                v-model="form.aisProgress"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your aisProgress..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'aisProgress'
-                                                    )
-                                                }"
+                                                v-model="form.aisProgress"
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
-                                                >
-                                                <option value="N/A">N/A</option>
+                                                    {{ item.status }}
+                                                </option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -360,48 +273,19 @@
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>3BB Progress :</label>
                                             <select
-                                                v-model="form.Progress3bb"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your Progress3bb..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'Progress3bb'
-                                                    )
-                                                }"
+                                                v-model="form.Progress3bb"
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
-                                                >
-                                                <option value="N/A">N/A</option>
+                                                    {{ item.status }}
+                                                </option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -434,48 +318,19 @@
                                         <div class="form-group">
                                             <label>Sinet Progress :</label>
                                             <select
-                                                v-model="form.sinetProgress"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your sinetProgress..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'sinetProgress'
-                                                    )
-                                                }"
+                                                v-model="form.sinetProgress"
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
-                                                >
-                                                <option value="N/A">N/A</option>
+                                                    {{ item.status }}
+                                                </option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -512,50 +367,20 @@
                                         <div class="form-group">
                                             <label>FN Progress :</label>
                                             <select
-                                                v-model="form.fnProgress"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your fnProgress..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'fnProgress'
-                                                    )
-                                                }"
+                                                v-model="form.fnProgress"
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
-                                                >
-                                                <option value="N/A">N/A</option>
+                                                    {{ item.status }}
+                                                </option>
                                             </select>
-
                                             <has-error
                                                 :form="form"
                                                 field="fnProgress"
@@ -588,48 +413,19 @@
 
                                             <label>True Progress :</label>
                                             <select
-                                                v-model="form.trueProgress"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your trueProgress..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'trueProgress'
-                                                    )
-                                                }"
+                                                v-model="form.trueProgress"
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
-                                                    >ดำเนิการแล้วเสร็จ</option
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                    >กำลังสร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                    >สร้างพร้อมโครงการฯ</option
-                                                >
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                    >เชื่อมโครงข่ายแล้ว</option
-                                                >
-                                                <option value="N/A">N/A</option>
+                                                    {{ item.status }}
+                                                </option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -666,21 +462,21 @@
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    {{ translate('progress.actions.close') }}
+                                    {{ translate("progress.actions.close") }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    {{ translate('progress.actions.update') }}
+                                    {{ translate("progress.actions.update") }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    {{ translate('progress.actions.create') }}
+                                    {{ translate("progress.actions.create") }}
                                 </button>
                             </div>
                         </form>
@@ -701,6 +497,7 @@ export default {
             editmode: false,
             selected: "",
             building: [],
+            generatingactions: [],
             settings: {
                 placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
                 allowClear: true,
@@ -733,6 +530,11 @@ export default {
         ...mapState(["progress"])
     },
     methods: {
+        loadGeneratingaction() {
+            axios.get("/generatingactions").then(response => {
+                this.generatingactions = response.data.data;
+            });
+        },
         loadBuildings() {
             axios.get("/building").then(
                 response =>
@@ -790,13 +592,19 @@ export default {
         deleteProgress(item) {
             item.projectName = item.building.projectName;
             Swal.fire({
-                title: window.translate('progress.alert.delete_building_title'),
-                text: window.translate('progress.alert.delete_building_text') + ` [${item.projectName}]`,
+                title: window.translate("progress.alert.delete_building_title"),
+                text:
+                    window.translate("progress.alert.delete_building_text") +
+                    ` [${item.projectName}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                cancelButtonText: window.translate('progress.alert.delete_building_cancel_button_text'),
-                confirmButtonText: window.translate('progress.alert.delete_building_confirm_button_text')
+                cancelButtonText: window.translate(
+                    "progress.alert.delete_building_cancel_button_text"
+                ),
+                confirmButtonText: window.translate(
+                    "progress.alert.delete_building_confirm_button_text"
+                )
             }).then(result => {
                 // Send request to the server
                 if (result.value) {
@@ -804,8 +612,12 @@ export default {
                         .delete("/progress/" + item.id)
                         .then(() => {
                             Swal.fire(
-                                window.translate('progress.alert.comfirm_delete_title'),
-                                window.translate('progress.alert.confirm_delete_message'),
+                                window.translate(
+                                    "progress.alert.comfirm_delete_title"
+                                ),
+                                window.translate(
+                                    "progress.alert.confirm_delete_message"
+                                ),
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
@@ -839,257 +651,254 @@ export default {
                         title: "Some error occured! Please try again"
                     });
                 });
-        }
-    },
-    created() {
-        this.$Progress.start();
-        this.loadBuildings();
-        this.$Progress.finish();
-    },
-    mounted() {
-        var vm = this;
-        var table = $(this.$refs.progress).DataTable({
-            dom: "Blfrtip",
-            ajax: "/api/progress",
-            responsive: true,
-            processing: true,
-            autoWidth: true,
-            scrollX: true,
-            pageLength: 15,
-            lengthMenu: [
-                [10, 15, 25, 50, -1],
-                [10, 15, 25, 50, "All"]
-            ],
-            fixedHeader: true,
-            fixedColumns: true,
-            fixedColumns: {
-                leftColumns: 0,
-                rightColumns: 1
-            },
-            scrollX: true,
-            scrollCollapse: true,
-            select: true,
-            buttons: [
-                "colvis",
-                {
-                    extend: "copy",
-                    text: "<i class='bi bi-clipboard mr-1'></i>Copy",
-                    exportOptions: {
-                        columns: "th:not(.notexport)"
-                    }
+        },
+        generateTable() {
+            var vm = this;
+            var table = $(this.$refs.progress).DataTable({
+                dom: "Blfrtip",
+                ajax: "/api/progress",
+                responsive: true,
+                processing: true,
+                autoWidth: true,
+                scrollX: true,
+                pageLength: 15,
+                lengthMenu: [
+                    [10, 15, 25, 50, -1],
+                    [10, 15, 25, 50, "All"]
+                ],
+                fixedHeader: true,
+                fixedColumns: true,
+                fixedColumns: {
+                    leftColumns: 0,
+                    rightColumns: 1
                 },
-                {
-                    extend: "excelHtml5",
-                    autoFilter: true,
-                    sheetName: "Building",
-                    text: "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
-                    exportOptions: {
-                        columns: "th:not(.notexport)"
-                    }
-                },
-                {
-                    extend: "print",
-                    text: "<i class='bi bi-printer mr-1'></i>Print"
-                },
-                {
-                    text:
-                        "<i class='bi bi-list-check mr-1'></i>"+ window.translate(
-                                    "datatables.alert.display_selected_record_title"
-                                ) +"",
-                    action: function(e, dt, node, config) {
-                        var rowsel = dt
-                            .rows({ selected: true })
-                            .data()
-                            .map(function(item) {
-                                return item.id;
-                            })
-                            .join(",");
-                        if (!rowsel.length) {
-                            return Swal.fire({
-                                title: window.translate(
-                                    "datatables.alert.display_selected_record_empty_title"
-                                ) ,
-                                text: window.translate(
-                                    "datatables.alert.display_selected_record_empty_text"
-                                ),
-                                timer: 2000,
-                                showCancelButton: false,
-                                showConfirmButton: false
-                            });
+                scrollX: true,
+                scrollCollapse: true,
+                select: true,
+                buttons: [
+                    "colvis",
+                    {
+                        extend: "copy",
+                        text: "<i class='bi bi-clipboard mr-1'></i>Copy",
+                        exportOptions: {
+                            columns: "th:not(.notexport)"
                         }
-                        $.fn.dataTable.ext.search.pop();
-                        $.fn.dataTable.ext.search.push(function(
-                            settings,
-                            data,
-                            dataIndex
-                        ) {
-                            return $(table.row(dataIndex).node()).hasClass(
-                                "selected"
-                            )
-                                ? true
-                                : false;
-                        });
-
-                        table.draw();
-                    }
-                },
-                        {
-                            text:
-                                "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
-                            action: function(e, dt, node, config) {
-                                console.info("button: Clear");
-                                $.fn.dataTable.ext.search.pop();
-                                dt.search("").draw();
-                                dt.columns()
-                                    .search("")
-                                    .draw();
-                                dt.rows().deselect();
-                                dt.ajax.reload();
+                    },
+                    {
+                        extend: "excelHtml5",
+                        autoFilter: true,
+                        sheetName: "Building",
+                        text:
+                            "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+                        exportOptions: {
+                            columns: "th:not(.notexport)"
+                        }
+                    },
+                    {
+                        extend: "print",
+                        text: "<i class='bi bi-printer mr-1'></i>Print"
+                    },
+                    {
+                        text:
+                            "<i class='bi bi-list-check mr-1'></i>" +
+                            window.translate(
+                                "datatables.alert.display_selected_record_title"
+                            ) +
+                            "",
+                        action: function(e, dt, node, config) {
+                            var rowsel = dt
+                                .rows({ selected: true })
+                                .data()
+                                .map(function(item) {
+                                    return item.id;
+                                })
+                                .join(",");
+                            if (!rowsel.length) {
+                                return Swal.fire({
+                                    title: window.translate(
+                                        "datatables.alert.display_selected_record_empty_title"
+                                    ),
+                                    text: window.translate(
+                                        "datatables.alert.display_selected_record_empty_text"
+                                    ),
+                                    timer: 2000,
+                                    showCancelButton: false,
+                                    showConfirmButton: false
+                                });
                             }
+                            $.fn.dataTable.ext.search.pop();
+                            $.fn.dataTable.ext.search.push(function(
+                                settings,
+                                data,
+                                dataIndex
+                            ) {
+                                return $(table.row(dataIndex).node()).hasClass(
+                                    "selected"
+                                )
+                                    ? true
+                                    : false;
+                            });
+
+                            table.draw();
                         }
-            ],
-            columns: [
-                {
+                    },
+                    {
+                        text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                        action: function(e, dt, node, config) {
+                            console.info("button: Clear");
+                            $.fn.dataTable.ext.search.pop();
+                            dt.search("").draw();
+                            dt.columns()
+                                .search("")
+                                .draw();
+                            dt.rows().deselect();
+                            dt.ajax.reload();
+                        }
+                    }
+                ],
+                columns: [
+                    {
                         data: null,
                         defaultContent: "",
                         className: "dt-body-center notexport"
                     },
-                {
-                    data: "building.projectName"
-                },
-                {
-                    data: "fmProgress",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                },
-                {
-                    data: "totProgress",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                },
-                {
-                    data: "aisProgress",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                },
-                {
-                    data: "Progress3bb",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                },
-                {
-                    data: "sinetProgress",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                },
-                {
-                    data: "fnProgress",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                },
-                {
-                    data: "trueProgress",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                },
-                {
-                    data: "updated_at",
-                    render: function(data, type, row, meta) {
-                        return moment(data).format("MM/DD/YYYY HH:MM");
-                    }
-                },
-                {
-                    data: null,
-                    className: "dt-body-center notexport",
-                    render: function(data, type, row, meta) {
-                        return "<a class='edit-progress btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-progress btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
-                    }
-                }
-            ],
-            fnDrawCallback: function() {
-                $("#loading").hide();
-                var api = this.api();
-                setTimeout(function() {
-                    api.columns()
-                        .flatten()
-                        .each(function(colIdx) {
-                            var columnData = api
-                                .columns(colIdx)
-                                .data()
-                                .join("");
-                            if (
-                                columnData.length == api.rows().count() - 1 &&
-                                colIdx != 0
-                            ) {
-                                api.column(colIdx).visible(false);
+                    {
+                        data: "building.projectName"
+                    },
+                    {
+                        data: "fmProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
                             }
-                        });
-                }, 0);
-            },
-            columnDefs: [
+                        }
+                    },
+                    {
+                        data: "totProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "aisProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "Progress3bb",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "sinetProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "fnProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "trueProgress",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "updated_at",
+                        render: function(data, type, row, meta) {
+                            return moment(data).format("MM/DD/YYYY HH:MM");
+                        }
+                    },
+                    {
+                        data: null,
+                        className: "dt-body-center notexport",
+                        render: function(data, type, row, meta) {
+                            return "<a class='edit-progress btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-progress btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
+                        }
+                    }
+                ],
+                fnDrawCallback: function() {
+                    $("#loading").hide();
+                    var api = this.api();
+                    setTimeout(function() {
+                        api.columns()
+                            .flatten()
+                            .each(function(colIdx) {
+                                var columnData = api
+                                    .columns(colIdx)
+                                    .data()
+                                    .join("");
+                                if (
+                                    columnData.length ==
+                                        api.rows().count() - 1 &&
+                                    colIdx != 0
+                                ) {
+                                    api.column(colIdx).visible(false);
+                                }
+                            });
+                    }, 0);
+                },
+                columnDefs: [
                     {
                         targets: 0,
                         searchable: false,
@@ -1101,28 +910,41 @@ export default {
                     }
                 ],
                 select: { selector: "td:not(:last-child)", style: "os" },
-                order: [[1, "desc"]],
-        });
+                order: [[1, "desc"]]
+            });
 
-        $("tbody", this.$refs.progress).on("click", ".edit-progress", function(
-            e
-        ) {
-            e.preventDefault();
-            var tr = $(this).closest("tr");
-            var row = table.row(tr);
-            vm.editModal(row.data());
-        });
+            $("tbody", this.$refs.progress).on(
+                "click",
+                ".edit-progress",
+                function(e) {
+                    e.preventDefault();
+                    var tr = $(this).closest("tr");
+                    var row = table.row(tr);
+                    vm.editModal(row.data());
+                }
+            );
 
-        $("tbody", this.$refs.progress).on(
-            "click",
-            ".delete-progress",
-            function(e) {
-                e.preventDefault();
-                var tr = $(this).closest("tr");
-                var row = table.row(tr);
-                vm.deleteProgress(row.data());
-            }
-        );
+            $("tbody", this.$refs.progress).on(
+                "click",
+                ".delete-progress",
+                function(e) {
+                    e.preventDefault();
+                    var tr = $(this).closest("tr");
+                    var row = table.row(tr);
+                    vm.deleteProgress(row.data());
+                }
+            );
+        }
+    },
+
+    created() {
+        this.$Progress.start();
+        this.loadBuildings();
+        this.$Progress.finish();
+    },
+    mounted() {
+        this.loadGeneratingaction();
+        this.generateTable();
     }
 };
 </script>

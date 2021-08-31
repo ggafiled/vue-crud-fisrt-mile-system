@@ -21,12 +21,12 @@ class CreateBuildingsTable extends Migration
             $table->string('floorSum')->nullable();
             $table->string('roomSum')->nullable();
             $table->string('fmCode')->nullable();
-            $table->string('nameNiti')->nullable();
-            $table->string('phoneNiti')->nullable();
-            $table->string('mailNiti')->nullable();
             $table->string('nameManager')->nullable();
             $table->string('phoneManager')->nullable();
             $table->string('mailManager')->nullable();
+            $table->string('nameNiti')->nullable();
+            $table->string('phoneNiti')->nullable();
+            $table->string('mailNiti')->nullable();
             $table->string('houseNumber')->nullable();
             $table->string('squadNumber')->nullable();
             $table->string('alleyName')->nullable();

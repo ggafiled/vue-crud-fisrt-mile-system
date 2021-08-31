@@ -23,6 +23,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
+    Route::get('isps', 'IspController@index');
+    Route::get('jobtpyes', 'JobTpyeController@index');
+    Route::get('problemsolutions', 'ProblemsolutionController@index');
+    Route::get('technicians', 'TechnicianController@index');
     Route::get('areas', 'AreaController@index');
     Route::get('aises', 'AreaAisController@index');
     Route::get('area3bbs', 'Area3BBController@index');
@@ -33,6 +37,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('saleFms', 'NameSaleController@index');
     Route::get('spendSpaces', 'PaymentController@index');
     Route::get('bbns', 'BbnController@index');
+    Route::get('generatingactions', 'GeneratingactionController@index');
     Route::get('profile', 'ProfileController@profile');
     Route::put('profile', 'ProfileController@updateProfile');
     Route::get('role/list', 'RoleController@list');

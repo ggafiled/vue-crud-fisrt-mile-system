@@ -10,7 +10,7 @@ use Spatie\Activitylog\LogOptions;
 
 class Building extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory, SoftDeletes;
     protected $fillable = [
         'id',
         'projectName',
@@ -41,6 +41,7 @@ class Building extends Model
         'condition',
         'contractPeriod',
         'reNewContact',
+        'balance',
         'areaN',
         'bbN',
         'area3BB',
@@ -79,6 +80,4 @@ class Building extends Model
     {
         return $this->building()->where('building_id');
     }
-
-
 }

@@ -33,9 +33,42 @@
                                         <tr class="info">
                                             <th></th>
                                             <th>Project Name</th>
+                                            <th>Fm Code</th>
+                                            <th>AreaN</th>
+                                            <th>BBN</th>
+                                            <th>Area3BB</th>
+                                            <th>AreaTrue</th>
+                                            <th>AreaTrueNew</th>
+                                            <th>AreaAis</th>
+                                            <th>AreaFiberNet</th>
+                                            <th>Building Sum</th>
+                                            <th>Floor Sum</th>
+                                            <th>Room Sum</th>
                                             <th>Manager Name</th>
                                             <th>Phone</th>
+                                            <th>Mail</th>
+                                            <th>Corporation Name</th>
+                                            <th>Phone</th>
+                                            <th>Mail</th>
+                                            <th>House Number</th>
+                                            <th>Swine</th>
+                                            <th>Alley</th>
+                                            <th>Road</th>
+                                            <th>District</th>
+                                            <th>Province</th>
+                                            <th>County</th>
+                                            <th>PostalCode</th>
+                                            <th>Longitude</th>
+                                            <th>Latitude</th>
+                                            <th>ContractSell</th>
+                                            <th>ContractDate</th>
+                                            <th>ContractDateEnd</th>
                                             <th>SpendSpace</th>
+                                            <th>ContractPeriod</th>
+                                            <th>ReNewContact</th>
+                                            <th>Condition</th>
+                                            <th>Balance</th>
+                                            <th>OperatingTime</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -650,6 +683,46 @@
                                             ></has-error>
                                         </div>
                                     </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Renew Contact</label>
+                                            <input
+                                                v-model="form.reNewContact"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your renew..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'reNewContact'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="reNewContact"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Balance</label>
+                                            <input
+                                                v-model="form.balance"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your balance..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'balance'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="balance"
+                                            ></has-error>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -921,15 +994,18 @@ export default {
             areaAises: [],
             areaFiberNets: [],
             workTimes: [],
+            spendSpaces: [],
             saleFms: [],
             form: new Form({
                 id: "",
                 projectName: "",
-                projectNameTot: "",
-                projectName3bb: "",
-                projectNameAis: "",
-                projectNameTrue: "",
-                projectNameFiberNet: "",
+                areaN: "",
+                bbN: "",
+                area3BB: "",
+                areaTrue: "",
+                areaTrueNew: "",
+                areaAis: "",
+                areaFiberNet: "",
                 buildingSum: "",
                 floorSum: "",
                 roomSum: "",
@@ -957,13 +1033,7 @@ export default {
                 condition: "",
                 contractPeriod: "",
                 reNewContact: "",
-                areaN: "",
-                bbN: "",
-                area3BB: "",
-                areaTrue: "",
-                areaTrueNew: "",
-                areaAis: "",
-                areaFiberNet: "",
+                balance:"",
                 operatingTime: ""
             })
         };
@@ -1144,7 +1214,7 @@ export default {
                 fixedHeader: true,
                 fixedColumns: true,
                 fixedColumns: {
-                    leftColumns: 0,
+                    leftColumns: 2,
                     rightColumns: 1
                 },
                 scrollX: true,
@@ -1257,7 +1327,7 @@ export default {
                         }
                     },
                     {
-                        data: "nameManager",
+                        data: "fmCode",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (
@@ -1280,7 +1350,7 @@ export default {
                         }
                     },
                     {
-                        data: "phoneManager",
+                        data: "areaN",
                         render: function(data, type, row, meta) {
                             if (
                                 data == "" ||
@@ -1302,7 +1372,535 @@ export default {
                         }
                     },
                     {
+                        data: "bbN",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "area3BB",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "areaTrue",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "areaTrueNew",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "areaAis",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "areaFiberNet",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "buildingSum",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "floorSum",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "roomSum",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "nameManager",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "phoneManager",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "mailManager",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "nameNiti",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "phoneNiti",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "mailNiti",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "houseNumber",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "squadNumber",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "alleyName",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "roadName",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "districtName",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "countyName",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "provinceName",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "postalCode",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "longitude",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "latitude",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "contractSell",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "contractDate",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "contractDateEnd",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
                         data: "spendSpace",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "condition",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "contractPeriod",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "reNewContact",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "balance",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "operatingTime",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (

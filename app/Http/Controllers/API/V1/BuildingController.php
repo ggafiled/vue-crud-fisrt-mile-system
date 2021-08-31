@@ -54,16 +54,13 @@ class Buildingcontroller extends BaseController
         try {
             $buidings = new Building([
                 'projectName' => $request->input('projectName'),
-                'area3BB_id' => $request->input('area3BB_id'),
-                'areaAis_id' => $request->input('areaAis_id'),
-                'areaFiberNet_id' => $request->input('areaFiberNet_id'),
-                'areaTrue_id' => $request->input('areaTrue_id'),
-                'workTime_id' => $request->input('workTime_id'),
-                'salefm_id' => $request->input('salefm_id'),
-                'payment_id' => $request->input('payment_id'),
-                'operater_id' => $request->input('operater_id'),
-                'providertrue_id' => $request->input('providertrue_id'),
-                'teamserway_id' => $request->input('teamserway_id'),
+                'areaN' => $request->input('areaN'),
+                'bbN' => $request->input('bbN'),
+                'area3BB' => $request->input('area3BB'),
+                'areaTrue' => $request->input('areaTrue'),
+                'areaTrueNew' => $request->input('areaTrueNew'),
+                'areaAis' => $request->input('areaAis'),
+                'areaFiberNet' => $request->input('areaFiberNet'),
                 'buildingSum' => $request->input('buildingSum'),
                 'floorSum' => $request->input('floorSum'),
                 'roomSum' => $request->input('roomSum'),
@@ -88,10 +85,11 @@ class Buildingcontroller extends BaseController
                 'contractDate' => $request->input('contractDate'),
                 'contractDateEnd' => $request->input('contractDateEnd'),
                 'spendSpace' => $request->input('spendSpace'),
+                'condition' => $request->input('condition'),
                 'contractPeriod' => $request->input('contractPeriod'),
                 'reNewContact' => $request->input('reNewContact'),
-                'areaN' => $request->input('areaN'),
-                'bbN' => $request->input('bbN'),
+                'balance' => $request->input('balance'),
+                'operatingTime' => $request->input('operatingTime')
             ]);
             $buidings->save();
             return $this->sendResponse($buidings, trans('actions.created.success'));
