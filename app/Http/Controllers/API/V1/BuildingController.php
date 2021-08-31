@@ -52,7 +52,7 @@ class Buildingcontroller extends BaseController
     public function store(Request $request)
     {
         try {
-            $buidings = new Building([
+            $buidings = Building::create([
                 'projectName' => $request->input('projectName'),
                 'areaN' => $request->input('areaN'),
                 'bbN' => $request->input('bbN'),
@@ -91,7 +91,6 @@ class Buildingcontroller extends BaseController
                 'balance' => $request->input('balance'),
                 'operatingTime' => $request->input('operatingTime')
             ]);
-            $buidings->save();
             return $this->sendResponse($buidings, trans('actions.created.success'));
         } catch (Exception $ex) {
             return $this->sendError($buidings, trans('actions.created.fialed'));

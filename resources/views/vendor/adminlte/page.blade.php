@@ -142,7 +142,7 @@
 
     $("#navbar-search-close").on("click", function (e) {
         searchClose();
-    })
+    });
 
 </script>
 @stop
