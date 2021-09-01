@@ -517,17 +517,21 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Callver</label>
-                                            <input
-                                                v-model="form.callver"
-                                                type="text"
+                                            <select
                                                 class="form-control"
-                                                placeholder="Enter your phone technician..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'callver'
-                                                    )
-                                                }"
-                                            />
+                                                v-model="form.callver"
+                                            >
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in callvers"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.callVer }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="callver"
@@ -537,17 +541,21 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Callver Status</label>
-                                            <input
-                                                v-model="form.callverstatus"
-                                                type="text"
+                                            <select
                                                 class="form-control"
-                                                placeholder="Enter your phone technician..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'callverstatus'
-                                                    )
-                                                }"
-                                            />
+                                                v-model="form.callverstatus"
+                                            >
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in callverstatuses"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.callVerStatus }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="callverstatus"
@@ -719,6 +727,8 @@ export default {
             technicians: [],
             jobtpyes: [],
             isps: [],
+            callvers: [],
+            callverstatuses: [],
             settings: {
                 placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
                 allowClear: true,
@@ -759,6 +769,16 @@ export default {
                         return { text: a.projectName, id: a.id };
                     }))
             );
+        },
+        loadCallver() {
+            axios.get("/callvers").then(response => {
+                this.callvers = response.data.data;
+            });
+        },
+        loadCallverstatus() {
+            axios.get("/callverstatuses").then(response => {
+                this.callverstatuses = response.data.data;
+            });
         },
         loadProblemsolution() {
             axios.get("/problemsolutions").then(response => {
@@ -1479,6 +1499,8 @@ export default {
         this.loadTachnician();
         this.loadJobType();
         this.loadIsp();
+        this.loadCallver();
+        this.loadCallverstatus();
     }
 };
 </script>
