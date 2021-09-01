@@ -27,6 +27,9 @@ Vue.prototype.$shortText = shortText;
 // If you want to use it in your vue components
 Vue.prototype.translate = require("./VueTranslation/Translation").default.translate;
 
+Vue.prototype.isChrome =
+    /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
 import Swal from "sweetalert2";
 
 const Toast = Swal.mixin({

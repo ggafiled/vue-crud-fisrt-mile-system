@@ -309,6 +309,7 @@
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your phone number..."
+                                                :autocomplete="isChrome ?  'chrome-off' : 'off'"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'phoneNiti'
@@ -428,7 +429,12 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <addressinput-subdistrict v-model="form.districtName" label="Sub District"/>
+                                            <addressinput-subdistrict
+                                                v-model="form.districtName"
+                                                label="Sub District"
+                                                placeholder="Enter your sub district..."
+                                                :autocomplete="isChrome ?  'chrome-off' : 'off'"
+                                            />
                                             <!-- <input
                                                 v-model="form.districtName"
                                                 type="text"
@@ -448,7 +454,12 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <addressinput-district v-model="form.countyName" label="District"/>
+                                            <addressinput-district
+                                                v-model="form.countyName"
+                                                label="District"
+                                                placeholder="Enter your district..."
+                                                :autocomplete="isChrome ?  'chrome-off' : 'off'"
+                                            />
                                             <!-- <input
                                                 v-model="form.countyName"
                                                 type="text"
@@ -471,7 +482,12 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <addressinput-province v-model="form.provinceName" label="Province"/>
+                                            <addressinput-province
+                                                v-model="form.provinceName"
+                                                label="Province"
+                                                placeholder="Enter your province..."
+                                                :autocomplete="isChrome ?  'chrome-off' : 'off'"
+                                            />
                                             <!-- <input
                                                 v-model="form.provinceName"
                                                 type="text"
@@ -492,7 +508,12 @@
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <addressinput-zipcode v-model="form.postalCode" label="Postal Code"/>
+                                            <addressinput-zipcode
+                                                v-model="form.postalCode"
+                                                label="Postal Code"
+                                                placeholder="Enter your postal code..."
+                                                :autocomplete="isChrome ?  'chrome-off' : 'off'"
+                                            />
                                             <!-- <input
                                                 v-model="form.postalCode"
                                                 type="text"
@@ -1033,7 +1054,7 @@ export default {
                 condition: "",
                 contractPeriod: "",
                 reNewContact: "",
-                balance:"",
+                balance: "",
                 operatingTime: ""
             })
         };
