@@ -32,43 +32,43 @@
                                     <thead>
                                         <tr class="info">
                                             <th></th>
-                                            <th>Project Name</th>
+                                            <th>Project</th>
                                             <th>Fm Code</th>
-                                            <th>AreaN</th>
-                                            <th>BBN</th>
-                                            <th>Area3BB</th>
-                                            <th>AreaTrue</th>
-                                            <th>AreaTrueNew</th>
-                                            <th>AreaAis</th>
-                                            <th>AreaFiberNet</th>
-                                            <th>Building Sum</th>
-                                            <th>Floor Sum</th>
-                                            <th>Room Sum</th>
-                                            <th>Manager Name</th>
-                                            <th>Phone</th>
-                                            <th>Mail</th>
-                                            <th>Corporation Name</th>
-                                            <th>Phone</th>
-                                            <th>Mail</th>
-                                            <th>House Number</th>
-                                            <th>Swine</th>
-                                            <th>Alley</th>
-                                            <th>Road</th>
-                                            <th>District</th>
-                                            <th>Province</th>
-                                            <th>County</th>
-                                            <th>PostalCode</th>
+                                            <th>พื้นที่ tot</th>
+                                            <th>พื้นที่ BBN</th>
+                                            <th>พื้นที่ 3BB</th>
+                                            <th>พื้นที่ True</th>
+                                            <th>พื้นที่ TrueNew</th>
+                                            <th>พื้นที่ Ais</th>
+                                            <th>พื้นที่ FiberNet</th>
+                                            <th>จำนวนอาคาร</th>
+                                            <th>จำนวนชั้น</th>
+                                            <th>จำนวนห้อง</th>
+                                            <th>ชื่อผู้จัดการ</th>
+                                            <th>เบอร์โทรผู้จัดการ</th>
+                                            <th>เมล์ผู้จัดการ</th>
+                                            <th>ชื่อนิติบุคคล</th>
+                                            <th>เบอร์นิติบุคคล</th>
+                                            <th>เมล์นิติบุคคล</th>
+                                            <th>บ้านเลขที่</th>
+                                            <th>หมู่</th>
+                                            <th>ซอย</th>
+                                            <th>ถนน</th>
+                                            <th>อำเภอ/เขต</th>
+                                            <th>จังหวัด</th>
+                                            <th>ตำบล/แขวง</th>
+                                            <th>รหัสไปรษณีย์</th>
                                             <th>Longitude</th>
                                             <th>Latitude</th>
-                                            <th>ContractSell</th>
-                                            <th>ContractDate</th>
-                                            <th>ContractDateEnd</th>
+                                            <th>ชื่อเซลล์ที่ทำสัญญา</th>
+                                            <th>วันที่ทำสัญญา</th>
+                                            <th>วันสิ้นสุดสัญญา</th>
                                             <th>SpendSpace</th>
-                                            <th>ContractPeriod</th>
-                                            <th>ReNewContact</th>
+                                            <th>รูปแบบการแบ่งรายได้</th>
+                                            <th>ระยะเวลาสัญญาเพิ่ม</th>
                                             <th>Condition</th>
-                                            <th>Balance</th>
-                                            <th>OperatingTime</th>
+                                            <th>ราคาที่ต้องจ่าย</th>
+                                            <th>เวลาปฏิบัติงาน</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -118,7 +118,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Project Name</label>
+                                            <label>Project</label>
                                             <input
                                                 v-model="form.projectName"
                                                 type="text"
@@ -154,7 +154,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Building Number</label>
+                                            <label>จำนวนอาคาร</label>
                                             <input
                                                 v-model="form.buildingSum"
                                                 type="text"
@@ -175,7 +175,7 @@
 
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Floor Number</label>
+                                            <label>จำนวนชั้น</label>
                                             <input
                                                 v-model="form.floorSum"
                                                 type="text"
@@ -196,7 +196,7 @@
 
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Room Number</label>
+                                            <label>จำนวนห้อง</label>
                                             <input
                                                 v-model="form.roomSum"
                                                 type="text"
@@ -219,7 +219,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Manager Name</label>
+                                            <label>ชื่อผู้จัดการ</label>
                                             <input
                                                 v-model="form.nameManager"
                                                 type="text"
@@ -239,7 +239,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Phone</label>
+                                            <label>เบอร์โทรผู้จัดการ</label>
                                             <input
                                                 v-model="form.phoneManager"
                                                 type="text"
@@ -260,7 +260,7 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>Mail</label>
+                                            <label>เมล์ผู้จัดการ</label>
                                             <input
                                                 v-model="form.mailManager"
                                                 type="text"
@@ -283,7 +283,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Corporation Name</label>
+                                            <label>ชื่อนิติบุคคล</label>
                                             <input
                                                 v-model="form.nameNiti"
                                                 type="text"
@@ -303,7 +303,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Phone</label>
+                                            <label>เบอร์นิติบุคคล</label>
                                             <input
                                                 v-model="form.phoneNiti"
                                                 type="text"
@@ -324,7 +324,7 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>Mail</label>
+                                            <label>เมล์นิติบุคคล</label>
                                             <input
                                                 v-model="form.mailNiti"
                                                 type="text"
@@ -346,93 +346,15 @@
 
                                 <hr />
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>House Number</label>
-                                            <input
-                                                v-model="form.houseNumber"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your House..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'houseNumber'
-                                                    )
-                                                }"
+                                            <addressinput-subdistrict
+                                                v-model="form.districtName"
                                             />
-                                            <has-error
-                                                :form="form"
-                                                field="houseNumber"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>Swine</label>
-                                            <input
-                                                v-model="form.squadNumber"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your Swine..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'squadNumber'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="squadNumber"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>Alley</label>
-                                            <input
-                                                v-model="form.alleyName"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your Alley..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'alleyName'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="alleyName"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>Road</label>
-                                            <input
-                                                v-model="form.roadName"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your Road..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'roadName'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="roadName"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <addressinput-subdistrict v-model="form.districtName" label="Sub District"/>
                                             <!-- <input
                                                 v-model="form.districtName"
                                                 type="text"
-                                                class="form-control"
+                                                class="form-control addressinput-subdistrict"
                                                 placeholder="Enter your District..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
@@ -446,9 +368,11 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
-                                            <addressinput-district v-model="form.countyName" label="District"/>
+                                            <addressinput-district
+                                                v-model="form.countyName"
+                                            />
                                             <!-- <input
                                                 v-model="form.countyName"
                                                 type="text"
@@ -467,11 +391,12 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
-                                            <addressinput-province v-model="form.provinceName" label="Province"/>
+                                            <addressinput-province
+                                                v-model="form.provinceName"
+                                            />
                                             <!-- <input
                                                 v-model="form.provinceName"
                                                 type="text"
@@ -489,10 +414,12 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-6">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <addressinput-zipcode v-model="form.postalCode" label="Postal Code"/>
+                                            <addressinput-zipcode
+                                                v-model="form.postalCode"
+                                            />
                                             <!-- <input
                                                 v-model="form.postalCode"
                                                 type="text"
@@ -512,7 +439,90 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>บ้านเลขที่</label>
+                                            <input
+                                                v-model="form.houseNumber"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your House..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'houseNumber'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="houseNumber"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>หมู่</label>
+                                            <input
+                                                v-model="form.squadNumber"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your Swine..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'squadNumber'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="squadNumber"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>ซอย</label>
+                                            <input
+                                                v-model="form.alleyName"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your Alley..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'alleyName'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="alleyName"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>ถนน</label>
+                                            <input
+                                                v-model="form.roadName"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your Road..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'roadName'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="roadName"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Latitude</label>
                                             <input
@@ -532,7 +542,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Longtude</label>
                                             <input
@@ -553,11 +563,10 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Contract Sell</label>
+                                            <label>ชื่อเซลล์ที่ทำสัญญา</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.contractSell"
@@ -581,7 +590,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Contract Date</label>
+                                            <label>วันที่ทำสัญญา</label>
                                             <input
                                                 v-model="form.contractDate"
                                                 type="date"
@@ -601,7 +610,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Contract Date End</label>
+                                            <label>วันสิ้นสุดสัญญา</label>
                                             <input
                                                 v-model="form.contractDateEnd"
                                                 type="date"
@@ -621,7 +630,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>SpendSpace</label>
+                                            <label>*</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.spendSpace"
@@ -645,7 +654,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Condition</label>
+                                            <label>รูปแบบการแบ่งรายได้</label>
                                             <input
                                                 v-model="form.condition"
                                                 type="text"
@@ -665,7 +674,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Contract Period</label>
+                                            <label>ระยะเวลาสัญญา</label>
                                             <input
                                                 v-model="form.contractPeriod"
                                                 type="text"
@@ -685,7 +694,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Renew Contact</label>
+                                            <label>ระยะเวลาสัญญาเพิ่ม</label>
                                             <input
                                                 v-model="form.reNewContact"
                                                 type="text"
@@ -705,7 +714,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Balance</label>
+                                            <label>ราคาที่ต้องจ่าย</label>
                                             <input
                                                 v-model="form.balance"
                                                 type="text"
@@ -724,11 +733,11 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <hr />
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>AREA *</label>
+                                            <label>พื้นที่ ToT *</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaN"
@@ -752,7 +761,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>BBN *</label>
+                                            <label>พื้นที่ BBN *</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.bbN"
@@ -778,7 +787,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Area3BB *</label>
+                                            <label>พื้นที่ 3BB *</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.area3BB"
@@ -802,7 +811,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>AreaTrue</label>
+                                            <label>พื้นที่ True</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaTrue"
@@ -826,7 +835,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>AreaTrueNew</label>
+                                            <label>พื้นที่ TrueNew</label>
                                             <select
                                                 v-model="form.areaTrueNew"
                                                 type="text"
@@ -874,7 +883,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>AreaAis</label>
+                                            <label>พื้นที่ Ais</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaAis"
@@ -900,7 +909,7 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Area FiberNet</label>
+                                            <label>พื้นที่ FiberNet</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaFiberNet"
@@ -924,7 +933,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Operating Time</label>
+                                            <label>เวลาปฏิบัติงาน</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.operatingTime"
@@ -1033,7 +1042,7 @@ export default {
                 condition: "",
                 contractPeriod: "",
                 reNewContact: "",
-                balance:"",
+                balance: "",
                 operatingTime: ""
             })
         };
