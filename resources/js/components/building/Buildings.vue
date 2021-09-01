@@ -428,8 +428,8 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>District</label>
-                                            <input
+                                            <addressinput-subdistrict v-model="form.districtName" label="Sub District"/>
+                                            <!-- <input
                                                 v-model="form.districtName"
                                                 type="text"
                                                 class="form-control"
@@ -439,7 +439,7 @@
                                                         'districtName'
                                                     )
                                                 }"
-                                            />
+                                            /> -->
                                             <has-error
                                                 :form="form"
                                                 field="districtName"
@@ -448,8 +448,8 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>County</label>
-                                            <input
+                                            <addressinput-district v-model="form.countyName" label="District"/>
+                                            <!-- <input
                                                 v-model="form.countyName"
                                                 type="text"
                                                 class="form-control"
@@ -459,7 +459,7 @@
                                                         'countyName'
                                                     )
                                                 }"
-                                            />
+                                            /> -->
                                             <has-error
                                                 :form="form"
                                                 field="countyName"
@@ -471,8 +471,8 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Province</label>
-                                            <input
+                                            <addressinput-province v-model="form.provinceName" label="Province"/>
+                                            <!-- <input
                                                 v-model="form.provinceName"
                                                 type="text"
                                                 class="form-control"
@@ -482,7 +482,7 @@
                                                         'provinceName'
                                                     )
                                                 }"
-                                            />
+                                            /> -->
                                             <has-error
                                                 :form="form"
                                                 field="provinceName"
@@ -492,8 +492,8 @@
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>PostalCode</label>
-                                            <input
+                                            <addressinput-zipcode v-model="form.postalCode" label="Postal Code"/>
+                                            <!-- <input
                                                 v-model="form.postalCode"
                                                 type="text"
                                                 required
@@ -505,7 +505,7 @@
                                                         'postalCode'
                                                     )
                                                 }"
-                                            />
+                                            /> -->
                                             <has-error
                                                 :form="form"
                                                 field="postalCode"
