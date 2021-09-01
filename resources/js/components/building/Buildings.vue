@@ -308,7 +308,9 @@
                                                 v-model="form.phoneNiti"
                                                 type="text"
                                                 class="form-control"
+                                                autocomplete="chrome-off"
                                                 placeholder="Enter your phone number..."
+                                                :autocomplete="isChrome ?  'chrome-off' : 'off'"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'phoneNiti'
@@ -444,9 +446,21 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
+<<<<<<< HEAD
                                             <label>บ้านเลขที่</label>
                                             <input
                                                 v-model="form.houseNumber"
+=======
+                                            <addressinput-subdistrict
+                                                v-model="form.districtName"
+                                                label="Sub District"
+                                                placeholder="Enter your sub district..."
+                                                autocomplete="chrome-off"
+                                                :autocomplete="isChrome ?  'chrome-off' : 'off'"
+                                            />
+                                            <!-- <input
+                                                v-model="form.districtName"
+>>>>>>> 345f7bca021b475c92e73b993d1e83357eaffdb1
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your House..."
@@ -464,9 +478,21 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
+<<<<<<< HEAD
                                             <label>หมู่</label>
                                             <input
                                                 v-model="form.squadNumber"
+=======
+                                            <addressinput-district
+                                                v-model="form.countyName"
+                                                label="District"
+                                                placeholder="Enter your district..."
+                                                autocomplete="chrome-off"
+                                                :autocomplete="isChrome ?  'chrome-off' : 'off'"
+                                            />
+                                            <!-- <input
+                                                v-model="form.countyName"
+>>>>>>> 345f7bca021b475c92e73b993d1e83357eaffdb1
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your Swine..."
@@ -484,9 +510,21 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
+<<<<<<< HEAD
                                             <label>ซอย</label>
                                             <input
                                                 v-model="form.alleyName"
+=======
+                                            <addressinput-province
+                                                v-model="form.provinceName"
+                                                label="Province"
+                                                placeholder="Enter your province..."
+                                                autocomplete="chrome-off"
+                                                :autocomplete="isChrome ?  'chrome-off' : 'off'"
+                                            />
+                                            <!-- <input
+                                                v-model="form.provinceName"
+>>>>>>> 345f7bca021b475c92e73b993d1e83357eaffdb1
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your Alley..."
@@ -504,9 +542,20 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
+<<<<<<< HEAD
                                             <label>ถนน</label>
                                             <input
                                                 v-model="form.roadName"
+=======
+                                            <addressinput-zipcode
+                                                v-model="form.postalCode"
+                                                label="Postal Code"
+                                                placeholder="Enter your postal code..."
+                                                :autocomplete="isChrome ?  'chrome-off' : 'off'"
+                                            />
+                                            <!-- <input
+                                                v-model="form.postalCode"
+>>>>>>> 345f7bca021b475c92e73b993d1e83357eaffdb1
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your Road..."
@@ -1968,6 +2017,11 @@ export default {
             );
         }
     },
+    computed: {
+        isChrome: function() {
+            return this.$isChrome;
+        }
+    },
     created() {
         this.$Progress.start();
         this.loadBuildings();
@@ -1983,6 +2037,7 @@ export default {
         this.loadAreaFiberNet();
         this.loadWorkTime();
         this.generateTable();
+        $('input').attr('autocomplete',this.isChrome? 'chrome-off': 'off');
     }
 };
 </script>

@@ -7,6 +7,7 @@
 require("./bootstrap");
 import "flag-icon-css/css/flag-icon.css";
 import "fullcalendar/dist/fullcalendar.css";
+import Echo from "laravel-echo";
 
 window.Vue = require("vue");
 window.axios = require("axios");
@@ -26,6 +27,9 @@ Vue.prototype.$shortText = shortText;
 
 // If you want to use it in your vue components
 Vue.prototype.translate = require("./VueTranslation/Translation").default.translate;
+
+Vue.prototype.$isChrome =
+    /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
 import Swal from "sweetalert2";
 
@@ -186,14 +190,10 @@ const app = new Vue({
     vuetify: new Vuetify()
 });
 
-let pusher = new Pusher("914457", {
-    cluster: "ap1",
-    encrypted: false
-});
+Pusher.logToConsole = true;
 
-//Subscribe to the channel we specified in our Adonis Application
-let channel = pusher.subscribe("building-channel");
-
-channel.bind("new-building", data => {
-    app.$store.commit("ADD_BUILDINGS", data.building);
+window.Echo = new Echo({
+    broadcaster: "pusher",
+    key: "ca9c90e704afac3f54e8",
+    cluster: "ap1"
 });
