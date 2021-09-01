@@ -23,6 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
+    Route::get('teamserways', 'TeamSerwayController@index');
     Route::get('isps', 'IspController@index');
     Route::get('jobtpyes', 'JobTpyeController@index');
     Route::get('problemsolutions', 'ProblemsolutionController@index');

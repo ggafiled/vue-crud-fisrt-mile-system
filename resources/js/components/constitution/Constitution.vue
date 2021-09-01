@@ -95,18 +95,6 @@
                                     <div class="col-sm-2" v-show="editmode">
                                         <div class="form-group">
                                             <label>Project Building ID</label>
-                                            <input
-                                                v-model="form.id"
-                                                type="text"
-                                                class="form-control disabled"
-                                                placeholder=""
-                                                disabled
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'id'
-                                                    )
-                                                }"
-                                            />
                                         </div>
                                     </div>
                                     <div
@@ -222,33 +210,18 @@
                                         <div class="form-group">
                                             <label>Desing By</label>
                                             <select
-                                                v-model="form.desingBy"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your DesingBy..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'desingBy'
-                                                    )
-                                                }"
+                                                v-model="form.desingBy"
                                             >
-                                                <option disabled value=""
-                                                    >ทีมสำรวจ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="คุณโอ๋ : 061 995 5389"
+                                                    :value="item.id"
+                                                    v-for="item in teamserways"
+                                                    :key="item.id"
                                                 >
-                                                    คุณโอ๋ : 061 995 5389
-                                                </option>
-                                                <option
-                                                    value="คุณอ๋อง : 087 003 0777"
-                                                >
-                                                    คุณอ๋อง : 087 003 0777
-                                                </option>
-                                                <option
-                                                    value="คุณบอย : 094 826 5323"
-                                                >
-                                                    คุณบอย : 094 826 5323
+                                                    {{ item.nameSerway }}
                                                 </option>
                                             </select>
                                             <has-error
@@ -261,52 +234,19 @@
                                         <div class="form-group">
                                             <label>Survey&Desing</label>
                                             <select
-                                                v-model="form.surveyDesing"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your SurveyDesing..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'surveyDesing'
-                                                    )
-                                                }"
+                                                v-model="form.surveyDesing"
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                    ดำเนิการแล้วเสร็จ
+                                                    {{ item.status }}
                                                 </option>
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                >
-                                                    กำลังสร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                >
-                                                    สร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                >
-                                                    เชื่อมโครงข่ายแล้ว
-                                                </option>
-                                                <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -344,52 +284,19 @@
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>IFCC</label>
                                             <select
-                                                v-model="form.ifcc"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your ifcc..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'ifcc'
-                                                    )
-                                                }"
+                                                v-model="form.ifcc"
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                    ดำเนิการแล้วเสร็จ
+                                                    {{ item.status }}
                                                 </option>
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                >
-                                                    กำลังสร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                >
-                                                    สร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                >
-                                                    เชื่อมโครงข่ายแล้ว
-                                                </option>
-                                                <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -421,51 +328,19 @@
                                         <div class="form-group">
                                             <label>WallBox</label>
                                             <select
-                                                v-model="form.wallBox"
-                                                type="text"
                                                 class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'wallBox'
-                                                    )
-                                                }"
+                                                v-model="form.wallBox"
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                    ดำเนิการแล้วเสร็จ
+                                                    {{ item.status }}
                                                 </option>
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                >
-                                                    กำลังสร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                >
-                                                    สร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                >
-                                                    เชื่อมโครงข่ายแล้ว
-                                                </option>
-                                                <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -496,17 +371,27 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Type</label>
-                                            <input
-                                                type="text"
+                                            <select
                                                 v-model="form.type"
-                                                placeholder="Enter your type..."
+                                                type="text"
                                                 class="form-control"
+                                                placeholder="Enter your type..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'type'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <option disabled value=""
+                                                    >select type</option
+                                                >
+                                                <option value="Microduct"
+                                                    >Microduct</option
+                                                >
+                                                <option value="FiberConvertion"
+                                                    >FiberConvertion</option
+                                                >
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="type"
@@ -522,52 +407,23 @@
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>Microduct(แนวดิ่ง)</label>
                                             <select
-                                                v-model="form.microductD"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your microductD..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'microductD'
-                                                    )
-                                                }"
+                                                v-model="form.microductD"
+                                                :disabled="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                    ดำเนิการแล้วเสร็จ
+                                                    {{ item.status }}
                                                 </option>
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                >
-                                                    กำลังสร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                >
-                                                    สร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                >
-                                                    เชื่อมโครงข่ายแล้ว
-                                                </option>
-                                                <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -582,6 +438,10 @@
                                             >
                                             <input
                                                 v-model="form.microductDateD"
+                                                :disabled="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
                                                 type="date"
                                                 class="form-control"
                                                 :class="{
@@ -600,52 +460,23 @@
                                         <div class="form-group">
                                             <label>Microduct (แนวขว้าง)</label>
                                             <select
-                                                v-model="form.microductK"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your microductK..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'microductK'
-                                                    )
-                                                }"
+                                                v-model="form.microductK"
+                                                :disabled="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                    ดำเนิการแล้วเสร็จ
+                                                    {{ item.status }}
                                                 </option>
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                >
-                                                    กำลังสร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                >
-                                                    สร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                >
-                                                    เชื่อมโครงข่ายแล้ว
-                                                </option>
-                                                <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -661,6 +492,10 @@
                                             >
                                             <input
                                                 v-model="form.microductDateK"
+                                                :disabled="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
                                                 type="date"
                                                 class="form-control"
                                                 placeholder="Enter your microductDateK..."
@@ -684,52 +519,22 @@
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>FiberConvertion</label>
                                             <select
-                                                v-model="form.fiberConvertion"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your fiberConvertion..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'fiberConvertion'
-                                                    )
-                                                }"
+                                                v-model="form.microductD"
+                                                :disabled="
+                                                    form.type == 'Microduct'
+                                                "
                                             >
-                                                <option disabled value=""
-                                                    >การดำเนินการสร้าง</option
-                                                >
-                                                <option value="รอเข้า Survey"
-                                                    >รอเข้า Survey</option
-                                                >
-                                                <option value="รอเข้าดำเนินการ"
-                                                    >รอเข้าดำเนินการ</option
-                                                >
-                                                <option value="กำลังดำเนินการ"
-                                                    >กำลังดำเนินการ</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
-                                                    value="ดำเนิการแล้วเสร็จ"
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
                                                 >
-                                                    ดำเนิการแล้วเสร็จ
+                                                    {{ item.status }}
                                                 </option>
-                                                <option value="วางโครงข่ายแล้ว"
-                                                    >วางโครงข่ายแล้ว</option
-                                                >
-                                                <option
-                                                    value="กำลังสร้างพร้อมโครงการฯ"
-                                                >
-                                                    กำลังสร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="สร้างพร้อมโครงการฯ"
-                                                >
-                                                    สร้างพร้อมโครงการฯ
-                                                </option>
-                                                <option
-                                                    value="เชื่อมโครงข่ายแล้ว"
-                                                >
-                                                    เชื่อมโครงข่ายแล้ว
-                                                </option>
-                                                <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -746,6 +551,9 @@
                                             <input
                                                 v-model="
                                                     form.fiberConvertionDate
+                                                "
+                                                :disabled="
+                                                    form.type == 'Microduct'
                                                 "
                                                 type="date"
                                                 class="form-control"
@@ -880,6 +688,8 @@ export default {
             editmode: false,
             selected: "",
             building: [],
+            generatingactions: [],
+            teamserways: [],
             settings: {
                 placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
                 allowClear: true,
@@ -911,6 +721,16 @@ export default {
         };
     },
     methods: {
+        loadGeneratingaction() {
+            axios.get("/generatingactions").then(response => {
+                this.generatingactions = response.data.data;
+            });
+        },
+        loadTeamserway() {
+            axios.get("/teamserways").then(response => {
+                this.teamserways = response.data.data;
+            });
+        },
         loadBuildings() {
             axios.get("/building").then(
                 response =>
@@ -1026,6 +846,299 @@ export default {
                         title: "Some error occured! Please try again"
                     });
                 });
+        },
+        generateTable() {
+            var vm = this;
+            var table = $(this.$refs.constarution).DataTable({
+                dom: "Blfrtip",
+                ajax: "/api/constarution",
+                responsive: true,
+                processing: true,
+                pageLength: 15,
+                lengthMenu: [
+                    [10, 15, 25, 50, -1],
+                    [10, 15, 25, 50, "All"]
+                ],
+                fixedHeader: true,
+                fixedColumns: true,
+                fixedColumns: {
+                    leftColumns: 0,
+                    rightColumns: 1
+                },
+                scrollX: true,
+                scrollCollapse: true,
+                select: true,
+                buttons: [
+                    "colvis",
+                    {
+                        extend: "copy",
+                        text: "<i class='bi bi-clipboard mr-1'></i>Copy",
+                        exportOptions: {
+                            columns: "th:not(.notexport)"
+                        }
+                    },
+                    {
+                        extend: "excelHtml5",
+                        autoFilter: true,
+                        sheetName: "Building",
+                        text:
+                            "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+                        exportOptions: {
+                            columns: "th:not(.notexport)"
+                        }
+                    },
+                    {
+                        extend: "print",
+                        text: "<i class='bi bi-printer mr-1'></i>Print"
+                    },
+                    {
+                        text:
+                            "<i class='bi bi-list-check mr-1'></i>" +
+                            window.translate(
+                                "datatables.alert.display_selected_record_title"
+                            ) +
+                            "",
+                        action: function(e, dt, node, config) {
+                            var rowsel = dt
+                                .rows({ selected: true })
+                                .data()
+                                .map(function(item) {
+                                    return item.id;
+                                })
+                                .join(",");
+                            if (!rowsel.length) {
+                                return Swal.fire({
+                                    title: window.translate(
+                                        "datatables.alert.display_selected_record_empty_title"
+                                    ),
+                                    text: window.translate(
+                                        "datatables.alert.display_selected_record_empty_text"
+                                    ),
+                                    timer: 2000,
+                                    showCancelButton: false,
+                                    showConfirmButton: false
+                                });
+                            }
+                            $.fn.dataTable.ext.search.pop();
+                            $.fn.dataTable.ext.search.push(function(
+                                settings,
+                                data,
+                                dataIndex
+                            ) {
+                                return $(table.row(dataIndex).node()).hasClass(
+                                    "selected"
+                                )
+                                    ? true
+                                    : false;
+                            });
+
+                            table.draw();
+                        }
+                    },
+                    {
+                        text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+                        action: function(e, dt, node, config) {
+                            console.info("button: Clear");
+                            $.fn.dataTable.ext.search.pop();
+                            dt.search("").draw();
+                            dt.columns()
+                                .search("")
+                                .draw();
+                            dt.rows().deselect();
+                            dt.ajax.reload();
+                        }
+                    }
+                ],
+                columns: [
+                    {
+                        data: null,
+                        defaultContent: "",
+                        className: "dt-body-center notexport"
+                    },
+                    {
+                        data: "building[0].projectName"
+                    },
+                    {
+                        data: "desingBy",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "surveyDesing",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "ifcc",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "wallBox",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "microductD",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                        // visible: false
+                    },
+                    {
+                        data: "microductK",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                        // visible: false
+                    },
+                    {
+                        data: "fiberConvertion",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                        // visible: false
+                    },
+                    {
+                        data: "blow",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                        // visible: false
+                    },
+                    {
+                        data: "splice",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                        // visible: false
+                    },
+                    {
+                        data: "updated_at",
+                        render: function(data, type, row, meta) {
+                            return moment(data).format("MM/DD/YYYY HH:MM");
+                        }
+                    },
+                    {
+                        data: null,
+                        className: "dt-body-center notexport",
+                        render: function(data, type, row, meta) {
+                            return "<a class='edit-constarution btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-constarution btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
+                        }
+                    }
+                ],
+                columnDefs: [
+                    {
+                        targets: 0,
+                        searchable: false,
+                        orderable: false,
+                        className: "dt-body-center",
+                        checkboxes: {
+                            selectRow: true
+                        }
+                    }
+                ],
+                select: { selector: "td:not(:last-child)", style: "os" },
+                order: [[1, "desc"]]
+            });
+
+            $("tbody", this.$refs.constarution).on(
+                "click",
+                ".edit-constarution",
+                function(e) {
+                    e.preventDefault();
+                    var tr = $(this).closest("tr");
+                    var row = table.row(tr);
+                    vm.editModal(row.data());
+                }
+            );
+
+            $("tbody", this.$refs.constarution).on(
+                "click",
+                ".delete-constarution",
+                function(e) {
+                    e.preventDefault();
+                    var tr = $(this).closest("tr");
+                    var row = table.row(tr);
+                    vm.deleteConstarution(row.data());
+                }
+            );
         }
     },
     created() {
@@ -1034,296 +1147,9 @@ export default {
         this.$Progress.finish();
     },
     mounted() {
-        var vm = this;
-        var table = $(this.$refs.constarution).DataTable({
-            dom: "Blfrtip",
-            ajax: "/api/constarution",
-            responsive: true,
-            processing: true,
-            pageLength: 15,
-            lengthMenu: [
-                [10, 15, 25, 50, -1],
-                [10, 15, 25, 50, "All"]
-            ],
-            fixedHeader: true,
-            fixedColumns: true,
-            fixedColumns: {
-                leftColumns: 0,
-                rightColumns: 1
-            },
-            scrollX: true,
-            scrollCollapse: true,
-            select: true,
-            buttons: [
-                "colvis",
-                {
-                    extend: "copy",
-                    text: "<i class='bi bi-clipboard mr-1'></i>Copy",
-                    exportOptions: {
-                        columns: "th:not(.notexport)"
-                    }
-                },
-                {
-                    extend: "excelHtml5",
-                    autoFilter: true,
-                    sheetName: "Building",
-                    text: "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
-                    exportOptions: {
-                        columns: "th:not(.notexport)"
-                    }
-                },
-                {
-                    extend: "print",
-                    text: "<i class='bi bi-printer mr-1'></i>Print"
-                },
-                {
-                    text:
-                        "<i class='bi bi-list-check mr-1'></i>" +
-                        window.translate(
-                            "datatables.alert.display_selected_record_title"
-                        ) +
-                        "",
-                    action: function(e, dt, node, config) {
-                        var rowsel = dt
-                            .rows({ selected: true })
-                            .data()
-                            .map(function(item) {
-                                return item.id;
-                            })
-                            .join(",");
-                        if (!rowsel.length) {
-                            return Swal.fire({
-                                title: window.translate(
-                                    "datatables.alert.display_selected_record_empty_title"
-                                ),
-                                text: window.translate(
-                                    "datatables.alert.display_selected_record_empty_text"
-                                ),
-                                timer: 2000,
-                                showCancelButton: false,
-                                showConfirmButton: false
-                            });
-                        }
-                        $.fn.dataTable.ext.search.pop();
-                        $.fn.dataTable.ext.search.push(function(
-                            settings,
-                            data,
-                            dataIndex
-                        ) {
-                            return $(table.row(dataIndex).node()).hasClass(
-                                "selected"
-                            )
-                                ? true
-                                : false;
-                        });
-
-                        table.draw();
-                    }
-                },
-                {
-                    text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
-                    action: function(e, dt, node, config) {
-                        console.info("button: Clear");
-                        $.fn.dataTable.ext.search.pop();
-                        dt.search("").draw();
-                        dt.columns()
-                            .search("")
-                            .draw();
-                        dt.rows().deselect();
-                        dt.ajax.reload();
-                    }
-                }
-            ],
-            columns: [
-                {
-                    data: null,
-                    defaultContent: "",
-                    className: "dt-body-center notexport"
-                },
-                {
-                    data: "building[0].projectName"
-                },
-                {
-                    data: "desingBy",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return data;
-                        }
-                    }
-                },
-                {
-                    data: "surveyDesing",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                },
-                {
-                    data: "ifcc",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                },
-                {
-                    data: "wallBox",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                },
-                {
-                    data: "microductD",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                    // visible: false
-                },
-                {
-                    data: "microductK",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                    // visible: false
-                },
-                {
-                    data: "fiberConvertion",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                    // visible: false
-                },
-                {
-                    data: "blow",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                    // visible: false
-                },
-                {
-                    data: "splice",
-                    render: function(data, type, row, meta) {
-                        if (data == "") {
-                            return (
-                                '<span class="text-danger">' +
-                                "ไม่ได้กรอกข้อมูล" +
-                                "</span>"
-                            );
-                        } else {
-                            return "<span>" + data + "</span>";
-                        }
-                    }
-                    // visible: false
-                },
-                {
-                    data: "updated_at",
-                    render: function(data, type, row, meta) {
-                        return moment(data).format("MM/DD/YYYY HH:MM");
-                    }
-                },
-                {
-                    data: null,
-                    className: "dt-body-center notexport",
-                    render: function(data, type, row, meta) {
-                        return "<a class='edit-constarution btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-constarution btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
-                    }
-                }
-            ],
-            columnDefs: [
-                {
-                    targets: 0,
-                    searchable: false,
-                    orderable: false,
-                    className: "dt-body-center",
-                    checkboxes: {
-                        selectRow: true
-                    }
-                }
-            ],
-            select: { selector: "td:not(:last-child)", style: "os" },
-            order: [[1, "desc"]]
-        });
-
-        $("tbody", this.$refs.constarution).on(
-            "click",
-            ".edit-constarution",
-            function(e) {
-                e.preventDefault();
-                var tr = $(this).closest("tr");
-                var row = table.row(tr);
-                vm.editModal(row.data());
-            }
-        );
-
-        $("tbody", this.$refs.constarution).on(
-            "click",
-            ".delete-constarution",
-            function(e) {
-                e.preventDefault();
-                var tr = $(this).closest("tr");
-                var row = table.row(tr);
-                vm.deleteConstarution(row.data());
-            }
-        );
+        this.loadGeneratingaction();
+        this.generateTable();
+        this.loadTeamserway();
     }
 };
 </script>
