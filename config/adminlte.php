@@ -261,6 +261,8 @@ return [
         [
             'text' => 'project_list',
             'icon' => 'fas fa-fw fas fa-building',
+            'roles'  => ["superadministrator", "administrator", "user"],
+            'can'  => ["constarution-create", "constarution-read"],
             'submenu' => [
                 [
                     'text' => 'building_managment',
@@ -291,44 +293,37 @@ return [
         [
             'text' => 'reports_progress',
             'icon' => 'fas fa-fw fas fa-clipboard-list',
-            'roles'  => ["superadministrator", "administrator", "user", "guest"],
             'submenu' => [
                 [
                     'text' => 'project_name_table',
                     'url'  => '/building/all',
                     'icon' => 'fas fa-fw fas fa-file-alt',
-                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
                 [
                     'text' => 'project_tot_table',
                     'url'  => '/building/tot',
                     'icon' => 'fas fa-fw fas fa-file-alt',
-                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
                 [
                     'text' => 'project_3bb_table',
                     'url'  => '/building/3bb',
                     'icon' => 'fas fa-fw fas fa-file-alt',
-                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
                 [
                     'text' => 'project_true_table',
                     'url'  => '/building/true',
                     'icon' => 'fas fa-fw fas fa-file-alt',
-                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
                 [
                     'text' => 'project_ais_table',
                     'url'  => '/building/ais',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     // 'icon' => 'c-icon c-icon-ais',
-                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
                 [
                     'text' => 'project_fibernet_table',
                     'url'  => '/building/fibernet',
                     'icon' => 'fas fa-fw fas fa-file-alt',
-                    'roles'  => ["superadministrator", "administrator", "user", "guest"],
                 ],
             ]
         ],
@@ -373,7 +368,7 @@ return [
             'text' => 'Data Validation',
             'url'  => '/settings',
             'icon' => 'bi bi-gear-fill',
-            'roles'  => ['superadministrator', 'administrator'],
+            'roles'  => ['superadministrator'],
             'active_url' => 'settings'
         ],
     ],

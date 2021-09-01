@@ -6,35 +6,70 @@
 </template>
 
 <script>
-import Echo from "laravel-echo";
 export default {
     methods: {
         listenForChanges() {
-            Echo.channel("system").listen("DatabaseBackUpNotification", post => {
-                if (!("Notification" in window)) {
-                    alert("Web Notification is not supported");
-                    return;
+            window.Echo.channel("system").listen(
+                "DatabaseBackUpNotification",
+                post => {
+                    console.log("--- Incoming Notify ---");
+                    console.log(post);
+                    if (!("Notification" in window)) {
+                        alert("Web Notification is not supported");
+                        return;
+                    }
+                    this.notify(post);
                 }
-
-                Notification.requestPermission(permission => {
-                    let notification = new Notification("New database backup alert!", {
-                        body: `${post.message}, process result ${status} at ${created_at}`, // content for the alert
-                        icon: "https://sv1.picz.in.th/images/2021/02/11/o138qN.png" // optional image url
-                    });
-
+            );
+        },
+        notify(post) {
+            Notification.requestPermission().then(permission => {
+                console.log(
+                    `User notify permission is ${Notification.permission}`
+                );
+                if (Notification.permission !== "granted") {
+                    Notification.requestPermission();
+                } else {
+                    console.log("Else clause Notification");
+                    let notification = new Notification(
+                        "New database backup alert!",
+                        {
+                            body: `${post.message}, process result ${
+                                post.status
+                            } at ${moment(post.created_at)}`, // content for the alert
+                            icon:
+                                "https://sv1.picz.in.th/images/2021/02/11/o138qN.png" // optional image url
+                        }
+                    );
                     // link to page on clicking the notification
                     notification.onclick = () => {
                         window.open(window.location.href);
                     };
-                });
+                }
             });
+        },
+        listenForChangesPusher() {
+            window.Pusher.subscribe("system").bind(
+                "DatabaseBackUpNotification",
+                data => {
+                    console.log("--- Incoming Notify ---");
+                    console.log(data);
+                    this.notify(data);
+                }
+            );
+        },
+        requestPermission() {
+            if (Notification.permission !== "granted") {
+                return Notification.requestPermission();
+            }
         }
     },
-    created() {
-        // this.listenForChanges();
-    },
+    created() {},
     mounted() {
-        this.listenForChanges();
+        this.requestPermission();
+        if(this.$gate.isAdmin()){
+            this.listenForChangesPusher();
+        }
     }
 };
 </script>

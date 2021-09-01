@@ -7,7 +7,6 @@
 require("./bootstrap");
 import "flag-icon-css/css/flag-icon.css";
 import "fullcalendar/dist/fullcalendar.css";
-import Echo from "laravel-echo";
 
 window.Vue = require("vue");
 window.axios = require("axios");
@@ -180,7 +179,6 @@ Vue.filter("yesno", value =>
     '<i class="fas fa-check green"></i>' :
     '<i class="fas fa-times red"></i>'
 );
-
 // end Filter
 
 const app = new Vue({
@@ -188,12 +186,4 @@ const app = new Vue({
     store,
     router,
     vuetify: new Vuetify()
-});
-
-Pusher.logToConsole = true;
-
-window.Echo = new Echo({
-    broadcaster: "pusher",
-    key: "ca9c90e704afac3f54e8",
-    cluster: "ap1"
 });

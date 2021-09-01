@@ -80,4 +80,15 @@ if (token) {
     );
 }
 
-window.Pusher = require("pusher-js");
+// window.Pusher = require("pusher-js");
+// Pusher.logToConsole = true;
+
+// import Echo from "laravel-echo";
+// window.Echo = new Echo({
+//     broadcaster: "pusher",
+//     key: "ca9c90e704afac3f54e8",
+//     cluster: "ap1"
+// });
+import Pusher from "pusher-js";
+Pusher.logToConsole = true;
+window.Pusher = new Pusher("ca9c90e704afac3f54e8", { cluster: "ap1" });

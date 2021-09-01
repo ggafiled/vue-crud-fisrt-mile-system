@@ -1,7 +1,7 @@
 export default class Gate {
     constructor(user) {
         this.user = user;
-        this.roles = ["superadministrator", "administrator"];
+        this.roles_of_admin = ["superadministrator", "administrator"];
     }
 
     isAuthenticated() {
@@ -16,14 +16,14 @@ export default class Gate {
     isAdmin() {
         return (
             "user" in Laravel &&
-            this.roles.indexOf(Laravel.user.roles[0].name) != -1
+            this.roles_of_admin.indexOf(Laravel.user.roles[0].name) != -1
         );
     }
 
     isUser() {
         return (
             "user" in Laravel &&
-            this.roles.indexOf(Laravel.user.roles[0].name) == -1
+            this.roles_of_admin.indexOf(Laravel.user.roles[0].name) == -1
         );
     }
 
