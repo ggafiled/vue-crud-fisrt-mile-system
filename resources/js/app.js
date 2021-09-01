@@ -54,6 +54,9 @@ Vue.use(Vuetify);
 import VueTimeline from "@growthbunker/vuetimeline";
 Vue.use(VueTimeline);
 
+import VueThailandAddress from "vue-thailand-address";
+Vue.use(VueThailandAddress);
+
 /**
  * Custom mixins function to rename title.
  */
