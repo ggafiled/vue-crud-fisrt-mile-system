@@ -308,6 +308,7 @@
                                                 v-model="form.phoneNiti"
                                                 type="text"
                                                 class="form-control"
+                                                autocomplete="chrome-off"
                                                 placeholder="Enter your phone number..."
                                                 :autocomplete="isChrome ?  'chrome-off' : 'off'"
                                                 :class="{
@@ -433,6 +434,7 @@
                                                 v-model="form.districtName"
                                                 label="Sub District"
                                                 placeholder="Enter your sub district..."
+                                                autocomplete="chrome-off"
                                                 :autocomplete="isChrome ?  'chrome-off' : 'off'"
                                             />
                                             <!-- <input
@@ -458,6 +460,7 @@
                                                 v-model="form.countyName"
                                                 label="District"
                                                 placeholder="Enter your district..."
+                                                autocomplete="chrome-off"
                                                 :autocomplete="isChrome ?  'chrome-off' : 'off'"
                                             />
                                             <!-- <input
@@ -486,6 +489,7 @@
                                                 v-model="form.provinceName"
                                                 label="Province"
                                                 placeholder="Enter your province..."
+                                                autocomplete="chrome-off"
                                                 :autocomplete="isChrome ?  'chrome-off' : 'off'"
                                             />
                                             <!-- <input
@@ -1980,6 +1984,11 @@ export default {
             );
         }
     },
+    computed: {
+        isChrome: function() {
+            return this.$isChrome;
+        }
+    },
     created() {
         this.$Progress.start();
         this.loadBuildings();
@@ -1995,6 +2004,7 @@ export default {
         this.loadAreaFiberNet();
         this.loadWorkTime();
         this.generateTable();
+        $('input').attr('autocomplete',this.isChrome? 'chrome-off': 'off');
     }
 };
 </script>

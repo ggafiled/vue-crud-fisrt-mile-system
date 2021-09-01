@@ -6,7 +6,36 @@
 </template>
 
 <script>
+import Echo from "laravel-echo";
 export default {
+    methods: {
+        listenForChanges() {
+            Echo.channel("system").listen("DatabaseBackUpNotification", post => {
+                if (!("Notification" in window)) {
+                    alert("Web Notification is not supported");
+                    return;
+                }
+
+                Notification.requestPermission(permission => {
+                    let notification = new Notification("New database backup alert!", {
+                        body: `${post.message}, process result ${status} at ${created_at}`, // content for the alert
+                        icon: "https://sv1.picz.in.th/images/2021/02/11/o138qN.png" // optional image url
+                    });
+
+                    // link to page on clicking the notification
+                    notification.onclick = () => {
+                        window.open(window.location.href);
+                    };
+                });
+            });
+        }
+    },
+    created() {
+        // this.listenForChanges();
+    },
+    mounted() {
+        this.listenForChanges();
+    }
 };
 </script>
 

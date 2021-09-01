@@ -9,6 +9,7 @@ use DB;
 use App\Models\Backup;
 use Exception;
 use Illuminate\Console\Command;
+use App\Events\DatabaseBackUpNotification;
 
 class DatabaseBackUp extends Command
 {
@@ -71,6 +72,7 @@ class DatabaseBackUp extends Command
             ]);
             Mail::to(env("MAIL_ADMINISTRATOR"))->send(new BackedUpDatabase($result, $filename));
             activity('backup')->log("Backup, automatic processing success. and send email to ".env("MAIL_ADMINISTRATOR")." already.");
+            event(new DatabaseBackUpNotification($result));
         }
     }
 }
