@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\JobTpye;
-class JobTpyeSeeder extends Seeder
+class JobTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,29 +13,29 @@ class JobTpyeSeeder extends Seeder
      */
     public function run()
     {
-        $JobTpyes = [
+        $jobtypes = [
             [
-                'JobTpye' => 'New Connection',
+                'jobType' => 'New Connection',
             ],
             [
-                'JobTpye' => 'Change Media To',
+                'jobType' => 'Change Media To',
             ],
             [
-                'JobTpye' => 'Change Address To',
+                'jobType' => 'Change Address To',
             ],
             [
-                'JobTpye' => 'Add additional outlet (TV)',
+                'jobType' => 'Add additional outlet (TV)',
             ],
             [
-                'JobTpye' => 'Disconnect by request (Type A/B)',
+                'jobType' => 'Disconnect by request (Type A/B)',
             ],
             [
-                'JobTpye' => 'Change Address From',
+                'jobType' => 'Change Address From',
             ],
             [
-                'JobTpye' => 'RO 7',
+                'jobType' => 'RO 7',
             ]
         ];
-        JobTpye::insert($JobTpyes);
+        JobTpye::insert($jobtypes);
     }
 }

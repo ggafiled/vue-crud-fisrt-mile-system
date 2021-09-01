@@ -514,6 +514,68 @@
                                             ></has-error>
                                         </div>
                                     </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Callver</label>
+                                            <input
+                                                v-model="form.callver"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your phone technician..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'callver'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="callver"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Callver Status</label>
+                                            <input
+                                                v-model="form.callverstatus"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your phone technician..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'callverstatus'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="callverstatus"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Problemsolution</label>
+                                            <input
+                                                v-model="form.problemsolution"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your phone technician..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'problemsolution'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="problemsolution"
+                                            ></has-error>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row">

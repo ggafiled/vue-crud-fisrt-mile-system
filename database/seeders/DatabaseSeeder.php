@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CallverSeeder::class);
         $this->call(CallverstatusSeeder::class);
         $this->call(GeneratingactionSeeder::class);
+        $this->call(JobTypeSeeder::class);
+        $this->call(IspSeeder::class);
         $this->call(LaratrustSeeder::class);
         $this->call(OperaterSeeder::class);
         $this->call(PaymentSeeder::class);
@@ -37,8 +39,8 @@ class DatabaseSeeder extends Seeder
         $this->call(LaratrustSeeder::class);
         // $this->call(AreaSeeder::class);
         // $this->call(BbnSeeder::class);
-        \App\Models\Category::factory(10)->create();
-        \App\Models\Ticket::factory(20)->create();
+        // \App\Models\Category::factory(10)->create();
+        // \App\Models\Ticket::factory(20)->create();
         // \App\Models\Building::factory(200)->create();
         // \App\Models\User::factory(50)->create();
         // \App\Models\Team::factory(20)->create();
