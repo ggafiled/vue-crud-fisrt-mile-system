@@ -871,9 +871,16 @@ export default {
       });
     },
     loadSpendSpace() {
-      axios.get("/spendSpaces").then((response) => {
-        this.spendSpaces = response.data.data;
-      });
+       axios.get("/spendSpaces").then(
+                response =>
+                    (this.spendSpaces = response.data.data.map(a => {
+                        return { text: a.callVer, id: a.id };
+                    }))
+            );
+            
+      // axios.get("/spendSpaces").then((response) => {
+      //   this.spendSpaces = response.data.data;
+      // });
     },
     loadArea() {
       axios.get("/areas").then((response) => {

@@ -771,9 +771,16 @@ export default {
             );
         },
         loadCallver() {
-            axios.get("/callvers").then(response => {
-                this.callvers = response.data.data;
-            });
+            axios.get("/callvers").then(
+                response =>
+                    (this.callvers = response.data.data.map(a => {
+                        return { text: a.callVer, id: a.id };
+                    }))
+            );
+            
+            // axios.get("/callvers").then(response => {
+            //     this.callvers = response.data.data;
+            // });
         },
         loadCallverstatus() {
             axios.get("/callverstatuses").then(response => {
@@ -1190,7 +1197,7 @@ export default {
                         }
                     },
                     {
-                        data: "theBuilding",
+                        data: "building[0].postalCode",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "") {
