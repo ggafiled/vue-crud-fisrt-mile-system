@@ -1018,12 +1018,12 @@ export default {
                 longitude: "",
                 latitude: "",
                 contractSell: "",
-                contractDate: "",
-                contractDateEnd: "",
+                contractDate: new Date().toISOString().slice(0,10),
+                contractDateEnd: new Date().toISOString().slice(0,10),
                 spendSpace: "",
                 condition: "",
-                contractPeriod: "",
-                reNewContact: "",
+                contractPeriod: new Date().toISOString().slice(0,10),
+                reNewContact: new Date().toISOString().slice(0,10),
                 balance: "",
                 operatingTime: ""
             })
