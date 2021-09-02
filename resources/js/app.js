@@ -60,6 +60,13 @@ Vue.use(VueTimeline);
 import ThailandAutoComplete from "vue-thailand-address-autocomplete";
 Vue.component("ThailandAutoComplete", ThailandAutoComplete);
 
+import LongdoMap from "longdo-map-vue";
+Vue.use(LongdoMap, {
+    load: {
+        apiKey: "6ee8d1505966ca0ce21048e9473fbe9e"
+    }
+});
+
 /**
  * Custom mixins function to rename title.
  */

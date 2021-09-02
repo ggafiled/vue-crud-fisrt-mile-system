@@ -1,83 +1,110 @@
 <template>
-  <div v-if="open">
+  <div
+    v-if="open"
+    v-show="windowLoaded"
+  >
     <slot />
   </div>
 </template>
 
 <script>
-function copyStyles(sourceDoc, targetDoc) {
-  Array.from(sourceDoc.styleSheets).forEach(styleSheet => {
-    if (styleSheet.cssRules) {
-      // for <style> elements
-      const newStyleEl = sourceDoc.createElement("style");
-
-      Array.from(styleSheet.cssRules).forEach(cssRule => {
-        // write the text of each rule into the body of the style element
-        newStyleEl.appendChild(sourceDoc.createTextNode(cssRule.cssText));
-      });
-
-      targetDoc.head.appendChild(newStyleEl);
-    } else if (styleSheet.href) {
-      // for <link> elements loading CSS from a URL
-      const newLinkEl = sourceDoc.createElement("link");
-
-      newLinkEl.rel = "stylesheet";
-      newLinkEl.href = styleSheet.href;
-      targetDoc.head.appendChild(newLinkEl);
-    }
-  });
-}
-
 export default {
-  name: 'window-portal',
-  model: {
-    prop: 'open',
-    event: 'close'
-  },
   props: {
     open: {
       type: Boolean,
       default: false,
-    }
+    },
+    width: {
+      type: Number,
+      default: 600,
+    },
+    height: {
+      type: Number,
+      default: 400,
+    },
+    left: {
+      type: Number,
+      default: 200,
+    },
+    top: {
+      type: Number,
+      default: 200,
+    },
+    noStyle: {
+      type: Boolean,
+      default: false,
+    },
   },
-  data() {
+  data () {
     return {
       windowRef: null,
+      windowLoaded: false,
     }
   },
   watch: {
-    open(newOpen) {
-      if(newOpen) {
-        this.openPortal();
+    open (newOpen) {
+      if (newOpen) {
+        this.openPortal()
       } else {
-        this.closePortal();
+        this.closePortal()
       }
+    },
+  },
+  mounted () {
+    if (this.open) {
+      this.openPortal()
     }
+    window.addEventListener('beforeunload', this.closePortal)
+  },
+  beforeDestroy () {
+    this.closePortal()
+    window.removeEventListener('beforeunload', this.closePortal)
   },
   methods: {
-    openPortal() {
-      this.windowRef = window.open("", "", "width=600,height=400,left=200,top=200");
-      this.windowRef.document.body.appendChild(this.$el);
-      copyStyles(window.document, this.windowRef.document);
-      this.windowRef.addEventListener('beforeunload', this.closePortal);
+    openPortal () {
+      if (this.windowRef) return
+
+      const { width, height, left, top } = this
+
+      // Open a nonexistent page to replace the content later
+      const windowPath = window.location.origin + window.location.pathname + '_window'
+      this.windowRef = window.open(windowPath, '', `width=${width},height=${height},left=${left},top=${top}`)
+      this.windowRef.addEventListener('beforeunload', this.closePortal)
+
+      this.windowRef.addEventListener('load', () => {
+        this.windowLoaded = true
+
+        // Clear any existing content
+        this.windowRef.document.body.innerHTML = ''
+
+        this.windowRef.document.title = document.title
+
+        // Move the component into the window
+        const app = document.createElement('div')
+        app.id = 'app'
+        app.appendChild(this.$el)
+        this.windowRef.document.body.appendChild(app)
+        this.$emit('update:open', true)
+        this.$emit('opened', this.windowRef)
+
+        // Clone style nodes
+        if (!this.noStyle) {
+          for (const el of document.head.querySelectorAll('style, link[rel=stylesheet]')) {
+            const clone = el.cloneNode(true)
+            this.windowRef.document.head.appendChild(clone)
+          }
+        }
+      })
     },
-    closePortal() {
-      if(this.windowRef) {
-        this.windowRef.close();
-        this.windowRef = null;
-        this.$emit('close');
-      }
-    }
+    closePortal () {
+      if (!this.windowRef) return
+
+      this.windowLoaded = false
+      this.windowRef.close()
+      this.windowRef = null
+      this.$emit('update:open', false)
+      this.$emit('closed')
+    },
   },
-  mounted() {
-    if(this.open) {
-      this.openPortal();
-    }
-  },
-  beforeDestroy() {
-    if (this.windowRef) {
-      this.closePortal();
-    }
-  }
 }
 </script>

@@ -29,7 +29,7 @@ class LogsController extends BaseController
 
         try {
             $data = [
-                "activity" => Activity::all(),
+                "activity" => Activity::orderBy('created_at', 'desc')->get(),
                 "log_chanel" => Activity::select("log_name")->distinct()->get()
             ];
 

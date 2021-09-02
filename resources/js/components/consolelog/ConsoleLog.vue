@@ -302,43 +302,44 @@ export default {
                 filter: true,
                 resizable: true
             },
-            {
-                field: "subject_type ",
-                headerName: "Subject Type ",
-                sortable: true,
-                resizable: true,
-                filter: true
-            },
+            // {
+            //     field: "subject_type ",
+            //     headerName: "Subject Type ",
+            //     sortable: true,
+            //     resizable: true,
+            //     filter: true
+            // },
             {
                 field: "event",
                 headerName: "Event",
                 sortable: true,
                 resizable: true,
-                filter: true
-            },
-            {
-                field: "subject_id ",
-                headerName: "Subject Id ",
-                sortable: true,
-                resizable: true,
-                filter: true
-            },
-            {
-                field: "causer_type",
-                headerName: "Causer Type",
-                sortable: true,
-                resizable: true,
                 filter: true,
-                flex: 1
+                width: 80,
             },
-            {
-                field: "causer_id",
-                headerName: "Causer Id",
-                sortable: true,
-                resizable: true,
-                filter: true,
-                flex: 1
-            },
+            // {
+            //     field: "subject_id ",
+            //     headerName: "Subject Id ",
+            //     sortable: true,
+            //     resizable: true,
+            //     filter: true
+            // },
+            // {
+            //     field: "causer_type",
+            //     headerName: "Causer Type",
+            //     sortable: true,
+            //     resizable: true,
+            //     filter: true,
+            //     flex: 1
+            // },
+            // {
+            //     field: "causer_id",
+            //     headerName: "Causer Id",
+            //     sortable: true,
+            //     resizable: true,
+            //     filter: true,
+            //     flex: 1
+            // },
             {
                 field: "properties",
                 headerName: "Properties",
@@ -354,20 +355,21 @@ export default {
                     );
                 }
             },
-            {
-                field: "batch_uuid",
-                headerName: "Causer Type",
-                sortable: true,
-                resizable: true,
-                filter: true,
-                flex: 1
-            },
+            // {
+            //     field: "batch_uuid",
+            //     headerName: "Causer Type",
+            //     sortable: true,
+            //     resizable: true,
+            //     filter: true,
+            //     flex: 1
+            // },
             {
                 field: "created_at",
                 headerName: "Created At",
                 sortable: true,
                 filter: true,
                 flex: 1,
+                width: 80,
                 cellRenderer: params => {
                     return moment(params.value).format("MM/DD/YYYY HH:MM");
                 }
