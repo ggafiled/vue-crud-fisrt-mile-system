@@ -37481,21 +37481,7 @@ ag-grid, ag-grid-angular, ag-grid-ng2, ag-grid-polymer, ag-grid-aurelia {
     background-color: #2196f3;
     background-color: var(--ag-alpine-active-color, #2196f3); }
 
-/*!
- * Vue Thailand Address v3.4.0
- * Created by Saran Tanpituckpong
- * Released under the MIT License.
- * 
- * Address database from jquery.Thailand.js by Thanarat Kuawattanaphan
- */
-.th-address-autocomplete{border:1px solid #d5d5d5;box-sizing:border-box}.th-address-autocomplete li{background-color:#fff;box-sizing:border-box;padding:10px 5px;display:flex;flex-direction:row;justify-content:flex-start;align-items:center;align-content:center}.th-address-autocomplete li:hover,.th-address-autocomplete li.active{background-color:#f5f5f5 !important}.th-address-autocomplete li:not(:last-child){border-bottom:1px solid #d5d5d5}
-
-input.th-address-input{background-color:#fff;border:1px solid #d5d5d5;box-sizing:border-box;color:#666;display:inline-block;font-size:16px;height:40px;line-height:38px;padding:8px 6px;transition-property:border;transition:0.2s ease-in-out;width:100%}input.th-address-input:focus{outline:0;border-color:#1e87f0}input.th-address-input[type='number']{-webkit-appearance:textfield;-moz-appearance:textfield;appearance:textfield}
-
-label.th-address-label .label-text{margin-bottom:5px}
-
-
-/*# sourceMappingURL=vue-thailand-address.css.map*/@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
@@ -80853,7 +80839,11 @@ select.selectpicker {
   content: "\E800";
 }
 
-.th-address-input {
+.vth-addr-label {
+  font-weight: bold !important;
+}
+
+.vth-addr-input-container input {
   display: block !important;
   height: calc(1.6em + 0.75rem + 2px) !important;
   width: 100% !important;
@@ -80867,14 +80857,6 @@ select.selectpicker {
   border: 1px solid #ced4da !important;
   border-radius: 0.25rem !important;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
-}
-
-ul.th-address-autocomplete {
-  position: absolute !important;
-  max-width: 600px !important;
-  overflow-y: auto !important;
-  width: 300px !important;
-  z-index: 999999 !important;
 }
 
 @font-face {
