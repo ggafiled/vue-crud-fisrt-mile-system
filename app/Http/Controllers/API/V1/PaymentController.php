@@ -27,7 +27,7 @@ class PaymentController extends BaseController
         return $this->sendResponse($payment, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($payment, trans('actions.get.fialed'));
+            return $this->sendError($payment, trans('actions.created.failed'));
         }
     }
 
@@ -46,7 +46,7 @@ class PaymentController extends BaseController
             $payment->save();
             return $this->sendResponse($payment, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($payment, trans('actions.created.fialed'));
+            return $this->sendError($payment, trans('actions.created.failed'));
         }
     }
 
@@ -65,7 +65,7 @@ class PaymentController extends BaseController
             $payment->update($request->all());
             return $this->sendResponse($payment, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($payment, trans('actions.updated.fialed'));
+            return $this->sendError($payment, trans('actions.created.failed'));
         }
     }
 
@@ -82,7 +82,7 @@ class PaymentController extends BaseController
             $payment->delete();
             return $this->sendResponse($payment, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($payment, trans('actions.destroy.fialed'));
+            return $this->sendError($payment, trans('actions.created.failed'));
         }
     }
 }

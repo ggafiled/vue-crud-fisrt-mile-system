@@ -29,7 +29,7 @@ class BuildingListController extends BaseController
             $buildings = Building::with('progress')->get();
             return $this->sendResponse($buildings, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($buildings, trans('actions.get.fialed'));
+            return $this->sendError($buildings, trans('actions.created.failed'));
         }
     }
 
@@ -42,7 +42,7 @@ class BuildingListController extends BaseController
             })->with('building')->get();
             return $this->sendResponse($buildings_non_contract, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($buildings_non_contract, trans('actions.get.fialed'));
+            return $this->sendError($buildings_non_contract, trans('actions.created.failed'));
         }
     }
 

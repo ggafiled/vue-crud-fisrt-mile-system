@@ -35,7 +35,7 @@ class TicketsController extends BaseController
 
             return $this->sendResponse($tickets, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($tickets, trans('actions.get.fialed') . $ex->getMessage());
+            return $this->sendError($tickets, trans('actions.created.failed') . $ex->getMessage());
         }
     }
 

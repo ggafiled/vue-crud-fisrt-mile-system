@@ -39,7 +39,7 @@ class RoleController extends BaseController
             }])->get();
             return $this->sendResponse($roles, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($roles, trans('actions.get.fialed'));
+            return $this->sendError($roles, trans('actions.created.failed'));
         }
     }
 
@@ -58,7 +58,7 @@ class RoleController extends BaseController
             $roles = $this->role->paginate(20);
             return $this->sendResponse($roles, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($roles, trans('actions.get.fialed'));
+            return $this->sendError($roles, trans('actions.created.failed'));
         }
     }
 
@@ -90,7 +90,7 @@ class RoleController extends BaseController
             $roles->syncPermissions($permission_ids);
             return $this->sendResponse($roles, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($roles, trans('actions.created.fialed'));
+            return $this->sendError($roles, trans('actions.created.failed'));
         }
     }
 
@@ -118,7 +118,7 @@ class RoleController extends BaseController
             $roles->syncPermissions($permission_ids);
             return $this->sendResponse($roles, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($roles, trans('actions.updated.fialed'));
+            return $this->sendError($roles, trans('actions.created.failed'));
         }
     }
 
@@ -130,7 +130,7 @@ class RoleController extends BaseController
             $roles->delete();
             return $this->sendResponse($roles, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($roles, trans('actions.destroy.fialed'));
+            return $this->sendError($roles, trans('actions.created.failed'));
         }
     }
 }

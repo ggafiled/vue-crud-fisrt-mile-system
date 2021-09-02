@@ -27,7 +27,7 @@ class Area3BBController extends BaseController
             $area3BB = Area3bb::orderBy('updated_at','asc')->get();
             return $this->sendResponse($area3BB, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($area3BB, trans('actions.get.fialed'));
+            return $this->sendError($area3BB, trans('actions.created.failed'));
         }
     }
 
@@ -45,7 +45,7 @@ class Area3BBController extends BaseController
             ]);
             return $this->sendResponse($area3BB, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($area3BB, trans('actions.created.fialed'));
+            return $this->sendError($area3BB, trans('actions.created.failed'));
         }
     }
 
@@ -63,7 +63,7 @@ class Area3BBController extends BaseController
             $area3BB->update($request->all());
             return $this->sendResponse($area3BB, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($area3BB, trans('actions.updated.fialed'));
+            return $this->sendError($area3BB, trans('actions.created.failed'));
         }
     }
 
@@ -80,7 +80,7 @@ class Area3BBController extends BaseController
             $area3BB->delete();
             return $this->sendResponse($area3BB, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($area3BB, trans('actions.destroy.fialed'));
+            return $this->sendError($area3BB, trans('actions.created.failed'));
         }
     }
 }

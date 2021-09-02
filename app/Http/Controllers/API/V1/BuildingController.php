@@ -14,7 +14,7 @@ class Buildingcontroller extends BaseController
     public function __construct()
     {
         $this->middleware('auth:api');
-        $this->middleware('role:superadministrator|administrator|user')->only(['index', 'create']);
+        $this->middleware('role:superadministrator|administrator|user')->only(['index']);
         $this->middleware('role:superadministrator|administrator')->only(['store', 'update', 'destroy']);
     }
 
@@ -29,18 +29,8 @@ class Buildingcontroller extends BaseController
         return $this->sendResponse($buidings, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($buidings, trans('actions.get.fialed'));
+            return $this->sendError($buidings, trans('actions.get.failed'));
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -93,30 +83,8 @@ class Buildingcontroller extends BaseController
             ]);
             return $this->sendResponse($buidings, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($buidings, trans('actions.created.fialed'));
+            return $this->sendError($buidings, trans('actions.created.failed'));
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -133,7 +101,7 @@ class Buildingcontroller extends BaseController
             $buildings->update($request->all());
             return $this->sendResponse($buildings, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($buildings, trans('actions.updated.fialed'));
+            return $this->sendError($buildings, trans('actions.updated.failed'));
         }
     }
 
@@ -150,7 +118,7 @@ class Buildingcontroller extends BaseController
             $building->delete();
             return $this->sendResponse($building, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($building, trans('actions.destroy.fialed'));
+            return $this->sendError($building, trans('actions.created.failed'));
         }
     }
 }

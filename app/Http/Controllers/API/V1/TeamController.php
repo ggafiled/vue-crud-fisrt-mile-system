@@ -32,7 +32,7 @@ class TeamController extends BaseController
             }])->get();
             return $this->sendError($teams, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($teams, trans('actions.get.fialed'));
+            return $this->sendError($teams, trans('actions.created.failed'));
         }
     }
 
@@ -50,7 +50,7 @@ class TeamController extends BaseController
             $teams = Team::all();
             return $this->sendResponse($teams, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($teams, trans('actions.get.fialed'));
+            return $this->sendError($teams, trans('actions.created.failed'));
         }
     }
 

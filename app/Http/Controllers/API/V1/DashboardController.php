@@ -90,7 +90,7 @@ class DashboardController extends BaseController
             ];
             return $this->sendResponse($dashboard, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($dashboard, trans('actions.get.fialed'));
+            return $this->sendError($dashboard, trans('actions.created.failed'));
         }
     }
 

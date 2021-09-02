@@ -27,7 +27,7 @@ class JobTpyeController extends BaseController
         return $this->sendResponse($jobtpye, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($jobtpye, trans('actions.get.fialed'));
+            return $this->sendError($jobtpye, trans('actions.created.failed'));
         }
     }
 
@@ -46,7 +46,7 @@ class JobTpyeController extends BaseController
             $jobtpye->save();
             return $this->sendResponse($jobtpye, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($jobtpye, trans('actions.created.fialed'));
+            return $this->sendError($jobtpye, trans('actions.created.failed'));
         }
     }
 
@@ -65,7 +65,7 @@ class JobTpyeController extends BaseController
             $jobtpye->update($request->all());
             return $this->sendResponse($jobtpye, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($jobtpye, trans('actions.updated.fialed'));
+            return $this->sendError($jobtpye, trans('actions.created.failed'));
         }
     }
 
@@ -82,7 +82,7 @@ class JobTpyeController extends BaseController
             $jobtpye->delete();
             return $this->sendResponse($jobtpye, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($jobtpye, trans('actions.destroy.fialed'));
+            return $this->sendError($jobtpye, trans('actions.created.failed'));
         }
     }
 }

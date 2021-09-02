@@ -27,7 +27,7 @@ class ProgressController extends BaseController
             $progress = Progress::with('building')->get();
             return $this->sendResponse($progress, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($progress, trans('actions.get.fialed'));
+            return $this->sendError($progress, trans('actions.created.failed'));
         }
     }
 
@@ -70,7 +70,7 @@ class ProgressController extends BaseController
             $progress->save();
             return $this->sendResponse($progress, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($progress, trans('actions.created.fialed'));
+            return $this->sendError($progress, trans('actions.created.failed'));
         }
     }
 
@@ -111,7 +111,7 @@ class ProgressController extends BaseController
             $progress->update($request->all());
             return $this->sendResponse($progress, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($progress, trans('actions.updated.fialed'));
+            return $this->sendError($progress, trans('actions.created.failed'));
         }
     }
 
@@ -129,7 +129,7 @@ class ProgressController extends BaseController
 
             return $this->sendResponse($progress, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($progress, trans('actions.destroy.fialed'));
+            return $this->sendError($progress, trans('actions.created.failed'));
         }
     }
 }

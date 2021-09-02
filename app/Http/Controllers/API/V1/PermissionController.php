@@ -37,7 +37,7 @@ class PermissionController extends BaseController
             $permissions = $this->permission->latest()->paginate(10);
             return $this->sendResponse($permissions, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($permissions, trans('actions.get.fialed'));
+            return $this->sendError($permissions, trans('actions.created.failed'));
         }
     }
 
@@ -55,7 +55,7 @@ class PermissionController extends BaseController
             $permissions = $this->permission->get(['name', 'id']);
             return $this->sendResponse($permissions, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($permissions, trans('actions.get.fialed'));
+            return $this->sendError($permissions, trans('actions.created.failed'));
         }
     }
 
@@ -79,7 +79,7 @@ class PermissionController extends BaseController
             ]);
             return $this->sendResponse($permissions, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($permissions, trans('actions.created.fialed'));
+            return $this->sendError($permissions, trans('actions.created.failed'));
         }
     }
 
@@ -98,7 +98,7 @@ class PermissionController extends BaseController
             $permissions->update($request->all());
             return $this->sendResponse($permissions, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($permissions, trans('actions.updated.fialed'));
+            return $this->sendError($permissions, trans('actions.created.failed'));
         }
     }
 
@@ -110,7 +110,7 @@ class PermissionController extends BaseController
             $permissions->delete();
             return $this->sendResponse($permissions, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($permissions, trans('actions.destroy.fialed'));
+            return $this->sendError($permissions, trans('actions.created.failed'));
         }
     }
 }

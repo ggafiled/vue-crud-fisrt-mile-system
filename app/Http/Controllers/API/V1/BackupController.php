@@ -32,7 +32,7 @@ class BackupController extends BaseController
 
             return $this->sendResponse($backup, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.fialed') . $ex->getMessage());
+            return $this->sendError([], trans('actions.created.failed') . $ex->getMessage());
         }
     }
 

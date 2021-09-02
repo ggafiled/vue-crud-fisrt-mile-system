@@ -27,7 +27,7 @@ class TechnicianController extends BaseController
         return $this->sendResponse($technician, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($technician, trans('actions.get.fialed'));
+            return $this->sendError($technician, trans('actions.created.failed'));
         }
     }
 
@@ -48,7 +48,7 @@ class TechnicianController extends BaseController
             $technician->save();
             return $this->sendResponse($technician, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($technician, trans('actions.created.fialed'));
+            return $this->sendError($technician, trans('actions.created.failed'));
         }
     }
 
@@ -67,7 +67,7 @@ class TechnicianController extends BaseController
             $technician->update($request->all());
             return $this->sendResponse($technician, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($technician, trans('actions.updated.fialed'));
+            return $this->sendError($technician, trans('actions.created.failed'));
         }
     }
 
@@ -84,7 +84,7 @@ class TechnicianController extends BaseController
             $technician->delete();
             return $this->sendResponse($technician, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($technician, trans('actions.destroy.fialed'));
+            return $this->sendError($technician, trans('actions.created.failed'));
         }
     }
 }

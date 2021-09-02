@@ -27,7 +27,7 @@ class IspController extends BaseController
         return $this->sendResponse($isp, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($isp, trans('actions.get.fialed'));
+            return $this->sendError($isp, trans('actions.created.failed'));
         }
     }
 
@@ -46,7 +46,7 @@ class IspController extends BaseController
             $isp->save();
             return $this->sendResponse($isp, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($isp, trans('actions.created.fialed'));
+            return $this->sendError($isp, trans('actions.created.failed'));
         }
     }
 
@@ -65,7 +65,7 @@ class IspController extends BaseController
             $isp->update($request->all());
             return $this->sendResponse($isp, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($isp, trans('actions.updated.fialed'));
+            return $this->sendError($isp, trans('actions.created.failed'));
         }
     }
 
@@ -82,7 +82,7 @@ class IspController extends BaseController
             $isp->delete();
             return $this->sendResponse($isp, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($isp, trans('actions.destroy.fialed'));
+            return $this->sendError($isp, trans('actions.created.failed'));
         }
     }
 }

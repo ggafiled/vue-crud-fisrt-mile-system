@@ -28,7 +28,7 @@ class ConstarutionController extends BaseController
             $constarution = Constarution::with('building')->get();
             return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($constarution, trans('actions.get.fialed'));
+            return $this->sendError($constarution, trans('actions.created.failed'));
         }
     }
 
@@ -62,7 +62,7 @@ class ConstarutionController extends BaseController
             $constarution->save();
             return $this->sendResponse($constarution, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($constarution, trans('actions.created.fialed'));
+            return $this->sendError($constarution, trans('actions.created.failed'));
         }
     }
     /**
@@ -108,7 +108,7 @@ class ConstarutionController extends BaseController
             $constarution->update($request->all());
             return $this->sendResponse($constarution, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($constarution, trans('actions.updated.fialed'));
+            return $this->sendError($constarution, trans('actions.created.failed'));
         }
     }
 
@@ -125,7 +125,7 @@ class ConstarutionController extends BaseController
             $constarution->delete();
             return $this->sendResponse($constarution, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($constarution, trans('actions.destroy.fialed'));
+            return $this->sendError($constarution, trans('actions.created.failed'));
         }
     }
 }

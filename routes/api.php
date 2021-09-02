@@ -48,10 +48,10 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('team/list', 'TeamController@list');
     Route::get('buildinglist/nonContract', 'BuildingListController@nonContract');
 
-    Route::post('close_ticket/{ticket_id}', 'TicketsController@close'); // ปิดตั๋ว
-    Route::get('my_tickets', 'TicketsController@userTickets'); // แสดงตั๋วของผู้ใช้งานคนนั้นๆ
+    // Route::post('close_ticket/{ticket_id}', 'TicketsController@close'); // ปิดตั๋ว
+    // Route::get('my_tickets', 'TicketsController@userTickets'); // แสดงตั๋วของผู้ใช้งานคนนั้นๆ
     // Route::get('tickets/{ticket_id}', 'TicketsController@show'); // แสดงหน้าตั๋วอันเดียวตาม ไอดี ที่ส่งมา
-    Route::post('comment', 'CommentsController@postComment');
+    // Route::post('comment', 'CommentsController@postComment');
 
     Route::apiResources([
         'user' => 'UserController',
