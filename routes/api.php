@@ -47,6 +47,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('user/list', 'UserController@list');
     Route::get('team/list', 'TeamController@list');
     Route::get('buildinglist/nonContract', 'BuildingListController@nonContract');
+    Route::post('backup/actionBackup', 'BackupController@actionBackup');
 
     // Route::post('close_ticket/{ticket_id}', 'TicketsController@close'); // ปิดตั๋ว
     // Route::get('my_tickets', 'TicketsController@userTickets'); // แสดงตั๋วของผู้ใช้งานคนนั้นๆ

@@ -11,6 +11,16 @@
                                 ></i>
                                 {{ translate("Details of last ran backup") }}
                             </h3>
+                            <div class="card-tools">
+                                <button
+                                    type="button"
+                                    class="btn btn-warning"
+                                    @click="handlerBackup"
+                                >
+                                    <i class="fas fa-sync"></i>
+                                    {{ translate("Start Backup") }}
+                                </button>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-3 pt-2">
@@ -231,6 +241,11 @@ export default {
                 this.selectOptions = response.data.data.log_chanel.map(a => {
                     return a.log_name.replace(/\b\w/g, l => l.toUpperCase());
                 });
+            });
+        },
+        async handlerBackup(){
+            await axios.post("/backup/actionBackup").then(response => {
+                this.loadActivityLogs();
             });
         },
         onSelect(option){

@@ -100,7 +100,7 @@ class CreateBuildingsTable extends Migration
 
             $table->foreign('areaFibernet_id')
             ->references('id')
-            ->on('fiber_nets')
+            ->on('area_fiber_nets')
             ->onDelete('cascade');
 
             $table->foreign('workTime_id')

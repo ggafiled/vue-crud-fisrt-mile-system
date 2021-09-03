@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\V1;
 
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Models\Backup;
 use Exception;
@@ -13,6 +14,7 @@ class BackupController extends BaseController
     public function __construct()
     {
         $this->middleware('auth:api');
+        $this->middleware('role:superadministrator')->only(['actionBackup']);
         $this->middleware('role:superadministrator|administrator');
     }
 
@@ -100,5 +102,15 @@ class BackupController extends BaseController
     public function destroy($id)
     {
         //
+    }
+
+    public function actionBackup(){
+        try {
+            Artisan::queue('database:backup',['--queue' => 'default']);
+
+            return $this->sendResponse([], trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.created.failed') . $ex->getMessage());
+        }
     }
 }
