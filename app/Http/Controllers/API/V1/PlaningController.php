@@ -45,11 +45,13 @@ class PlaningController extends BaseController{
     {
         $Planing = new Planing([
             'building_id' => $request->input('building_id'),
+            'isp_id' => $request->input('isp_id'),
+            'jobtype_id' => $request->input('jobtype_id'),
             'technician_id' => $request->input('technician_id'),
-            'problemsolution_id' => $request->input('problemsolution_id'),
-            'teamtechnician_id' => $request->input('teamtechnician_id'),
             'callver_id' => $request->input('callver_id'),
             'callverstatus_id' => $request->input('callverstatus_id'),
+            'ispId_id' => $request->input('ispId_id'),
+            'problemsolution_id' => $request->input('problemsolution_id'),
             'name' => $request->input('name'),
             'surname' => $request->input('surname'),
             'tel' => $request->input('tel'),
@@ -57,16 +59,11 @@ class PlaningController extends BaseController{
             'theBuilding' => $request->input('theBuilding'),
             'floor' => $request->input('floor'),
             'room' => $request->input('room'),
-            'isp' => $request->input('isp'),
             'agent' => $request->input('agent'),
             'circuit' => $request->input('circuit'),
             'entranceFee' => $request->input('entranceFee'),
-            'jobType' => $request->input('jobType'),
             'appointmentDate' => $request->input('appointmentDate'),
             'appointmentTime' => $request->input('appointmentTime'),
-            'technicianPlaning' => $request->input('technicianPlaning'),
-            'idRequired' => $request->input('idRequired'),
-            'status' => $request->input('status'),
             'subStatus' => $request->input('subStatus'),
             'reMark' => $request->input('reMark')
         ]);
