@@ -29,8 +29,8 @@ class LogsController extends BaseController
 
         try {
             $data = [
-                "activity" => Activity::orderBy('created_at', 'desc')->get(),
-                "log_chanel" => Activity::select("log_name")->distinct()->get()
+                "activity" => Activity::orderBy('created_at', 'desc')->get() ?? [],
+                "log_chanel" => Activity::select("log_name")->distinct()->get() ?? []
             ];
 
             return $this->sendResponse($data, trans('actions.get.success'));
