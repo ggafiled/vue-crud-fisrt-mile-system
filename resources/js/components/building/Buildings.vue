@@ -1626,15 +1626,15 @@ export default {
         this.$Progress.finish();
     },
     mounted() {
-        this.loadSaleFm();
-        // this.nameSale();
-        this.loadSpendSpace();
-        this.loadArea();
+        // this.loadSaleFm();
+        // // this.nameSale();
+        // this.loadSpendSpace();
+        // this.loadArea();
         this.loadArea3BB();
-        this.loadAreaTrue();
-        this.loadAreaAis();
-        this.loadAreaFiberNet();
-        this.loadWorkTime();
+        // this.loadAreaTrue();
+        // this.loadAreaAis();
+        // this.loadAreaFiberNet();
+        // this.loadWorkTime();
         this.generateTable();
         this.loadMap();
         $("input").attr("autocomplete", this.isChrome ? "chrome-off" : "off");
