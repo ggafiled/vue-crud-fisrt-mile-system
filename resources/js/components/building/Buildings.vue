@@ -1428,7 +1428,7 @@ export default {
                         }
                     },
                     {
-                        data: "areaN",
+                        data: "areas.name",
                         render: function(data, type, row, meta) {
                             if (
                                 data == "" ||
@@ -1450,7 +1450,7 @@ export default {
                         }
                     },
                     {
-                        data: "bbN",
+                        data: "bbns.name",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
@@ -1466,7 +1466,7 @@ export default {
                         }
                     },
                     {
-                        data: "area3BB",
+                        data: "area3bb.name",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
@@ -1482,7 +1482,7 @@ export default {
                         }
                     },
                     {
-                        data: "areaTrue",
+                        data: "areaTrue.name",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
@@ -1514,7 +1514,7 @@ export default {
                         }
                     },
                     {
-                        data: "areaAis",
+                        data: "areaAis.name",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
@@ -1530,7 +1530,7 @@ export default {
                         }
                     },
                     {
-                        data: "areaFiberNet",
+                        data: "areaFiberNet.name",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
@@ -1978,7 +1978,7 @@ export default {
                         }
                     },
                     {
-                        data: "operatingTime",
+                        data: "work_time.name",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
@@ -2053,7 +2053,7 @@ export default {
         this.loadWorkTime();
         this.generateTable();
         this.loadMap();
-        $("input").attr("autocomplete", this.isChrome ? "chrome-off" : "off");
+        // $("input").attr("autocomplete", this.isChrome ? "chrome-off" : "off");
     }
 };
 </script>

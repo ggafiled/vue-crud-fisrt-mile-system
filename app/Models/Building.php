@@ -53,6 +53,8 @@ class Building extends Model
         'areaTrueNew',
     ];
 
+    // protected $appends = ['salefm', 'payment', 'area', 'bbn', 'area3bb', 'areaTrue', 'areaAis', 'areaFibernet', 'worktime'];
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
@@ -60,6 +62,11 @@ class Building extends Model
             ->useLogName('building')
             ->logOnlyDirty();
         // Chain fluent methods for configuration options
+    }
+
+    public function get_building()
+    {
+        return $this->building()->where('building_id');
     }
 
     public function progress()
@@ -77,53 +84,48 @@ class Building extends Model
         return $this->belongsTo('App\Models\planning', 'building_id', 'id');
     }
 
-    public function get_building()
+    public function saleFm()
     {
-        return $this->building()->where('building_id');
+        return $this->hasOne('App\Models\Salefm', 'id', 'saleFm_id');
     }
 
-    public function salefm()
+    public function paymentType()
     {
-        return $this->belongsTo('App\Models\Salefm', 'saleFm_id', 'id');
+        return $this->hasOne('App\Models\Payment', 'id', 'paymentType_id');
     }
 
-    public function payment()
+    public function areas()
     {
-        return $this->belongsTo('App\Models\Payment', 'paymentType_id', 'id');
+        return $this->hasOne('App\Models\Area', 'id', 'areas_id');
     }
 
-    public function area()
+    public function bbns()
     {
-        return $this->belongsTo('App\Models\Area', 'areas_id', 'id');
-    }
-
-    public function bbn()
-    {
-        return $this->belongsTo('App\Models\BBn', 'bbns_id', 'id');
+        return $this->hasOne('App\Models\BBn', 'id', 'bbns_id');
     }
 
     public function area3bb()
     {
-        return $this->belongsTo('App\Models\Area3bb', 'area3bb_id', 'id');
+        return $this->hasOne('App\Models\Area3bb', 'id', 'area3bb_id');
     }
 
     public function areaTrue()
     {
-        return $this->belongsTo('App\Models\areaTrue', 'areaTrue_id', 'id');
+        return $this->hasOne('App\Models\areaTrue', 'id', 'areaTrue_id');
     }
 
     public function areaAis()
     {
-        return $this->belongsTo('App\Models\AreaAis', 'areaAis_id', 'id');
+        return $this->hasOne('App\Models\AreaAis', 'id', 'areaAis_id');
     }
 
     public function areaFibernet()
     {
-        return $this->belongsTo('App\Models\areaFibernet', 'areaFibernet_id', 'id');
+        return $this->hasOne('App\Models\areaFibernet', 'id', 'areaFibernet_id');
     }
 
-    public function worktime()
+    public function workTime()
     {
-        return $this->belongsTo('App\Models\WorkTime', 'workTime_id', 'id');
+        return $this->hasOne('App\Models\WorkTime', 'id', 'workTime_id');
     }
 }

@@ -15,6 +15,6 @@ class AreaFiberNet extends Model
 
     public function building()
     {
-        return $this->hasOne('App\Models\Building', 'areaFibernet_id', 'id');
+        return $this->belongsTo('App\Models\Building', 'id', 'areaFibernet_id');
     }
 }

@@ -25,11 +25,11 @@ class Buildingcontroller extends BaseController
      */
     public function index()
     {
-        $buidings = Building::all();
+        $buidings = Building::with('saleFm:id,nameSale as name','paymentType:id,paymentType as name','areas:id,name','bbns:id,name','area3bb:id,area3BB as name','areaTrue:id,areaTrue as name','areaAis:id,areaAis as name','areaFibernet:id,areaFibernet as name','workTime:id,worktime as name')->get();
         return $this->sendResponse($buidings, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($buidings, trans('actions.get.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -44,13 +44,15 @@ class Buildingcontroller extends BaseController
         try {
             $buidings = Building::create([
                 'projectName' => $request->input('projectName'),
-                'areaN' => $request->input('areaN'),
-                'bbN' => $request->input('bbN'),
-                'area3BB' => $request->input('area3BB'),
-                'areaTrue' => $request->input('areaTrue'),
+                'saleFm_id' => $request->input('contractSell'),
+                'paymentType_id' => $request->input('spendSpace'),
+                'areas_id' => $request->input('areaN'),
+                'bbns_id' => (int) $request->input('bbN'),
+                'area3bb_id' => $request->input('area3BB'),
+                'areaTrue_id' => $request->input('areaTrue'),
                 'areaTrueNew' => $request->input('areaTrueNew'),
-                'areaAis' => $request->input('areaAis'),
-                'areaFiberNet' => $request->input('areaFiberNet'),
+                'areaAis_id' => $request->input('areaAis'),
+                'areaFibernet_id' => $request->input('areaFiberNet'),
                 'buildingSum' => $request->input('buildingSum'),
                 'floorSum' => $request->input('floorSum'),
                 'roomSum' => $request->input('roomSum'),
@@ -71,19 +73,16 @@ class Buildingcontroller extends BaseController
                 'postalCode' => $request->input('postalCode'),
                 'longitude' => $request->input('longitude'),
                 'latitude' => $request->input('latitude'),
-                'contractSell' => $request->input('contractSell'),
                 'contractDate' => $request->input('contractDate'),
                 'contractDateEnd' => $request->input('contractDateEnd'),
-                'spendSpace' => $request->input('spendSpace'),
+                'workTime_id' => $request->input('operatingTime'),
                 'condition' => $request->input('condition'),
                 'contractPeriod' => $request->input('contractPeriod'),
                 'reNewContact' => $request->input('reNewContact'),
-                'balance' => $request->input('balance'),
-                'operatingTime' => $request->input('operatingTime')
             ]);
             return $this->sendResponse($buidings, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($buidings, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -101,7 +100,7 @@ class Buildingcontroller extends BaseController
             $buildings->update($request->all());
             return $this->sendResponse($buildings, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($buildings, trans('actions.updated.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -118,7 +117,7 @@ class Buildingcontroller extends BaseController
             $building->delete();
             return $this->sendResponse($building, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($building, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 }

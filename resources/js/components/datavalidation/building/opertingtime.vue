@@ -83,15 +83,15 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label>Area3BB</label>
+                                            <label>Work Time</label>
                                             <input
-                                                v-model="form.area3BB"
+                                                v-model="form.workTime"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your name payment..."
+                                                placeholder="Enter your time details..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'area3BB'
+                                                        'workTime'
                                                     )
                                                 }"
                                             />

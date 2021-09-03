@@ -92,3 +92,8 @@ if (token) {
 import Pusher from "pusher-js";
 // Pusher.logToConsole = true;
 window.Pusher = new Pusher("ca9c90e704afac3f54e8", { cluster: "ap1" });
+
+import disableDevtool from "disable-devtool";
+if (process.env.MIX_APP_ENV == "production") {
+    disableDevtool();
+}

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bbn extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory;
     protected $fillable = [
         'id',
         'area_id',
@@ -20,6 +20,6 @@ class Bbn extends Model
 
     public function building()
     {
-        return $this->hasOne('App\Models\Building', 'bbns_id', 'id');
+        return $this->belongsTo('App\Models\Building', 'id', 'bbns_id');
     }
 }

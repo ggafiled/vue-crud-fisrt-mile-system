@@ -19,6 +19,6 @@ class Salefm extends Model
 
     public function building()
     {
-        return $this->hasOne('App\Models\Building', 'saleFm_id', 'id');
+        return $this->belongsTo('App\Models\Building', 'id', 'saleFm_id');
     }
 }

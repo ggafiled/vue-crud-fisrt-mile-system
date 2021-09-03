@@ -15,6 +15,6 @@ class Area3bb extends Model
 
     public function building()
     {
-        return $this->hasOne('App\Models\Area3bb', 'area3bb_id', 'id');
+        return $this->belongsTo('App\Models\Area3bb', 'id', 'area3bb_id');
     }
 }

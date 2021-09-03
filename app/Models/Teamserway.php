@@ -16,6 +16,6 @@ class Teamserway extends Model
 
     public function building()
     {
-        return $this->hasOne('App\Models\Constarution', 'desingBy_id', 'id');
+        return $this->belongsTo('App\Models\Constarution', 'desingBy_id', 'id');
     }
 }

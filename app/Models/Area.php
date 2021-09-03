@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Area extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory;
     protected $fillable = [
         'id',
         'name',
@@ -19,6 +19,6 @@ class Area extends Model
 
     public function building()
     {
-        return $this->hasOne('App\Models\Building', 'areas_id', 'id');
+        return $this->belongsTo('App\Models\Building', 'id', 'areas_id');
     }
 }

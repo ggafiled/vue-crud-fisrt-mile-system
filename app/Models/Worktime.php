@@ -16,6 +16,6 @@ class Worktime extends Model
 
     public function building()
     {
-        return $this->hasOne('App\Models\Building', 'workTime_id', 'id');
+        return $this->belongsTo('App\Models\Building', 'id', 'workTime_id');
     }
 }

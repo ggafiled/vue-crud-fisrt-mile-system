@@ -19,6 +19,6 @@ class Payment extends Model
 
     public function building()
     {
-        return $this->hasOne('App\Models\Building', 'paymentType_id', 'id');
+        return $this->belongsTo('App\Models\Building', 'id', 'paymentType_id');
     }
 }

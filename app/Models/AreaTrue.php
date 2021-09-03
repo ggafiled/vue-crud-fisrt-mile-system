@@ -13,4 +13,9 @@ class AreaTrue extends Model
         'areaTrue'
     ];
 
+    public function building()
+    {
+        return $this->belongsTo('App\Models\Building', 'id', 'areaTrue_id');
+    }
+
 }
