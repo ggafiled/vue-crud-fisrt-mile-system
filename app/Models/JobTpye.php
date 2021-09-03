@@ -11,4 +11,9 @@ class JobTpye extends Model
         'id',
         'jobType',
     ];
+
+    public function jobtype()
+    {
+        return $this->hasOne('App\Models\Planing', 'isp_id', 'id');
+    }
 }

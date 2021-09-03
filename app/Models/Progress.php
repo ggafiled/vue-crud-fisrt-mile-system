@@ -15,20 +15,18 @@ class Progress extends Model
     protected $fillable = [
         'id',
         'building_id',
-        'projectName',
-        'fmProgress',
+        'fmProgress_id',
+        'totProgress_id',
+        'progress3bb_id',
+        'sinetProgress_id',
+        'fnProgress_id',
+        'trueProgress_id',
         'dateFm',
-        'totProgress',
         'dateTot',
-        'aisProgress',
         'dateAis',
-        'progress3bb',
         'date3BB',
-        'sinetProgress',
         'dateSinet',
-        'fnProgress',
         'dateFn',
-        'trueProgress',
         'dateTrue',
     ];
 
@@ -48,5 +46,35 @@ class Progress extends Model
 	{
 		return $this->hasOne('App\Models\Building','id','building_id');
 	}
+
+    public function fmProgress()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'fmProgress_id', 'id');
+    }
+
+    public function totProgress()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'totProgress_id', 'id');
+    }
+
+    public function progress3bb()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'progress3bb_id', 'id');
+    }
+
+    public function sinetProgress()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'sinetProgress_id', 'id');
+    }
+
+    public function fnProgress()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'fnProgress_id', 'id');
+    }
+
+    public function trueProgress()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'trueProgress_id', 'id');
+    }
 
 }

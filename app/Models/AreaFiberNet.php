@@ -13,4 +13,8 @@ class AreaFiberNet extends Model
         'areaFiberNet'
     ];
 
+    public function building()
+    {
+        return $this->hasOne('App\Models\Building', 'areaFibernet_id', 'id');
+    }
 }

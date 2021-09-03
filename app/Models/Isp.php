@@ -11,4 +11,14 @@ class Isp extends Model
         'id',
         'isp',
     ];
+
+    public function isp()
+    {
+        return $this->hasOne('App\Models\Planing', 'isp_id', 'id');
+    }
+
+    public function ispId()
+    {
+        return $this->hasOne('App\Models\Planing', 'ispId_id', 'id');
+    }
 }

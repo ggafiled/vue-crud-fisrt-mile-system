@@ -14,4 +14,8 @@ class Callverstatus extends Model
         'callVerStatus'
     ];
 
+    public function callverstatus()
+    {
+        return $this->hasOne('App\Models\Planing', 'callverStatus_id', 'id');
+    }
 }

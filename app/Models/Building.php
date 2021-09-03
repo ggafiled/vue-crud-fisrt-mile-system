@@ -13,11 +13,21 @@ class Building extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = [
         'id',
+        'saleFm_id',
+        'paymentType_id',
+        'areas_id',
+        'bbns_id',
+        'area3bb_id',
+        'areaTrue_id',
+        'areaAis_id',
+        'areaFibernet_id',
+        'workTime_id',
         'projectName',
         'buildingSum',
         'floorSum',
         'roomSum',
         'fmCode',
+        'roadName',
         'nameManager',
         'phoneManager',
         'mailManager',
@@ -34,22 +44,13 @@ class Building extends Model
         'postalCode',
         'longitude',
         'latitude',
-        'contractSell',
         'contractDate',
         'contractDateEnd',
-        'spendSpace',
         'condition',
         'contractPeriod',
         'reNewContact',
         'balance',
-        'areaN',
-        'bbN',
-        'area3BB',
-        'areaTrue',
         'areaTrueNew',
-        'areaAis',
-        'areaFiberNet',
-        'operatingTime',
     ];
 
     public function getActivitylogOptions(): LogOptions
@@ -79,5 +80,50 @@ class Building extends Model
     public function get_building()
     {
         return $this->building()->where('building_id');
+    }
+
+    public function salefm()
+    {
+        return $this->belongsTo('App\Models\Salefm', 'saleFm_id', 'id');
+    }
+
+    public function payment()
+    {
+        return $this->belongsTo('App\Models\Payment', 'paymentType_id', 'id');
+    }
+
+    public function area()
+    {
+        return $this->belongsTo('App\Models\Area', 'areas_id', 'id');
+    }
+
+    public function bbn()
+    {
+        return $this->belongsTo('App\Models\BBn', 'bbns_id', 'id');
+    }
+
+    public function area3bb()
+    {
+        return $this->belongsTo('App\Models\Area3bb', 'area3bb_id', 'id');
+    }
+
+    public function areaTrue()
+    {
+        return $this->belongsTo('App\Models\areaTrue', 'areaTrue_id', 'id');
+    }
+
+    public function areaAis()
+    {
+        return $this->belongsTo('App\Models\AreaAis', 'areaAis_id', 'id');
+    }
+
+    public function areaFibernet()
+    {
+        return $this->belongsTo('App\Models\areaFibernet', 'areaFibernet_id', 'id');
+    }
+
+    public function worktime()
+    {
+        return $this->belongsTo('App\Models\WorkTime', 'workTime_id', 'id');
     }
 }

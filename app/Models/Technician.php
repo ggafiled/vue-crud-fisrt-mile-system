@@ -16,4 +16,8 @@ class Technician extends Model
         'emailTechnician',
     ];
 
+    public function technician()
+    {
+        return $this->hasOne('App\Models\Planing', 'technician_id', 'id');
+    }
 }

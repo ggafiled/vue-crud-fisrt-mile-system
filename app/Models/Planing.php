@@ -14,6 +14,13 @@ class Planing extends Model
 
     protected $fillable = [
         'building_id',
+        'isp_id',
+        'jobtype_id',
+        'technician_id',
+        'callver_id',
+        'callverStatus_id',
+        'ispId_id',
+        'problemsolution_id',
         'name',
         'surname',
         'tel',
@@ -21,22 +28,13 @@ class Planing extends Model
         'theBuilding',
         'floor',
         'room',
-        'isp',
         'agent',
         'circuit',
         'entranceFee',
-        'jobType',
         'appointmentDate',
         'appointmentTime',
-        'idRequired',
-        'status',
         'subStatus',
-        'reMark',
-        'technician',
-        'problemsolution',
-        'teamtechnician',
-        'callver',
-        'callverstatus',
+        'reMark'
     ];
 
     public function getActivitylogOptions(): LogOptions
@@ -51,5 +49,40 @@ class Planing extends Model
     public function building()
     {
         return $this->hasMany('App\Models\Building', 'id', 'building_id');
+    }
+
+    public function isp()
+    {
+        return $this->belongsTo('App\Models\Isp', 'isp_id', 'id');
+    }
+
+    public function jobtype()
+    {
+        return $this->belongsTo('App\Models\JobTpye', 'jobtype_id', 'id');
+    }
+
+    public function technician()
+    {
+        return $this->belongsTo('App\Models\Technician', 'technician_id', 'id');
+    }
+
+    public function callver()
+    {
+        return $this->belongsTo('App\Models\Callver', 'callver_id', 'id');
+    }
+
+    public function callverstatus()
+    {
+        return $this->belongsTo('App\Models\Callverstatus', 'callverStatus_id', 'id');
+    }
+
+    public function ispId()
+    {
+        return $this->belongsTo('App\Models\Isp', 'ispId_id', 'id');
+    }
+
+    public function problemsolution()
+    {
+        return $this->belongsTo('App\Models\Problemsolution', 'problemsolution_id', 'id');
     }
 }

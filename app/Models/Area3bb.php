@@ -13,4 +13,8 @@ class Area3bb extends Model
         'area3BB',
     ];
 
+    public function building()
+    {
+        return $this->hasOne('App\Models\Area3bb', 'area3bb_id', 'id');
+    }
 }

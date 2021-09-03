@@ -13,25 +13,25 @@ class Constarution extends Model
     use SoftDeletes, LogsActivity;
 
     protected $fillable = [
+        'id',
         'building_id',
+        'desingBy_id',
+        'surveyDesing_id',
+        'ifcc_id',
+        'wallBox_id',
+        'microductD_id',
+        'microductK_id',
+        'fiberConvertion_id',
         'projectNameTot',
         'projectName3bb',
         'projectNameTrue',
         'projectNameAis',
         'projectNameFiberNet',
-        'desingBy',
-        'surveyDesing',
         'surveyDesingDate',
-        'ifcc',
         'ifccDate',
-        'wallBox',
         'wallBoxDate',
         'type',
-        'microductD',
         'microductDateD',
-        'microductK',
-        'microductDateK',
-        'fiberConvertion',
         'fiberConvertionDateD',
         'blow',
         'splice'
@@ -50,4 +50,40 @@ class Constarution extends Model
     {
         return $this->hasMany('App\Models\Building', 'id', 'building_id');
     }
+
+    public function desingBy()
+    {
+        return $this->belongsTo('App\Models\Teamserway', 'desingBy_id', 'id');
+    }
+
+    public function surveyDesing()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'surveyDesing_id', 'id');
+    }
+
+    public function ifcc()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'ifcc_id', 'id');
+    }
+
+    public function wallBox()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'wallBox_id', 'id');
+    }
+
+    public function microductD()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'microductD_id', 'id');
+    }
+
+    public function microductK()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'microductK_id', 'id');
+    }
+
+    public function fiberConvertion()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'fiberConvertion_id', 'id');
+    }
+
 }

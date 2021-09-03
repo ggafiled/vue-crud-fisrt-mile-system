@@ -57,8 +57,8 @@ Vue.use(Vuetify);
 import VueTimeline from "@growthbunker/vuetimeline";
 Vue.use(VueTimeline);
 
-import VueThailandAddress from "vue-thailand-address";
-Vue.use(VueThailandAddress);
+import ThailandAutoComplete from "vue-thailand-address-autocomplete";
+Vue.component("ThailandAutoComplete", ThailandAutoComplete);
 
 /**
  * Custom mixins function to rename title.
