@@ -5,8 +5,6 @@
  */
 
 require("./bootstrap");
-import "flag-icon-css/css/flag-icon.css";
-import "fullcalendar/dist/fullcalendar.css";
 
 window.Vue = require("vue");
 window.axios = require("axios");
