@@ -13,6 +13,7 @@
                             </h3>
                             <div class="card-tools">
                                 <button
+                                    id="btn_handler_backup"
                                     type="button"
                                     class="btn btn-warning"
                                     @click="handlerBackup"
@@ -210,6 +211,7 @@
 </template>
 
 <script>
+import anime from "animejs/lib/anime.es.js";
 import Multiselect from "vue-multiselect";
 import "ag-grid-enterprise";
 import { AgGridVue } from "ag-grid-vue";
@@ -226,7 +228,9 @@ export default {
             selectDefault: "",
             selectOptions: [],
             gridOptions: {},
-            vm: null
+            vm: null,
+            fullPage: false,
+            isLoading: false
         };
     },
     methods: {
@@ -243,12 +247,30 @@ export default {
                 });
             });
         },
-        async handlerBackup(){
+        async handlerBackup() {
+            let loader = this.$loading.show({
+                container: this.fullPage ? null : this.$refs.formContainer,
+                canCancel: true
+            });
+            anime({
+                targets: "#btn_handler_backup i",
+                keyframes: [{ rotate: "1turn" }, { rotate: "0deg" }],
+                duration: 5000,
+                easing: "linear"
+            });
             await axios.post("/backup/actionBackup").then(response => {
+                Toast.fire({
+                    icon: "success",
+                    title: response.data.message
+                });
+                this.checkHealthy();
                 this.loadActivityLogs();
+                setTimeout(() => {
+                    loader.hide();
+                }, 3000);
             });
         },
-        onSelect(option){
+        onSelect(option) {
             this.gridApi.setQuickFilter(option);
         },
         getContextMenuItems(params) {
@@ -330,7 +352,7 @@ export default {
                 sortable: true,
                 resizable: true,
                 filter: true,
-                width: 80,
+                width: 80
             },
             // {
             //     field: "subject_id ",
