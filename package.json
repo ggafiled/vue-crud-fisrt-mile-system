@@ -112,6 +112,7 @@
         "vue-chartjs": "^3.5.1",
         "vue-float-menu": "^1.9.0",
         "vue-full-calendar": "^2.8.1-0",
+        "vue-loading-overlay": "^3.0.1",
         "vue-longdo-map": "^0.3.2",
         "vue-meta": "^2.4.0",
         "vue-moment": "^4.1.0",

@@ -57,6 +57,9 @@ Vue.use(Vuetify);
 import VueTimeline from "@growthbunker/vuetimeline";
 Vue.use(VueTimeline);
 
+import VueLoading from "vue-loading-overlay";
+Vue.use(VueLoading);
+
 import ThailandAutoComplete from "vue-thailand-address-autocomplete";
 Vue.component("ThailandAutoComplete", ThailandAutoComplete);
 

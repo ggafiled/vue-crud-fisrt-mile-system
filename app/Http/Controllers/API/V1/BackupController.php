@@ -14,7 +14,6 @@ class BackupController extends BaseController
     public function __construct()
     {
         $this->middleware('auth:api');
-        $this->middleware('role:superadministrator')->only(['actionBackup']);
         $this->middleware('role:superadministrator|administrator');
     }
 
@@ -106,9 +105,8 @@ class BackupController extends BaseController
 
     public function actionBackup(){
         try {
-            Artisan::queue('database:backup',['--queue' => 'default']);
-
-            return $this->sendResponse([], trans('actions.get.success'));
+            $exitCode = Artisan::call('database:backup');
+            return $this->sendResponse($exitCode, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.created.failed') . $ex->getMessage());
         }
