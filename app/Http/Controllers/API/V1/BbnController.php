@@ -18,7 +18,7 @@ class BbnController extends BaseController
     {
 
         try {
-            $bbn = Bbn::all();
+            $bbn = Bbn::where("area_id","=",$request->input("area_id"));
             return $this->sendResponse($bbn, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.fialed'));

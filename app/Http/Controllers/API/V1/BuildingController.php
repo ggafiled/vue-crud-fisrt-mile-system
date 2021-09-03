@@ -43,6 +43,15 @@ class Buildingcontroller extends BaseController
     {
         try {
             $buidings = Building::create([
+                'saleFm_id' => $request->input('saleFm_id'),
+                'paymentType_id' => $request->input('paymentType_id'),
+                'areas_id' => $request->input('areas_id'),
+                'bbns_id' => $request->input('bbns_id'),
+                'area3bb_id' => $request->input('area3bb_id'),
+                'areaTrue_id' => $request->input('areaTrue_id'),
+                'areaAis_id' => $request->input('areaAis_id'),
+                'areaFibernet_id' => $request->input('areaFibernet_id'),
+                'workTime_id' => $request->input('workTime_id'),
                 'projectName' => $request->input('projectName'),
                 'saleFm_id' => $request->input('contractSell'),
                 'paymentType_id' => $request->input('spendSpace'),
@@ -57,6 +66,7 @@ class Buildingcontroller extends BaseController
                 'floorSum' => $request->input('floorSum'),
                 'roomSum' => $request->input('roomSum'),
                 'fmCode' => $request->input('fmCode'),
+                'roadName' => $request->input('roadName'),
                 'nameManager' => $request->input('nameManager'),
                 'phoneManager' => $request->input('phoneManager'),
                 'mailManager' => $request->input('mailManager'),
@@ -68,8 +78,8 @@ class Buildingcontroller extends BaseController
                 'alleyName' => $request->input('alleyName'),
                 'roadName' => $request->input('roadName'),
                 'districtName' => $request->input('districtName'),
-                'countyName' => $request->input('countyName'),
                 'provinceName' => $request->input('provinceName'),
+                'countyName' => $request->input('countyName'),
                 'postalCode' => $request->input('postalCode'),
                 'longitude' => $request->input('longitude'),
                 'latitude' => $request->input('latitude'),
