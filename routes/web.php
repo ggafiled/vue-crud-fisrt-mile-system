@@ -30,6 +30,10 @@ Route::get('/users', function () {
     return view('home');
 })->middleware(['auth','password.confirm']);
 
+Route::get('/{vue_capture?}_window', function () {
+    return view('portal')->with("title","Pick data");
+})->where('vue_capture', '[\/\w\.-]*');
+
 Route::get('/{vue_capture?}', function () {
     return view('home')->with("title","Fist Mile ERP System");
 })->where('vue_capture', '[\/\w\.-]*');

@@ -79,6 +79,26 @@
                 </div>
             </div>
 
+            <window-portal
+                class="container-fluid"
+                :open.sync="openWindowPortal"
+                :width="800"
+                :height="600"
+            >
+                <div class="card" style="width:100%; height:100%;">
+                    <div class="card-header">
+                        <h3>กรุณาเลือกที่ตั้งสถานที่</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Longdo map -->
+                        <longdo-map @load="loadMap">
+
+                        </longdo-map>
+                        <input type="text" v-model="form.projectName" />
+                    </div>
+                </div>
+            </window-portal>
+
             <!-- Modal -->
             <div
                 class="modal fade"
@@ -346,6 +366,88 @@
 
                                 <hr />
                                 <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>บ้านเลขที่</label>
+                                            <input
+                                                v-model="form.houseNumber"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your House..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'houseNumber'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="houseNumber"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>หมู่</label>
+                                            <input
+                                                v-model="form.squadNumber"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="House number..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'squadNumber'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="squadNumber"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>ซอย</label>
+                                            <input
+                                                v-model="form.alleyName"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your Alley..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'alleyName'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="alleyName"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label>ถนน</label>
+                                            <input
+                                                v-model="form.roadName"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your Road..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'roadName'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="roadName"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <ThailandAutoComplete
@@ -422,89 +524,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>บ้านเลขที่</label>
-                                            <input
-                                                v-model="form.houseNumber"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your House..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'houseNumber'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="houseNumber"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>หมู่</label>
-                                            <input
-                                                v-model="form.squadNumber"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your Swine..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'squadNumber'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="squadNumber"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>ซอย</label>
-                                            <input
-                                                v-model="form.alleyName"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your Alley..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'alleyName'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="alleyName"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>ถนน</label>
-                                            <input
-                                                v-model="form.roadName"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your Road..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'roadName'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="roadName"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
+                                <div
+                                    class="row d-flex justify-content-center align-items-center"
+                                >
+                                    <div class="col-sm-5">
                                         <div class="form-group">
                                             <label>Latitude</label>
                                             <input
@@ -524,27 +547,46 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-5">
                                         <div class="form-group">
                                             <label>Longtude</label>
-                                            <input
-                                                v-model="form.longitude"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your longtude..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'longitude'
-                                                    )
-                                                }"
-                                            />
+                                            <div class="input-group mb-3">
+                                                <input
+                                                    v-model="form.longitude"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Enter your longtude..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'longitude'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="longitude"
                                             ></has-error>
                                         </div>
                                     </div>
+                                    <div class="col-sm-2">
+                                        <div
+                                            class="form-group mx-auto mt-auto mb-auto"
+                                        >
+                                            <button
+                                                type="button"
+                                                class="btn btn-outline-success mx-auto mt-auto mb-auto btn-block"
+                                                @click="actionWindowPortal"
+                                            >
+                                                <i
+                                                    class="mdi mdi-map-marker-radius-outline"
+                                                ></i>
+                                                Pick
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
+                                <hr />
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
@@ -971,11 +1013,18 @@
 </template>
 
 <script>
+import { LongdoMap } from "longdo-map-vue";
+LongdoMap.init({ apiKey: "6ee8d1505966ca0ce21048e9473fbe9e" });
+
 import { mapGetters, mapState } from "vuex";
 export default {
     title: "All -",
+    components: {
+        LongdoMap
+    },
     data() {
         return {
+            openWindowPortal: false,
             editmode: false,
             selected: "",
             areas: [],
@@ -1018,12 +1067,12 @@ export default {
                 longitude: "",
                 latitude: "",
                 contractSell: "",
-                contractDate: new Date().toISOString().slice(0,10),
-                contractDateEnd: new Date().toISOString().slice(0,10),
+                contractDate: new Date().toISOString().slice(0, 10),
+                contractDateEnd: new Date().toISOString().slice(0, 10),
                 spendSpace: "",
                 condition: "",
-                contractPeriod: new Date().toISOString().slice(0,10),
-                reNewContact: new Date().toISOString().slice(0,10),
+                contractPeriod: new Date().toISOString().slice(0, 10),
+                reNewContact: new Date().toISOString().slice(0, 10),
                 balance: "",
                 operatingTime: ""
             })
@@ -1034,6 +1083,9 @@ export default {
         ...mapState(["buildings"]),
         areaN() {
             return this.form.areaN;
+        },
+        location() {
+            return { lon: this.form.longitude, lat: this.form.latitude };
         }
     },
     watch: {
@@ -1046,6 +1098,35 @@ export default {
         }
     },
     methods: {
+        loadMap(map) {
+            map.Layers.setBase(longdo.Layers.NORMAL);
+            console.log("--- INITIAL LOAD MAP ---");
+            console.log(map);
+            map.Ui.Mouse.enableDrag(true);
+            map.Ui.Keyboard.enableInertia(true); // เปิด-ปิดการการไถลเมื่อเลื่อนแผนที่ด้วย Keyboard
+            map.Ui.Keyboard.enable(true); // เปิด-ปิดการใช้งาน Keyboard
+            map.Event.bind("doubleClick", function() {
+                var result = map.bound();
+                console.log(result);
+            });
+        },
+        addMarker(marker) {
+            console.log(marker.location());
+        },
+        locationUpdated(map) {
+            console.log("--- INITIAL LOAD MAP ---");
+            console.log(map);
+            map.Ui.Mouse.enableDrag(true);
+            map.Ui.Keyboard.enableInertia(true); // เปิด-ปิดการการไถลเมื่อเลื่อนแผนที่ด้วย Keyboard
+            map.Ui.Keyboard.enable(true); // เปิด-ปิดการใช้งาน Keyboard
+            map.Event.bind("doubleClick", function() {
+                var result = map.bound();
+                console.log(result);
+            });
+        },
+        actionWindowPortal() {
+            this.openWindowPortal = true;
+        },
         select(address) {
             this.form.districtName = address.district;
             this.form.countyName = address.amphoe;
@@ -1971,6 +2052,7 @@ export default {
         this.loadAreaFiberNet();
         this.loadWorkTime();
         this.generateTable();
+        this.loadMap();
         $("input").attr("autocomplete", this.isChrome ? "chrome-off" : "off");
     }
 };
