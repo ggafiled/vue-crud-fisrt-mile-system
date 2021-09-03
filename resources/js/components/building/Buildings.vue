@@ -869,8 +869,8 @@
                                                     )
                                                 }"
                                             >
-                                                <option disabled value=""
-                                                    >เลือกพื้นที่</option
+                                                <option value=""
+                                                    >Select a Class</option
                                                 >
                                                 <option
                                                     value="BMA 1 (North West)"
@@ -1036,27 +1036,25 @@ export default {
             saleFms: [],
             form: new Form({
                 id: "",
-
                 saleFm_id: "",
                 paymentType_id: "",
                 areas_id: "",
                 bbns_id: "",
                 area3bb_id: "",
                 areaTrue_id: "",
+                areaTrueNew: "",
                 areaAis_id: "",
                 areaFibernet_id: "",
                 workTime_id: "",
-
                 nameSale: "",
                 paymentType: "",
-                area: "",
-                bbn: "",
+                areaN: "",
+                bbN: "",
                 area3BB: "",
                 areaTrue: "",
                 areaAis: "",
                 areaFiberNet: "",
                 workTime: "",
-
                 projectName: "",
                 buildingSum: "",
                 floorSum: "",
