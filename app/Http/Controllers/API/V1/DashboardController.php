@@ -44,48 +44,48 @@ class DashboardController extends BaseController
                     ->groupBy('countyName')
                     ->get(),
                 'chart_dp_groub_of_progress' => [
-                    // 'FM Progress' => DB::table('progress')
-                    //     ->select('fmProgress as name', DB::raw('count(*) as total'))
-                    //     ->where('fmProgress', '!=', '')
-                    //     ->groupBy('fmProgress')
-                    //     ->get(),
-                    // 'TOT Progress' => DB::table('progress')
-                    //     ->select('totProgress as name', DB::raw('count(*) as total'))
-                    //     ->where('totProgress', '!=', '')
-                    //     ->groupBy('totProgress')
-                    //     ->get(),
-                    // 'AIS Progress' => DB::table('progress')
-                    //     ->select('aisProgress as name', DB::raw('count(*) as total'))
-                    //     ->where('aisProgress', '!=', '')
-                    //     ->groupBy('aisProgress')
-                    //     ->get(),
-                    // '3BB Progress' => DB::table('progress')
-                    //     ->select('progress3bb as name', DB::raw('count(*) as total'))
-                    //     ->where('progress3bb', '!=', '')
-                    //     ->groupBy('progress3bb')
-                    //     ->get(),
-                    // 'SINET Progress' => DB::table('progress')
-                    //     ->select('sinetProgress as name', DB::raw('count(*) as total'))
-                    //     ->where('sinetProgress', '!=', '')
-                    //     ->groupBy('sinetProgress')
-                    //     ->get(),
-                    // 'FN Progress' => DB::table('progress')
-                    //     ->select('fnProgress as name', DB::raw('count(*) as total'))
-                    //     ->where('fnProgress', '!=', '')
-                    //     ->groupBy('fnProgress')
-                    //     ->get(),
-                    // 'TRUE Progress' => DB::table('progress')
-                    //     ->select('trueProgress as name', DB::raw('count(*) as total'))
-                    //     ->where('trueProgress', '!=', '')
-                    //     ->groupBy('trueProgress')
-                    //     ->get(),
-                    'FM Progress' => [10,5,4,7,8,6,3],
-                    'TOT Progress' => [10,5,4,7,8,6,3],
-                    'AIS Progress' => [10,5,4,7,8,6,3],
-                    '3BB Progress' => [10,5,4,7,8,6,3],
-                    'SINET Progress' => [10,5,4,7,8,6,3],
-                    'FN Progress' => [10,5,4,7,8,6,3],
-                    'TRUE Progress' => [10,5,4,7,8,6,3],
+                    'FM Progress' => DB::table('progress')
+                        ->select('fmProgress_id as name', DB::raw('count(*) as total'))
+                        ->where('fmProgress_id', '!=', '')
+                        ->groupBy('fmProgress_id')
+                        ->get(),
+                    'TOT Progress' => DB::table('progress')
+                        ->select('totProgress_id as name', DB::raw('count(*) as total'))
+                        ->where('totProgress_id', '!=', '')
+                        ->groupBy('totProgress_id')
+                        ->get(),
+                    'AIS Progress' => DB::table('progress')
+                        ->select('aisProgress_id as name', DB::raw('count(*) as total'))
+                        ->where('aisProgress_id', '!=', '')
+                        ->groupBy('aisProgress_id')
+                        ->get(),
+                    '3BB Progress' => DB::table('progress')
+                        ->select('progress3bb_id as name', DB::raw('count(*) as total'))
+                        ->where('progress3bb_id', '!=', '')
+                        ->groupBy('progress3bb_id')
+                        ->get(),
+                    'SINET Progress' => DB::table('progress')
+                        ->select('sinetProgress_id as name', DB::raw('count(*) as total'))
+                        ->where('sinetProgress_id', '!=', '')
+                        ->groupBy('sinetProgress_id')
+                        ->get(),
+                    'FN Progress' => DB::table('progress')
+                        ->select('fnProgress_id as name', DB::raw('count(*) as total'))
+                        ->where('fnProgress_id', '!=', '')
+                        ->groupBy('fnProgress_id')
+                        ->get(),
+                    'TRUE Progress' => DB::table('progress')
+                        ->select('trueProgress_id as name', DB::raw('count(*) as total'))
+                        ->where('trueProgress_id', '!=', '')
+                        ->groupBy('trueProgress_id')
+                        ->get(),
+                    // 'FM Progress' => [10,5,4,7,8,6,3],
+                    // 'TOT Progress' => [10,5,4,7,8,6,3],
+                    // 'AIS Progress' => [10,5,4,7,8,6,3],
+                    // '3BB Progress' => [10,5,4,7,8,6,3],
+                    // 'SINET Progress' => [10,5,4,7,8,6,3],
+                    // 'FN Progress' => [10,5,4,7,8,6,3],
+                    // 'TRUE Progress' => [10,5,4,7,8,6,3],
                 ],
             ];
             return $this->sendResponse($dashboard, trans('actions.get.success'));

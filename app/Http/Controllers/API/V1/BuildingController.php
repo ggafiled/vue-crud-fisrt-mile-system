@@ -6,6 +6,7 @@ use App\Http\Controllers\API\V1\BaseController;
 use App\Models\Building;
 use Illuminate\Http\Request;
 use Exception;
+use App\Http\Requests\Building\BuildingRequest;
 
 
 class Buildingcontroller extends BaseController
@@ -47,7 +48,7 @@ class Buildingcontroller extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BuildingRequest $request)
     {
         try {
             $buidings = Building::create([
@@ -61,15 +62,7 @@ class Buildingcontroller extends BaseController
                 'areaFibernet_id' => $request->input('areaFibernet_id'),
                 'workTime_id' => $request->input('workTime_id'),
                 'projectName' => $request->input('projectName'),
-                'saleFm_id' => $request->input('contractSell'),
-                'paymentType_id' => $request->input('spendSpace'),
-                'areas_id' => $request->input('areaN'),
-                'bbns_id' => (int) $request->input('bbN'),
-                'area3bb_id' => $request->input('area3BB'),
-                'areaTrue_id' => $request->input('areaTrue'),
                 'areaTrueNew' => $request->input('areaTrueNew'),
-                'areaAis_id' => $request->input('areaAis'),
-                'areaFibernet_id' => $request->input('areaFiberNet'),
                 'buildingSum' => $request->input('buildingSum'),
                 'floorSum' => $request->input('floorSum'),
                 'roomSum' => $request->input('roomSum'),
@@ -93,10 +86,10 @@ class Buildingcontroller extends BaseController
                 'latitude' => $request->input('latitude'),
                 'contractDate' => $request->input('contractDate'),
                 'contractDateEnd' => $request->input('contractDateEnd'),
-                'workTime_id' => $request->input('operatingTime'),
                 'condition' => $request->input('condition'),
                 'contractPeriod' => $request->input('contractPeriod'),
                 'reNewContact' => $request->input('reNewContact'),
+                'balance' => $request->input('balance'),
             ]);
             return $this->sendResponse($buidings, trans('actions.created.success'));
         } catch (Exception $ex) {
@@ -111,7 +104,7 @@ class Buildingcontroller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BuildingRequest $request, $id)
     {
         try {
             $buildings = Building::find($id);

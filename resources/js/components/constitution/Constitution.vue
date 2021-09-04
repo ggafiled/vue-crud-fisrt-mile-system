@@ -97,18 +97,14 @@
                         >
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-sm-2" v-show="editmode">
-                                        <div class="form-group">
-                                            <label>Project Building ID</label>
-                                        </div>
-                                    </div>
                                     <div
-                                        :class="
-                                            editmode ? 'col-sm-10' : 'col-sm-12'
-                                        "
+                                        class="col-sm-12"
                                     >
                                         <div class="form-group">
-                                            <label>ชื่ออาคาร จากตาราง Building</label>
+                                            <label
+                                                >ชื่ออาคาร จากตาราง
+                                                Building</label
+                                            >
                                             <Select2
                                                 v-model="form.building_id"
                                                 :options="building"
@@ -142,7 +138,9 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>ชื่ออาคาร สามบีบีเรียก</label>
+                                            <label
+                                                >ชื่ออาคาร สามบีบีเรียก</label
+                                            >
                                             <input
                                                 v-model="form.projectName3bb"
                                                 type="text"
@@ -176,7 +174,9 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>ชื่ออาคาร เอไอเอสเรียก</label>
+                                            <label
+                                                >ชื่ออาคาร เอไอเอสเรียก</label
+                                            >
                                             <input
                                                 v-model="form.projectNameAis"
                                                 type="text"
@@ -192,7 +192,10 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>ชื่ออาคาร ไฟเบอร์เน็ตเรียก</label>
+                                            <label
+                                                >ชื่ออาคาร
+                                                ไฟเบอร์เน็ตเรียก</label
+                                            >
                                             <input
                                                 v-model="
                                                     form.projectNameFiberNet
@@ -208,6 +211,23 @@
                                             />
                                         </div>
                                     </div>
+                                    <div class="col-sm-1">
+                                        <div class="form-group">
+                                            <label for=""></label>
+                                            <button
+                                                type="button"
+                                                class="btn btn-outline-success mx-auto mt-auto mb-auto btn-block"
+                                                @click="setSameProjectName"
+                                                :disabled="
+                                                    form.building_id == ''
+                                                "
+                                            >
+                                                <i
+                                                    class="mdi mdi-content-copy"
+                                                ></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-3">
@@ -218,7 +238,7 @@
                                                 class="form-control"
                                                 v-model="form.desingBy_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -242,7 +262,7 @@
                                                 class="form-control"
                                                 v-model="form.surveyDesing_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -292,7 +312,7 @@
                                                 class="form-control"
                                                 v-model="form.ifcc_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -336,7 +356,7 @@
                                                 class="form-control"
                                                 v-model="form.wallBox_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -388,7 +408,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >select type</option
+                                                    >Select Type</option
                                                 >
                                                 <option value="Microduct"
                                                     >Microduct</option
@@ -406,7 +426,7 @@
                                 </div>
 
                                 <hr />
-                                <div class="row">
+                                <div class="row" v-show="form.type == '' || form.type == 'Microduct'">
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
@@ -419,7 +439,7 @@
                                                         'FiberConvertion'
                                                 "
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -472,7 +492,7 @@
                                                         'FiberConvertion'
                                                 "
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -518,19 +538,21 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row" v-show="form.type == '' || form.type == 'FiberConvertion'">
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label>FiberConvertion</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.fiberConvertion_id"
+                                                v-model="
+                                                    form.fiberConvertion_id
+                                                "
                                                 :disabled="
                                                     form.type == 'Microduct'
                                                 "
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -555,23 +577,23 @@
                                             >
                                             <input
                                                 v-model="
-                                                    form.fiberConvertionDate
+                                                    form.fiberConvertionDateD
                                                 "
                                                 :disabled="
                                                     form.type == 'Microduct'
                                                 "
                                                 type="date"
                                                 class="form-control"
-                                                placeholder="Enter your fiberConvertionDate ..."
+                                                placeholder="Enter your fiberConvertionDateD ..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'fiberConvertionDate '
+                                                        'fiberConvertionDateD '
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="fiberConvertionDate "
+                                                field="fiberConvertionDateD "
                                             ></has-error>
                                         </div>
                                     </div>
@@ -594,7 +616,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Y/N Question</option
+                                                    >(--Select--) Y/N Question</option
                                                 >
                                                 <option value="Completed"
                                                     >Completed</option
@@ -626,7 +648,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Y/N Question</option
+                                                    >(--Select--) Y/N Question</option
                                                 >
                                                 <option value="Completed"
                                                     >Completed</option
@@ -697,47 +719,57 @@ export default {
             teamserways: [],
             settings: {
                 placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
-                allowClear: true,
+                allowClear: false,
                 dropdownParent: ".modal"
             },
             sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
             form: new Form({
                 id: "",
                 //Relationship In TableConstarution
-                building_id: "",//modelBuilding->modelConstarution GET field projectName
-                desingBy_id: "",//modelTeamserway->modelConstarution GET field nameSerway
-                surveyDesing_id: "",//modelGeneratingaction->modelConstarution GET field nameSerway
-                ifcc_id: "",//modelGeneratingaction->modelConstarution GET field status
-                wallBox_id: "",//modelGeneratingaction->modelConstarution GET field status
-                microductD_id: "",//modelGeneratingaction->modelConstarution GET field status
-                microductK_id: "",//modelGeneratingaction->modelConstarution GET field status
-                fiberConvertion_id: "",//modelGeneratingaction->modelConstarution GET field status
-
+                building_id: "", //modelBuilding->modelConstarution GET field projectName
+                desingBy_id: "", //modelTeamserway->modelConstarution GET field nameSerway
+                surveyDesing_id: "", //modelGeneratingaction->modelConstarution GET field nameSerway
+                ifcc_id: "", //modelGeneratingaction->modelConstarution GET field status
+                wallBox_id: "", //modelGeneratingaction->modelConstarution GET field status
+                microductD_id: "", //modelGeneratingaction->modelConstarution GET field status
+                microductK_id: "", //modelGeneratingaction->modelConstarution GET field status
+                fiberConvertion_id: "", //modelGeneratingaction->modelConstarution GET field status
                 projectName: "",
                 projectNameTot: "",
                 projectName3bb: "",
                 projectNameTrue: "",
                 projectNameAis: "",
                 projectNameFiberNet: "",
-
                 desingBy: "",
                 surveyDesing: "",
                 ifcc: "",
                 wallBox: "",
                 microductD: "",
+                microductDateK: new Date().toISOString().slice(0, 10),
                 microductK: "",
-                surveyDesingDate: "",
-                ifccDate: "",
-                wallBoxDate: "",
+                surveyDesingDate: new Date().toISOString().slice(0, 10),
+                ifccDate: new Date().toISOString().slice(0, 10),
+                wallBoxDate: new Date().toISOString().slice(0, 10),
                 type: "",
-                microductDateD: "",
-                fiberConvertionDateD: "",
+                microductDateD: new Date().toISOString().slice(0, 10),
+                fiberConvertionDateD: new Date().toISOString().slice(0, 10),
                 blow: "",
                 splice: ""
             })
         };
     },
     methods: {
+        setSameProjectName() {
+            let name = this.building.filter(
+                obj => obj.id == this.form.building_id
+            )[0];
+            this.form.projectNameTot = this.form.projectName3bb = this.form.projectNameTrue = this.form.projectNameAis = this.form.projectNameFiberNet =
+                name.text;
+            Toast.fire({
+                title: translate("Copy to clipboard and pate already."),
+                timerProgressBar: false
+            });
+        },
         loadGeneratingaction() {
             axios.get("/generatingactions").then(response => {
                 this.generatingactions = response.data.data;
@@ -760,7 +792,9 @@ export default {
             this.$Progress.start();
 
             if (this.$gate.isAdmin()) {
-                //To DO
+                $("#constarution")
+                    .DataTable()
+                    .ajax.reload();
             }
 
             this.$Progress.finish();
@@ -789,7 +823,7 @@ export default {
         editModal(constarution) {
             this.editmode = true;
             this.form.reset();
-            constarution.projectName = constarution.building[0].projectName;
+            console.log(constarution);
             $("#addNew").modal("show");
             this.form.fill(constarution);
         },
@@ -800,7 +834,6 @@ export default {
             $("#addNew").modal("show");
         },
         deleteConstarution(item) {
-            item.projectName = item.building[0].projectName;
             Swal.fire({
                 title: window.translate(
                     "constitution.alert.delete_building_title"
@@ -808,7 +841,7 @@ export default {
                 text:
                     window.translate(
                         "constitution.alert.delete_building_text"
-                    ) + ` [${item.projectName}]`,
+                    ) + ` [${item.building.projectName}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
@@ -835,6 +868,7 @@ export default {
                             );
                             // Fire.$emit('AfterCreate');
                             this.loadBuildings();
+                            this.loadConstarution();
                         })
                         .catch(data => {
                             Swal.fire("Failed!", data.message, "warning");
@@ -853,8 +887,6 @@ export default {
                         icon: "success",
                         title: response.data.message
                     });
-
-                    this.$Progress.finish();
                     this.loadConstarution();
                 })
                 .catch(() => {
@@ -973,7 +1005,7 @@ export default {
                         className: "dt-body-center notexport"
                     },
                     {
-                        data: "building[0].projectName"
+                        data: "building.projectName"
                     },
                     {
                         data: "desing_by.name",
@@ -1048,48 +1080,64 @@ export default {
                     {
                         data: "microduct_d.name",
                         render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
-                            } else {
+                            }else {
                                 return data;
                             }
                         }
                         // visible: false
                     },
                     {
-                        data: "microductDateD"
+                        data: "microductDateD",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            }else {
+                                return data;
+                            }
+                        }
                     },
                     {
                         data: "microduct_k.name",
                         render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
-                            } else {
+                            }else {
                                 return data;
                             }
                         }
                     },
                     {
-                        data: "microductDateK"
+                        data: "microductDateK",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            }else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "fiber_convertion.name"
+                        data: "fiber_convertion.name",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            }else {
+                                return data;
+                            }
+                        }
                         // visible: false
                     },
                     {
-                        data: "fiberConvertionDateD"
+                        data: "fiberConvertionDateD",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            }else {
+                                return data;
+                            }
+                        }
                     },
                     {
                         data: "blow"

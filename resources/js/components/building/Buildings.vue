@@ -614,10 +614,12 @@
                                         <div class="form-group">
                                             <label>วันที่ทำสัญญา</label>
                                             <input
+                                                ref="contractDate"
                                                 v-model="form.contractDate"
                                                 type="date"
                                                 class="form-control"
                                                 placeholder="Enter your contract date..."
+                                                :disabled="editmode"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'contractDate'
@@ -634,10 +636,12 @@
                                         <div class="form-group">
                                             <label>วันสิ้นสุดสัญญา</label>
                                             <input
+                                                ref="contractDateEnd"
                                                 v-model="form.contractDateEnd"
                                                 type="date"
                                                 class="form-control"
                                                 placeholder="Enter your contract date..."
+                                                :disabled="editmode"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'contractDateEnd'
@@ -652,12 +656,12 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>*</label>
+                                            <label>*รูปแบบการชำระรายได้</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.paymentType_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -762,7 +766,7 @@
                                             <label>พื้นที่ ToT *</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.areaN"
+                                                v-model="form.areas_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -777,7 +781,7 @@
                                             </select>
                                             <has-error
                                                 :form="form"
-                                                field="areaN"
+                                                field="areas_id"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -786,8 +790,8 @@
                                             <label>พื้นที่ BBN *</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.bbN"
-                                                :disabled="form.areaN == ''"
+                                                v-model="form.bbns_id"
+                                                :disabled="form.areas_id == ''"
                                                 required
                                             >
                                                 <option value=""
@@ -803,7 +807,7 @@
                                             </select>
                                             <has-error
                                                 :form="form"
-                                                field="bbN"
+                                                field="bbns_id"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -1046,15 +1050,6 @@ export default {
                 areaAis_id: "",
                 areaFibernet_id: "",
                 workTime_id: "",
-                nameSale: "",
-                paymentType: "",
-                areaN: "",
-                bbN: "",
-                area3BB: "",
-                areaTrue: "",
-                areaAis: "",
-                areaFiberNet: "",
-                workTime: "",
                 projectName: "",
                 buildingSum: "",
                 floorSum: "",
@@ -1083,24 +1078,23 @@ export default {
                 contractPeriod: new Date().toISOString().slice(0, 10),
                 reNewContact: new Date().toISOString().slice(0, 10),
                 balance: "",
-                contractSell: ""
             })
         };
     },
     computed: {
         ...mapGetters(["buildings"]),
         ...mapState(["buildings"]),
-        areaN() {
-            return this.form.areaN;
+        areaID() {
+            return this.form.areas_id;
         },
         location() {
             return { lon: this.form.longitude, lat: this.form.latitude };
         }
     },
     watch: {
-        areaN: function(value) {
+        areaID: function(value) {
             this.form.bbN = "";
-            axios.get("/bbns?area_id=" + this.form.areaN).then(response => {
+            axios.get("/bbns?area_id=" + this.form.areas_id).then(response => {
                 // console.log(response.data);
                 this.bbns = response.data.data;
             });
@@ -1635,7 +1629,14 @@ export default {
                         data: "reNewContact"
                     },
                     {
-                        data: "balance"
+                        data: "balance",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return "฿"+data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            }
+                        }
                     },
                     {
                         data: "work_time.name",

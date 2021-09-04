@@ -10,7 +10,7 @@ use Spatie\Activitylog\LogOptions;
 
 class Building extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, LogsActivity;
     protected $fillable = [
         'id',
         'saleFm_id',
@@ -76,7 +76,7 @@ class Building extends Model
 
     public function constarution()
     {
-        return $this->belongsTo('App\Models\Constarution', 'building_id', 'id');
+        return $this->hasMany('App\Models\Constarution', 'id', 'building_id');
     }
 
     public function planning()

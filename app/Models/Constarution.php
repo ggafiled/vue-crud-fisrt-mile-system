@@ -49,42 +49,42 @@ class Constarution extends Model
 
     public function building()
     {
-        return $this->hasMany('App\Models\Building', 'id', 'building_id');
+        return $this->belongsTo('App\Models\Building', 'building_id', 'id');
     }
 
     public function desingBy()
     {
-        return $this->belongsTo('App\Models\Teamserway', 'desingBy_id', 'id');
+        return $this->hasOne('App\Models\Teamserway', 'id', 'desingBy_id');
     }
 
     public function surveyDesing()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'surveyDesing_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'surveyDesing_id');
     }
 
     public function ifcc()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'ifcc_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'ifcc_id');
     }
 
     public function wallBox()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'wallBox_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'wallBox_id');
     }
 
     public function microductD()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'microductD_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'microductD_id');
     }
 
     public function microductK()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'microductK_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'microductK_id');
     }
 
     public function fiberConvertion()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'fiberConvertion_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'fiberConvertion_id');
     }
 
 }

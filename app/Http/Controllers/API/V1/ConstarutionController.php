@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use Exception;
 use App\Http\Controllers\API\V1\BaseController;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Constarution\ConstarutionRequest;
 use App\Models\Constarution;
+use Exception;
+use Illuminate\Http\Request;
 
 class ConstarutionController extends BaseController
 {
@@ -36,7 +36,7 @@ class ConstarutionController extends BaseController
                 'fiberConvertion:id,status as name')->get();
             return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($constarution, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -45,7 +45,7 @@ class ConstarutionController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ConstarutionRequest $request)
     {
         try {
             $constarution = new Constarution([
@@ -54,26 +54,28 @@ class ConstarutionController extends BaseController
                 'surveyDesing_id' => $request->input('surveyDesing_id'),
                 'ifcc_id' => $request->input('ifcc_id'),
                 'wallBox_id' => $request->input('wallBox_id'),
-                'microductD_id' => $request->input('microductD_id'),
-                'microductK_id' => $request->input('microductK_id'),
-                'fiberConvertion_id' => $request->input('fiberConvertion_id'),
+                'microductD_id' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductD_id') : null,
+                'microductK_id' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductK_id') : null,
+                'fiberConvertion_id' => strtolower($request->input('type')) == strtolower('FiberConvertion') ? $request->input('fiberConvertion_id') : null,
                 'projectNameTot' => $request->input('projectNameTot'),
                 'projectNameTrue' => $request->input('projectNameTrue'),
                 'projectNameAis' => $request->input('projectNameAis'),
+                'projectName3bb' => $request->input('projectName3bb'),
                 'projectNameFiberNet' => $request->input('projectNameFiberNet'),
                 'surveyDesingDate' => $request->input('surveyDesingDate'),
                 'ifccDate' => $request->input('ifccDate'),
                 'wallBoxDate' => $request->input('wallBoxDate'),
                 'type' => $request->input('type'),
-                'microductDateD' => $request->input('microductDateD'),
-                'fiberConvertionDateD' => $request->input('fiberConvertionDateD'),
+                'microductDateD' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductDateD') : null,
+                'microductDateK' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductDateK') : null,
+                'fiberConvertionDateD' => strtolower($request->input('type')) == strtolower('FiberConvertion') ? $request->input('fiberConvertionDate') : null,
                 'blow' => $request->input('blow'),
                 'splice' => $request->input('splice'),
             ]);
             $constarution->save();
             return $this->sendResponse($constarution, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($constarution, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
     /**
@@ -112,14 +114,37 @@ class ConstarutionController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ConstarutionRequest $request, $id)
     {
         try {
             $constarution = Constarution::find($id);
-            $constarution->update($request->all());
+            $constarution->update([
+                'building_id' => $request->input('building_id'),
+                'desingBy_id' => $request->input('desingBy_id'),
+                'surveyDesing_id' => $request->input('surveyDesing_id'),
+                'ifcc_id' => $request->input('ifcc_id'),
+                'wallBox_id' => $request->input('wallBox_id'),
+                'microductD_id' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductD_id') : null,
+                'microductK_id' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductK_id') : null,
+                'fiberConvertion_id' => strtolower($request->input('type')) == strtolower('FiberConvertion') ? $request->input('fiberConvertion_id') : null,
+                'projectNameTot' => $request->input('projectNameTot'),
+                'projectNameTrue' => $request->input('projectNameTrue'),
+                'projectNameAis' => $request->input('projectNameAis'),
+                'projectName3bb' => $request->input('projectName3bb'),
+                'projectNameFiberNet' => $request->input('projectNameFiberNet'),
+                'surveyDesingDate' => $request->input('surveyDesingDate'),
+                'ifccDate' => $request->input('ifccDate'),
+                'wallBoxDate' => $request->input('wallBoxDate'),
+                'type' => $request->input('type'),
+                'microductDateD' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductDateD') : null,
+                'microductDateK' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductDateK') : null,
+                'fiberConvertionDateD' => strtolower($request->input('type')) == strtolower('FiberConvertion') ? $request->input('fiberConvertionDate') : null,
+                'blow' => $request->input('blow'),
+                'splice' => $request->input('splice'),
+            ]);
             return $this->sendResponse($constarution, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($constarution, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -136,7 +161,7 @@ class ConstarutionController extends BaseController
             $constarution->delete();
             return $this->sendResponse($constarution, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($constarution, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 }
