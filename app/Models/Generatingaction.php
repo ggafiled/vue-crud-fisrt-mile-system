@@ -18,6 +18,11 @@ class Generatingaction extends Model
         return $this->hasOne('App\Models\Progress', 'fmProgress_id', 'id');
     }
 
+    public function progressAis()
+    {
+        return $this->hasOne('App\Models\Progress', 'aisProgress_id', 'id');
+    }
+
     public function progressTot()
     {
         return $this->hasOne('App\Models\Progress', 'totProgress_id', 'id');

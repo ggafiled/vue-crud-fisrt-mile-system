@@ -32,6 +32,7 @@ class Constarution extends Model
         'wallBoxDate',
         'type',
         'microductDateD',
+        'microductDateK',
         'fiberConvertionDateD',
         'blow',
         'splice'

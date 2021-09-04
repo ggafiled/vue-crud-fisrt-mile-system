@@ -18,6 +18,7 @@ class CreateProgressTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();
             $table->bigInteger('fmProgress_id')->unsigned();
+            $table->bigInteger('aisProgress_id')->unsigned();
             $table->bigInteger('totProgress_id')->unsigned();
             $table->bigInteger('progress3bb_id')->unsigned();
             $table->bigInteger('sinetProgress_id')->unsigned();

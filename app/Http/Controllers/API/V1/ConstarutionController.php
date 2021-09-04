@@ -25,7 +25,15 @@ class ConstarutionController extends BaseController
     public function index()
     {
         try {
-            $constarution = Constarution::with('building')->get();
+            $constarution = Constarution::with(
+                'building',
+                'desingBy:id,nameSerway as name',
+                'surveyDesing:id,status as name',
+                'ifcc:id,status as name',
+                'wallBox:id,status as name',
+                'microductD:id,status as name',
+                'microductK:id,status as name',
+                'fiberConvertion:id,status as name')->get();
             return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError($constarution, trans('actions.created.failed'));

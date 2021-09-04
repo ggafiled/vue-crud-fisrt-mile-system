@@ -31,14 +31,19 @@
                                 <thead>
                                     <tr class="info">
                                         <th></th>
-                                        <th>Project Name</th>
-                                        <th>DesingBy</th>
-                                        <th>SurveyDesing</th>
+                                        <th>ชื่ออาคาร</th>
+                                        <th>ออกแบบโดย</th>
+                                        <th>สำรวจออกแบบ</th>
                                         <th>IFCC</th>
+                                        <th>วัน IFCC</th>
                                         <th>WallBox</th>
+                                        <th>วัน WallBox</th>
                                         <th>Microduct(แนวดิ่ง)</th>
+                                        <th>วัน Microduct(แนวดิ่ง)</th>
                                         <th>Microduct(ขว้าง)</th>
+                                        <th>วัน Microduct(ขว้าง)</th>
                                         <th>FiberConvertion</th>
+                                        <th>วัน fiberConvertion</th>
                                         <th>Blow</th>
                                         <th>Splice</th>
                                         <th>Update</th>
@@ -103,7 +108,7 @@
                                         "
                                     >
                                         <div class="form-group">
-                                            <label>Project Name</label>
+                                            <label>ชื่ออาคาร จากตาราง Building</label>
                                             <Select2
                                                 v-model="form.building_id"
                                                 :options="building"
@@ -121,7 +126,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Project Tot Name</label>
+                                            <label>ชื่ออาคาร ทีโอทีเรียก</label>
                                             <input
                                                 v-model="form.projectNameTot"
                                                 type="text"
@@ -137,7 +142,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Project 3bb Name</label>
+                                            <label>ชื่ออาคาร สามบีบีเรียก</label>
                                             <input
                                                 v-model="form.projectName3bb"
                                                 type="text"
@@ -153,7 +158,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Project True Name</label>
+                                            <label>ชื่ออาคาร ทรูเรียก</label>
                                             <input
                                                 v-model="form.projectNameTrue"
                                                 type="text"
@@ -171,7 +176,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Project Ais Name</label>
+                                            <label>ชื่ออาคาร เอไอเอสเรียก</label>
                                             <input
                                                 v-model="form.projectNameAis"
                                                 type="text"
@@ -187,7 +192,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Project FiberNet Name</label>
+                                            <label>ชื่ออาคาร ไฟเบอร์เน็ตเรียก</label>
                                             <input
                                                 v-model="
                                                     form.projectNameFiberNet
@@ -208,10 +213,10 @@
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>Desing By</label>
+                                            <label>ออกแบบโดย</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.desingBy"
+                                                v-model="form.desingBy_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -232,10 +237,10 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Survey&Desing</label>
+                                            <label>สำรวจออกแบบ</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.surveyDesing"
+                                                v-model="form.surveyDesing_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -257,7 +262,7 @@
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>SurveyDesingDate</label>
+                                            <label>วันสำรวจออกแบบ</label>
                                             <input
                                                 v-model="form.surveyDesingDate"
                                                 type="date"
@@ -285,7 +290,7 @@
                                             <label>IFCC</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.ifcc"
+                                                v-model="form.ifcc_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -306,7 +311,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>IFCC-Date</label>
+                                            <label>วัน IFCC</label>
                                             <input
                                                 type="date"
                                                 v-model="form.ifccDate"
@@ -329,7 +334,7 @@
                                             <label>WallBox</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.wallBox"
+                                                v-model="form.wallBox_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -350,7 +355,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Wallbox-Date</label>
+                                            <label>วัน Wallbox</label>
                                             <input
                                                 type="date"
                                                 v-model="form.wallBoxDate"
@@ -408,7 +413,7 @@
                                             <label>Microduct(แนวดิ่ง)</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.microductD"
+                                                v-model="form.microductD_id"
                                                 :disabled="
                                                     form.type ==
                                                         'FiberConvertion'
@@ -434,7 +439,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label
-                                                >Microduct Date(แนวดิ่ง)</label
+                                                >วัน Microduct(แนวดิ่ง)</label
                                             >
                                             <input
                                                 v-model="form.microductDateD"
@@ -461,7 +466,7 @@
                                             <label>Microduct (แนวขว้าง)</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.microductK"
+                                                v-model="form.microductK_id"
                                                 :disabled="
                                                     form.type ==
                                                         'FiberConvertion'
@@ -488,7 +493,7 @@
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label
-                                                >Microduct Date(แนวขว้าง)</label
+                                                >วัน Microduct (แนวขว้าง)</label
                                             >
                                             <input
                                                 v-model="form.microductDateK"
@@ -520,7 +525,7 @@
                                             <label>FiberConvertion</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.microductD"
+                                                v-model="form.fiberConvertion_id"
                                                 :disabled="
                                                     form.type == 'Microduct'
                                                 "
@@ -538,14 +543,14 @@
                                             </select>
                                             <has-error
                                                 :form="form"
-                                                field="microductD"
+                                                field="fiberConvertion"
                                             ></has-error>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label
-                                                >FiberConvertionDate
+                                                >วัน FiberConvertion
                                                 (แนวดิ่ง)</label
                                             >
                                             <input
@@ -698,22 +703,34 @@ export default {
             sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
             form: new Form({
                 id: "",
-                building_id: "",
+                //Relationship In TableConstarution
+                building_id: "",//modelBuilding->modelConstarution GET field projectName
+                desingBy_id: "",//modelTeamserway->modelConstarution GET field nameSerway
+                surveyDesing_id: "",//modelGeneratingaction->modelConstarution GET field nameSerway
+                ifcc_id: "",//modelGeneratingaction->modelConstarution GET field status
+                wallBox_id: "",//modelGeneratingaction->modelConstarution GET field status
+                microductD_id: "",//modelGeneratingaction->modelConstarution GET field status
+                microductK_id: "",//modelGeneratingaction->modelConstarution GET field status
+                fiberConvertion_id: "",//modelGeneratingaction->modelConstarution GET field status
+
                 projectName: "",
+                projectNameTot: "",
+                projectName3bb: "",
+                projectNameTrue: "",
+                projectNameAis: "",
+                projectNameFiberNet: "",
+
                 desingBy: "",
                 surveyDesing: "",
-                surveyDesingDate: "",
-                surveyDesingDateBy: "",
                 ifcc: "",
-                ifccDate: "",
                 wallBox: "",
+                microductD: "",
+                microductK: "",
+                surveyDesingDate: "",
+                ifccDate: "",
                 wallBoxDate: "",
                 type: "",
-                microductD: "",
                 microductDateD: "",
-                microductK: "",
-                microductDateK: "",
-                fiberConvertion: "",
                 fiberConvertionDateD: "",
                 blow: "",
                 splice: ""
@@ -959,134 +976,127 @@ export default {
                         data: "building[0].projectName"
                     },
                     {
-                        data: "desingBy",
+                        data: "desing_by.name",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
                                     '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
+                                    data +
                                     "</span>"
                                 );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
                             } else {
                                 return data;
                             }
                         }
                     },
                     {
-                        data: "surveyDesing",
+                        data: "survey_desing.name",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
                                     '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
+                                    data +
                                     "</span>"
                                 );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
                             } else {
-                                return "<span>" + data + "</span>";
+                                return data;
                             }
                         }
                     },
                     {
-                        data: "ifcc",
+                        data: "ifcc.name",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
                                     '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
+                                    data +
                                     "</span>"
                                 );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
                             } else {
-                                return "<span>" + data + "</span>";
+                                return data;
                             }
                         }
                     },
                     {
-                        data: "wallBox",
+                        data: "ifccDate"
+                    },
+                    {
+                        data: "wall_box.name",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
                                     '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
+                                    data +
                                     "</span>"
                                 );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
                             } else {
-                                return "<span>" + data + "</span>";
+                                return data;
                             }
                         }
                     },
                     {
-                        data: "microductD",
+                        data: "wallBoxDate"
+                    },
+                    {
+                        data: "microduct_d.name",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
                                     '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
+                                    data +
                                     "</span>"
                                 );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
                             } else {
-                                return "<span>" + data + "</span>";
+                                return data;
                             }
                         }
                         // visible: false
                     },
                     {
-                        data: "microductK",
+                        data: "microductDateD"
+                    },
+                    {
+                        data: "microduct_k.name",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
                                     '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
+                                    data +
                                     "</span>"
                                 );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
                             } else {
-                                return "<span>" + data + "</span>";
+                                return data;
                             }
                         }
+                    },
+                    {
+                        data: "microductDateK"
+                    },
+                    {
+                        data: "fiber_convertion.name"
                         // visible: false
                     },
                     {
-                        data: "fiberConvertion",
-                        render: function(data, type, row, meta) {
-                            if (data == "") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
+                        data: "fiberConvertionDateD"
+                    },
+                    {
+                        data: "blow"
                         // visible: false
                     },
                     {
-                        data: "blow",
-                        render: function(data, type, row, meta) {
-                            if (data == "") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                        // visible: false
-                    },
-                    {
-                        data: "splice",
-                        render: function(data, type, row, meta) {
-                            if (data == "") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
+                        data: "splice"
                         // visible: false
                     },
                     {

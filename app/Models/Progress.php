@@ -17,6 +17,7 @@ class Progress extends Model
         'building_id',
         'fmProgress_id',
         'totProgress_id',
+        'aisProgress_id',
         'progress3bb_id',
         'sinetProgress_id',
         'fnProgress_id',
@@ -50,6 +51,11 @@ class Progress extends Model
     public function fmProgress()
     {
         return $this->belongsTo('App\Models\Generatingaction', 'fmProgress_id', 'id');
+    }
+
+    public function aisProgress()
+    {
+        return $this->belongsTo('App\Models\Generatingaction', 'aisProgress_id', 'id');
     }
 
     public function totProgress()

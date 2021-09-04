@@ -24,7 +24,16 @@ class ProgressController extends BaseController
     public function index()
     {
         try {
-            $progress = Progress::with('building')->get();
+            $progress = Progress::with(
+            'building',
+            'fmProgress:id,status as name',
+            'totProgress:id,status as name',
+            'aisProgress:id,status as name',
+            'Progress3bb:id,status as name',
+            'sinetProgress:id,status as name',
+            'fnProgress:id,status as name',
+            'trueProgress:id,status as name'
+            )->get();
             return $this->sendResponse($progress, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError($progress, trans('actions.created.failed'));
@@ -53,6 +62,7 @@ class ProgressController extends BaseController
             $progress = new Progress([
                 'building_id' => $request->input('building_id'),
                 'fmProgress_id' => $request->input('fmProgress_id'),
+                'aisProgress_id' => $request->input('aisProgress_id'),
                 'totProgress_id' => $request->input('totProgress_id'),
                 'progress3bb_id' => $request->input('progress3bb_id'),
                 'sinetProgress_id' => $request->input('sinetProgress_id'),

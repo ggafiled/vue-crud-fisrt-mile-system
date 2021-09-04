@@ -130,7 +130,7 @@
                                             <label>FM Progress :</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.fmProgress"
+                                                v-model="form.fmProgress_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -179,7 +179,7 @@
                                             <label>TOT Progress :</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.totProgress"
+                                                v-model="form.totProgress_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -225,7 +225,7 @@
                                             <label>AIS Progress :</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.aisProgress"
+                                                v-model="form.aisProgress_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -274,7 +274,7 @@
                                             <label>3BB Progress :</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.Progress3bb"
+                                                v-model="form.progress3bb_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -319,7 +319,7 @@
                                             <label>Sinet Progress :</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.sinetProgress"
+                                                v-model="form.sinetProgress_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -368,7 +368,7 @@
                                             <label>FN Progress :</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.fnProgress"
+                                                v-model="form.fnProgress_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -414,7 +414,7 @@
                                             <label>True Progress :</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.trueProgress"
+                                                v-model="form.trueProgress_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -506,21 +506,30 @@ export default {
             sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
             form: new Form({
                 id: "",
-                building_id: "",
+                //Relationship In TableProgress
+                building_id: "",//modelBuilding->modelProgress GET field projectName
+                fmProgress_id: "",//modelGeneratingaction->modelProgress GET field status
+                totProgress_id: "",//modelGeneratingaction->modelProgress GET field status
+                aisProgress_id: "",//modelGeneratingaction->modelProgress GET field status
+                progress3bb_id: "",//modelGeneratingaction->modelProgress GET field status
+                sinetProgress_id: "",//modelGeneratingaction->modelProgress GET field status
+                fnProgress_id: "",//modelGeneratingaction->modelProgress GET field status
+                trueProgress_id: "",//modelGeneratingaction->modelProgress GET field status
+
                 projectName: "",
                 fmProgress: "",
-                dateFm: "",
                 totProgress: "",
-                dateTot: "",
                 aisProgress: "",
-                dateAis: "",
                 Progress3bb: "",
-                date3BB: "",
                 sinetProgress: "",
-                dateSinet: "",
                 fnProgress: "",
-                dateFn: "",
                 trueProgress: "",
+                dateFm: "",
+                dateTot: "",
+                dateAis: "",
+                date3BB: "",
+                dateSinet: "",
+                dateFn: "",
                 dateTrue: ""
             })
         };
@@ -766,7 +775,7 @@ export default {
                         data: "building.projectName"
                     },
                     {
-                        data: "fmProgress",
+                        data: "fm_progress.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -780,7 +789,7 @@ export default {
                         }
                     },
                     {
-                        data: "totProgress",
+                        data: "tot_progress.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -794,7 +803,7 @@ export default {
                         }
                     },
                     {
-                        data: "aisProgress",
+                        data: "ais_progress.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -808,7 +817,7 @@ export default {
                         }
                     },
                     {
-                        data: "Progress3bb",
+                        data: "progress3bb.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -822,7 +831,7 @@ export default {
                         }
                     },
                     {
-                        data: "sinetProgress",
+                        data: "sinet_progress.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -836,7 +845,7 @@ export default {
                         }
                     },
                     {
-                        data: "fnProgress",
+                        data: "fn_progress.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -850,7 +859,7 @@ export default {
                         }
                     },
                     {
-                        data: "trueProgress",
+                        data: "true_progress.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
