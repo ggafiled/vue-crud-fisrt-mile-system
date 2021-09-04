@@ -23,9 +23,16 @@ class AreaTrueController extends BaseController
      */
     public function index()
     {
-        $areaTrue = AreaTrue::all();
-        return $this->sendResponse($areaTrue, trans('actions.get.success'));
+        // $areaTrue = AreaTrue::all();
+        // return $this->sendResponse($areaTrue, trans('actions.get.success'));
+        // try {
+        // } catch (Exception $ex) {
+        //     return $this->sendError($areaTrue, trans('actions.created.failed'));
+        // }
+
         try {
+            $areaTrue = AreaTrue::orderBy('updated_at','asc')->get();
+            return $this->sendResponse($areaTrue, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError($areaTrue, trans('actions.created.failed'));
         }

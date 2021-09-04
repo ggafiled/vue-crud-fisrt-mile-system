@@ -1148,9 +1148,7 @@ export default {
         },
         loadArea3BB() {
             axios.get("/area3bbs").then(response => {
-                this.area3bbs = response.data.data.map(a => {
-                    return { text: a.area3BB, id: a.id };
-                });
+                this.area3bbs = response.data.data;
             });
         },
         loadAreaTrue() {
@@ -1171,9 +1169,6 @@ export default {
         loadWorkTime() {
             axios.get("/workTimes").then(response => {
                 this.workTimes = response.data.data;
-                this.area3bbs = response.data.data.map(a => {
-                    return { text: a.area3BB, id: a.id };
-                });
             });
         },
         loadBuildings() {
@@ -1209,7 +1204,6 @@ export default {
         editModal(building) {
             this.editmode = true;
             this.form.reset();
-            building.nameSale = building.saleFm[0].nameSale;
             console.log(building);
             $("#addNew").modal("show");
             this.form.fill(building);
@@ -1486,7 +1480,7 @@ export default {
                         }
                     },
                     {
-                        data: "areaTrue.name",
+                        data: "area_true.name",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
@@ -1505,7 +1499,7 @@ export default {
                         data: "areaTrueNew"
                     },
                     {
-                        data: "areaAis.name",
+                        data: "area_ais.name",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
@@ -1521,7 +1515,7 @@ export default {
                         }
                     },
                     {
-                        data: "areaFiberNet.name",
+                        data: "area_fibernet.name",
                         render: function(data, type, row, meta) {
                             if (data == "ยังไม่ได้ทำสัญญา") {
                                 return (
@@ -1594,7 +1588,20 @@ export default {
                         data: "latitude"
                     },
                     {
-                        data: "contractSell"
+                        data: "sale_fm.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
                         data: "contractDate"
@@ -1603,7 +1610,20 @@ export default {
                         data: "contractDateEnd"
                     },
                     {
-                        data: "paymentType_id"
+                        data: "payment_type.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
                         data: "condition"

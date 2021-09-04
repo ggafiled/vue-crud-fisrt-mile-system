@@ -15,6 +15,6 @@ class AreaAis extends Model
 
     public function building()
     {
-        return $this->belongsTo('App\Models\Building', 'id', 'areaAis_id');
+        return $this->belongsTo('App\Models\AreaAis', 'id', 'areaAis_id');
     }
 }

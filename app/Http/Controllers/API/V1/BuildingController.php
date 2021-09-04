@@ -25,7 +25,15 @@ class Buildingcontroller extends BaseController
      */
     public function index()
     {
-        $buidings = Building::with('saleFm:id,nameSale as name','paymentType:id,paymentType as name','areas:id,name','bbns:id,name','area3bb:id,area3BB as name','areaTrue:id,areaTrue as name','areaAis:id,areaAis as name','areaFibernet:id,areaFibernet as name','workTime:id,worktime as name')->get();
+        $buidings = Building::with(
+                'saleFm:id,nameSale as name',
+                'paymentType:id,paymentType as name',
+                'areas:id,name', 'bbns:id,name',
+                'area3bb:id,area3BB as name',
+                'areaTrue:id,areaTrue as name',
+                'areaAis:id,areaAis as name',
+                'areaFibernet:id,areaFibernet as name',
+                'workTime:id,worktime as name')->get();
         return $this->sendResponse($buidings, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
