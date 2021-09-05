@@ -7,6 +7,7 @@ use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Progress;
+use App\Http\Requests\Progress\ProgressRequest;
 
 class ProgressController extends BaseController
 {
@@ -56,7 +57,7 @@ class ProgressController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProgressRequest $request)
     {
         try {
             $progress = new Progress([
@@ -112,7 +113,7 @@ class ProgressController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProgressRequest $request, $id)
     {
 
         try {

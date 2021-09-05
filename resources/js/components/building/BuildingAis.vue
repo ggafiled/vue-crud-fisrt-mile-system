@@ -176,29 +176,33 @@ export default {
                     data: "projectName",
                     className: "text-capitalize",
                     render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-building pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
                     }
                 },
                 {
-                    title: "AIS Project Name",
+                    title: "AIS Project Name", // EDIT
                     data: null,
                     defaultContent: "",
                     render: function(data, type, row, meta) {
                         return (
                             '<span><i class="bi bi-building pr-2"></i>' +
-                            (data.projectNameAis
-                                ? data.projectNameAis
+                            (data.constarution.projectNameAis
+                                ? data.constarution.projectNameAis
                                 : data.projectName) +
                             "</span>"
                         );
                     }
                 },
                 {
-                    data: "areaAis"
+                    data: "area_ais.name" // EDIT
                 },
                 {
                     data: "nameManager",
@@ -301,10 +305,24 @@ export default {
                     data: "latitude"
                 },
                 {
-                    data: "progress.fmProgress"
+                    data: "progress.fm_progress.status", // EDIT
+                    render: function(data, type, row, meta) {
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return data;
+                        }
+                    }
                 },
                 {
-                    data: "progress.aisProgress"
+                    data: "progress.ais_progress.status", // EDIT
+                    render: function(data, type, row, meta) {
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return data;
+                        }
+                    }
                 }
             ],
             columnDefs: [

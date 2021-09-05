@@ -176,11 +176,15 @@ export default {
                     data: "projectName",
                     className: "text-capitalize",
                     render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-building pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
                     }
                 },
                 {
@@ -190,15 +194,15 @@ export default {
                     render: function(data, type, row, meta) {
                         return (
                             '<span><i class="bi bi-building pr-2"></i>' +
-                            (data.projectName3bb
-                                ? data.projectName3bb
+                            (data.constarution.projectName3bb
+                                ? data.constarution.projectName3bb
                                 : data.projectName) +
                             "</span>"
                         );
                     }
                 },
                 {
-                    data: "area3BB"
+                    data: "area3bb.name"
                 },
                 {
                     data: "nameManager",
@@ -301,10 +305,24 @@ export default {
                     data: "latitude"
                 },
                 {
-                    data: "progress.fmProgress"
+                    data: "progress.fm_progress.status",
+                    render: function(data, type, row, meta) {
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return data;
+                        }
+                    }
                 },
                 {
-                    data: "progress.Progress3bb"
+                    data: "progress.progress3bb.status",
+                    render: function(data, type, row, meta) {
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return data;
+                        }
+                    }
                 }
             ],
             columnDefs: [

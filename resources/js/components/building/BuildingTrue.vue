@@ -22,9 +22,8 @@
                                     <tr class="info">
                                         <th></th>
                                         <th>Project Name</th>
-                                        <th>ProjectTrue Name</th>
+                                        <th>Project True Name</th>
                                         <th>AreaTrue</th>
-                                        <th>AreaTrueNew</th>
                                         <th>Manager Name</th>
                                         <th>Phone</th>
                                         <th>Mail</th>
@@ -39,13 +38,13 @@
                                         <th>Province</th>
                                         <th>County</th>
                                         <th>PostalCode</th>
+                                        <th>Longitude</th>
+                                        <th>Latitude</th>
                                         <th>Building Sum</th>
                                         <th>Floor Sum</th>
                                         <th>Room Sum</th>
-                                        <th>Longitude</th>
-                                        <th>Latitude</th>
                                         <th>Fm-Progress</th>
-                                        <th>TRUE-Progress</th>
+                                        <th>True-Progress</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -63,7 +62,7 @@
 
 <script>
 export default {
-    title: "True -",
+    title: "AIS -",
     mounted() {
         console.log("buildings Component mounted.");
         var vm = this;
@@ -177,32 +176,33 @@ export default {
                     data: "projectName",
                     className: "text-capitalize",
                     render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-building pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
                     }
                 },
                 {
-                    title: "True Project Name",
+                    title: "True Project Name", // EDIT
                     data: null,
                     defaultContent: "",
                     render: function(data, type, row, meta) {
                         return (
                             '<span><i class="bi bi-building pr-2"></i>' +
-                            (data.projectNameTrue
-                                ? data.projectNameTrue
+                            (data.constarution.projectNameTrue
+                                ? data.constarution.projectNameTrue
                                 : data.projectName) +
                             "</span>"
                         );
                     }
                 },
                 {
-                    data: "areaTrue"
-                },
-                {
-                    data: "areaTrueNew"
+                    data: "area_true.name" // EDIT
                 },
                 {
                     data: "nameManager",
@@ -305,10 +305,24 @@ export default {
                     data: "latitude"
                 },
                 {
-                    data: "progress.fmProgress"
+                    data: "progress.fm_progress.status", // EDIT
+                    render: function(data, type, row, meta) {
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return data;
+                        }
+                    }
                 },
                 {
-                    data: "progress.trueProgress"
+                    data: "progress.true_progress.status", // EDIT
+                    render: function(data, type, row, meta) {
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return data;
+                        }
+                    }
                 }
             ],
             columnDefs: [

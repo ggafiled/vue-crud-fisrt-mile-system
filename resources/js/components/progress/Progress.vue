@@ -132,7 +132,7 @@
                                                 class="form-control"
                                                 v-model="form.fmProgress_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -181,7 +181,7 @@
                                                 class="form-control"
                                                 v-model="form.totProgress_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -227,7 +227,7 @@
                                                 class="form-control"
                                                 v-model="form.aisProgress_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -276,7 +276,7 @@
                                                 class="form-control"
                                                 v-model="form.progress3bb_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -321,7 +321,7 @@
                                                 class="form-control"
                                                 v-model="form.sinetProgress_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -370,7 +370,7 @@
                                                 class="form-control"
                                                 v-model="form.fnProgress_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -416,7 +416,7 @@
                                                 class="form-control"
                                                 v-model="form.trueProgress_id"
                                             >
-                                                <option value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -500,7 +500,7 @@ export default {
             generatingactions: [],
             settings: {
                 placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
-                allowClear: true,
+                allowClear: false,
                 dropdownParent: ".modal"
             },
             sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
@@ -515,7 +515,6 @@ export default {
                 sinetProgress_id: "",//modelGeneratingaction->modelProgress GET field status
                 fnProgress_id: "",//modelGeneratingaction->modelProgress GET field status
                 trueProgress_id: "",//modelGeneratingaction->modelProgress GET field status
-
                 projectName: "",
                 fmProgress: "",
                 totProgress: "",
@@ -524,13 +523,13 @@ export default {
                 sinetProgress: "",
                 fnProgress: "",
                 trueProgress: "",
-                dateFm: "",
-                dateTot: "",
-                dateAis: "",
-                date3BB: "",
-                dateSinet: "",
-                dateFn: "",
-                dateTrue: ""
+                dateFm: new Date().toISOString().slice(0,10),
+                dateTot: new Date().toISOString().slice(0,10),
+                dateAis: new Date().toISOString().slice(0,10),
+                date3BB: new Date().toISOString().slice(0,10),
+                dateSinet: new Date().toISOString().slice(0,10),
+                dateFn: new Date().toISOString().slice(0,10),
+                dateTrue: new Date().toISOString().slice(0,10)
             })
         };
     },

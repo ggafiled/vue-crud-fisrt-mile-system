@@ -45,39 +45,39 @@ class DashboardController extends BaseController
                     ->get(),
                 'chart_dp_groub_of_progress' => [
                     'FM Progress' => DB::table('progress')
-                        ->select('fmProgress_id as name', DB::raw('count(*) as total'))
-                        ->where('fmProgress_id', '!=', '')
-                        ->groupBy('fmProgress_id')
+                        ->select('generatingactions.status', DB::raw('count(*) as total'))
+                        ->join('generatingactions', 'generatingactions.id','=','progress.fmProgress_id')
+                        ->groupBy('generatingactions.status')
                         ->get(),
                     'TOT Progress' => DB::table('progress')
-                        ->select('totProgress_id as name', DB::raw('count(*) as total'))
-                        ->where('totProgress_id', '!=', '')
-                        ->groupBy('totProgress_id')
+                        ->select('generatingactions.status', DB::raw('count(*) as total'))
+                        ->join('generatingactions', 'generatingactions.id','=','progress.totProgress_id')
+                        ->groupBy('generatingactions.status')
                         ->get(),
                     'AIS Progress' => DB::table('progress')
-                        ->select('aisProgress_id as name', DB::raw('count(*) as total'))
-                        ->where('aisProgress_id', '!=', '')
-                        ->groupBy('aisProgress_id')
+                        ->select('generatingactions.status', DB::raw('count(*) as total'))
+                        ->join('generatingactions', 'generatingactions.id','=','progress.aisProgress_id')
+                        ->groupBy('generatingactions.status')
                         ->get(),
                     '3BB Progress' => DB::table('progress')
-                        ->select('progress3bb_id as name', DB::raw('count(*) as total'))
-                        ->where('progress3bb_id', '!=', '')
-                        ->groupBy('progress3bb_id')
+                        ->select('generatingactions.status', DB::raw('count(*) as total'))
+                        ->join('generatingactions', 'generatingactions.id','=','progress.progress3bb_id')
+                        ->groupBy('generatingactions.status')
                         ->get(),
                     'SINET Progress' => DB::table('progress')
-                        ->select('sinetProgress_id as name', DB::raw('count(*) as total'))
-                        ->where('sinetProgress_id', '!=', '')
-                        ->groupBy('sinetProgress_id')
+                        ->select('generatingactions.status', DB::raw('count(*) as total'))
+                        ->join('generatingactions', 'generatingactions.id','=','progress.sinetProgress_id')
+                        ->groupBy('generatingactions.status')
                         ->get(),
                     'FN Progress' => DB::table('progress')
-                        ->select('fnProgress_id as name', DB::raw('count(*) as total'))
-                        ->where('fnProgress_id', '!=', '')
-                        ->groupBy('fnProgress_id')
+                        ->select('generatingactions.status', DB::raw('count(*) as total'))
+                        ->join('generatingactions', 'generatingactions.id','=','progress.fnProgress_id')
+                        ->groupBy('generatingactions.status')
                         ->get(),
                     'TRUE Progress' => DB::table('progress')
-                        ->select('trueProgress_id as name', DB::raw('count(*) as total'))
-                        ->where('trueProgress_id', '!=', '')
-                        ->groupBy('trueProgress_id')
+                        ->select('generatingactions.status', DB::raw('count(*) as total'))
+                        ->join('generatingactions', 'generatingactions.id','=','progress.trueProgress_id')
+                        ->groupBy('generatingactions.status')
                         ->get(),
                     // 'FM Progress' => [10,5,4,7,8,6,3],
                     // 'TOT Progress' => [10,5,4,7,8,6,3],
@@ -90,7 +90,7 @@ class DashboardController extends BaseController
             ];
             return $this->sendResponse($dashboard, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($dashboard, trans('actions.created.failed'));
+            return $this->sendError($ex, trans('actions.created.failed'));
         }
     }
 

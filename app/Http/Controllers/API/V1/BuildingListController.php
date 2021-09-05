@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\API\V1\BaseController;
-use Illuminate\Http\Request;
 use App\Models\Building;
 use App\Models\Progress;
 use Exception;
-
+use Illuminate\Http\Request;
 
 class BuildingListController extends BaseController
 {
@@ -26,13 +25,27 @@ class BuildingListController extends BaseController
     public function index()
     {
         try {
-            $buildings = Building::with('progress')->get();
+            $buildings = Building::with('progress.fmProgress',
+                'progress.totProgress',
+                'progress.aisProgress',
+                'progress.Progress3bb',
+                'progress.sinetProgress',
+                'progress.fnProgress',
+                'progress.trueProgress',
+                'constarution',
+                'saleFm:id,nameSale as name',
+                'paymentType:id,paymentType as name',
+                'areas:id,name', 'bbns:id,name',
+                'area3bb:id,area3BB as name',
+                'areaTrue:id,areaTrue as name',
+                'areaAis:id,areaAis as name',
+                'areaFibernet:id,areaFibernet as name',
+                'workTime:id,worktime as name')->get();
             return $this->sendResponse($buildings, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($buildings, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
-
 
     public function nonContract()
     {
@@ -42,10 +55,9 @@ class BuildingListController extends BaseController
             })->with('building')->get();
             return $this->sendResponse($buildings_non_contract, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($buildings_non_contract, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
-
 
     /**
      * Show the form for creating a new resource.

@@ -22,9 +22,8 @@
                                     <tr class="info">
                                         <th></th>
                                         <th>Project Name</th>
-                                        <th>ProjectTot Name</th>
-                                        <th>AreaN</th>
-                                        <th>BBN</th>
+                                        <th>Project TOT Name</th>
+                                        <th>AreaTOT</th>
                                         <th>Manager Name</th>
                                         <th>Phone</th>
                                         <th>Mail</th>
@@ -63,7 +62,7 @@
 
 <script>
 export default {
-    title: "TOT -",
+    title: "AIS -",
     mounted() {
         console.log("buildings Component mounted.");
         var vm = this;
@@ -177,32 +176,33 @@ export default {
                     data: "projectName",
                     className: "text-capitalize",
                     render: function(data, type, row, meta) {
-                        return (
-                            '<span><i class="bi bi-building pr-2"></i>' +
-                            data +
-                            "</span>"
-                        );
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
                     }
                 },
                 {
-                    title: "TOT Project Name",
+                    title: "TOT Project Name", // EDIT
                     data: null,
                     defaultContent: "",
                     render: function(data, type, row, meta) {
                         return (
                             '<span><i class="bi bi-building pr-2"></i>' +
-                            (data.projectNameTot
-                                ? data.projectNameTot
+                            (data.constarution.projectNameTot
+                                ? data.constarution.projectNameTot
                                 : data.projectName) +
                             "</span>"
                         );
                     }
                 },
                 {
-                    data: "areaN"
-                },
-                {
-                    data: "bbN"
+                    data: "areas.name" // EDIT
                 },
                 {
                     data: "nameManager",
@@ -305,10 +305,24 @@ export default {
                     data: "latitude"
                 },
                 {
-                    data: "progress.fmProgress"
+                    data: "progress.fm_progress.status", // EDIT
+                    render: function(data, type, row, meta) {
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return data;
+                        }
+                    }
                 },
                 {
-                    data: "progress.totProgress"
+                    data: "progress.tot_progress.status", // EDIT
+                    render: function(data, type, row, meta) {
+                        if (!data) {
+                            return "ไม่ได้ระบุ";
+                        } else {
+                            return data;
+                        }
+                    }
                 }
             ],
             columnDefs: [

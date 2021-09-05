@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Progress extends Model
 {
@@ -34,53 +33,53 @@ class Progress extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}")
-        ->useLogName('progress')
-        ->logOnlyDirty();
+            ->setDescriptionForEvent(fn (string $eventName) => "This model has been {$eventName}")
+            ->useLogName('progress')
+            ->logOnlyDirty();
         // Chain fluent methods for configuration options
     }
 
-    public function non_contract() {
-        return $this->building()->where('spendSpace','=', 'ยังไม่ได้ทำสัญญา');
+    public function non_contract()
+    {
+        return $this->building()->where('spendSpace', '=', 'ยังไม่ได้ทำสัญญา');
     }
     public function building()
-	{
-		return $this->hasOne('App\Models\Building','id','building_id');
-	}
+    {
+        return $this->belongsTo('App\Models\Building', 'building_id', 'id');
+    }
 
     public function fmProgress()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'fmProgress_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'fmProgress_id');
     }
 
     public function aisProgress()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'aisProgress_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'aisProgress_id');
     }
 
     public function totProgress()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'totProgress_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'totProgress_id');
     }
 
     public function progress3bb()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'progress3bb_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'progress3bb_id');
     }
 
     public function sinetProgress()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'sinetProgress_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'sinetProgress_id');
     }
 
     public function fnProgress()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'fnProgress_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'fnProgress_id');
     }
 
     public function trueProgress()
     {
-        return $this->belongsTo('App\Models\Generatingaction', 'trueProgress_id', 'id');
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'trueProgress_id');
     }
-
 }

@@ -76,7 +76,7 @@ class Building extends Model
 
     public function constarution()
     {
-        return $this->hasMany('App\Models\Constarution', 'id', 'building_id');
+        return $this->hasOne('App\Models\Constarution', 'building_id', 'id');
     }
 
     public function planning()

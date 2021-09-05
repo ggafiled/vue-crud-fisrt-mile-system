@@ -163,7 +163,6 @@
                                         <th>ContractSell</th>
                                         <th>ContractDate</th>
                                         <th>ContractDateEnd</th>
-                                        <th>SpendSpace</th>
                                         <th>ContractPeriod</th>
                                         <th>ReNewContact</th>
                                         <th>Condition</th>
@@ -389,82 +388,92 @@ export default {
                     },
                     {
                         title: "TOT Project Name",
-                        data: "projectName",
+                        data: null,
                         render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
+                        return (
+                            '<span><i class="bi bi-building pr-2"></i>' +
+                            (data.constarution.projectNameTot
+                                ? data.constarution.projectNameTot
+                                : data.projectName) +
+                            "</span>"
+                        );
+                    }
                     },
                     {
                         title: "3BB Project Name",
-                        data: "projectName",
+                        data: null,
                         render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
+                        return (
+                            '<span><i class="bi bi-building pr-2"></i>' +
+                            (data.constarution.projectName3bb
+                                ? data.constarution.projectName3bb
+                                : data.projectName) +
+                            "</span>"
+                        );
+                    }
                     },
                     {
                         title: "True Project Name",
-                        data: "projectName",
+                        data: null,
                         render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
+                        return (
+                            '<span><i class="bi bi-building pr-2"></i>' +
+                            (data.constarution.projectNameTrue
+                                ? data.constarution.projectNameTrue
+                                : data.projectName) +
+                            "</span>"
+                        );
+                    }
                     },
                     {
                         title: "AIS Project Name",
-                        data: "projectName",
+                        data: null,
                         render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
+                        return (
+                            '<span><i class="bi bi-building pr-2"></i>' +
+                            (data.constarution.projectNameAis
+                                ? data.constarution.projectNameAis
+                                : data.projectName) +
+                            "</span>"
+                        );
+                    }
                     },
                     {
                         title: "FiberNet Project Name",
-                        data: "projectName",
+                        data: null,
                         render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
+                        return (
+                            '<span><i class="bi bi-building pr-2"></i>' +
+                            (data.constarution.projectNameFibernet
+                                ? data.constarution.projectNameFibernet
+                                : data.projectName) +
+                            "</span>"
+                        );
+                    }
                     },
                     {
                         data: "fmCode"
                     },
                     {
-                        data: "areaN"
+                        data: "areas.name"
                     },
                     {
-                        data: "bbN"
+                        data: "bbns.name"
                     },
                     {
-                        data: "area3BB"
+                        data: "area3bb.name"
                     },
                     {
-                        data: "areaTrue"
+                        data: "area_true.name"
                     },
                     {
                         data: "areaTrueNew"
                     },
                     {
-                        data: "areaAis"
+                        data: "area_ais.name"
                     },
                     {
-                        data: "areaFiberNet"
+                        data: "area_fibernet.name"
                     },
                     {
                         data: "buildingSum"
@@ -725,9 +734,9 @@ export default {
                         }
                     },
                     {
-                        data: "progress.fmProgress",
+                        data: "progress.fm_progress.status",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (!data || data == "") {
                                 return (
                                     '<span class="badge badge-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -740,12 +749,16 @@ export default {
                                     "</span>"
                                 );
                             } else {
-                                return "<span>" + data + "</span>";
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
+                                    "</span>"
+                                );
                             }
                         }
                     },
                     {
-                        data: "progress.totProgress",
+                        data: "progress.tot_progress.status",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -783,7 +796,7 @@ export default {
                                     data +
                                     "</span>"
                                 );
-                            } else if (data == "") {
+                            } else if (!data || data == "") {
                                 return (
                                     '<span class="badge badge-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -791,7 +804,7 @@ export default {
                                 );
                             } else {
                                 return (
-                                    '<span class="text-warning">' +
+                                    '<span class="badge badge-warning">' +
                                     data +
                                     "</span>"
                                 );
@@ -799,7 +812,7 @@ export default {
                         }
                     },
                     {
-                        data: "progress.aisProgress",
+                        data: "progress.ais_progress.status",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -837,7 +850,7 @@ export default {
                                     data +
                                     "</span>"
                                 );
-                            } else if (data == "") {
+                            } else if (!data || data == "") {
                                 return (
                                     '<span class="badge badge-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -845,7 +858,7 @@ export default {
                                 );
                             } else {
                                 return (
-                                    '<span class="text-warning">' +
+                                    '<span class="badge badge-warning">' +
                                     data +
                                     "</span>"
                                 );
@@ -853,7 +866,7 @@ export default {
                         }
                     },
                     {
-                        data: "progress.Progress3bb",
+                        data: "progress.progress3bb.status",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -891,7 +904,7 @@ export default {
                                     data +
                                     "</span>"
                                 );
-                            } else if (data == "") {
+                            } else if (!data || data == "") {
                                 return (
                                     '<span class="badge badge-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -899,7 +912,7 @@ export default {
                                 );
                             } else {
                                 return (
-                                    '<span class="text-warning">' +
+                                    '<span class="badge badge-warning">' +
                                     data +
                                     "</span>"
                                 );
@@ -907,7 +920,7 @@ export default {
                         }
                     },
                     {
-                        data: "progress.sinetProgress",
+                        data: "progress.sinet_progress.status",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -945,7 +958,7 @@ export default {
                                     data +
                                     "</span>"
                                 );
-                            } else if (data == "") {
+                            } else if (!data || data == "") {
                                 return (
                                     '<span class="badge badge-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -953,7 +966,7 @@ export default {
                                 );
                             } else {
                                 return (
-                                    '<span class="text-warning">' +
+                                    '<span class="badge badge-warning">' +
                                     data +
                                     "</span>"
                                 );
@@ -961,7 +974,7 @@ export default {
                         }
                     },
                     {
-                        data: "progress.fnProgress",
+                        data: "progress.fn_progress.status",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -999,7 +1012,7 @@ export default {
                                     data +
                                     "</span>"
                                 );
-                            } else if (data == "") {
+                            } else if (!data || data == "") {
                                 return (
                                     '<span class="badge badge-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1007,7 +1020,7 @@ export default {
                                 );
                             } else {
                                 return (
-                                    '<span class="text-warning">' +
+                                    '<span class="badge badge-warning">' +
                                     data +
                                     "</span>"
                                 );
@@ -1015,7 +1028,7 @@ export default {
                         }
                     },
                     {
-                        data: "progress.trueProgress",
+                        data: "progress.true_progress.status",
                         render: function(data, type, row, meta) {
                             if (data == "เชื่อมโครงข่ายแล้ว") {
                                 return (
@@ -1053,7 +1066,7 @@ export default {
                                     data +
                                     "</span>"
                                 );
-                            } else if (data == "") {
+                            } else if (!data || data == "") {
                                 return (
                                     '<span class="badge badge-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1061,7 +1074,7 @@ export default {
                                 );
                             } else {
                                 return (
-                                    '<span class="text-warning">' +
+                                    '<span class="badge badge-warning">' +
                                     data +
                                     "</span>"
                                 );
@@ -1069,7 +1082,7 @@ export default {
                         }
                     },
                     {
-                        data: "contractSell",
+                        data: "sale_fm.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -1091,22 +1104,6 @@ export default {
                     },
                     {
                         data: "contractDateEnd"
-                    },
-                    {
-                        data: "spendSpace",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data.length) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
                     },
                     {
                         data: "contractPeriod"
@@ -1136,7 +1133,7 @@ export default {
                         }
                     },
                     {
-                        data: "operatingTime",
+                        data: "work_time.name",
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-alarm pr-2"></i>' +
@@ -1167,8 +1164,8 @@ export default {
             });
         }
     },
-    async mounted() {
-        await this.generateBuildingListTable();
+   mounted() {
+        this.generateBuildingListTable();
     }
 };
 </script>

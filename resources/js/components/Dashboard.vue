@@ -491,7 +491,7 @@ export default {
                                         item
                                     ]
                                         .filter(e => {
-                                            return e.name == "กำลังดำเนินการ";
+                                            return e.status == "กำลังดำเนินการ";
                                         })
                                         .map(e => {
                                             return e.total;
@@ -512,7 +512,7 @@ export default {
                                         item
                                     ]
                                         .filter(e => {
-                                            return e.name == "รอเข้าดำเนินการ";
+                                            return e.status == "รอเข้าดำเนินการ";
                                         })
                                         .map(e => {
                                             return e.total;
@@ -533,7 +533,7 @@ export default {
                                         item
                                     ]
                                         .filter(e => {
-                                            return e.name == "วางโครงข่ายแล้ว";
+                                            return e.status == "วางโครงข่ายแล้ว";
                                         })
                                         .map(e => {
                                             return e.total;
@@ -555,7 +555,7 @@ export default {
                                     ]
                                         .filter(e => {
                                             return (
-                                                e.name == "เชื่อมโครงข่ายแล้ว"
+                                                e.status == "เชื่อมโครงข่ายแล้ว"
                                             );
                                         })
                                         .map(e => {
