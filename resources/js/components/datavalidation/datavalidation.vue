@@ -50,7 +50,7 @@
                                     <li>
                                         <a
                                             data-toggle="tab"
-                                            href="#planing"
+                                            href="#planning"
                                             class="nav-link"
                                             >Planning</a
                                         >
@@ -63,6 +63,7 @@
                                             v-for="item in tabs.building"
                                             :key="item.id"
                                             :route="item.route"
+                                            tab="building"
                                             :title="item.title"
                                             :details="item.details"
                                         ></list-group-item>
@@ -72,6 +73,7 @@
                                             v-for="item in tabs.progress"
                                             :key="item.id"
                                             :route="item.route"
+                                            tab="progress"
                                             :title="item.title"
                                             :details="item.details"
                                         ></list-group-item>
@@ -84,15 +86,17 @@
                                             v-for="item in tabs.constarution"
                                             :key="item.id"
                                             :route="item.route"
+                                            tab="constarution"
                                             :title="item.title"
                                             :details="item.details"
                                         ></list-group-item>
                                     </div>
                                     <div id="planing" class="tab-pane fade">
                                         <list-group-item
-                                            v-for="item in tabs.planing"
+                                            v-for="item in tabs.planning"
                                             :key="item.id"
                                             :route="item.route"
+                                            tab="planing"
                                             :title="item.title"
                                             :details="item.details"
                                         ></list-group-item>
@@ -168,7 +172,7 @@ export default {
                         details: "แก้ไขข้อมูลพื้นที่เวลาเข้างาน"
                     }
                 ],
-                planing: [
+                planning: [
                     {
                         id: 1,
                         route: "/settings/problemsolution",
@@ -205,6 +209,29 @@ export default {
                 constarution: []
             }
         };
-    }
+    },
+    methods: {
+        activaTab(tab) {
+            if($('.nav-tabs a[href="#' + tab + '"]').length){
+                $('.nav-tabs a[href="#' + tab + '"]').tab("show");
+            }else{
+                this.$router.replace({ query: {tab: $('.nav-tabs a').first().attr('href').toString().replace("#","") } })
+                $('.nav-tabs a').first().tab("show");
+            }
+        },
+        deactivaTab(tab) {
+            $(".nav-tabs a").removeClass("active");
+        }
+    },
+    mounted() {
+        console.log(this.$route.query.tab);
+        this.deactivaTab();
+        this.activaTab(
+            this.$route.query.tab
+        );
+    },
+    unmounted() {
+        this.deactivaTab();
+    },
 };
 </script>

@@ -242,6 +242,7 @@ export default {
         async loadActivityLogs() {
             await axios.get("/logs").then(response => {
                 this.rowData = response.data.data.activity;
+                console.log(this.rowData);
                 this.selectOptions = response.data.data.log_chanel.map(a => {
                     return a.log_name.replace(/\b\w/g, l => l.toUpperCase());
                 });
@@ -339,13 +340,25 @@ export default {
                 filter: true,
                 resizable: true
             },
-            // {
-            //     field: "subject_type ",
-            //     headerName: "Subject Type ",
-            //     sortable: true,
-            //     resizable: true,
-            //     filter: true
-            // },
+            {
+                field: "causer",
+                headerName: "Operator",
+                sortable: true,
+                resizable: true,
+                filter: true,
+                cellRenderer: params => {
+                    if (!params.value) {
+                        return "ไม่ได้ระบุ";
+                    } else {
+                        let causer = JSON.parse(JSON.stringify(params.value));
+                        return (
+                            '<span><i class="bi bi-person mr-1"></i>' +
+                            causer.name +
+                            "</span>"
+                        );
+                    }
+                }
+            },
             {
                 field: "event",
                 headerName: "Event",

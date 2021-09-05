@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Constarution extends Model
 {
-    use SoftDeletes, LogsActivity;
+    use SoftDeletes;
 
     protected $fillable = [
         'id',
@@ -35,17 +34,8 @@ class Constarution extends Model
         'microductDateK',
         'fiberConvertionDateD',
         'blow',
-        'splice'
+        'splice',
     ];
-
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-        ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}")
-        ->useLogName('constarution')
-        ->logOnlyDirty();
-        // Chain fluent methods for configuration options
-    }
 
     public function building()
     {

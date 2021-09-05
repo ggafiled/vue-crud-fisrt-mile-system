@@ -777,7 +777,7 @@ export default {
                         return { text: a.callVer, id: a.id };
                     }))
             );
-            
+
             // axios.get("/callvers").then(response => {
             //     this.callvers = response.data.data;
             // });

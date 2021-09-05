@@ -366,7 +366,7 @@ return [
         ],
         [
             'text' => 'Data Validation',
-            'url'  => '/settings',
+            'url'  => '/settings?tab=building',
             'icon' => 'bi bi-gear-fill',
             'roles'  => ['superadministrator'],
             'active_url' => 'settings'

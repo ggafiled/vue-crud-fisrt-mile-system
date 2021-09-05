@@ -27,7 +27,7 @@ class CallverController extends BaseController
         return $this->sendResponse($callver, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($callver, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -46,7 +46,7 @@ class CallverController extends BaseController
             $callver->save();
             return $this->sendResponse($callver, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($callver, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -65,7 +65,7 @@ class CallverController extends BaseController
             $callver->update($request->all());
             return $this->sendResponse($callver, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($callver, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -82,8 +82,7 @@ class CallverController extends BaseController
             $callver->delete();
             return $this->sendResponse($callver, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($callver, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 }
-

@@ -1,6 +1,6 @@
 <template>
     <li class="list-group-item bg-transparent">
-        <a :href="route" @click.prevent="navigate">{{ title }}</a>
+        <a :href="_route" @click.prevent="navigate">{{ title }}</a>
         <div class="d-flex justify-content-between mt-3">
             <small class="text-muted">{{ details }}</small>
             <small class="text-muted"> </small>
@@ -14,6 +14,10 @@ export default {
             type: String,
             required: true
         },
+        tab:{
+            type: String,
+            required: true
+        },
         title: {
             type: String,
             default: ''
@@ -23,9 +27,14 @@ export default {
             default: ''
         }
     },
+    computed: {
+        _route: function(){
+            return this.route + `?tab=${this.tab}`;
+        }
+    },
     methods: {
         navigate(){
-            this.$router.push(this.route);
+            this.$router.push(this._route);
         }
     }
 };

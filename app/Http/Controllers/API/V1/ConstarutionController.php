@@ -73,6 +73,14 @@ class ConstarutionController extends BaseController
                 'splice' => $request->input('splice'),
             ]);
             $constarution->save();
+
+            activity()
+                ->performedOn($constarution)
+                ->withProperties($constarution->toArray())
+                ->event('created')
+                ->useLog('constarution')
+                ->log('This model has been created');
+
             return $this->sendResponse($constarution, trans('actions.created.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.created.failed'));
@@ -142,9 +150,17 @@ class ConstarutionController extends BaseController
                 'blow' => $request->input('blow'),
                 'splice' => $request->input('splice'),
             ]);
+
+            activity()
+                ->performedOn($constarution)
+                ->withProperties($constarution->toArray())
+                ->event('update')
+                ->useLog('constarution')
+                ->log('This model has been updated');
+
             return $this->sendResponse($constarution, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -159,9 +175,17 @@ class ConstarutionController extends BaseController
         try {
             $constarution = Constarution::find($id);
             $constarution->delete();
+
+            activity()
+                ->performedOn($constarution)
+                ->withProperties($constarution->toArray())
+                ->event('daleted')
+                ->useLog('constarution')
+                ->log('This model has been deleted');
+
             return $this->sendResponse($constarution, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }

@@ -29,13 +29,13 @@ class LogsController extends BaseController
 
         try {
             $data = [
-                "activity" => Activity::orderBy('created_at', 'desc')->get() ?? [],
+                "activity" => Activity::with('causer')->orderBy('created_at', 'desc')->get() ?? [],
                 "log_chanel" => Activity::select("log_name")->distinct()->get() ?? []
             ];
 
             return $this->sendResponse($data, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed') . $ex->getMessage());
+            return $this->sendError([], trans('actions.get.failed') . $ex->getMessage());
         }
     }
 
