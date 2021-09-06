@@ -37,7 +37,7 @@
                                         <th>AIS-Progress</th>
                                         <th>3BB-Progress</th>
                                         <th>SINET-Progress</th>
-                                        <th>FN-Progress</th>
+                                        <!-- <th>FN-Progress</th> -->
                                         <th>TRUE-Progress</th>
                                         <th>Update</th>
                                         <th>Action</th>
@@ -363,7 +363,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-9">
+                                    <!-- <div class="col-sm-9">
                                         <div class="form-group">
                                             <label>FN Progress :</label>
                                             <select
@@ -406,7 +406,7 @@
                                                 field="dateFn"
                                             ></has-error>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
@@ -843,20 +843,20 @@ export default {
                             }
                         }
                     },
-                    {
-                        data: "fn_progress.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
+                    // {
+                    //     data: "fn_progress.name",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "") {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 "ไม่ได้กรอกข้อมูล" +
+                    //                 "</span>"
+                    //             );
+                    //         } else {
+                    //             return "<span>" + data + "</span>";
+                    //         }
+                    //     }
+                    // },
                     {
                         data: "true_progress.name",
                         render: function(data, type, row, meta) {

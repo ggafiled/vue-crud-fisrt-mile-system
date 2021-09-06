@@ -16,32 +16,32 @@ class CreatePlaningsTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('planings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('building_id')->unsigned();
-            $table->bigInteger('isp_id')->unsigned();
-            $table->bigInteger('jobtype_id')->unsigned();
-            $table->bigInteger('technician_id')->unsigned();
-            $table->bigInteger('callver_id')->unsigned();
-            $table->bigInteger('callverStatus_id')->unsigned();
-            $table->bigInteger('ispId_id')->unsigned();
-            $table->bigInteger('problemsolution_id')->unsigned();
-            $table->string('name')->nullable();
-            $table->string('surname')->nullable();
-            $table->string('tel')->nullable();
-            $table->string('tel2')->nullable();
-            $table->string('theBuilding')->nullable();
-            $table->string('floor')->nullable();
-            $table->string('room')->nullable();
+            $table->bigInteger('building_id')->unsigned();//ชื่อตึก
+            $table->bigInteger('isp_id')->unsigned();//ispค่ายเน็ต
+            $table->bigInteger('jobtype_id')->unsigned();//ประเภทงาน
+            $table->bigInteger('technician_id')->unsigned();//ชื่อช่าง
+            $table->bigInteger('callver_id')->unsigned();//จำนวนการติดต่อ
+            $table->bigInteger('callverStatus_id')->unsigned();//สถานะการติดต่อ
+            $table->bigInteger('ispId_id')->unsigned();//ผู้ให้ บริการ
+            $table->bigInteger('problemsolution_id')->unsigned();//ปัญหาและวิธีการแก้ไข
+            $table->string('name')->nullable();//ชื่อ
+            $table->string('surname')->nullable();//นามสกุล
+            $table->string('tel')->nullable();//เบอร์โทร
+            $table->string('tel2')->nullable();//เบอร์โทร2
+            $table->string('theBuilding')->nullable();//อาคาร
+            $table->string('floor')->nullable();//ชั้น
+            $table->string('room')->nullable();//ห้อง / เลขที่
             // $table->string('isp')->nullable();
-            $table->string('agent')->nullable();
-            $table->string('circuit')->nullable();
-            $table->string('entranceFee')->nullable();
+            $table->string('agent')->nullable();//ตัวแทน/พื้นที่
+            $table->string('circuit')->nullable();//เลขสมาชิก
+            $table->string('entranceFee')->nullable();//ค่าแรกเข้า (฿)
             // $table->string('jobType')->nullable();
-            $table->date('appointmentDate')->nullable();
-            $table->time('appointmentTime')->nullable();
+            $table->date('appointmentDate')->nullable();//วันนัดหมาย
+            $table->time('appointmentTime')->nullable();//เวลานัดหมาย ในระบบ
             // $table->string('idRequired')->nullable();
-            // $table->string('status')->nullable();
-            $table->string('subStatus')->nullable();
-            $table->string('reMark')->nullable();
+            $table->string('status')->nullable();
+            $table->string('subStatus')->nullable();//Sub-Status
+            $table->string('reMark')->nullable();//รีมาร์ค (For Admin)
 
             $table->timestamps();
             $table->softDeletes();

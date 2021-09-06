@@ -43,6 +43,7 @@ class TeamSerwayController extends BaseController
             $teamserways = Teamserway::create([
                 'nameSerway' => $request->input('nameSerway'),
             ]);
+            $teamserways->save();
             return $this->sendResponse($teamserways, trans('actions.created.success'));
         } catch (Exception $ex) {
             return $this->sendError($teamserways, trans('actions.created.failed'));

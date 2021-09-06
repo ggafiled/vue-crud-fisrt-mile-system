@@ -206,17 +206,40 @@ export default {
                         details: "แก้ไขข้อมูลสถานะการเชื่อมโครงข่าย"
                     }
                 ],
-                constarution: []
+                constarution: [
+                    {
+                        id: 1,
+                        route: "/settings/generatingaction",
+                        title: "Generatingaction(CRED)",
+                        details: "แก้ไขข้อมูลสถานะการเชื่อมโครงข่าย"
+                    },
+                    {
+                        id: 2,
+                        route: "/settings/serwayteam",
+                        title: "SerwayTeam(CRED)",
+                        details: "แก้ไขข้อมูลทีมสำรวจ"
+                    }
+                ]
             }
         };
     },
     methods: {
         activaTab(tab) {
-            if($('.nav-tabs a[href="#' + tab + '"]').length){
+            if ($('.nav-tabs a[href="#' + tab + '"]').length) {
                 $('.nav-tabs a[href="#' + tab + '"]').tab("show");
-            }else{
-                this.$router.replace({ query: {tab: $('.nav-tabs a').first().attr('href').toString().replace("#","") } })
-                $('.nav-tabs a').first().tab("show");
+            } else {
+                this.$router.replace({
+                    query: {
+                        tab: $(".nav-tabs a")
+                            .first()
+                            .attr("href")
+                            .toString()
+                            .replace("#", "")
+                    }
+                });
+                $(".nav-tabs a")
+                    .first()
+                    .tab("show");
             }
         },
         deactivaTab(tab) {
@@ -226,12 +249,10 @@ export default {
     mounted() {
         console.log(this.$route.query.tab);
         this.deactivaTab();
-        this.activaTab(
-            this.$route.query.tab
-        );
+        this.activaTab(this.$route.query.tab);
     },
     unmounted() {
         this.deactivaTab();
-    },
+    }
 };
 </script>

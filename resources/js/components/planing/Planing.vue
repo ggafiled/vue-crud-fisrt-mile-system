@@ -27,35 +27,35 @@
                             >
                                 <thead>
                                     <tr class="info">
-                                        <th>NO</th>
-                                        <th>name</th>
-                                        <th>surname</th>
-                                        <th>tel</th>
-                                        <th>tel2</th>
-                                        <th>building name</th>
-                                        <th>House Number</th>
-                                        <th>Swine</th>
-                                        <th>Alley</th>
-                                        <th>Road</th>
-                                        <th>District</th>
-                                        <th>Province</th>
-                                        <th>County</th>
-                                        <th>PostalCode</th>
-                                        <th>building</th>
-                                        <th>floor</th>
-                                        <th>room</th>
+                                        <th></th>
+                                        <th>ชื่อ/บริษัท</th>
+                                        <th>นามสกุล</th>
+                                        <th>เบอร์ติดต่อหลัก</th>
+                                        <th>เบอร์ติดต่อสำรอง</th>
+                                        <th>ชื่ออาคาร</th>
+                                        <th>บ้านเลขที่</th>
+                                        <th>หมู่</th>
+                                        <th>ซอย</th>
+                                        <th>ถนน</th>
+                                        <th>อำเภอ/เขต</th>
+                                        <th>จังหวัด</th>
+                                        <th>ตำบล/แขวง</th>
+                                        <th>รหัสไปรษณีย์</th>
+                                        <th>จำนวนอาคาร</th>
+                                        <th>จำนวนชั้น</th>
+                                        <th>จำนวนห้อง</th>
                                         <th>isp</th>
-                                        <th>agent</th>
-                                        <th>circuit</th>
-                                        <th>entrance Fee</th>
-                                        <th>jobType</th>
-                                        <th>appointment date</th>
-                                        <th>appointment time</th>
-                                        <th>technician planing</th>
-                                        <th>idRequired</th>
+                                        <th>ตัวแทน/พื้นที่</th>
+                                        <th>เลขสมาชิก</th>
+                                        <th>ค่าแรกเข้า (฿)</th>
+                                        <th>ประเภทงาน</th>
+                                        <th>วันนัดหมาย</th>
+                                        <th>เวลานัดหมายในระบบ</th>
+                                        <th>ทีมช่าง Planing</th>
+                                        <th>ผู้ให้บริการ</th>
                                         <th>status</th>
                                         <th>subStatus</th>
-                                        <th>remark</th>
+                                        <th>รีมาร์ค(For Admin)</th>
                                         <th>updated</th>
                                         <th>Action</th>
                                     </tr>
@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Name</label>
+                                            <label>ชื่อ</label>
                                             <input
                                                 v-model="form.name"
                                                 type="text"
@@ -146,7 +146,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Surname</label>
+                                            <label>นามสกุล</label>
                                             <input
                                                 v-model="form.surname"
                                                 type="text"
@@ -170,7 +170,7 @@
                                         ]"
                                     >
                                         <div class="form-group">
-                                            <label>Tel</label>
+                                            <label>เบอร์โทร</label>
                                             <input
                                                 v-model="form.tel"
                                                 type="text"
@@ -194,7 +194,7 @@
                                         ]"
                                     >
                                         <div class="form-group">
-                                            <label>Tel2</label>
+                                            <label>เบอร์โทร2</label>
                                             <input
                                                 v-model="form.tel2"
                                                 type="text"
@@ -220,7 +220,7 @@
                                         ]"
                                     >
                                         <div class="form-group">
-                                            <label>Project Name</label>
+                                            <label>ชื่อตึกอาคาร</label>
                                             <Select2
                                                 v-model="form.building_id"
                                                 :options="building"
@@ -238,7 +238,7 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Building</label>
+                                            <label>อาคาร</label>
                                             <input
                                                 v-model="form.theBuilding"
                                                 type="text"
@@ -258,7 +258,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Floor</label>
+                                            <label>ชั้น</label>
                                             <input
                                                 v-model="form.floor"
                                                 type="text"
@@ -278,7 +278,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Room</label>
+                                            <label>ห้อง/เลขที่</label>
                                             <input
                                                 v-model="form.room"
                                                 type="text"
@@ -325,7 +325,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Agent</label>
+                                            <label>ตัวแทน/พื้นที่</label>
                                             <input
                                                 v-model="form.agent"
                                                 type="text"
@@ -345,7 +345,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Circuit</label>
+                                            <label>เลขสมาชิก</label>
                                             <input
                                                 v-model="form.circuit"
                                                 type="text"
@@ -365,7 +365,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>EntranceFee</label>
+                                            <label>ค่าแรกเข้า(฿)</label>
                                             <input
                                                 v-model="form.entranceFee"
                                                 type="text"
@@ -388,7 +388,7 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>JobType</label>
+                                            <label>ประเภทงาน</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.jobType"
@@ -412,7 +412,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Appointment Date</label>
+                                            <label>วันนัดหมาย</label>
                                             <input
                                                 v-model="form.appointmentDate"
                                                 type="date"
@@ -432,7 +432,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Appointment Time</label>
+                                            <label>เวลานัดหมาย ในระบบ</label>
                                             <input
                                                 v-model="form.appointmentTime"
                                                 type="time"
@@ -452,7 +452,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Technician Planing</label>
+                                            <label>ชื่อช่าง Planing</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.technicianPlaning"
@@ -476,7 +476,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Phone Technician</label>
+                                            <label>เบอร์โทรช่าง</label>
                                             <input
                                                 v-model="form.technicianPlaning"
                                                 type="text"
@@ -496,7 +496,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Email Technician</label>
+                                            <label>อีเมลล์ช่าง</label>
                                             <input
                                                 v-model="form.technicianPlaning"
                                                 type="text"
@@ -516,7 +516,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Callver</label>
+                                            <label>จำนวนการติดต่อ</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.callver"
@@ -540,7 +540,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Callver Status</label>
+                                            <label>สถานะการติดต่อ</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.callverstatus"
@@ -566,18 +566,22 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Problemsolution</label>
-                                            <input
-                                                v-model="form.problemsolution"
-                                                type="text"
+                                            <label>ปัญหาและวิธีการแก้ไข</label>
+                                            <select
                                                 class="form-control"
-                                                placeholder="Enter your phone technician..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'problemsolution'
-                                                    )
-                                                }"
-                                            />
+                                                v-model="form.problemsolution"
+                                            >
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in problemsolutions"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.problemSolution }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="problemsolution"
@@ -589,7 +593,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>ID Required</label>
+                                            <label>ID ที่ต้องใช้</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.idRequired"
@@ -660,7 +664,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label>Remark</label>
+                                            <label>รีมาร์ค (For Admin)</label>
                                             <input
                                                 v-model="form.reMark"
                                                 type="text"
@@ -765,22 +769,15 @@ export default {
         loadBuildings() {
             axios.get("/building").then(
                 response =>
-                    (this.buildings = response.data.data.map(a => {
+                    (this.building = response.data.data.map(a => {
                         return { text: a.projectName, id: a.id };
                     }))
             );
         },
         loadCallver() {
-            axios.get("/callvers").then(
-                response =>
-                    (this.callvers = response.data.data.map(a => {
-                        return { text: a.callVer, id: a.id };
-                    }))
-            );
-
-            // axios.get("/callvers").then(response => {
-            //     this.callvers = response.data.data;
-            // });
+            axios.get("/callvers").then(response => {
+                this.callvers = response.data.data;
+            });
         },
         loadCallverstatus() {
             axios.get("/callverstatuses").then(response => {

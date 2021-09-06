@@ -211,9 +211,9 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label for=""></label>
+                                            <label for="">ดึงชื่ออาคาร</label>
                                             <button
                                                 type="button"
                                                 class="btn btn-outline-success mx-auto mt-auto mb-auto btn-block"

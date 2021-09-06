@@ -231,6 +231,11 @@ export default [{
                 path: "generatingaction",
                 component: require("./components/datavalidation/progress/Generatingaction.vue")
                     .default
+            },
+            {
+                path: "serwayteam",
+                component: require("./components/datavalidation/constalution/teamserway.vue")
+                    .default
             }
         ]
     },

@@ -64,6 +64,7 @@ class PlaningController extends BaseController{
             'entranceFee' => $request->input('entranceFee'),
             'appointmentDate' => $request->input('appointmentDate'),
             'appointmentTime' => $request->input('appointmentTime'),
+            'status' => $request->input('status'),
             'subStatus' => $request->input('subStatus'),
             'reMark' => $request->input('reMark')
         ]);
