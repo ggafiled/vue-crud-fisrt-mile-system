@@ -15,6 +15,7 @@ class Planing extends Model
     protected $fillable = [
         'building_id',
         'isp_id',
+        'agentDetail_id',
         'jobtype_id',
         'technician_id',
         'callver_id',
@@ -84,5 +85,10 @@ class Planing extends Model
     public function problemsolution()
     {
         return $this->belongsTo('App\Models\Problemsolution', 'problemsolution_id', 'id');
+    }
+
+    public function agentDetail()
+    {
+        return $this->belongsTo('App\Models\Agent', 'agentDetail_id', 'id');
     }
 }

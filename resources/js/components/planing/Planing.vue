@@ -326,17 +326,21 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>ตัวแทน/พื้นที่</label>
-                                            <input
-                                                v-model="form.agent"
-                                                type="text"
+                                            <select
                                                 class="form-control"
-                                                placeholder="Enter your agent..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'agent'
-                                                    )
-                                                }"
-                                            />
+                                                v-model="form.agent"
+                                            >
+                                                <option value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in agents"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.agentDetail }}
+                                                </option>
+                                            </select>
                                             <has-error
                                                 :form="form"
                                                 field="agent"
@@ -733,6 +737,7 @@ export default {
             isps: [],
             callvers: [],
             callverstatuses: [],
+            agents: [],
             settings: {
                 placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
                 allowClear: true,
@@ -802,6 +807,11 @@ export default {
         loadIsp() {
             axios.get("/isps").then(response => {
                 this.isps = response.data.data;
+            });
+        },
+        loadAgent() {
+            axios.get("/agents").then(response => {
+                this.agents = response.data.data;
             });
         },
         loadPlaning() {
@@ -1505,6 +1515,7 @@ export default {
         this.loadIsp();
         this.loadCallver();
         this.loadCallverstatus();
+        this.loadAgent();
     }
 };
 </script>

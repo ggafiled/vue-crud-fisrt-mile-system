@@ -24,6 +24,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('teamserways', 'TeamSerwayController@index');
+    Route::get('agents', 'AgentController@index');
     Route::get('isps', 'IspController@index');
     Route::get('jobtpyes', 'JobTpyeController@index');
     Route::get('problemsolutions', 'ProblemsolutionController@index');
@@ -78,6 +79,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'callverstatuses' => 'CallverstatusController',
         'generatingaction' => 'GeneratingactionController',
         'teamserway' => 'TeamSerwayController',
+        'agent' => 'AgentController',
         // 'tickets' => 'TicketsController',
         'backup' => 'BackupController',
         'logs' => 'LogsController',
