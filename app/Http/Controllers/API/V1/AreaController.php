@@ -37,9 +37,9 @@ class AreaController extends BaseController
     {
         try {
             $area = Area::create($request->all());
-            return $this->sendResponse($area, trans('actions.get.success'));
+            return $this->sendResponse($area, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.fialed'));
+            return $this->sendError([], trans('actions.created.fialed'));
         }
     }
 
@@ -55,9 +55,9 @@ class AreaController extends BaseController
         try {
             $area = Area::withTrashed()->findOrFail($id);
             $area->update($request->all());
-            return $this->sendResponse($area, trans('actions.get.success'));
+            return $this->sendResponse($area, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.fialed'));
+            return $this->sendError([], trans('actions.updated.fialed'));
         }
     }
 
@@ -72,9 +72,9 @@ class AreaController extends BaseController
         try {
             $area = Area::withTrashed()->findOrFail($id);
             $area->delete();
-            return $this->sendResponse($area, trans('actions.get.success'));
+            return $this->sendResponse($area, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.fialed'));
+            return $this->sendError([], trans('actions.destroy.fialed'));
         }
     }
 }

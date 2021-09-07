@@ -6,6 +6,7 @@ use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Planing;
+use Exception;
 
 class PlaningController extends BaseController{
 
@@ -43,7 +44,9 @@ class PlaningController extends BaseController{
      */
     public function store(Request $request)
     {
-        $Planing = new Planing([
+
+        try {
+            $planing = new Planing([
             'building_id' => $request->input('building_id'),
             'isp_id' => $request->input('isp_id'),
             'jobtype_id' => $request->input('jobtype_id'),
@@ -68,9 +71,11 @@ class PlaningController extends BaseController{
             'subStatus' => $request->input('subStatus'),
             'reMark' => $request->input('reMark')
         ]);
-        $Planing->save();
-
-        return response()->json('Planing created!');
+        $planing->save();
+            return $this->sendResponse($planing, trans('actions.created.success'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.created.failed'));
+        }
     }
 
     /**\
@@ -104,10 +109,14 @@ class PlaningController extends BaseController{
      */
     public function update(Request $request, $id)
     {
-        $Planing = Planing::find($id);
-        $Planing->update($request->all());
 
-        return response()->json('Planing updated!');
+        try {
+            $planing = Planing::find($id);
+            $planing->update($request->all());
+            return $this->sendResponse($planing, trans('actions.updated.success'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.updated.failed'));
+        }
     }
 
     /**
@@ -118,9 +127,12 @@ class PlaningController extends BaseController{
      */
     public function destroy($id)
     {
-        $Planing = Planing::find($id);
-        $Planing->delete();
-
-        return response()->json('Planing deleted!');
+        try {
+            $planing = Planing::find($id);
+            $planing->delete();
+            return $this->sendResponse($planing, trans('actions.destroy.success'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.destroy.failed'));
+        }
     }
 }

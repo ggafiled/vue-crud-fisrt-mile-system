@@ -27,7 +27,7 @@ class AreaAisController extends BaseController
         return $this->sendResponse($areaAis, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($areaAis, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -46,7 +46,7 @@ class AreaAisController extends BaseController
             $areaAis->save();
             return $this->sendResponse($areaAis, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($areaAis, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -65,7 +65,7 @@ class AreaAisController extends BaseController
             $areaAis->update($request->all());
             return $this->sendResponse($areaAis, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($areaAis, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -82,7 +82,7 @@ class AreaAisController extends BaseController
             $areaAis->delete();
             return $this->sendResponse($areaAis, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($areaAis, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }

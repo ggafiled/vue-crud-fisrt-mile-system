@@ -33,7 +33,7 @@ class ProfileController extends BaseController
             $user = auth('api')->user();
             return $this->sendResponse($user, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($user, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -53,7 +53,7 @@ class ProfileController extends BaseController
             $user->update($request->all());
             return $this->sendResponse($user, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($user, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -71,7 +71,7 @@ class ProfileController extends BaseController
             $user = User::find(auth('api')->user()->id)->update(['password' => Hash::make($request->new_password)]);
             return $this->sendResponse($user, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($user, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 }

@@ -27,7 +27,7 @@ class AreaFiberNetController extends BaseController
         return $this->sendResponse($areaFiberNet, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($areaFiberNet, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -46,7 +46,7 @@ class AreaFiberNetController extends BaseController
             $areaFiberNet->save();
             return $this->sendResponse($areaFiberNet, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($areaFiberNet, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -65,7 +65,7 @@ class AreaFiberNetController extends BaseController
             $areaFiberNet->update($request->all());
             return $this->sendResponse($areaFiberNet, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($areaFiberNet, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -82,7 +82,7 @@ class AreaFiberNetController extends BaseController
             $areaFiberNet->delete();
             return $this->sendResponse($areaFiberNet, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($areaFiberNet, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }

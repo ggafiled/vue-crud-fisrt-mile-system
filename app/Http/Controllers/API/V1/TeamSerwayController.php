@@ -27,7 +27,7 @@ class TeamSerwayController extends BaseController
             $teamserways = Teamserway::orderBy('updated_at','asc')->get();
             return $this->sendResponse($teamserways, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($teamserways, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -46,7 +46,7 @@ class TeamSerwayController extends BaseController
             $teamserways->save();
             return $this->sendResponse($teamserways, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($teamserways, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -64,7 +64,7 @@ class TeamSerwayController extends BaseController
             $teamserways->update($request->all());
             return $this->sendResponse($teamserways, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($teamserways, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -81,7 +81,7 @@ class TeamSerwayController extends BaseController
             $teamserways->delete();
             return $this->sendResponse($teamserways, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($teamserways, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }

@@ -36,7 +36,7 @@ class ConstarutionController extends BaseController
                 'fiberConvertion:id,status as name')->get();
             return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -68,7 +68,7 @@ class ConstarutionController extends BaseController
                 'type' => $request->input('type'),
                 'microductDateD' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductDateD') : null,
                 'microductDateK' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductDateK') : null,
-                'fiberConvertionDateD' => strtolower($request->input('type')) == strtolower('FiberConvertion') ? $request->input('fiberConvertionDate') : null,
+                'fiberConvertionDateD' => strtolower($request->input('type')) == strtolower('FiberConvertion') ? $request->input('fiberConvertionDateD') : null,
                 'blow' => $request->input('blow'),
                 'splice' => $request->input('splice'),
             ]);
@@ -146,7 +146,7 @@ class ConstarutionController extends BaseController
                 'type' => $request->input('type'),
                 'microductDateD' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductDateD') : null,
                 'microductDateK' => strtolower($request->input('type')) == strtolower('Microduct') ? $request->input('microductDateK') : null,
-                'fiberConvertionDateD' => strtolower($request->input('type')) == strtolower('FiberConvertion') ? $request->input('fiberConvertionDate') : null,
+                'fiberConvertionDateD' => strtolower($request->input('type')) == strtolower('FiberConvertion') ? $request->input('fiberConvertionDateD') : null,
                 'blow' => $request->input('blow'),
                 'splice' => $request->input('splice'),
             ]);

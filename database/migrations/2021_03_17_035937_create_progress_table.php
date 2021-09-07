@@ -16,14 +16,14 @@ class CreateProgressTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('progress', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('building_id')->unsigned();
-            $table->bigInteger('fmProgress_id')->unsigned();
-            $table->bigInteger('aisProgress_id')->unsigned();
-            $table->bigInteger('totProgress_id')->unsigned();
-            $table->bigInteger('progress3bb_id')->unsigned();
-            $table->bigInteger('sinetProgress_id')->unsigned();
-            $table->bigInteger('fnProgress_id')->unsigned();
-            $table->bigInteger('trueProgress_id')->unsigned();
+            $table->bigInteger('building_id')->unsigned()->nullable();
+            $table->bigInteger('fmProgress_id')->unsigned()->nullable();
+            $table->bigInteger('aisProgress_id')->unsigned()->nullable();
+            $table->bigInteger('totProgress_id')->unsigned()->nullable();
+            $table->bigInteger('progress3bb_id')->unsigned()->nullable();
+            $table->bigInteger('sinetProgress_id')->unsigned()->nullable();
+            $table->bigInteger('fnProgress_id')->unsigned()->nullable();
+            $table->bigInteger('trueProgress_id')->unsigned()->nullable();
             // $table->string('fmProgress')->nullable();
             $table->date('dateFm')->nullable();
             // $table->string('totProgress')->nullable();

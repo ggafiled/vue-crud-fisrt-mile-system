@@ -34,7 +34,7 @@ class AreaTrueController extends BaseController
             $areaTrue = AreaTrue::orderBy('updated_at','asc')->get();
             return $this->sendResponse($areaTrue, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($areaTrue, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -54,7 +54,7 @@ class AreaTrueController extends BaseController
             $areaTrue->save();
             return $this->sendResponse($areaTrue, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($areaTrue, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -73,7 +73,7 @@ class AreaTrueController extends BaseController
             $areaTrue->update($request->all());
             return $this->sendResponse($areaTrue, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($areaTrue, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -90,7 +90,7 @@ class AreaTrueController extends BaseController
             $areaTrue->delete();
             return $this->sendResponse($areaTrue, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($areaTrue, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }

@@ -27,7 +27,7 @@ class ProblemsolutionController extends BaseController
         return $this->sendResponse($problemsolution, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($problemsolution, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -46,7 +46,7 @@ class ProblemsolutionController extends BaseController
             $problemsolution->save();
             return $this->sendResponse($problemsolution, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($problemsolution, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -65,7 +65,7 @@ class ProblemsolutionController extends BaseController
             $problemsolution->update($request->all());
             return $this->sendResponse($problemsolution, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($problemsolution, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -82,8 +82,7 @@ class ProblemsolutionController extends BaseController
             $problemsolution->delete();
             return $this->sendResponse($problemsolution, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($problemsolution, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }
-

@@ -27,7 +27,7 @@ class NameSaleController extends BaseController
         return $this->sendResponse($salefm, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($salefm, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -47,7 +47,7 @@ class NameSaleController extends BaseController
             $salefms->save();
             return $this->sendResponse($salefms, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($salefms, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -66,7 +66,7 @@ class NameSaleController extends BaseController
             $salefms->update($request->all());
             return $this->sendResponse($salefms, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($salefms, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -83,7 +83,7 @@ class NameSaleController extends BaseController
             $salefms->delete();
             return $this->sendResponse($salefms, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($salefms, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }
