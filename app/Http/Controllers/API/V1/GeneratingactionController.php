@@ -27,7 +27,7 @@ class GeneratingactionController extends BaseController
         return $this->sendResponse($generatingaction, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($generatingaction, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -46,7 +46,7 @@ class GeneratingactionController extends BaseController
             $generatingaction->save();
             return $this->sendResponse($generatingaction, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($generatingaction, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -65,7 +65,7 @@ class GeneratingactionController extends BaseController
             $generatingaction->update($request->all());
             return $this->sendResponse($generatingaction, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($generatingaction, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -82,7 +82,7 @@ class GeneratingactionController extends BaseController
             $generatingaction->delete();
             return $this->sendResponse($generatingaction, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($generatingaction, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }

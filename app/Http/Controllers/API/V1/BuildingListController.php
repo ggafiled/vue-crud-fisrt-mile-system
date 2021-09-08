@@ -43,7 +43,7 @@ class BuildingListController extends BaseController
                 'workTime:id,worktime as name')->get();
             return $this->sendResponse($buildings, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 

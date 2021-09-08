@@ -35,9 +35,9 @@ class BbnController extends BaseController
     {
         try {
             $bbn = Bbn::create($request->all());
-            return $this->sendResponse($bbn, trans('actions.get.success'));
+            return $this->sendResponse($bbn, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.fialed'));
+            return $this->sendError([], trans('actions.created.fialed'));
         }
     }
 
@@ -53,9 +53,9 @@ class BbnController extends BaseController
         try {
             $bbn = Bbn::withTrashed()->findOrFail($id);
             $bbn->update($request->all());
-            return $this->sendResponse($bbn, trans('actions.get.success'));
+            return $this->sendResponse($bbn, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.fialed'));
+            return $this->sendError([], trans('actions.updated.fialed'));
         }
     }
 
@@ -70,9 +70,9 @@ class BbnController extends BaseController
         try {
             $bbn = Bbn::withTrashed()->findOrFail($id);
             $bbn->delete();
-            return $this->sendResponse($bbn, trans('actions.get.success'));
+            return $this->sendResponse($bbn, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.fialed'));
+            return $this->sendError([], trans('actions.destroy.fialed'));
         }
     }
 }

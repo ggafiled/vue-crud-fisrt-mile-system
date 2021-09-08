@@ -27,7 +27,7 @@ class AgentController extends BaseController
         return $this->sendResponse($agents, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -45,7 +45,7 @@ class AgentController extends BaseController
             ]);
             return $this->sendResponse($agents, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($agents, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -63,7 +63,7 @@ class AgentController extends BaseController
             $agents->update($request->all());
             return $this->sendResponse($agents, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($agents, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -80,7 +80,7 @@ class AgentController extends BaseController
             $agents->delete();
             return $this->sendResponse($agents, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($agents, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }

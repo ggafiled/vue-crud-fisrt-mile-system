@@ -33,7 +33,7 @@ class BackupController extends BaseController
 
             return $this->sendResponse($backup, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed') . $ex->getMessage());
+            return $this->sendError([], trans('actions.get.failed') . $ex->getMessage());
         }
     }
 
@@ -106,9 +106,9 @@ class BackupController extends BaseController
     public function actionBackup(){
         try {
             $exitCode = Artisan::call('database:backup');
-            return $this->sendResponse($exitCode, trans('actions.get.success'));
+            return $this->sendResponse($exitCode, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed') . $ex->getMessage());
+            return $this->sendError([], trans('actions.destroy.failed') . $ex->getMessage());
         }
     }
 }

@@ -42,9 +42,9 @@ class WorkTimeController extends BaseController
     {
         try {
             $workTime = Worktime::create($request->all());
-            return $this->sendResponse($workTime, trans('actions.get.success'));
+            return $this->sendResponse($workTime, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.fialed'));
+            return $this->sendError([], trans('actions.created.fialed'));
         }
     }
 
@@ -60,9 +60,9 @@ class WorkTimeController extends BaseController
         try {
             $workTime = Worktime::withTrashed()->findOrFail($id);
             $workTime->update($request->all());
-            return $this->sendResponse($workTime, trans('actions.get.success'));
+            return $this->sendResponse($workTime, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.fialed'));
+            return $this->sendError([], trans('actions.updated.fialed'));
         }
     }
 
@@ -77,9 +77,9 @@ class WorkTimeController extends BaseController
         try {
             $workTime = Worktime::withTrashed()->findOrFail($id);
             $workTime->delete();
-            return $this->sendResponse($workTime, trans('actions.get.success'));
+            return $this->sendResponse($workTime, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.fialed'));
+            return $this->sendError([], trans('actions.destroy.fialed'));
         }
     }
 }

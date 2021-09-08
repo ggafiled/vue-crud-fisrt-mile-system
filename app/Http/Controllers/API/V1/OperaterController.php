@@ -27,7 +27,7 @@ class OperaterController extends BaseController
         return $this->sendResponse($operater, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError($operater, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -47,7 +47,7 @@ class OperaterController extends BaseController
             $operater->save();
             return $this->sendResponse($operater, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($operater, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -66,7 +66,7 @@ class OperaterController extends BaseController
             $operater->update($request->all());
             return $this->sendResponse($operater, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($operater, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -83,7 +83,7 @@ class OperaterController extends BaseController
             $operater->delete();
             return $this->sendResponse($operater, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($operater, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }

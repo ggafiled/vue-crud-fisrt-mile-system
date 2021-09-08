@@ -23,11 +23,11 @@ class TechnicianController extends BaseController
      */
     public function index()
     {
-        $technician = Technician::all();
-        return $this->sendResponse($technician, trans('actions.get.success'));
         try {
+            $technician = Technician::all();
+        return $this->sendResponse($technician, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($technician, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -48,7 +48,7 @@ class TechnicianController extends BaseController
             $technician->save();
             return $this->sendResponse($technician, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($technician, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -67,7 +67,7 @@ class TechnicianController extends BaseController
             $technician->update($request->all());
             return $this->sendResponse($technician, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($technician, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -84,8 +84,7 @@ class TechnicianController extends BaseController
             $technician->delete();
             return $this->sendResponse($technician, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($technician, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }
-

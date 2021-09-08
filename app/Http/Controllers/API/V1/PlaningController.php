@@ -46,7 +46,11 @@ class PlaningController extends BaseController{
     {
 
         try {
+<<<<<<< HEAD
             $planing = Planing::create([
+=======
+            $planing = new Planing([
+>>>>>>> 511126743c98f0bb241b82880a13394e50050583
             'building_id' => $request->input('building_id'),
             'isp_id' => $request->input('isp_id'),
             'agentDetail_id' => $request->input('agentDetail_id'),

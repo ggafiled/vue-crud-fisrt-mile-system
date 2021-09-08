@@ -40,7 +40,7 @@ class UserController extends BaseController
             $users = User::withTrashed()->with('roles:id')->get();
             return $this->sendResponse($users, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($users, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -58,7 +58,7 @@ class UserController extends BaseController
             $users = User::withTrashed()->get(['name', 'id']);
             return $this->sendResponse($users, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($users, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -90,7 +90,7 @@ class UserController extends BaseController
 
             return $this->sendResponse($user, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($user, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -124,7 +124,7 @@ class UserController extends BaseController
             $user->syncRoles([$access]);
             return $this->sendResponse($user, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($user, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -145,7 +145,7 @@ class UserController extends BaseController
             $user->delete();
             return $this->sendResponse($user, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($user, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }

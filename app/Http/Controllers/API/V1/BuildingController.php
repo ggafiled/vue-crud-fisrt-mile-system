@@ -129,7 +129,7 @@ class Buildingcontroller extends BaseController
             $building->delete();
             return $this->sendResponse($building, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }

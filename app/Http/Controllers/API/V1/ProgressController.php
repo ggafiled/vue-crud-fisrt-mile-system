@@ -37,7 +37,7 @@ class ProgressController extends BaseController
             )->get();
             return $this->sendResponse($progress, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($progress, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
@@ -67,20 +67,20 @@ class ProgressController extends BaseController
                 'totProgress_id' => $request->input('totProgress_id'),
                 'progress3bb_id' => $request->input('progress3bb_id'),
                 'sinetProgress_id' => $request->input('sinetProgress_id'),
-                'fnProgress_id' => $request->input('fnProgress_id'),
+                'fnProgress_id' => $request->input('fnProgress_id') ?? null,
                 'trueProgress_id' => $request->input('trueProgress_id'),
                 'dateFm' => $request->input('dateFm'),
                 'dateTot' => $request->input('dateTot'),
                 'dateAis' => $request->input('dateAis'),
                 'date3BB' => $request->input('date3BB'),
                 'dateSinet' => $request->input('dateSinet'),
-                'dateFn' => $request->input('dateFn'),
+                'dateFn' => $request->input('dateFn') ?? null,
                 'dateTrue' => $request->input('dateTrue')
             ]);
             $progress->save();
             return $this->sendResponse($progress, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError($progress, trans('actions.created.failed'));
+            return $this->sendError($ex, trans('actions.created.failed'));
         }
     }
 
@@ -121,7 +121,7 @@ class ProgressController extends BaseController
             $progress->update($request->all());
             return $this->sendResponse($progress, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError($progress, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 
@@ -139,7 +139,7 @@ class ProgressController extends BaseController
 
             return $this->sendResponse($progress, trans('actions.destroy.success'));
         } catch (Exception $ex) {
-            return $this->sendError($progress, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
 }
