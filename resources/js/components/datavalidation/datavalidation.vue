@@ -153,20 +153,27 @@ export default {
 
                     {
                         id: 5,
+                        route: "/settings/area_true_new",
+                        title: "Area True New(CRED)",
+                        details: "แก้ไขข้อมูลพื้นที่ทรู"
+                    },
+
+                    {
+                        id: 6,
                         route: "/settings/area_ais",
                         title: "Area Ais(CRED)",
                         details: "แก้ไขข้อมูลพื้นที่เอไอเอส"
                     },
 
                     {
-                        id: 6,
+                        id: 7,
                         route: "/settings/area_fibernet",
                         title: "Area FiberNet(CRED)",
                         details: "แก้ไขข้อมูลพื้นที่ไฟเบอร์เน็ต"
                     },
 
                     {
-                        id: 7,
+                        id: 8,
                         route: "/settings/operating_time",
                         title: "Operating Time(CRED)",
                         details: "แก้ไขข้อมูลพื้นที่เวลาเข้างาน"

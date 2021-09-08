@@ -19,6 +19,7 @@ class Building extends Model
         'bbns_id',
         'area3bb_id',
         'areaTrue_id',
+        'areaTrueNew_id',
         'areaAis_id',
         'areaFibernet_id',
         'workTime_id',
@@ -50,7 +51,6 @@ class Building extends Model
         'contractPeriod',
         'reNewContact',
         'balance',
-        'areaTrueNew',
     ];
 
     // protected $appends = ['salefm', 'payment', 'area', 'bbn', 'area3bb', 'areaTrue', 'areaAis', 'areaFibernet', 'worktime'];
@@ -112,6 +112,11 @@ class Building extends Model
     public function areaTrue()
     {
         return $this->hasOne('App\Models\AreaTrue', 'id', 'areaTrue_id');
+    }
+
+    public function areaTrueNew()
+    {
+        return $this->hasOne('App\Models\AreaTrueNew', 'id', 'areaTrueNew_id');
     }
 
     public function areaAis()

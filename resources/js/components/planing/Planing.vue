@@ -301,7 +301,7 @@
                                             <label>ISP</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.isp"
+                                                v-model="form.isp_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -328,7 +328,7 @@
                                             <label>ตัวแทน/พื้นที่</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.agent"
+                                                v-model="form.agentDetail_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -395,7 +395,7 @@
                                             <label>ประเภทงาน</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.jobType"
+                                                v-model="form.jobtype_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -459,7 +459,7 @@
                                             <label>ชื่อช่าง Planing</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.technicianPlaning"
+                                                v-model="form.technician_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -478,11 +478,11 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <!-- <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>เบอร์โทรช่าง</label>
                                             <input
-                                                v-model="form.technicianPlaning"
+                                                v-model="form.technician_id"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your phone technician..."
@@ -502,7 +502,7 @@
                                         <div class="form-group">
                                             <label>อีเมลล์ช่าง</label>
                                             <input
-                                                v-model="form.technicianPlaning"
+                                                v-model="form.technician_id"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your phone technician..."
@@ -517,13 +517,13 @@
                                                 field="technicianPlaning"
                                             ></has-error>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>จำนวนการติดต่อ</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.callver"
+                                                v-model="form.callver_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -547,7 +547,7 @@
                                             <label>สถานะการติดต่อ</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.callverstatus"
+                                                v-model="form.callverStatus_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -573,7 +573,7 @@
                                             <label>ปัญหาและวิธีการแก้ไข</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.problemsolution"
+                                                v-model="form.problemsolution_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -602,7 +602,7 @@
                                                 class="form-control"
                                                 v-model="form.idRequired"
                                             >
-                                                <option value=""
+                                                <option value="ispId_id"
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -747,7 +747,25 @@ export default {
             form: new Form({
                 id: "",
                 building_id: "",
+                isp_id: "",
+                agentDetail_id: "",
+                jobtype_id: "",
+                technician_id: "",
+                callver_id: "",
+                callverstatus_id: "",
+                ispId_id: "",
+                problemsolution_id: "",
+                
                 projectName: "",
+                isp: "",
+                agentDetail: "",
+                jobtype: "",
+                technician: "",
+                callver: "",
+                callverstatus: "",
+                ispId: "",
+                problemsolution:"",
+
                 name: "",
                 surname: "",
                 tel: "",
@@ -755,15 +773,10 @@ export default {
                 theBuilding: "",
                 floor: "",
                 room: "",
-                isp: "",
-                agent: "",
                 circuit: "",
                 entranceFee: "",
-                jobType: "",
                 appointmentDate: "",
                 appointmentTime: "",
-                technicianPlaning: "",
-                idRequired: "",
                 status: "",
                 subStatus: "",
                 reMark: ""
@@ -914,7 +927,7 @@ export default {
                 ajax: "/api/planing",
                 responsive: true,
                 processing: true,
-                pageLength: 15,
+                pageLength: 10,
                 lengthMenu: [
                     [10, 15, 25, 50, -1],
                     [10, 15, 25, 50, "All"]

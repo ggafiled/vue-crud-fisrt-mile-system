@@ -18,6 +18,7 @@ class CreatePlaningsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();//ชื่อตึก
             $table->bigInteger('isp_id')->unsigned();//ispค่ายเน็ต
+            $table->bigInteger('agentDetail_id')->unsigned();//ตัวแทน/พื้นที่
             $table->bigInteger('jobtype_id')->unsigned();//ประเภทงาน
             $table->bigInteger('technician_id')->unsigned();//ชื่อช่าง
             $table->bigInteger('callver_id')->unsigned();//จำนวนการติดต่อ
@@ -31,14 +32,10 @@ class CreatePlaningsTable extends Migration
             $table->string('theBuilding')->nullable();//อาคาร
             $table->string('floor')->nullable();//ชั้น
             $table->string('room')->nullable();//ห้อง / เลขที่
-            // $table->string('isp')->nullable();
-            $table->string('agent')->nullable();//ตัวแทน/พื้นที่
             $table->string('circuit')->nullable();//เลขสมาชิก
             $table->string('entranceFee')->nullable();//ค่าแรกเข้า (฿)
-            // $table->string('jobType')->nullable();
             $table->date('appointmentDate')->nullable();//วันนัดหมาย
             $table->time('appointmentTime')->nullable();//เวลานัดหมาย ในระบบ
-            // $table->string('idRequired')->nullable();
             $table->string('status')->nullable();
             $table->string('subStatus')->nullable();//Sub-Status
             $table->string('reMark')->nullable();//รีมาร์ค (For Admin)
@@ -54,6 +51,11 @@ class CreatePlaningsTable extends Migration
             $table->foreign('isp_id')
             ->references('id')
             ->on('isps')
+            ->onDelete('cascade');
+
+            $table->foreign('agentDetail_id')
+            ->references('id')
+            ->on('agents')
             ->onDelete('cascade');
 
             $table->foreign('jobtype_id')

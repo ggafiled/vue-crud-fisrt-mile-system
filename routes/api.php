@@ -33,6 +33,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('aises', 'AreaAisController@index');
     Route::get('area3bbs', 'Area3BBController@index');
     Route::get('areaTrues', 'AreaTrueController@index');
+    Route::get('areaTrueNews', 'AreaTrueNewController@index');
     Route::get('areaAises', 'AreaAisController@index');
     Route::get('areaFiberNets', 'AreaFiberNetController@index');
     Route::get('workTimes', 'WorkTimeController@index');
@@ -62,6 +63,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'building' => 'BuildingController',
         'area3bb' => 'Area3BBController',
         'areatrue' => 'AreaTrueController',
+        'areatruenew' => 'AreaTrueNewController',
         'areaais' => 'AreaAisController',
         'areafibernet' => 'AreaFiberNetController',
         'worktime' => 'WorkTimeController',

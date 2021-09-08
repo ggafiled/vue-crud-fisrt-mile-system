@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AreaAisSeeder::class);
         $this->call(AreaFibetnetSeeder::class);
         $this->call(AreatrueSeeder::class);
+        $this->call(AreatrueNewSeeder::class);
         $this->call(CallverSeeder::class);
         $this->call(CallverstatusSeeder::class);
         $this->call(GeneratingactionSeeder::class);

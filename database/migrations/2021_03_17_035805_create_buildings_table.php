@@ -22,6 +22,7 @@ class CreateBuildingsTable extends Migration
             $table->bigInteger('bbns_id')->unsigned();
             $table->bigInteger('area3bb_id')->unsigned();
             $table->bigInteger('areaTrue_id')->unsigned();
+            $table->bigInteger('areaTrueNew_id')->unsigned();
             $table->bigInteger('areaAis_id')->unsigned();
             $table->bigInteger('areaFibernet_id')->unsigned();
             $table->bigInteger('workTime_id')->unsigned();
@@ -56,7 +57,6 @@ class CreateBuildingsTable extends Migration
             // $table->string('bbN')->nullable();
             // $table->string('area3BB')->nullable();
             // $table->string('areaTrue')->nullable();
-            $table->string('areaTrueNew')->nullable();
             // $table->string('areaAis')->nullable();
             // $table->string('areaFiberNet')->nullable();
             // $table->string('operatingTime')->nullable();
@@ -91,6 +91,11 @@ class CreateBuildingsTable extends Migration
             $table->foreign('areaTrue_id')
             ->references('id')
             ->on('area_trues')
+            ->onDelete('cascade');
+
+            $table->foreign('areaTrueNew_id')
+            ->references('id')
+            ->on('area_true_news')
             ->onDelete('cascade');
 
             $table->foreign('areaAis_id')

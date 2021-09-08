@@ -193,6 +193,11 @@ export default [{
                     .default
             },
             {
+                path: "area_true_new",
+                component: require("./components/datavalidation/building/areatruenew.vue")
+                    .default
+            },
+            {
                 path: "area_ais",
                 component: require("./components/datavalidation/building/AreaAis.vue")
                     .default

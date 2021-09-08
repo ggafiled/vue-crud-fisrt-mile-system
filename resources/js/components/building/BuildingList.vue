@@ -120,37 +120,37 @@
                                 <thead>
                                     <tr class="info">
                                         <th></th>
-                                        <th>Project Name</th>
-                                        <th>Project Name Tot</th>
-                                        <th>Project Name 3BB</th>
-                                        <th>Project Name True</th>
-                                        <th>Project Name Ais</th>
-                                        <th>Project Name FiberNet</th>
+                                        <th>ชื่ออาคาร</th>
+                                        <th>ชื่ออาคาร (ทีโอที)</th>
+                                        <th>ชื่ออาคาร (สามบีบี)</th>
+                                        <th>ชื่ออาคาร (ทรู)</th>
+                                        <th>ชื่ออาคาร (เอไอเอส)</th>
+                                        <th>ชื่ออาคาร (ไฟเบอร์เน็ต)</th>
                                         <th>Fm Code</th>
-                                        <th>AreaN</th>
-                                        <th>BBN</th>
-                                        <th>Area3BB</th>
-                                        <th>AreaTrue</th>
-                                        <th>AreaTrueNew</th>
-                                        <th>AreaAis</th>
-                                        <th>AreaFiberNet</th>
-                                        <th>Building Sum</th>
-                                        <th>Floor Sum</th>
-                                        <th>Room Sum</th>
-                                        <th>Manager Name</th>
-                                        <th>Phone</th>
-                                        <th>Mail</th>
-                                        <th>Corporation Name</th>
-                                        <th>Phone</th>
-                                        <th>Mail</th>
-                                        <th>House Number</th>
-                                        <th>Swine</th>
-                                        <th>Alley</th>
-                                        <th>Road</th>
-                                        <th>District</th>
-                                        <th>Province</th>
-                                        <th>County</th>
-                                        <th>PostalCode</th>
+                                        <th>พื้นที่ tot</th>
+                                        <th>พื้นที่ BBN</th>
+                                        <th>พื้นที่3BB</th>
+                                        <th>พื้นที่True</th>
+                                        <th>พื้นที่TrueNew</th>
+                                        <th>พื้นที่Ais</th>
+                                        <th>พื้นที่FiberNet</th>
+                                        <th>จำนวนอาคาร</th>
+                                        <th>จำนวนชั้น</th>
+                                        <th>จำนวนห้อง</th>
+                                        <th>ชื่อผู้จัดการ</th>
+                                        <th>เบอร์โทรผู้จัดการ</th>
+                                        <th>เมล์ผู้จัดการ</th>
+                                        <th>ชื่อนิติบุคคล</th>
+                                        <th>เบอร์นิติบุคคล</th>
+                                        <th>เมล์นิติบุคคล</th>
+                                        <th>บ้านเลขที่</th>
+                                        <th>หมู่</th>
+                                        <th>ซอย</th>
+                                        <th>ถนน</th>
+                                        <th>อำเภอ/เขต</th>
+                                        <th>จังหวัด</th>
+                                        <th>ตำบล/แขวง</th>
+                                        <th>รหัสไปรษณีย์</th>
                                         <th>Longitude</th>
                                         <th>Latitude</th>
                                         <th>Fm-Progress</th>
@@ -160,14 +160,17 @@
                                         <th>SINET-Progress</th>
                                         <th>FN-Progress</th>
                                         <th>TRUE-Progress</th>
-                                        <th>ContractSell</th>
-                                        <th>ContractDate</th>
-                                        <th>ContractDateEnd</th>
-                                        <th>ContractPeriod</th>
-                                        <th>ReNewContact</th>
+
+                                        <th>ชื่อเซลล์ที่ทำสัญญา</th>
+                                        <th>วันที่ทำสัญญา</th>
+                                        <th>วันสิ้นสุดสัญญา</th>
+                                        <th>SpendSpace</th>
+                                        <th>รูปแบบการแบ่งรายได้</th>
+                                        <th>ระยะเวลาสัญญาเพิ่ม</th>
                                         <th>Condition</th>
-                                        <th>Balance</th>
-                                        <th>OperatingTime</th>
+                                        <th>reNewContact</th>
+                                        <th>ราคาที่ต้องจ่าย</th>
+                                        <th>เวลาปฏิบัติงาน</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -467,7 +470,7 @@ export default {
                         data: "area_true.name"
                     },
                     {
-                        data: "areaTrueNew"
+                        data: "areaTrueNew.name"
                     },
                     {
                         data: "area_ais.name"
@@ -1109,13 +1112,13 @@ export default {
                         data: "contractPeriod"
                     },
                     {
-                        data: "reNewContact"
+                        data: "payment_type.name"
                     },
                     {
                         data: "condition"
                     },
                     {
-                        data: "balance",
+                        data: "contractPeriod",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -1130,6 +1133,26 @@ export default {
                                     "</span>"
                                 );
                             }
+                        }
+                    },
+                    {
+                        data: "reNewContact",
+                        render: function(data, type, row, meta) {
+                            return (
+                                '<span><i class="bi bi-alarm pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
+                    }, 
+                    {
+                        data: "balance",
+                        render: function(data, type, row, meta) {
+                            return (
+                                '<span><i class="bi bi-alarm pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
                         }
                     },
                     {

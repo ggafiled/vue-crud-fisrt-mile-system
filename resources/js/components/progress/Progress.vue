@@ -669,7 +669,7 @@ export default {
                 processing: true,
                 autoWidth: true,
                 scrollX: true,
-                pageLength: 15,
+                pageLength: 10,
                 lengthMenu: [
                     [10, 15, 25, 50, -1],
                     [10, 15, 25, 50, "All"]

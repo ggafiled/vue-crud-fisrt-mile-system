@@ -15,7 +15,7 @@ class Planing extends Model
     protected $fillable = [
         'building_id',
         'isp_id',
-        'agentDetail_id',
+        'agentDetail_id',//
         'jobtype_id',
         'technician_id',
         'callver_id',

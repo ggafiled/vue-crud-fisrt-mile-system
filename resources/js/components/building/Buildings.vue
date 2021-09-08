@@ -863,43 +863,19 @@
                                         <div class="form-group">
                                             <label>พื้นที่ TrueNew</label>
                                             <select
-                                                v-model="form.areaTrueNew"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your area Tr..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'areaTrueNew'
-                                                    )
-                                                }"
+                                                v-model="form.areaTrueNew_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
-                                                    value="BMA 1 (North West)"
+                                                    :value="item.id"
+                                                    v-for="item in areaTrueNews"
+                                                    :key="item.id"
                                                 >
-                                                    BMA 1 (North West)
+                                                    {{ item.areaTrueNew }}
                                                 </option>
-                                                <option
-                                                    value="BMA 2 (South West)"
-                                                >
-                                                    BMA 2 (South West)
-                                                </option>
-                                                <option
-                                                    value="BMA 3 (North East)"
-                                                >
-                                                    BMA 3 (North East)
-                                                </option>
-                                                <option
-                                                    value="BMA 4 (South East)"
-                                                >
-                                                    BMA 4 (South East)
-                                                </option>
-                                                <option value="BMA 5 (Central)"
-                                                    >BMA 5 (Central)</option
-                                                >
-                                                <option value="N/A">N/A</option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -1033,6 +1009,7 @@ export default {
             bbns: [],
             area3bbs: [],
             areaTrues: [],
+            areaTrueNews: [],
             areaAises: [],
             areaFiberNets: [],
             workTimes: [],
@@ -1046,7 +1023,7 @@ export default {
                 bbns_id: "",
                 area3bb_id: "",
                 areaTrue_id: "",
-                areaTrueNew: "",
+                areaTrueNew_id: "",
                 areaAis_id: "",
                 areaFibernet_id: "",
                 workTime_id: "",
@@ -1077,7 +1054,7 @@ export default {
                 condition: "",
                 contractPeriod: new Date().toISOString().slice(0, 10),
                 reNewContact: new Date().toISOString().slice(0, 10),
-                balance: "",
+                balance: ""
             })
         };
     },
@@ -1148,6 +1125,11 @@ export default {
         loadAreaTrue() {
             axios.get("/areaTrues").then(response => {
                 this.areaTrues = response.data.data;
+            });
+        },
+        loadAreaTrueNew() {
+            axios.get("/areaTrueNews").then(response => {
+                this.areaTrueNews = response.data.data;
             });
         },
         loadAreaAis() {
@@ -1490,7 +1472,7 @@ export default {
                         }
                     },
                     {
-                        data: "areaTrueNew"
+                        data: "area_true_new.name",
                     },
                     {
                         data: "area_ais.name",
@@ -1634,7 +1616,12 @@ export default {
                             if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
-                                return "฿"+data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                return (
+                                    "฿" +
+                                    data
+                                        .toString()
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                                );
                             }
                         }
                     },
@@ -1709,6 +1696,7 @@ export default {
         this.loadArea();
         this.loadArea3BB();
         this.loadAreaTrue();
+        this.loadAreaTrueNew();
         this.loadAreaAis();
         this.loadAreaFiberNet();
         this.loadWorkTime();
