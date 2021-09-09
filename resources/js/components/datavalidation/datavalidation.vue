@@ -91,12 +91,15 @@
                                             :details="item.details"
                                         ></list-group-item>
                                     </div>
-                                    <div id="planing" class="tab-pane fade">
+                                    <div 
+                                        id="planning" 
+                                        class="tab-pane fade"
+                                    >
                                         <list-group-item
                                             v-for="item in tabs.planning"
                                             :key="item.id"
                                             :route="item.route"
-                                            tab="planing"
+                                            tab="planning"
                                             :title="item.title"
                                             :details="item.details"
                                         ></list-group-item>

@@ -361,9 +361,8 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
-                                    <!-- <div class="col-sm-9">
+                                    <div class="col-sm-9">
                                         <div class="form-group">
                                             <label>FN Progress :</label>
                                             <select
@@ -389,15 +388,17 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>FN วันวางโครงข่าย :</label>
+                                            <label
+                                                >Sinet วันวางโครงข่าย :</label
+                                            >
                                             <input
                                                 v-model="form.dateFn"
                                                 type="date"
                                                 class="form-control"
-                                                placeholder="Enter your dateFn..."
+                                                placeholder="Enter your dateSinet..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'dateFn'
+                                                        'dateSinet'
                                                     )
                                                 }"
                                             />
@@ -406,7 +407,10 @@
                                                 field="dateFn"
                                             ></has-error>
                                         </div>
-                                    </div> -->
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->

@@ -67,14 +67,14 @@ class ProgressController extends BaseController
                 'totProgress_id' => $request->input('totProgress_id'),
                 'progress3bb_id' => $request->input('progress3bb_id'),
                 'sinetProgress_id' => $request->input('sinetProgress_id'),
-                'fnProgress_id' => $request->input('fnProgress_id') ?? null,
+                'fnProgress_id' => $request->input('fnProgress_id'),
                 'trueProgress_id' => $request->input('trueProgress_id'),
                 'dateFm' => $request->input('dateFm'),
                 'dateTot' => $request->input('dateTot'),
                 'dateAis' => $request->input('dateAis'),
                 'date3BB' => $request->input('date3BB'),
                 'dateSinet' => $request->input('dateSinet'),
-                'dateFn' => $request->input('dateFn') ?? null,
+                'dateFn' => $request->input('dateFn'),
                 'dateTrue' => $request->input('dateTrue')
             ]);
             $progress->save();

@@ -600,7 +600,7 @@
                                             <label>ID ที่ต้องใช้</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.idRequired"
+                                                v-model="form.ispId_id"
                                             >
                                                 <option value="ispId_id"
                                                     >Select a Class</option
@@ -622,9 +622,20 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Status</label>
-                                            <select
-                                                class="form-control"
+                                            <input
                                                 v-model="form.status"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your sub status..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'status'
+                                                    )
+                                                }"
+                                            />
+                                            <!-- <select
+                                                class="form-control"
+                                                v-model="form.problemsolution_id"
                                             >
                                                 <option value=""
                                                     >Select a Class</option
@@ -636,7 +647,7 @@
                                                 >
                                                     {{ item.problemSolution }}
                                                 </option>
-                                            </select>
+                                            </select> -->
                                             <has-error
                                                 :form="form"
                                                 field="status"
@@ -752,10 +763,9 @@ export default {
                 jobtype_id: "",
                 technician_id: "",
                 callver_id: "",
-                callverstatus_id: "",
+                callverStatus_id: "",
                 ispId_id: "",
                 problemsolution_id: "",
-                
                 projectName: "",
                 isp: "",
                 agentDetail: "",
@@ -765,7 +775,6 @@ export default {
                 callverstatus: "",
                 ispId: "",
                 problemsolution:"",
-
                 name: "",
                 surname: "",
                 tel: "",
@@ -1262,9 +1271,9 @@ export default {
                         }
                     },
                     {
-                        data: "isp",
+                        data: "isp.name",
                         render: function(data, type, row, meta) {
-                            if (data == "AIS") {
+                            if (data == "Ais") {
                                 return (
                                     '<span class="badge badge-success">' +
                                     data +
@@ -1276,19 +1285,25 @@ export default {
                                     data +
                                     "</span>"
                                 );
+                            } else if (data == "Fibernet") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
                             } else if (data == "3BB") {
                                 return (
                                     '<span class="badge badge-danger">' +
                                     data +
                                     "</span>"
                                 );
-                            } else if (data == "TRUE") {
+                            } else if (data == "True") {
                                 return (
                                     '<span class="badge badge-danger">' +
                                     data +
                                     "</span>"
                                 );
-                            } else if (data == "FN") {
+                            } else if (data == "Fn") {
                                 return (
                                     '<span class="badge badge-warning">' +
                                     data +
@@ -1304,7 +1319,7 @@ export default {
                         }
                     },
                     {
-                        data: "agent",
+                        data: "agent_detail.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -1347,7 +1362,7 @@ export default {
                         }
                     },
                     {
-                        data: "jobType",
+                        data: "jobtype.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (
@@ -1391,7 +1406,7 @@ export default {
                         }
                     },
                     {
-                        data: "technicianPlaning",
+                        data: "technician.name",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "") {
@@ -1406,17 +1421,50 @@ export default {
                         }
                     },
                     {
-                        data: "idRequired",
-                        className: "text-capitalize",
+                        data: "isp_id.name",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "Ais") {
                                 return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "TOT") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "Fibernet") {
+                                return (
+                                    '<span class="badge badge-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "3BB") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "True") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "Fn") {
+                                return (
+                                    '<span class="badge badge-warning">' +
+                                    data +
                                     "</span>"
                                 );
                             } else {
-                                return "<span>" + data + "</span>";
+                                return (
+                                    '<span class="text-warning">' +
+                                    data +
+                                    "</span>"
+                                );
                             }
                         }
                     },
