@@ -842,7 +842,7 @@ export default {
 
             if (this.$gate.isAdmin()) {
                 this.$store.dispatch("GET_BUILDINGS");
-                $("#planings")
+                $("#planing")
                     .DataTable()
                     .ajax.reload();
             }
@@ -901,7 +901,7 @@ export default {
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
-                            this.loadPlanings();
+                            this.loadPlaning();
                         })
                         .catch(data => {
                             Swal.fire("Failed!", data.message, "warning");
@@ -1598,7 +1598,6 @@ export default {
     created() {
         this.$Progress.start();
         this.loadBuildings();
-        this.loadPlaning();
         this.$Progress.finish();
     },
     mounted() {

@@ -45,6 +45,7 @@
                                         <!-- <th>FN-Progress</th> -->
                                         <th>TRUE-Progress</th>
                                         <th>TRUE-Date</th>
+                                        <th>Create</th>
                                         <th>Update</th>
                                         <th>Action</th>
                                     </tr>
@@ -688,7 +689,7 @@ export default {
                 fixedColumns: true,
                 fixedColumns: {
                     leftColumns: 2,
-                    rightColumns: 1
+                    rightColumns: 3
                 },
                 scrollX: true,
                 scrollCollapse: true,
@@ -898,6 +899,12 @@ export default {
                     },
                     {
                         data: "dateTrue"
+                    },
+                     {
+                        data: "created_at",
+                        render: function(data, type, row, meta) {
+                            return moment(data).format("MM/DD/YYYY HH:MM");
+                        }
                     },
                     {
                         data: "updated_at",
