@@ -120,57 +120,48 @@
                                 <thead>
                                     <tr class="info">
                                         <th></th>
-                                        <th>ชื่ออาคาร</th>
-                                        <th>ชื่ออาคาร (ทีโอที)</th>
-                                        <th>ชื่ออาคาร (สามบีบี)</th>
-                                        <th>ชื่ออาคาร (ทรู)</th>
-                                        <th>ชื่ออาคาร (เอไอเอส)</th>
-                                        <th>ชื่ออาคาร (ไฟเบอร์เน็ต)</th>
-                                        <th>Fm Code</th>
-                                        <th>พื้นที่ tot</th>
-                                        <th>พื้นที่ BBN</th>
-                                        <th>พื้นที่3BB</th>
-                                        <th>พื้นที่True</th>
-                                        <th>พื้นที่TrueNew</th>
-                                        <th>พื้นที่Ais</th>
-                                        <th>พื้นที่FiberNet</th>
-                                        <th>จำนวนอาคาร</th>
-                                        <th>จำนวนชั้น</th>
-                                        <th>จำนวนห้อง</th>
-                                        <th>ชื่อผู้จัดการ</th>
-                                        <th>เบอร์โทรผู้จัดการ</th>
-                                        <th>เมล์ผู้จัดการ</th>
-                                        <th>ชื่อนิติบุคคล</th>
-                                        <th>เบอร์นิติบุคคล</th>
-                                        <th>เมล์นิติบุคคล</th>
-                                        <th>บ้านเลขที่</th>
-                                        <th>หมู่</th>
-                                        <th>ซอย</th>
-                                        <th>ถนน</th>
-                                        <th>อำเภอ/เขต</th>
-                                        <th>จังหวัด</th>
-                                        <th>ตำบล/แขวง</th>
-                                        <th>รหัสไปรษณีย์</th>
-                                        <th>Longitude</th>
-                                        <th>Latitude</th>
-                                        <th>Fm-Progress</th>
-                                        <th>TOT-Progress</th>
-                                        <th>AIS-Progress</th>
-                                        <th>3BB-Progress</th>
-                                        <th>SINET-Progress</th>
-                                        <th>FN-Progress</th>
-                                        <th>TRUE-Progress</th>
-
-                                        <th>ชื่อเซลล์ที่ทำสัญญา</th>
-                                        <th>วันที่ทำสัญญา</th>
-                                        <th>วันสิ้นสุดสัญญา</th>
-                                        <th>SpendSpace</th>
-                                        <th>รูปแบบการแบ่งรายได้</th>
-                                        <th>ระยะเวลาสัญญาเพิ่ม</th>
-                                        <th>Condition</th>
-                                        <th>reNewContact</th>
-                                        <th>ราคาที่ต้องจ่าย</th>
-                                        <th>เวลาปฏิบัติงาน</th>
+                                            <th>ชื่ออาคาร</th>
+                                            <th>Fm Code</th>
+                                            <th>พื้นที่ tot</th>
+                                            <th>พื้นที่ BBN</th>
+                                            <th>พื้นที่3BB</th>
+                                            <th>พื้นที่True</th>
+                                            <th>พื้นที่TrueNew</th>
+                                            <th>พื้นที่Ais</th>
+                                            <th>พื้นที่FiberNet</th>
+                                            <th>จำนวนอาคาร</th>
+                                            <th>จำนวนชั้น</th>
+                                            <th>จำนวนห้อง</th>
+                                            <th>ชื่อผู้จัดการ</th>
+                                            <th>เบอร์โทรผู้จัดการ</th>
+                                            <th>เมล์ผู้จัดการ</th>
+                                            <th>ชื่อนิติบุคคล</th>
+                                            <th>เบอร์นิติบุคคล</th>
+                                            <th>เมล์นิติบุคคล</th>
+                                            <th>บ้านเลขที่</th>
+                                            <th>หมู่</th>
+                                            <th>ซอย</th>
+                                            <th>ถนน</th>
+                                            <th>อำเภอ/เขต</th>
+                                            <th>จังหวัด</th>
+                                            <th>ตำบล/แขวง</th>
+                                            <th>รหัสไปรษณีย์</th>
+                                            <th>Longitude</th>
+                                            <th>Latitude</th>
+                                            <th>Fm-Progress</th>
+                                            <th>TOT-Progress</th>
+                                            <th>AIS-Progress</th>
+                                            <th>3BB-Progress</th>
+                                            <th>SINET-Progress</th>
+                                            <th>ชื่อเซลล์ที่ทำสัญญา</th>
+                                            <th>วันที่ทำสัญญา</th>
+                                            <th>วันสิ้นสุดสัญญา</th>
+                                            <th>SpendSpace</th>
+                                            <th>รูปแบบการแบ่งรายได้</th>
+                                            <th>ระยะเวลาสัญญาเพิ่ม</th>
+                                            <th>Condition</th>
+                                            <th>ราคาที่ต้องจ่าย</th>
+                                            <th>เวลาปฏิบัติงาน</th>
                                     </tr>
                                 </thead>
                             </table>

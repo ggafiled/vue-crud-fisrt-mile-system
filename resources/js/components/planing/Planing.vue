@@ -58,6 +58,7 @@
                                         <th>status</th>
                                         <th>subStatus</th>
                                         <th>รีมาร์ค(For Admin)</th>
+                                        <th>create</th>
                                         <th>updated</th>
                                         <th>Action</th>
                                     </tr>
@@ -633,21 +634,6 @@
                                                     )
                                                 }"
                                             />
-                                            <!-- <select
-                                                class="form-control"
-                                                v-model="form.problemsolution_id"
-                                            >
-                                                <option value=""
-                                                    >Select a Class</option
-                                                >
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in problemsolutions"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.problemSolution }}
-                                                </option>
-                                            </select> -->
                                             <has-error
                                                 :form="form"
                                                 field="status"
@@ -947,7 +933,7 @@ export default {
                 fixedColumns: true,
                 fixedColumns: {
                     leftColumns: 3,
-                    rightColumns: 1
+                    rightColumns: 3
                 },
                 scrollX: true,
                 scrollCollapse: true,
@@ -1543,6 +1529,12 @@ export default {
                             } else {
                                 return "<span>" + data + "</span>";
                             }
+                        }
+                    },
+                    {
+                        data: "created_at",
+                        render: function(data, type, row, meta) {
+                            return moment(data).format("MM/DD/YYYY HH:MM");
                         }
                     },
                     {

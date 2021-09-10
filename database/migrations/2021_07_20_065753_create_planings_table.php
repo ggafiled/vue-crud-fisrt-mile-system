@@ -39,10 +39,9 @@ class CreatePlaningsTable extends Migration
             $table->string('status')->nullable();
             $table->string('subStatus')->nullable();//Sub-Status
             $table->string('reMark')->nullable();//รีมาร์ค (For Admin)
-
             $table->timestamps();
             $table->softDeletes();
-
+            
             $table->foreign('building_id')
             ->references('id')
             ->on('buildings')
