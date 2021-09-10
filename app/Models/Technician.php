@@ -18,6 +18,6 @@ class Technician extends Model
 
     public function technician()
     {
-        return $this->hasOne('App\Models\Planing', 'technician_id', 'id');
+        return $this->hasMany('App\Models\Planing', 'technician_id', 'id');
     }
 }

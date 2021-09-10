@@ -52,6 +52,8 @@
                                         <th>วันนัดหมาย</th>
                                         <th>เวลานัดหมายในระบบ</th>
                                         <th>ทีมช่าง Planing</th>
+                                        <th>เบอร์โทร</th>
+                                        <th>อีเมลล์</th>
                                         <th>ผู้ให้บริการ</th>
                                         <th>status</th>
                                         <th>subStatus</th>
@@ -566,8 +568,6 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>ปัญหาและวิธีการแก้ไข</label>
@@ -742,6 +742,7 @@ export default {
             editmode: false,
             selected: "",
             building: [],
+            technician: [],
             problemsolutions: [],
             technicians: [],
             jobtpyes: [],
@@ -840,9 +841,11 @@ export default {
             this.$Progress.start();
 
             if (this.$gate.isAdmin()) {
-                //To DO
+                this.$store.dispatch("GET_BUILDINGS");
+                $("#planings")
+                    .DataTable()
+                    .ajax.reload();
             }
-
             this.$Progress.finish();
         },
         updatePlaning() {
@@ -859,7 +862,6 @@ export default {
                     });
                     this.$Progress.finish();
                     //  Fire.$emit('AfterCreate');
-
                     this.loadPlaning();
                 })
                 .catch(() => {
@@ -1226,7 +1228,7 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].postalCode",
+                        data: "theBuilding",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "") {
@@ -1406,7 +1408,37 @@ export default {
                         }
                     },
                     {
-                        data: "technician.name",
+                        data: "technician.teamTechnician",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "technician.phoneTechnician",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "technician.emailTechnician",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "") {
@@ -1566,6 +1598,7 @@ export default {
     created() {
         this.$Progress.start();
         this.loadBuildings();
+        this.loadPlaning();
         this.$Progress.finish();
     },
     mounted() {

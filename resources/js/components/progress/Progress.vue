@@ -33,12 +33,18 @@
                                         <th></th>
                                         <th>Project Name</th>
                                         <th>Fm-Progress</th>
+                                        <th>Fm-Date</th>
                                         <th>TOT-Progress</th>
+                                        <th>TOT-Date</th>
                                         <th>AIS-Progress</th>
+                                        <th>AIS-Date</th>
                                         <th>3BB-Progress</th>
+                                        <th>3BB-Date</th>
                                         <th>SINET-Progress</th>
+                                        <th>SINET-Date</th>
                                         <!-- <th>FN-Progress</th> -->
                                         <th>TRUE-Progress</th>
+                                        <th>TRUE-Date</th>
                                         <th>Update</th>
                                         <th>Action</th>
                                     </tr>
@@ -681,7 +687,7 @@ export default {
                 fixedHeader: true,
                 fixedColumns: true,
                 fixedColumns: {
-                    leftColumns: 0,
+                    leftColumns: 2,
                     rightColumns: 1
                 },
                 scrollX: true,
@@ -792,6 +798,9 @@ export default {
                         }
                     },
                     {
+                        data: "dateFm"
+                    },
+                    {
                         data: "tot_progress.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
@@ -804,6 +813,9 @@ export default {
                                 return "<span>" + data + "</span>";
                             }
                         }
+                    },
+                    {
+                        data: "dateTot"
                     },
                     {
                         data: "ais_progress.name",
@@ -820,6 +832,9 @@ export default {
                         }
                     },
                     {
+                        data: "dateAis"
+                    },
+                    {
                         data: "progress3bb.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
@@ -834,6 +849,9 @@ export default {
                         }
                     },
                     {
+                        data: "date3BB"
+                    },
+                    {
                         data: "sinet_progress.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
@@ -846,6 +864,9 @@ export default {
                                 return "<span>" + data + "</span>";
                             }
                         }
+                    },
+                    {
+                        data: "dateSinet"
                     },
                     // {
                     //     data: "fn_progress.name",
@@ -874,6 +895,9 @@ export default {
                                 return "<span>" + data + "</span>";
                             }
                         }
+                    },
+                    {
+                        data: "dateTrue"
                     },
                     {
                         data: "updated_at",

@@ -29,15 +29,15 @@ class PlaningController extends BaseController
 
         try {
             $planing = Planing::with(
-                'building',
+                'building','technician',
                 'isp:id,isp as name',
                 'agentDetail:id,agentDetail as name',
                 'jobtype:id,jobType as name',
-                'technician:id,teamTechnician as name',
-                'ispId:id,isp as name')->get();
+                'ispId:id,isp as name'
+            )->get();
             return $this->sendResponse($planing, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.failed'));
+            return $this->sendError($ex, trans('actions.get.failed'));
         }
     }
 
