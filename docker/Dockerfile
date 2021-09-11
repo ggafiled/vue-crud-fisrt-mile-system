@@ -1,4 +1,4 @@
-FROM devilbox/php-fpm-8.0
+FROM php:7.3-fpm
 
 # Copy composer.lock and composer.json
 COPY composer.lock composer.json /var/www/
