@@ -69,6 +69,8 @@
                                             <th>Condition</th>
                                             <th>ราคาที่ต้องจ่าย</th>
                                             <th>เวลาปฏิบัติงาน</th>
+                                            <th>create</th>
+                                            <th>updated</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -1267,7 +1269,7 @@ export default {
                 fixedColumns: true,
                 fixedColumns: {
                     leftColumns: 2,
-                    rightColumns: 1
+                    rightColumns: 3
                 },
                 scrollX: true,
                 scrollCollapse: true,
@@ -1639,6 +1641,18 @@ export default {
                             } else {
                                 return data;
                             }
+                        }
+                    },
+                    {
+                        data: "created_at",
+                        render: function(data, type, row, meta) {
+                            return moment(data).format("MM/DD/YYYY HH:MM");
+                        }
+                    },
+                    {
+                        data: "updated_at",
+                        render: function(data, type, row, meta) {
+                            return moment(data).format("MM/DD/YYYY HH:MM");
                         }
                     },
                     {
