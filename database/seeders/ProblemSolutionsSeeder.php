@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\problemSolution;
+use App\Models\Problemsolution;
 class ProblemSolutionsSeeder extends Seeder
 {
     /**
@@ -30,6 +30,6 @@ class ProblemSolutionsSeeder extends Seeder
                 'problemSolution' => 'อื่นๆ โปรดระบุในรีมาร์ค',
             ],
         ];
-        problemSolution::insert($problemSolutions);
+        Problemsolution::insert($problemSolutions);
     }
 }
