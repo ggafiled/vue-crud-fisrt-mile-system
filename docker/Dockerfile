@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
     libzip-dev \
-    libgcrypt11-dev \
+    libgcrypt20 \
     zlib1g-dev \
     locales \
     zip \
