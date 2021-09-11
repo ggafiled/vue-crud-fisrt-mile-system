@@ -293,6 +293,7 @@ return [
         [
             'text' => 'reports_progress',
             'icon' => 'fas fa-fw fas fa-clipboard-list',
+            'roles'  => ["superadministrator", "administrator"],
             'submenu' => [
                 [
                     'text' => 'project_name_table',

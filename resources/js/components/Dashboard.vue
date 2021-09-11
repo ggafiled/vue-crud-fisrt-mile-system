@@ -40,7 +40,7 @@
                             </h5>
                             <div>
                                 <router-link
-                                    to="/constarution"
+                                    to="/constitution"
                                     class="small-box-footer"
                                     >{{ translate("dashboard.actions.click") }}
                                     <i class="fas fa-arrow-circle-right"></i
