@@ -1,4 +1,4 @@
-FROM php:8.0-fpm
+FROM rhamdeew/docker-php-8-fpm-alpine:latest
 
 # Copy composer.lock and composer.json
 COPY composer.lock composer.json /var/www/
