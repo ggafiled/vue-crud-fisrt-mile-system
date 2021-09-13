@@ -259,7 +259,7 @@ return [
             'icon' => 'fas fa-fw bi bi-kanban',
         ],
         [
-            'text' => 'project_list',
+            'text' => 'Projects Managment',
             'icon' => 'fas fa-fw fas fa-building',
             'roles'  => ["superadministrator", "administrator", "user"],
             'can'  => ["constarution-create", "constarution-read"],
@@ -334,6 +334,12 @@ return [
         //     'icon' => 'mdi mdi-ticket-confirmation-outline',
         //     'active_url' => 'issue-tickets'
         // ],
+        [
+            'text' => 'map buildings',
+            'url'  => '/mapbuilding',
+            'icon' => 'bi bi-map-fill',
+            'roles'  => ["superadministrator", "administrator","user"]
+        ],
         [
             'text' => 'console_log',
             'url'  => '/console-log',

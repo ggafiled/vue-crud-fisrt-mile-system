@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Building;
 use App\Models\Constarution;
 use App\Models\Progress;
+use App\Models\Planing;
 use App\Models\user;
 use DB;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class DashboardController extends BaseController
                 'constarution' => Constarution::get()->count(),
                 'progress' => Progress::get()->count(),
                 'user' => user::get()->count(),
-                'planing' => 0,
+                'planing' => Planing::get()->count(),
                 'chart_dp_groub_of_countyName' => DB::table('buildings')
                     ->select('countyName', DB::raw('count(*) as total'))
                     ->where('countyName', '!=', '')
