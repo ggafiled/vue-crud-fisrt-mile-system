@@ -61,7 +61,7 @@ class DatabaseBackUp extends Command
                 'updated_at' =>  Carbon::now()
             ]);
             activity('backup')->log("Backup, automatic processing failure. because $ex->getMessage()");
-            Mail::to(env("MAIL_ADMINISTRATOR"))->send(new BackedUpDatabase($result));
+            Mail::to(explode(',', env("MAIL_ADMINISTRATOR")))->send(new BackedUpDatabase($result));
         } finally {
             $result = Backup::create([
                 'chanel' => 'backup_log',
@@ -70,7 +70,7 @@ class DatabaseBackUp extends Command
                 'created_at' =>  Carbon::now(),
                 'updated_at' =>  Carbon::now()
             ]);
-            Mail::to(env("MAIL_ADMINISTRATOR"))->send(new BackedUpDatabase($result, $filename));
+            Mail::to(explode(',', env("MAIL_ADMINISTRATOR")))->send(new BackedUpDatabase($result, $filename));
             activity('backup')->log("Backup, automatic processing success. and send email to ".env("MAIL_ADMINISTRATOR")." already.");
             event(new DatabaseBackUpNotification($result));
         }

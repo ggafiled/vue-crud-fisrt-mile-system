@@ -81,24 +81,6 @@
                 </div>
             </div>
 
-            <window-portal
-                class="container-fluid"
-                :open.sync="openWindowPortal"
-                :width="800"
-                :height="600"
-            >
-                <div class="card" style="width:100%; height:100%;">
-                    <div class="card-header">
-                        <h3>กรุณาเลือกที่ตั้งสถานที่</h3>
-                    </div>
-                    <div class="card-body">
-                        <!-- Longdo map -->
-                        <longdo-map @load="loadMap"> </longdo-map>
-                        <input type="text" v-model="form.projectName" />
-                    </div>
-                </div>
-            </window-portal>
-
             <!-- Modal -->
             <div
                 class="modal fade"
@@ -527,7 +509,7 @@
                                 <div
                                     class="row d-flex justify-content-center align-items-center"
                                 >
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Latitude</label>
                                             <input
@@ -547,7 +529,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Longtude</label>
                                             <div class="input-group mb-3">
@@ -569,14 +551,14 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <!-- <div class="col-sm-2">
                                         <div
                                             class="form-group mx-auto mt-auto mb-auto"
                                         >
                                             <button
                                                 type="button"
                                                 class="btn btn-outline-success mx-auto mt-auto mb-auto btn-block"
-                                                @click="actionWindowPortal"
+                                                @click="openMapPickerLocation"
                                             >
                                                 <i
                                                     class="mdi mdi-map-marker-radius-outline"
@@ -584,7 +566,7 @@
                                                 Pick
                                             </button>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <hr />
                                 <div class="row">
@@ -993,14 +975,11 @@
 </template>
 
 <script>
-import { LongdoMap } from "longdo-map-vue";
-LongdoMap.init({ apiKey: "6ee8d1505966ca0ce21048e9473fbe9e" });
-
 import { mapGetters, mapState } from "vuex";
 export default {
     title: "All -",
     components: {
-        LongdoMap
+
     },
     data() {
         return {
@@ -1080,24 +1059,6 @@ export default {
         }
     },
     methods: {
-        loadMap(map) {
-            map.Layers.setBase(longdo.Layers.NORMAL);
-            console.log("--- INITIAL LOAD MAP ---");
-            console.log(map);
-            map.Ui.Mouse.enableDrag(true);
-            map.Ui.Keyboard.enableInertia(true); // เปิด-ปิดการการไถลเมื่อเลื่อนแผนที่ด้วย Keyboard
-            map.Ui.Keyboard.enable(true); // เปิด-ปิดการใช้งาน Keyboard
-            map.Event.bind("doubleClick", function() {
-                var result = map.bound();
-                console.log(result);
-            });
-        },
-        addMarker(marker) {
-            console.log(marker.location());
-        },
-        actionWindowPortal() {
-            this.openWindowPortal = true;
-        },
         select(address) {
             this.form.districtName = address.district;
             this.form.countyName = address.amphoe;
@@ -1185,6 +1146,9 @@ export default {
             console.log(building);
             $("#addNew").modal("show");
             this.form.fill(building);
+        },
+        openMapPickerLocation() {
+            $("#pickermap").modal("show");
         },
         newModal() {
             this.editmode = false;
@@ -1474,7 +1438,7 @@ export default {
                         }
                     },
                     {
-                        data: "area_true_new.name",
+                        data: "area_true_new.name"
                     },
                     {
                         data: "area_ais.name",

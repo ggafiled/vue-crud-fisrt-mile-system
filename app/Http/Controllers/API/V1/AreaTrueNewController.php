@@ -34,7 +34,7 @@ class AreaTrueNewController extends BaseController
             $areaTrueNew = AreaTrueNew::orderBy('updated_at','asc')->get();
             return $this->sendResponse($areaTrueNew, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError($areaTrueNew, trans('actions.created.failed'));
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
