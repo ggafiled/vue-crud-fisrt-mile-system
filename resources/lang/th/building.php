@@ -46,7 +46,7 @@ return [
     'building_condition' => 'Condition',
     'building_pricetopay' => 'Price to Pay',
     'building_operatingtime' => 'Operating Time',
-
+    
 
     'header' => 'จัดการข้อมูลโครงการ',
     'addnew' => 'เพิ่มข้อมูลใหม่',

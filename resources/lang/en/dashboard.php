@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    'project_managment' => 'Project Management',
     'building_managment' => 'Building Management',
     'constarution_managment' => 'Constarution Management',
     'progress_managment' => 'Progress Management',
