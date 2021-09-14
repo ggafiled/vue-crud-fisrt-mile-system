@@ -68,9 +68,16 @@
     };
 
     function changeLang(value) {
-        axios.post("/locale/" + value).then(async function (error) {
+        axios({
+            method: 'post',
+            url: 'locale/' + value,
+            baseURL: window.location.protocol + "//" + window.location.host,
+        }).then(async function (error) {
             await window.location.reload();
         });
+        // axios.post({ url: 'locale/' + value, baseURL: window.location.host }).then(async function (error) {
+        //     await window.location.reload();
+        // });
     }
 
     $(function () {
@@ -99,10 +106,10 @@
             document.documentElement.msRequestFullscreen();
         }
 
-        if($('body').hasClass('sidebar-collapse')){
+        if ($('body').hasClass('sidebar-collapse')) {
             $('body').removeClass('sidebar-collapse')
             $('body').addClass('sidebar-collapse')
-        }else{
+        } else {
             $('body').addClass('sidebar-collapse')
         }
         $('[data-widget="fullscreen"] i').removeClass(options.maximizeIcon).addClass(options.minimizeIcon);
