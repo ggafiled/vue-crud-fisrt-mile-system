@@ -259,7 +259,7 @@ return [
             'icon' => 'fas fa-fw bi bi-kanban',
         ],
         [
-            'text' => 'Projects Managment',
+            'text' => 'project_managment',
             'icon' => 'fas fa-fw fas fa-building',
             'roles'  => ["superadministrator", "administrator", "user"],
             'can'  => ["constarution-create", "constarution-read"],
@@ -271,7 +271,7 @@ return [
                     'roles'  => ["superadministrator", "administrator", "user"]
                 ],
                 [
-                    'text' => 'Constrution Managment',
+                    'text' => 'constitution_managment',
                     'url'  => '/constitution',
                     'icon' => 'fas fa-fw bi bi-aspect-ratio',
                     'can'  => ["constarution-create", "constarution-read"]
@@ -283,25 +283,25 @@ return [
                     'roles'  => ["superadministrator", "administrator"]
                 ],
                 [
-                    'text' => 'Customer Managment',
+                    'text' => 'customer_managment',
                     'url'  => '/customer',
                     'icon' => 'fas fa-fw fas fa-users',
                     'roles'  => ["superadministrator", "administrator"]
                 ],
                 [
-                    'text' => 'Contractor Managment',
+                    'text' => 'constitution_managment',
                     'url'  => '/',
                     'icon' => 'fas fa-fw fas fa-file-signature',
                     'roles'  => ["superadministrator", "administrator"]
                 ],
                 [
-                    'text' => 'planning_managment',
+                    'text' => 'contractor_managment',
                     'url'  => '/planing/map',
                     'icon' => 'fas fa-fw fas fa-list-alt',
                     'roles'  => ["superadministrator", "administrator"]
                 ],
                 [
-                    'text' => 'Accountant Managment',
+                    'text' => 'accountant_managment',
                     'url'  => '/',
                     'icon' => 'fas fa-fw fa-file-invoice-dollar',
                     'roles'  => ["superadministrator", "administrator"]

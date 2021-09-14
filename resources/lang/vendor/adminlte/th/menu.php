@@ -20,11 +20,19 @@ return [
     'project_list'                  => 'รายการโปรเจค',
     'global_search'                 => 'โครงการเดอะวัน เอบีซี',
     'search'                        => 'ค้นหา',
+<<<<<<< HEAD
+    'dashboard'                     => 'แผลควบคุมหลัก',
+    'project_managment'             => 'จัดการโปรเจ็ค',
+=======
     'dashboard'                     => 'แผงควบคุมหลัก',
+>>>>>>> b970e6d892b0ac3b40962f7cdd1dc178160dfd23
     'building_managment'            => 'จัดการโครงการ',
     'constitution_managment'        => 'จัดการการประกอบ',
     'progress_managment'            => 'จัดการกระบวนการ',
+    'customer_managment'            => 'จัดการรายละเอียดลูกค้า',
     'planning_managment'            => 'จัดการแผนข้อมูล',
+    'contractor_managment'          => 'จัดการผู้รับเหมา',
+    'accountant_managment'          => 'จัดการจัดการบัญชี',
     'reports_progress'              => 'รายงานกระบวนการ',
     'project_tot_table'             => 'ตารางโครงการ TOT',
     'project_3bb_table'             => 'ตารางโครงการ 3BB',

@@ -13,13 +13,15 @@ return [
     |
     */
 
-    'building_managment' => 'สรุปอาคาร การจัดการ',
-    'constarution_managment' => 'รูปแบบการสร้าง การจัดการ',
-    'progress_managment' => 'สถานะการดำเนินงาน การจัดการ',
-    'customer_managment' => 'รายละเอียดลูกค้า การจัดการ',
-    'planning_managment' => 'จัดการงาน การจัดการ',
-    'contractor_managment' => 'ผู้รับเหมา การจัดการ',
-    'accountant_managment' => 'นักบัญชี การจัดการ',
+    'project_managment' => 'จัดการโปรเจ็ค',
+    'building_managment' => 'สรุปอาคาร',
+    'constarution_managment' => 'รูปแบบการสร้าง',
+    'progress_managment' => 'สถานะการดำเนินงาน',
+    'customer_managment' => 'รายละเอียดลูกค้า',
+    'planning_managment' => 'จัดการงาน',
+    'contractor_managment' => 'ผู้รับเหมา',
+    'accountant_managment' => 'นักบัญชี',
+    'table_all' => 'ตารางทั้งหมด',
     'charts' => [
         'group_of_county_area_chart' => 'Group of county Area Chart',
         'progress_status_chart' => 'Progress status Chart',
