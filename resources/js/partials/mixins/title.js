@@ -10,7 +10,7 @@ export default {
         const title = getTitle(this);
         if (title) {
             document.title = title.concat(
-                ` ${process.env.MIX_APP_NAME || "Fist Mile ERP System"}`
+                ` ${process.env.MIX_APP_NAME || "First Mile ERP System"}`
             );
         }
     }
