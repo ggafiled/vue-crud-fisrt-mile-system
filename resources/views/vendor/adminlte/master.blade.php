@@ -23,7 +23,7 @@
     {{-- Title --}}
     <title>
         @yield('title_prefix', config('adminlte.title_prefix', ''))
-        Fist Mile ERP System
+        @yield('title_prefix', config('adminlte.title', ''))
         @yield('title_postfix', config('adminlte.title_postfix', ''))
     </title>
 
