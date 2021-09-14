@@ -13,13 +13,13 @@ return [
     |
     */
 
-    'header' => 'Planing Management',
+    'header' => 'Customer Management',
     'addnew' => 'Add New',
     'create' => [
-        'header' => 'Create New Planing',
+        'header' => 'Create New Customer',
     ],
     'update' => [
-        'header' => 'Update Planing\'s Info',
+        'header' => 'Update Customer\'s Info',
     ],
     'actions' => [
         'close' => 'Close',

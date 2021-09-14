@@ -13,10 +13,15 @@ return [
     |
     */
 
-    'building_managment' => 'Building Managment',
-    'constarution_managment' => 'Constarution Managment',
-    'progress_managment' => 'Progress Managment',
-    'planning_managment' => 'Planning Managment',
+    'building_managment' => 'Building Management',
+    'constarution_managment' => 'Constarution Management',
+    'progress_managment' => 'Progress Management',
+    'customer_managment' => 'Customer Management',
+    'planning_managment' => 'Planning Management',
+    'contractor_managment' => 'Contractor Management',
+    'accountant_managment' => 'Accountant Management',
+    'table_all' => 'Table All',
+    
     'charts' => [
         'group_of_county_area_chart' => 'Group of county Area Chart',
         'progress_status_chart' => 'Progress status Chart',

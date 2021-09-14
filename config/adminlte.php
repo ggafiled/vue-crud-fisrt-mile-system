@@ -271,7 +271,7 @@ return [
                     'roles'  => ["superadministrator", "administrator", "user"]
                 ],
                 [
-                    'text' => 'constitution_managment',
+                    'text' => 'Constrution Managment',
                     'url'  => '/constitution',
                     'icon' => 'fas fa-fw bi bi-aspect-ratio',
                     'can'  => ["constarution-create", "constarution-read"]
@@ -282,10 +282,28 @@ return [
                     'icon' => 'mdi mdi-18px mdi-progress-wrench',
                     'roles'  => ["superadministrator", "administrator"]
                 ],
-                 [
+                [
+                    'text' => 'Customer Managment',
+                    'url'  => '/customer',
+                    'icon' => 'fas fa-fw fas fa-users',
+                    'roles'  => ["superadministrator", "administrator"]
+                ],
+                [
+                    'text' => 'Contractor Managment',
+                    'url'  => '/',
+                    'icon' => 'fas fa-fw fas fa-file-signature',
+                    'roles'  => ["superadministrator", "administrator"]
+                ],
+                [
                     'text' => 'planning_managment',
-                    'url'  => '/planing',
+                    'url'  => '/planing/map',
                     'icon' => 'fas fa-fw fas fa-list-alt',
+                    'roles'  => ["superadministrator", "administrator"]
+                ],
+                [
+                    'text' => 'Accountant Managment',
+                    'url'  => '/',
+                    'icon' => 'fas fa-fw fa-file-invoice-dollar',
                     'roles'  => ["superadministrator", "administrator"]
                 ],
             ]
@@ -334,12 +352,12 @@ return [
         //     'icon' => 'mdi mdi-ticket-confirmation-outline',
         //     'active_url' => 'issue-tickets'
         // ],
-        [
-            'text' => 'map buildings',
-            'url'  => '/mapbuilding',
-            'icon' => 'bi bi-map-fill',
-            'roles'  => ["superadministrator", "administrator","user"]
-        ],
+        // [
+        //     'text' => 'map buildings',
+        //     'url'  => '/mapbuilding',
+        //     'icon' => 'bi bi-map-fill',
+        //     'roles'  => ["superadministrator", "administrator","user"]
+        // ],
         [
             'text' => 'console_log',
             'url'  => '/console-log',

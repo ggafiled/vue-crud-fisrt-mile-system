@@ -1,7 +1,7 @@
 <template>
     <section class="content">
         <div class="container-fluid">
-            <div class="row mb-lg-3">
+            <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box shadow">
                         <span class="info-box-icon bg-info elevation-1"
@@ -27,7 +27,7 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box shadow mb-3 ">
                         <span class="info-box-icon bg-secondary elevation-1"
-                            ><i class="fas fa-car-battery"></i
+                            ><i class="fas fa-border-style"></i
                         ></span>
 
                         <div class="info-box-content">
@@ -57,7 +57,7 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box shadow mb-3">
                         <span class="info-box-icon bg-success elevation-1"
-                            ><i class="fas fa-cog"></i
+                            ><i class="fas fa-tasks "></i
                         ></span>
 
                         <div class="info-box-content">
@@ -83,7 +83,103 @@
 
                         <div class="info-box-content">
                             <h5 class="info-box-text">
+                                {{ translate("dashboard.customer_managment") }}
+                            </h5>
+                            <router-link to="/customer" class="small-box-footer"
+                                >{{ translate("dashboard.actions.click") }}
+                                <i class="fas fa-arrow-circle-right"></i
+                            ></router-link>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box shadow">
+                        <span class="info-box-icon bg-danger elevation-1"
+                            ><i class="fas fa-map-marked-alt"></i
+                        ></span>
+
+                        <div class="info-box-content">
+                            <h5 class="info-box-text">
                                 {{ translate("dashboard.planning_managment") }}
+                            </h5>
+                            <div>
+                                <router-link
+                                    to="/planing"
+                                    class="small-box-footer"
+                                    >{{ translate("dashboard.actions.click") }}
+                                    <i class="fas fa-arrow-circle-right"></i
+                                ></router-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box shadow mb-3 ">
+                        <span class="info-box-icon bg-primary elevation-1"
+                            ><i class="fas fa-file-signature"></i
+                        ></span>
+
+                        <div class="info-box-content">
+                            <h5 class="info-box-text">
+                                {{
+                                    translate(
+                                        "dashboard.contractor_managment"
+                                    )
+                                }}
+                            </h5>
+                            <div>
+                                <router-link
+                                    to="/constitution"
+                                    class="small-box-footer"
+                                    >{{ translate("dashboard.actions.click") }}
+                                    <i class="fas fa-arrow-circle-right"></i
+                                ></router-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box shadow mb-3">
+                        <span class="info-box-icon bg-success elevation-1"
+                            ><i class="fas fa-file-invoice-dollar"></i
+                        ></span>
+
+                        <div class="info-box-content">
+                            <h5 class="info-box-text">
+                                {{ translate("dashboard.accountant_managment") }}
+                            </h5>
+                            <div>
+                                <router-link
+                                    to="/progress"
+                                    class="small-box-footer"
+                                    >{{ translate("dashboard.actions.click") }}
+                                    <i class="fas fa-arrow-circle-right"></i
+                                ></router-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box shadow mb-3">
+                        <span class="info-box-icon bg-info elevation-1"
+                            ><i class="fas fa-table"></i
+                        ></span>
+
+                        <div class="info-box-content">
+                            <h5 class="info-box-text">
+                                {{ translate("dashboard.table_all") }}
                             </h5>
                             <router-link to="/planing" class="small-box-footer"
                                 >{{ translate("dashboard.actions.click") }}
@@ -95,7 +191,6 @@
                     <!-- /.info-box -->
                 </div>
             </div>
-            <!-- /.row -->
 
             <div class="row">
                 <!-- Left col -->

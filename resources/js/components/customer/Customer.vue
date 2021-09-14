@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">PLANING MANAGEMENT</h3>
+                        <h3 class="card-title">CUSTOMER MANAGEMENT</h3>
                         <div class="card-tools">
                             <button
                                 type="button"
@@ -20,8 +20,8 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table
-                                id="planing"
-                                ref="planing"
+                                id="customer"
+                                ref="customer"
                                 class="display nowrap"
                                 style="width: 100%"
                             >
@@ -86,10 +86,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                Create New Planing
+                                Create New Customer
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                Update Planing's Info
+                                Update Customer's Info
                             </h5>
                             <button
                                 type="button"
@@ -105,7 +105,7 @@
 
                         <form
                             @submit.prevent="
-                                editmode ? updatePlaning() : createPlaning()
+                                editmode ? updateCustomer() : createCustomer()
                             "
                         >
                             <div class="modal-body">
@@ -834,7 +834,7 @@ export default {
             }
             this.$Progress.finish();
         },
-        updatePlaning() {
+        updateCustomer() {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
@@ -895,7 +895,7 @@ export default {
                 }
             });
         },
-        createPlaning() {
+        createCustomer() {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
@@ -919,7 +919,7 @@ export default {
         },
         generateTable() {
             var vm = this;
-            var table = $(this.$refs.planing).DataTable({
+            var table = $(this.$refs.customer).DataTable({
                 dom: "Blfrtip",
                 ajax: "/api/planing",
                 responsive: true,

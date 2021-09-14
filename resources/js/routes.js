@@ -96,8 +96,16 @@ export default [{
         }
     },
     {
-        path: "/planing",
-        component: require("./components/planing/Planing.vue").default,
+        path: "/customer",
+        component: require("./components/customer/Customer.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator"]
+        }
+    },
+    {
+        path: "/planing/map",
+        component: require("./components/planing/planing_map.vue").default,
         meta: {
             requiresAuth: true,
             roles: ["superadministrator", "administrator"]
