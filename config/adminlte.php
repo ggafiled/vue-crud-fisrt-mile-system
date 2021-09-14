@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Fist Mile ERP System',
+    'title' => 'First Mile ERP System',
     'title_prefix' => '',
     'title_postfix' => '',
 

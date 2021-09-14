@@ -150,4 +150,20 @@ class PlaningController extends BaseController
             return $this->sendError([], trans('actions.destroy.failed'));
         }
     }
+
+
+    /**
+     * get lantitude and longitude from planning item depending on building information.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function loadCoordinatePlanningOfBuilding()
+    {
+        try {
+            $planing = [];
+            return $this->sendResponse($planing, trans('actions.destroy.success'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.destroy.failed'));
+        }
+    }
 }
