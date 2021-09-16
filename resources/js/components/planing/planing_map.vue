@@ -24,6 +24,8 @@ export default {
     },
     data() {
         return {
+            loader: null,
+            fullPage: false,
             coordinate: [
                 {
                     location: {
@@ -41,11 +43,10 @@ export default {
                 },
                 {
                     location: {
-                        lon: 100.565030,
+                        lon: 100.56503,
                         lat: 13.736242
                     },
-                    title:
-                        "แขวงคลองเตยเหนือ",
+                    title: "แขวงคลองเตยเหนือ",
                     detail:
                         "ซอยสุขุมวิท 27 (ซอยประภัทศร) แขวงคลองเตยเหนือ เขตวัฒนา",
                     icon: {
@@ -94,8 +95,17 @@ export default {
                 });
         }
     },
-    async mounted() {
-        await this.loadCoordinatePlanningOfBuilding();
+    created() {
+        this.loader = this.$loading.show({
+            container: this.fullPage ? null : this.$refs.formContainer,
+            canCancel: false
+        });
+    },
+    mounted() {
+        this.loadCoordinatePlanningOfBuilding();
+        setTimeout(() => {
+            this.loader.hide();
+        }, 1000)
     }
 };
 </script>
