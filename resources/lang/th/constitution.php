@@ -12,6 +12,28 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'constrution_project' => 'ชื่ออาคาร จากตาราง Building',
+    'constrution_tot' => 'ชื่ออาคาร ทีโอทีเรียก',
+    'constrution_3bb' => 'ชื่ออาคาร สามบีบีเรียก',
+    'constrution_true' => 'ชื่ออาคาร ทรูเรียก',
+    'constrution_ais' => 'ชื่ออาคาร เอไอเอสเรียก',
+    'constrution_fribernet' => 'ชื่ออาคาร ไฟเบอร์เน็ตเรียก',
+    'constrution_desing' => 'ออกแบบโดย',
+    'constrution_survey' => 'สำรวจออกแบบ',
+    'constrution_surveydate' => 'วันสำรวจออกแบบ',
+    'constrution_ifcc' => 'IFCC',
+    'constrution_ifccdate' => 'วัน IFCC',
+    'constrution_wallbox' => 'WallBox',
+    'constrution_wallboxdate' => 'วัน Wallbox',
+    'constrution_type' => 'ประเภท',
+    'constrution_microductding' => 'Microduct(แนวดิ่ง)',
+    'constrution_microductdingdate' => 'วัน Microduct(แนวดิ่ง)',
+    'constrution_microductK' => 'Microduct (แนวขว้าง)',
+    'constrution_microductKdate' => 'วัน Microduct (แนวขว้าง)',
+    'constrution_fiberconvertion' => 'Fiberconvertion',
+    'constrution_fiberconvertiondate' => 'วัน FiberConvertion (แนวดิ่ง)',
+    'constrution_blow' => 'Blow',
+    'constrution_splice' => 'Splice',
 
     'header' => 'จัดการข้อมูลการประกอบ',
     'addnew' => 'เพิ่มข้อมูลใหม่',

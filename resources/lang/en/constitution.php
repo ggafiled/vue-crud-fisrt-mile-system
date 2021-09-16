@@ -12,8 +12,30 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'constrution_project' => 'Project Name',
+    'constrution_tot' => 'Project Tot Name',
+    'constrution_3bb' => 'Project 3bb Name',
+    'constrution_true' => 'Project TRUE Name',
+    'constrution_ais' => 'Project Ais Name',
+    'constrution_fribernet' => 'Project Fribernet Name',
+    'constrution_desing' => 'Desing',
+    'constrution_survey' => 'Survey Desing',
+    'constrution_surveydate' => 'Survey Date',
+    'constrution_ifcc' => 'IFCC',
+    'constrution_ifccdate' => 'IFCC Date',
+    'constrution_wallbox' => 'WallBox',
+    'constrution_wallboxdate' => 'WallBox Date',
+    'constrution_type' => 'Type',
+    'constrution_microductding' => 'Microduct D',
+    'constrution_microductdingdate' => 'Microduct D Date',
+    'constrution_microductK' => 'Microduct K',
+    'constrution_microductKdate' => 'Microduct K Date',
+    'constrution_fiberconvertion' => 'Fiberconvertion',
+    'constrution_fiberconvertiondate' => 'Fiberconvertion Date',
+    'constrution_blow' => 'House Number',
+    'constrution_splice' => 'Swine',
 
-    'header' => 'Constitution Management',
+    'header' => 'Constrution Management',
     'addnew' => 'Add New',
     'create' => [
         'header' => 'Create New Constitution',

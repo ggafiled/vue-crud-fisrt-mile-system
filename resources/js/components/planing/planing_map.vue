@@ -18,6 +18,7 @@ import { LongdoMap, LongdoMapMarker } from "longdo-map-vue";
 LongdoMap.init({ apiKey: process.env.MIX_APP_LONGDO_MAP_KEY });
 export default {
     title: "Guild Map -",
+    ajax: "/api/constarution",
     components: {
         LongdoMap,
         LongdoMapMarker
@@ -29,11 +30,11 @@ export default {
             coordinate: [
                 {
                     location: {
-                        lon: 100.58434210713955,
-                        lat: 13.729530376110512
+                        lon: 100.508774,
+                        lat: 13.722308
                     },
                     title:
-                        "The Reserve Sukhumvit 61 (เดอะ รีเซิร์ฟ สุขุมวิท 61)",
+                        "เดอะไลท์เฮ้าส์",
                     detail:
                         "78 ซ. สุขุมวิท 61 แขวง คลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110",
                     icon: {
@@ -41,33 +42,6 @@ export default {
                         offset: { x: 12, y: 45 }
                     }
                 },
-                {
-                    location: {
-                        lon: 100.56503,
-                        lat: 13.736242
-                    },
-                    title: "แขวงคลองเตยเหนือ",
-                    detail:
-                        "ซอยสุขุมวิท 27 (ซอยประภัทศร) แขวงคลองเตยเหนือ เขตวัฒนา",
-                    icon: {
-                        url: "https://map.longdo.com/mmmap/images/pin_mark.png",
-                        offset: { x: 12, y: 45 }
-                    }
-                },
-                {
-                    location: {
-                        lon: 100.565030,
-                        lat: 13.736242
-                    },
-                    title:
-                        "แขวงคลองเตยเหนือ",
-                    detail:
-                        "isp:ทรู ซอยสุขุมวิท 27 (ซอยประภัทศร) แขวงคลองเตยเหนือ เขตวัฒนา",
-                    icon: {
-                        url: "https://map.longdo.com/mmmap/images/pin_mark.png",
-                        offset: { x: 12, y: 45 }
-                    }
-                }
             ]
         };
     },
