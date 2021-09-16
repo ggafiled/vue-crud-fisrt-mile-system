@@ -505,6 +505,7 @@ export default {
     components: { Select2 },
     data() {
         return {
+            loader: null,
             editmode: false,
             selected: "",
             building: [],
@@ -982,12 +983,19 @@ export default {
 
     created() {
         this.$Progress.start();
+        this.loader = Swal.fire({
+            title: "กรุณารอสักครู่...",
+            text: 'กำลังโหลดข้อมูลที่เกี่ยวข้อง',
+            showCancelButton: false,
+            showConfirmButton: false
+        });
         this.loadBuildings();
         this.$Progress.finish();
     },
     mounted() {
         this.loadGeneratingaction();
         this.generateTable();
+        setTimeout(() => {this.loader.close()}, 3000)
     }
 };
 </script>

@@ -983,6 +983,7 @@ export default {
     },
     data() {
         return {
+            loader: null,
             openWindowPortal: false,
             editmode: false,
             selected: "",
@@ -1832,6 +1833,12 @@ export default {
     },
     created() {
         this.$Progress.start();
+        this.loader = Swal.fire({
+            title: "กรุณารอสักครู่...",
+            text: 'กำลังโหลดข้อมูลที่เกี่ยวข้อง',
+            showCancelButton: false,
+            showConfirmButton: false
+        });
         this.loadBuildings();
         this.$Progress.finish();
     },
@@ -1846,7 +1853,7 @@ export default {
         this.loadAreaFiberNet();
         this.loadWorkTime();
         this.generateTable();
-        this.loadMap();
+        setTimeout(() => {this.loader.close()}, 3000)
         // $("input").attr("autocomplete", this.isChrome ? "chrome-off" : "off");
     }
 };

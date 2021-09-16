@@ -4,7 +4,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">CUSTOMER MANAGEMENT</h3>
+                        <h2 class="card-title">
+                            <i class="fas fa-fw bi bi-people"></i>
+                            {{ translate("CUSTOMER MANAGEMENT") }}
+                        </h2>
                         <div class="card-tools">
                             <button
                                 type="button"
@@ -727,6 +730,7 @@ export default {
     components: { Select2 },
     data() {
         return {
+            loader: null,
             editmode: false,
             selected: "",
             building: [],
@@ -743,7 +747,6 @@ export default {
                 allowClear: true,
                 dropdownParent: ".modal"
             },
-            sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
             form: new Form({
                 id: "",
                 building_id: "",
@@ -1597,6 +1600,12 @@ export default {
     },
     created() {
         this.$Progress.start();
+        this.loader = Swal.fire({
+            title: "กรุณารอสักครู่...",
+            text: 'กำลังโหลดข้อมูลที่เกี่ยวข้อง',
+            showCancelButton: false,
+            showConfirmButton: false
+        });
         this.loadBuildings();
         this.$Progress.finish();
     },
@@ -1609,6 +1618,7 @@ export default {
         this.loadCallver();
         this.loadCallverstatus();
         this.loadAgent();
+        setTimeout(() => {this.loader.close()}, 2000)
     }
 };
 </script>

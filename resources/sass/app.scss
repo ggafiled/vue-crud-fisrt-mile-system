@@ -111,6 +111,12 @@
     }
 }
 
+.v-treeview-node__content {
+    .v-treeview-node__prepend+.v-treeview-node__label {
+        margin-right: 1em !important;
+    }
+}
+
 @font-face {
     font-family: "fontello";
     src: url("/fonts/fontello.eot");

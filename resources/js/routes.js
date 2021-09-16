@@ -104,6 +104,15 @@ export default [{
         }
     },
     {
+        path: "/customer/treeview",
+        component: require("./components/customer/CustomerTreeView.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator"]
+        }
+    },
+    {
         path: "/planing/map",
         component: require("./components/planing/planing_map.vue").default,
         meta: {
