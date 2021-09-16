@@ -31,21 +31,21 @@
                                 <thead>
                                     <tr class="info">
                                         <th></th>
-                                        <th>ชื่ออาคาร</th>
-                                        <th>ออกแบบโดย</th>
-                                        <th>สำรวจออกแบบ</th>
-                                        <th>IFCC</th>
-                                        <th>วัน IFCC</th>
-                                        <th>WallBox</th>
-                                        <th>วัน WallBox</th>
-                                        <th>Microduct(แนวดิ่ง)</th>
-                                        <th>วัน Microduct(แนวดิ่ง)</th>
-                                        <th>Microduct(ขว้าง)</th>
-                                        <th>วัน Microduct(ขว้าง)</th>
-                                        <th>FiberConvertion</th>
-                                        <th>วัน fiberConvertion</th>
-                                        <th>Blow</th>
-                                        <th>Splice</th>
+                                        <th>{{ translate("constitution.constrution_project") }}</th>
+                                        <th>{{ translate("constitution.constrution_desing") }}</th>
+                                        <th>{{ translate("constitution.constrution_survey") }}</th>
+                                        <th>{{ translate("constitution.constrution_ifcc") }}</th>
+                                        <th>{{ translate("constitution.constrution_ifccdate") }}</th>
+                                        <th>{{ translate("constitution.constrution_wallbox") }}</th>
+                                        <th>{{ translate("constitution.constrution_wallboxdate") }}</th>
+                                        <th>{{ translate("constitution.constrution_microductding") }}</th>
+                                        <th>{{ translate("constitution.constrution_microductdingdate") }}</th>
+                                        <th>{{ translate("constitution.constrution_microductK") }}</th>
+                                        <th>{{ translate("constitution.constrution_microductKdate") }}</th>
+                                        <th>{{ translate("constitution.constrution_fiberconvertion") }}</th>
+                                        <th>{{ translate("constitution.constrution_fiberconvertiondate") }}</th>
+                                        <th>{{ translate("constitution.constrution_blow") }}</th>
+                                        <th>{{ translate("constitution.constrution_Splice") }}</th>
                                         <th>Update</th>
                                         <th>Action</th>
                                     </tr>
@@ -102,8 +102,7 @@
                                     >
                                         <div class="form-group">
                                             <label
-                                                >ชื่ออาคาร จากตาราง
-                                                Building</label
+                                                >{{ translate("constitution.constrution_project") }}</label
                                             >
                                             <Select2
                                                 v-model="form.building_id"
@@ -122,7 +121,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>ชื่ออาคาร ทีโอทีเรียก</label>
+                                            <label>{{ translate("constitution.constrution_tot") }}</label>
                                             <input
                                                 v-model="form.projectNameTot"
                                                 type="text"
@@ -139,7 +138,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label
-                                                >ชื่ออาคาร สามบีบีเรียก</label
+                                                >{{ translate("constitution.constrution_3bb") }}</label
                                             >
                                             <input
                                                 v-model="form.projectName3bb"
@@ -156,7 +155,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>ชื่ออาคาร ทรูเรียก</label>
+                                            <label>{{ translate("constitution.constrution_true") }}</label>
                                             <input
                                                 v-model="form.projectNameTrue"
                                                 type="text"
@@ -175,7 +174,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label
-                                                >ชื่ออาคาร เอไอเอสเรียก</label
+                                                >{{ translate("constitution.constrution_ais") }}</label
                                             >
                                             <input
                                                 v-model="form.projectNameAis"
@@ -193,8 +192,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label
-                                                >ชื่ออาคาร
-                                                ไฟเบอร์เน็ตเรียก</label
+                                                >{{ translate("constitution.constrution_fribernet") }}</label
                                             >
                                             <input
                                                 v-model="
@@ -233,7 +231,7 @@
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>ออกแบบโดย</label>
+                                            <label>{{ translate("constitution.constrution_desing") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.desingBy_id"
@@ -257,7 +255,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>สำรวจออกแบบ</label>
+                                            <label>{{ translate("constitution.constrution_survey") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.surveyDesing_id"
@@ -282,7 +280,7 @@
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>วันสำรวจออกแบบ</label>
+                                            <label>{{ translate("constitution.constrution_surveydate") }}</label>
                                             <input
                                                 v-model="form.surveyDesingDate"
                                                 type="date"
@@ -307,7 +305,7 @@
                                         <!-- text input -->
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>IFCC</label>
+                                            <label>{{ translate("constitution.constrution_ifcc") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.ifcc_id"
@@ -331,7 +329,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>วัน IFCC</label>
+                                            <label>{{ translate("constitution.constrution_ifccdate") }}</label>
                                             <input
                                                 type="date"
                                                 v-model="form.ifccDate"
@@ -351,7 +349,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>WallBox</label>
+                                            <label>{{ translate("constitution.constrution_wallbox") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.wallBox_id"
@@ -375,7 +373,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>วัน Wallbox</label>
+                                            <label>{{ translate("constitution.constrution_wallboxdate") }}</label>
                                             <input
                                                 type="date"
                                                 v-model="form.wallBoxDate"
@@ -430,7 +428,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>Microduct(แนวดิ่ง)</label>
+                                            <label>{{ translate("constitution.constrution_microductding") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.microductD_id"
@@ -459,7 +457,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label
-                                                >วัน Microduct(แนวดิ่ง)</label
+                                                >{{ translate("constitution.constrution_microductdingdate") }}</label
                                             >
                                             <input
                                                 v-model="form.microductDateD"
@@ -483,7 +481,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Microduct (แนวขว้าง)</label>
+                                            <label>{{ translate("constitution.constrution_microductK") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.microductK_id"
@@ -513,7 +511,7 @@
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
                                             <label
-                                                >วัน Microduct (แนวขว้าง)</label
+                                                >{{ translate("constitution.constrution_microductKdate") }}</label
                                             >
                                             <input
                                                 v-model="form.microductDateK"
@@ -542,7 +540,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>FiberConvertion</label>
+                                            <label>{{ translate("constitution.constrution_fiberconvertion") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="
@@ -572,8 +570,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label
-                                                >วัน FiberConvertion
-                                                (แนวดิ่ง)</label
+                                                >{{ translate("constitution.constrution_fiberconvertiondate") }}</label
                                             >
                                             <input
                                                 v-model="
@@ -603,7 +600,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>Blow</label>
+                                            <label>{{ translate("constitution.constrution_blow") }}</label>
                                             <select
                                                 v-model="form.blow"
                                                 type="text"
@@ -635,7 +632,7 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>Splice</label>
+                                            <label>{{ translate("constitution.constrution_splice") }}</label>
                                             <select
                                                 v-model="form.splice"
                                                 type="text"

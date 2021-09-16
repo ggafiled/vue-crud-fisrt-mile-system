@@ -18,6 +18,7 @@ import { LongdoMap, LongdoMapMarker } from "longdo-map-vue";
 LongdoMap.init({ apiKey: process.env.MIX_APP_LONGDO_MAP_KEY });
 export default {
     title: "Guild Map -",
+    ajax: "/api/constarution",
     components: {
         LongdoMap,
         LongdoMapMarker
