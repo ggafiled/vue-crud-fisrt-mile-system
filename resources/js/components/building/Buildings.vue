@@ -32,43 +32,43 @@
                                     <thead>
                                         <tr class="info">
                                             <th></th>
-                                            <th>ชื่ออาคาร</th>
-                                            <th>Fm Code</th>
-                                            <th>พื้นที่ tot</th>
-                                            <th>พื้นที่ BBN</th>
-                                            <th>พื้นที่3BB</th>
-                                            <th>พื้นที่True</th>
-                                            <th>พื้นที่TrueNew</th>
-                                            <th>พื้นที่Ais</th>
-                                            <th>พื้นที่FiberNet</th>
-                                            <th>จำนวนอาคาร</th>
-                                            <th>จำนวนชั้น</th>
-                                            <th>จำนวนห้อง</th>
-                                            <th>ชื่อผู้จัดการ</th>
-                                            <th>เบอร์โทรผู้จัดการ</th>
-                                            <th>เมล์ผู้จัดการ</th>
-                                            <th>ชื่อนิติบุคคล</th>
-                                            <th>เบอร์นิติบุคคล</th>
-                                            <th>เมล์นิติบุคคล</th>
-                                            <th>บ้านเลขที่</th>
-                                            <th>หมู่</th>
-                                            <th>ซอย</th>
-                                            <th>ถนน</th>
-                                            <th>อำเภอ/เขต</th>
-                                            <th>จังหวัด</th>
-                                            <th>ตำบล/แขวง</th>
-                                            <th>รหัสไปรษณีย์</th>
+                                            <th>{{ translate("building.building_project") }}</th>
+                                            <th>{{ translate("building.building_fmcode") }}</th>
+                                            <th>{{ translate("building.building_areatot") }}</th>
+                                            <th>{{ translate("building.building_areabbn") }}</th>
+                                            <th>{{ translate("building.building_3bb") }}</th>
+                                            <th>{{ translate("building.building_areatrue") }}</th>
+                                            <th>{{ translate("building.building_areatrueNew") }}</th>
+                                            <th>{{ translate("building.building_areaais") }}</th>
+                                            <th>{{ translate("building.building_areafibernet") }}</th>
+                                            <th>{{ translate("building.building_buildingsum") }}</th>
+                                            <th>{{ translate("building.building_floorsum") }}</th>
+                                            <th>{{ translate("building.building_roomsum") }}</th>
+                                            <th>{{ translate("building.building_managername") }}</th>
+                                            <th>{{ translate("building.building_managerphone") }}</th>
+                                            <th>{{ translate("building.building_manageremail") }}</th>
+                                            <th>{{ translate("building.building_corporationname") }}</th>
+                                            <th>{{ translate("building.building_corporationphone") }}</th>
+                                            <th>{{ translate("building.building_corporationemail") }}</th>
+                                            <th>{{ translate("building.building_housenumber") }}</th>
+                                            <th>{{ translate("building.building_swine") }}</th>
+                                            <th>{{ translate("building.building_alley") }}</th>
+                                            <th>{{ translate("building.building_road") }}</th>
+                                            <th>{{ translate("building.building_districtdistrict") }}</th>
+                                            <th>{{ translate("building.building_province") }}</th>
+                                            <th>{{ translate("building.building_Sub-district") }}</th>
+                                            <th>{{ translate("building.building_postalcode") }}</th>
                                             <th>Longitude</th>
                                             <th>Latitude</th>
-                                            <th>ชื่อเซลล์ที่ทำสัญญา</th>
-                                            <th>วันที่ทำสัญญา</th>
-                                            <th>วันสิ้นสุดสัญญา</th>
-                                            <th>SpendSpace</th>
-                                            <th>รูปแบบการแบ่งรายได้</th>
-                                            <th>ระยะเวลาสัญญาเพิ่ม</th>
-                                            <th>Condition</th>
-                                            <th>ราคาที่ต้องจ่าย</th>
-                                            <th>เวลาปฏิบัติงาน</th>
+                                            <th>{{ translate("building.building_salename") }}</th>
+                                            <th>{{ translate("building.building_datecontact") }}</th>
+                                            <th>{{ translate("building.building_datecontactend") }}</th>
+                                            <th>{{ translate("building.building_spendspace") }}</th>
+                                            <th>{{ translate("building.building_incomemodel") }}</th>
+                                            <th>{{ translate("building.building_contractperiod") }}</th>
+                                            <th>{{ translate("building.building_condition") }}</th>
+                                            <th>{{ translate("building.building_pricetopay") }}</th>
+                                            <th>{{ translate("building.building_operatingtime") }}</th>
                                             <th>create</th>
                                             <th>updated</th>
                                             <th>Action</th>
@@ -120,7 +120,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>ชื่ออาคาร</label>
+                                            <label>{{ translate("building.building_project") }}</label>
                                             <input
                                                 v-model="form.projectName"
                                                 type="text"
@@ -136,7 +136,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>FmCode</label>
+                                            <label>{{ translate("building.building_fmcode") }}</label>
                                             <input
                                                 v-model="form.fmCode"
                                                 type="text"
@@ -156,7 +156,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>จำนวนอาคาร</label>
+                                            <label>{{ translate("building.building_buildingsum") }}</label>
                                             <input
                                                 v-model="form.buildingSum"
                                                 type="text"
@@ -177,7 +177,7 @@
 
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>จำนวนชั้น</label>
+                                            <label>{{ translate("building.building_floorsum") }}</label>
                                             <input
                                                 v-model="form.floorSum"
                                                 type="text"
@@ -198,7 +198,7 @@
 
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>จำนวนห้อง</label>
+                                            <label>{{ translate("building.building_roomsum") }}</label>
                                             <input
                                                 v-model="form.roomSum"
                                                 type="text"
@@ -221,7 +221,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>ชื่อผู้จัดการ</label>
+                                            <label>{{ translate("building.building_managername") }}</label>
                                             <input
                                                 v-model="form.nameManager"
                                                 type="text"
@@ -241,7 +241,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>เบอร์โทรผู้จัดการ</label>
+                                            <label>{{ translate("building.building_managerphone") }}</label>
                                             <input
                                                 v-model="form.phoneManager"
                                                 type="text"
@@ -262,7 +262,7 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>เมล์ผู้จัดการ</label>
+                                            <label>{{ translate("building.building_manageremail") }}</label>
                                             <input
                                                 v-model="form.mailManager"
                                                 type="text"
@@ -285,7 +285,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>ชื่อนิติบุคคล</label>
+                                            <label>{{ translate("building.building_corporationname") }}</label>
                                             <input
                                                 v-model="form.nameNiti"
                                                 type="text"
@@ -305,7 +305,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>เบอร์นิติบุคคล</label>
+                                            <label>{{ translate("building.building_corporationphone") }}</label>
                                             <input
                                                 v-model="form.phoneNiti"
                                                 type="text"
@@ -326,7 +326,7 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>เมล์นิติบุคคล</label>
+                                            <label>{{ translate("building.building_corporationemail") }}</label>
                                             <input
                                                 v-model="form.mailNiti"
                                                 type="text"
@@ -350,7 +350,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>บ้านเลขที่</label>
+                                            <label>{{ translate("building.building_housenumber") }}</label>
                                             <input
                                                 v-model="form.houseNumber"
                                                 type="text"
@@ -370,7 +370,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>หมู่</label>
+                                            <label>{{ translate("building.building_swine") }}</label>
                                             <input
                                                 v-model="form.squadNumber"
                                                 type="text"
@@ -390,7 +390,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>ซอย</label>
+                                            <label>{{ translate("building.building_alley") }}</label>
                                             <input
                                                 v-model="form.alleyName"
                                                 type="text"
@@ -410,7 +410,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>ถนน</label>
+                                            <label>{{ translate("building.building_road") }}</label>
                                             <input
                                                 v-model="form.roadName"
                                                 type="text"
@@ -436,7 +436,7 @@
                                                 v-model="form.districtName"
                                                 type="district"
                                                 @select="select"
-                                                label="ตำบล/เขต"
+                                                label="Sub-district"
                                                 color="#42b883"
                                                 size="default"
                                                 autocomplete="chrome-off"
@@ -455,7 +455,7 @@
                                                 type="amphoe"
                                                 @select="select"
                                                 color="#42b883"
-                                                label="อำเภอ/แขวง"
+                                                label="districtdistrict"
                                                 size="default"
                                                 autocomplete="chrome-off"
                                                 placeholder="District..."
@@ -474,7 +474,7 @@
                                                 v-model="form.provinceName"
                                                 type="province"
                                                 @select="select"
-                                                label="จังหวัด"
+                                                label="province"
                                                 size="default"
                                                 color="#42b883"
                                                 autocomplete="chrome-off"
@@ -495,7 +495,7 @@
                                                 @select="select"
                                                 size="default"
                                                 color="#42b883"
-                                                label="รหัสไปรษณีย์"
+                                                label="postalcode"
                                                 autocomplete="chrome-off"
                                                 placeholder="Postal Code..."
                                             />
@@ -572,7 +572,7 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>ชื่อเซลล์ที่ทำสัญญา</label>
+                                            <label>{{ translate("building.building_salename") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.saleFm_id"
@@ -596,7 +596,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>วันที่ทำสัญญา</label>
+                                            <label>{{ translate("building.building_datecontact") }}</label>
                                             <input
                                                 ref="contractDate"
                                                 v-model="form.contractDate"
@@ -618,7 +618,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>วันสิ้นสุดสัญญา</label>
+                                            <label>{{ translate("building.building_datecontactend") }}</label>
                                             <input
                                                 ref="contractDateEnd"
                                                 v-model="form.contractDateEnd"
@@ -664,7 +664,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>รูปแบบการแบ่งรายได้</label>
+                                            <label>{{ translate("building.building_incomemodel") }}</label>
                                             <input
                                                 v-model="form.condition"
                                                 type="text"
@@ -704,7 +704,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>ระยะเวลาสัญญาเพิ่ม</label>
+                                            <label>{{ translate("building.building_contractperiod") }}</label>
                                             <input
                                                 v-model="form.reNewContact"
                                                 type="date"
@@ -724,7 +724,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>ราคาที่ต้องจ่าย</label>
+                                            <label>{{ translate("building.building_pricetopay") }}</label>
                                             <input
                                                 v-model="form.balance"
                                                 type="text"
@@ -747,7 +747,7 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>พื้นที่ ToT *</label>
+                                            <label>{{ translate("building.building_areatot") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areas_id"
@@ -771,7 +771,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>พื้นที่ BBN *</label>
+                                            <label>{{ translate("building.building_areabbn") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.bbns_id"
@@ -797,7 +797,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>พื้นที่ 3BB *</label>
+                                            <label>{{ translate("building.building_3bb") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.area3bb_id"
@@ -821,7 +821,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>พื้นที่ True</label>
+                                            <label>{{ translate("building.building_areatrue") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaTrue_id"
@@ -845,7 +845,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>พื้นที่ TrueNew</label>
+                                            <label>{{ translate("building.building_areatrueNew") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaTrueNew_id"
@@ -869,7 +869,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>พื้นที่ Ais</label>
+                                            <label>{{ translate("building.building_areaais") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaAis_id"
@@ -895,7 +895,7 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>พื้นที่ FiberNet</label>
+                                            <label>{{ translate("building.building_areafibernet") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaFibernet_id"
@@ -919,7 +919,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>เวลาปฏิบัติงาน</label>
+                                            <label>{{ translate("building.building_operatingtime") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.workTime_id"

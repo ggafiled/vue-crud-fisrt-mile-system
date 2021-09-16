@@ -21,14 +21,18 @@ return [
     'global_search'                 => 'Global search',
     'search'                        => 'Search',
     'dashboard'                     => 'Dashboard',
+
+
     'project_managment'             => 'Project Managment',
     'building_managment'            => 'Building Managment',
-    'constitution_managment'        => 'Constitution Managment',
+    'constitution_managment'        => 'Constrution Managment',
     'progress_managment'            => 'Progress Managment',
     'customer_managment'            => 'Customer Managment',
     'planning_managment'            => 'Planning Managment',
     'contractor_managment'          => 'Contractor Managment',
     'accountant_managment'          => 'Accountant Managment',
+
+
     'reports_progress'              => 'Reports Progress',
     'project_tot_table'             => 'Project TOT Table',
     'project_3bb_table'             => 'Project 3BB Table',

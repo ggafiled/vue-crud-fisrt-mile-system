@@ -44,6 +44,42 @@ class SalefmSeeder extends Seeder
             [
                 'nameSale' => 'คุณใหม่ : 063 3436657',
             ],
+            [
+                'nameSale' => 'คุณต้น',
+            ],
+            [
+                'nameSale' => 'คุณแอนนี่',
+            ],
+            [
+                'nameSale' => 'คุณเกต',
+            ],
+            [
+                'nameSale' => 'MD',
+            ],
+            [
+                'nameSale' => 'คุณโฟค',
+            ],
+            [
+                'nameSale' => 'คุุณเบล',
+            ],
+            [
+                'nameSale' => 'คุณนพ',
+            ],
+            [
+                'nameSale' => 'คุุณนัท',
+            ],
+            [
+                'nameSale' => 'คุณเกมส์',
+            ],
+            [
+                'nameSale' => 'คุณอณาฆินธร์',
+            ],
+            [
+                'nameSale' => 'บจก.สไมล์ ลิ้งค์ คุณภาณุพงศ์ 085-923-5298',
+            ],
+            [
+                'nameSale' => 'คุุณบอย',
+            ],
         ];
         Salefm::insert($Salefms);
     }

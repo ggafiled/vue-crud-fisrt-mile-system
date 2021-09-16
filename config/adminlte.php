@@ -265,43 +265,43 @@ return [
             'can'  => ["constarution-create", "constarution-read"],
             'submenu' => [
                 [
-                    'text' => 'building_managment',
+                    'text' => 'building_managment',//building
                     'url'  => '/building',
                     'icon' => 'fas fa-fw bi bi-building',
                     'roles'  => ["superadministrator", "administrator", "user"]
                 ],
                 [
-                    'text' => 'constitution_managment',
+                    'text' => 'constitution_managment',//constalution
                     'url'  => '/constitution',
                     'icon' => 'fas fa-fw bi bi-aspect-ratio',
                     'can'  => ["constarution-create", "constarution-read"]
                 ],
                 [
-                    'text' => 'progress_managment',
+                    'text' => 'progress_managment',//progress
                     'url'  => '/progress',
                     'icon' => 'mdi mdi-18px mdi-progress-wrench',
                     'roles'  => ["superadministrator", "administrator"]
                 ],
                 [
-                    'text' => 'customer_managment',
+                    'text' => 'customer_managment',//customer
                     'url'  => '/customer',
                     'icon' => 'fas fa-fw fas fa-users',
                     'roles'  => ["superadministrator", "administrator"]
                 ],
                 [
-                    'text' => 'constitution_managment',
-                    'url'  => '/',
-                    'icon' => 'fas fa-fw fas fa-file-signature',
-                    'roles'  => ["superadministrator", "administrator"]
-                ],
-                [
-                    'text' => 'contractor_managment',
+                    'text' => 'planning_managment',//planing
                     'url'  => '/planing/map',
                     'icon' => 'fas fa-fw fas fa-list-alt',
                     'roles'  => ["superadministrator", "administrator"]
                 ],
                 [
-                    'text' => 'accountant_managment',
+                    'text' => 'contractor_managment',//contractor
+                    'url'  => '/',
+                    'icon' => 'fas fa-fw fas fa-file-signature',
+                    'roles'  => ["superadministrator", "administrator"]
+                ],
+                [
+                    'text' => 'accountant_managment',//accountant
                     'url'  => '/',
                     'icon' => 'fas fa-fw fa-file-invoice-dollar',
                     'roles'  => ["superadministrator", "administrator"]

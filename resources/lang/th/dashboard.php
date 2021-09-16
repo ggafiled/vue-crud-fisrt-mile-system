@@ -23,16 +23,17 @@ return [
     'accountant_managment' => 'นักบัญชี',
     'table_all' => 'ตารางทั้งหมด',
     'charts' => [
-        'group_of_county_area_chart' => 'Group of county Area Chart',
-        'progress_status_chart' => 'Progress status Chart',
-        'progress_polarArea_chart' => 'Progress PolarArea Chart'
+        'group_of_county_area_chart' => 'ผังพื้นที่กลุ่มจังหวัด',
+        'progress_status_chart' => 'แผนภูมิสถานะความคืบหน้า',
+        'progress_polarArea_chart' => 'แผนภูมิ PolarArea ความคืบหน้า'
     ],
     'info_box' => [
-        'progress_all' => 'Progress All',
-        'constarution' => 'Constarution',
-        'progress' => 'Progress',
-        'planing' => 'Planing',
-        'user' => 'Users'
+        'progress_all' => 'อาคารทั้งหมด',
+        'constarution' => 'รูปแบบการสร้างทั้งหมด',
+        'progress' => 'สถานะการดำเนินงานทั้งหมด',
+        'customer' => 'รายละเอียดลูกค้าทั้งหมด',
+        'planing' => 'จัดงานทั้งหมด',
+        'user' => 'ผู้ใช้งานในระบบทั้งหมด'
     ],
     'actions' => [
         'click' => 'กดเพื่อไป'

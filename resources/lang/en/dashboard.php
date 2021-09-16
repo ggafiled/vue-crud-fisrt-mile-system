@@ -28,9 +28,10 @@ return [
         'progress_polarArea_chart' => 'Progress PolarArea Chart'
     ],
     'info_box' => [
-        'progress_all' => 'Progress All',
+        'progress_all' => 'Project All',
         'constarution' => 'Constarution',
         'progress' => 'Progress',
+        'customer' => 'Customer',
         'planing' => 'Planing',
         'user' => 'Users'
     ],

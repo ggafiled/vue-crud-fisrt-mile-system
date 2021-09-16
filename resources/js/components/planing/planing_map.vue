@@ -52,6 +52,20 @@ export default {
                         url: "https://map.longdo.com/mmmap/images/pin_mark.png",
                         offset: { x: 12, y: 45 }
                     }
+                },
+                {
+                    location: {
+                        lon: 100.565030,
+                        lat: 13.736242
+                    },
+                    title:
+                        "แขวงคลองเตยเหนือ",
+                    detail:
+                        "isp:ทรู ซอยสุขุมวิท 27 (ซอยประภัทศร) แขวงคลองเตยเหนือ เขตวัฒนา",
+                    icon: {
+                        url: "https://map.longdo.com/mmmap/images/pin_mark.png",
+                        offset: { x: 12, y: 45 }
+                    }
                 }
             ]
         };

@@ -147,6 +147,26 @@ class BbnSeeder extends Seeder
                 'name' => 'N/A',
                 'area_id' => '11',
             ],
+            [
+                'name' => 'บบน.1.2.3',
+                'area_id' => '1',
+            ],
+            [
+                'name' => 'บบน.1.2.3',
+                'area_id' => '1',
+            ],
+            [
+                'name' => 'บบน.1.2.2',
+                'area_id' => '1',
+            ],
+            [
+                'name' => 'บบน.4.2.3',
+                'area_id' => '6',
+            ],
+            [
+                'name' => 'บบน.4.2.2',
+                'area_id' => '6',
+            ],
         ];
         Bbn::insert($bbns);
     }
