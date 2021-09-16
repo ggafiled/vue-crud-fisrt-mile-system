@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\API\V1\BaseController;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Planing\PlaningRequest;
 use App\Models\Planing;
 use Exception;
-use App\Http\Requests\Planing\PlaningRequest;
+use Illuminate\Http\Request;
 
 class PlaningController extends BaseController
 {
@@ -29,7 +28,7 @@ class PlaningController extends BaseController
 
         try {
             $planing = Planing::with(
-                'building','technician',
+                'building', 'technician',
                 'isp:id,isp as name',
                 'agentDetail:id,agentDetail as name',
                 'jobtype:id,jobType as name',
@@ -84,7 +83,7 @@ class PlaningController extends BaseController
                 'appointmentTime' => $request->input('appointmentTime'),
                 'status' => $request->input('status'),
                 'subStatus' => $request->input('subStatus'),
-                'reMark' => $request->input('reMark')
+                'reMark' => $request->input('reMark'),
             ]);
             $planing->save();
             return $this->sendResponse($planing, trans('actions.created.success'));
@@ -151,7 +150,6 @@ class PlaningController extends BaseController
         }
     }
 
-
     /**
      * get lantitude and longitude from planning item depending on building information.
      *
@@ -160,10 +158,23 @@ class PlaningController extends BaseController
     public function loadCoordinatePlanningOfBuilding()
     {
         try {
-            $planing = [];
-            return $this->sendResponse($planing, trans('actions.destroy.success'));
+            $collection = [];
+            $planing = Planing::with(
+                ['building:id,workTime_id,longitude,latitude,projectName as name',
+                    'building.workTime:id,workTime as name'])
+                ->whereHas('building', function ($query) {
+                    return $query->where('longitude', '!=', 0)->where('latitude', '!=', 0);
+                })
+                ->get()
+                ->map(function ($item) use ($collection) {
+                    $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
+                    $collection["title"] = $item->building->name;
+                    $collection["detail"] = $item->building->workTime->name ?? "unknown";
+                    return $collection;
+                });
+            return $this->sendResponse($planing, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.destroy.failed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 }

@@ -1438,7 +1438,20 @@ export default {
                         }
                     },
                     {
-                        data: "area_true_new.name"
+                        data: "area_true_new.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
                         data: "area_ais.name",
@@ -1473,61 +1486,194 @@ export default {
                         }
                     },
                     {
-                        data: "buildingSum"
+                        data: "buildingSum",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "floorSum"
+                        data: "floorSum",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "roomSum"
+                        data: "roomSum",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "nameManager"
+                        data: "nameManager",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "phoneManager"
+                        data: "phoneManager",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "mailManager"
+                        data: "mailManager",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "nameNiti"
+                        data: "nameNiti",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "phoneNiti"
+                        data: "phoneNiti",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "mailNiti"
+                        data: "mailNiti",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "houseNumber"
+                        data: "houseNumber",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "squadNumber"
+                        data: "squadNumber",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "alleyName"
+                        data: "alleyName",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "roadName"
+                        data: "roadName",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "districtName"
+                        data: "districtName",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "countyName"
+                        data: "countyName",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "provinceName"
+                        data: "provinceName",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "postalCode"
+                        data: "postalCode",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "longitude"
+                        data: "longitude",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "latitude"
+                        data: "latitude",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
                         data: "sale_fm.name",
@@ -1568,13 +1714,34 @@ export default {
                         }
                     },
                     {
-                        data: "condition"
+                        data: "condition",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "contractPeriod"
+                        data: "contractPeriod",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
-                        data: "reNewContact"
+                        data: "reNewContact",
+                        render: function(data, type, row, meta) {
+                           if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
                         data: "balance",

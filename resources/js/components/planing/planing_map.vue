@@ -1,6 +1,6 @@
 <template>
     <section id="map" style="height: 88vh !important; padding: 0; margin: 0;">
-        <longdo-map :zoom="10" :lastView="false" @load="initMap">
+        <longdo-map :zoom="12" :lastView="false" @load="initMap">
             <longdo-map-marker
                 v-for="(item, i) in coordinate"
                 :key="i"
@@ -26,49 +26,7 @@ export default {
         return {
             loader: null,
             fullPage: false,
-            coordinate: [
-                {
-                    location: {
-                        lon: 100.58434210713955,
-                        lat: 13.729530376110512
-                    },
-                    title:
-                        "The Reserve Sukhumvit 61 (เดอะ รีเซิร์ฟ สุขุมวิท 61)",
-                    detail:
-                        "78 ซ. สุขุมวิท 61 แขวง คลองตันเหนือ เขตวัฒนา กรุงเทพมหานคร 10110",
-                    icon: {
-                        url: "https://map.longdo.com/mmmap/images/pin_mark.png",
-                        offset: { x: 12, y: 45 }
-                    }
-                },
-                {
-                    location: {
-                        lon: 100.56503,
-                        lat: 13.736242
-                    },
-                    title: "แขวงคลองเตยเหนือ",
-                    detail:
-                        "ซอยสุขุมวิท 27 (ซอยประภัทศร) แขวงคลองเตยเหนือ เขตวัฒนา",
-                    icon: {
-                        url: "https://map.longdo.com/mmmap/images/pin_mark.png",
-                        offset: { x: 12, y: 45 }
-                    }
-                },
-                {
-                    location: {
-                        lon: 100.565030,
-                        lat: 13.736242
-                    },
-                    title:
-                        "แขวงคลองเตยเหนือ",
-                    detail:
-                        "isp:ทรู ซอยสุขุมวิท 27 (ซอยประภัทศร) แขวงคลองเตยเหนือ เขตวัฒนา",
-                    icon: {
-                        url: "https://map.longdo.com/mmmap/images/pin_mark.png",
-                        offset: { x: 12, y: 45 }
-                    }
-                }
-            ]
+            coordinate: []
         };
     },
     methods: {
@@ -76,10 +34,9 @@ export default {
             map.resize();
             map.Ui.Fullscreen.visible(false);
             map.location(
-                { lon: 100.58434210713955, lat: 13.729530376110512 },
+                { lon: 100.612550, lat: 13.780091 },
                 true
             );
-            map.zoom(15);
 
             map.Event.bind("ready", function() {
                 map.Event.bind("fullscreen", function() {
@@ -87,11 +44,11 @@ export default {
                 });
             });
         },
-        async loadCoordinatePlanningOfBuilding() {
-            await axios
-                .get("/loadCoordinatePlanningOfBuilding")
+        loadCoordinatePlanningOfBuilding() {
+            axios
+                .get("planing/loadCoordinatePlanningOfBuilding")
                 .then(response => {
-                    this.coordinate = response.data;
+                    this.coordinate = response.data.data;
                 });
         }
     },
@@ -105,7 +62,7 @@ export default {
         this.loadCoordinatePlanningOfBuilding();
         setTimeout(() => {
             this.loader.hide();
-        }, 1000)
+        }, 3000)
     }
 };
 </script>
