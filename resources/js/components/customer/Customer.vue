@@ -41,6 +41,8 @@
                                         <th>จังหวัด</th>
                                         <th>ตำบล/แขวง</th>
                                         <th>รหัสไปรษณีย์</th>
+                                        <th>Longitude</th>
+                                        <th>Latitude</th>
                                         <th>จำนวนอาคาร</th>
                                         <th>จำนวนชั้น</th>
                                         <th>จำนวนห้อง</th>
@@ -949,7 +951,7 @@ export default {
                         className: "bg-success",
                         text: "<i class='bi bi-file-text mr-1'></i>AIS",
                         action: function(e, dt, node, config) {
-                            dt.column(17)
+                            dt.column(19)
                                 .search("AIS")
                                 .draw();
                         }
@@ -958,7 +960,7 @@ export default {
                         className: "bg-danger",
                         text: "<i class='bi bi-file-text mr-1'></i>TRUE",
                         action: function(e, dt, node, config) {
-                            dt.column(17)
+                            dt.column(19)
                                 .search("TRUE")
                                 .draw();
                         }
@@ -967,7 +969,7 @@ export default {
                         className: "bg-primary",
                         text: "<i class='bi bi-file-text mr-1'></i>TOT",
                         action: function(e, dt, node, config) {
-                            dt.column(17)
+                            dt.column(19)
                                 .search("TOT")
                                 .draw();
                         }
@@ -976,7 +978,7 @@ export default {
                         className: "bg-danger",
                         text: "<i class='bi bi-file-text mr-1'></i>FINET",
                         action: function(e, dt, node, config) {
-                            dt.column(17)
+                            dt.column(19)
                                 .search("FINET")
                                 .draw();
                         }
@@ -985,7 +987,7 @@ export default {
                         className: "bg-warning",
                         text: "<i class='bi bi-file-text mr-1'></i>FN",
                         action: function(e, dt, node, config) {
-                            dt.column(17)
+                            dt.column(19)
                                 .search("FN")
                                 .draw();
                         }
@@ -994,7 +996,7 @@ export default {
                         className: "bg-danger",
                         text: "<i class='bi bi-file-text mr-1'></i>3BB",
                         action: function(e, dt, node, config) {
-                            dt.column(17)
+                            dt.column(19)
                                 .search("3BB")
                                 .draw();
                         }
@@ -1212,6 +1214,12 @@ export default {
                                 return "<span>" + data + "</span>";
                             }
                         }
+                    },
+                    {
+                        data: "building[0].longitude"
+                    },
+                    {
+                        data: "building[0].latitude"
                     },
                     {
                         data: "theBuilding",
