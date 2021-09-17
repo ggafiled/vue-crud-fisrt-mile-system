@@ -40,10 +40,11 @@ class IspController extends BaseController
     public function store(Request $request)
     {
         try {
-            $isp = new Isp([
+            $isp = Isp::create([
                 'isp' => $request->input('isp'),
+                'isps_color' => $request->input('isps_color'),
+                'isps_map_icon' => $request->input('isps_map_icon'),
             ]);
-            $isp->save();
             return $this->sendResponse($isp, trans('actions.created.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.created.failed'));

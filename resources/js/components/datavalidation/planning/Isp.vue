@@ -196,11 +196,18 @@ export default {
         };
     },
     methods: {
+        loadItem() {
+            this.$Progress.start();
+            $("#items")
+                .DataTable()
+                .ajax.reload();
+            this.$Progress.finish();
+        },
         updateItem() {
             this.$Progress.start();
             // console.log('Editing data');
             this.form
-                .put("/callverstatuses/" + this.form.id)
+                .put("/isps/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -208,9 +215,7 @@ export default {
                         icon: "success",
                         title: response.data.message
                     });
-                    $("#items")
-                        .DataTable()
-                        .ajax.reload();
+                    this.loadItem();
                     this.$Progress.finish();
                     //  Fire.$emit('AfterCreate');
                 })
@@ -249,7 +254,7 @@ export default {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("/callverstatuses/" + item.id)
+                        .delete("/isps/" + item.id)
                         .then(() => {
                             Swal.fire(
                                 window.translate(
@@ -261,9 +266,7 @@ export default {
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
-                            $("#items")
-                                .DataTable()
-                                .ajax.reload();
+                            this.loadItem();
                         })
                         .catch(data => {
                             Swal.fire("Failed!", data.message, "warning");
@@ -275,14 +278,14 @@ export default {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
-                .post("/callverstatuses")
+                .post("/isps")
                 .then(response => {
                     $("#addNew").modal("hide");
                     Toast.fire({
                         icon: "success",
                         title: response.data.message
                     });
-                    this.$Progress.finish();
+                    this.loadItem();
                 })
                 .catch(() => {
                     Toast.fire({
@@ -474,9 +477,9 @@ export default {
     align-items: center;
 }
 #preview {
-    max-height: 256px;
-    height: auto;
-    width: auto;
+    max-height: 64px;
+    height: 64px;
+    width: 64px;
     display: block;
     margin-left: auto;
     margin-right: auto;

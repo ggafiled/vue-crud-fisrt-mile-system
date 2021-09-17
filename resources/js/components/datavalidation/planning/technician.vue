@@ -185,6 +185,13 @@ export default {
         };
     },
     methods: {
+        loadItem() {
+            this.$Progress.start();
+            $("#items")
+                .DataTable()
+                .ajax.reload();
+            this.$Progress.finish();
+        },
         updateItem() {
             this.$Progress.start();
             // console.log('Editing data');
@@ -197,9 +204,7 @@ export default {
                         icon: "success",
                         title: response.data.message
                     });
-                    $("#items")
-                        .DataTable()
-                        .ajax.reload();
+                    this.loadItem();
                     this.$Progress.finish();
                     //  Fire.$emit('AfterCreate');
                 })
@@ -250,9 +255,7 @@ export default {
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
-                            $("#items")
-                                .DataTable()
-                                .ajax.reload();
+                            this.loadItem();
                         })
                         .catch(data => {
                             Swal.fire("Failed!", data.message, "warning");
@@ -271,7 +274,7 @@ export default {
                         icon: "success",
                         title: response.data.message
                     });
-                    this.$Progress.finish();
+                    this.loadItem();
                 })
                 .catch(() => {
                     Toast.fire({
