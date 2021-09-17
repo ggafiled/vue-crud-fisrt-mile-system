@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use Carbon\Carbon;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Requests\Planing\PlaningRequest;
 use App\Models\Planing;
@@ -170,7 +171,11 @@ class PlaningController extends BaseController
                 ->map(function ($item) use ($collection) {
                     $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
                     $collection["title"] = $item->building->name;
-                    $collection["detail"] = "<div><p class='p-0 m-0'>".($item->building->workTime->name ?? "unknown")."</p>\n <p class='p-0 m-0'>ผู้ให้บริการ: ".$item->isp->isp."</p></div>";
+                    $collection["detail"] = "<div><p class='p-0 m-0'>".($item->building->workTime->name ?? "unknown")."</p>
+                    <p class='p-0 m-0'>วันที่นัดหมาย: ".$item->appointmentDate." เวลา : ".$item->appointmentTime."</p>
+                    <p class='p-0 m-0'>ผู้ให้บริการ: ".$item->isp->isp."</p>
+                    <p class='p-0 m-0'>ผู้ให้บริการ: ".$item->isp->isp."</p>
+                    </div>";
                     $collection["icon"] = ["url" => $item->isp->isps_map_icon,"offset" => ["x" => 12, "y" => 45]];
                     return $collection;
                 });
