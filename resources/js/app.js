@@ -41,8 +41,20 @@ const Toast = Swal.mixin({
         toast.addEventListener("mouseleave", Swal.resumeTimer);
     }
 });
+
+const LoadingWait = Swal.mixin({
+    html: `<div class="d-flex flex-row justify-align-center align-items-center">
+    <div class="sweet_loader">
+    </div>
+    <div><p class="p-0 m-0"><h3>กรุณารอสักครู่...</h3></p><p class="p-0 m-0">กำลังโหลดข้อมูลที่เกี่ยวข้อง</p></div>
+    </div>`,
+    showCancelButton: false,
+    showConfirmButton: false
+});
+
 window.Swal = Swal;
 window.Toast = Toast;
+window.LoadingWait = LoadingWait;
 
 Vue.use(require("vue-moment"));
 

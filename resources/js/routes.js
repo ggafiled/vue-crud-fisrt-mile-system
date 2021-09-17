@@ -226,7 +226,7 @@ export default [{
             },
             {
                 path: "operating_time",
-                component: require("./components/datavalidation/building/OpertingTime.vue")
+                component: require("./components/datavalidation/building/OperatingTime.vue")
                     .default
             },
             {

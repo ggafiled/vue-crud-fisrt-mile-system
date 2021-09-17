@@ -6,7 +6,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                {{ translate("ISP Provider") }}
+                                {{ translate("isp.header") }}
                             </h3>
                             <div class="card-tools">
                                 <button
@@ -15,7 +15,7 @@
                                     @click="newModal"
                                 >
                                     <i class="fa fa-plus-square"></i>
-                                    {{ translate("building.addnew") }}
+                                    {{ translate("isp.addnew") }}
                                 </button>
                             </div>
                         </div>
@@ -60,10 +60,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                {{ translate("building.create.header") }}
+                                {{ translate("isp.create.header") }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                {{ translate("building.update.header") }}
+                                {{ translate("isp.update.header") }}
                             </h5>
                             <button
                                 type="button"
@@ -141,6 +141,12 @@
                                                     )
                                                 }"
                                             />
+                                            <small
+                                                id="mapIcon"
+                                                class="text-muted"
+                                            >
+                                                Must be 48x48 pixels.
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
@@ -151,21 +157,21 @@
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    {{ translate("building.actions.close") }}
+                                    {{ translate("isp.actions.close") }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    {{ translate("building.actions.update") }}
+                                    {{ translate("isp.actions.update") }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    {{ translate("building.actions.create") }}
+                                    {{ translate("isp.actions.create") }}
                                 </button>
                             </div>
                         </form>
@@ -237,18 +243,18 @@ export default {
         },
         deleteItem(item) {
             Swal.fire({
-                title: window.translate("building.alert.delete_building_title"),
+                title: window.translate("isp.alert.delete_building_title"),
                 text:
-                    window.translate("building.alert.delete_building_text") +
+                    window.translate("isp.alert.delete_building_text") +
                     ` [${item.callVerStatus}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
                 cancelButtonText: window.translate(
-                    "building.alert.delete_building_cancel_button_text"
+                    "isp.alert.delete_building_cancel_button_text"
                 ),
                 confirmButtonText: window.translate(
-                    "building.alert.delete_building_confirm_button_text"
+                    "isp.alert.delete_building_confirm_button_text"
                 )
             }).then(result => {
                 // Send request to the server
@@ -258,10 +264,10 @@ export default {
                         .then(() => {
                             Swal.fire(
                                 window.translate(
-                                    "building.alert.comfirm_delete_title"
+                                    "isp.alert.comfirm_delete_title"
                                 ),
                                 window.translate(
-                                    "building.alert.confirm_delete_message"
+                                    "isp.alert.confirm_delete_message"
                                 ),
                                 "success"
                             );
@@ -374,11 +380,11 @@ export default {
                         render: function(data, type, row, meta) {
                             if (!data) {
                                 return `
-                                    <img class='rounded' src="https://via.placeholder.com/48x48.png?text=Maker+Icon"'></img>
+                                    <img class='rounded' src="https://via.placeholder.com/48x48.png?text=Maker+Icon"' max-width='64px' max-height='64px'></img>
                                 `;
                             } else {
                                 return `
-                                    <img class='rounded' src="${data}"'></img>
+                                    <img id="preview" class="rounded" src="${data}" alt="Maker Icon"/>
                                 `;
                             }
                         }
@@ -478,8 +484,9 @@ export default {
 }
 #preview {
     max-height: 64px;
-    height: 64px;
-    width: 64px;
+    max-width: 64px;
+    height: auto;
+    width: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;

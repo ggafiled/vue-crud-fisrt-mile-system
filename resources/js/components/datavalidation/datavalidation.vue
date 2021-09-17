@@ -218,12 +218,6 @@ export default {
                 constarution: [
                     {
                         id: 1,
-                        route: "/settings/generatingaction",
-                        title: "Generatingaction(CRED)",
-                        details: "แก้ไขข้อมูลสถานะการเชื่อมโครงข่าย"
-                    },
-                    {
-                        id: 2,
                         route: "/settings/serwayteam",
                         title: "SerwayTeam(CRED)",
                         details: "แก้ไขข้อมูลทีมสำรวจ"

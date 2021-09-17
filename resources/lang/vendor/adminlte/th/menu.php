@@ -20,7 +20,7 @@ return [
     'project_list'                  => 'รายการโปรเจค',
     'global_search'                 => 'โครงการเดอะวัน เอบีซี',
     'search'                        => 'ค้นหา',
-    'dashboard'                     => 'แผลควบคุมหลัก',
+    'dashboard'                     => 'แผงควบคุมหลัก',
 
     'project_managment'             => 'จัดการโปรเจ็ค',
     'building_managment'            => 'จัดการโครงการ',

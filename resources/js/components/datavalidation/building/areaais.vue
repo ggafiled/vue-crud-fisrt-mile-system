@@ -6,7 +6,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                {{ translate("Area Ais") }}
+                                {{ translate("areaais.header") }}
                             </h3>
                             <div class="card-tools">
                                 <button
@@ -15,7 +15,7 @@
                                     @click="newModal"
                                 >
                                     <i class="fa fa-plus-square"></i>
-                                    {{ translate("building.addnew") }}
+                                    {{ translate("areaais.addnew") }}
                                 </button>
                             </div>
                         </div>
@@ -58,10 +58,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                {{ translate("building.create.header") }}
+                                {{ translate("areaais.create.header") }}
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                {{ translate("building.update.header") }}
+                                {{ translate("areaais.update.header") }}
                             </h5>
                             <button
                                 type="button"
@@ -105,21 +105,21 @@
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    {{ translate("building.actions.close") }}
+                                    {{ translate("areaais.actions.close") }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    {{ translate("building.actions.update") }}
+                                    {{ translate("areaais.actions.update") }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    {{ translate("building.actions.create") }}
+                                    {{ translate("areaais.actions.create") }}
                                 </button>
                             </div>
                         </form>
@@ -188,18 +188,18 @@ export default {
         },
         deleteItem(item) {
             Swal.fire({
-                title: window.translate("building.alert.delete_building_title"),
+                title: window.translate("areaais.alert.delete_building_title"),
                 text:
-                    window.translate("building.alert.delete_building_text") +
+                    window.translate("areaais.alert.delete_building_text") +
                     ` [${item.areaAis}]`,
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
                 cancelButtonText: window.translate(
-                    "building.alert.delete_building_cancel_button_text"
+                    "areaais.alert.delete_building_cancel_button_text"
                 ),
                 confirmButtonText: window.translate(
-                    "building.alert.delete_building_confirm_button_text"
+                    "areaais.alert.delete_building_confirm_button_text"
                 )
             }).then(result => {
                 // Send request to the server
@@ -209,10 +209,10 @@ export default {
                         .then(() => {
                             Swal.fire(
                                 window.translate(
-                                    "building.alert.comfirm_delete_title"
+                                    "areaais.alert.comfirm_delete_title"
                                 ),
                                 window.translate(
-                                    "building.alert.confirm_delete_message"
+                                    "areaais.alert.confirm_delete_message"
                                 ),
                                 "success"
                             );
