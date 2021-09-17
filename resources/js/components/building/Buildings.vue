@@ -1833,12 +1833,7 @@ export default {
     },
     created() {
         this.$Progress.start();
-        this.loader = Swal.fire({
-            title: "กรุณารอสักครู่...",
-            text: 'กำลังโหลดข้อมูลที่เกี่ยวข้อง',
-            showCancelButton: false,
-            showConfirmButton: false
-        });
+        LoadingWait.fire();
         this.loadBuildings();
         this.$Progress.finish();
     },
@@ -1853,7 +1848,7 @@ export default {
         this.loadAreaFiberNet();
         this.loadWorkTime();
         this.generateTable();
-        setTimeout(() => {this.loader.close()}, 3000)
+        setTimeout(() => {LoadingWait.close();}, 3000)
         // $("input").attr("autocomplete", this.isChrome ? "chrome-off" : "off");
     }
 };

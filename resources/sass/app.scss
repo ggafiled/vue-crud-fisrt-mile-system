@@ -117,6 +117,28 @@
     }
 }
 
+.swal2-container .swal2-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    .swal2-html-container {
+        #LoadingWait_container {
+            justify-content: space-between;
+            width: 100%;
+            img {
+                flex-grow: 1;
+                order: 1;
+            }
+            #LoadingWaitText {
+                flex-grow: 2;
+                order: 2;
+            }
+        }
+    }
+}
+
 @font-face {
     font-family: "fontello";
     src: url("/fonts/fontello.eot");

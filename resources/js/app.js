@@ -43,13 +43,13 @@ const Toast = Swal.mixin({
 });
 
 const LoadingWait = Swal.mixin({
-    html: `<div class="d-flex flex-row justify-align-center align-items-center">
-    <div class="sweet_loader">
-    </div>
-    <div><p class="p-0 m-0"><h3>กรุณารอสักครู่...</h3></p><p class="p-0 m-0">กำลังโหลดข้อมูลที่เกี่ยวข้อง</p></div>
+    html: `<div id="LoadingWait_container" style="align-items: center; display: -ms-flexbox;display: -webkit-flex;display: flex;align-items: center;width: 100%;">
+    <img src="https://raw.githubusercontent.com/ggafiled/vue-crud-fisrt-mile-system/main/public/images/loading.gif" width="68px" height="68px"/>
+    <div id="LoadingWaitText"><h3 class="p-0 m-0">กรุณารอสักครู่...</h3><small class="text-muted">กำลังโหลดข้อมูลที่เกี่ยวข้อง</small></div>
     </div>`,
     showCancelButton: false,
-    showConfirmButton: false
+    showConfirmButton: false,
+    allowOutsideClick: false
 });
 
 window.Swal = Swal;

@@ -1607,12 +1607,7 @@ export default {
     },
     created() {
         this.$Progress.start();
-        this.loader = Swal.fire({
-            title: "กรุณารอสักครู่...",
-            text: 'กำลังโหลดข้อมูลที่เกี่ยวข้อง',
-            showCancelButton: false,
-            showConfirmButton: false
-        });
+        LoadingWait.fire();
         this.loadBuildings();
         this.$Progress.finish();
     },
@@ -1625,7 +1620,7 @@ export default {
         this.loadCallver();
         this.loadCallverstatus();
         this.loadAgent();
-        setTimeout(() => {this.loader.close()}, 2000)
+        setTimeout(() => {LoadingWait.close();}, 2000)
     }
 };
 </script>
