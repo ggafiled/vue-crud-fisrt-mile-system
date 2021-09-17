@@ -297,7 +297,7 @@ return [
                 [
                     'text' => 'planning_managment', //planing
                     'url' => '/planing/map',
-                    'icon' => 'fas fa-fw fas fa-list-alt',
+                    'icon' => 'fas mdi mdi-map-check-outline',
                     'roles' => ["superadministrator", "administrator"],
                 ],
                 [

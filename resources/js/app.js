@@ -58,6 +58,10 @@ Vue.use(VueTimeline);
 import VueLoading from "vue-loading-overlay";
 Vue.use(VueLoading);
 
+import { ColorPicker, ColorPanel } from "one-colorpicker";
+Vue.use(ColorPanel);
+Vue.use(ColorPicker);
+
 import ThailandAutoComplete from "vue-thailand-address-autocomplete";
 Vue.component("ThailandAutoComplete", ThailandAutoComplete);
 

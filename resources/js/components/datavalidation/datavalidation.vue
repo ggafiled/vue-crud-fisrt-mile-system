@@ -91,8 +91,8 @@
                                             :details="item.details"
                                         ></list-group-item>
                                     </div>
-                                    <div 
-                                        id="planning" 
+                                    <div
+                                        id="planning"
                                         class="tab-pane fade"
                                     >
                                         <list-group-item
@@ -209,9 +209,15 @@ export default {
                     },
                     {
                         id: 5,
+<<<<<<< HEAD
                         route: "/settings/callverstatus",
                         title: "Callver Status(CRED)",
                         details: "แก้ไขข้อมูลสถานะการติดต่อ"
+=======
+                        route: "/settings/isps",
+                        title: "ISP Provider",
+                        details: "แก้ไขข้อมูลผู้ให้บริการเครือข่าย"
+>>>>>>> 862be6a8bf04b54c0839cad459746caaa2163236
                     }
                 ],
                 progress: [

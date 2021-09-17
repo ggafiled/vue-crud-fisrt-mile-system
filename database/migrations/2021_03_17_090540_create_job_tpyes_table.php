@@ -17,6 +17,7 @@ class CreateJobTpyesTable extends Migration
             $table->id();
             $table->string('jobType')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
