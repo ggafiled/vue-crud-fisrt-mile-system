@@ -72,7 +72,7 @@ class WorkTimeSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
-                'workTime' => 'เสาร์ หลัง13.00 เป็นต้นไป'
+                'workTime' => 'เสาร์ หลัง13.00 เป็นต้นไป',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],

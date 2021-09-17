@@ -158,14 +158,6 @@ class PlaningController extends BaseController
     public function loadCoordinatePlanningOfBuilding()
     {
         try {
-            $markIcon = [
-                "ais" => "https://raw.githubusercontent.com/ggafiled/vue-crud-fisrt-mile-system/main/public/images/ais_mark.png",
-                "true" => "https://raw.githubusercontent.com/ggafiled/vue-crud-fisrt-mile-system/main/public/images/true_mark.png",
-                "tot" => "https://raw.githubusercontent.com/ggafiled/vue-crud-fisrt-mile-system/main/public/images/tot_mark.png",
-                "fibernet" => "https://raw.githubusercontent.com/ggafiled/vue-crud-fisrt-mile-system/main/public/images/fibernet_mark.png",
-                "3bb" => "https://raw.githubusercontent.com/ggafiled/vue-crud-fisrt-mile-system/main/public/images/3bb_mark.png",
-                "default" => "https://map.longdo.com/mmmap/images/pin_mark.png",
-            ];
             $collection = [];
             $planing = Planing::with(
                 ['building:id,workTime_id,longitude,latitude,projectName as name',
@@ -175,11 +167,11 @@ class PlaningController extends BaseController
                     return $query->where('longitude', '!=', 0)->where('latitude', '!=', 0);
                 })
                 ->get()
-                ->map(function ($item) use ($collection, $markIcon) {
+                ->map(function ($item) use ($collection) {
                     $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
                     $collection["title"] = $item->building->name;
                     $collection["detail"] = "<div><p class='p-0 m-0'>".($item->building->workTime->name ?? "unknown")."</p>\n <p class='p-0 m-0'>ผู้ให้บริการ: ".$item->isp->isp."</p></div>";
-                    $collection["icon"] = ["url" => $markIcon[strtolower($item->isp->isp ?? "default")],"offset" => ["x" => 12, "y" => 45]];
+                    $collection["icon"] = ["url" => $item->isp->isps_map_icon,"offset" => ["x" => 12, "y" => 45]];
                     return $collection;
                 });
             return $this->sendResponse($planing, trans('actions.get.success'));

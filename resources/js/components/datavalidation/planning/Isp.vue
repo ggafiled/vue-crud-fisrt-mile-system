@@ -32,7 +32,7 @@
                                         <tr class="info">
                                             <th></th>
                                             <th>Provider Name</th>
-                                            <th>Represent Color</th>
+                                            <th>Color</th>
                                             <th>Represent Map Icon</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
@@ -83,7 +83,7 @@
                         >
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-8">
                                         <div class="form-group">
                                             <label>Provider Name</label>
                                             <input
@@ -99,30 +99,42 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Represent Color</label>
-                                            <input
+                                            <color-picker
                                                 v-model="form.isps_color"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your name area callver status..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'isps_color'
-                                                    )
+                                                :position="{
+                                                    left: 0,
+                                                    top: '40px'
                                                 }"
+                                                @change="change"
+                                                @afterChange="afterChange"
+                                            >
+                                            </color-picker>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <div id="img_container">
+                                            <img
+                                                id="preview"
+                                                :src="form.isps_map_icon"
+                                                alt="Maker Icon"
+                                                width="68px"
+                                                height="68px"
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-7">
                                         <div class="form-group">
-                                            <label>Represent Map Icon</label>
+                                            <label>Represent URL Icon</label>
                                             <input
                                                 v-model="form.isps_map_icon"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your name area callver status..."
+                                                placeholder="Enter url icon"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'isps_map_icon'
@@ -174,8 +186,9 @@ export default {
             form: new Form({
                 id: "",
                 isp: "",
-                isps_color: "",
-                isps_map_icon: "",
+                isps_color: "#4051B7",
+                isps_map_icon:
+                    "https://via.placeholder.com/68x68.png?text=Maker+Icon",
                 created_at: "",
                 updated: "",
                 deleted_at: ""
@@ -336,10 +349,36 @@ export default {
                         data: "isp"
                     },
                     {
-                        data: "isps_color"
+                        data: "isps_color",
+                        className: "dt-body-center",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ระบุ" +
+                                    "</span>"
+                                );
+                            } else {
+                                return `
+                                    <div class='cube' style='background: ${data};'></div>
+                                `;
+                            }
+                        }
                     },
                     {
-                        data: "isps_map_icon"
+                        data: "isps_map_icon",
+                        className: "dt-body-center",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return `
+                                    <img class='rounded' src="https://via.placeholder.com/48x48.png?text=Maker+Icon"'></img>
+                                `;
+                            } else {
+                                return `
+                                    <img class='rounded' src="${data}"'></img>
+                                `;
+                            }
+                        }
                     },
                     {
                         data: "created_at",
@@ -426,3 +465,26 @@ export default {
     }
 };
 </script>
+<style>
+.cube {
+    width: 38px;
+    height: 38px;
+    border-radius: 3px;
+    align-self: center;
+    align-items: center;
+}
+#preview {
+    max-height: 256px;
+    height: auto;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}
+#img_container {
+    border-radius: 5px;
+    margin-top: 20px;
+    width: auto;
+}
+</style>
