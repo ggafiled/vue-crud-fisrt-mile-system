@@ -287,14 +287,12 @@ return [
                     'url' => '/customer',
                     'icon' => 'fas fa-fw fas fa-users',
                     'roles' => ["superadministrator", "administrator"],
-                    'submenu' => [
-                        [
-                            'text' => 'New Customer Managment', //customer
-                            'url' => '/customer/treeview',
-                            'icon' => 'fas fa-fw fas fa-users',
-                            'roles' => ["superadministrator", "administrator"],
-                        ],
-                    ],
+                ],
+                [
+                    'text' => 'New Customer Managment', //customer
+                    'url' => '/customer/treeview',
+                    'icon' => 'fas fa-fw fas fa-users',
+                    'roles' => ["superadministrator", "administrator"],
                 ],
                 [
                     'text' => 'planning_managment', //planing

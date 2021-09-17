@@ -170,6 +170,8 @@ class PlaningController extends BaseController
                     $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
                     $collection["title"] = $item->building->name;
                     $collection["detail"] = $item->building->workTime->name ?? "unknown";
+                    $collection["icon"] = ["url" => 'https://map.longdo.com/mmmap/images/pin_mark.png',
+                        "offset" => ["x" => 12, "y" => 45]];
                     return $collection;
                 });
             return $this->sendResponse($planing, trans('actions.get.success'));
