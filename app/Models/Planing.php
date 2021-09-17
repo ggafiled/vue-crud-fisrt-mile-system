@@ -59,36 +59,36 @@ class Planing extends Model
 
     public function jobtype()
     {
-        return $this->belongsTo('App\Models\JobTpye', 'jobtype_id', 'id');
+        return $this->hasOne('App\Models\JobTpye', 'id', 'jobtype_id');
     }
 
     public function technician()
     {
-        return $this->belongsTo('App\Models\Technician', 'technician_id', 'id');
+        return $this->hasOne('App\Models\Technician', 'id', 'technician_id');
     }
 
     public function callver()
     {
-        return $this->belongsTo('App\Models\Callver', 'callver_id', 'id');
+        return $this->hasOne('App\Models\Callver', 'id', 'callver_id');
     }
 
     public function callverstatus()
     {
-        return $this->belongsTo('App\Models\Callverstatus', 'callverStatus_id', 'id');
+        return $this->hasOne('App\Models\Callverstatus', 'id', 'callverStatus_id');
     }
 
     public function ispId()
     {
-        return $this->belongsTo('App\Models\Isp', 'ispId_id', 'id');
+        return $this->hasOne('App\Models\Isp', 'id', 'ispId_id');
     }
 
     public function problemsolution()
     {
-        return $this->belongsTo('App\Models\Problemsolution', 'problemsolution_id', 'id');
+        return $this->hasOne('App\Models\Problemsolution', 'id', 'problemsolution_id');
     }
 
     public function agentDetail()
     {
-        return $this->belongsTo('App\Models\Agent', 'agentDetail_id', 'id');
+        return $this->hasOne('App\Models\Agent', 'id', 'agentDetail_id');
     }
 }

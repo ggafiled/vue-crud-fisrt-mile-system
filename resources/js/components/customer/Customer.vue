@@ -115,24 +115,7 @@
                         >
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-sm-2" v-show="editmode">
-                                        <div class="form-group">
-                                            <label>Building ID</label>
-                                            <input
-                                                v-model="form.id"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your building id..."
-                                                readonly
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'id'
-                                                    )
-                                                }"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-5">
                                         <div class="form-group">
                                             <label>ชื่อ</label>
                                             <input
@@ -173,9 +156,7 @@
                                         </div>
                                     </div>
                                     <div
-                                        :class="[
-                                            editmode ? 'col-sm-2' : 'col-sm-3'
-                                        ]"
+                                        class="col-sm-2"
                                     >
                                         <div class="form-group">
                                             <label>เบอร์โทร</label>
@@ -197,9 +178,7 @@
                                         </div>
                                     </div>
                                     <div
-                                        :class="[
-                                            editmode ? 'col-sm-2' : 'col-sm-3'
-                                        ]"
+                                        class="col-sm-2"
                                     >
                                         <div class="form-group">
                                             <label>เบอร์โทร2</label>
@@ -311,7 +290,7 @@
                                                 class="form-control"
                                                 v-model="form.isp_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -744,7 +723,7 @@ export default {
             agents: [],
             settings: {
                 placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
-                allowClear: true,
+                allowClear: false,
                 dropdownParent: ".modal"
             },
             form: new Form({
@@ -862,7 +841,9 @@ export default {
         editModal(planing) {
             this.editmode = true;
             this.form.reset();
-            planing.projectName = planing.building[0].projectName;
+            console.log(planing);
+            planing.isp_id = planing.isp.id
+            // planing.projectName = planing.building[0].projectName;
             $("#addNew").modal("show");
             this.form.fill(planing);
         },
@@ -1558,7 +1539,7 @@ export default {
                         data: null,
                         className: "dt-body-center",
                         render: function(data, type, row, meta) {
-                            return "<a class='edit-planing' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-planing' href='#'> <i class='fa fa-trash red'></i> </a>";
+                            return "<a class='edit-customer' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-customer' href='#'> <i class='fa fa-trash red'></i> </a>";
                         }
                     }
                 ],
@@ -1579,8 +1560,9 @@ export default {
 
             $("tbody", this.$refs.planing).on(
                 "click",
-                ".edit-planing",
-                function() {
+                ".edit-customer",
+                function(e) {
+                    e.preventDefault();
                     var tr = $(this).closest("tr");
                     var row = table.row(tr);
                     vm.editModal(row.data());
@@ -1589,8 +1571,9 @@ export default {
 
             $("tbody", this.$refs.planing).on(
                 "click",
-                ".delete-planing",
-                function() {
+                ".delete-customer",
+                function(e) {
+                    e.preventDefault();
                     var tr = $(this).closest("tr");
                     var row = table.row(tr);
                     vm.deletePlaning(row.data().id);
