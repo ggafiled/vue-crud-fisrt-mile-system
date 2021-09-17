@@ -258,6 +258,11 @@ export default [{
                 path: "serwayteam",
                 component: require("./components/datavalidation/constalution/teamserway.vue")
                     .default
+            },
+            {
+                path: "isp",
+                component: require("./components/datavalidation/planning/Isp.vue")
+                    .default
             }
         ]
     },
