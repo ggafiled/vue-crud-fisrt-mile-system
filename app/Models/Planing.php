@@ -54,7 +54,7 @@ class Planing extends Model
 
     public function isp()
     {
-        return $this->belongsTo('App\Models\Isp', 'isp_id', 'id');
+        return $this->hasOne('App\Models\Isp', 'id', 'isp_id');
     }
 
     public function jobtype()
