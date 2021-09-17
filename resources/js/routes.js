@@ -263,6 +263,11 @@ export default [{
                 path: "isps",
                 component: require("./components/datavalidation/planning/Isp.vue")
                     .default
+            },
+            {
+                path: "isp",
+                component: require("./components/datavalidation/planning/Isp.vue")
+                    .default
             }
         ]
     },

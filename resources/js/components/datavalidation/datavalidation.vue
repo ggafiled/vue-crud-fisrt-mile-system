@@ -132,49 +132,42 @@ export default {
                         title: "Contract Sell(CRED)",
                         details: "แก้ไขข้อมูลชื่อเซลล์ที่ติดต่อ"
                     },
-
                     {
                         id: 2,
                         route: "/settings/spend_space",
                         title: "SpendSpace(CRED)",
                         details: "แก้ไขข้อมูลการชำระรายปี"
                     },
-
                     {
                         id: 3,
                         route: "/settings/area_3bb",
                         title: "Area 3BB(CRED)",
                         details: "แก้ไขข้อมูลพื้นที่ 3บีบี"
                     },
-
                     {
                         id: 4,
                         route: "/settings/area_true",
                         title: "Area True(CRED)",
                         details: "แก้ไขข้อมูลพื้นที่ทรู"
                     },
-
                     {
                         id: 5,
                         route: "/settings/area_true_new",
                         title: "Area True New(CRED)",
                         details: "แก้ไขข้อมูลพื้นที่ทรู"
                     },
-
                     {
                         id: 6,
                         route: "/settings/area_ais",
                         title: "Area Ais(CRED)",
                         details: "แก้ไขข้อมูลพื้นที่เอไอเอส"
                     },
-
                     {
                         id: 7,
                         route: "/settings/area_fibernet",
                         title: "Area FiberNet(CRED)",
                         details: "แก้ไขข้อมูลพื้นที่ไฟเบอร์เน็ต"
                     },
-
                     {
                         id: 8,
                         route: "/settings/operating_time",
