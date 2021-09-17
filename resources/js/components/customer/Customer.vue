@@ -317,7 +317,7 @@
                                                 class="form-control"
                                                 v-model="form.agentDetail_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -384,7 +384,7 @@
                                                 class="form-control"
                                                 v-model="form.jobtype_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -448,7 +448,7 @@
                                                 class="form-control"
                                                 v-model="form.technician_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -512,7 +512,7 @@
                                                 class="form-control"
                                                 v-model="form.callver_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -536,7 +536,7 @@
                                                 class="form-control"
                                                 v-model="form.callverStatus_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -560,7 +560,7 @@
                                                 class="form-control"
                                                 v-model="form.problemsolution_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -587,7 +587,7 @@
                                                 class="form-control"
                                                 v-model="form.ispId_id"
                                             >
-                                                <option value="ispId_id"
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -1004,7 +1004,7 @@ export default {
                         data: "name",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1019,7 +1019,7 @@ export default {
                         data: "surname",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1034,14 +1034,16 @@ export default {
                         data: "tel",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
-                                    '<span class="text-danger">' +
+                                    '<span class="text-danger"><i class="bi bi-file-person pr-2"></i>' +
                                     "ไม่ได้กรอกข้อมูล" +
                                     "</span>"
                                 );
                             } else {
-                                return "<span>" + data + "</span>";
+                                return '<span><i class="bi bi-file-person pr-2"></i>' +
+                                    data +
+                                    "</span>"
                             }
                         }
                     },
@@ -1049,7 +1051,7 @@ export default {
                         data: "tel2",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger"><i class="bi bi-file-person pr-2"></i>' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1068,7 +1070,7 @@ export default {
                         data: "building[0].projectName",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1083,7 +1085,7 @@ export default {
                         data: "building[0].houseNumber",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1098,7 +1100,7 @@ export default {
                         data: "building[0].squadNumber",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1113,7 +1115,7 @@ export default {
                         data: "building[0].alleyName",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1128,7 +1130,7 @@ export default {
                         data: "building[0].roadName",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1143,7 +1145,7 @@ export default {
                         data: "building[0].districtName",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1158,7 +1160,7 @@ export default {
                         data: "building[0].countyName",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1173,7 +1175,7 @@ export default {
                         data: "building[0].provinceName",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1188,7 +1190,7 @@ export default {
                         data: "building[0].postalCode",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1200,16 +1202,38 @@ export default {
                         }
                     },
                     {
-                        data: "building[0].longitude"
+                        data: "building[0].longitude",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "building[0].latitude"
+                        data: "building[0].latitude",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
                         data: "theBuilding",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1224,7 +1248,7 @@ export default {
                         data: "floor",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1239,7 +1263,7 @@ export default {
                         data: "room",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1301,7 +1325,7 @@ export default {
                     {
                         data: "agent_detail.name",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1316,7 +1340,7 @@ export default {
                         data: "circuit",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1330,7 +1354,7 @@ export default {
                     {
                         data: "entranceFee",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1344,7 +1368,7 @@ export default {
                     {
                         data: "jobtype.name",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1359,7 +1383,7 @@ export default {
                         data: "appointmentDate",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1374,7 +1398,7 @@ export default {
                         data: "appointmentTime",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1389,7 +1413,7 @@ export default {
                         data: "technician.teamTechnician",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1404,7 +1428,7 @@ export default {
                         data: "technician.phoneTechnician",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1419,7 +1443,7 @@ export default {
                         data: "technician.emailTechnician",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1482,7 +1506,7 @@ export default {
                         data: "status",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1497,7 +1521,7 @@ export default {
                         data: "subStatus",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
@@ -1512,7 +1536,7 @@ export default {
                         data: "reMark",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
-                            if (data == "") {
+                            if (data == "" || data == null) {
                                 return (
                                     '<span class="text-danger">' +
                                     "ไม่ได้กรอกข้อมูล" +
