@@ -38,7 +38,6 @@ export default {
                 { lon: 100.612550, lat: 13.780091 },
                 true
             );
-
             map.Event.bind("ready", function() {
                 map.Event.bind("fullscreen", function() {
                     //do somethings
