@@ -10,6 +10,8 @@ class Isp extends Model
     protected $fillable = [
         'id',
         'isp',
+        'isps_color',
+        'isps_map_icon'
     ];
 
     public function isp()

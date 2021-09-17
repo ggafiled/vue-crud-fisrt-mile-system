@@ -1135,7 +1135,7 @@ export default {
                                 "</span>"
                             );
                         }
-                    }, 
+                    },
                     {
                         data: "balance",
                         render: function(data, type, row, meta) {
@@ -1178,8 +1178,8 @@ export default {
             });
         }
     },
-   mounted() {
-        this.generateBuildingListTable();
+   async mounted() {
+        await this.generateBuildingListTable();
     }
 };
 </script>

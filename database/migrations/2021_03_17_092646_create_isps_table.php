@@ -17,6 +17,7 @@ class CreateIspsTable extends Migration
             $table->id();
             $table->string('isp')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -211,7 +211,7 @@ export default [{
             },
             {
                 path: "area_true_new",
-                component: require("./components/datavalidation/building/areatruenew.vue")
+                component: require("./components/datavalidation/building/AreaTrueNew.vue")
                     .default
             },
             {
@@ -256,7 +256,12 @@ export default [{
             },
             {
                 path: "serwayteam",
-                component: require("./components/datavalidation/constalution/teamserway.vue")
+                component: require("./components/datavalidation/constalution/TeamSerway.vue")
+                    .default
+            },
+            {
+                path: "isps",
+                component: require("./components/datavalidation/planning/Isp.vue")
                     .default
             }
         ]
