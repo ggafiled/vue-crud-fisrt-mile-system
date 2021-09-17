@@ -26,46 +26,22 @@
                     <div class="card-body">
                         <div id="content">
                             <div id="left">
-                                <v-jstree
+                                <template v-if="buildings.length > 0">
+                                    <v-jstree
                                     :data="buildings"
-                                    show-checkbox
-                                    allow-batch
                                     whole-row
+                                    @item-click="itemClick"
                                 ></v-jstree>
+                                </template>
+                                <Skeleton width="95%" count="22" v-else/>
                             </div>
                             <div id="right">
-                                <div class="content">
-                                    เลือกโครงการ
+                                <div class="d-flex justify-content-center align-items-center h-100" style="color: #CED4DA;">
+                                    <i class="mdi fas fa-2x mdi-timer-sand-empty mr-1" style="color: #CED4DA;"></i>
+                                    <h2>เลือกโครงการ</h2>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="row overflow-auto" style="height: 100% !important;">
-                            <div
-                                class="col-md-5"
-                            >
-                                <v-jstree
-                                    :data="buildings"
-                                    show-checkbox
-                                    allow-batch
-                                    whole-row
-                                ></v-jstree>
-                            </div>
-
-                            <v-divider vertical></v-divider>
-
-                            <div class="col">
-                                <v-flex d-flex text-xs-center>
-                                    <v-scroll-y-transition mode="out-in">
-                                        <div
-                                            class="title grey--text text--lighten-1 font-weight-light"
-                                            style="align-self: center;"
-                                        >
-                                            เลือกโครงการ
-                                        </div>
-                                    </v-scroll-y-transition>
-                                </v-flex>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -680,14 +656,17 @@
 <script>
 import Select2 from "v-select2-component";
 import VJstree from "vue-jstree";
+import { Skeleton } from 'vue-loading-skeleton';
 
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export default {
-    components: { Select2, VJstree },
+    components: { Select2, VJstree, Skeleton },
     data() {
         return {
             search: "",
+            editingItem: {},
+                editingNode: null,
             active: [],
             open: [],
             loader: null,
@@ -746,22 +725,18 @@ export default {
     },
     computed: {},
     methods: {
-        async fetchBuildings(item) {
-            await axios.get("/building").then(response => {
-                item.children.push(
-                    response.data.data.map(a => {
-                        return { text: a.projectName, id: a.id };
-                    })
-                );
-            });
-        },
+        itemClick (node) {
+                this.editingNode = node
+                this.editingItem = node.model
+                console.log(node.model)
+            },
         loadBuildings() {
             axios.get("/building").then(response => {
                 this.building = response.data.data.map(a => {
                     return { text: a.projectName, id: a.id };
                 });
                 this.buildings = response.data.data.map(a => {
-                    return { id: a.id, text: a.projectName, children: [] };
+                    return { id: a.id, text: a.projectName, children: [{ id: a.id, text: a.projectName }] };
                 });
             });
         },
@@ -913,7 +888,7 @@ export default {
         this.loadAgent();
         setTimeout(() => {
             this.loader.close();
-        }, 2000);
+        }, 5000);
     }
 };
 </script>
@@ -923,7 +898,7 @@ export default {
 }
 #content {
     height: 100%;
-    weight: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

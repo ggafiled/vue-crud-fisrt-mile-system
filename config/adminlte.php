@@ -12,7 +12,7 @@ return [
     | For detailed instructions you can look the title section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'title' => 'First Mile ERP System',
     'title_prefix' => '',
@@ -28,7 +28,7 @@ return [
     | For detailed instructions you can look the favicon section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'use_ico_only' => true,
     'use_full_favicon' => true,
@@ -43,7 +43,7 @@ return [
     | For detailed instructions you can look the logo section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'logo' => '<b>FIRST MILE System </b>',
     'logo_img' => 'https://sv1.picz.in.th/images/2021/02/11/o138qN.png',
@@ -62,7 +62,7 @@ return [
     | For detailed instructions you can look the user menu section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'usermenu_enabled' => true,
     'usermenu_header' => true,
@@ -81,7 +81,7 @@ return [
     | For detailed instructions you can look the layout section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'layout_topnav' => null,
     'layout_boxed' => null,
@@ -100,7 +100,7 @@ return [
     | For detailed instructions you can look the auth classes section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'classes_auth_card' => 'card-outline card-primary',
     'classes_auth_header' => '',
@@ -119,7 +119,7 @@ return [
     | For detailed instructions you can look the admin panel classes here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'classes_body' => '',
     'classes_brand' => '',
@@ -143,7 +143,7 @@ return [
     | For detailed instructions you can look the sidebar section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => true,
@@ -165,7 +165,7 @@ return [
     | For detailed instructions you can look the right sidebar section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Layout-and-Styling-Configuration
     |
-    */
+     */
 
     'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
@@ -185,7 +185,7 @@ return [
     | For detailed instructions you can look the urls section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
-    */
+     */
 
     'use_route_url' => false,
     'dashboard_url' => 'dashboard',
@@ -206,7 +206,7 @@ return [
     | For detailed instructions you can look the laravel mix section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     |
-    */
+     */
 
     'enabled_laravel_mix' => true,
     'laravel_mix_css_path' => 'css/app.css',
@@ -219,7 +219,7 @@ return [
     |
     | Language bar selection.
     |
-    */
+     */
     'language_bar_enable' => true,
     'tabbed_iframe_enable' => true,
 
@@ -233,17 +233,17 @@ return [
     | For detailed instructions you can look here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
-    */
+     */
 
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
-            'text'         => 'global_search',
+            'type' => 'navbar-search',
+            'text' => 'global_search',
             'topnav_right' => true,
         ],
         [
-            'type'         => 'fullscreen-widget',
+            'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
@@ -252,105 +252,107 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
-       ['header' => 'MENU'],
+        ['header' => 'MENU'],
         [
             'text' => 'dashboard',
-            'url'  => '/dashboard',
+            'url' => '/dashboard',
             'icon' => 'fas fa-fw bi bi-kanban',
         ],
         [
             'text' => 'project_managment',
             'icon' => 'fas fa-fw fas fa-building',
-            'roles'  => ["superadministrator", "administrator", "user"],
-            'can'  => ["constarution-create", "constarution-read"],
+            'roles' => ["superadministrator", "administrator", "user"],
+            'can' => ["constarution-create", "constarution-read"],
             'submenu' => [
                 [
-                    'text' => 'building_managment',//building
-                    'url'  => '/building',
+                    'text' => 'building_managment', //building
+                    'url' => '/building',
                     'icon' => 'fas fa-fw bi bi-building',
-                    'roles'  => ["superadministrator", "administrator", "user"]
+                    'roles' => ["superadministrator", "administrator", "user"],
                 ],
                 [
-                    'text' => 'constitution_managment',//constalution
-                    'url'  => '/constitution',
+                    'text' => 'constitution_managment', //constalution
+                    'url' => '/constitution',
                     'icon' => 'fas fa-fw bi bi-aspect-ratio',
-                    'can'  => ["constarution-create", "constarution-read"]
+                    'can' => ["constarution-create", "constarution-read"],
                 ],
                 [
-                    'text' => 'progress_managment',//progress
-                    'url'  => '/progress',
+                    'text' => 'progress_managment', //progress
+                    'url' => '/progress',
                     'icon' => 'mdi mdi-18px mdi-progress-wrench',
-                    'roles'  => ["superadministrator", "administrator"]
+                    'roles' => ["superadministrator", "administrator"],
                 ],
                 [
-                    'text' => 'customer_managment',//customer
-                    'url'  => '/customer',
+                    'text' => 'customer_managment', //customer
+                    'url' => '/customer',
                     'icon' => 'fas fa-fw fas fa-users',
-                    'roles'  => ["superadministrator", "administrator"]
+                    'roles' => ["superadministrator", "administrator"],
+                    'submenu' => [
+                        [
+                            'text' => 'New Customer Managment', //customer
+                            'url' => '/customer/treeview',
+                            'icon' => 'fas fa-fw fas fa-users',
+                            'roles' => ["superadministrator", "administrator"],
+                        ],
+                    ],
                 ],
                 [
-                    'text' => 'New Customer Managment',//customer
-                    'url'  => '/customer/treeview',
-                    'icon' => 'fas fa-fw fas fa-users',
-                    'roles'  => ["superadministrator", "administrator"]
-                ],
-                [
-                    'text' => 'planning_managment',//planing
-                    'url'  => '/planing/map',
+                    'text' => 'planning_managment', //planing
+                    'url' => '/planing/map',
                     'icon' => 'fas fa-fw fas fa-list-alt',
-                    'roles'  => ["superadministrator", "administrator"]
+                    'roles' => ["superadministrator", "administrator"],
                 ],
                 [
-                    'text' => 'contractor_managment',//contractor
-                    'url'  => '/',
+                    'text' => 'contractor_managment', //contractor
+                    'url' => '/',
                     'icon' => 'fas fa-fw fas fa-file-signature',
-                    'roles'  => ["superadministrator", "administrator"]
+                    'roles' => ["superadministrator", "administrator"],
                 ],
                 [
-                    'text' => 'accountant_managment',//accountant
-                    'url'  => '/',
+                    'text' => 'accountant_managment', //accountant
+                    'url' => '/',
                     'icon' => 'fas fa-fw fa-file-invoice-dollar',
-                    'roles'  => ["superadministrator", "administrator"]
+                    'roles' => ["superadministrator", "administrator"],
                 ],
-            ]
+            ],
         ],
         [
             'text' => 'reports_progress',
             'icon' => 'fas fa-fw fas fa-clipboard-list',
-            'roles'  => ["superadministrator", "administrator"],
+            'roles' => ["superadministrator", "administrator"],
             'submenu' => [
                 [
                     'text' => 'project_name_table',
-                    'url'  => '/building/all',
+                    'url' => '/building/all',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                 ],
                 [
                     'text' => 'project_tot_table',
-                    'url'  => '/building/tot',
+                    'url' => '/building/tot',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                 ],
                 [
                     'text' => 'project_3bb_table',
-                    'url'  => '/building/3bb',
+                    'url' => '/building/3bb',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                 ],
                 [
                     'text' => 'project_true_table',
-                    'url'  => '/building/true',
+                    'url' => '/building/true',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                 ],
                 [
                     'text' => 'project_ais_table',
-                    'url'  => '/building/ais',
+                    'url' => '/building/ais',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                     // 'icon' => 'c-icon c-icon-ais',
                 ],
                 [
                     'text' => 'project_fibernet_table',
-                    'url'  => '/building/fibernet',
+                    'url' => '/building/fibernet',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                 ],
-            ]
+            ],
         ],
         // [
         //     'text' => 'issue_tickets',
@@ -366,22 +368,22 @@ return [
         // ],
         [
             'text' => 'console_log',
-            'url'  => '/console-log',
+            'url' => '/console-log',
             'icon' => 'mdi mdi-console',
-            'roles'  => ["superadministrator", "administrator"]
+            'roles' => ["superadministrator", "administrator"],
         ],
         ['header' => 'user'],
         [
             'text' => 'user_information',
-            'url'  => '/profile',
+            'url' => '/profile',
             'icon' => 'fas fa-fw fa-user',
-            'can'  => ['profile-update', 'profile-read', 'password-update'],
+            'can' => ['profile-update', 'profile-read', 'password-update'],
         ],
         [
             'text' => 'user_role_permission',
-            'url'  => '/permission',
+            'url' => '/permission',
             'icon' => 'bi bi-layers',
-            'roles'  => ['superadministrator', 'administrator'],
+            'roles' => ['superadministrator', 'administrator'],
         ],
         // [
         //     'text' => 'User Teams',
@@ -391,16 +393,16 @@ return [
         // ],
         [
             'text' => 'user_management',
-            'url'  => '/users',
+            'url' => '/users',
             'icon' => 'bi bi-people',
-            'roles'  => ['superadministrator', 'administrator'],
+            'roles' => ['superadministrator', 'administrator'],
         ],
         [
             'text' => 'Data Validation',
-            'url'  => '/settings?tab=building',
+            'url' => '/settings?tab=building',
             'icon' => 'bi bi-gear-fill',
-            'roles'  => ['superadministrator'],
-            'active_url' => 'settings'
+            'roles' => ['superadministrator'],
+            'active_url' => 'settings',
         ],
     ],
 
@@ -414,7 +416,7 @@ return [
     | For detailed instructions you can look the menu filters section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Menu-Configuration
     |
-    */
+     */
 
     'filters' => [
         App\Filter\GateFilter::class,
@@ -437,7 +439,7 @@ return [
     | For detailed instructions you can look the plugins section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Plugins-Configuration
     |
-    */
+     */
 
     'plugins' => [
         'Datatables' => [
@@ -521,7 +523,7 @@ return [
     |
     | For detailed instructions you can look the livewire here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
-    */
+     */
 
     'livewire' => false,
 ];
