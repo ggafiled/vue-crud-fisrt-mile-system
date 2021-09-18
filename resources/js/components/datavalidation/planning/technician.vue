@@ -34,6 +34,8 @@
                                             <th>Technician</th>
                                             <th>Phone</th>
                                             <th>Email</th>
+                                            <th>Ais</th>
+                                            <th>True</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
                                             <th>Avaiable</th>
@@ -134,6 +136,40 @@
                                         </div>
                                     </div>
                                 </div>
+                                                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Ais</label>
+                                            <input
+                                                v-model="form.ais"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your ais..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'ais'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>True</label>
+                                            <input
+                                                v-model="form.true"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your true..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'true'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button
@@ -178,6 +214,8 @@ export default {
                 teamTechnician: "",
                 phoneTechnician: "",
                 emailTechnician: "",
+                ais: "",
+                true: "",
                 created_at: "",
                 updated: "",
                 deleted_at: ""
@@ -345,6 +383,12 @@ export default {
                     },
                     {
                         data: "emailTechnician"
+                    },
+                    {
+                        data: "ais"
+                    },
+                    {
+                        data: "true"
                     },
                     {
                         data: "created_at",

@@ -18,6 +18,8 @@ class CreateTechniciansTable extends Migration
             $table->string('teamTechnician')->nullable();
             $table->string('phoneTechnician')->nullable();
             $table->string('emailTechnician')->nullable();
+            $table->string('ais')->nullable();
+            $table->string('true')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
