@@ -255,8 +255,8 @@ export default {
             });
             anime({
                 targets: "#btn_handler_backup i",
-                keyframes: [{ rotate: "1turn" }, { rotate: "0deg" }],
-                duration: 5000,
+                keyframes: [{ rotate: "5turn" }, { rotate: "0deg" }],
+                duration: 50000,
                 easing: "linear"
             });
             await axios.post("/backup/actionBackup").then(response => {

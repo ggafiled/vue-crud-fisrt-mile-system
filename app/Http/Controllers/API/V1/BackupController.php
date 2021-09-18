@@ -106,9 +106,9 @@ class BackupController extends BaseController
     public function actionBackup(){
         try {
             $exitCode = Artisan::call('database:backup');
-            return $this->sendResponse($exitCode, trans('actions.destroy.success'));
+            return $this->sendResponse($exitCode, trans('actions.backup.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.destroy.failed') . $ex->getMessage());
+            return $this->sendError([], trans('actions.backup.failed') . $ex->getMessage());
         }
     }
 }
