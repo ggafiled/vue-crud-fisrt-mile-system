@@ -12,6 +12,9 @@ export default {
             document.title = title.concat(
                 ` ${process.env.MIX_APP_NAME || "First Mile ERP System"}`
             );
+        } else {
+            document.title =
+                process.env.MIX_APP_NAME || "First Mile ERP System";
         }
     }
 };

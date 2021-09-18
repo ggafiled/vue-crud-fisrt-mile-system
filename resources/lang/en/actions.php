@@ -30,5 +30,9 @@ return [
         'success' => 'Delete successful.',
         'failed' =>  'Can not dalete record, Try again.',
     ],
+    'backup' => [
+        'success' => 'Backup database successful.',
+        'failed' =>  'Can not backup database, Try again.',
+    ],
 
 ];
