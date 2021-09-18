@@ -31,6 +31,7 @@
                                 <thead>
                                     <tr class="info">
                                         <th></th>
+                                        <th>เลขที่รับงาน</th>
                                         <th>ชื่อ/บริษัท</th>
                                         <th>นามสกุล</th>
                                         <th>เบอร์ติดต่อหลัก</th>
@@ -155,9 +156,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div
-                                        class="col-sm-2"
-                                    >
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>เบอร์โทร</label>
                                             <input
@@ -177,9 +176,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div
-                                        class="col-sm-2"
-                                    >
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>เบอร์โทร2</label>
                                             <input
@@ -558,7 +555,9 @@
                                             <label>ปัญหาและวิธีการแก้ไข</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.problemsolution_id"
+                                                v-model="
+                                                    form.problemsolution_id
+                                                "
                                             >
                                                 <option value="" disabled
                                                     >Select a Class</option
@@ -706,6 +705,7 @@ import { mapGetters, mapState } from "vuex";
 import Select2 from "v-select2-component";
 
 export default {
+    title: "Customer -",
     components: { Select2 },
     data() {
         return {
@@ -745,7 +745,7 @@ export default {
                 callver: "",
                 callverstatus: "",
                 ispId: "",
-                problemsolution:"",
+                problemsolution: "",
                 name: "",
                 surname: "",
                 tel: "",
@@ -757,9 +757,9 @@ export default {
                 entranceFee: "",
                 appointmentDate: "",
                 appointmentTime: "",
-                status: "",
-                subStatus: "",
-                reMark: ""
+                status: "-",
+                subStatus: "-",
+                reMark: "-"
             })
         };
     },
@@ -812,7 +812,7 @@ export default {
 
             if (this.$gate.isAdmin()) {
                 this.$store.dispatch("GET_BUILDINGS");
-                $("#planing")
+                $("#customer")
                     .DataTable()
                     .ajax.reload();
             }
@@ -842,7 +842,7 @@ export default {
             this.editmode = true;
             this.form.reset();
             console.log(planing);
-            planing.isp_id = planing.isp.id
+            planing.isp_id = planing.isp.id;
             // planing.projectName = planing.building[0].projectName;
             $("#addNew").modal("show");
             this.form.fill(planing);
@@ -986,11 +986,16 @@ export default {
                         }
                     },
                     {
-                        text: "<i class='bi bi-arrow-repeat mr-1'></i>Clear",
+                        text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
                         action: function(e, dt, node, config) {
+                            console.info("button: Clear");
+                            $.fn.dataTable.ext.search.pop();
+                            dt.search("").draw();
                             dt.columns()
                                 .search("")
                                 .draw();
+                            dt.rows().deselect();
+                            dt.ajax.reload();
                         }
                     }
                 ],
@@ -999,6 +1004,16 @@ export default {
                         data: null,
                         defaultContent: "",
                         className: "dt-body-center"
+                    },
+                    {
+                        data: "task_id",
+                        render: function(data, type, row, meta) {
+                            return (
+                                `<a href="/progress?task=#${data}" target="blank">` +
+                                `#${data}` +
+                                "</a>"
+                            );
+                        }
                     },
                     {
                         data: "name",
@@ -1041,9 +1056,11 @@ export default {
                                     "</span>"
                                 );
                             } else {
-                                return '<span><i class="bi bi-file-person pr-2"></i>' +
+                                return (
+                                    '<span><i class="bi bi-file-person pr-2"></i>' +
                                     data +
                                     "</span>"
+                                );
                             }
                         }
                     },
@@ -1275,48 +1292,14 @@ export default {
                         }
                     },
                     {
-                        data: "isp.name",
+                        data: null,
                         render: function(data, type, row, meta) {
-                            if (data == "Ais") {
+                            if (data.isp) {
                                 return (
-                                    '<span class="badge badge-success">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "TOT") {
-                                return (
-                                    '<span class="badge badge-primary">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "Fibernet") {
-                                return (
-                                    '<span class="badge badge-primary">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "3BB") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "True") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "Fn") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span class="text-warning">' +
-                                    data +
+                                    '<span class="badge text-white" style="background: ' +
+                                    data.isp.isps_color +
+                                    '">' +
+                                    data.isp.name +
                                     "</span>"
                                 );
                             }
@@ -1455,48 +1438,15 @@ export default {
                         }
                     },
                     {
-                        data: "isp_id.name",
+                        data: null,
+                        title: "ผู้ให้บริการ",
                         render: function(data, type, row, meta) {
-                            if (data == "Ais") {
+                            if (data.isp_id) {
                                 return (
-                                    '<span class="badge badge-success">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "TOT") {
-                                return (
-                                    '<span class="badge badge-primary">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "Fibernet") {
-                                return (
-                                    '<span class="badge badge-primary">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "3BB") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "True") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "Fn") {
-                                return (
-                                    '<span class="badge badge-warning">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span class="text-warning">' +
-                                    data +
+                                    '<span class="badge text-white" style="background: ' +
+                                    data.isp_id.isps_color +
+                                    '">' +
+                                    data.isp_id.name +
                                     "</span>"
                                 );
                             }
@@ -1620,7 +1570,9 @@ export default {
         this.loadCallver();
         this.loadCallverstatus();
         this.loadAgent();
-        setTimeout(() => {LoadingWait.close();}, 2000)
+        setTimeout(() => {
+            LoadingWait.close();
+        }, 2000);
     }
 };
 </script>

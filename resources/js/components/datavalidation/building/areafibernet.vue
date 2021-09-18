@@ -132,7 +132,7 @@
 
 <script>
 export default {
-    title: "Area Fibernet",
+    title: "Area Fibernet -",
     data() {
         return {
             editmode: false,

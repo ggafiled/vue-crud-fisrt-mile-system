@@ -132,7 +132,7 @@
 
 <script>
 export default {
-    title: "Operating time",
+    title: "Operating Time -",
     data() {
         return {
             editmode: false,

@@ -701,7 +701,6 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
 import Select2 from "v-select2-component";
 
 export default {

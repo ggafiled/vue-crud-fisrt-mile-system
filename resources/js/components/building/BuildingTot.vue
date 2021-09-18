@@ -62,7 +62,7 @@
 
 <script>
 export default {
-    title: "AIS -",
+    title: "TOT -",
     mounted() {
         console.log("buildings Component mounted.");
         var vm = this;

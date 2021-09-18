@@ -132,7 +132,7 @@
 
 <script>
 export default {
-    title: "Generatingaction",
+    title: "Generatingaction -",
     data() {
         return {
             editmode: false,

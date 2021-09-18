@@ -184,7 +184,7 @@
 
 <script>
 export default {
-    title: "Callver Status",
+    title: "Isp -",
     data() {
         return {
             editmode: false,

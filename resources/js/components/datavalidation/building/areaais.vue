@@ -132,7 +132,7 @@
 
 <script>
 export default {
-    title: "Area AIS",
+    title: "Area AIS -",
     data() {
         return {
             editmode: false,

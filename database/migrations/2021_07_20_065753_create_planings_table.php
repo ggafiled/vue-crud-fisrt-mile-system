@@ -16,6 +16,7 @@ class CreatePlaningsTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('planings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('task_id')->nullable();
             $table->bigInteger('building_id')->unsigned();//ชื่อตึก
             $table->bigInteger('isp_id')->unsigned();//ispค่ายเน็ต
             $table->bigInteger('agentDetail_id')->unsigned();//ตัวแทน/พื้นที่
@@ -41,7 +42,7 @@ class CreatePlaningsTable extends Migration
             $table->string('reMark')->nullable();//รีมาร์ค (For Admin)
             $table->timestamps();
             $table->softDeletes();
-            
+
             $table->foreign('building_id')
             ->references('id')
             ->on('buildings')
@@ -101,5 +102,3 @@ class CreatePlaningsTable extends Migration
         Schema::dropIfExists('planings');
     }
 }
-
-

@@ -132,7 +132,7 @@
 
 <script>
 export default {
-    title: "Contract Sell",
+    title: "Contract Sell -",
     data() {
         return {
             editmode: false,

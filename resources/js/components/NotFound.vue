@@ -120,6 +120,7 @@ body {
 
 <script>
 export default {
+    title: "",
     mounted() {}
 };
 </script>

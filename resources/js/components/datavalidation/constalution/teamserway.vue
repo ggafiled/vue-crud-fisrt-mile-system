@@ -132,7 +132,7 @@
 
 <script>
 export default {
-    title: "Generatingaction",
+    title: "TeamSerway -",
     data() {
         return {
             editmode: false,

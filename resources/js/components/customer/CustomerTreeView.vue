@@ -661,6 +661,7 @@ import { Skeleton } from 'vue-loading-skeleton';
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export default {
+    title: "Customer -",
     components: { Select2, VJstree, Skeleton },
     data() {
         return {

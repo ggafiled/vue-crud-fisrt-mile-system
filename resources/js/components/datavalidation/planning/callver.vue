@@ -132,7 +132,7 @@
 
 <script>
 export default {
-    title: "Callver",
+    title: "Callver -",
     data() {
         return {
             editmode: false,

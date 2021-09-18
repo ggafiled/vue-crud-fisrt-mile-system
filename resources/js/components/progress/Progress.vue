@@ -502,6 +502,7 @@
 import { mapGetters, mapState } from "vuex";
 import Select2 from "v-select2-component";
 export default {
+    title: "Progress -",
     components: { Select2 },
     data() {
         return {
@@ -550,6 +551,11 @@ export default {
         ...mapState(["progress"])
     },
     methods: {
+        setSearchText(query) {
+            if(!!query.task){
+                $(this.$refs.progress).DataTable().search(query.task).draw();
+            }
+        },
         loadGeneratingaction() {
             axios.get("/generatingactions").then(response => {
                 this.generatingactions = response.data.data;
@@ -990,6 +996,7 @@ export default {
     mounted() {
         this.loadGeneratingaction();
         this.generateTable();
+        this.setSearchText(this.$route.query);
         setTimeout(() => {LoadingWait.close();}, 3000)
     }
 };

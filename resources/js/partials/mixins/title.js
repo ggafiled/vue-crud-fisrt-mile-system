@@ -1,20 +1,19 @@
-function getTitle(vm) {
-    const { title } = vm.$options;
-    if (title) {
-        return typeof title === "function" ? title.call(vm) : title;
-    }
-}
-
 export default {
+    methods: {
+        getTitle() {
+            const { title } = this.$options;
+            if (title) {
+                return typeof title === "function" ? title.call(this) : title;
+            }
+        }
+    },
     mounted() {
-        const title = getTitle(this);
+        const title = this.getTitle();
+
         if (title) {
             document.title = title.concat(
                 ` ${process.env.MIX_APP_NAME || "First Mile ERP System"}`
             );
-        } else {
-            document.title =
-                process.env.MIX_APP_NAME || "First Mile ERP System";
         }
     }
 };

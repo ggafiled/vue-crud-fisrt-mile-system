@@ -132,7 +132,7 @@
 
 <script>
 export default {
-    title: "Area 3BB",
+    title: "Area 3BB -",
     data() {
         return {
             editmode: false,

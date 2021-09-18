@@ -132,7 +132,7 @@
 
 <script>
 export default {
-    title: "Problemsolution",
+    title: "Problem Solution -",
     data() {
         return {
             editmode: false,

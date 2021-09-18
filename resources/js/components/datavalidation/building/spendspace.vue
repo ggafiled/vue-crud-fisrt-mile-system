@@ -132,7 +132,7 @@
 
 <script>
 export default {
-    title: "SpendSpace",
+    title: "Spend Space -",
     data() {
         return {
             editmode: false,

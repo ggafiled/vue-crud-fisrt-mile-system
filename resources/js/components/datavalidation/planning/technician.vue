@@ -168,7 +168,7 @@
 
 <script>
 export default {
-    title: "Technician",
+    title: "Technician -",
     data() {
         return {
             editmode: false,

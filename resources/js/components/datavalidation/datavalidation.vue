@@ -119,6 +119,7 @@
 <script>
 import ListGroupItem from "../partials/ListGroupItem";
 export default {
+    title: "",
     components: {
         ListGroupItem
     },
