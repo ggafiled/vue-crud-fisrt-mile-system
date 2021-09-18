@@ -269,6 +269,14 @@ export default {
                 setTimeout(() => {
                     loader.hide();
                 }, 3000);
+            }).catch((reason) => {
+                Toast.fire({
+                    icon: "error",
+                    title: reason.message
+                });
+                setTimeout(() => {
+                    loader.hide();
+                }, 3000);
             });
         },
         onSelect(option) {
