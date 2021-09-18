@@ -31,39 +31,39 @@
                                 <thead>
                                     <tr class="info">
                                         <th></th>
-                                        <th>เลขที่รับงาน</th>
-                                        <th>ชื่อ/บริษัท</th>
-                                        <th>นามสกุล</th>
-                                        <th>เบอร์ติดต่อหลัก</th>
-                                        <th>เบอร์ติดต่อสำรอง</th>
-                                        <th>ชื่ออาคาร</th>
-                                        <th>บ้านเลขที่</th>
-                                        <th>หมู่</th>
-                                        <th>ซอย</th>
-                                        <th>ถนน</th>
-                                        <th>อำเภอ/เขต</th>
-                                        <th>จังหวัด</th>
-                                        <th>ตำบล/แขวง</th>
-                                        <th>รหัสไปรษณีย์</th>
+                                        <th>{{ translate("planing.planing_task_number") }}</th>
+                                        <th>{{ translate("planing.planing_name") }}</th>
+                                        <th>{{ translate("planing.planing_surname") }}</th>
+                                        <th>{{ translate("planing.planing_tel") }}</th>
+                                        <th>{{ translate("planing.planing_tel2") }}</th>
+                                        <th>{{ translate("building.building_project") }}</th>
+                                        <th>{{ translate("building.building_housenumber") }}</th>
+                                        <th>{{ translate("building.building_alley") }}</th>
+                                        <th>>{{ translate("building.building_swine") }}</th>
+                                        <th>{{ translate("building.building_road") }}</th>
+                                        <th>{{ translate("building.building_districtdistrict") }}</th>
+                                        <th>{{ translate("building.building_province") }}</th>
+                                        <th>{{ translate("building.building_Sub-district") }}</th>
+                                        <th>{{ translate("building.building_postalcode") }}</th>
                                         <th>Longitude</th>
                                         <th>Latitude</th>
-                                        <th>จำนวนอาคาร</th>
-                                        <th>จำนวนชั้น</th>
-                                        <th>จำนวนห้อง</th>
-                                        <th>isp</th>
-                                        <th>ตัวแทน/พื้นที่</th>
-                                        <th>เลขสมาชิก</th>
-                                        <th>ค่าแรกเข้า (฿)</th>
-                                        <th>ประเภทงาน</th>
-                                        <th>วันนัดหมาย</th>
-                                        <th>เวลานัดหมายในระบบ</th>
-                                        <th>ทีมช่าง Planing</th>
+                                        <th>{{ translate("building.planing_theBuilding") }}</th>
+                                        <th>{{ translate("building.planing_floor") }}</th>
+                                        <th>{{ translate("building.planing_room") }}</th>
+                                        <th>{{ translate("building.planing_isp") }}</th>
+                                        <th>{{ translate("building.planing_agentdetail") }}</th>
+                                        <th>{{ translate("building.planing_circuit") }}</th>
+                                        <th>{{ translate("building.planing_entrancefee") }}</th>
+                                        <th>{{ translate("building.planing_jobtype") }}</th>
+                                        <th>{{ translate("building.planing_appointmentdate") }}</th>
+                                        <th>{{ translate("building.planing_appointmenttime") }}</th>
+                                        <th>{{ translate("building.planing_technician") }}</th>
                                         <th>เบอร์โทร</th>
                                         <th>อีเมลล์</th>
-                                        <th>ผู้ให้บริการ</th>
-                                        <th>status</th>
-                                        <th>subStatus</th>
-                                        <th>รีมาร์ค(For Admin)</th>
+                                        <th>{{ translate("building.planing_ispid") }}</th>
+                                        <th>{{ translate("building.planing_status") }}</th>
+                                        <th>{{ translate("building.planing_subStatus") }}</th>
+                                        <th>{{ translate("building.planing_remark") }}</th>
                                         <th>create</th>
                                         <th>updated</th>
                                         <th>Action</th>
@@ -118,7 +118,7 @@
                                 <div class="row">
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label>ชื่อ</label>
+                                            <label>{{ translate("planing.planing_name") }}</label>
                                             <input
                                                 v-model="form.name"
                                                 type="text"
@@ -138,7 +138,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>นามสกุล</label>
+                                            <label>{{ translate("planing.planing_surname") }}</label>
                                             <input
                                                 v-model="form.surname"
                                                 type="text"
@@ -158,7 +158,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>เบอร์โทร</label>
+                                            <label>{{ translate("planing.planing_tel") }}</label>
                                             <input
                                                 v-model="form.tel"
                                                 type="text"
@@ -178,7 +178,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>เบอร์โทร2</label>
+                                            <label>{{ translate("planing.planing_tel2") }}</label>
                                             <input
                                                 v-model="form.tel2"
                                                 type="text"
@@ -204,7 +204,7 @@
                                         ]"
                                     >
                                         <div class="form-group">
-                                            <label>ชื่อตึกอาคาร</label>
+                                            <label>{{ translate("building.building_project") }}</label>
                                             <Select2
                                                 v-model="form.building_id"
                                                 :options="building"
@@ -222,7 +222,7 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>อาคาร</label>
+                                            <label><th>{{ translate("building.planing_theBuilding") }}</th></label>
                                             <input
                                                 v-model="form.theBuilding"
                                                 type="text"
@@ -242,7 +242,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>ชั้น</label>
+                                            <label>{{ translate("building.planing_floor") }}</label>
                                             <input
                                                 v-model="form.floor"
                                                 type="text"
@@ -262,7 +262,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>ห้อง/เลขที่</label>
+                                            <label>{{ translate("building.planing_room") }}</label>
                                             <input
                                                 v-model="form.room"
                                                 type="text"
@@ -282,7 +282,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>ISP</label>
+                                            <label>{{ translate("building.planing_isp") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.isp_id"
@@ -309,7 +309,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>ตัวแทน/พื้นที่</label>
+                                            <label>{{ translate("building.planing_agentdetail") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.agentDetail_id"
@@ -333,7 +333,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>เลขสมาชิก</label>
+                                            <label>{{ translate("building.planing_circuit") }}</label>
                                             <input
                                                 v-model="form.circuit"
                                                 type="text"
@@ -353,7 +353,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>ค่าแรกเข้า(฿)</label>
+                                            <label>{{ translate("building.planing_entrancefee") }}</label>
                                             <input
                                                 v-model="form.entranceFee"
                                                 type="text"
@@ -376,7 +376,7 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>ประเภทงาน</label>
+                                            <label>{{ translate("building.planing_jobtype") }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.jobtype_id"
@@ -400,7 +400,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>วันนัดหมาย</label>
+                                            <label>>{{ translate("building.planing_appointmentdate") }}</label>
                                             <input
                                                 v-model="form.appointmentDate"
                                                 type="date"
@@ -420,7 +420,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>เวลานัดหมาย ในระบบ</label>
+                                            <label>{{ translate("building.planing_appointmenttime") }}</label>
                                             <input
                                                 v-model="form.appointmentTime"
                                                 type="time"
@@ -1009,7 +1009,7 @@ export default {
                         data: "task_id",
                         render: function(data, type, row, meta) {
                             return (
-                                `<a href="/progress?task=#${data}" target="blank">` +
+                                `<a href="/progress?task=${data}" target="blank">` +
                                 `#${data}` +
                                 "</a>"
                             );

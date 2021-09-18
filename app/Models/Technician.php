@@ -14,6 +14,8 @@ class Technician extends Model
         'teamTechnician',
         'phoneTechnician',
         'emailTechnician',
+        'ais',
+        'true',
     ];
 
     public function technician()
