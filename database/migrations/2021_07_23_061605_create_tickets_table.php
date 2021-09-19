@@ -13,17 +13,17 @@ class CreateTicketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tickets', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('t_category_id')->unsigned();
-            $table->string('ticket_id')->unique();
-            $table->string('title');
-            $table->string('priority');
-            $table->text('message');
-            $table->string('status');
-            $table->timestamps();
-        });
+        // Schema::create('tickets', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->integer('user_id')->unsigned();
+        //     $table->integer('t_category_id')->unsigned();
+        //     $table->string('ticket_id')->unique();
+        //     $table->string('title');
+        //     $table->string('priority');
+        //     $table->text('message');
+        //     $table->string('status');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -33,6 +33,6 @@ class CreateTicketsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tickets');
+        // Schema::dropIfExists('tickets');
     }
 }

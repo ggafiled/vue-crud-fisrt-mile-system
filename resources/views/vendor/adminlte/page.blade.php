@@ -83,7 +83,6 @@
     $(function () {
         $('.selectpicker').selectpicker();
         $('.dropdown-toggle').dropdown();
-
     });
 
     function windowed() {

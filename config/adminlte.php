@@ -288,12 +288,12 @@ return [
                     'icon' => 'fas fa-fw fas fa-users',
                     'roles' => ["superadministrator", "administrator"],
                 ],
-                [
-                    'text' => 'New Customer Managment', //customer
-                    'url' => '/customer/treeview',
-                    'icon' => 'fas fa-fw fas fa-users',
-                    'roles' => ["superadministrator", "administrator"],
-                ],
+                // [
+                //     'text' => 'New Customer Managment', //customer
+                //     'url' => '/customer/treeview',
+                //     'icon' => 'fas fa-fw fas fa-users',
+                //     'roles' => ["superadministrator", "administrator"],
+                // ],
                 [
                     'text' => 'planning_managment', //planing
                     'url' => '/planing/map',

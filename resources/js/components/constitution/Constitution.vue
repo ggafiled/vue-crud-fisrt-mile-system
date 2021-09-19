@@ -31,22 +31,112 @@
                                 <thead>
                                     <tr class="info">
                                         <th></th>
-                                        <th>{{ translate("constitution.constrution_project") }}</th>
-                                        <th>{{ translate("constitution.constrution_desing") }}</th>
-                                        <th>{{ translate("constitution.constrution_survey") }}</th>
-                                        <th>{{ translate("constitution.constrution_ifcc") }}</th>
-                                        <th>{{ translate("constitution.constrution_ifccdate") }}</th>
-                                        <th>{{ translate("constitution.constrution_wallbox") }}</th>
-                                        <th>{{ translate("constitution.constrution_wallboxdate") }}</th>
-                                        <th>{{ translate("constitution.constrution_microductding") }}</th>
-                                        <th>{{ translate("constitution.constrution_microductdingdate") }}</th>
-                                        <th>{{ translate("constitution.constrution_microductK") }}</th>
-                                        <th>{{ translate("constitution.constrution_microductKdate") }}</th>
-                                        <th>{{ translate("constitution.constrution_fiberconvertion") }}</th>
-                                        <th>{{ translate("constitution.constrution_fiberconvertiondate") }}</th>
-                                        <th>{{ translate("constitution.constrution_blow") }}</th>
-                                        <th>{{ translate("constitution.constrution_Splice") }}</th>
-                                        <th>Update</th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_project"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_desing"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_survey"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_ifcc"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_ifccdate"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_wallbox"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_wallboxdate"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_microductding"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_microductdingdate"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_microductK"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_microductKdate"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_fiberconvertion"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_fiberconvertiondate"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_blow"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "constitution.constrution_Splice"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>Update At</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -97,13 +187,13 @@
                         >
                             <div class="modal-body">
                                 <div class="row">
-                                    <div
-                                        class="col-sm-12"
-                                    >
+                                    <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label
-                                                >{{ translate("constitution.constrution_project") }}</label
-                                            >
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_project"
+                                                )
+                                            }}</label>
                                             <Select2
                                                 v-model="form.building_id"
                                                 :options="building"
@@ -121,7 +211,11 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{ translate("constitution.constrution_tot") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_tot"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.projectNameTot"
                                                 type="text"
@@ -137,9 +231,11 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label
-                                                >{{ translate("constitution.constrution_3bb") }}</label
-                                            >
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_3bb"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.projectName3bb"
                                                 type="text"
@@ -155,7 +251,11 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{ translate("constitution.constrution_true") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_true"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.projectNameTrue"
                                                 type="text"
@@ -173,9 +273,11 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label
-                                                >{{ translate("constitution.constrution_ais") }}</label
-                                            >
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_ais"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.projectNameAis"
                                                 type="text"
@@ -191,9 +293,11 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label
-                                                >{{ translate("constitution.constrution_fribernet") }}</label
-                                            >
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_fribernet"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="
                                                     form.projectNameFiberNet
@@ -231,7 +335,11 @@
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>{{ translate("constitution.constrution_desing") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_desing"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.desingBy_id"
@@ -255,7 +363,11 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("constitution.constrution_survey") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_survey"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.surveyDesing_id"
@@ -280,18 +392,34 @@
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>{{ translate("constitution.constrution_surveydate") }}</label>
-                                            <input
-                                                v-model="form.surveyDesingDate"
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Enter your surveyDesingDate..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'surveyDesingDate'
-                                                    )
-                                                }"
-                                            />
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_surveydate"
+                                                )
+                                            }}</label>
+                                            <div class="input-group">
+                                                <input
+                                                    v-model="
+                                                        form.surveyDesingDate
+                                                    "
+                                                    type="text"
+                                                    class="form-control datepicker"
+                                                    placeholder="Enter your surveyDesingDate..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'surveyDesingDate'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        ><i
+                                                            class="bi bi-calendar-day"
+                                                        ></i
+                                                    ></span>
+                                                </div>
+                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="surveyDesingDate"
@@ -305,7 +433,11 @@
                                         <!-- text input -->
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>{{ translate("constitution.constrution_ifcc") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_ifcc"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.ifcc_id"
@@ -329,18 +461,32 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("constitution.constrution_ifccdate") }}</label>
-                                            <input
-                                                type="date"
-                                                v-model="form.ifccDate"
-                                                placeholder="Enter your survey by..."
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'ifccDate'
-                                                    )
-                                                }"
-                                            />
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_ifccdate"
+                                                )
+                                            }}</label>
+                                            <div class="input-group">
+                                                <input
+                                                    type="text"
+                                                    v-model="form.ifccDate"
+                                                    placeholder="Enter your survey by..."
+                                                    class="form-control datepicker"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'ifccDate'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        ><i
+                                                            class="bi bi-calendar-day"
+                                                        ></i
+                                                    ></span>
+                                                </div>
+                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="ifccDate"
@@ -349,7 +495,11 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("constitution.constrution_wallbox") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_wallbox"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.wallBox_id"
@@ -373,18 +523,32 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("constitution.constrution_wallboxdate") }}</label>
-                                            <input
-                                                type="date"
-                                                v-model="form.wallBoxDate"
-                                                placeholder="Enter your survey by..."
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'wallBoxDate'
-                                                    )
-                                                }"
-                                            />
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_wallboxdate"
+                                                )
+                                            }}</label>
+                                            <div class="input-group">
+                                                <input
+                                                    type="text"
+                                                    v-model="form.wallBoxDate"
+                                                    placeholder="Enter your survey by..."
+                                                    class="form-control datepicker"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'wallBoxDate'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        ><i
+                                                            class="bi bi-calendar-day"
+                                                        ></i
+                                                    ></span>
+                                                </div>
+                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="wallBoxDate"
@@ -424,11 +588,21 @@
                                 </div>
 
                                 <hr />
-                                <div class="row" v-show="form.type == '' || form.type == 'Microduct'">
+                                <div
+                                    class="row"
+                                    v-show="
+                                        form.type == '' ||
+                                            form.type == 'Microduct'
+                                    "
+                                >
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>{{ translate("constitution.constrution_microductding") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_microductding"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.microductD_id"
@@ -456,23 +630,37 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label
-                                                >{{ translate("constitution.constrution_microductdingdate") }}</label
-                                            >
-                                            <input
-                                                v-model="form.microductDateD"
-                                                :disabled="
-                                                    form.type ==
-                                                        'FiberConvertion'
-                                                "
-                                                type="date"
-                                                class="form-control"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'microductDateD'
-                                                    )
-                                                }"
-                                            />
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_microductdingdate"
+                                                )
+                                            }}</label>
+                                            <div class="input-group">
+                                                <input
+                                                    v-model="
+                                                        form.microductDateD
+                                                    "
+                                                    :disabled="
+                                                        form.type ==
+                                                            'FiberConvertion'
+                                                    "
+                                                    type="text"
+                                                    class="form-control datepicker"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'microductDateD'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        ><i
+                                                            class="bi bi-calendar-day"
+                                                        ></i
+                                                    ></span>
+                                                </div>
+                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="exploreDesignDateBy"
@@ -481,7 +669,11 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("constitution.constrution_microductK") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_microductK"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.microductK_id"
@@ -510,24 +702,38 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label
-                                                >{{ translate("constitution.constrution_microductKdate") }}</label
-                                            >
-                                            <input
-                                                v-model="form.microductDateK"
-                                                :disabled="
-                                                    form.type ==
-                                                        'FiberConvertion'
-                                                "
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Enter your microductDateK..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'microductDateK'
-                                                    )
-                                                }"
-                                            />
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_microductKdate"
+                                                )
+                                            }}</label>
+                                            <div class="input-group">
+                                                <input
+                                                    v-model="
+                                                        form.microductDateK
+                                                    "
+                                                    :disabled="
+                                                        form.type ==
+                                                            'FiberConvertion'
+                                                    "
+                                                    type="text"
+                                                    class="form-control datepicker"
+                                                    placeholder="Enter your microductDateK..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'microductDateK'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        ><i
+                                                            class="bi bi-calendar-day"
+                                                        ></i
+                                                    ></span>
+                                                </div>
+                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="microductDateK"
@@ -536,11 +742,21 @@
                                     </div>
                                 </div>
 
-                                <div class="row" v-show="form.type == '' || form.type == 'FiberConvertion'">
+                                <div
+                                    class="row"
+                                    v-show="
+                                        form.type == '' ||
+                                            form.type == 'FiberConvertion'
+                                    "
+                                >
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>{{ translate("constitution.constrution_fiberconvertion") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_fiberconvertion"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="
@@ -569,25 +785,37 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label
-                                                >{{ translate("constitution.constrution_fiberconvertiondate") }}</label
-                                            >
-                                            <input
-                                                v-model="
-                                                    form.fiberConvertionDateD
-                                                "
-                                                :disabled="
-                                                    form.type == 'Microduct'
-                                                "
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Enter your fiberConvertionDateD ..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'fiberConvertionDateD '
-                                                    )
-                                                }"
-                                            />
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_fiberconvertiondate"
+                                                )
+                                            }}</label>
+                                            <div class="input-group">
+                                                <input
+                                                    v-model="
+                                                        form.fiberConvertionDateD
+                                                    "
+                                                    :disabled="
+                                                        form.type == 'Microduct'
+                                                    "
+                                                    type="text"
+                                                    class="form-control datepicker"
+                                                    placeholder="Enter your fiberConvertionDateD ..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'fiberConvertionDateD '
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        ><i
+                                                            class="bi bi-calendar-day"
+                                                        ></i
+                                                    ></span>
+                                                </div>
+                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="fiberConvertionDateD "
@@ -600,7 +828,11 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>{{ translate("constitution.constrution_blow") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_blow"
+                                                )
+                                            }}</label>
                                             <select
                                                 v-model="form.blow"
                                                 type="text"
@@ -613,7 +845,8 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >(--Select--) Y/N Question</option
+                                                    >(--Select--) Y/N
+                                                    Question</option
                                                 >
                                                 <option value="Completed"
                                                     >Completed</option
@@ -632,7 +865,11 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>{{ translate("constitution.constrution_splice") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "constitution.constrution_splice"
+                                                )
+                                            }}</label>
                                             <select
                                                 v-model="form.splice"
                                                 type="text"
@@ -645,7 +882,8 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >(--Select--) Y/N Question</option
+                                                    >(--Select--) Y/N
+                                                    Question</option
                                                 >
                                                 <option value="Completed"
                                                     >Completed</option
@@ -742,14 +980,24 @@ export default {
                 ifcc: "",
                 wallBox: "",
                 microductD: "",
-                microductDateK: new Date().toISOString().slice(0, 10),
+                microductDateK: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
                 microductK: "",
-                surveyDesingDate: new Date().toISOString().slice(0, 10),
-                ifccDate: new Date().toISOString().slice(0, 10),
-                wallBoxDate: new Date().toISOString().slice(0, 10),
+                surveyDesingDate: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
+                ifccDate: new Date().toLocaleDateString("th").toString("d/m/Y"),
+                wallBoxDate: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
                 type: "",
-                microductDateD: new Date().toISOString().slice(0, 10),
-                fiberConvertionDateD: new Date().toISOString().slice(0, 10),
+                microductDateD: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
+                fiberConvertionDateD: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
                 blow: "",
                 splice: ""
             })
@@ -1079,7 +1327,7 @@ export default {
                         render: function(data, type, row, meta) {
                             if (!data) {
                                 return "ไม่ได้ระบุ";
-                            }else {
+                            } else {
                                 return data;
                             }
                         }
@@ -1090,7 +1338,7 @@ export default {
                         render: function(data, type, row, meta) {
                             if (!data) {
                                 return "ไม่ได้ระบุ";
-                            }else {
+                            } else {
                                 return data;
                             }
                         }
@@ -1100,7 +1348,7 @@ export default {
                         render: function(data, type, row, meta) {
                             if (!data) {
                                 return "ไม่ได้ระบุ";
-                            }else {
+                            } else {
                                 return data;
                             }
                         }
@@ -1110,7 +1358,7 @@ export default {
                         render: function(data, type, row, meta) {
                             if (!data) {
                                 return "ไม่ได้ระบุ";
-                            }else {
+                            } else {
                                 return data;
                             }
                         }
@@ -1120,7 +1368,7 @@ export default {
                         render: function(data, type, row, meta) {
                             if (!data) {
                                 return "ไม่ได้ระบุ";
-                            }else {
+                            } else {
                                 return data;
                             }
                         }
@@ -1131,7 +1379,7 @@ export default {
                         render: function(data, type, row, meta) {
                             if (!data) {
                                 return "ไม่ได้ระบุ";
-                            }else {
+                            } else {
                                 return data;
                             }
                         }
@@ -1206,7 +1454,14 @@ export default {
         this.loadGeneratingaction();
         this.generateTable();
         this.loadTeamserway();
-        setTimeout(() => {LoadingWait.close()}, 2000)
+        $(".datepicker").datepicker({
+            language: "th-th",
+            format: "dd/mm/yyyy",
+            autoclose: true
+        });
+        setTimeout(() => {
+            LoadingWait.close();
+        }, 2000);
     }
 };
 </script>

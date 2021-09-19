@@ -32,45 +32,255 @@
                                     <thead>
                                         <tr class="info">
                                             <th></th>
-                                            <th>{{ translate("building.building_project") }}</th>
-                                            <th>{{ translate("building.building_fmcode") }}</th>
-                                            <th>{{ translate("building.building_areatot") }}</th>
-                                            <th>{{ translate("building.building_areabbn") }}</th>
-                                            <th>{{ translate("building.building_3bb") }}</th>
-                                            <th>{{ translate("building.building_areatrue") }}</th>
-                                            <th>{{ translate("building.building_areatrueNew") }}</th>
-                                            <th>{{ translate("building.building_areaais") }}</th>
-                                            <th>{{ translate("building.building_areafibernet") }}</th>
-                                            <th>{{ translate("building.building_buildingsum") }}</th>
-                                            <th>{{ translate("building.building_floorsum") }}</th>
-                                            <th>{{ translate("building.building_roomsum") }}</th>
-                                            <th>{{ translate("building.building_managername") }}</th>
-                                            <th>{{ translate("building.building_managerphone") }}</th>
-                                            <th>{{ translate("building.building_manageremail") }}</th>
-                                            <th>{{ translate("building.building_corporationname") }}</th>
-                                            <th>{{ translate("building.building_corporationphone") }}</th>
-                                            <th>{{ translate("building.building_corporationemail") }}</th>
-                                            <th>{{ translate("building.building_housenumber") }}</th>
-                                            <th>{{ translate("building.building_swine") }}</th>
-                                            <th>{{ translate("building.building_alley") }}</th>
-                                            <th>{{ translate("building.building_road") }}</th>
-                                            <th>{{ translate("building.building_districtdistrict") }}</th>
-                                            <th>{{ translate("building.building_province") }}</th>
-                                            <th>{{ translate("building.building_Sub-district") }}</th>
-                                            <th>{{ translate("building.building_postalcode") }}</th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_project"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_fmcode"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_areatot"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_areabbn"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_3bb"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_areatrue"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_areatrueNew"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_areaais"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_areafibernet"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_buildingsum"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_floorsum"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_roomsum"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_managername"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_managerphone"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_manageremail"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_corporationname"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_corporationphone"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_corporationemail"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_housenumber"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_swine"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_alley"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_road"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_districtdistrict"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_province"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_Sub-district"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_postalcode"
+                                                    )
+                                                }}
+                                            </th>
                                             <th>Longitude</th>
                                             <th>Latitude</th>
-                                            <th>{{ translate("building.building_salename") }}</th>
-                                            <th>{{ translate("building.building_datecontact") }}</th>
-                                            <th>{{ translate("building.building_datecontactend") }}</th>
-                                            <th>{{ translate("building.building_spendspace") }}</th>
-                                            <th>{{ translate("building.building_incomemodel") }}</th>
-                                            <th>{{ translate("building.building_contractperiod") }}</th>
-                                            <th>{{ translate("building.building_condition") }}</th>
-                                            <th>{{ translate("building.building_pricetopay") }}</th>
-                                            <th>{{ translate("building.building_operatingtime") }}</th>
-                                            <th>create</th>
-                                            <th>updated</th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_salename"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_datecontact"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_datecontactend"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_spendspace"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_incomemodel"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_contractperiod"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_condition"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_pricetopay"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.building_operatingtime"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>Create At</th>
+                                            <th>Updated At</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -120,7 +330,11 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_project") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_project"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.projectName"
                                                 type="text"
@@ -136,7 +350,11 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_fmcode") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_fmcode"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.fmCode"
                                                 type="text"
@@ -156,7 +374,11 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_buildingsum") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_buildingsum"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.buildingSum"
                                                 type="text"
@@ -177,7 +399,11 @@
 
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_floorsum") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_floorsum"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.floorSum"
                                                 type="text"
@@ -198,7 +424,11 @@
 
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_roomsum") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_roomsum"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.roomSum"
                                                 type="text"
@@ -221,7 +451,11 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_managername") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_managername"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.nameManager"
                                                 type="text"
@@ -241,7 +475,11 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_managerphone") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_managerphone"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.phoneManager"
                                                 type="text"
@@ -262,7 +500,11 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_manageremail") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_manageremail"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.mailManager"
                                                 type="text"
@@ -285,7 +527,11 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_corporationname") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_corporationname"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.nameNiti"
                                                 type="text"
@@ -305,7 +551,11 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_corporationphone") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_corporationphone"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.phoneNiti"
                                                 type="text"
@@ -326,7 +576,11 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_corporationemail") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_corporationemail"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.mailNiti"
                                                 type="text"
@@ -350,7 +604,11 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_housenumber") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_housenumber"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.houseNumber"
                                                 type="text"
@@ -370,7 +628,11 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_swine") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_swine"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.squadNumber"
                                                 type="text"
@@ -390,7 +652,11 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_alley") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_alley"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.alleyName"
                                                 type="text"
@@ -410,7 +676,11 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_road") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_road"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.roadName"
                                                 type="text"
@@ -572,7 +842,11 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_salename") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_salename"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.saleFm_id"
@@ -596,20 +870,34 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_datecontact") }}</label>
-                                            <input
-                                                ref="contractDate"
-                                                v-model="form.contractDate"
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Enter your contract date..."
-                                                :disabled="editmode"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'contractDate'
-                                                    )
-                                                }"
-                                            />
+                                            <label>{{
+                                                translate(
+                                                    "building.building_datecontact"
+                                                )
+                                            }}</label>
+                                            <div class="input-group">
+                                                <input
+                                                    ref="contractDate"
+                                                    v-model="form.contractDate"
+                                                    type="text"
+                                                    class="form-control datepicker"
+                                                    placeholder="Enter your contract date..."
+                                                    :disabled="editmode"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'contractDate'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        ><i
+                                                            class="bi bi-calendar-day"
+                                                        ></i
+                                                    ></span>
+                                                </div>
+                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="contractDate"
@@ -618,20 +906,36 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_datecontactend") }}</label>
-                                            <input
-                                                ref="contractDateEnd"
-                                                v-model="form.contractDateEnd"
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Enter your contract date..."
-                                                :disabled="editmode"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'contractDateEnd'
-                                                    )
-                                                }"
-                                            />
+                                            <label>{{
+                                                translate(
+                                                    "building.building_datecontactend"
+                                                )
+                                            }}</label>
+                                            <div class="input-group">
+                                                <input
+                                                    ref="contractDateEnd"
+                                                    v-model="
+                                                        form.contractDateEnd
+                                                    "
+                                                    type="text"
+                                                    class="form-control datepicker"
+                                                    placeholder="Enter your contract date..."
+                                                    :disabled="editmode"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'contractDateEnd'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        ><i
+                                                            class="bi bi-calendar-day"
+                                                        ></i
+                                                    ></span>
+                                                </div>
+                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="contractDateEnd"
@@ -664,7 +968,11 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_incomemodel") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_incomemodel"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.condition"
                                                 type="text"
@@ -685,17 +993,29 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>ระยะเวลาสัญญา</label>
-                                            <input
-                                                v-model="form.contractPeriod"
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Enter your period..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'contractPeriod'
-                                                    )
-                                                }"
-                                            />
+                                            <div class="input-group">
+                                                <input
+                                                    v-model="
+                                                        form.contractPeriod
+                                                    "
+                                                    type="text"
+                                                    class="form-control datepicker"
+                                                    placeholder="Enter your period..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'contractPeriod'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        ><i
+                                                            class="bi bi-calendar-day"
+                                                        ></i
+                                                    ></span>
+                                                </div>
+                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="contractPeriod"
@@ -704,18 +1024,32 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_contractperiod") }}</label>
-                                            <input
-                                                v-model="form.reNewContact"
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Enter your renew..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'reNewContact'
-                                                    )
-                                                }"
-                                            />
+                                            <label>{{
+                                                translate(
+                                                    "building.building_contractperiod"
+                                                )
+                                            }}</label>
+                                            <div class="input-group">
+                                                <input
+                                                    v-model="form.reNewContact"
+                                                    type="text"
+                                                    class="form-control datepicker"
+                                                    placeholder="Enter your renew..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'reNewContact'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        ><i
+                                                            class="bi bi-calendar-day"
+                                                        ></i
+                                                    ></span>
+                                                </div>
+                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="reNewContact"
@@ -724,7 +1058,11 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_pricetopay") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_pricetopay"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.balance"
                                                 type="text"
@@ -747,7 +1085,11 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_areatot") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_areatot"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areas_id"
@@ -771,7 +1113,11 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_areabbn") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_areabbn"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.bbns_id"
@@ -797,7 +1143,11 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_3bb") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_3bb"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.area3bb_id"
@@ -821,7 +1171,11 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_areatrue") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_areatrue"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaTrue_id"
@@ -845,7 +1199,11 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_areatrueNew") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_areatrueNew"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaTrueNew_id"
@@ -869,7 +1227,11 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_areaais") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_areaais"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaAis_id"
@@ -895,7 +1257,11 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_areafibernet") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_areafibernet"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaFibernet_id"
@@ -919,7 +1285,11 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_operatingtime") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "building.building_operatingtime"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.workTime_id"
@@ -978,9 +1348,7 @@
 import { mapGetters, mapState } from "vuex";
 export default {
     title: "All -",
-    components: {
-
-    },
+    components: {},
     data() {
         return {
             loader: null,
@@ -1031,11 +1399,19 @@ export default {
                 postalCode: "",
                 longitude: "",
                 latitude: "",
-                contractDate: new Date().toISOString().slice(0, 10),
-                contractDateEnd: new Date().toISOString().slice(0, 10),
+                contractDate: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
+                contractDateEnd: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
                 condition: "",
-                contractPeriod: new Date().toISOString().slice(0, 10),
-                reNewContact: new Date().toISOString().slice(0, 10),
+                contractPeriod: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
+                reNewContact: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
                 balance: ""
             })
         };
@@ -1489,7 +1865,7 @@ export default {
                     {
                         data: "buildingSum",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1499,7 +1875,7 @@ export default {
                     {
                         data: "floorSum",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1509,7 +1885,7 @@ export default {
                     {
                         data: "roomSum",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1519,7 +1895,7 @@ export default {
                     {
                         data: "nameManager",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1529,7 +1905,7 @@ export default {
                     {
                         data: "phoneManager",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1539,7 +1915,7 @@ export default {
                     {
                         data: "mailManager",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1549,7 +1925,7 @@ export default {
                     {
                         data: "nameNiti",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1559,7 +1935,7 @@ export default {
                     {
                         data: "phoneNiti",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1569,7 +1945,7 @@ export default {
                     {
                         data: "mailNiti",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1579,7 +1955,7 @@ export default {
                     {
                         data: "houseNumber",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1589,7 +1965,7 @@ export default {
                     {
                         data: "squadNumber",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1599,7 +1975,7 @@ export default {
                     {
                         data: "alleyName",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1609,7 +1985,7 @@ export default {
                     {
                         data: "roadName",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1619,7 +1995,7 @@ export default {
                     {
                         data: "districtName",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1629,7 +2005,7 @@ export default {
                     {
                         data: "countyName",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1639,7 +2015,7 @@ export default {
                     {
                         data: "provinceName",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1649,7 +2025,7 @@ export default {
                     {
                         data: "postalCode",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1659,7 +2035,7 @@ export default {
                     {
                         data: "longitude",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1669,7 +2045,7 @@ export default {
                     {
                         data: "latitude",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1717,7 +2093,7 @@ export default {
                     {
                         data: "condition",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1727,7 +2103,7 @@ export default {
                     {
                         data: "contractPeriod",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1737,7 +2113,7 @@ export default {
                     {
                         data: "reNewContact",
                         render: function(data, type, row, meta) {
-                           if (!data) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -1848,7 +2224,14 @@ export default {
         this.loadAreaFiberNet();
         this.loadWorkTime();
         this.generateTable();
-        setTimeout(() => {LoadingWait.close();}, 3000)
+        $(".datepicker").datepicker({
+            language: "th-th",
+            format: "dd/mm/yyyy",
+            autoclose: true
+        });
+        setTimeout(() => {
+            LoadingWait.close();
+        }, 3000);
         // $("input").attr("autocomplete", this.isChrome ? "chrome-off" : "off");
     }
 };

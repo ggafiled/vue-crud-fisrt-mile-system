@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use Carbon\Carbon;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Requests\Planing\PlaningRequest;
 use App\Models\Planing;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class PlaningController extends BaseController
 {
@@ -59,9 +59,8 @@ class PlaningController extends BaseController
      */
     public function store(PlaningRequest $request)
     {
-
         try {
-            $planing = new Planing([
+            $planing = Planing::create([
                 'building_id' => $request->input('building_id'),
                 'isp_id' => $request->input('isp_id'),
                 'agentDetail_id' => $request->input('agentDetail_id'),
@@ -86,10 +85,11 @@ class PlaningController extends BaseController
                 'subStatus' => $request->input('subStatus'),
                 'reMark' => $request->input('reMark'),
             ]);
-            $planing->save();
             return $this->sendResponse($planing, trans('actions.created.success'));
-        } catch (Exception $ex) {
+        } catch (ValidationException $ex) {
             return $this->sendError($ex, trans('actions.created.failed'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.created.failed'));
         }
     }
 
@@ -171,12 +171,12 @@ class PlaningController extends BaseController
                 ->map(function ($item) use ($collection) {
                     $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
                     $collection["title"] = $item->building->name;
-                    $collection["detail"] = "<div><p class='p-0 m-0'>".($item->building->workTime->name ?? "unknown")."</p>
-                    <p class='p-0 m-0'>วันที่นัดหมาย: ".$item->appointmentDate." เวลา : ".$item->appointmentTime."</p>
-                    <p class='p-0 m-0'>ผู้ให้บริการ: ".$item->isp->isp."</p>
-                    <p class='p-0 m-0'>ผู้ให้บริการ: ".$item->isp->isp."</p>
+                    $collection["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
+                    <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
+                    <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
+                    <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
                     </div>";
-                    $collection["icon"] = ["url" => $item->isp->isps_map_icon,"offset" => ["x" => 12, "y" => 45]];
+                    $collection["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
                     return $collection;
                 });
             return $this->sendResponse($planing, trans('actions.get.success'));

@@ -17,6 +17,10 @@ try {
     require("google-palette");
     require("animejs");
     require("patternomaly");
+    require("bootstrap-datepicker");
+    require("bootstrap-datepicker/dist/css/bootstrap-datepicker.css");
+    require("bootstrap-datepicker/dist/locales/bootstrap-datepicker.th.min.js");
+    require("bootstrap-datepicker/dist/locales/bootstrap-datepicker-en-CA.min.js");
 
     require("bootstrap-select/js/i18n/defaults-de_DE");
 

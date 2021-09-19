@@ -31,41 +31,211 @@
                                 <thead>
                                     <tr class="info">
                                         <th></th>
-                                        <th>{{ translate("planing.planing_task_number") }}</th>
-                                        <th>{{ translate("planing.planing_name") }}</th>
-                                        <th>{{ translate("planing.planing_surname") }}</th>
-                                        <th>{{ translate("planing.planing_tel") }}</th>
-                                        <th>{{ translate("planing.planing_tel2") }}</th>
-                                        <th>{{ translate("building.building_project") }}</th>
-                                        <th>{{ translate("building.building_housenumber") }}</th>
-                                        <th>{{ translate("building.building_alley") }}</th>
-                                        <th>>{{ translate("building.building_swine") }}</th>
-                                        <th>{{ translate("building.building_road") }}</th>
-                                        <th>{{ translate("building.building_districtdistrict") }}</th>
-                                        <th>{{ translate("building.building_province") }}</th>
-                                        <th>{{ translate("building.building_Sub-district") }}</th>
-                                        <th>{{ translate("building.building_postalcode") }}</th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_task_number"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_name"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_surname"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate("planing.planing_tel")
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_tel2"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_building"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "building.building_housenumber"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "building.building_alley"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "building.building_swine"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "building.building_road"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "building.building_districtdistrict"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "building.building_province"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "building.building_Sub-district"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "building.building_postalcode"
+                                                )
+                                            }}
+                                        </th>
                                         <th>Longitude</th>
                                         <th>Latitude</th>
-                                        <th>{{ translate("building.planing_theBuilding") }}</th>
-                                        <th>{{ translate("building.planing_floor") }}</th>
-                                        <th>{{ translate("building.planing_room") }}</th>
-                                        <th>{{ translate("building.planing_isp") }}</th>
-                                        <th>{{ translate("building.planing_agentdetail") }}</th>
-                                        <th>{{ translate("building.planing_circuit") }}</th>
-                                        <th>{{ translate("building.planing_entrancefee") }}</th>
-                                        <th>{{ translate("building.planing_jobtype") }}</th>
-                                        <th>{{ translate("building.planing_appointmentdate") }}</th>
-                                        <th>{{ translate("building.planing_appointmenttime") }}</th>
-                                        <th>{{ translate("building.planing_technician") }}</th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_theBuilding"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_floor"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_room"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate("planing.planing_isp")
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_agentdetail"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_circuit"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_entrancefee"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_jobtype"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_appointmentdate"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_appointmenttime"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_technician"
+                                                )
+                                            }}
+                                        </th>
                                         <th>เบอร์โทร</th>
                                         <th>อีเมลล์</th>
-                                        <th>{{ translate("building.planing_ispid") }}</th>
-                                        <th>{{ translate("building.planing_status") }}</th>
-                                        <th>{{ translate("building.planing_subStatus") }}</th>
-                                        <th>{{ translate("building.planing_remark") }}</th>
-                                        <th>create</th>
-                                        <th>updated</th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_ispid"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_status"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_subStatus"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>
+                                            {{
+                                                translate(
+                                                    "planing.planing_remark"
+                                                )
+                                            }}
+                                        </th>
+                                        <th>Create At</th>
+                                        <th>Updated At</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -118,7 +288,11 @@
                                 <div class="row">
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label>{{ translate("planing.planing_name") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_name"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.name"
                                                 type="text"
@@ -138,7 +312,11 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("planing.planing_surname") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_surname"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.surname"
                                                 type="text"
@@ -158,7 +336,9 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("planing.planing_tel") }}</label>
+                                            <label>{{
+                                                translate("planing.planing_tel")
+                                            }}</label>
                                             <input
                                                 v-model="form.tel"
                                                 type="text"
@@ -178,7 +358,11 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{ translate("planing.planing_tel2") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_tel2"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.tel2"
                                                 type="text"
@@ -204,7 +388,11 @@
                                         ]"
                                     >
                                         <div class="form-group">
-                                            <label>{{ translate("building.building_project") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "planing.building_project"
+                                                )
+                                            }}</label>
                                             <Select2
                                                 v-model="form.building_id"
                                                 :options="building"
@@ -222,7 +410,15 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label><th>{{ translate("building.planing_theBuilding") }}</th></label>
+                                            <label
+                                                ><th>
+                                                    {{
+                                                        translate(
+                                                            "planing.planing_theBuilding"
+                                                        )
+                                                    }}
+                                                </th></label
+                                            >
                                             <input
                                                 v-model="form.theBuilding"
                                                 type="text"
@@ -242,7 +438,11 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("building.planing_floor") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_floor"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.floor"
                                                 type="text"
@@ -262,7 +462,11 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("building.planing_room") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_room"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.room"
                                                 type="text"
@@ -282,7 +486,9 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("building.planing_isp") }}</label>
+                                            <label>{{
+                                                translate("planing.planing_isp")
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.isp_id"
@@ -309,7 +515,11 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>{{ translate("building.planing_agentdetail") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_agentdetail"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.agentDetail_id"
@@ -333,7 +543,11 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("building.planing_circuit") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_circuit"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.circuit"
                                                 type="text"
@@ -353,7 +567,11 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("building.planing_entrancefee") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_entrancefee"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.entranceFee"
                                                 type="text"
@@ -376,7 +594,11 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("building.planing_jobtype") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_jobtype"
+                                                )
+                                            }}</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.jobtype_id"
@@ -400,18 +622,35 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>>{{ translate("building.planing_appointmentdate") }}</label>
-                                            <input
-                                                v-model="form.appointmentDate"
-                                                type="date"
-                                                class="form-control"
-                                                placeholder="Enter your appointmentDate..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'appointmentDate'
-                                                    )
-                                                }"
-                                            />
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_appointmentdate"
+                                                )
+                                            }}</label>
+                                            <div class="input-group mb-3">
+                                                <input
+                                                    v-model="
+                                                        form.appointmentDate
+                                                    "
+                                                    type="text"
+                                                    class="form-control datepicker"
+                                                    placeholder="Enter your appointmentDate..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'appointmentDate'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        ><i
+                                                            class="bi bi-calendar-day"
+                                                        ></i
+                                                    ></span>
+                                                </div>
+                                            </div>
+                                            <!-- <datepicker class="form-control" v-model="form.appointmentDate" :language="th"></datepicker> -->
                                             <has-error
                                                 :form="form"
                                                 field="appointmentDate"
@@ -420,7 +659,11 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{ translate("building.planing_appointmenttime") }}</label>
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_appointmenttime"
+                                                )
+                                            }}</label>
                                             <input
                                                 v-model="form.appointmentTime"
                                                 type="time"
@@ -675,21 +918,21 @@
                                     class="btn btn-secondary"
                                     data-dismiss="modal"
                                 >
-                                    Close
+                                    {{ translate("planing.actions.close") }}
                                 </button>
                                 <button
                                     v-show="editmode"
                                     type="submit"
                                     class="btn btn-success"
                                 >
-                                    Update
+                                    {{ translate("planing.actions.update") }}
                                 </button>
                                 <button
                                     v-show="!editmode"
                                     type="submit"
                                     class="btn btn-primary"
                                 >
-                                    Create
+                                    {{ translate("planing.actions.create") }}
                                 </button>
                             </div>
                         </form>
@@ -701,14 +944,17 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+// import {en, th} from 'vuejs-datepicker/dist/locale';
 import Select2 from "v-select2-component";
+// import Datepicker from 'vuejs-datepicker';
 
 export default {
     title: "Customer -",
-    components: { Select2 },
+    components: { Select2 /*Datepicker*/ },
     data() {
         return {
+            // en: en,
+            // th: th,
             loader: null,
             editmode: false,
             selected: "",
@@ -755,8 +1001,10 @@ export default {
                 room: "",
                 circuit: "",
                 entranceFee: "",
-                appointmentDate: "",
-                appointmentTime: "",
+                appointmentDate: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
+                appointmentTime: new Date().getHours() + ":" + new Date().getMinutes(),
                 status: "-",
                 subStatus: "-",
                 reMark: "-"
@@ -884,6 +1132,7 @@ export default {
         createCustomer() {
             if (this.selected == null || this.selected == undefined)
                 return false;
+            console.log(this.form);
             this.form
                 .post("/planing")
                 .then(response => {
@@ -1570,6 +1819,11 @@ export default {
         this.loadCallver();
         this.loadCallverstatus();
         this.loadAgent();
+        $(".datepicker").datepicker({
+            language: "th-th",
+            format: "dd/mm/yyyy",
+            autoclose: true
+        });
         setTimeout(() => {
             LoadingWait.close();
         }, 2000);

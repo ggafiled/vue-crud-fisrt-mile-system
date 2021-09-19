@@ -52,10 +52,10 @@ class PlaningRequest extends FormRequest
             'circuit' => "string|max:191",
             'entranceFee' => "string|max:191",
             'appointmentDate' => "date",
-            // 'appointmentTime' => "time",
-            'status' => "nullable|string|max:191",
-            'subStatus' => "nullable|string|max:191",
-            'reMark' => "nullable|string|max:191",
+            'appointmentTime' => "date_format:H:i",
+            'status' => "sometimes|nullable|string|max:191",
+            'subStatus' => "sometimes|nullable|string|max:191",
+            'reMark' => "sometimes|nullable|string|max:191",
         ];
     }
 
@@ -86,10 +86,10 @@ class PlaningRequest extends FormRequest
             'circuit' => "string|max:191",
             'entranceFee' => "string|max:191",
             'appointmentDate' => "date",
-            // 'appointmentTime' => "time",
-            'status' => "nullable|string|max:191",
-            'subStatus' => "nullable|string|max:191",
-            'reMark' => "nullable|string|max:191",
+            'appointmentTime' => "date_format:H:i",
+            'status' => "sometimes|nullable|string|max:191",
+            'subStatus' => "sometimes|nullable|string|max:191",
+            'reMark' => "sometimes|nullable|string|max:191",
         ];
     }
 }

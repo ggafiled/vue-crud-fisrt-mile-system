@@ -103,15 +103,15 @@ export default [{
             roles: ["superadministrator", "administrator"]
         }
     },
-    {
-        path: "/customer/treeview",
-        component: require("./components/customer/CustomerTreeView.vue")
-            .default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator", "administrator"]
-        }
-    },
+    // {
+    //     path: "/customer/treeview",
+    //     component: require("./components/customer/CustomerTreeView.vue")
+    //         .default,
+    //     meta: {
+    //         requiresAuth: true,
+    //         roles: ["superadministrator", "administrator"]
+    //     }
+    // },
     {
         path: "/planing/map",
         component: require("./components/planing/planing_map.vue").default,
@@ -120,20 +120,20 @@ export default [{
             roles: ["superadministrator", "administrator"]
         }
     },
-    {
-        path: "/issue-tickets",
-        component: require("./components/issue/IssueTickets.vue").default,
-        meta: {
-            requiresAuth: true
-        }
-    },
-    {
-        path: "/issue-tickets/:id",
-        component: require("./components/issue/IssueTicketShow.vue").default,
-        meta: {
-            requiresAuth: true
-        }
-    },
+    // {
+    //     path: "/issue-tickets",
+    //     component: require("./components/issue/IssueTickets.vue").default,
+    //     meta: {
+    //         requiresAuth: true
+    //     }
+    // },
+    // {
+    //     path: "/issue-tickets/:id",
+    //     component: require("./components/issue/IssueTicketShow.vue").default,
+    //     meta: {
+    //         requiresAuth: true
+    //     }
+    // },
     {
         path: "/console-log",
         component: require("./components/consolelog/ConsoleLog.vue").default,

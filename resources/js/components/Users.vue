@@ -34,7 +34,7 @@
                                         <th>Email</th>
                                         <th>Email Verified?</th>
                                         <th>Avaiable</th>
-                                        <th>Created</th>
+                                        <th>Create At</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

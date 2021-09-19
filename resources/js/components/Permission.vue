@@ -34,7 +34,7 @@
                                         <th>Name</th>
                                         <th>Display Name</th>
                                         <th>Description</th>
-                                        <th>Created</th>
+                                        <th>Create At</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
