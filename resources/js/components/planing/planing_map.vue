@@ -1,43 +1,50 @@
 <template>
     <section id="map" style="height: 88vh !important; padding: 0; margin: 0;">
         <longdo-map :zoom="12" :lastView="false" @load="initMap">
-            <longdo-map-marker
-                v-for="(item, i) in coordinate"
-                :key="i"
-                :location="item.location"
-                :title="item.title"
-                :detail="item.detail"
-                :icon="item.icon"
-            />
+            <longdo-map-custom-ui :vertical="'top'" :horizontal="'left'">
+                <div class="form-control">
+                    หหหหห
+                </div>
+                <longdo-map-marker
+                    v-for="(item, i) in coordinate"
+                    :key="i"
+                    :location="item.location"
+                    :title="item.title"
+                    :detail="item.detail"
+                    :icon="item.icon"
+                />
+            </longdo-map-custom-ui>
         </longdo-map>
     </section>
 </template>
 
 <script>
-import { LongdoMap, LongdoMapMarker } from "longdo-map-vue";
+import { LongdoMap, LongdoMapMarker, LongdoMapCustomUi } from "longdo-map-vue";
 LongdoMap.init({ apiKey: process.env.MIX_APP_LONGDO_MAP_KEY });
 export default {
     title: "Guild Map -",
     ajax: "/api/constarution",
     components: {
         LongdoMap,
-        LongdoMapMarker
+        LongdoMapMarker,
+        LongdoMapCustomUi
     },
     data() {
         return {
             loader: null,
             fullPage: false,
-            coordinate: []
+            coordinate: [],
+            form: new Form({
+                formDate: "",
+                endDate: ""
+            })
         };
     },
     methods: {
         initMap(map) {
             map.resize();
             map.Ui.Fullscreen.visible(false);
-            map.location(
-                { lon: 100.612550, lat: 13.780091 },
-                true
-            );
+            map.location({ lon: 100.61255, lat: 13.780091 }, true);
             map.Event.bind("ready", function() {
                 map.Event.bind("fullscreen", function() {
                     //do somethings
@@ -46,7 +53,9 @@ export default {
         },
         loadCoordinatePlanningOfBuilding() {
             axios
-                .get("planing/loadCoordinatePlanningOfBuilding")
+                .get("planing/loadCoordinatePlanningOfBuilding", {
+                    data: this.form
+                })
                 .then(response => {
                     this.coordinate = response.data.data;
                 });
@@ -62,7 +71,7 @@ export default {
         this.loadCoordinatePlanningOfBuilding();
         setTimeout(() => {
             this.loader.hide();
-        }, 3000)
+        }, 3000);
     }
 };
 </script>

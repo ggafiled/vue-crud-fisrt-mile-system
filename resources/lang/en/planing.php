@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'planing_task_number' => 'Task No.',
+    'planing_task_number' => '#Task No',
     'planing_name' => 'Name',
     'planing_surname' => 'Surname',
     'planing_tel' => 'Tel',

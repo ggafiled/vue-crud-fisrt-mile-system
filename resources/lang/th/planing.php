@@ -12,7 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'planing_task_number' => 'เลขที่รับงาน',
+    'planing_task_number' => '#เลขที่รับงาน',
     'planing_name' => 'ชื่อ/บริษัท',
     'planing_surname' => 'นามสกุล',
     'planing_tel' => 'เบอร์โทร',

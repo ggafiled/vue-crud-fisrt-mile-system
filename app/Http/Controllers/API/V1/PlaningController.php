@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use Carbon\Carbon;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Requests\Planing\PlaningRequest;
 use App\Models\Planing;
@@ -156,11 +157,15 @@ class PlaningController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function loadCoordinatePlanningOfBuilding()
+    public function loadCoordinatePlanningOfBuilding(Request $request)
     {
         try {
             $collection = [];
-            $planing = Planing::with(
+            $from_date = $request->input('formDate') ?? Carbon::now()->toDateString();
+            $end_date = $request->input('endDate') ?? Carbon::now()->toDateString();
+
+            $planing = Planing::whereBetween('appointmentDate', [$from_date, $end_date])
+                ->with(
                 ['building:id,workTime_id,longitude,latitude,projectName as name',
                     'building.workTime:id,workTime as name',
                     'isp'])
