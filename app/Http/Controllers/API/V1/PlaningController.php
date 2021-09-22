@@ -161,10 +161,11 @@ class PlaningController extends BaseController
     {
         try {
             $collection = [];
+            $planing = [];
             $from_date = $request->input('formDate') ?? Carbon::now()->toDateString();
             $end_date = $request->input('endDate') ?? Carbon::now()->toDateString();
 
-            $planing = Planing::whereBetween('appointmentDate', [$from_date, $end_date])
+            $planing["coordinate"] = Planing::whereBetween('appointmentDate', [$from_date, $end_date])
                 ->with(
                 ['building:id,workTime_id,longitude,latitude,projectName as name',
                     'building.workTime:id,workTime as name',
@@ -184,6 +185,7 @@ class PlaningController extends BaseController
                     $collection["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
                     return $collection;
                 });
+            $planing["taskTotal"] = Planing::count();
             return $this->sendResponse($planing, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.failed'));

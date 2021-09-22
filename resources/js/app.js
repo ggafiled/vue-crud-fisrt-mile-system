@@ -196,6 +196,10 @@ Vue.filter("yesno", value =>
     '<i class="fas fa-check green"></i>' :
     '<i class="fas fa-times red"></i>'
 );
+
+Vue.filter("numberFormat", value => {
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+});
 // end Filter
 
 const app = new Vue({
