@@ -6,6 +6,7 @@ use App\Http\Controllers\API\V1\BaseController;
 use App\Models\Building;
 use Illuminate\Http\Request;
 use Exception;
+use Carbon;
 use App\Http\Requests\Building\BuildingRequest;
 
 
@@ -53,28 +54,27 @@ class Buildingcontroller extends BaseController
     {
         try {
             $buidings = Building::create([
-                'saleFm_id' => $request->input('saleFm_id'),
-                'paymentType_id' => $request->input('paymentType_id'),
+                // 'technician_id' => $request->input('technician_id'),
                 'areas_id' => $request->input('areas_id'),
                 'bbns_id' => $request->input('bbns_id'),
                 'area3bb_id' => $request->input('area3bb_id'),
+                'areaAis_id' => $request->input('areaAis_id'),
                 'areaTrue_id' => $request->input('areaTrue_id'),
                 'areaTrueNew_id' => $request->input('areaTrueNew_id'),
-                'areaAis_id' => $request->input('areaAis_id'),
                 'areaFibernet_id' => $request->input('areaFibernet_id'),
-                'workTime_id' => $request->input('workTime_id'),
                 'projectName' => $request->input('projectName'),
-                'buildingSum' => $request->input('buildingSum'),
+                'subBuildingsum' => $request->input('subBuildingsum'),
                 'floorSum' => $request->input('floorSum'),
                 'roomSum' => $request->input('roomSum'),
-                'fmCode' => $request->input('fmCode'),
-                'roadName' => $request->input('roadName'),
                 'nameManager' => $request->input('nameManager'),
                 'phoneManager' => $request->input('phoneManager'),
                 'mailManager' => $request->input('mailManager'),
                 'nameNiti' => $request->input('nameNiti'),
                 'phoneNiti' => $request->input('phoneNiti'),
                 'mailNiti' => $request->input('mailNiti'),
+                'nameTechnician' => $request->input('nameTechnician'),
+                'phoneTechnician' => $request->input('phoneTechnician'),
+                'mailTechnician' => $request->input('mailTechnician'),
                 'houseNumber' => $request->input('houseNumber'),
                 'squadNumber' => $request->input('squadNumber'),
                 'alleyName' => $request->input('alleyName'),
@@ -83,14 +83,17 @@ class Buildingcontroller extends BaseController
                 'provinceName' => $request->input('provinceName'),
                 'countyName' => $request->input('countyName'),
                 'postalCode' => $request->input('postalCode'),
-                'longitude' => $request->input('longitude'),
                 'latitude' => $request->input('latitude'),
-                'contractDate' => $request->input('contractDate'),
-                'contractDateEnd' => $request->input('contractDateEnd'),
-                'condition' => $request->input('condition'),
-                'contractPeriod' => $request->input('contractPeriod'),
-                'reNewContact' => $request->input('reNewContact'),
+                'longitude' => $request->input('longitude'),
+                'contractStartDate' => $request->input('contractStartDate'),
+                'paymentType_id' => $request->input('paymentType_id'),
+                'saleFm_id' => $request->input('saleFm_id'),
+                'contractTerm' => $request->input('contractTerm'),
+                'contractEndDate' => $request->input('contractEndDate'),
+                // Carbon::parse($request->input("contractDateEnd")),
                 'balance' => $request->input('balance'),
+                'workTime_id' => $request->input('workTime_id'),
+                'remark' => $request->input('remark'),
             ]);
             return $this->sendResponse($buidings, trans('actions.created.success'));
         } catch (Exception $ex) {

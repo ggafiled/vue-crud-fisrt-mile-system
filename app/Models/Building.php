@@ -13,28 +13,27 @@ class Building extends Model
     use HasFactory, SoftDeletes, LogsActivity;
     protected $fillable = [
         'id',
-        'saleFm_id',
-        'paymentType_id',
+        'technician_id',
         'areas_id',
         'bbns_id',
         'area3bb_id',
+        'areaAis_id',
         'areaTrue_id',
         'areaTrueNew_id',
-        'areaAis_id',
         'areaFibernet_id',
-        'workTime_id',
         'projectName',
-        'buildingSum',
+        'subBuildingsum',
         'floorSum',
         'roomSum',
-        'fmCode',
-        'roadName',
         'nameManager',
         'phoneManager',
         'mailManager',
         'nameNiti',
         'phoneNiti',
         'mailNiti',
+        'nameTechnician',
+        'phoneTechnician',
+        'mailTechnician',
         'houseNumber',
         'squadNumber',
         'alleyName',
@@ -43,14 +42,17 @@ class Building extends Model
         'provinceName',
         'countyName',
         'postalCode',
-        'longitude',
         'latitude',
-        'contractDate',
+        'longitude',
+        'contractStartDate',
+        'paymentType_id',
+        'saleFm_id',
+        'contractTerm',
         'contractDateEnd',
-        'condition',
-        'contractPeriod',
-        'reNewContact',
         'balance',
+        'workTime_id',
+        'remark',
+
     ];
 
     // protected $appends = ['salefm', 'payment', 'area', 'bbn', 'area3bb', 'areaTrue', 'areaAis', 'areaFibernet', 'worktime'];
@@ -132,5 +134,10 @@ class Building extends Model
     public function workTime()
     {
         return $this->hasOne('App\Models\WorkTime', 'id', 'workTime_id');
+    }
+
+    public function areaTechnician()
+    {
+        return $this->hasOne('App\Models\Technician', 'id', 'technician_id');
     }
 }

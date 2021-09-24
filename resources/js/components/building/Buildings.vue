@@ -35,253 +35,264 @@
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_project"
+                                                        "building.project"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_fmcode"
+                                                        "building.subbuildingsum"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_areatot"
+                                                        "building.floorsum"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_areabbn"
+                                                        "building.roomsum"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{ translate("building.area") }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.areatbb"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_3bb"
+                                                        "building.areabbn"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_areatrue"
+                                                        "building.areatrue"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_areatrueNew"
+                                                        "building.areaTnew"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_areaais"
+                                                        "building.areaais"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_areafibernet"
+                                                        "building.areafibernet"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_buildingsum"
+                                                        "building.managername"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_floorsum"
+                                                        "building.managerphone"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_roomsum"
+                                                        "building.manageremail"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_managername"
+                                                        "building.corporationname"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_managerphone"
+                                                        "building.corporationphone"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_manageremail"
+                                                        "building.corporationemail"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_corporationname"
+                                                        "building.technicianname"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_corporationphone"
+                                                        "building.technicianphone"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_corporationemail"
+                                                        "building.technicianemail"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_housenumber"
+                                                        "building.housenumber"
+                                                    )
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate("building.swine")
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate("building.alley")
+                                                }}
+                                            </th>
+                                            <th>
+                                                {{ translate("building.road") }}
+                                            </th>
+                                            <th>
+                                                {{
+                                                    translate(
+                                                        "building.district"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_swine"
+                                                        "building.subdistrict"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_alley"
+                                                        "building.province"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_road"
+                                                        "building.postalcode"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_districtdistrict"
+                                                        "building.latitude"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_province"
+                                                        "building.longitude"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_Sub-district"
+                                                        "building.contractstartdate"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_postalcode"
-                                                    )
-                                                }}
-                                            </th>
-                                            <th>Longitude</th>
-                                            <th>Latitude</th>
-                                            <th>
-                                                {{
-                                                    translate(
-                                                        "building.building_salename"
+                                                        "building.paymenttype"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_datecontact"
+                                                        "building.salename"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_datecontactend"
+                                                        "building.contractterm"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_spendspace"
+                                                        "building.dateendcontact"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_incomemodel"
+                                                        "building.balance"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
                                                     translate(
-                                                        "building.building_contractperiod"
+                                                        "building.operatingtime"
                                                     )
                                                 }}
                                             </th>
                                             <th>
                                                 {{
-                                                    translate(
-                                                        "building.building_condition"
-                                                    )
+                                                    translate("building.remark")
                                                 }}
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.building_pricetopay"
-                                                    )
-                                                }}
+                                                Create At
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.building_operatingtime"
-                                                    )
-                                                }}
+                                                Update At
                                             </th>
-                                            <th>Create At</th>
-                                            <th>Updated At</th>
-                                            <th>Action</th>
+                                            <th>
+                                                Action
+                                            </th>
                                         </tr>
                                     </thead>
                                 </table>
@@ -328,12 +339,10 @@
                         >
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_project"
-                                                )
+                                                translate("building.project")
                                             }}</label>
                                             <input
                                                 v-model="form.projectName"
@@ -352,47 +361,23 @@
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_fmcode"
+                                                    "building.subbuildingsum"
                                                 )
                                             }}</label>
                                             <input
-                                                v-model="form.fmCode"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your FmCode..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'fmCode'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="fmCode"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.building_buildingsum"
-                                                )
-                                            }}</label>
-                                            <input
-                                                v-model="form.buildingSum"
+                                                v-model="form.subBuildingsum"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your code..."
                                                 :class="{
                                                     'is-invalid': form.errors.has(
-                                                        'buildingSum'
+                                                        'subBuildingsum'
                                                     )
                                                 }"
                                             />
                                             <has-error
                                                 :form="form"
-                                                field="buildingSum"
+                                                field="subBuildingsum"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -400,9 +385,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_floorsum"
-                                                )
+                                                translate("building.floorsum")
                                             }}</label>
                                             <input
                                                 v-model="form.floorSum"
@@ -425,9 +408,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_roomsum"
-                                                )
+                                                translate("building.roomsum")
                                             }}</label>
                                             <input
                                                 v-model="form.roomSum"
@@ -453,7 +434,7 @@
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_managername"
+                                                    "building.managername"
                                                 )
                                             }}</label>
                                             <input
@@ -477,7 +458,7 @@
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_managerphone"
+                                                    "building.managerphone"
                                                 )
                                             }}</label>
                                             <input
@@ -502,7 +483,7 @@
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_manageremail"
+                                                    "building.manageremail"
                                                 )
                                             }}</label>
                                             <input
@@ -529,7 +510,7 @@
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_corporationname"
+                                                    "building.corporationname"
                                                 )
                                             }}</label>
                                             <input
@@ -553,7 +534,7 @@
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_corporationphone"
+                                                    "building.corporationphone"
                                                 )
                                             }}</label>
                                             <input
@@ -578,7 +559,7 @@
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_corporationemail"
+                                                    "building.corporationemail"
                                                 )
                                             }}</label>
                                             <input
@@ -600,13 +581,89 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>{{
+                                                translate(
+                                                    "building.technicianname"
+                                                )
+                                            }}</label>
+                                            <input
+                                                v-model="form.nameTechnician"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your Corporation..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'nameTechnician'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="nameTechnician"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>{{
+                                                translate(
+                                                    "building.technicianphone"
+                                                )
+                                            }}</label>
+                                            <input
+                                                v-model="form.phoneTechnician"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your phone number..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'phoneTechnician'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="phoneTechnician"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>{{
+                                                translate(
+                                                    "building.technicianemail"
+                                                )
+                                            }}</label>
+                                            <input
+                                                v-model="form.mailTechnician"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your mail..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'mailTechnician'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="mailTechnician"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <hr />
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_housenumber"
+                                                    "building.housenumber"
                                                 )
                                             }}</label>
                                             <input
@@ -629,9 +686,7 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_swine"
-                                                )
+                                                translate("building.swine")
                                             }}</label>
                                             <input
                                                 v-model="form.squadNumber"
@@ -653,9 +708,7 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_alley"
-                                                )
+                                                translate("building.alley")
                                             }}</label>
                                             <input
                                                 v-model="form.alleyName"
@@ -677,9 +730,7 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_road"
-                                                )
+                                                translate("building.road")
                                             }}</label>
                                             <input
                                                 v-model="form.roadName"
@@ -725,7 +776,7 @@
                                                 type="amphoe"
                                                 @select="select"
                                                 color="#42b883"
-                                                label="districtdistrict"
+                                                label="district"
                                                 size="default"
                                                 autocomplete="chrome-off"
                                                 placeholder="District..."
@@ -781,7 +832,9 @@
                                 >
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Latitude</label>
+                                            <label>{{
+                                                translate("building.latitude")
+                                            }}</label>
                                             <input
                                                 v-model="form.latitude"
                                                 type="text"
@@ -801,13 +854,15 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Longtude</label>
+                                            <label>{{
+                                                translate("building.longitude")
+                                            }}</label>
                                             <div class="input-group mb-3">
                                                 <input
                                                     v-model="form.longitude"
                                                     type="text"
                                                     class="form-control"
-                                                    placeholder="Enter your longtude..."
+                                                    placeholder="Enter your longitude..."
                                                     :class="{
                                                         'is-invalid': form.errors.has(
                                                             'longitude'
@@ -840,12 +895,81 @@
                                 </div>
                                 <hr />
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_salename"
+                                                    "building.contractstartdate"
                                                 )
+                                            }}</label>
+                                            <div class="input-group">
+                                                <input
+
+                                                    v-model="
+                                                        form.contractStartDate
+                                                    "
+                                                    type="date"
+                                                    class="form-control "
+                                                    placeholder="Enter your contract date..."
+                                                    :disabled="editmode"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'contractStartDate'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                        >
+                                                        <i
+                                                            class="bi bi-calendar-day"
+                                                        >
+                                                        </i
+                                                    >
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <has-error
+                                                :form="form"
+                                                field="contractStartDate"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label
+                                                >{{
+                                                    translate(
+                                                        "building.paymenttype"
+                                                    )
+                                                }}</label
+                                            >
+                                            <select
+                                                class="form-control"
+                                                v-model="form.paymentType_id"
+                                            >
+                                                <option disabled value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in spendSpaces"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.paymentType }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="paymentType"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>{{
+                                                translate("building.salename")
                                             }}</label>
                                             <select
                                                 class="form-control"
@@ -872,97 +996,25 @@
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_datecontact"
+                                                    "building.contractterm"
                                                 )
                                             }}</label>
-                                            <div class="input-group">
+                                            <div class="input-group mb-3">
                                                 <input
-                                                    ref="contractDate"
-                                                    v-model="form.contractDate"
+                                                    v-model="form.contractTerm"
                                                     type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your contract date..."
-                                                    :disabled="editmode"
+                                                    class="form-control"
+                                                    placeholder="Enter your contractTerm..."
                                                     :class="{
                                                         'is-invalid': form.errors.has(
-                                                            'contractDate'
+                                                            'contractTerm'
                                                         )
                                                     }"
                                                 />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
                                             </div>
                                             <has-error
                                                 :form="form"
-                                                field="contractDate"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.building_datecontactend"
-                                                )
-                                            }}</label>
-                                            <div class="input-group">
-                                                <input
-                                                    ref="contractDateEnd"
-                                                    v-model="
-                                                        form.contractDateEnd
-                                                    "
-                                                    type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your contract date..."
-                                                    :disabled="editmode"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'contractDateEnd'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
-                                            <has-error
-                                                :form="form"
-                                                field="contractDateEnd"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>*รูปแบบการชำระรายได้</label>
-                                            <select
-                                                class="form-control"
-                                                v-model="form.paymentType_id"
-                                            >
-                                                <option disabled value=""
-                                                    >Select a Class</option
-                                                >
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in spendSpaces"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.paymentType }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="paymentType"
+                                                field="contractTerm"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -970,98 +1022,47 @@
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_incomemodel"
+                                                    "building.dateendcontact"
                                                 )
                                             }}</label>
-                                            <input
-                                                v-model="form.condition"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your condition..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'condition'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="condition"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>ระยะเวลาสัญญา</label>
                                             <div class="input-group">
                                                 <input
+                                                    ref="contractEndDate"
                                                     v-model="
-                                                        form.contractPeriod
+                                                        form.contractEndDate
                                                     "
-                                                    type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your period..."
+                                                    type="date"
+                                                    class="form-control "
+                                                    placeholder="Enter your contract date..."
+                                                    :disabled="editmode"
                                                     :class="{
                                                         'is-invalid': form.errors.has(
-                                                            'contractPeriod'
+                                                            'contractEndDate'
                                                         )
                                                     }"
                                                 />
                                                 <div class="input-group-append">
                                                     <span
                                                         class="input-group-text"
-                                                        ><i
+                                                        >
+                                                        <!-- <i
                                                             class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
+                                                        >
+                                                        </i
+                                                    > -->
+                                                    </span>
                                                 </div>
                                             </div>
                                             <has-error
                                                 :form="form"
-                                                field="contractPeriod"
+                                                field="contractEndDate"
                                             ></has-error>
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_contractperiod"
-                                                )
-                                            }}</label>
-                                            <div class="input-group">
-                                                <input
-                                                    v-model="form.reNewContact"
-                                                    type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your renew..."
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'reNewContact'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
-                                            <has-error
-                                                :form="form"
-                                                field="reNewContact"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.building_pricetopay"
-                                                )
+                                                translate("building.balance")
                                             }}</label>
                                             <input
                                                 v-model="form.balance"
@@ -1086,9 +1087,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_areatot"
-                                                )
+                                                translate("building.area")
                                             }}</label>
                                             <select
                                                 class="form-control"
@@ -1114,9 +1113,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_areabbn"
-                                                )
+                                                translate("building.areabbn")
                                             }}</label>
                                             <select
                                                 class="form-control"
@@ -1144,9 +1141,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_3bb"
-                                                )
+                                                translate("building.areatbb")
                                             }}</label>
                                             <select
                                                 class="form-control"
@@ -1172,9 +1167,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_areatrue"
-                                                )
+                                                translate("building.areatrue")
                                             }}</label>
                                             <select
                                                 class="form-control"
@@ -1200,9 +1193,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_areatrueNew"
-                                                )
+                                                translate("building.areaTnew")
                                             }}</label>
                                             <select
                                                 class="form-control"
@@ -1228,9 +1219,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>{{
-                                                translate(
-                                                    "building.building_areaais"
-                                                )
+                                                translate("building.areaais")
                                             }}</label>
                                             <select
                                                 class="form-control"
@@ -1259,7 +1248,7 @@
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_areafibernet"
+                                                    "building.areafibernet"
                                                 )
                                             }}</label>
                                             <select
@@ -1287,7 +1276,7 @@
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
-                                                    "building.building_operatingtime"
+                                                    "building.operatingtime"
                                                 )
                                             }}</label>
                                             <select
@@ -1308,6 +1297,31 @@
                                             <has-error
                                                 :form="form"
                                                 field="workTime"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>{{
+                                                translate("building.remark")
+                                            }}</label>
+                                            <input
+                                                v-model="form.remark"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your code..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'remark'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="remark"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -1367,8 +1381,6 @@ export default {
             saleFms: [],
             form: new Form({
                 id: "",
-                saleFm_id: "",
-                paymentType_id: "",
                 areas_id: "",
                 bbns_id: "",
                 area3bb_id: "",
@@ -1376,12 +1388,10 @@ export default {
                 areaTrueNew_id: "",
                 areaAis_id: "",
                 areaFibernet_id: "",
-                workTime_id: "",
                 projectName: "",
-                buildingSum: "",
+                subBuildingsum: "",
                 floorSum: "",
                 roomSum: "",
-                fmCode: "",
                 roadName: "",
                 nameManager: "",
                 phoneManager: "",
@@ -1389,6 +1399,9 @@ export default {
                 nameNiti: "",
                 phoneNiti: "",
                 mailNiti: "",
+                nameTechnician: "",
+                phoneTechnician: "",
+                mailTechnician: "",
                 houseNumber: "",
                 squadNumber: "",
                 alleyName: "",
@@ -1397,22 +1410,16 @@ export default {
                 provinceName: "",
                 countyName: "",
                 postalCode: "",
-                longitude: "",
                 latitude: "",
-                contractDate: new Date()
-                    .toLocaleDateString("th")
-                    .toString("d/m/Y"),
-                contractDateEnd: new Date()
-                    .toLocaleDateString("th")
-                    .toString("d/m/Y"),
-                condition: "",
-                contractPeriod: new Date()
-                    .toLocaleDateString("th")
-                    .toString("d/m/Y"),
-                reNewContact: new Date()
-                    .toLocaleDateString("th")
-                    .toString("d/m/Y"),
-                balance: ""
+                longitude: "",
+                contractStartDate:"",
+                paymentType_id: "",
+                saleFm_id: "",
+                contractTerm: "",
+                contractEndDate: "",
+                balance: "",
+                workTime_id: "",
+                remark: ""
             })
         };
     },
@@ -1610,7 +1617,7 @@ export default {
                 fixedColumns: true,
                 fixedColumns: {
                     leftColumns: 2,
-                    rightColumns: 3
+                    rightColumns: 1
                 },
                 scrollX: true,
                 scrollCollapse: true,
@@ -1722,26 +1729,33 @@ export default {
                         }
                     },
                     {
-                        data: "fmCode",
-                        className: "text-capitalize",
+                        data: "subBuildingsum",
                         render: function(data, type, row, meta) {
-                            if (
-                                data == "" ||
-                                data == null ||
-                                typeof data == undefined
-                            ) {
-                                return (
-                                    '<span class="text-danger"><i class="bi bi-file-person pr-2"></i>' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span><i class="bi bi-file-person pr-2"></i>' +
-                                    data +
-                                    "</span>"
-                                );
-                            }
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
+                    },
+                    {
+                        data: "floorSum",
+                        render: function(data, type, row, meta) {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
+                        }
+                    },
+                    {
+                        data: "roomSum",
+                        render: function(data, type, row, meta) {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data +
+                                "</span>"
+                            );
                         }
                     },
                     {
@@ -1863,36 +1877,6 @@ export default {
                         }
                     },
                     {
-                        data: "buildingSum",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "floorSum",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "roomSum",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
                         data: "nameManager",
                         render: function(data, type, row, meta) {
                             if (!data) {
@@ -1944,6 +1928,36 @@ export default {
                     },
                     {
                         data: "mailNiti",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "nameTechnician",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "phoneTechnician",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "mailTechnician",
                         render: function(data, type, row, meta) {
                             if (!data) {
                                 return "ไม่ได้ระบุ";
@@ -2033,6 +2047,16 @@ export default {
                         }
                     },
                     {
+                        data: "latitude",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
                         data: "longitude",
                         render: function(data, type, row, meta) {
                             if (!data) {
@@ -2043,9 +2067,18 @@ export default {
                         }
                     },
                     {
-                        data: "latitude",
+                        data: "contractStartDate"
+                    },
+                    {
+                        data: "payment_type.name",
                         render: function(data, type, row, meta) {
-                            if (!data) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;
@@ -2069,29 +2102,7 @@ export default {
                         }
                     },
                     {
-                        data: "contractDate"
-                    },
-                    {
-                        data: "contractDateEnd"
-                    },
-                    {
-                        data: "payment_type.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "condition",
+                        data: "contractTerm",
                         render: function(data, type, row, meta) {
                             if (!data) {
                                 return "ไม่ได้ระบุ";
@@ -2101,17 +2112,7 @@ export default {
                         }
                     },
                     {
-                        data: "contractPeriod",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "reNewContact",
+                        data: "contractEndDate",
                         render: function(data, type, row, meta) {
                             if (!data) {
                                 return "ไม่ได้ระบุ";
@@ -2126,12 +2127,7 @@ export default {
                             if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
-                                return (
-                                    "฿" +
-                                    data
-                                        .toString()
-                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                                );
+                                return data;
                             }
                         }
                     },
@@ -2145,6 +2141,16 @@ export default {
                                     "</span>"
                                 );
                             } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "remark",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
                                 return "ไม่ได้ระบุ";
                             } else {
                                 return data;

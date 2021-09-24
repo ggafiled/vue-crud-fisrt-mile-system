@@ -13,9 +13,9 @@ class AddAssignedToToTicketsTable extends Migration
      */
     public function up()
     {
-        Schema::table('tickets', function (Blueprint $table) {
-            $table->integer('assigned_to')->unsigned()->nullable()->after('ticket_id');
-        });
+        // Schema::table('tickets', function (Blueprint $table) {
+        //     $table->integer('assigned_to')->unsigned()->nullable()->after('ticket_id');
+        // });
     }
 
     /**
@@ -25,8 +25,8 @@ class AddAssignedToToTicketsTable extends Migration
      */
     public function down()
     {
-        Schema::table('tickets', function (Blueprint $table) {
-            $table->dropColumn('assigned_to');
-        });
+        // Schema::table('tickets', function (Blueprint $table) {
+        //     $table->dropColumn('assigned_to');
+        // });
     }
 }
