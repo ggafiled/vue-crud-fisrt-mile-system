@@ -60,7 +60,7 @@
                                                     )
                                                 }}
                                             </th>
-                                            <th>
+                                            <!-- <th>
                                                 {{ translate("building.area") }}
                                             </th>
                                             <th>
@@ -283,13 +283,13 @@
                                                 {{
                                                     translate("building.remark")
                                                 }}
-                                            </th>
-                                            <th>
+                                            </th> -->
+                                            <!-- <th>
                                                 Create At
                                             </th>
                                             <th>
                                                 Update At
-                                            </th>
+                                            </th> -->
                                             <th>
                                                 Action
                                             </th>
@@ -1758,417 +1758,417 @@ export default {
                             );
                         }
                     },
-                    {
-                        data: "areas.name",
-                        render: function(data, type, row, meta) {
-                            if (
-                                data == "" ||
-                                data == null ||
-                                typeof data == undefined
-                            ) {
-                                return (
-                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span><i class="bi bi-phone pr-2"></i>' +
-                                    data +
-                                    "</span>"
-                                );
-                            }
-                        }
-                    },
-                    {
-                        data: "bbns.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "area3bb.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "area_true.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "area_true_new.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "area_ais.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "area_fibernet.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "nameManager",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "phoneManager",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "mailManager",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "nameNiti",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "phoneNiti",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "mailNiti",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "nameTechnician",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "phoneTechnician",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "mailTechnician",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "houseNumber",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "squadNumber",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "alleyName",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "roadName",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "districtName",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "countyName",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "provinceName",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "postalCode",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "latitude",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "longitude",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "contractStartDate"
-                    },
-                    {
-                        data: "payment_type.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "sale_fm.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "contractTerm",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "contractEndDate",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "balance",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "work_time.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "remark",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "created_at",
-                        render: function(data, type, row, meta) {
-                            return moment(data).format("MM/DD/YYYY HH:MM");
-                        }
-                    },
-                    {
-                        data: "updated_at",
-                        render: function(data, type, row, meta) {
-                            return moment(data).format("MM/DD/YYYY HH:MM");
-                        }
-                    },
+                    // {
+                    //     data: "areas.name",
+                    //     render: function(data, type, row, meta) {
+                    //         if (
+                    //             data == "" ||
+                    //             data == null ||
+                    //             typeof data == undefined
+                    //         ) {
+                    //             return (
+                    //                 '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                    //                 "ไม่ได้กรอกข้อมูล" +
+                    //                 "</span>"
+                    //             );
+                    //         } else {
+                    //             return (
+                    //                 '<span><i class="bi bi-phone pr-2"></i>' +
+                    //                 data +
+                    //                 "</span>"
+                    //             );
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "bbns.name",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "ยังไม่ได้ทำสัญญา") {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 data +
+                    //                 "</span>"
+                    //             );
+                    //         } else if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "area3bb.name",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "ยังไม่ได้ทำสัญญา") {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 data +
+                    //                 "</span>"
+                    //             );
+                    //         } else if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "area_true.name",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "ยังไม่ได้ทำสัญญา") {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 data +
+                    //                 "</span>"
+                    //             );
+                    //         } else if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "area_true_new.name",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "ยังไม่ได้ทำสัญญา") {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 data +
+                    //                 "</span>"
+                    //             );
+                    //         } else if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "area_ais.name",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "ยังไม่ได้ทำสัญญา") {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 data +
+                    //                 "</span>"
+                    //             );
+                    //         } else if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "area_fibernet.name",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "ยังไม่ได้ทำสัญญา") {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 data +
+                    //                 "</span>"
+                    //             );
+                    //         } else if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "nameManager",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "phoneManager",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "mailManager",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "nameNiti",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "phoneNiti",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "mailNiti",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "nameTechnician",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "phoneTechnician",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "mailTechnician",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "houseNumber",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "squadNumber",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "alleyName",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "roadName",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "districtName",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "countyName",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "provinceName",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "postalCode",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "latitude",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "longitude",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "contractStartDate"
+                    // },
+                    // {
+                    //     data: "payment_type.name",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "ยังไม่ได้ทำสัญญา") {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 data +
+                    //                 "</span>"
+                    //             );
+                    //         } else if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "sale_fm.name",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "ยังไม่ได้ทำสัญญา") {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 data +
+                    //                 "</span>"
+                    //             );
+                    //         } else if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "contractTerm",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "contractEndDate",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "balance",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "work_time.name",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "ยังไม่ได้ทำสัญญา") {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 data +
+                    //                 "</span>"
+                    //             );
+                    //         } else if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "remark",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "created_at",
+                    //     render: function(data, type, row, meta) {
+                    //         return moment(data).format("MM/DD/YYYY HH:MM");
+                    //     }
+                    // },
+                    // {
+                    //     data: "updated_at",
+                    //     render: function(data, type, row, meta) {
+                    //         return moment(data).format("MM/DD/YYYY HH:MM");
+                    //     }
+                    // },
                     {
                         data: null,
                         className: "dt-body-center notexport",
