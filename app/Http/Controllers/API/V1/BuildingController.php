@@ -30,7 +30,8 @@ class Buildingcontroller extends BaseController
         $buidings = Building::with(
                 'saleFm:id,nameSale as name',
                 'paymentType:id,paymentType as name',
-                'areas:id,name', 'bbns:id,name',
+                'areas:id,name',
+                'bbns:id,name',
                 'area3bb:id,area3BB as name',
                 'areaTrue:id,areaTrue as name',
                 'areaTrueNew:id,areaTrueNew as name',

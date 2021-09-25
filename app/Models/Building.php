@@ -13,7 +13,7 @@ class Building extends Model
     use HasFactory, SoftDeletes, LogsActivity;
     protected $fillable = [
         'id',
-        'technician_id',
+        // 'technician_id',
         'areas_id',
         'bbns_id',
         'area3bb_id',
@@ -48,7 +48,7 @@ class Building extends Model
         'paymentType_id',
         'saleFm_id',
         'contractTerm',
-        'contractDateEnd',
+        'contractEndDate',
         'balance',
         'workTime_id',
         'remark',
