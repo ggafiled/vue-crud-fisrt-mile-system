@@ -71,6 +71,11 @@ class Building extends Model
         return $this->building()->where('building_id');
     }
 
+    public function subbuilding()
+    {
+        return $this->hasMany('App\Models\SubBuilding', 'building_id', 'id');
+    }
+
     public function progress()
     {
         return $this->hasOne('App\Models\Progress', 'building_id', 'id');

@@ -58,10 +58,10 @@ return [
     'header' => 'Building Management',
     'addnew' => 'Add New',
     'create' => [
-        'header' => 'Create New Building',
+        'header' => 'Create New Project',
     ],
     'update' => [
-        'header' => 'Update Building\'s Info',
+        'header' => 'Update Project\'s Info',
     ],
     'actions' => [
         'close' => 'Close',

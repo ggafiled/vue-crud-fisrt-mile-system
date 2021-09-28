@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\API\V1\BaseController;
-use App\Models\Building;
-use Illuminate\Http\Request;
-use Exception;
-use Carbon;
 use App\Http\Requests\Building\BuildingRequest;
-
+use App\Models\Building;
+use Exception;
+use Illuminate\Http\Request;
 
 class Buildingcontroller extends BaseController
 {
@@ -27,18 +25,19 @@ class Buildingcontroller extends BaseController
      */
     public function index()
     {
-        $buidings = Building::with(
-                'saleFm:id,nameSale as name',
-                'paymentType:id,paymentType as name',
-                'areas:id,name',
-                'bbns:id,name',
-                'area3bb:id,area3BB as name',
-                'areaTrue:id,areaTrue as name',
-                'areaTrueNew:id,areaTrueNew as name',
-                'areaAis:id,areaAis as name',
-                'areaFibernet:id,areaFibernet as name',
-                'workTime:id,worktime as name')->get();
-        return $this->sendResponse($buidings, trans('actions.get.success'));
+        $buiding = Building::with(
+            'saleFm:id,nameSale as name',
+            'paymentType:id,paymentType as name',
+            'areas:id,name',
+            'bbns:id,name',
+            'area3bb:id,area3BB as name',
+            'areaTrue:id,areaTrue as name',
+            'areaTrueNew:id,areaTrueNew as name',
+            'areaAis:id,areaAis as name',
+            'areaFibernet:id,areaFibernet as name',
+            'workTime:id,worktime as name',
+            'subbuilding')->get();
+        return $this->sendResponse($buiding, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.failed'));
@@ -54,7 +53,7 @@ class Buildingcontroller extends BaseController
     public function store(BuildingRequest $request)
     {
         try {
-            $buidings = Building::create([
+            $buiding = Building::create([
                 // 'technician_id' => $request->input('technician_id'),
                 'areas_id' => $request->input('areas_id'),
                 'bbns_id' => $request->input('bbns_id'),
@@ -96,7 +95,18 @@ class Buildingcontroller extends BaseController
                 'workTime_id' => $request->input('workTime_id'),
                 'remark' => $request->input('remark'),
             ]);
-            return $this->sendResponse($buidings, trans('actions.created.success'));
+
+            if ((int) $request->input('subBuildingsum') > 0) {
+                foreach ($request->input('subbuilding') as $item) {
+                    $buiding->subbuilding()->create([
+                        'projectName' => $item['projectName'],
+                        'floorSum' => $item['floorSum'],
+                        'roomSum' => $item['roomSum'],
+                    ]);
+                }
+            }
+
+            return $this->sendResponse($buiding, trans('actions.created.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.created.failed'));
         }
@@ -112,9 +122,21 @@ class Buildingcontroller extends BaseController
     public function update(BuildingRequest $request, $id)
     {
         try {
-            $buildings = Building::find($id);
-            $buildings->update($request->all());
-            return $this->sendResponse($buildings, trans('actions.updated.success'));
+            $building = Building::find($id);
+            $building->update($request->all());
+
+            if ((int) $request->input('subBuildingsum') > 0) {
+                $building->subbuilding()->delete();
+                foreach ($request->input('subbuilding') as $item) {
+                    $building->subbuilding()->create([
+                        'projectName' => $item['projectName'],
+                        'floorSum' => $item['floorSum'],
+                        'roomSum' => $item['roomSum'],
+                    ]);
+                }
+            }
+
+            return $this->sendResponse($building, trans('actions.updated.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.updated.failed'));
         }
@@ -130,7 +152,9 @@ class Buildingcontroller extends BaseController
     {
         try {
             $building = Building::find($id);
+            $building->subbuilding()->delete();
             $building->delete();
+
             return $this->sendResponse($building, trans('actions.destroy.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.destroy.failed'));

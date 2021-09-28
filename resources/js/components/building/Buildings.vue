@@ -60,7 +60,7 @@
                                                     )
                                                 }}
                                             </th>
-                                            <!-- <th>
+                                            <th>
                                                 {{ translate("building.area") }}
                                             </th>
                                             <th>
@@ -283,13 +283,13 @@
                                                 {{
                                                     translate("building.remark")
                                                 }}
-                                            </th> -->
-                                            <!-- <th>
+                                            </th>
+                                            <th>
                                                 Create At
                                             </th>
                                             <th>
                                                 Update At
-                                            </th> -->
+                                            </th>
                                             <th>
                                                 Action
                                             </th>
@@ -310,6 +310,8 @@
                 role="dialog"
                 aria-labelledby="addNew"
                 aria-hidden="true"
+                data-backdrop="static"
+                data-keyboard="false"
             >
                 <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
@@ -341,14 +343,13 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.project")
-                                            }}</label>
+                                            <label>Project Name</label>
+                                            <small>/ชื่อโปรเจ็ค</small>
                                             <input
                                                 v-model="form.projectName"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your building..."
+                                                placeholder="ชื่อโปรเจ็ค"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'projectName'
@@ -359,22 +360,27 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.subbuildingsum"
-                                                )
-                                            }}</label>
-                                            <input
+                                            <label>Buildingsum</label>
+                                            <small>/จำนวนอาคาร</small>
+                                            <!-- <input
                                                 v-model="form.subBuildingsum"
-                                                type="text"
+                                                type="number"
+                                                min="0"
                                                 class="form-control"
-                                                placeholder="Enter your code..."
+                                                placeholder="จำนวนอาคาร"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'subBuildingsum'
                                                     )
                                                 }"
-                                            />
+                                            /> -->
+                                            <number-input
+                                                inline
+                                                controls
+                                                v-model="form.subBuildingsum"
+                                                :min="0"
+                                                @change="onSubBuildingUpdate"
+                                            ></number-input>
                                             <has-error
                                                 :form="form"
                                                 field="subBuildingsum"
@@ -384,14 +390,17 @@
 
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.floorsum")
-                                            }}</label>
+                                            <label>Floor</label>
+                                            <small>/ชั้น</small>
                                             <input
                                                 v-model="form.floorSum"
-                                                type="text"
+                                                type="number"
+                                                min="0"
                                                 class="form-control"
-                                                placeholder="Enter your floor..."
+                                                placeholder="ชั้น"
+                                                :disabled="
+                                                    form.subBuildingsum > 0
+                                                "
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'floorSum'
@@ -407,14 +416,17 @@
 
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.roomsum")
-                                            }}</label>
+                                            <label>Room</label>
+                                            <small>/ห้อง</small>
                                             <input
                                                 v-model="form.roomSum"
-                                                type="text"
+                                                type="number"
+                                                min="0"
                                                 class="form-control"
-                                                placeholder="Enter your room..."
+                                                placeholder="ห้อง"
+                                                :disabled="
+                                                    form.subBuildingsum > 0
+                                                "
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'roomSum'
@@ -428,20 +440,96 @@
                                         </div>
                                     </div>
                                 </div>
+                                <label
+                                    v-show="form.subBuildingsum > 0"
+                                    class="text-danger"
+                                    >***เงื่อนไข
+                                    เมื่อกรอกจำนวนอาคารย่อยในพื้นที่โครงการ</label
+                                >
+                                <div
+                                    class="row"
+                                    v-for="(item, i) in form.subbuilding"
+                                    :key="i"
+                                >
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label>Project Name</label>
+                                            <small>/ชื่อโปรเจ็ค</small>
+                                            <input
+                                                v-model="item.projectName"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="ชื่อโปรเจ็ค"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectName'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Floor</label>
+                                            <small>/ชั้น</small>
+                                            <input
+                                                v-model="item.floorSum"
+                                                type="number"
+                                                min="0"
+                                                class="form-control"
+                                                placeholder="ชั้น"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'floorSum'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="floorSum"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Room</label>
+                                            <small>/ห้อง</small>
+                                            <input
+                                                v-model="item.roomSum"
+                                                type="number"
+                                                min="0"
+                                                class="form-control"
+                                                placeholder="ห้อง"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'roomSum'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="roomSum"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <label
+                                    v-show="form.subBuildingsum > 0"
+                                    class="text-danger"
+                                    >***</label
+                                >
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.managername"
-                                                )
-                                            }}</label>
+                                            <label>Manager Name</label>
+                                            <small>/ชื่อผู้จัดการ</small>
                                             <input
                                                 v-model="form.nameManager"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your Manager..."
+                                                placeholder="ชื่อผู้จัดการ"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'nameManager'
@@ -456,16 +544,13 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.managerphone"
-                                                )
-                                            }}</label>
+                                            <label>Manager Tel</label>
+                                            <small>/เบอร์ผู้จัดการ</small>
                                             <input
                                                 v-model="form.phoneManager"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your phone number..."
+                                                placeholder="เบอร์ผู้จัดการ"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'phoneManager'
@@ -481,16 +566,13 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.manageremail"
-                                                )
-                                            }}</label>
+                                            <label>Manager Email</label>
+                                            <small>/อีเมลล์ผู้จัดการ</small>
                                             <input
                                                 v-model="form.mailManager"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your mail..."
+                                                placeholder="อีเมลล์ผู้จัดการ"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'mailManager'
@@ -508,16 +590,13 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.corporationname"
-                                                )
-                                            }}</label>
+                                            <label>Corporation Name</label>
+                                            <small>/ชื่อนิติบุคคล</small>
                                             <input
                                                 v-model="form.nameNiti"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your Corporation..."
+                                                placeholder="ชื่อนิติบุคคล"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'nameNiti'
@@ -532,16 +611,13 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.corporationphone"
-                                                )
-                                            }}</label>
+                                            <label>Corporation Tel</label>
+                                            <small>/เบอร์นิติบุคคล</small>
                                             <input
                                                 v-model="form.phoneNiti"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your phone number..."
+                                                placeholder="เบอร์นิติบุคคล"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'phoneNiti'
@@ -557,16 +633,13 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.corporationemail"
-                                                )
-                                            }}</label>
+                                            <label>Corporation Email</label>
+                                            <small>/เมลล์นิติบุคคล</small>
                                             <input
                                                 v-model="form.mailNiti"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your mail..."
+                                                placeholder="เมลล์นิติบุคคล"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'mailNiti'
@@ -584,16 +657,13 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.technicianname"
-                                                )
-                                            }}</label>
+                                            <label>Technician Name</label>
+                                            <small>/ชื่อช่าง</small>
                                             <input
                                                 v-model="form.nameTechnician"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your Corporation..."
+                                                placeholder="ชื่อช่าง"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'nameTechnician'
@@ -608,16 +678,13 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.technicianphone"
-                                                )
-                                            }}</label>
+                                            <label>Technician Tel</label>
+                                            <small>/เบอร์ช่าง</small>
                                             <input
                                                 v-model="form.phoneTechnician"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your phone number..."
+                                                placeholder="เบอร์ช่าง"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'phoneTechnician'
@@ -633,16 +700,13 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.technicianemail"
-                                                )
-                                            }}</label>
+                                            <label>Technician Email</label>
+                                            <small>/เมลล์ช่าง</small>
                                             <input
                                                 v-model="form.mailTechnician"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your mail..."
+                                                placeholder="เมลล์ช่าง"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'mailTechnician'
@@ -661,16 +725,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.housenumber"
-                                                )
-                                            }}</label>
+                                            <label>House Number</label>
+                                            <small>/บ้านเลขที่</small>
                                             <input
                                                 v-model="form.houseNumber"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your House..."
+                                                placeholder="บ้านเลขที่"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'houseNumber'
@@ -685,14 +746,13 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.swine")
-                                            }}</label>
+                                            <label>Moo.</label>
+                                            <small>/หมู่</small>
                                             <input
                                                 v-model="form.squadNumber"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="House number..."
+                                                placeholder="หมู่"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'squadNumber'
@@ -707,14 +767,13 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.alley")
-                                            }}</label>
+                                            <label>Alley</label>
+                                            <small>/ซอย</small>
                                             <input
                                                 v-model="form.alleyName"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your Alley..."
+                                                placeholder="ซอย"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'alleyName'
@@ -729,14 +788,13 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.road")
-                                            }}</label>
+                                            <label>Road</label>
+                                            <small>/ถนน</small>
                                             <input
                                                 v-model="form.roadName"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your Road..."
+                                                placeholder="ถนน"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'roadName'
@@ -753,15 +811,16 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
+                                            <label>Sub-district</label>
+                                            <small>/ตำบล</small>
                                             <ThailandAutoComplete
                                                 v-model="form.districtName"
                                                 type="district"
                                                 @select="select"
-                                                label="Sub-district"
                                                 color="#42b883"
                                                 size="default"
                                                 autocomplete="chrome-off"
-                                                placeholder="sub district..."
+                                                placeholder="ตำบล"
                                             />
                                             <has-error
                                                 :form="form"
@@ -771,15 +830,16 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
+                                            <label>District</label>
+                                            <small>/อำเภอ</small>
                                             <ThailandAutoComplete
                                                 v-model="form.countyName"
                                                 type="amphoe"
                                                 @select="select"
                                                 color="#42b883"
-                                                label="district"
                                                 size="default"
                                                 autocomplete="chrome-off"
-                                                placeholder="District..."
+                                                placeholder="อำเภอ"
                                             />
                                             <has-error
                                                 :form="form"
@@ -791,15 +851,16 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
+                                            <label>Province</label>
+                                            <small>/จังหวัด</small>
                                             <ThailandAutoComplete
                                                 v-model="form.provinceName"
                                                 type="province"
                                                 @select="select"
-                                                label="province"
                                                 size="default"
                                                 color="#42b883"
                                                 autocomplete="chrome-off"
-                                                placeholder="Province..."
+                                                placeholder="จังหวัด"
                                             />
                                             <has-error
                                                 :form="form"
@@ -810,15 +871,16 @@
                                     <div class="col-lg-6">
                                         <!-- text input -->
                                         <div class="form-group">
+                                            <label>Postalcode</label>
+                                            <small>/รหัสไปรษณีย์</small>
                                             <ThailandAutoComplete
                                                 v-model="form.postalCode"
                                                 type="zipcode"
                                                 @select="select"
                                                 size="default"
                                                 color="#42b883"
-                                                label="postalcode"
                                                 autocomplete="chrome-off"
-                                                placeholder="Postal Code..."
+                                                placeholder="รหัสไปรษณีย์"
                                             />
                                             <has-error
                                                 :form="form"
@@ -895,22 +957,43 @@
                                 </div>
                                 <hr />
                                 <div class="row">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.contractstartdate"
-                                                )
-                                            }}</label>
+                                            <label>Sale Name</label><br />
+                                            <small>/ชื่อเซลล์</small>
+                                            <select
+                                                class="form-control"
+                                                v-model="form.saleFm_id"
+                                            >
+                                                <option value="" disabled
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in saleFms"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.nameSale }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="nameSale"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Date Contact Start</label
+                                            ><br />
+                                            <small>/วันเริ่มทำสัญญา</small>
                                             <div class="input-group">
                                                 <input
-
                                                     v-model="
                                                         form.contractStartDate
                                                     "
-                                                    type="date"
+                                                    type="text"
                                                     class="form-control "
-                                                    placeholder="Enter your contract date..."
                                                     :disabled="editmode"
                                                     :class="{
                                                         'is-invalid': form.errors.has(
@@ -921,12 +1004,11 @@
                                                 <div class="input-group-append">
                                                     <span
                                                         class="input-group-text"
-                                                        >
+                                                    >
                                                         <i
                                                             class="bi bi-calendar-day"
                                                         >
-                                                        </i
-                                                    >
+                                                        </i>
                                                     </span>
                                                 </div>
                                             </div>
@@ -936,15 +1018,49 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Date Contact End</label
+                                            ><br />
+                                            <small>/วันสิ้นสุดทำสัญญา</small>
+                                            <div class="input-group">
+                                                <input
+                                                    ref="contractEndDate"
+                                                    v-model="
+                                                        form.contractEndDate
+                                                    "
+                                                    type="text"
+                                                    class="form-control "
+                                                    :disabled="editmode"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'contractEndDate'
+                                                        )
+                                                    }"
+                                                />
+                                                <div class="input-group-append">
+                                                    <span
+                                                        class="input-group-text"
+                                                    >
+                                                        <i
+                                                            class="bi bi-calendar-day"
+                                                        >
+                                                        </i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <has-error
+                                                :form="form"
+                                                field="contractEndDate"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label
-                                                >{{
-                                                    translate(
-                                                        "building.paymenttype"
-                                                    )
-                                                }}</label
-                                            >
+                                                >Income payment format *</label
+                                            ><br />
+                                            <small>/รูปแบบการชำระรายได้</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.paymentType_id"
@@ -966,45 +1082,18 @@
                                             ></has-error>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.salename")
-                                            }}</label>
-                                            <select
-                                                class="form-control"
-                                                v-model="form.saleFm_id"
-                                            >
-                                                <option value=""
-                                                    >Select a Class</option
-                                                >
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in saleFms"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.nameSale }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="nameSale"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.contractterm"
-                                                )
-                                            }}</label>
+                                            <label>Revenue sharing model</label
+                                            ><br />
+                                            <small>/รูปแบบการชำระรายได้</small>
                                             <div class="input-group mb-3">
                                                 <input
                                                     v-model="form.contractTerm"
                                                     type="text"
                                                     class="form-control"
-                                                    placeholder="Enter your contractTerm..."
+                                                    placeholder="รูปแบบการชำระรายได้"
                                                     :class="{
                                                         'is-invalid': form.errors.has(
                                                             'contractTerm'
@@ -1018,57 +1107,17 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.dateendcontact"
-                                                )
-                                            }}</label>
-                                            <div class="input-group">
-                                                <input
-                                                    ref="contractEndDate"
-                                                    v-model="
-                                                        form.contractEndDate
-                                                    "
-                                                    type="date"
-                                                    class="form-control "
-                                                    placeholder="Enter your contract date..."
-                                                    :disabled="editmode"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'contractEndDate'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        >
-                                                        <!-- <i
-                                                            class="bi bi-calendar-day"
-                                                        >
-                                                        </i
-                                                    > -->
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <has-error
-                                                :form="form"
-                                                field="contractEndDate"
-                                            ></has-error>
-                                        </div>
-                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.balance")
-                                            }}</label>
+                                            <label>Price to Pay</label>
+                                            <small>/ยอดเงิน</small>
                                             <input
                                                 v-model="form.balance"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="Enter your balance..."
+                                                placeholder="ยอดเงิน"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'balance'
@@ -1093,7 +1142,7 @@
                                                 class="form-control"
                                                 v-model="form.areas_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -1121,7 +1170,7 @@
                                                 :disabled="form.areas_id == ''"
                                                 required
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Section</option
                                                 >
                                                 <option
@@ -1147,7 +1196,7 @@
                                                 class="form-control"
                                                 v-model="form.area3bb_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -1173,7 +1222,7 @@
                                                 class="form-control"
                                                 v-model="form.areaTrue_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -1199,7 +1248,7 @@
                                                 class="form-control"
                                                 v-model="form.areaTrueNew_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -1225,7 +1274,7 @@
                                                 class="form-control"
                                                 v-model="form.areaAis_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -1255,7 +1304,7 @@
                                                 class="form-control"
                                                 v-model="form.areaFibernet_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -1283,7 +1332,7 @@
                                                 class="form-control"
                                                 v-model="form.workTime_id"
                                             >
-                                                <option value=""
+                                                <option value="" disabled
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -1305,14 +1354,13 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.remark")
-                                            }}</label>
-                                            <input
+                                            <label>Remark</label>
+                                            <small>/รีมาร์ค</small>
+                                            <textarea
+                                                id="remark"
                                                 v-model="form.remark"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your code..."
+                                                placeholder="-"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'remark'
@@ -1360,9 +1408,10 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
+import NumberInput from "../partials/NumberInput.vue";
 export default {
     title: "All -",
-    components: {},
+    components: {NumberInput},
     data() {
         return {
             loader: null,
@@ -1389,9 +1438,9 @@ export default {
                 areaAis_id: "",
                 areaFibernet_id: "",
                 projectName: "",
-                subBuildingsum: "",
-                floorSum: "",
-                roomSum: "",
+                subBuildingsum: 0,
+                floorSum: 0,
+                roomSum: 0,
                 roadName: "",
                 nameManager: "",
                 phoneManager: "",
@@ -1412,14 +1461,19 @@ export default {
                 postalCode: "",
                 latitude: "",
                 longitude: "",
-                contractStartDate:"",
+                contractStartDate: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
                 paymentType_id: "",
                 saleFm_id: "",
                 contractTerm: "",
-                contractEndDate: "",
+                contractEndDate: new Date()
+                    .toLocaleDateString("th")
+                    .toString("d/m/Y"),
                 balance: "",
                 workTime_id: "",
-                remark: ""
+                remark: "",
+                subbuilding: []
             })
         };
     },
@@ -1431,6 +1485,12 @@ export default {
         },
         location() {
             return { lon: this.form.longitude, lat: this.form.latitude };
+        },
+        subBuildingsum() {
+            return this.form.subBuildingsum;
+        },
+        subbuilding() {
+            return this.form.subbuilding.length;
         }
     },
     watch: {
@@ -1443,6 +1503,30 @@ export default {
         }
     },
     methods: {
+        onSubBuildingUpdate(newVal, oldVal) {
+            console.log(newVal, oldVal);
+            if (this.subbuilding != newVal) {
+                if (newVal >= oldVal) {
+                    const loop = newVal - this.subbuilding;
+                    if (loop > 0) {
+                        for (var i = 0; i < loop; i++) {
+                            this.form.subbuilding.push({
+                                projectName: "",
+                                floorSum: "",
+                                roomSum: ""
+                            });
+                        }
+                    }
+                } else if (newVal < oldVal) {
+                    const loop = this.subbuilding - newVal;
+                    if (loop > 0) {
+                        for (var i = 0; i < loop; i++) {
+                            this.form.subbuilding.pop();
+                        }
+                    }
+                }
+            }
+        },
         select(address) {
             this.form.districtName = address.district;
             this.form.countyName = address.amphoe;
@@ -1527,6 +1611,7 @@ export default {
         editModal(building) {
             this.editmode = true;
             this.form.reset();
+            building.subbuilding = building.subbuilding;
             console.log(building);
             $("#addNew").modal("show");
             this.form.fill(building);
@@ -1720,6 +1805,7 @@ export default {
                     },
                     {
                         data: "projectName",
+                        className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-building pr-2"></i>' +
@@ -1730,10 +1816,11 @@ export default {
                     },
                     {
                         data: "subBuildingsum",
+                        className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
+                                data + " ตึก" +
                                 "</span>"
                             );
                         }
@@ -1758,417 +1845,417 @@ export default {
                             );
                         }
                     },
-                    // {
-                    //     data: "areas.name",
-                    //     render: function(data, type, row, meta) {
-                    //         if (
-                    //             data == "" ||
-                    //             data == null ||
-                    //             typeof data == undefined
-                    //         ) {
-                    //             return (
-                    //                 '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
-                    //                 "ไม่ได้กรอกข้อมูล" +
-                    //                 "</span>"
-                    //             );
-                    //         } else {
-                    //             return (
-                    //                 '<span><i class="bi bi-phone pr-2"></i>' +
-                    //                 data +
-                    //                 "</span>"
-                    //             );
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "bbns.name",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "ยังไม่ได้ทำสัญญา") {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 data +
-                    //                 "</span>"
-                    //             );
-                    //         } else if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "area3bb.name",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "ยังไม่ได้ทำสัญญา") {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 data +
-                    //                 "</span>"
-                    //             );
-                    //         } else if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "area_true.name",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "ยังไม่ได้ทำสัญญา") {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 data +
-                    //                 "</span>"
-                    //             );
-                    //         } else if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "area_true_new.name",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "ยังไม่ได้ทำสัญญา") {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 data +
-                    //                 "</span>"
-                    //             );
-                    //         } else if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "area_ais.name",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "ยังไม่ได้ทำสัญญา") {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 data +
-                    //                 "</span>"
-                    //             );
-                    //         } else if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "area_fibernet.name",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "ยังไม่ได้ทำสัญญา") {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 data +
-                    //                 "</span>"
-                    //             );
-                    //         } else if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "nameManager",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "phoneManager",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "mailManager",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "nameNiti",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "phoneNiti",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "mailNiti",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "nameTechnician",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "phoneTechnician",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "mailTechnician",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "houseNumber",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "squadNumber",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "alleyName",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "roadName",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "districtName",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "countyName",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "provinceName",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "postalCode",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "latitude",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "longitude",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "contractStartDate"
-                    // },
-                    // {
-                    //     data: "payment_type.name",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "ยังไม่ได้ทำสัญญา") {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 data +
-                    //                 "</span>"
-                    //             );
-                    //         } else if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "sale_fm.name",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "ยังไม่ได้ทำสัญญา") {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 data +
-                    //                 "</span>"
-                    //             );
-                    //         } else if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "contractTerm",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "contractEndDate",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "balance",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "work_time.name",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "ยังไม่ได้ทำสัญญา") {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 data +
-                    //                 "</span>"
-                    //             );
-                    //         } else if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "remark",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "created_at",
-                    //     render: function(data, type, row, meta) {
-                    //         return moment(data).format("MM/DD/YYYY HH:MM");
-                    //     }
-                    // },
-                    // {
-                    //     data: "updated_at",
-                    //     render: function(data, type, row, meta) {
-                    //         return moment(data).format("MM/DD/YYYY HH:MM");
-                    //     }
-                    // },
+                    {
+                        data: "areas.name",
+                        render: function(data, type, row, meta) {
+                            if (
+                                data == "" ||
+                                data == null ||
+                                typeof data == undefined
+                            ) {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-phone pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
+                        data: "bbns.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "area3bb.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "area_true.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "area_true_new.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "area_ais.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "area_fibernet.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "nameManager",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "phoneManager",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "mailManager",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "nameNiti",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "phoneNiti",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "mailNiti",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "nameTechnician",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "phoneTechnician",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "mailTechnician",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "houseNumber",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "squadNumber",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "alleyName",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "roadName",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "districtName",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "countyName",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "provinceName",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "postalCode",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "latitude",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "longitude",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "contractStartDate"
+                    },
+                    {
+                        data: "payment_type.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "sale_fm.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "contractTerm",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "contractEndDate",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "balance",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "work_time.name",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "remark",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "created_at",
+                        render: function(data, type, row, meta) {
+                            return moment(data).format("MM/DD/YYYY HH:MM");
+                        }
+                    },
+                    {
+                        data: "updated_at",
+                        render: function(data, type, row, meta) {
+                            return moment(data).format("MM/DD/YYYY HH:MM");
+                        }
+                    },
                     {
                         data: null,
                         className: "dt-body-center notexport",
@@ -2220,6 +2307,7 @@ export default {
         this.$Progress.finish();
     },
     mounted() {
+        const vm = this;
         this.loadSaleFm();
         this.loadSpendSpace();
         this.loadArea();
@@ -2235,6 +2323,9 @@ export default {
             format: "dd/mm/yyyy",
             autoclose: true
         });
+        // $("#addNew").on("hide.bs.modal", function() {
+        //     vm.form.subBuildingsum = 0;
+        // });
         setTimeout(() => {
             LoadingWait.close();
         }, 3000);
