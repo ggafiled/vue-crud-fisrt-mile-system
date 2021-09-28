@@ -17,74 +17,42 @@ class CreateConstarutionsTable extends Migration
         Schema::create('constarutions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();
-            $table->bigInteger('desingBy_id')->unsigned();
-            $table->bigInteger('surveyDesing_id')->unsigned();
-            $table->bigInteger('ifcc_id')->unsigned();
-            $table->bigInteger('wallBox_id')->unsigned();
-            $table->bigInteger('microductD_id')->unsigned()->nullable();
-            $table->bigInteger('microductK_id')->unsigned()->nullable();
-            $table->bigInteger('fiberConvertion_id')->unsigned()->nullable();
             $table->string('projectNameTot')->nullable();
             $table->string('projectName3bb')->nullable();
             $table->string('projectNameTrue')->nullable();
             $table->string('projectNameAis')->nullable();
             $table->string('projectNameFiberNet')->nullable();
-            // $table->string('surveyDesing')->nullable();
-            $table->date('surveyDesingDate')->nullable();
-            // $table->string('ifcc')->nullable();
-            $table->date('ifccDate')->nullable();
-            // $table->string('wallBox')->nullable();
-            $table->date('wallBoxDate')->nullable();
-            $table->string('type')->nullable();
-            // $table->string('microductD')->nullable();
-            $table->date('microductDateD')->nullable();
-            // $table->string('microductK')->nullable();
-            $table->date('microductDateK')->nullable();
-            // $table->string('fiberConvertion')->nullable();
-            $table->date('fiberConvertionDateD')->nullable();
+            $table->string('buildingSum')->nullable();
+            $table->string('buildingNumber')->nullable();
+            $table->string('buildingFloor')->nullable();
+            $table->string('unitFloor')->nullable();
+            $table->bigInteger('fmProgress_id')->unsigned();
+            $table->bigInteger('surweyName_id')->unsigned();
+            $table->date('surweyDate')->nullable();
+            $table->string('ifcccType')->nullable();
+            $table->bigInteger('ifccStatus_id')->unsigned();
+            $table->string('wallboxType')->nullable();
+            $table->bigInteger('microductStatus_id')->unsigned();
+            $table->string('fiberMicroductType')->nullable();
+            $table->string('fiberMicroduct1')->nullable();
+            $table->string('fiberMicroduct2')->nullable();
+            $table->string('fiberMicroductSize')->nullable();
+            $table->string('fiberMicroductFloor')->nullable();
+            $table->string('Blow')->nullable();
+            $table->bigInteger('fiberBlowStatus_id')->unsigned();
+            $table->string('fiberConvertionalType')->nullable();
+            $table->string('fiberConvertionalFloor')->nullable();
+            $table->string('fiberVertically')->nullable();
+            $table->string('fiberVerticallyType')->nullable();
+            $table->string('fiberBuildingStatus')->nullable();
             $table->string('blow')->nullable();
-            $table->string('splice')->nullable();
+            $table->string('spliceStatus_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('building_id')
             ->references('id')
             ->on('buildings')
-            ->onDelete('cascade');
-
-            $table->foreign('desingBy_id')
-            ->references('id')
-            ->on('teamserways')
-            ->onDelete('cascade');
-
-            $table->foreign('surveyDesing_id')
-            ->references('id')
-            ->on('generatingactions')
-            ->onDelete('cascade');
-
-            $table->foreign('ifcc_id')
-            ->references('id')
-            ->on('generatingactions')
-            ->onDelete('cascade');
-
-            $table->foreign('wallBox_id')
-            ->references('id')
-            ->on('generatingactions')
-            ->onDelete('cascade');
-
-            $table->foreign('microductD_id')
-            ->references('id')
-            ->on('generatingactions')
-            ->onDelete('cascade');
-
-            $table->foreign('microductK_id')
-            ->references('id')
-            ->on('generatingactions')
-            ->onDelete('cascade');
-
-            $table->foreign('fiberConvertion_id')
-            ->references('id')
-            ->on('generatingactions')
             ->onDelete('cascade');
         });
     }
