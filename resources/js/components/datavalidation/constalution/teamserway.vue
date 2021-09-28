@@ -32,6 +32,7 @@
                                         <tr class="info">
                                             <th></th>
                                             <th>Serway Name</th>
+                                            <th>Serway Tel</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
                                             <th>Avaiable</th>
@@ -81,11 +82,27 @@
                         >
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Serway Name</label>
                                             <input
                                                 v-model="form.nameSerway"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your name area name serway..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'nameSerway'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Serway Tel</label>
+                                            <input
+                                                v-model="form.telSerway"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Enter your name area name serway..."
@@ -140,6 +157,7 @@ export default {
             form: new Form({
                 id: "",
                 nameSerway: "",
+                telSerway: "",
                 created_at: "",
                 updated: "",
                 deleted_at: ""
@@ -301,6 +319,9 @@ export default {
                     },
                     {
                         data: "nameSerway"
+                    },
+                     {
+                        data: "telSerway"
                     },
                     {
                         data: "created_at",

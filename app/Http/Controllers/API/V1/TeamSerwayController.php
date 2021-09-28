@@ -42,6 +42,7 @@ class TeamSerwayController extends BaseController
         try {
             $teamserways = Teamserway::create([
                 'nameSerway' => $request->input('nameSerway'),
+                'telSerway' => $request->input('nameSerway'),
             ]);
             $teamserways->save();
             return $this->sendResponse($teamserways, trans('actions.created.success'));

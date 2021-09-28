@@ -27,7 +27,7 @@ class CreateConstarutionsTable extends Migration
             $table->string('buildingFloor')->nullable();
             $table->string('unitFloor')->nullable();
             $table->bigInteger('fmProgress_id')->unsigned();
-            $table->bigInteger('surweyName_id')->unsigned();
+            $table->bigInteger('teamserway_id')->unsigned();
             $table->date('surweyDate')->nullable();
             $table->string('ifcccType')->nullable();
             $table->bigInteger('ifccStatus_id')->unsigned();
@@ -38,7 +38,6 @@ class CreateConstarutionsTable extends Migration
             $table->string('fiberMicroduct2')->nullable();
             $table->string('fiberMicroductSize')->nullable();
             $table->string('fiberMicroductFloor')->nullable();
-            $table->string('Blow')->nullable();
             $table->bigInteger('fiberBlowStatus_id')->unsigned();
             $table->string('fiberConvertionalType')->nullable();
             $table->string('fiberConvertionalFloor')->nullable();
@@ -53,6 +52,11 @@ class CreateConstarutionsTable extends Migration
             $table->foreign('building_id')
             ->references('id')
             ->on('buildings')
+            ->onDelete('cascade');
+
+            $table->foreign('teamserway_id')
+            ->references('id')
+            ->on('teamserways')
             ->onDelete('cascade');
         });
     }
