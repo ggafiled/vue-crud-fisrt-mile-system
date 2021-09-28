@@ -990,13 +990,12 @@
                                             <label>Date Contact Start</label
                                             ><br />
                                             <small>/วันเริ่มทำสัญญา</small>
-                                            <div class="input-group">
-                                                <input
+                                            <input
                                                     v-model="
                                                         form.contractStartDate
                                                     "
-                                                    type="text"
-                                                    class="form-control "
+                                                    type="date"
+                                                    class="form-control"
                                                     :disabled="editmode"
                                                     :class="{
                                                         'is-invalid': form.errors.has(
@@ -1004,36 +1003,24 @@
                                                         )
                                                     }"
                                                 />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                    >
-                                                        <i
-                                                            class="bi bi-calendar-day"
-                                                        >
-                                                        </i>
-                                                    </span>
-                                                </div>
-                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="contractStartDate"
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Date Contact End</label
                                             ><br />
                                             <small>/วันสิ้นสุดทำสัญญา</small>
-                                            <div class="input-group">
-                                                <input
+                                            <input
                                                     ref="contractEndDate"
                                                     v-model="
                                                         form.contractEndDate
                                                     "
-                                                    type="text"
-                                                    class="form-control "
+                                                    type="date"
+                                                    class="form-control"
                                                     :disabled="editmode"
                                                     :class="{
                                                         'is-invalid': form.errors.has(
@@ -1041,17 +1028,6 @@
                                                         )
                                                     }"
                                                 />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                    >
-                                                        <i
-                                                            class="bi bi-calendar-day"
-                                                        >
-                                                        </i>
-                                                    </span>
-                                                </div>
-                                            </div>
                                             <has-error
                                                 :form="form"
                                                 field="contractEndDate"
@@ -1086,7 +1062,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Revenue sharing model</label
                                             ><br />
@@ -1464,15 +1440,11 @@ export default {
                 postalCode: "",
                 latitude: "",
                 longitude: "",
-                contractStartDate: new Date()
-                    .toLocaleDateString("th")
-                    .toString("d/m/Y"),
+                contractStartDate: new Date().toISOString().slice(0,10),
                 paymentType_id: "",
                 saleFm_id: "",
                 contractTerm: "",
-                contractEndDate: new Date()
-                    .toLocaleDateString("th")
-                    .toString("d/m/Y"),
+                contractEndDate: new Date().toISOString().slice(0,10),
                 balance: "",
                 workTime_id: "",
                 remark: "",
@@ -2322,11 +2294,6 @@ export default {
         this.loadAreaFiberNet();
         this.loadWorkTime();
         this.generateTable();
-        $(".datepicker").datepicker({
-            language: "th-th",
-            format: "dd/mm/yyyy",
-            autoclose: true
-        });
         // $("#addNew").on("hide.bs.modal", function() {
         //     vm.form.reset();
         // });

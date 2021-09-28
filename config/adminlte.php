@@ -281,6 +281,7 @@ return [
                     'url' => '/progress',
                     'icon' => 'mdi mdi-18px mdi-progress-wrench',
                     'roles' => ["superadministrator", "administrator"],
+                    'active_url' => 'progress'
                 ],
                 [
                     'text' => 'customer_managment', //customer

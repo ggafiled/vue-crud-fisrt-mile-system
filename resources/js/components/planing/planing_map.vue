@@ -221,10 +221,16 @@ export default {
             map.Ui.Fullscreen.visible(false);
             map.Ui.Toolbar.visible(true);
             map.Ui.LayerSelector.visible(false);
+            map.Ui.Crosshair.visible(false);
             map.location({ lon: 100.61255, lat: 13.780091 }, true);
             map.Event.bind("ready", function() {
-                map.Event.bind("fullscreen", function() {
-                    //do somethings
+                map.Event.bind("overlayClick", function(overlay) {
+                    if (overlay instanceof longdo.Marker) {
+                        var mouseLocation = map.location(
+                            longdo.LocationMode.Pointer
+                        );
+                        map.location(mouseLocation, true);
+                    }
                 });
             });
         },
@@ -284,11 +290,11 @@ export default {
         $('a[data-toggle="tab"]').on("shown.bs.tab", function(e) {
             var target = $(e.target).attr("href"); // activated tab
             vm.$router.replace({
-                    query: {
-                        tab: target.replace("#", "")
-                    }
+                query: {
+                    tab: target.replace("#", "")
+                }
             });
-            if(target.replace("#", "") == "gis"){
+            if (target.replace("#", "") == "gis") {
                 vm.map.resize();
             }
         });

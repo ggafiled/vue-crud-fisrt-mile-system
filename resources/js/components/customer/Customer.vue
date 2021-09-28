@@ -627,29 +627,17 @@
                                                     "planing.planing_appointmentdate"
                                                 )
                                             }}</label>
-                                            <div class="input-group mb-3">
-                                                <input
-                                                    v-model="
-                                                        form.appointmentDate
-                                                    "
-                                                    type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your appointmentDate..."
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'appointmentDate'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
+                                            <input
+                                                v-model="form.appointmentDate"
+                                                type="date"
+                                                class="form-control"
+                                                placeholder="Enter your appointmentDate..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'appointmentDate'
+                                                    )
+                                                }"
+                                            />
                                             <!-- <datepicker class="form-control" v-model="form.appointmentDate" :language="th"></datepicker> -->
                                             <has-error
                                                 :form="form"
@@ -1001,10 +989,9 @@ export default {
                 room: "",
                 circuit: "",
                 entranceFee: "",
-                appointmentDate: new Date()
-                    .toLocaleDateString("th")
-                    .toString("d/m/Y"),
-                appointmentTime: new Date().getHours() + ":" + new Date().getMinutes(),
+                appointmentDate: new Date().toISOString().slice(0, 10),
+                appointmentTime:
+                    new Date().getHours() + ":" + new Date().getMinutes(),
                 status: "-",
                 subStatus: "-",
                 reMark: "-"
@@ -1819,11 +1806,6 @@ export default {
         this.loadCallver();
         this.loadCallverstatus();
         this.loadAgent();
-        $(".datepicker").datepicker({
-            language: "th-th",
-            format: "dd/mm/yyyy",
-            autoclose: true
-        });
         setTimeout(() => {
             LoadingWait.close();
         }, 2000);
