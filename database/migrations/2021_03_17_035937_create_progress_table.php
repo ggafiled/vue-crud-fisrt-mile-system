@@ -24,6 +24,7 @@ class CreateProgressTable extends Migration
             $table->bigInteger('sinetProgress_id')->unsigned()->nullable();
             $table->bigInteger('fnProgress_id')->unsigned()->nullable();
             $table->bigInteger('trueProgress_id')->unsigned()->nullable();
+            $table->bigInteger('txrtProgress_id')->unsigned()->nullable();
             // $table->string('fmProgress')->nullable();
             $table->date('dateFm')->nullable();
             // $table->string('totProgress')->nullable();
@@ -38,6 +39,7 @@ class CreateProgressTable extends Migration
             $table->date('dateFn')->nullable();
             // $table->string('trueProgress')->nullable();
             $table->date('dateTrue')->nullable();
+            $table->date('dateTxrx')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
@@ -67,6 +69,11 @@ class CreateProgressTable extends Migration
                 ->onDelete('cascade');
 
             $table->foreign('trueProgress_id')
+                ->references('id')
+                ->on('generatingactions')
+                ->onDelete('cascade');
+
+            $table->foreign('txrtProgress_id')
                 ->references('id')
                 ->on('generatingactions')
                 ->onDelete('cascade');
