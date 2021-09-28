@@ -299,6 +299,7 @@ return [
                     'url' => '/planing/map',
                     'icon' => 'fas mdi mdi-map-check-outline',
                     'roles' => ["superadministrator", "administrator"],
+                    'active_url' => 'planing'
                 ],
                 [
                     'text' => 'contractor_managment', //contractor

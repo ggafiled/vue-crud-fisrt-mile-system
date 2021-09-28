@@ -90,7 +90,9 @@
                                 class="d-flex justify-content-center align-items-center flex-nowrap p-0 m-0"
                             >
                                 <div class="align-self-center text-center">
-                                    <h2 class="p-0 m-0 text-bold">{{ taskTotal | numberFormat }}</h2>
+                                    <h2 class="p-0 m-0 text-bold">
+                                        {{ taskTotal | numberFormat }}
+                                    </h2>
                                     <span class="text-muted p-0 m-0"
                                         >Tasks</span
                                     >
@@ -103,20 +105,32 @@
                             <h4 class="card-title">Provider</h4>
                             <small>/ผู้ให้บริการ</small>
                         </div>
-                        <div class="card-body" :class="{ 'p-0 m-0': providerList.length > 0 }">
+                        <div
+                            class="card-body"
+                            :class="{ 'p-0 m-0': providerList.length > 0 }"
+                        >
                             <template v-if="providerList.length > 0">
-                                <div class="row p-0 m-0" v-for="(item, i) in providerList" :key="i">
+                                <div
+                                    class="row p-0 m-0"
+                                    v-for="(item, i) in providerList"
+                                    :key="i"
+                                >
                                     <div
                                         class="col-6 border p-2 m-0 text-right"
                                     >
                                         {{ item.isp }}
                                     </div>
                                     <div class="col-6 border p-2 m-0">
-                                         <img id="preview" class="rounded" :src="item.isps_map_icon" alt="Maker Icon"/>
+                                        <img
+                                            id="preview"
+                                            class="rounded"
+                                            :src="item.isps_map_icon"
+                                            alt="Maker Icon"
+                                        />
                                     </div>
                                 </div>
                             </template>
-                            <Skeleton width="100%" count="5" v-else/>
+                            <Skeleton width="100%" count="5" v-else />
                         </div>
                     </div>
                 </div>
@@ -145,6 +159,7 @@
                                 style="height: 70vh !important; width: 65vw !important; padding: 3; margin: 0;"
                             >
                                 <longdo-map
+                                    id="map"
                                     :zoom="12"
                                     :lastView="false"
                                     @load="initMap"
@@ -173,7 +188,7 @@
 </template>
 
 <script>
-import { Skeleton } from 'vue-loading-skeleton';
+import { Skeleton } from "vue-loading-skeleton";
 import { LongdoMap, LongdoMapMarker } from "longdo-map-vue";
 LongdoMap.init({ apiKey: process.env.MIX_APP_LONGDO_MAP_KEY });
 export default {
@@ -187,6 +202,7 @@ export default {
     data() {
         return {
             tab: "GIS",
+            map: null,
             loader: null,
             fullPage: false,
             taskTotal: 0,
@@ -200,6 +216,7 @@ export default {
     },
     methods: {
         initMap(map) {
+            this.map = map;
             map.resize();
             map.Ui.Fullscreen.visible(false);
             map.Ui.Toolbar.visible(true);
@@ -229,6 +246,27 @@ export default {
                 .then(response => {
                     this.providerList = response.data.data;
                 });
+        },
+        activaTab(tab) {
+            if ($('.nav-tabs a[href="#' + tab + '"]').length) {
+                $('.nav-tabs a[href="#' + tab + '"]').tab("show");
+            } else {
+                this.$router.replace({
+                    query: {
+                        tab: $(".nav-tabs a")
+                            .first()
+                            .attr("href")
+                            .toString()
+                            .replace("#", "")
+                    }
+                });
+                $(".nav-tabs a")
+                    .first()
+                    .tab("show");
+            }
+        },
+        deactivaTab(tab) {
+            $(".nav-tabs a").removeClass("active");
         }
     },
     created() {
@@ -238,11 +276,28 @@ export default {
         });
     },
     mounted() {
+        const vm = this;
         this.loadCoordinatePlanningOfBuilding();
         this.loadproviderList();
+        this.deactivaTab();
+        this.activaTab(this.$route.query.tab);
+        $('a[data-toggle="tab"]').on("shown.bs.tab", function(e) {
+            var target = $(e.target).attr("href"); // activated tab
+            vm.$router.replace({
+                    query: {
+                        tab: target.replace("#", "")
+                    }
+            });
+            if(target.replace("#", "") == "gis"){
+                vm.map.resize();
+            }
+        });
         setTimeout(() => {
             this.loader.hide();
         }, 3000);
+    },
+    unmounted() {
+        this.deactivaTab();
     }
 };
 </script>
