@@ -103,8 +103,8 @@
                             <h4 class="card-title">Provider</h4>
                             <small>/ผู้ให้บริการ</small>
                         </div>
-                        <div class="card-body p-0 m-0">
-                            <template>
+                        <div class="card-body" :class="{ 'p-0 m-0': providerList.length > 0 }">
+                            <template v-if="providerList.length > 0">
                                 <div class="row p-0 m-0" v-for="(item, i) in providerList" :key="i">
                                     <div
                                         class="col-6 border p-2 m-0 text-right"
@@ -116,6 +116,7 @@
                                     </div>
                                 </div>
                             </template>
+                            <Skeleton width="100%" count="5" v-else/>
                         </div>
                     </div>
                 </div>
@@ -172,6 +173,7 @@
 </template>
 
 <script>
+import { Skeleton } from 'vue-loading-skeleton';
 import { LongdoMap, LongdoMapMarker } from "longdo-map-vue";
 LongdoMap.init({ apiKey: process.env.MIX_APP_LONGDO_MAP_KEY });
 export default {
@@ -179,7 +181,8 @@ export default {
     ajax: "/api/constarution",
     components: {
         LongdoMap,
-        LongdoMapMarker
+        LongdoMapMarker,
+        Skeleton
     },
     data() {
         return {
