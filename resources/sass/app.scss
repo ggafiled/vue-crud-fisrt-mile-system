@@ -139,6 +139,14 @@
     }
 }
 
+.form-group {
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+        max-height: 200px;
+    }
+}
+
 @font-face {
     font-family: "fontello";
     src: url("/fonts/fontello.eot");

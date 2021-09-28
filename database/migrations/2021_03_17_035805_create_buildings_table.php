@@ -16,62 +16,53 @@ class CreateBuildingsTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('buildings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('saleFm_id')->unsigned();
-            $table->bigInteger('paymentType_id')->unsigned();
-            $table->bigInteger('areas_id')->unsigned();
-            $table->bigInteger('bbns_id')->unsigned();
-            $table->bigInteger('area3bb_id')->unsigned();
-            $table->bigInteger('areaTrue_id')->unsigned();
-            $table->bigInteger('areaTrueNew_id')->unsigned();
-            $table->bigInteger('areaAis_id')->unsigned();
-            $table->bigInteger('areaFibernet_id')->unsigned();
-            $table->bigInteger('workTime_id')->unsigned();
-            $table->string('projectName')->nullable();
-            $table->string('buildingSum')->nullable();
-            $table->string('floorSum')->nullable();
-            $table->string('roomSum')->nullable();
-            $table->string('fmCode')->nullable();
-            $table->string('nameManager')->nullable();
-            $table->string('phoneManager')->nullable();
-            $table->string('mailManager')->nullable();
-            $table->string('nameNiti')->nullable();
-            $table->string('phoneNiti')->nullable();
-            $table->string('mailNiti')->nullable();
-            $table->string('houseNumber')->nullable();
-            $table->string('squadNumber')->nullable();
-            $table->string('alleyName')->nullable();
-            $table->string('roadName')->nullable();
-            $table->string('districtName')->nullable();
-            $table->string('provinceName')->nullable();
-            $table->string('countyName')->nullable();
-            $table->integer('postalCode')->nullable();
-            $table->double('longitude')->nullable();
-            $table->double('latitude')->nullable();
-            $table->date('contractDate')->nullable();
-            $table->date('contractDateEnd')->nullable();
-            $table->string('condition')->nullable();
-            $table->string('contractPeriod')->nullable();
-            $table->string('reNewContact')->nullable();
-            $table->string('balance')->nullable();
-            // $table->string('areaN')->nullable();
-            // $table->string('bbN')->nullable();
-            // $table->string('area3BB')->nullable();
-            // $table->string('areaTrue')->nullable();
-            // $table->string('areaAis')->nullable();
-            // $table->string('areaFiberNet')->nullable();
-            // $table->string('operatingTime')->nullable();
+            // $table->bigInteger('technician_id')->unsigned();//รหัส_ช่าง
+            $table->bigInteger('areas_id')->unsigned();//รหัส_พื้นที่
+            $table->bigInteger('bbns_id')->unsigned();//รหัส_พื้นที่bbn
+            $table->bigInteger('area3bb_id')->unsigned();//รหัส_พื้นที่สามบีบี
+            $table->bigInteger('areaAis_id')->unsigned();//รหัส_พื้นที่เอไอเอส
+            $table->bigInteger('areaTrue_id')->unsigned();//รหัส_พื้นที่ทรู
+            $table->bigInteger('areaTrueNew_id')->unsigned();//รหัส_พื้นที่ทรูใหม่
+            $table->bigInteger('areaFibernet_id')->unsigned();//รหัส_พื้นที่ทไฟเน็ต
+            $table->string('projectName')->nullable();//ชื่ออาคาร
+            $table->string('subBuildingsum')->nullable();//อาคารทั้งหมด
+            $table->string('floorSum')->nullable();//ชั้นทั้งหมด
+            $table->string('roomSum')->nullable();//ห้องทั้งหมด
+            $table->string('nameManager')->nullable();//ชื่อผู้จัดการ
+            $table->string('phoneManager')->nullable();//เบอร์โทรผู้จัดการ
+            $table->string('mailManager')->nullable();//เมลล์โทรผู้จัดการ
+            $table->string('nameNiti')->nullable();//ชื่อนิติบุคคล
+            $table->string('phoneNiti')->nullable();//เบอร์์นิติบุคคล
+            $table->string('mailNiti')->nullable();//เมลล์์นิติบุคคล
+            $table->string('nameTechnician')->nullable();//ชื่อช่าง
+            $table->string('phoneTechnician')->nullable();//เบอร์์ช่าง
+            $table->string('mailTechnician')->nullable();//เมลล์์ช่าง
+            $table->string('houseNumber')->nullable();//บ้านเลขที่
+            $table->string('squadNumber')->nullable();//หมู่
+            $table->string('alleyName')->nullable();//ซอย
+            $table->string('roadName')->nullable();//ถนน
+            $table->string('districtName')->nullable();//ตำบล/เขต
+            $table->string('provinceName')->nullable();//จังหวัด
+            $table->string('countyName')->nullable();//อำเภอ/แขวง
+            $table->integer('postalCode')->nullable();//รหัสไปรษณีย์
+            $table->double('latitude')->nullable();//แลตติจูด
+            $table->double('longitude')->nullable();//ลองติจูด
+            $table->date('contractStartDate')->nullable();//วันทำสัญยา
+            $table->bigInteger('paymentType_id')->unsigned();//รหัส_ชนิดค่าใช้พื้นที่
+            $table->bigInteger('saleFm_id')->unsigned();//รหัส_รายชื่อเซลล์
+            $table->string('contractTerm')->nullable();//อายุสัญญา
+            $table->date('contractEndDate')->nullable();//วันสิ้นสุดสัญญา
+            $table->string('balance')->nullable();//ยอดเงิน
+            $table->bigInteger('workTime_id')->unsigned();//
+            $table->string('remark')->nullable();//รายละเอียด
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('saleFm_id')
-            ->references('id')
-            ->on('salefms')
-            ->onDelete('cascade');
 
-            $table->foreign('paymentType_id')
-            ->references('id')
-            ->on('payments')
-            ->onDelete('cascade');
+            // $table->foreign('technician_id')
+            // ->references('id')
+            // ->on('technicians')
+            // ->onDelete('cascade');
 
             $table->foreign('areas_id')
             ->references('id')
@@ -88,6 +79,11 @@ class CreateBuildingsTable extends Migration
             ->on('area3bbs')
             ->onDelete('cascade');
 
+            $table->foreign('areaAis_id')
+            ->references('id')
+            ->on('area_ais')
+            ->onDelete('cascade');
+
             $table->foreign('areaTrue_id')
             ->references('id')
             ->on('area_trues')
@@ -98,14 +94,19 @@ class CreateBuildingsTable extends Migration
             ->on('area_true_news')
             ->onDelete('cascade');
 
-            $table->foreign('areaAis_id')
-            ->references('id')
-            ->on('area_ais')
-            ->onDelete('cascade');
-
             $table->foreign('areaFibernet_id')
             ->references('id')
             ->on('area_fiber_nets')
+            ->onDelete('cascade');
+
+            $table->foreign('paymentType_id')
+            ->references('id')
+            ->on('payments')
+            ->onDelete('cascade');
+
+            $table->foreign('saleFm_id')
+            ->references('id')
+            ->on('salefms')
             ->onDelete('cascade');
 
             $table->foreign('workTime_id')

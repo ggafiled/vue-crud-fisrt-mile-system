@@ -31,6 +31,8 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');
         }
 
+
+
         Planing::observe(PlanningObserver::class);
     }
 }
