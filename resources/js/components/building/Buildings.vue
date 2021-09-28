@@ -460,6 +460,7 @@
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="ชื่อโปรเจ็ค"
+                                                required
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'projectName'
@@ -477,6 +478,7 @@
                                                 type="number"
                                                 min="0"
                                                 class="form-control"
+                                                required
                                                 placeholder="ชั้น"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
@@ -500,6 +502,7 @@
                                                 type="number"
                                                 min="0"
                                                 class="form-control"
+                                                required
                                                 placeholder="ห้อง"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
@@ -1611,6 +1614,7 @@ export default {
         editModal(building) {
             this.editmode = true;
             this.form.reset();
+            this.form.errors.clear();
             building.subbuilding = building.subbuilding;
             console.log(building);
             $("#addNew").modal("show");
@@ -2324,7 +2328,7 @@ export default {
             autoclose: true
         });
         // $("#addNew").on("hide.bs.modal", function() {
-        //     vm.form.subBuildingsum = 0;
+        //     vm.form.reset();
         // });
         setTimeout(() => {
             LoadingWait.close();
