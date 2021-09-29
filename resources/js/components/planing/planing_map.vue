@@ -253,19 +253,31 @@ export default {
                     this.providerList = response.data.data;
                 });
         },
-        activaTab(tab) {
+        activaTab(tab, vm = this) {
             if ($('.nav-tabs a[href="#' + tab + '"]').length) {
                 $('.nav-tabs a[href="#' + tab + '"]').tab("show");
             } else {
-                this.$router.replace({
-                    query: {
-                        tab: $(".nav-tabs a")
-                            .first()
-                            .attr("href")
-                            .toString()
-                            .replace("#", "")
-                    }
-                });
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.set(
+                    "tab",
+                    $(".nav-tabs a")
+                        .first()
+                        .attr("href")
+                        .toString()
+                        .replace("#", "")
+                );
+
+                if (history.pushState) {
+                    var newurl =
+                        window.location.protocol +
+                        "//" +
+                        window.location.host +
+                        window.location.pathname +
+                        "?" +
+                        urlParams;
+                    window.history.pushState({ path: newurl }, "", newurl);
+                }
+
                 $(".nav-tabs a")
                     .first()
                     .tab("show");
@@ -288,13 +300,26 @@ export default {
         this.deactivaTab();
         this.activaTab(this.$route.query.tab);
         $('a[data-toggle="tab"]').on("shown.bs.tab", function(e) {
-            var target = $(e.target).attr("href"); // activated tab
-            vm.$router.replace({
-                query: {
-                    tab: target.replace("#", "")
-                }
-            });
-            if (target.replace("#", "") == "gis") {
+            var target = $(e.target).attr("href").replace("#", ""); // activated tab
+
+            const urlParams = new URLSearchParams();
+                urlParams.set(
+                    "tab",
+                    target
+                );
+
+            if (history.pushState) {
+                var newurl =
+                    window.location.protocol +
+                    "//" +
+                    window.location.host +
+                    window.location.pathname +
+                    "?" +
+                    urlParams;
+                window.history.pushState({ path: newurl }, "", newurl);
+            }
+
+            if (target == "gis") {
                 vm.map.resize();
             }
         });

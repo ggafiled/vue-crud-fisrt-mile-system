@@ -25,6 +25,7 @@
 @import "~ag-grid-community/dist/styles/ag-theme-alpine.css";
 // @import vue-loading-overlay style.
 @import "~vue-loading-overlay/dist/vue-loading.css";
+@import "~vue2-timepicker/dist/VueTimepicker.css";
 .navbar-laravel {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -145,6 +146,18 @@
         min-height: 80px;
         max-height: 200px;
     }
+}
+
+#addNew>div>div>form>div.modal-body>div:nth-child(5)>div:nth-child(3)>div>span>input {
+    width: 100%;
+    border-radius: 5px;
+    max-height: 36px;
+    height: 36px;
+    padding-right: 5px;
+}
+
+#addNew>div>div>form>div.modal-body>div:nth-child(5)>div:nth-child(3)>div>span>div.controls>span {
+    padding-right: 10px;
 }
 
 @font-face {

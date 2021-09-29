@@ -90,8 +90,10 @@ import FullCalendar from "vue-full-calendar";
 Vue.use(FullCalendar);
 
 import Select2 from "v-select2-component";
-
 Vue.component("Select2", Select2);
+
+import VueTimepicker from "vue2-timepicker";
+Vue.component("VueTimepicker", VueTimepicker);
 
 import VueProgressBar from "vue-progressbar";
 Vue.use(VueProgressBar, {
