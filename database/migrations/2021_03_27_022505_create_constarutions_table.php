@@ -27,32 +27,46 @@ class CreateConstarutionsTable extends Migration
             $table->string('buildingFloor')->nullable();
             $table->string('unitFloor')->nullable();
             $table->bigInteger('fmProgress_id')->unsigned();
-            $table->bigInteger('surweyName_id')->unsigned();
+            $table->bigInteger('teamserway_id')->unsigned();
             $table->date('surweyDate')->nullable();
             $table->string('ifcccType')->nullable();
-            $table->bigInteger('ifccStatus_id')->unsigned();
+            $table->bigInteger('ifcccStatus_id')->unsigned();
             $table->string('wallboxType')->nullable();
+            $table->bigInteger('wallboxStatus_id')->unsigned();
+            $table->string('microductType')->nullable();
             $table->bigInteger('microductStatus_id')->unsigned();
-            $table->string('fiberMicroductType')->nullable();
-            $table->string('fiberMicroduct1')->nullable();
-            $table->string('fiberMicroduct2')->nullable();
-            $table->string('fiberMicroductSize')->nullable();
-            $table->string('fiberMicroductFloor')->nullable();
-            $table->string('Blow')->nullable();
-            $table->bigInteger('fiberBlowStatus_id')->unsigned();
-            $table->string('fiberConvertionalType')->nullable();
-            $table->string('fiberConvertionalFloor')->nullable();
-            $table->string('fiberVertically')->nullable();
-            $table->string('fiberVerticallyType')->nullable();
-            $table->string('fiberBuildingStatus')->nullable();
-            $table->string('blow')->nullable();
-            $table->string('spliceStatus_id')->nullable();
+
+            $table->string('microductType1')->nullable();
+            $table->string('microductType2')->nullable();
+            $table->string('microductSize')->nullable();
+            $table->string('microductFloor')->nullable();
+
+            $table->bigInteger('blowStatus_id')->unsigned();
+            $table->string('blowCore')->nullable();
+
+            $table->string('convertionalType')->nullable();
+            $table->string('convertionalFloor')->nullable();
+
+            $table->string('vertically')->nullable();
+            $table->bigInteger('verticallyType_id')->unsigned();
+
+            $table->string('buildingStatus')->nullable();
+            $table->string('buildingDate')->nullable();
+
+            $table->bigInteger('spliceStatus_id')->unsigned();
+            $table->string('spliceCore')->nullable();
+            
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('building_id')
             ->references('id')
             ->on('buildings')
+            ->onDelete('cascade');
+
+            $table->foreign('teamserway_id')
+            ->references('id')
+            ->on('teamserways')
             ->onDelete('cascade');
         });
     }

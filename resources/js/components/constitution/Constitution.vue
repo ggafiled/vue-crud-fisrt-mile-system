@@ -331,43 +331,102 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <!-- text input -->
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_desing"
-                                                )
-                                            }}</label>
-                                            <select
-                                                class="form-control"
-                                                v-model="form.desingBy_id"
-                                            >
-                                                <option disabled value=""
-                                                    >Select a Class</option
-                                                >
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in teamserways"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.nameSerway }}
-                                                </option>
-                                            </select>
+                                            <label>Number of Building / จำนวนตึก</label>
+                                            <div class="input-group mb-3">
+                                                <input
+                                                    v-model="form.buildingSum"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="รูปแบบการชำระรายได้"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'buildingSum'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
                                             <has-error
                                                 :form="form"
-                                                field="desingBy"
+                                                field="buildingSum"
                                             ></has-error>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_survey"
-                                                )
-                                            }}</label>
+                                            <label>Building numble</label>
+                                            <div class="input-group mb-3">
+                                                <input
+                                                    v-model="form.buildingNumber"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="รูปแบบการชำระรายได้"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'buildingNumber'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
+                                            <has-error
+                                                :form="form"
+                                                field="buildingNumber"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Floor / Building</label>
+                                            <div class="input-group mb-3">
+                                                <input
+                                                    v-model="form.buildingFloor"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="รูปแบบการชำระรายได้"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'buildingFloor'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
+                                            <has-error
+                                                :form="form"
+                                                field="buildingFloor"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Unit / Floor</label>
+                                            <div class="input-group mb-3">
+                                                <input
+                                                    v-model="form.buildingFloor"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="รูปแบบการชำระรายได้"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'buildingFloor'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
+                                            <has-error
+                                                :form="form"
+                                                field="buildingFloor"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>FM-Progress</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.surveyDesing_id"
@@ -392,22 +451,43 @@
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_surveydate"
-                                                )
-                                            }}</label>
+                                            <label>Surwey/Design</label>
+                                            <select
+                                                class="form-control"
+                                                v-model="form.desingBy_id"
+                                            >
+                                                <option disabled value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in teamserways"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.nameSerway }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="desingBy"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Date Surwey/Design</label>
                                             <div class="input-group">
                                                 <input
                                                     v-model="
-                                                        form.surveyDesingDate
+                                                        form.surweyDate
                                                     "
                                                     type="text"
                                                     class="form-control datepicker"
-                                                    placeholder="Enter your surveyDesingDate..."
+                                                    placeholder="Enter your surwey date..."
                                                     :class="{
                                                         'is-invalid': form.errors.has(
-                                                            'surveyDesingDate'
+                                                            'surweyDate'
                                                         )
                                                     }"
                                                 />
@@ -422,7 +502,7 @@
                                             </div>
                                             <has-error
                                                 :form="form"
-                                                field="surveyDesingDate"
+                                                field="surweyDate"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -433,11 +513,33 @@
                                         <!-- text input -->
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_ifcc"
-                                                )
-                                            }}</label>
+                                            <label>IFCCC Type(ODF) *</label>
+                                            <select
+                                                class="form-control"
+                                                v-model="form.ifcc_id"
+                                            >
+                                                <option disabled value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.status }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="ifcc"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <!-- ******************* EDIT TO SELECTION ******************* -->
+                                            <label>IFCCC Status (ODF) *</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.ifcc_id"
@@ -461,45 +563,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_ifccdate"
-                                                )
-                                            }}</label>
-                                            <div class="input-group">
-                                                <input
-                                                    type="text"
-                                                    v-model="form.ifccDate"
-                                                    placeholder="Enter your survey by..."
-                                                    class="form-control datepicker"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'ifccDate'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
-                                            <has-error
-                                                :form="form"
-                                                field="ifccDate"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_wallbox"
-                                                )
-                                            }}</label>
+                                            <label>Wall Box Type *</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.wallBox_id"
@@ -523,41 +587,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_wallboxdate"
-                                                )
-                                            }}</label>
-                                            <div class="input-group">
-                                                <input
-                                                    type="text"
-                                                    v-model="form.wallBoxDate"
-                                                    placeholder="Enter your survey by..."
-                                                    class="form-control datepicker"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'wallBoxDate'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
-                                            <has-error
-                                                :form="form"
-                                                field="wallBoxDate"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>Type</label>
+                                            <label>Wall Box Status *</label>
                                             <select
                                                 v-model="form.type"
                                                 type="text"
@@ -572,11 +602,11 @@
                                                 <option disabled value=""
                                                     >Select Type</option
                                                 >
-                                                <option value="Microduct"
-                                                    >Microduct</option
+                                                <option value="FiberBlow"
+                                                    >Fiber Blow</option
                                                 >
-                                                <option value="FiberConvertion"
-                                                    >FiberConvertion</option
+                                                <option value="FiberConvertional"
+                                                    >Fiber Convertional</option
                                                 >
                                             </select>
                                             <has-error
@@ -587,22 +617,79 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <!-- ******************* EDIT TO SELECTION ******************* -->
+                                            <label>Microduct Type</label>
+                                            <select
+                                                v-model="form.type"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your type..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'type'
+                                                    )
+                                                }"
+                                            >
+                                                <option disabled value=""
+                                                    >Select Type</option
+                                                >
+                                                <option value="FiberBlow"
+                                                    >FiberBlow</option
+                                                >
+                                                <option value="FiberConvertional"
+                                                    >Fiber Convertional</option
+                                                >
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="ifcc"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <!-- ******************* EDIT TO SELECTION ******************* -->
+                                            <label>Microduct Status</label>
+                                            <select
+                                                class="form-control"
+                                                v-model="form.ifcc_id"
+                                            >
+                                                <option disabled value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.status }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="ifcc"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <hr />
                                 <div
                                     class="row"
                                     v-show="
                                         form.type == '' ||
-                                            form.type == 'Microduct'
+                                            form.type == 'FiberBlow'
                                     "
                                 >
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_microductding"
-                                                )
-                                            }}</label>
+                                            <label>Microduct Type1</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.microductD_id"
@@ -630,50 +717,29 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_microductdingdate"
-                                                )
-                                            }}</label>
-                                            <div class="input-group">
+                                            <label>Microduct Type2</label>
+                                            <div class="input-group mb-3">
                                                 <input
-                                                    v-model="
-                                                        form.microductDateD
-                                                    "
-                                                    :disabled="
-                                                        form.type ==
-                                                            'FiberConvertion'
-                                                    "
+                                                    v-model="form.longitude"
                                                     type="text"
-                                                    class="form-control datepicker"
+                                                    class="form-control"
+                                                    placeholder="Enter your longitude..."
                                                     :class="{
                                                         'is-invalid': form.errors.has(
-                                                            'microductDateD'
+                                                            'longitude'
                                                         )
                                                     }"
                                                 />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
                                             </div>
                                             <has-error
                                                 :form="form"
-                                                field="exploreDesignDateBy"
+                                                field="longitude"
                                             ></has-error>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_microductK"
-                                                )
-                                            }}</label>
+                                            <label>Microduct Size</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.microductK_id"
@@ -702,41 +768,23 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_microductKdate"
-                                                )
-                                            }}</label>
-                                            <div class="input-group">
+                                            <label>Microduct Floor</label>
+                                            <div class="input-group mb-3">
                                                 <input
-                                                    v-model="
-                                                        form.microductDateK
-                                                    "
-                                                    :disabled="
-                                                        form.type ==
-                                                            'FiberConvertion'
-                                                    "
+                                                    v-model="form.longitude"
                                                     type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your microductDateK..."
+                                                    class="form-control"
+                                                    placeholder="Enter your longitude..."
                                                     :class="{
                                                         'is-invalid': form.errors.has(
-                                                            'microductDateK'
+                                                            'longitude'
                                                         )
                                                     }"
                                                 />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
                                             </div>
                                             <has-error
                                                 :form="form"
-                                                field="microductDateK"
+                                                field="longitude"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -746,24 +794,70 @@
                                     class="row"
                                     v-show="
                                         form.type == '' ||
-                                            form.type == 'FiberConvertion'
+                                            form.type == 'FiberBlow'
+                                    "
+                                >
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Blow Status</label>
+                                            <div class="input-group mb-3">
+                                                <input
+                                                    v-model="form.longitude"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Enter your longitude..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'longitude'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
+                                            <has-error
+                                                :form="form"
+                                                field="longitude"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Blow Core</label>
+                                            <input
+                                                    v-model="form.longitude"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Enter your longitude..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'longitude'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
+                                            <has-error
+                                                :form="form"
+                                                field="longitude"
+                                            ></has-error>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="row"
+                                    v-show="
+                                        form.type == '' ||
+                                            form.type == 'FiberConvertional'
                                     "
                                 >
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_fiberconvertion"
-                                                )
-                                            }}</label>
+                                            <label>Convertional Type</label>
                                             <select
                                                 class="form-control"
-                                                v-model="
-                                                    form.fiberConvertion_id
-                                                "
+                                                v-model="form.microductD_id"
                                                 :disabled="
-                                                    form.type == 'Microduct'
+                                                    form.type ==
+                                                        'FiberConvertion'
                                                 "
                                             >
                                                 <option disabled value=""
@@ -779,97 +873,149 @@
                                             </select>
                                             <has-error
                                                 :form="form"
-                                                field="fiberConvertion"
+                                                field="microductD"
                                             ></has-error>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_fiberconvertiondate"
-                                                )
-                                            }}</label>
-                                            <div class="input-group">
+                                            <label>Convertional Floor</label>
+                                            <div class="input-group mb-3">
                                                 <input
-                                                    v-model="
-                                                        form.fiberConvertionDateD
-                                                    "
-                                                    :disabled="
-                                                        form.type == 'Microduct'
-                                                    "
+                                                    v-model="form.longitude"
                                                     type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your fiberConvertionDateD ..."
+                                                    class="form-control"
+                                                    placeholder="Enter your longitude..."
                                                     :class="{
                                                         'is-invalid': form.errors.has(
-                                                            'fiberConvertionDateD '
+                                                            'longitude'
                                                         )
                                                     }"
                                                 />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
                                             </div>
                                             <has-error
                                                 :form="form"
-                                                field="fiberConvertionDateD "
+                                                field="longitude"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <!-- ******************* EDIT TO SELECTION ******************* -->
+                                            <label>Vertically</label>
+                                            <div class="input-group mb-3">
+                                                <input
+                                                    v-model="form.longitude"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Enter your longitude..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'longitude'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
+                                            <has-error
+                                                :form="form"
+                                                field="longitude"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <!-- ******************* EDIT TO SELECTION ******************* -->
+                                            <label>Vertically Type</label>
+                                            <select
+                                                class="form-control"
+                                                v-model="form.microductD_id"
+                                                :disabled="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
+                                            >
+                                                <option disabled value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.status }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="microductD"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="row"
+                                    v-show="
+                                        form.type == '' ||
+                                            form.type == 'FiberConvertional'
+                                    "
+                                >
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Building status</label>
+                                            <div class="input-group mb-3">
+                                                <input
+                                                    v-model="form.longitude"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Enter your longitude..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'longitude'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
+                                            <has-error
+                                                :form="form"
+                                                field="longitude"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Building Date</label>
+                                            <select
+                                                class="form-control"
+                                                v-model="form.microductK_id"
+                                                :disabled="
+                                                    form.type ==
+                                                        'FiberConvertion'
+                                                "
+                                            >
+                                                <option disabled value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in generatingactions"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.status }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="microductK"
                                             ></has-error>
                                         </div>
                                     </div>
                                 </div>
                                 <hr />
                                 <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_blow"
-                                                )
-                                            }}</label>
-                                            <select
-                                                v-model="form.blow"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your blow..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'blow'
-                                                    )
-                                                }"
-                                            >
-                                                <option disabled value=""
-                                                    >(--Select--) Y/N
-                                                    Question</option
-                                                >
-                                                <option value="Completed"
-                                                    >Completed</option
-                                                >
-                                                <option value="On Progress"
-                                                    >On Progress</option
-                                                >
-                                                <option value="N/A">N/A</option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="blow"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "constitution.constrution_splice"
-                                                )
-                                            }}</label>
+                                            <label>Splice Status</label>
                                             <select
                                                 v-model="form.splice"
                                                 type="text"
@@ -898,6 +1044,27 @@
                                             :form="form"
                                             field="splice"
                                         ></has-error>
+                                    </div>
+                                     <div class="col-sm-3">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Splice Core</label>
+                                            <input
+                                                    v-model="form.longitude"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Enter your longitude..."
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'longitude'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
+                                            <has-error
+                                                :form="form"
+                                                field="longitude"
+                                            ></has-error>
                                     </div>
                                 </div>
                             </div>
