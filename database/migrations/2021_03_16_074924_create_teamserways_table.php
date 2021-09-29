@@ -16,6 +16,7 @@ class CreateTeamserwaysTable extends Migration
         Schema::create('teamserways', function (Blueprint $table) {
             $table->id();
             $table->string('nameSerway')->nullable();
+            $table->string('telSerway')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

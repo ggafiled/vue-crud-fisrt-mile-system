@@ -260,6 +260,11 @@ export default [{
                     .default
             },
             {
+                path: "status",
+                component: require("./components/datavalidation/constalution/status.vue")
+                    .default
+            },
+            {
                 path: "isps",
                 component: require("./components/datavalidation/planning/Isp.vue")
                     .default

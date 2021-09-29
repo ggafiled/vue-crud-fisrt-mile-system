@@ -222,7 +222,13 @@ export default {
                         route: "/settings/serwayteam",
                         title: "SerwayTeam(CRED)",
                         details: "แก้ไขข้อมูลทีมสำรวจ"
-                    }
+                    },
+                    {
+                        id: 2,
+                        route: "/settings/status",
+                        title: "Status(CRED)",
+                        details: "แก้ไขข้อมูลสถานะ"
+                    },
                 ]
             }
         };

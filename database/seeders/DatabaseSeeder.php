@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SalefmSeeder::class);
         $this->call(TeamserwaySeeder::class);
         $this->call(TechnicianSeeder::class);
+        $this->call(StatusSeeder::class);
         $this->call(workStatusSeeder::class);
         $this->call(WorkTimeSeeder::class);
         $this->call(AreaSeeder::class);
