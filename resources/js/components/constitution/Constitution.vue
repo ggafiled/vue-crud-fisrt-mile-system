@@ -1247,7 +1247,7 @@ export default {
             // visible: false
           },
           {
-            data: "fiberConvertionDateD",
+            data: "surweyDate",
             render: function (data, type, row, meta) {
               if (!data) {
                 return "ไม่ได้ระบุ";
@@ -1257,11 +1257,11 @@ export default {
             },
           },
           {
-            data: "surweyDate",
+            data: "ifcccType",
             // visible: false
           },
           {
-            data: "ifcccType",
+            data: "ifcccStatus",
             // visible: false
           },
           {
