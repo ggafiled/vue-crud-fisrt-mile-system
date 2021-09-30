@@ -445,9 +445,9 @@
                         }"
                       >
                         <option disabled value="">Y/N Question</option>
-                        <option value="FiberBlow">Fiber Blow</option>
+                        <option value="FiberBlow">FiberBlow</option>
                         <option value="FiberConvertional">
-                          Fiber Convertional
+                          FiberConvertional
                         </option>
                       </select>
                       <has-error :form="form" field="microductType"></has-error>
