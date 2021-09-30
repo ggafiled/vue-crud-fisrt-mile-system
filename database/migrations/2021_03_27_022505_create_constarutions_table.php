@@ -22,38 +22,47 @@ class CreateConstarutionsTable extends Migration
             $table->string('projectNameTrue')->nullable();
             $table->string('projectNameAis')->nullable();
             $table->string('projectNameFiberNet')->nullable();
+
             $table->string('buildingSum')->nullable();
             $table->string('buildingNumber')->nullable();
             $table->string('buildingFloor')->nullable();
             $table->string('unitFloor')->nullable();
-            $table->bigInteger('fmProgress_id')->unsigned();
-            $table->bigInteger('teamserway_id')->unsigned();
+            $table->string('fmProgress')->nullable();
+            // $table->bigInteger('fmProgress_id')->unsigned();
+            // $table->bigInteger('teamserway_id')->unsigned();
+            $table->string('teamserway')->nullable();
             $table->date('surweyDate')->nullable();
             $table->string('ifcccType')->nullable();
-            $table->bigInteger('ifcccStatus_id')->unsigned();
+            $table->string('ifcccStatus')->nullable();
+            // $table->bigInteger('ifcccStatus_id')->unsigned();
             $table->string('wallboxType')->nullable();
-            $table->bigInteger('wallboxStatus_id')->unsigned();
+            $table->string('wallboxStatus')->nullable();
+            // $table->bigInteger('wallboxStatus_id')->unsigned();
             $table->string('microductType')->nullable();
-            $table->bigInteger('microductStatus_id')->unsigned();
+            $table->string('microductStatus')->nullable();
+            // $table->bigInteger('microductStatus_id')->unsigned();
 
-            $table->string('microductType1')->nullable();
-            $table->string('microductType2')->nullable();
-            $table->string('microductSize')->nullable();
-            $table->string('microductFloor')->nullable();
+            $table->string('microductType1')->nullable();//blow
+            $table->string('microductType2')->nullable();//blow
+            $table->string('microductSize')->nullable();//blow
+            $table->string('microductFloor')->nullable();//blow
 
-            $table->bigInteger('blowStatus_id')->unsigned();
-            $table->string('blowCore')->nullable();
+            // $table->bigInteger('blowStatus_id')->unsigned();
+            $table->string('blowStatus')->nullable();//blow
+            $table->string('blowCore')->nullable();//blow
 
-            $table->string('convertionalType')->nullable();
-            $table->string('convertionalFloor')->nullable();
+            $table->string('convertionalType')->nullable();//convertional
+            $table->string('convertionalFloor')->nullable();//convertional
 
-            $table->string('vertically')->nullable();
-            $table->bigInteger('verticallyType_id')->unsigned();
+            $table->string('vertically')->nullable();//convertional
+            $table->string('verticallyType')->nullable();//convertional
+            // $table->bigInteger('verticallyType_id')->unsigned();
 
-            $table->string('buildingStatus')->nullable();
-            $table->string('buildingDate')->nullable();
+            $table->string('buildingStatus')->nullable();//convertional
+            $table->string('buildingDate')->nullable();//convertional
 
-            $table->bigInteger('spliceStatus_id')->unsigned();
+            // $table->bigInteger('spliceStatus_id')->unsigned();
+            $table->string('spliceStatus')->nullable();
             $table->string('spliceCore')->nullable();
             
             $table->timestamps();
@@ -64,10 +73,10 @@ class CreateConstarutionsTable extends Migration
             ->on('buildings')
             ->onDelete('cascade');
 
-            $table->foreign('teamserway_id')
-            ->references('id')
-            ->on('teamserways')
-            ->onDelete('cascade');
+            // $table->foreign('teamserway_id')
+            // ->references('id')
+            // ->on('teamserways')
+            // ->onDelete('cascade');
         });
     }
 

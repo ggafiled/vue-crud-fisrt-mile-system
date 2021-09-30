@@ -23,26 +23,29 @@ class Constarution extends Model
         'buildingNumber',
         'buildingFloor',
         'unitFloor',
-        'fmProgress_id',
-        'teamserway_id',
+        'fmProgress',
+        'teamserway',
         'surweyDate',
         'ifcccType',
-        'ifccStatus_id',
+        'ifcccStatus',//table
         'wallboxType',
-        'microductStatus_id',
-        'fiberMicroductType',
-        'fiberMicroduct1',
-        'fiberMicroduct2',
-        'fiberMicroductSize',
-        'fiberMicroductFloor',
-        'fiberBlowStatus_id',
-        'fiberConvertionalType',
-        'fiberConvertionalFloor',
-        'fiberVertically',
-        'fiberVerticallyType',
-        'fiberBuildingStatus',
-        'blow',
-        'spliceStatus_id',
+        'wallboxStatus',
+        'microductType',
+        'microductStatus',
+        'microductType1',
+        'microductType2',
+        'microductSize',
+        'microductFloor',
+        'blowStatus',
+        'blowCore',
+        'convertionalType',
+        'convertionalFloor',
+        'vertically',
+        'verticallyType',
+        'buildingStatus',
+        'buildingDate',
+        'spliceStatus',
+        'spliceCore',
     ];
 
     public function building()
@@ -50,10 +53,10 @@ class Constarution extends Model
         return $this->belongsTo('App\Models\Building', 'building_id', 'id');
     }
 
-    public function Teamserway()
-    {
-        return $this->hasOne('App\Models\Teamserway', 'id', 'teamserway_id');
-    }
+    // public function Teamserway()
+    // {
+    //     return $this->hasOne('App\Models\Teamserway', 'id', 'teamserway_id');
+    // }
 
 
 }
