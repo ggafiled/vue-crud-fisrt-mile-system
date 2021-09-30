@@ -90,8 +90,10 @@ import FullCalendar from "vue-full-calendar";
 Vue.use(FullCalendar);
 
 import Select2 from "v-select2-component";
-
 Vue.component("Select2", Select2);
+
+import VueTimepicker from "vue2-timepicker";
+Vue.component("VueTimepicker", VueTimepicker);
 
 import VueProgressBar from "vue-progressbar";
 Vue.use(VueProgressBar, {
@@ -107,11 +109,17 @@ Vue.component(AlertError.name, AlertError);
 // หากจะใช้ก็แค่เพิ่ม attribute : active_url ในไฟล์ adminlte.config โดยใส่เป็น path เริ่มต้นที่จะให้แมทช์
 Vue.directive("active-when", {
     bind(el, binding, vnode) {
-        // console.log(binding.expression);
+        console.log(binding.expression);
         var regexActiveRoute = new RegExp(
-            "/([/]?" + binding.expression + "[/]?([A-Z0-9]*)?)/"
+            "[/]?" +
+            binding.expression.replace(/\//g, "\\/") +
+            "([-a - zA - Z0 - 9() @: % _ + .~# ? & //=]*)"
         );
-        if (regexActiveRoute.test(window.location.pathname)) {
+        if (
+            regexActiveRoute.test(
+                window.location.pathname + window.location.search
+            )
+        ) {
             // console.log(el);
             $(el).addClass("router-link-exact-active");
         }

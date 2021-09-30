@@ -257,6 +257,7 @@ return [
             'text' => 'dashboard',
             'url' => '/dashboard',
             'icon' => 'fas fa-fw bi bi-kanban',
+            'active_url' => 'dashboard'
         ],
         [
             'text' => 'project_managment',
@@ -269,12 +270,14 @@ return [
                     'url' => '/building',
                     'icon' => 'fas fa-fw bi bi-building',
                     'roles' => ["superadministrator", "administrator", "user"],
+                    'active_url' => 'building'
                 ],
                 [
                     'text' => 'constitution_managment', //constalution
                     'url' => '/constitution',
                     'icon' => 'fas fa-fw bi bi-aspect-ratio',
                     'can' => ["constarution-create", "constarution-read"],
+                    'active_url' => 'constitution'
                 ],
                 [
                     'text' => 'progress_managment', //progress
@@ -288,6 +291,7 @@ return [
                     'url' => '/customer',
                     'icon' => 'fas fa-fw fas fa-users',
                     'roles' => ["superadministrator", "administrator"],
+                    'active_url' => 'customer'
                 ],
                 // [
                 //     'text' => 'New Customer Managment', //customer
@@ -325,6 +329,7 @@ return [
                     'text' => 'project_name_table',
                     'url' => '/building/all',
                     'icon' => 'fas fa-fw fas fa-file-alt',
+                    'active_url' => 'building/all'
                 ],
                 [
                     'text' => 'project_tot_table',

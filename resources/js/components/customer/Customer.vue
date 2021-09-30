@@ -652,17 +652,24 @@
                                                     "planing.planing_appointmenttime"
                                                 )
                                             }}</label>
-                                            <input
+                                            <vue-timepicker
+                                                format="HH:mm"
+                                                drop-direction="auto"
+                                                fixed-dropdown-button
+                                                hide-clear-button
                                                 v-model="form.appointmentTime"
-                                                type="time"
-                                                class="form-control"
-                                                placeholder="Enter your appointment time..."
+                                                :minute-interval="10"
+                                                class="w-100"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'appointmentTime'
                                                     )
                                                 }"
-                                            />
+                                            >
+                                                <template v-slot:dropdownButton>
+                                                    <i class="bi bi-clock"></i>
+                                                </template>
+                                            </vue-timepicker>
                                             <has-error
                                                 :form="form"
                                                 field="appointmentTime"
@@ -990,8 +997,7 @@ export default {
                 circuit: "",
                 entranceFee: "",
                 appointmentDate: new Date().toISOString().slice(0, 10),
-                appointmentTime:
-                    new Date().getHours() + ":" + new Date().getMinutes(),
+                appointmentTime: moment().add((10 - (new Date().getMinutes()%10)), "minutes").format("H:mm"),
                 status: "-",
                 subStatus: "-",
                 reMark: "-"
