@@ -288,11 +288,12 @@ export default {
         editModal(user) {
             this.editmode = true;
             this.form.reset();
+            this.form.errors.clear();
             $("#addNew").modal("show");
             user.role = user.roles[0].id;
             user.account_status = user.deleted_at == null || user.deleted_at == "" ? 1 : 2;
-            console.log('Editing data');
-            console.log(user);
+            // console.log('Editing data');
+            // console.log(user);
             this.form.fill(user);
         },
         newModal() {

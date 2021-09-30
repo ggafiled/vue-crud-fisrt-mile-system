@@ -680,6 +680,7 @@ export default {
         editModal(progress) {
             this.editmode = true;
             this.form.reset();
+            this.form.errors.clear();
             progress.projectName = progress.building.projectName;
             $("#addNew").modal("show");
             this.form.fill(progress);

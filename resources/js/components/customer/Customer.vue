@@ -1082,7 +1082,8 @@ export default {
         editModal(planing) {
             this.editmode = true;
             this.form.reset();
-            console.log(planing);
+            this.form.errors.clear();
+            // console.log(planing);
             planing.isp_id = planing.isp.id;
             // planing.projectName = planing.building[0].projectName;
             $("#addNew").modal("show");

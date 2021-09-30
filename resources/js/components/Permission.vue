@@ -286,6 +286,7 @@ export default {
         editModal(role) {
             this.editmode = true;
             this.form.reset();
+            this.form.errors.clear();
             $("#addNew").modal("show");
             // user.role = user.roles[0].id;
             // this.form.permission = role.permissions;

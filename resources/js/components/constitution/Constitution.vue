@@ -961,7 +961,8 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Y/N Question</option
+                                                    >--- Select Status
+                                                    ---</option
                                                 >
                                                 <option value="Waiting"
                                                     >Waiting</option
@@ -1181,6 +1182,7 @@ export default {
         editModal(constarution) {
             this.editmode = true;
             this.form.reset();
+            this.form.errors.clear();
             console.log(constarution);
             $("#addNew").modal("show");
             this.form.fill(constarution);

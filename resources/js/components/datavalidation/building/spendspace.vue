@@ -177,6 +177,7 @@ export default {
         editModal(item) {
             this.editmode = true;
             this.form.reset();
+            this.form.errors.clear();
             $("#addNew").modal("show");
             this.form.fill(item);
         },

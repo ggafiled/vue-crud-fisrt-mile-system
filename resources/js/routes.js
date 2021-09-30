@@ -261,7 +261,7 @@ export default [{
             },
             {
                 path: "status",
-                component: require("./components/datavalidation/constalution/status.vue")
+                component: require("./components/datavalidation/constalution/Status.vue")
                     .default
             },
             {
