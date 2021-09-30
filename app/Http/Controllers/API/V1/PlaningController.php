@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use Carbon\Carbon;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Requests\Planing\PlaningRequest;
 use App\Models\Planing;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -162,30 +162,52 @@ class PlaningController extends BaseController
         try {
             $collection = [];
             $planing = [];
-            $from_date = $request->input('formDate') ?? Carbon::now()->toDateString();
-            $end_date = $request->input('endDate') ?? Carbon::now()->toDateString();
+            $from_date = (bool) $request->input('getOnlyToday') ? Carbon::now()->toDateString() : $request->input('formDate');
+            $end_date = (bool) $request->input('getOnlyToday') ? Carbon::now()->toDateString() : $request->input('endDate');
 
-            $planing["coordinate"] = Planing::whereBetween('appointmentDate', [$from_date, $end_date])
-                ->with(
-                ['building:id,workTime_id,longitude,latitude,projectName as name',
-                    'building.workTime:id,workTime as name',
-                    'isp'])
-                ->whereHas('building', function ($query) {
-                    return $query->where('longitude', '!=', 0)->where('latitude', '!=', 0);
-                })
-                ->get()
-                ->map(function ($item) use ($collection) {
-                    $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
-                    $collection["title"] = $item->building->name;
-                    $collection["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
+            if ((isset($from_date) && isset($end_date))) {
+                $planing["coordinate"] = Planing::whereBetween('appointmentDate', [$from_date, $end_date])
+                    ->with(
+                        ['building:id,workTime_id,longitude,latitude,projectName as name',
+                            'building.workTime:id,workTime as name',
+                            'isp'])
+                    ->whereHas('building', function ($query) {
+                        return $query->where('longitude', '!=', 0)->where('latitude', '!=', 0);
+                    })
+                    ->get()
+                    ->map(function ($item) use ($collection) {
+                        $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
+                        $collection["title"] = $item->building->name;
+                        $collection["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
                     <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
                     <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
                     <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
                     </div>";
-                    $collection["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
-                    return $collection;
-                });
-            $planing["taskTotal"] = Planing::count();
+                        $collection["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
+                        return $collection;
+                    });
+            } else {
+                $planing["coordinate"] = Planing::with(
+                    ['building:id,workTime_id,longitude,latitude,projectName as name',
+                        'building.workTime:id,workTime as name',
+                        'isp'])
+                    ->whereHas('building', function ($query) {
+                        return $query->where('longitude', '!=', 0)->where('latitude', '!=', 0);
+                    })
+                    ->get()
+                    ->map(function ($item) use ($collection) {
+                        $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
+                        $collection["title"] = $item->building->name;
+                        $collection["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
+                    <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
+                    <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
+                    <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
+                    </div>";
+                        $collection["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
+                        return $collection;
+                    });
+            }
+            $planing["taskTotal"] = (bool) $request->input('getOnlyToday') ? Planing::whereBetween('appointmentDate', [$from_date, $end_date])->count() : Planing::count();
             return $this->sendResponse($planing, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.failed'));

@@ -66,13 +66,22 @@
                                     class="form-check-input"
                                     type="checkbox"
                                     id="todayCheck"
+                                    v-model="form.getOnlyToday"
                                 />
                             </div>
                         </div>
-                        <button type="button" class="btn btn-success mr-lg-2">
+                        <button
+                            type="button"
+                            class="btn btn-success mr-lg-2"
+                            @click="filterCoordinatePlanningOfBuilding"
+                        >
                             Search
                         </button>
-                        <button type="button" class="btn btn-success mr-lg-2">
+                        <button
+                            type="button"
+                            class="btn btn-success mr-lg-2"
+                            @click="resetCoordinatePlanningOfBuilding"
+                        >
                             Reset
                         </button>
                     </div>
@@ -160,7 +169,7 @@
                             >
                                 <longdo-map
                                     id="map"
-                                    :zoom="12"
+                                    :zoom="10"
                                     :lastView="false"
                                     @load="initMap"
                                 >
@@ -210,11 +219,33 @@ export default {
             providerList: [],
             form: new Form({
                 formDate: "",
-                endDate: ""
+                endDate: "",
+                getOnlyToday: false
             })
         };
     },
+    computed: {
+        getOnlyToday() {
+            return this.form.getOnlyToday;
+        }
+    },
+    watch: {
+        getOnlyToday: function(newVal, oldVal) {
+            this.filterCoordinatePlanningOfBuilding();
+        }
+    },
     methods: {
+        resetCoordinatePlanningOfBuilding() {
+            this.form.reset();
+            this.filterCoordinatePlanningOfBuilding();
+        },
+        filterCoordinatePlanningOfBuilding() {
+            LoadingWait.fire();
+            this.loadCoordinatePlanningOfBuilding();
+            setTimeout(function() {
+                LoadingWait.close();
+            }, 2000);
+        },
         initMap(map) {
             this.map = map;
             map.resize();
@@ -235,10 +266,8 @@ export default {
             });
         },
         loadCoordinatePlanningOfBuilding() {
-            axios
-                .get("planing/loadCoordinatePlanningOfBuilding", {
-                    data: this.form
-                })
+            this.form
+                .post("planing/loadCoordinatePlanningOfBuilding")
                 .then(response => {
                     this.coordinate = response.data.data.coordinate;
                     this.taskTotal = response.data.data.taskTotal;
@@ -300,13 +329,12 @@ export default {
         this.deactivaTab();
         this.activaTab(this.$route.query.tab);
         $('a[data-toggle="tab"]').on("shown.bs.tab", function(e) {
-            var target = $(e.target).attr("href").replace("#", ""); // activated tab
+            var target = $(e.target)
+                .attr("href")
+                .replace("#", ""); // activated tab
 
             const urlParams = new URLSearchParams();
-                urlParams.set(
-                    "tab",
-                    target
-                );
+            urlParams.set("tab", target);
 
             if (history.pushState) {
                 var newurl =

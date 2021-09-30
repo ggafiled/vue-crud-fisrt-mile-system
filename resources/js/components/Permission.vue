@@ -54,6 +54,8 @@
                 role="dialog"
                 aria-labelledby="addNew"
                 aria-hidden="true"
+                data-backdrop="static"
+                data-keyboard="false"
             >
                 <div class="modal-dialog" role="dialog">
                     <div class="modal-content">

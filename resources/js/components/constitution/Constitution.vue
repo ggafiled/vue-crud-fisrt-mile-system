@@ -66,6 +66,8 @@
                 role="dialog"
                 aria-labelledby="addNew"
                 aria-hidden="true"
+                data-backdrop="static"
+                data-keyboard="false"
             >
                 <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
@@ -339,7 +341,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="Now Building"
                                                     >Now Building</option
@@ -420,7 +422,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="120">120</option>
                                                 <option value="288">288</option>
@@ -449,7 +451,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="Waiting"
                                                     >Waiting</option
@@ -479,7 +481,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="24">24</option>
                                                 <option value="48">48</option>
@@ -505,7 +507,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="Waiting"
                                                     >Waiting</option
@@ -539,7 +541,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="FiberBlow"
                                                     >FiberBlow</option
@@ -574,7 +576,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="Waiting"
                                                     >Waiting</option
@@ -614,7 +616,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="4">4</option>
                                                 <option value="7">7</option>
@@ -642,7 +644,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="4">4</option>
                                                 <option value="7">7</option>
@@ -671,7 +673,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="4/2.5"
                                                     >4/2.5</option
@@ -733,7 +735,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="Wailing"
                                                     >4/2.5</option
@@ -843,7 +845,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="มี">มี</option>
                                                 <option value="ไม่มี"
@@ -872,7 +874,7 @@
                                                 }"
                                             >
                                                 <option disabled value=""
-                                                    >Select Type</option
+                                                    >--- Select Type ---</option
                                                 >
                                                 <option value="Fiber Drop"
                                                     >FiberDrop</option

@@ -969,7 +969,7 @@
                                                 v-model="form.saleFm_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1045,7 +1045,7 @@
                                                 v-model="form.paymentType_id"
                                             >
                                                 <option disabled value=""
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1122,7 +1122,7 @@
                                                 v-model="form.areas_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1176,7 +1176,7 @@
                                                 v-model="form.area3bb_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1202,7 +1202,7 @@
                                                 v-model="form.areaTrue_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1228,7 +1228,7 @@
                                                 v-model="form.areaTrueNew_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1254,7 +1254,7 @@
                                                 v-model="form.areaAis_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1284,7 +1284,7 @@
                                                 v-model="form.areaFibernet_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1312,7 +1312,7 @@
                                                 v-model="form.workTime_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"

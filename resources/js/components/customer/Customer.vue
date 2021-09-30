@@ -257,6 +257,8 @@
                 role="dialog"
                 aria-labelledby="addNew"
                 aria-hidden="true"
+                data-backdrop="static"
+                data-keyboard="false"
             >
                 <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
@@ -494,7 +496,7 @@
                                                 v-model="form.isp_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -525,7 +527,7 @@
                                                 v-model="form.agentDetail_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -604,7 +606,7 @@
                                                 v-model="form.jobtype_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -684,7 +686,7 @@
                                                 v-model="form.technician_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -748,7 +750,7 @@
                                                 v-model="form.callver_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -772,7 +774,7 @@
                                                 v-model="form.callverStatus_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -798,7 +800,7 @@
                                                 "
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -825,7 +827,7 @@
                                                 v-model="form.ispId_id"
                                             >
                                                 <option value="" disabled
-                                                    >Select a Class</option
+                                                    >--- Select a Class ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
