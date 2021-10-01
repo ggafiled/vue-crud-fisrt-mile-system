@@ -33,256 +33,88 @@
                                         <tr class="info">
                                             <th></th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.project"
-                                                    )
-                                                }}
+                                                Project Name
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.subbuildingsum"
-                                                    )
-                                                }}
+                                               SubBuilding Sum
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.floorsum"
-                                                    )
-                                                }}
+                                                Floor Sum
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.roomsum"
-                                                    )
-                                                }}
+                                                Room Sum
                                             </th>
                                             <th>
-                                                {{ translate("building.area") }}
+                                               Manager Name
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.areatbb"
-                                                    )
-                                                }}
+                                                Phone Manager
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.areabbn"
-                                                    )
-                                                }}
+                                                Mail Manager
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.areatrue"
-                                                    )
-                                                }}
+                                                Niti Name
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.areaTnew"
-                                                    )
-                                                }}
+                                                Phone Niti
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.areaais"
-                                                    )
-                                                }}
+                                                Mail Niti
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.areafibernet"
-                                                    )
-                                                }}
+                                                Technician Name
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.managername"
-                                                    )
-                                                }}
+                                                Phone Technician
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.managerphone"
-                                                    )
-                                                }}
+                                                Mail Technician
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.manageremail"
-                                                    )
-                                                }}
+                                                House Number
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.corporationname"
-                                                    )
-                                                }}
+                                                Squad Number
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.corporationphone"
-                                                    )
-                                                }}
+                                                Alley Name
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.corporationemail"
-                                                    )
-                                                }}
+                                                Road Name
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.technicianname"
-                                                    )
-                                                }}
+                                                District Name
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.technicianphone"
-                                                    )
-                                                }}
+                                                Province Name
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.technicianemail"
-                                                    )
-                                                }}
+                                                County Name
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.housenumber"
-                                                    )
-                                                }}
+                                                Postal Code
                                             </th>
                                             <th>
-                                                {{
-                                                    translate("building.swine")
-                                                }}
+                                                Latitude
                                             </th>
                                             <th>
-                                                {{
-                                                    translate("building.alley")
-                                                }}
+                                                Longitude
                                             </th>
                                             <th>
-                                                {{ translate("building.road") }}
+                                                Contract Start Date
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.district"
-                                                    )
-                                                }}
+                                                Contract Term
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.subdistrict"
-                                                    )
-                                                }}
+                                                Contract End Date
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.province"
-                                                    )
-                                                }}
+                                                Balance
                                             </th>
                                             <th>
-                                                {{
-                                                    translate(
-                                                        "building.postalcode"
-                                                    )
-                                                }}
-                                            </th>
-                                            <th>
-                                                {{
-                                                    translate(
-                                                        "building.latitude"
-                                                    )
-                                                }}
-                                            </th>
-                                            <th>
-                                                {{
-                                                    translate(
-                                                        "building.longitude"
-                                                    )
-                                                }}
-                                            </th>
-                                            <th>
-                                                {{
-                                                    translate(
-                                                        "building.contractstartdate"
-                                                    )
-                                                }}
-                                            </th>
-                                            <th>
-                                                {{
-                                                    translate(
-                                                        "building.paymenttype"
-                                                    )
-                                                }}
-                                            </th>
-                                            <th>
-                                                {{
-                                                    translate(
-                                                        "building.salename"
-                                                    )
-                                                }}
-                                            </th>
-                                            <th>
-                                                {{
-                                                    translate(
-                                                        "building.contractterm"
-                                                    )
-                                                }}
-                                            </th>
-                                            <th>
-                                                {{
-                                                    translate(
-                                                        "building.dateendcontact"
-                                                    )
-                                                }}
-                                            </th>
-                                            <th>
-                                                {{
-                                                    translate(
-                                                        "building.balance"
-                                                    )
-                                                }}
-                                            </th>
-                                            <th>
-                                                {{
-                                                    translate(
-                                                        "building.operatingtime"
-                                                    )
-                                                }}
-                                            </th>
-                                            <th>
-                                                {{
-                                                    translate("building.remark")
-                                                }}
+                                                Remark
                                             </th>
                                             <th>
                                                 Create At
@@ -1791,434 +1623,86 @@ export default {
                         }
                     },
                     {
-                        data: "subBuildingsum",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data + " ตึก" +
-                                "</span>"
-                            );
-                        }
+                        data: "subBuildingsum"
                     },
                     {
-                        data: "floorSum",
-                        render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
+                        data: "floorSum"
                     },
                     {
-                        data: "roomSum",
-                        render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
+                        data: "roomSum"
+                    },
+                   
+                    {
+                        data: "nameManager"
                     },
                     {
-                        data: "areas.name",
-                        render: function(data, type, row, meta) {
-                            if (
-                                data == "" ||
-                                data == null ||
-                                typeof data == undefined
-                            ) {
-                                return (
-                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span><i class="bi bi-phone pr-2"></i>' +
-                                    data +
-                                    "</span>"
-                                );
-                            }
-                        }
+                        data: "phoneManager"
                     },
                     {
-                        data: "bbns.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "mailManager"
                     },
                     {
-                        data: "area3bb.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "nameNiti"
                     },
                     {
-                        data: "area_true.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "phoneNiti"
                     },
                     {
-                        data: "area_true_new.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "mailNiti"
                     },
                     {
-                        data: "area_ais.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "nameTechnician"
                     },
                     {
-                        data: "area_fibernet.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "phoneTechnician"
                     },
                     {
-                        data: "nameManager",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "mailTechnician"
                     },
                     {
-                        data: "phoneManager",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "houseNumber"
                     },
                     {
-                        data: "mailManager",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "squadNumber"
                     },
                     {
-                        data: "nameNiti",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "alleyName"
                     },
                     {
-                        data: "phoneNiti",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "districtName"
                     },
                     {
-                        data: "mailNiti",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "provinceName"
                     },
                     {
-                        data: "nameTechnician",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "countyName"
                     },
                     {
-                        data: "phoneTechnician",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "postalCode"
                     },
                     {
-                        data: "mailTechnician",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "countyName"
                     },
                     {
-                        data: "houseNumber",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "latitude"
                     },
                     {
-                        data: "squadNumber",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "alleyName",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "roadName",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "districtName",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "countyName",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "provinceName",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "postalCode",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "latitude",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "longitude",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "longitude"
                     },
                     {
                         data: "contractStartDate"
                     },
                     {
-                        data: "payment_type.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "contractTerm"
                     },
                     {
-                        data: "sale_fm.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "contractEndDate"
                     },
                     {
-                        data: "contractTerm",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "balance"
                     },
                     {
-                        data: "contractEndDate",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "balance",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "work_time.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "remark",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
+                        data: "remark"
                     },
                     {
                         data: "created_at",

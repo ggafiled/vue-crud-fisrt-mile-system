@@ -21,6 +21,7 @@ class Building extends Model
         'areaTrue_id',
         'areaTrueNew_id',
         'areaFibernet_id',
+
         'projectName',
         'subBuildingsum',
         'floorSum',
@@ -45,8 +46,10 @@ class Building extends Model
         'latitude',
         'longitude',
         'contractStartDate',
+
         'paymentType_id',
         'saleFm_id',
+
         'contractTerm',
         'contractEndDate',
         'balance',
