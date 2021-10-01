@@ -13,9 +13,9 @@ class Buildingcontroller extends BaseController
 
     public function __construct()
     {
-        $this->middleware('auth:api');
-        $this->middleware('role:superadministrator|administrator|user')->only(['index']);
-        $this->middleware('role:superadministrator|administrator')->only(['store', 'update', 'destroy']);
+        // $this->middleware('auth:api');
+        // $this->middleware('role:superadministrator|administrator|user')->only(['index']);
+        // $this->middleware('role:superadministrator|administrator')->only(['store', 'update', 'destroy']);
     }
 
     /**
