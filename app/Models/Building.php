@@ -136,7 +136,7 @@ class Building extends Model
 
     public function areaFibernet()
     {
-        return $this->hasOne('App\Models\AreaFibernet', 'id', 'areaFibernet_id');
+        return $this->hasOne('App\Models\AreaFiberNet', 'id', 'areaFibernet_id');
     }
 
     public function workTime()
