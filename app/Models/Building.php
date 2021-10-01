@@ -108,7 +108,7 @@ class Building extends Model
 
     public function bbns()
     {
-        return $this->hasOne('App\Models\BBn', 'id', 'bbns_id');
+        return $this->hasOne('App\Models\Bbn', 'id', 'bbns_id');
     }
 
     public function area3bb()
