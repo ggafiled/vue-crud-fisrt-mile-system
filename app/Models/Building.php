@@ -21,6 +21,7 @@ class Building extends Model
         'areaTrue_id',
         'areaTrueNew_id',
         'areaFibernet_id',
+
         'projectName',
         'subBuildingsum',
         'floorSum',
@@ -45,8 +46,10 @@ class Building extends Model
         'latitude',
         'longitude',
         'contractStartDate',
+
         'paymentType_id',
         'saleFm_id',
+
         'contractTerm',
         'contractEndDate',
         'balance',
@@ -88,7 +91,7 @@ class Building extends Model
 
     public function planning()
     {
-        return $this->belongsTo('App\Models\planning', 'building_id', 'id');
+        return $this->belongsTo('App\Models\Planning', 'building_id', 'id');
     }
 
     public function saleFm()
@@ -108,7 +111,7 @@ class Building extends Model
 
     public function bbns()
     {
-        return $this->hasOne('App\Models\BBn', 'id', 'bbns_id');
+        return $this->hasOne('App\Models\Bbn', 'id', 'bbns_id');
     }
 
     public function area3bb()
