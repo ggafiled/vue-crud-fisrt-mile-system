@@ -35,7 +35,7 @@ class Buildingcontroller extends BaseController
             'areaTrueNew:id,areaTrueNew as name',
             'areaAis:id,areaAis as name',
             'areaFibernet:id,areaFibernet as name',
-            'workTime:id,worktime as name',
+            'workTime:id,workTime as name',
             'subbuilding')->get();
         return $this->sendResponse($buiding, trans('actions.get.success'));
         try {
