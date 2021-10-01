@@ -1623,7 +1623,14 @@ export default {
                         }
                     },
                     {
-                        data: "subBuildingsum"
+                        data: "subBuildingsum",
+                        render: function(data, type, row, meta) {
+                            return (
+                                '<span><i class="bi bi-building pr-2"></i>' +
+                                data + " ตึก" +
+                                "</span>"
+                            );
+                        }
                     },
                     {
                         data: "floorSum"
@@ -1631,7 +1638,7 @@ export default {
                     {
                         data: "roomSum"
                     },
-                   
+
                     {
                         data: "nameManager"
                     },
