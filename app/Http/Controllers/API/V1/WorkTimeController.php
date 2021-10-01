@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\API\V1\BaseController;
-use App\Models\Worktime;
+use App\Models\WorkTime;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -41,7 +41,7 @@ class WorkTimeController extends BaseController
     public function store(Request $request)
     {
         try {
-            $workTime = Worktime::create($request->all());
+            $workTime = WorkTime::create($request->all());
             return $this->sendResponse($workTime, trans('actions.created.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.created.fialed'));
@@ -58,7 +58,7 @@ class WorkTimeController extends BaseController
     public function update(Request $request, $id)
     {
         try {
-            $workTime = Worktime::withTrashed()->findOrFail($id);
+            $workTime = WorkTime::withTrashed()->findOrFail($id);
             $workTime->update($request->all());
             return $this->sendResponse($workTime, trans('actions.updated.success'));
         } catch (Exception $ex) {
@@ -75,7 +75,7 @@ class WorkTimeController extends BaseController
     public function destroy($id)
     {
         try {
-            $workTime = Worktime::withTrashed()->findOrFail($id);
+            $workTime = WorkTime::withTrashed()->findOrFail($id);
             $workTime->delete();
             return $this->sendResponse($workTime, trans('actions.destroy.success'));
         } catch (Exception $ex) {
