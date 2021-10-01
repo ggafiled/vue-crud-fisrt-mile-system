@@ -161,27 +161,17 @@
                                             <label
                                                 >วันที่เข้าวางโครงข่าย :</label
                                             >
-                                            <div class="input-group">
-                                                <input
-                                                    v-model="form.dateFn"
-                                                    type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your dateFn..."
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'dateFn'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
+                                            <input
+                                                v-model="form.dateFn"
+                                                type="date"
+                                                class="form-control datepicker"
+                                                placeholder="Enter your dateFn..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dateFn'
+                                                    )
+                                                }"
+                                            />
                                             <has-error
                                                 :form="form"
                                                 field="dateFn"
@@ -218,27 +208,17 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>TOT วันวางโครงข่าย :</label>
-                                            <div class="input-group">
-                                                <input
-                                                    v-model="form.dateTot"
-                                                    type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your dateTot..."
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'dateTot'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
+                                            <input
+                                                v-model="form.dateTot"
+                                                type="date"
+                                                class="form-control datepicker"
+                                                placeholder="Enter your dateTot..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dateTot'
+                                                    )
+                                                }"
+                                            />
                                             <has-error
                                                 :form="form"
                                                 field="dateTot"
@@ -275,27 +255,17 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>AIS วันวางโครงข่าย :</label>
-                                            <div class="input-group">
-                                                <input
-                                                    v-model="form.dateAis"
-                                                    type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your dateAis..."
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'dateAis'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
+                                            <input
+                                                v-model="form.dateAis"
+                                                type="date"
+                                                class="form-control datepicker"
+                                                placeholder="Enter your dateAis..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dateAis'
+                                                    )
+                                                }"
+                                            />
                                             <has-error
                                                 :form="form"
                                                 field="dateAis"
@@ -334,27 +304,17 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>3BB วันวางโครงข่าย :</label>
-                                            <div class="input-group">
-                                                <input
-                                                    v-model="form.date3BB"
-                                                    type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your date3BB..."
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'date3BB'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
+                                            <input
+                                                v-model="form.date3BB"
+                                                type="date"
+                                                class="form-control datepicker"
+                                                placeholder="Enter your date3BB..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'date3BB'
+                                                    )
+                                                }"
+                                            />
                                             <has-error
                                                 :form="form"
                                                 field="date3BB"
@@ -390,27 +350,17 @@
                                             <label
                                                 >Sinet วันวางโครงข่าย :</label
                                             >
-                                            <div class="input-group">
-                                                <input
-                                                    v-model="form.dateSinet"
-                                                    type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your dateSinet..."
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'dateSinet'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
+                                            <input
+                                                v-model="form.dateSinet"
+                                                type="date"
+                                                class="form-control datepicker"
+                                                placeholder="Enter your dateSinet..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dateSinet'
+                                                    )
+                                                }"
+                                            />
                                             <has-error
                                                 :form="form"
                                                 field="dateSinet"
@@ -448,27 +398,17 @@
                                             <label
                                                 >Sinet วันวางโครงข่าย :</label
                                             >
-                                            <div class="input-group">
-                                                <input
-                                                    v-model="form.dateFn"
-                                                    type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your dateSinet..."
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'dateSinet'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
+                                            <input
+                                                v-model="form.dateFn"
+                                                type="date"
+                                                class="form-control datepicker"
+                                                placeholder="Enter your dateSinet..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dateSinet'
+                                                    )
+                                                }"
+                                            />
                                             <has-error
                                                 :form="form"
                                                 field="dateFn"
@@ -507,27 +447,17 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>True วันวางโครงข่าย :</label>
-                                            <div class="input-group">
-                                                <input
-                                                    v-model="form.dateTrue"
-                                                    type="text"
-                                                    class="form-control datepicker"
-                                                    placeholder="Enter your dateTrue..."
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'dateTrue'
-                                                        )
-                                                    }"
-                                                />
-                                                <div class="input-group-append">
-                                                    <span
-                                                        class="input-group-text"
-                                                        ><i
-                                                            class="bi bi-calendar-day"
-                                                        ></i
-                                                    ></span>
-                                                </div>
-                                            </div>
+                                            <input
+                                                v-model="form.dateTrue"
+                                                type="date"
+                                                class="form-control datepicker"
+                                                placeholder="Enter your dateTrue..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'dateTrue'
+                                                    )
+                                                }"
+                                            />
                                             <has-error
                                                 :form="form"
                                                 field="dateTrue"
@@ -606,15 +536,13 @@ export default {
                 sinetProgress: "",
                 fnProgress: "",
                 trueProgress: "",
-                dateFm: new Date().toLocaleDateString("th").toString("d/m/Y"),
-                dateTot: new Date().toLocaleDateString("th").toString("d/m/Y"),
-                dateAis: new Date().toLocaleDateString("th").toString("d/m/Y"),
-                date3BB: new Date().toLocaleDateString("th").toString("d/m/Y"),
-                dateSinet: new Date()
-                    .toLocaleDateString("th")
-                    .toString("d/m/Y"),
-                dateFn: new Date().toLocaleDateString("th").toString("d/m/Y"),
-                dateTrue: new Date().toLocaleDateString("th").toString("d/m/Y")
+                dateFm: new Date().toISOString().slice(0, 10),
+                dateTot: new Date().toISOString().slice(0, 10),
+                dateAis: new Date().toISOString().slice(0, 10),
+                date3BB: new Date().toISOString().slice(0, 10),
+                dateSinet: new Date().toISOString().slice(0, 10),
+                dateFn: new Date().toISOString().slice(0, 10),
+                dateTrue: new Date().toISOString().slice(0, 10)
             })
         };
     },

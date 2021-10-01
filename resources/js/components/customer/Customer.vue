@@ -888,12 +888,13 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label>รีมาร์ค (For Admin)</label>
-                                            <input
+                                            <label>Remark</label>
+                                            <small>/รีมาร์ค</small>
+                                            <textarea
+                                                id="remark"
                                                 v-model="form.reMark"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="Enter your reMark..."
+                                                placeholder="-"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'reMark'
