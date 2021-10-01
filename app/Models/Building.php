@@ -88,7 +88,7 @@ class Building extends Model
 
     public function planning()
     {
-        return $this->belongsTo('App\Models\planning', 'building_id', 'id');
+        return $this->belongsTo('App\Models\Planning', 'building_id', 'id');
     }
 
     public function saleFm()
