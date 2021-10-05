@@ -36,7 +36,7 @@
                                                 Project Name
                                             </th>
                                             <th>
-                                               SubBuilding Sum
+                                                SubBuilding Sum
                                             </th>
                                             <th>
                                                 Floor Sum
@@ -45,7 +45,7 @@
                                                 Room Sum
                                             </th>
                                             <th>
-                                               Manager Name
+                                                Manager Name
                                             </th>
                                             <th>
                                                 Phone Manager
@@ -112,6 +112,9 @@
                                             </th>
                                             <th>
                                                 Balance
+                                            </th>
+                                             <th>
+                                                Remark Contract
                                             </th>
                                             <th>
                                                 Remark
@@ -190,6 +193,7 @@
                                             />
                                         </div>
                                     </div>
+
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Buildingsum</label>
@@ -283,15 +287,16 @@
                                     v-for="(item, i) in form.subbuilding"
                                     :key="i"
                                 >
-                                    <div class="col-sm-8">
-                                        <div class="form-group">
-                                            <label>Project Name</label>
-                                            <small>/ชื่อโปรเจ็ค</small>
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <span class="input-group-text"
+                                                >ลำดับอาคารย่อยที่</span
+                                            >
                                             <input
                                                 v-model="item.projectName"
                                                 type="text"
                                                 class="form-control"
-                                                placeholder="ชื่อโปรเจ็ค"
+                                                placeholder="ชื่ออาคาร"
                                                 required
                                                 :class="{
                                                     'is-invalid': form.errors.has(
@@ -299,19 +304,13 @@
                                                     )
                                                 }"
                                             />
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>Floor</label>
-                                            <small>/ชั้น</small>
                                             <input
                                                 v-model="item.floorSum"
                                                 type="number"
                                                 min="0"
                                                 class="form-control"
                                                 required
-                                                placeholder="ชั้น"
+                                                placeholder="จำนวนชั้นของอาคาร"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'floorSum'
@@ -322,20 +321,13 @@
                                                 :form="form"
                                                 field="floorSum"
                                             ></has-error>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>Room</label>
-                                            <small>/ห้อง</small>
                                             <input
                                                 v-model="item.roomSum"
                                                 type="number"
                                                 min="0"
                                                 class="form-control"
                                                 required
-                                                placeholder="ห้อง"
+                                                placeholder="จำนวนห้องในชั้น"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'roomSum'
@@ -801,7 +793,8 @@
                                                 v-model="form.saleFm_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -823,18 +816,16 @@
                                             ><br />
                                             <small>/วันเริ่มทำสัญญา</small>
                                             <input
-                                                    v-model="
-                                                        form.contractStartDate
-                                                    "
-                                                    type="date"
-                                                    class="form-control"
-                                                    :disabled="editmode"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'contractStartDate'
-                                                        )
-                                                    }"
-                                                />
+                                                v-model="form.contractStartDate"
+                                                type="date"
+                                                class="form-control"
+                                                :disabled="editmode"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'contractStartDate'
+                                                    )
+                                                }"
+                                            />
                                             <has-error
                                                 :form="form"
                                                 field="contractStartDate"
@@ -847,19 +838,17 @@
                                             ><br />
                                             <small>/วันสิ้นสุดทำสัญญา</small>
                                             <input
-                                                    ref="contractEndDate"
-                                                    v-model="
-                                                        form.contractEndDate
-                                                    "
-                                                    type="date"
-                                                    class="form-control"
-                                                    :disabled="editmode"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'contractEndDate'
-                                                        )
-                                                    }"
-                                                />
+                                                ref="contractEndDate"
+                                                v-model="form.contractEndDate"
+                                                type="date"
+                                                class="form-control"
+                                                :disabled="editmode"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'contractEndDate'
+                                                    )
+                                                }"
+                                            />
                                             <has-error
                                                 :form="form"
                                                 field="contractEndDate"
@@ -877,7 +866,8 @@
                                                 v-model="form.paymentType_id"
                                             >
                                                 <option disabled value=""
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -919,7 +909,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div
+                                    class="row"
+                                    v-show="
+                                        form.paymentType_id == '' ||
+                                            form.paymentType_id == 'ชำระรายปี'
+                                    "
+                                >
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Price to Pay</label>
@@ -941,6 +937,29 @@
                                             ></has-error>
                                         </div>
                                     </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <label
+                                                >Remark contract</label
+                                            >
+                                            <small>/หมายเหตุรูปแบบสัญญา</small>
+                                            <input
+                                                v-model="form.remarkContract"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="หมายเหตุรูปแบบสัญญา"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'remarkContract'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="remarkContract"
+                                            ></has-error>
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr />
                                 <div class="row">
@@ -954,7 +973,8 @@
                                                 v-model="form.areas_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1008,7 +1028,8 @@
                                                 v-model="form.area3bb_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1034,7 +1055,8 @@
                                                 v-model="form.areaTrue_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1060,7 +1082,8 @@
                                                 v-model="form.areaTrueNew_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1086,7 +1109,8 @@
                                                 v-model="form.areaAis_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1116,7 +1140,8 @@
                                                 v-model="form.areaFibernet_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1144,7 +1169,8 @@
                                                 v-model="form.workTime_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1222,7 +1248,7 @@ import { mapGetters, mapState } from "vuex";
 import NumberInput from "../partials/NumberInput.vue";
 export default {
     title: "All -",
-    components: {NumberInput},
+    components: { NumberInput },
     data() {
         return {
             loader: null,
@@ -1272,11 +1298,11 @@ export default {
                 postalCode: "",
                 latitude: "",
                 longitude: "",
-                contractStartDate: new Date().toISOString().slice(0,10),
+                contractStartDate: new Date().toISOString().slice(0, 10),
                 paymentType_id: "",
                 saleFm_id: "",
                 contractTerm: "",
-                contractEndDate: new Date().toISOString().slice(0,10),
+                contractEndDate: new Date().toISOString().slice(0, 10),
                 balance: "",
                 workTime_id: "",
                 remark: "",
@@ -1627,7 +1653,8 @@ export default {
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-building pr-2"></i>' +
-                                data + " ตึก" +
+                                data +
+                                " ตึก" +
                                 "</span>"
                             );
                         }
@@ -1707,6 +1734,9 @@ export default {
                     },
                     {
                         data: "balance"
+                    },
+                    {
+                        data: "remarkContract"
                     },
                     {
                         data: "remark"

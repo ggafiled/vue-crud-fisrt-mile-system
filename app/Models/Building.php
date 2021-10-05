@@ -53,6 +53,7 @@ class Building extends Model
         'contractTerm',
         'contractEndDate',
         'balance',
+        'remarkContract',
         'workTime_id',
         'remark',
 

@@ -92,6 +92,7 @@ class Buildingcontroller extends BaseController
                 'contractEndDate' => $request->input('contractEndDate'),
                 // Carbon::parse($request->input("contractDateEnd")),
                 'balance' => $request->input('balance'),
+                'remarkContract' => $request->input('remarkContract'),
                 'workTime_id' => $request->input('workTime_id'),
                 'remark' => $request->input('remark'),
             ]);
