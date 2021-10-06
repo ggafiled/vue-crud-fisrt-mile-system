@@ -118,122 +118,11 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Project TOT Name</label>
-                                            <small>/ชื่อโปรเจ็คทีโอที</small>
-                                            <input
-                                                v-model="form.projectNameTot"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="ชื่อโครงการของทีโอที"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'projectNameTot'
-                                                    )
-                                                }"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Project 3BB Name</label>
-                                            <small>/ชื่อโปรเจ็ค 3บีบี</small>
-                                            <input
-                                                v-model="form.projectName3bb"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="ชื่อโครงการของสามบีบี"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'projectName3bb'
-                                                    )
-                                                }"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Project TRUE Name</label>
-                                            <small>/ชื่อโปรเจ็คของทรู</small>
-                                            <input
-                                                v-model="form.projectNameTrue"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="ชื่อโครงการของทรู"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'projectNameTrue'
-                                                    )
-                                                }"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Project AIS Name</label>
-                                            <small>/ชื่อโปรเจ็คเอไอเอส</small>
-                                            <input
-                                                v-model="form.projectNameAis"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="ชื่อโครงการของสามเอไอเอส"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'projectNameAis'
-                                                    )
-                                                }"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Project Fibernet Name</label>
-                                            <small
-                                                >/ชื่อโปรเจ็คไฟเบอร์เน็ต</small
-                                            >
-                                            <input
-                                                v-model="
-                                                    form.projectNameFiberNet
-                                                "
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="ชื่อโครงการของไฟเบอเน็ต"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'projectNameFiberNet'
-                                                    )
-                                                }"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label for="">ดึงชื่ออาคาร</label>
-                                            <button
-                                                type="button"
-                                                class="btn btn-outline-success mx-auto mt-auto mb-auto btn-block"
-                                                @click="setSameProjectName"
-                                                :disabled="
-                                                    form.building_id == ''
-                                                "
-                                            >
-                                                <i
-                                                    class="mdi mdi-content-copy"
-                                                ></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>Number of Building</label>
-                                            <small>/จำนวนตึก</small>
-                                            <div class="input-group mb-3">
+                                            <label>Buildingsum</label>
+                                            <small>/จำนวนอาคาร</small>
+                                            <div class="input-group">
                                                 <input
                                                     v-model="form.buildingSum"
                                                     type="text"
@@ -252,11 +141,11 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Building Number</label>
-                                            <small>/หมายเลขตึก</small>
-                                            <div class="input-group mb-3">
+                                            <label>Floorsum</label>
+                                            <small>/ชั้นรวม</small>
+                                            <div class="input-group">
                                                 <input
                                                     v-model="
                                                         form.buildingNumber
@@ -277,11 +166,11 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Floor / Building</label>
-                                            <small>/ชั้น</small>
-                                            <div class="input-group mb-3">
+                                            <label>Roomsum</label>
+                                            <small>/ห้องรวม</small>
+                                            <div class="input-group">
                                                 <input
                                                     v-model="form.buildingFloor"
                                                     type="text"
@@ -300,33 +189,157 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                </div>
+
+                                <hr />
+
+                                <div class="row">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label>Unit / Floor</label>
-                                            <small>/ยูนิต</small>
-                                            <div class="input-group mb-3">
+                                            <label
+                                                >Project Name ToT /
+                                                ชื่อโครงการของทีโอที</label
+                                            >
+                                            <br />
+                                            <label class="radio-inline">
                                                 <input
-                                                    v-model="form.unitFloor"
-                                                    type="text"
-                                                    class="form-control"
-                                                    placeholder="ยูนิตแต่ละชั้น"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'unitFloor'
-                                                        )
-                                                    }"
-                                                />
-                                            </div>
-                                            <has-error
-                                                :form="form"
-                                                field="unitFloor"
-                                            ></has-error>
+                                                    type="radio"
+                                                    name="totName"
+                                                    checked
+                                                />ชื่อเดียวกัน
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input
+                                                    type="radio"
+                                                    name="totName"
+                                                />ต่างชื่อกัน
+                                            </label>
+                                            <input
+                                                v-model="form.projectNameTot"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="ชื่อโครงการของทีโอที"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameTot'
+                                                    )
+                                                }"
+                                            />
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label
+                                                >Project Name Ais /
+                                                ชื่อโครงการของเอไอเอส</label
+                                            >
+                                            <br />
+                                            <label class="radio-inline">
+                                                <input
+                                                    type="radio"
+                                                    name="aisName"
+                                                    checked
+                                                />ชื่อเดียวกัน
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input
+                                                    type="radio"
+                                                    name="aisName"
+                                                />ต่างชื่อกัน
+                                            </label>
+                                            <input
+                                                v-model="form.projectNameTot"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="ชื่อโครงการของทีเอไอเอส"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameTot'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label
+                                                >Project Name 3BB /
+                                                ชื่อโครงการของสามบีบี</label
+                                            >
+                                            <br />
+                                            <label class="radio-inline">
+                                                <input
+                                                    type="radio"
+                                                    name="tbbName"
+                                                    checked
+                                                />ชื่อเดียวกัน
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input
+                                                    type="radio"
+                                                    name="tbbName"
+                                                />ต่างชื่อกัน
+                                            </label>
+                                            <input
+                                                v-model="form.projectNameTot"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="ชื่อโครงการของสามบีบี"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameTot'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label
+                                                >Project Name True /
+                                                ชื่อโครงการของทรู</label
+                                            >
+                                            <br />
+                                            <label class="radio-inline">
+                                                <input
+                                                    type="radio"
+                                                    name="trueName"
+                                                    checked
+                                                />ชื่อเดียวกัน
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input
+                                                    type="radio"
+                                                    name="trueName"
+                                                />ต่างชื่อกัน
+                                            </label>
+                                            <input
+                                                v-model="form.projectNameTot"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="ชื่อโครงการของทรู"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameTot'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>FM-Progress*</label>
                                             <select
