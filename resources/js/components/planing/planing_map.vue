@@ -173,14 +173,15 @@
                                     :lastView="false"
                                     @load="initMap"
                                 >
-                                    <longdo-map-marker
+                                    <longdo-map-marker-cluster :markerList="coordinate" />
+                                    <!-- <longdo-map-marker
                                         v-for="(item, i) in coordinate"
                                         :key="i"
                                         :location="item.location"
                                         :title="item.title"
                                         :detail="item.detail"
                                         :icon="item.icon"
-                                    />
+                                    /> -->
                                 </longdo-map>
                             </section>
                         </div>
@@ -198,7 +199,7 @@
 
 <script>
 import { Skeleton } from "vue-loading-skeleton";
-import { LongdoMap, LongdoMapMarker } from "longdo-map-vue";
+import { LongdoMap, LongdoMapMarker, LongdoMapMarkerCluster} from "longdo-map-vue";
 LongdoMap.init({ apiKey: process.env.MIX_APP_LONGDO_MAP_KEY });
 export default {
     title: "Guild Map -",
@@ -206,6 +207,7 @@ export default {
     components: {
         LongdoMap,
         LongdoMapMarker,
+        LongdoMapMarkerCluster,
         Skeleton
     },
     data() {
