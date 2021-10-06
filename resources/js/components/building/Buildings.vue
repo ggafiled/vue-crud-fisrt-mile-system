@@ -113,7 +113,7 @@
                                             <th>
                                                 Balance
                                             </th>
-                                             <th>
+                                            <th>
                                                 Remark Contract
                                             </th>
                                             <th>
@@ -169,11 +169,7 @@
 
                         <!-- <form @submit.prevent="createUser"> -->
 
-                        <form
-                            @submit.prevent="
-                                editmode ? updateBuilding() : createBuilding()
-                            "
-                        >
+                        <form>
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -214,7 +210,7 @@
                                                 inline
                                                 controls
                                                 v-model="form.subBuildingsum"
-                                                :min="0"
+                                                :min="1"
                                                 @change="onSubBuildingUpdate"
                                             ></number-input>
                                             <has-error
@@ -235,7 +231,7 @@
                                                 class="form-control"
                                                 placeholder="ชั้น"
                                                 :disabled="
-                                                    form.subBuildingsum > 0
+                                                    form.subBuildingsum > 1
                                                 "
                                                 :class="{
                                                     'is-invalid': form.errors.has(
@@ -261,7 +257,7 @@
                                                 class="form-control"
                                                 placeholder="ห้อง"
                                                 :disabled="
-                                                    form.subBuildingsum > 0
+                                                    form.subBuildingsum > 1
                                                 "
                                                 :class="{
                                                     'is-invalid': form.errors.has(
@@ -276,76 +272,94 @@
                                         </div>
                                     </div>
                                 </div>
-                                <label
-                                    v-show="form.subBuildingsum > 0"
-                                    class="text-danger"
-                                    >***เงื่อนไข
-                                    เมื่อกรอกจำนวนอาคารย่อยในพื้นที่โครงการ</label
-                                >
-                                <div
-                                    class="row"
-                                    v-for="(item, i) in form.subbuilding"
-                                    :key="i"
-                                >
-                                    <div class="col-sm-12">
-                                        <div class="input-group">
-                                            <span class="input-group-text"
-                                                >ลำดับอาคารย่อยที่</span
-                                            >
-                                            <input
-                                                v-model="item.projectName"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="ชื่ออาคาร"
-                                                required
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'projectName'
-                                                    )
-                                                }"
-                                            />
-                                            <input
-                                                v-model="item.floorSum"
-                                                type="number"
-                                                min="0"
-                                                class="form-control"
-                                                required
-                                                placeholder="จำนวนชั้นของอาคาร"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'floorSum'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="floorSum"
-                                            ></has-error>
-                                            <input
-                                                v-model="item.roomSum"
-                                                type="number"
-                                                min="0"
-                                                class="form-control"
-                                                required
-                                                placeholder="จำนวนห้องในชั้น"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'roomSum'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="roomSum"
-                                            ></has-error>
+                                <div v-show="form.subBuildingsum > 1">
+                                    <label class="text-danger"
+                                        >***เงื่อนไข
+                                        เมื่อกรอกจำนวนอาคารย่อยในพื้นที่โครงการ</label
+                                    >
+                                    <div class="row">
+                                        <div class="col-sm-1"></div>
+                                        <div class="col-sm-5">ชื่ออาคาร</div>
+                                        <div class="col-sm-3">
+                                            จำนวนชั้นของอาคาร
+                                        </div>
+                                        <div class="col-sm-3">
+                                            จำนวนห้องของอาคาร
                                         </div>
                                     </div>
+                                    <div
+                                        class="d-flex p-0 m-0 flex-fill"
+                                        v-for="(item, i) in form.subbuilding"
+                                        :key="i"
+                                    >
+                                        <div class="col-sm-1">
+                                            <div class="input-group">
+                                                <span
+                                                    class="input-group-text"
+                                                    >{{ i + 1 }}</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="input-group">
+                                                <input
+                                                    v-model="item.projectName"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="ชื่ออาคาร"
+                                                    value="0"
+                                                    required
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'projectName'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="input-group">
+                                                <number-input
+                                                    inline
+                                                    v-model="item.floorSum"
+                                                    :min="1"
+                                                    placeholder="จำนวนชั้นของอาคาร"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'floorSum'
+                                                        )
+                                                    }"
+                                                ></number-input>
+                                                <has-error
+                                                    :form="form"
+                                                    field="floorSum"
+                                                ></has-error>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="input-group">
+                                                <number-input
+                                                    inline
+                                                    v-model="item.roomSum"
+                                                    :min="1"
+                                                    required
+                                                    placeholder="จำนวนห้องในชั้น"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'floorSum'
+                                                        )
+                                                    }"
+                                                ></number-input>
+                                                <has-error
+                                                    :form="form"
+                                                    field="roomSum"
+                                                ></has-error>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="text-danger">***</label>
                                 </div>
-                                <label
-                                    v-show="form.subBuildingsum > 0"
-                                    class="text-danger"
-                                    >***</label
-                                >
+
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -939,9 +953,7 @@
                                     </div>
                                     <div class="col-sm-7">
                                         <div class="form-group">
-                                            <label
-                                                >Remark contract</label
-                                            >
+                                            <label>Remark contract</label>
                                             <small>/หมายเหตุรูปแบบสัญญา</small>
                                             <input
                                                 v-model="form.remarkContract"
@@ -1222,15 +1234,17 @@
                                 </button>
                                 <button
                                     v-show="editmode"
-                                    type="submit"
+                                    type="button"
                                     class="btn btn-success"
+                                    @click="updateBuilding()"
                                 >
                                     {{ translate("building.actions.update") }}
                                 </button>
                                 <button
                                     v-show="!editmode"
-                                    type="submit"
+                                    type="button"
                                     class="btn btn-primary"
+                                    @click="createBuilding()"
                                 >
                                     {{ translate("building.actions.create") }}
                                 </button>
@@ -1275,7 +1289,7 @@ export default {
                 areaAis_id: "",
                 areaFibernet_id: "",
                 projectName: "",
-                subBuildingsum: 0,
+                subBuildingsum: 1,
                 floorSum: 0,
                 roomSum: 0,
                 roadName: "",
@@ -1324,6 +1338,16 @@ export default {
         },
         subbuilding() {
             return this.form.subbuilding.length;
+        },
+        sumFloorOfSubbuilding() {
+            return this.form.subbuilding.reduce((total, obj) => {
+                return parseInt(obj.floorSum) + parseInt(total);
+            }, 0);
+        },
+        sumRoomOfSubbuilding() {
+            return this.form.subbuilding.reduce((total, obj) => {
+                return parseInt(obj.roomSum) + parseInt(total);
+            }, 0);
         }
     },
     watch: {
@@ -1333,26 +1357,39 @@ export default {
                 // console.log(response.data);
                 this.bbns = response.data.data;
             });
+        },
+        form: {
+            deep: true,
+            handler(value) {
+                if (this.form.subBuildingsum > 1) {
+                    this.form.floorSum = this.sumFloorOfSubbuilding;
+                    this.form.roomSum = this.sumRoomOfSubbuilding;
+                }
+            }
         }
     },
     methods: {
         onSubBuildingUpdate(newVal, oldVal) {
             console.log(newVal, oldVal);
             if (this.subbuilding != newVal) {
-                if (newVal >= oldVal) {
+                if (newVal > oldVal) {
                     const loop = newVal - this.subbuilding;
-                    if (loop > 0) {
+                    if (loop >= 1) {
                         for (var i = 0; i < loop; i++) {
                             this.form.subbuilding.push({
                                 projectName: "",
-                                floorSum: "",
-                                roomSum: ""
+                                floorSum: 0,
+                                roomSum: 0
                             });
                         }
                     }
                 } else if (newVal < oldVal) {
                     const loop = this.subbuilding - newVal;
-                    if (loop > 0) {
+                    console.log("onSubBuildingUpdate else" + loop);
+                    if (newVal == 1) {
+                        this.form.subbuilding = [];
+                    }
+                    if (loop >= 1) {
                         for (var i = 0; i < loop; i++) {
                             this.form.subbuilding.pop();
                         }
@@ -1457,6 +1494,7 @@ export default {
             this.editmode = false;
             this.selected = "";
             this.form.reset();
+            this.form.errors.clear();
             $("#addNew").modal("show");
         },
         deleteBuilding(item) {
@@ -1499,6 +1537,7 @@ export default {
             });
         },
         createBuilding() {
+            console.log("createBuilding");
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form

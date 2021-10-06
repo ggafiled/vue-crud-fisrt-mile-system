@@ -177,13 +177,13 @@ class PlaningController extends BaseController
                     ->get()
                     ->map(function ($item) use ($collection) {
                         $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
-                        $collection["title"] = $item->building->name;
-                        $collection["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
+                        $collection["options"]["title"] = $item->building->name;
+                        $collection["options"]["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
                     <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
                     <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
                     <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
                     </div>";
-                        $collection["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
+                        $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
                         return $collection;
                     });
             } else {
@@ -197,13 +197,13 @@ class PlaningController extends BaseController
                     ->get()
                     ->map(function ($item) use ($collection) {
                         $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
-                        $collection["title"] = $item->building->name;
-                        $collection["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
+                        $collection["options"]["title"] = $item->building->name;
+                        $collection["options"]["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
                     <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
                     <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
                     <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
                     </div>";
-                        $collection["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
+                        $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
                         return $collection;
                     });
             }
