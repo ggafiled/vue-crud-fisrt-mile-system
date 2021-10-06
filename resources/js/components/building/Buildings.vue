@@ -280,8 +280,12 @@
                                     <div class="row">
                                         <div class="col-sm-1"></div>
                                         <div class="col-sm-5">ชื่ออาคาร</div>
-                                        <div class="col-sm-3">จำนวนชั้นของอาคาร</div>
-                                        <div class="col-sm-3">จำนวนห้องของอาคาร</div>
+                                        <div class="col-sm-3">
+                                            จำนวนชั้นของอาคาร
+                                        </div>
+                                        <div class="col-sm-3">
+                                            จำนวนห้องของอาคาร
+                                        </div>
                                     </div>
                                     <div
                                         class="d-flex p-0 m-0 flex-fill"
@@ -1357,8 +1361,10 @@ export default {
         form: {
             deep: true,
             handler(value) {
-                this.form.floorSum = this.sumFloorOfSubbuilding;
-                this.form.roomSum = this.sumRoomOfSubbuilding;
+                if (this.form.subBuildingsum > 1) {
+                    this.form.floorSum = this.sumFloorOfSubbuilding;
+                    this.form.roomSum = this.sumRoomOfSubbuilding;
+                }
             }
         }
     },
