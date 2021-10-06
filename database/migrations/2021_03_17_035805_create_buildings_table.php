@@ -53,6 +53,7 @@ class CreateBuildingsTable extends Migration
             $table->string('contractTerm')->nullable();//อายุสัญญา
             $table->date('contractEndDate')->nullable();//วันสิ้นสุดสัญญา
             $table->string('balance')->nullable();//ยอดเงิน
+            $table->string('remarkContract')->nullable();//รายละเอียดสัญญา
             $table->bigInteger('workTime_id')->unsigned();//
             $table->string('remark')->nullable();//รายละเอียด
             $table->timestamps();

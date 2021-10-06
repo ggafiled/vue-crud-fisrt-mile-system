@@ -36,7 +36,7 @@
                                                 Project Name
                                             </th>
                                             <th>
-                                               SubBuilding Sum
+                                                SubBuilding Sum
                                             </th>
                                             <th>
                                                 Floor Sum
@@ -45,7 +45,7 @@
                                                 Room Sum
                                             </th>
                                             <th>
-                                               Manager Name
+                                                Manager Name
                                             </th>
                                             <th>
                                                 Phone Manager
@@ -114,6 +114,9 @@
                                                 Balance
                                             </th>
                                             <th>
+                                                Remark Contract
+                                            </th>
+                                            <th>
                                                 Remark
                                             </th>
                                             <th>
@@ -166,11 +169,7 @@
 
                         <!-- <form @submit.prevent="createUser"> -->
 
-                        <form
-                            @submit.prevent="
-                                editmode ? updateBuilding() : createBuilding()
-                            "
-                        >
+                        <form>
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -190,6 +189,7 @@
                                             />
                                         </div>
                                     </div>
+
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Buildingsum</label>
@@ -210,7 +210,7 @@
                                                 inline
                                                 controls
                                                 v-model="form.subBuildingsum"
-                                                :min="0"
+                                                :min="1"
                                                 @change="onSubBuildingUpdate"
                                             ></number-input>
                                             <has-error
@@ -231,7 +231,7 @@
                                                 class="form-control"
                                                 placeholder="ชั้น"
                                                 :disabled="
-                                                    form.subBuildingsum > 0
+                                                    form.subBuildingsum > 1
                                                 "
                                                 :class="{
                                                     'is-invalid': form.errors.has(
@@ -257,7 +257,7 @@
                                                 class="form-control"
                                                 placeholder="ห้อง"
                                                 :disabled="
-                                                    form.subBuildingsum > 0
+                                                    form.subBuildingsum > 1
                                                 "
                                                 :class="{
                                                     'is-invalid': form.errors.has(
@@ -272,88 +272,90 @@
                                         </div>
                                     </div>
                                 </div>
-                                <label
-                                    v-show="form.subBuildingsum > 0"
-                                    class="text-danger"
-                                    >***เงื่อนไข
-                                    เมื่อกรอกจำนวนอาคารย่อยในพื้นที่โครงการ</label
-                                >
-                                <div
-                                    class="row"
-                                    v-for="(item, i) in form.subbuilding"
-                                    :key="i"
-                                >
-                                    <div class="col-sm-8">
-                                        <div class="form-group">
-                                            <label>Project Name</label>
-                                            <small>/ชื่อโปรเจ็ค</small>
-                                            <input
-                                                v-model="item.projectName"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="ชื่อโปรเจ็ค"
-                                                required
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'projectName'
-                                                    )
-                                                }"
-                                            />
+                                <div v-show="form.subBuildingsum > 1">
+                                    <label class="text-danger"
+                                        >***เงื่อนไข
+                                        เมื่อกรอกจำนวนอาคารย่อยในพื้นที่โครงการ</label
+                                    >
+                                    <div class="row">
+                                        <div class="col-sm-1"></div>
+                                        <div class="col-sm-5">ชื่ออาคาร</div>
+                                        <div class="col-sm-3">จำนวนชั้นของอาคาร</div>
+                                        <div class="col-sm-3">จำนวนห้องของอาคาร</div>
+                                    </div>
+                                    <div
+                                        class="d-flex p-0 m-0 flex-fill"
+                                        v-for="(item, i) in form.subbuilding"
+                                        :key="i"
+                                    >
+                                        <div class="col-sm-1">
+                                            <div class="input-group">
+                                                <span
+                                                    class="input-group-text"
+                                                    >{{ i + 1 }}</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="input-group">
+                                                <input
+                                                    v-model="item.projectName"
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="ชื่ออาคาร"
+                                                    value="0"
+                                                    required
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'projectName'
+                                                        )
+                                                    }"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="input-group">
+                                                <number-input
+                                                    inline
+                                                    v-model="item.floorSum"
+                                                    :min="1"
+                                                    placeholder="จำนวนชั้นของอาคาร"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'floorSum'
+                                                        )
+                                                    }"
+                                                ></number-input>
+                                                <has-error
+                                                    :form="form"
+                                                    field="floorSum"
+                                                ></has-error>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="input-group">
+                                                <number-input
+                                                    inline
+                                                    v-model="item.roomSum"
+                                                    :min="1"
+                                                    required
+                                                    placeholder="จำนวนห้องในชั้น"
+                                                    :class="{
+                                                        'is-invalid': form.errors.has(
+                                                            'floorSum'
+                                                        )
+                                                    }"
+                                                ></number-input>
+                                                <has-error
+                                                    :form="form"
+                                                    field="roomSum"
+                                                ></has-error>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>Floor</label>
-                                            <small>/ชั้น</small>
-                                            <input
-                                                v-model="item.floorSum"
-                                                type="number"
-                                                min="0"
-                                                class="form-control"
-                                                required
-                                                placeholder="ชั้น"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'floorSum'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="floorSum"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-2">
-                                        <div class="form-group">
-                                            <label>Room</label>
-                                            <small>/ห้อง</small>
-                                            <input
-                                                v-model="item.roomSum"
-                                                type="number"
-                                                min="0"
-                                                class="form-control"
-                                                required
-                                                placeholder="ห้อง"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'roomSum'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="roomSum"
-                                            ></has-error>
-                                        </div>
-                                    </div>
+                                    <label class="text-danger">***</label>
                                 </div>
-                                <label
-                                    v-show="form.subBuildingsum > 0"
-                                    class="text-danger"
-                                    >***</label
-                                >
+
                                 <hr />
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -801,7 +803,8 @@
                                                 v-model="form.saleFm_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -823,18 +826,16 @@
                                             ><br />
                                             <small>/วันเริ่มทำสัญญา</small>
                                             <input
-                                                    v-model="
-                                                        form.contractStartDate
-                                                    "
-                                                    type="date"
-                                                    class="form-control"
-                                                    :disabled="editmode"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'contractStartDate'
-                                                        )
-                                                    }"
-                                                />
+                                                v-model="form.contractStartDate"
+                                                type="date"
+                                                class="form-control"
+                                                :disabled="editmode"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'contractStartDate'
+                                                    )
+                                                }"
+                                            />
                                             <has-error
                                                 :form="form"
                                                 field="contractStartDate"
@@ -847,19 +848,17 @@
                                             ><br />
                                             <small>/วันสิ้นสุดทำสัญญา</small>
                                             <input
-                                                    ref="contractEndDate"
-                                                    v-model="
-                                                        form.contractEndDate
-                                                    "
-                                                    type="date"
-                                                    class="form-control"
-                                                    :disabled="editmode"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'contractEndDate'
-                                                        )
-                                                    }"
-                                                />
+                                                ref="contractEndDate"
+                                                v-model="form.contractEndDate"
+                                                type="date"
+                                                class="form-control"
+                                                :disabled="editmode"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'contractEndDate'
+                                                    )
+                                                }"
+                                            />
                                             <has-error
                                                 :form="form"
                                                 field="contractEndDate"
@@ -877,7 +876,8 @@
                                                 v-model="form.paymentType_id"
                                             >
                                                 <option disabled value=""
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -919,7 +919,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div
+                                    class="row"
+                                    v-show="
+                                        form.paymentType_id == '' ||
+                                            form.paymentType_id == 'ชำระรายปี'
+                                    "
+                                >
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Price to Pay</label>
@@ -941,6 +947,27 @@
                                             ></has-error>
                                         </div>
                                     </div>
+                                    <div class="col-sm-7">
+                                        <div class="form-group">
+                                            <label>Remark contract</label>
+                                            <small>/หมายเหตุรูปแบบสัญญา</small>
+                                            <input
+                                                v-model="form.remarkContract"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="หมายเหตุรูปแบบสัญญา"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'remarkContract'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="remarkContract"
+                                            ></has-error>
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr />
                                 <div class="row">
@@ -954,7 +981,8 @@
                                                 v-model="form.areas_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1008,7 +1036,8 @@
                                                 v-model="form.area3bb_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1034,7 +1063,8 @@
                                                 v-model="form.areaTrue_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1060,7 +1090,8 @@
                                                 v-model="form.areaTrueNew_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1086,7 +1117,8 @@
                                                 v-model="form.areaAis_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1116,7 +1148,8 @@
                                                 v-model="form.areaFibernet_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1144,7 +1177,8 @@
                                                 v-model="form.workTime_id"
                                             >
                                                 <option value="" disabled
-                                                    >--- Select a Class ---</option
+                                                    >--- Select a Class
+                                                    ---</option
                                                 >
                                                 <option
                                                     :value="item.id"
@@ -1196,15 +1230,17 @@
                                 </button>
                                 <button
                                     v-show="editmode"
-                                    type="submit"
+                                    type="button"
                                     class="btn btn-success"
+                                    @click="updateBuilding()"
                                 >
                                     {{ translate("building.actions.update") }}
                                 </button>
                                 <button
                                     v-show="!editmode"
-                                    type="submit"
+                                    type="button"
                                     class="btn btn-primary"
+                                    @click="createBuilding()"
                                 >
                                     {{ translate("building.actions.create") }}
                                 </button>
@@ -1222,7 +1258,7 @@ import { mapGetters, mapState } from "vuex";
 import NumberInput from "../partials/NumberInput.vue";
 export default {
     title: "All -",
-    components: {NumberInput},
+    components: { NumberInput },
     data() {
         return {
             loader: null,
@@ -1249,7 +1285,7 @@ export default {
                 areaAis_id: "",
                 areaFibernet_id: "",
                 projectName: "",
-                subBuildingsum: 0,
+                subBuildingsum: 1,
                 floorSum: 0,
                 roomSum: 0,
                 roadName: "",
@@ -1272,11 +1308,11 @@ export default {
                 postalCode: "",
                 latitude: "",
                 longitude: "",
-                contractStartDate: new Date().toISOString().slice(0,10),
+                contractStartDate: new Date().toISOString().slice(0, 10),
                 paymentType_id: "",
                 saleFm_id: "",
                 contractTerm: "",
-                contractEndDate: new Date().toISOString().slice(0,10),
+                contractEndDate: new Date().toISOString().slice(0, 10),
                 balance: "",
                 workTime_id: "",
                 remark: "",
@@ -1298,6 +1334,16 @@ export default {
         },
         subbuilding() {
             return this.form.subbuilding.length;
+        },
+        sumFloorOfSubbuilding() {
+            return this.form.subbuilding.reduce((total, obj) => {
+                return parseInt(obj.floorSum) + parseInt(total);
+            }, 0);
+        },
+        sumRoomOfSubbuilding() {
+            return this.form.subbuilding.reduce((total, obj) => {
+                return parseInt(obj.roomSum) + parseInt(total);
+            }, 0);
         }
     },
     watch: {
@@ -1307,26 +1353,37 @@ export default {
                 // console.log(response.data);
                 this.bbns = response.data.data;
             });
+        },
+        form: {
+            deep: true,
+            handler(value) {
+                this.form.floorSum = this.sumFloorOfSubbuilding;
+                this.form.roomSum = this.sumRoomOfSubbuilding;
+            }
         }
     },
     methods: {
         onSubBuildingUpdate(newVal, oldVal) {
             console.log(newVal, oldVal);
             if (this.subbuilding != newVal) {
-                if (newVal >= oldVal) {
+                if (newVal > oldVal) {
                     const loop = newVal - this.subbuilding;
-                    if (loop > 0) {
+                    if (loop >= 1) {
                         for (var i = 0; i < loop; i++) {
                             this.form.subbuilding.push({
                                 projectName: "",
-                                floorSum: "",
-                                roomSum: ""
+                                floorSum: 0,
+                                roomSum: 0
                             });
                         }
                     }
                 } else if (newVal < oldVal) {
                     const loop = this.subbuilding - newVal;
-                    if (loop > 0) {
+                    console.log("onSubBuildingUpdate else" + loop);
+                    if (newVal == 1) {
+                        this.form.subbuilding = [];
+                    }
+                    if (loop >= 1) {
                         for (var i = 0; i < loop; i++) {
                             this.form.subbuilding.pop();
                         }
@@ -1431,6 +1488,7 @@ export default {
             this.editmode = false;
             this.selected = "";
             this.form.reset();
+            this.form.errors.clear();
             $("#addNew").modal("show");
         },
         deleteBuilding(item) {
@@ -1473,6 +1531,7 @@ export default {
             });
         },
         createBuilding() {
+            console.log("createBuilding");
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.form
@@ -1627,7 +1686,8 @@ export default {
                         render: function(data, type, row, meta) {
                             return (
                                 '<span><i class="bi bi-building pr-2"></i>' +
-                                data + " ตึก" +
+                                data +
+                                " ตึก" +
                                 "</span>"
                             );
                         }
@@ -1707,6 +1767,9 @@ export default {
                     },
                     {
                         data: "balance"
+                    },
+                    {
+                        data: "remarkContract"
                     },
                     {
                         data: "remark"
