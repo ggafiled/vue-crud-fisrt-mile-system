@@ -306,7 +306,7 @@
                                                     v-model="item.projectName"
                                                     type="text"
                                                     class="form-control"
-                                                    placeholder="ชื่ออาคาร"
+                                                    placeholder="กรอกชื่ออาคาร"
                                                     value="0"
                                                     required
                                                     :class="{
@@ -927,7 +927,8 @@
                                     class="row"
                                     v-show="
                                         form.paymentType_id == '' ||
-                                            form.paymentType_id == 'ชำระรายปี'
+                                            form.paymentType_id == '3' ||
+                                            form.paymentType_id == '1'
                                     "
                                 >
                                     <div class="col-sm-2">
@@ -937,6 +938,7 @@
                                             <input
                                                 v-model="form.balance"
                                                 type="text"
+                                                value="0"
                                                 class="form-control"
                                                 placeholder="ยอดเงิน"
                                                 :class="{
@@ -951,7 +953,9 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-7">
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <label>Remark contract</label>
                                             <small>/หมายเหตุรูปแบบสัญญา</small>
@@ -1317,7 +1321,7 @@ export default {
                 saleFm_id: "",
                 contractTerm: "",
                 contractEndDate: new Date().toISOString().slice(0, 10),
-                balance: "",
+                balance: 0,
                 workTime_id: "",
                 remark: "",
                 subbuilding: []
