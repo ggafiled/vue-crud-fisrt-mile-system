@@ -22,6 +22,7 @@ class Planing extends Model
         'callverStatus_id',
         'ispId_id',
         'problemsolution_id',
+        'type',
         'name',
         'surname',
         'tel',

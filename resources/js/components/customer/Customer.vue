@@ -32,6 +32,9 @@
                                     <tr class="info">
                                         <th></th>
                                         <th>
+                                            Type
+                                        </th>
+                                        <th>
                                             {{
                                                 translate(
                                                     "planing.planing_task_number"
@@ -816,6 +819,42 @@
                                             ></has-error>
                                         </div>
                                     </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Tpye*</label>
+                                            <select
+                                                v-model="form.type"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="FM-Progress"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'type'
+                                                    )
+                                                }"
+                                            >
+                                                <option disabled value=""
+                                                    >--- Select Type ---</option
+                                                >
+                                                <option value="ติดตั้ง"
+                                                    >ติดตั้ง</option
+                                                >
+                                                <option value=" ซ่อม"
+                                                    >ซ่อม</option
+                                                >
+                                                <option value="Blow Fiber"
+                                                    >Blow Fiber</option
+                                                >
+                                                <option value="ซ่อมแซมฝ้า"
+                                                    >ซ่อมแซมฝ้า</option
+                                                >
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="type"
+                                            ></has-error>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -990,6 +1029,7 @@ export default {
                 callverstatus: "",
                 ispId: "",
                 problemsolution: "",
+                type: "",
                 name: "",
                 surname: "",
                 tel: "",
@@ -1260,6 +1300,9 @@ export default {
                                 "</a>"
                             );
                         }
+                    },
+                    {
+                        data: "type"
                     },
                     {
                         data: "name",

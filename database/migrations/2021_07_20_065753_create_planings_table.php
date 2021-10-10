@@ -26,7 +26,8 @@ class CreatePlaningsTable extends Migration
             $table->bigInteger('callverStatus_id')->unsigned();//สถานะการติดต่อ
             $table->bigInteger('ispId_id')->unsigned();//ผู้ให้ บริการ
             $table->bigInteger('problemsolution_id')->unsigned();//ปัญหาและวิธีการแก้ไข
-            $table->string('name')->nullable();//ชื่อ
+            $table->string('type')->nullable();//Type งาน
+            $table->string('name')->nullable();//ชื่อ/บริษัท
             $table->string('surname')->nullable();//นามสกุล
             $table->string('tel')->nullable();//เบอร์โทร
             $table->string('tel2')->nullable();//เบอร์โทร2

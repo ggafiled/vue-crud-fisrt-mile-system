@@ -71,6 +71,7 @@ class PlaningController extends BaseController
                 'callverStatus_id' => $request->input('callverStatus_id'),
                 'ispId_id' => $request->input('ispId_id'),
                 'problemsolution_id' => $request->input('problemsolution_id'),
+                'type' => $request->input('type'),
                 'name' => $request->input('name'),
                 'surname' => $request->input('surname'),
                 'tel' => $request->input('tel'),
