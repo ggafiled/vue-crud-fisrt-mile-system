@@ -35,6 +35,7 @@ class Planing extends Model
         'entranceFee',
         'appointmentDate',
         'appointmentTime',
+        'status',
         'subStatus',
         'reMark'
     ];

@@ -136,79 +136,6 @@
                           'is-invalid': form.errors.has('projectNameTot'),
                         }"
                       />
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <div class="form-group">
-
-                            <input
-                              v-model="form.nameTechnician"
-                              type="text"
-                              class="form-control"
-                              placeholder="ชื่อช่าง"
-                              :class="{
-                                'is-invalid': form.errors.has('nameTechnician'),
-                              }"
-                            />
-                            <has-error
-                              :form="form"
-                              field="nameTechnician"
-                            ></has-error>
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <input
-                              v-model="form.phoneTechnician"
-                              type="text"
-                              class="form-control"
-                              placeholder="เบอร์ช่าง"
-                              :class="{
-                                'is-invalid':
-                                  form.errors.has('phoneTechnician'),
-                              }"
-                            />
-                            <has-error
-                              :form="form"
-                              field="phoneTechnician"
-                            ></has-error>
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <input
-                              v-model="form.nameTechnician"
-                              type="text"
-                              class="form-control"
-                              placeholder="ชื่อช่าง"
-                              :class="{
-                                'is-invalid': form.errors.has('nameTechnician'),
-                              }"
-                            />
-                            <has-error
-                              :form="form"
-                              field="nameTechnician"
-                            ></has-error>
-                          </div>
-                        </div>
-                        <div class="col-sm-6">
-                          <div class="form-group">
-                            <input
-                              v-model="form.phoneTechnician"
-                              type="text"
-                              class="form-control"
-                              placeholder="เบอร์ช่าง"
-                              :class="{
-                                'is-invalid':
-                                  form.errors.has('phoneTechnician'),
-                              }"
-                            />
-                            <has-error
-                              :form="form"
-                              field="phoneTechnician"
-                            ></has-error>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -229,12 +156,12 @@
                         <input type="radio" name="aisName" />ต่างชื่อกัน
                       </label>
                       <input
-                        v-model="form.projectNameTot"
+                        v-model="form.projectNameAis"
                         type="text"
                         class="form-control"
                         placeholder="ชื่อโครงการของทีเอไอเอส"
                         :class="{
-                          'is-invalid': form.errors.has('projectNameTot'),
+                          'is-invalid': form.errors.has('projectNameAis'),
                         }"
                       />
                     </div>
@@ -257,12 +184,12 @@
                         <input type="radio" name="tbbName" />ต่างชื่อกัน
                       </label>
                       <input
-                        v-model="form.projectNameTot"
+                        v-model="form.projectName3bb"
                         type="text"
                         class="form-control"
                         placeholder="ชื่อโครงการของสามบีบี"
                         :class="{
-                          'is-invalid': form.errors.has('projectNameTot'),
+                          'is-invalid': form.errors.has('projectName3bb'),
                         }"
                       />
                     </div>
@@ -285,102 +212,21 @@
                         <input type="radio" name="trueName" />ต่างชื่อกัน
                       </label>
                       <input
-                        v-model="form.projectNameTot"
+                        v-model="form.projectNameTrue"
                         type="text"
                         class="form-control"
                         placeholder="ชื่อโครงการของทรู"
                         :class="{
-                          'is-invalid': form.errors.has('projectNameTot'),
+                          'is-invalid': form.errors.has('projectNameTrue'),
                         }"
                       />
                     </div>
                   </div>
                 </div>
 
-<<<<<<< HEAD
-                                <hr />
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>FM-Progress*</label>
-                                            <select
-                                                v-model="form.fmProgress"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="FM-Progress"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'fmProgress'
-                                                    )
-                                                }"
-                                            >
-                                                <option disabled value=""
-                                                    >--- Select Type ---</option
-                                                >
-                                                <option value="Now Building"
-                                                    >Now Building</option
-                                                >
-                                                <option value="Old Building"
-                                                    >Old Building</option
-                                                >
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="fmProgress"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <label>Surwey/Design</label>
-                                            <div class="input-group mb-3">
-                                                <input
-                                                    v-model="form.teamserway"
-                                                    type="text"
-                                                    class="form-control"
-                                                    placeholder="Surwey/Design"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'teamserway'
-                                                        )
-                                                    }"
-                                                />
-                                            </div>
-                                            <has-error
-                                                :form="form"
-                                                field="teamserway"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <label>Date Surwey/Design</label>
-                                            <div class="input-group mb-3">
-                                                <input
-                                                    v-model="form.surweyDate"
-                                                    type="date"
-                                                    class="form-control"
-                                                    placeholder="DateSurwey/Design"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'surweyDate'
-                                                        )
-                                                    }"
-                                                />
-                                            </div>
-                                            <has-error
-                                                :form="form"
-                                                field="surweyDate"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
-=======
                 <hr />
                 <div class="row">
-                  <div class="col-sm-2">
+                  <div class="col-sm-3">
                     <div class="form-group">
                       <label>FM-Progress*</label>
                       <select
@@ -436,7 +282,6 @@
                     </div>
                   </div>
                 </div>
->>>>>>> 529a853f82f255012bbd4c33b2e3241dbee893e3
 
                 <div class="row">
                   <div class="col-sm-3">
@@ -1148,7 +993,7 @@ export default {
         fixedHeader: true,
         fixedColumns: true,
         fixedColumns: {
-          leftColumns: 0,
+          leftColumns: 2,
           rightColumns: 1,
         },
         scrollX: true,
