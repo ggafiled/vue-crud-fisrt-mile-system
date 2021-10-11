@@ -32,9 +32,6 @@
                                     <tr class="info">
                                         <th></th>
                                         <th>
-                                            Type
-                                        </th>
-                                        <th>
                                             {{
                                                 translate(
                                                     "planing.planing_task_number"
@@ -42,200 +39,95 @@
                                             }}
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_name"
-                                                )
-                                            }}
+                                            Type
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_surname"
-                                                )
-                                            }}
+                                            ชื่อ/บริษัท
                                         </th>
                                         <th>
-                                            {{
-                                                translate("planing.planing_tel")
-                                            }}
+                                            นามสกุล
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_tel2"
-                                                )
-                                            }}
+                                            เบอร์โทร
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_building"
-                                                )
-                                            }}
+                                            เบอร์โทร2
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "building.building_housenumber"
-                                                )
-                                            }}
+                                            ชื่อตึก
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "building.building_alley"
-                                                )
-                                            }}
+                                            บ้านเลขที่
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "building.building_swine"
-                                                )
-                                            }}
+                                            ซอย
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "building.building_road"
-                                                )
-                                            }}
+                                            หมู่
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "building.building_districtdistrict"
-                                                )
-                                            }}
+                                            ถนน
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "building.building_province"
-                                                )
-                                            }}
+                                            อำเภอ
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "building.building_Sub-district"
-                                                )
-                                            }}
+                                            จังหวัด
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "building.building_postalcode"
-                                                )
-                                            }}
+                                            ตำบล
+                                        </th>
+                                        <th>
+                                            รหัสไปรษณีย์
                                         </th>
                                         <th>Longitude</th>
                                         <th>Latitude</th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_theBuilding"
-                                                )
-                                            }}
+                                            จำนวนอาคาร
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_floor"
-                                                )
-                                            }}
+                                            จำนวนชั้น
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_room"
-                                                )
-                                            }}
+                                            จำนวนห้อง
                                         </th>
                                         <th>
-                                            {{
-                                                translate("planing.planing_isp")
-                                            }}
+                                            เครือข่ายที่ติดตั้ง
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_agentdetail"
-                                                )
-                                            }}
+                                            รายละเอียดตัวแทน
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_circuit"
-                                                )
-                                            }}
+                                            เลข circuit
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_entrancefee"
-                                                )
-                                            }}
+                                            ค่าธรรมเนียมแรกเข้า
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_jobtype"
-                                                )
-                                            }}
+                                            ประเภทงาน
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_appointmentdate"
-                                                )
-                                            }}
+                                            วันที่นัดหมาย
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_appointmenttime"
-                                                )
-                                            }}
+                                            เวลานัดหมาย
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_technician"
-                                                )
-                                            }}
+                                            ช่าง
                                         </th>
                                         <th>เบอร์โทร</th>
                                         <th>อีเมลล์</th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_ispid"
-                                                )
-                                            }}
+                                            ผู้ให้บริการ
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_status"
-                                                )
-                                            }}
+                                            status
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_subStatus"
-                                                )
-                                            }}
+                                            sub-Status
                                         </th>
                                         <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_remark"
-                                                )
-                                            }}
+                                            รีมาร์ค (For Admin)
                                         </th>
                                         <th>Create At</th>
                                         <th>Updated At</th>
