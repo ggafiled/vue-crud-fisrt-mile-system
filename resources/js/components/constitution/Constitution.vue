@@ -745,15 +745,20 @@
                     <!-- text input -->
                     <div class="form-group">
                       <label>Select a Images </label>
+                      <div class="input-group">
                       <uploader
                         v-model="fileList"
                         :url="remoteUrl"
+                        title="Images"
+                        limit="24"
+                        multiple
                         @on-change="onChange"
                         @on-cancel="onCancel"
                         @on-success="onSuccess"
                         @on-error="onError"
                         @on-delete="onDelete"
                       ></uploader>
+                      </div>
                     </div>
                     <has-error :form="form" field="spliceStatus"></has-error>
                   </div>
