@@ -739,6 +739,25 @@
                     </div>
                   </div>
                 </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-12">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Select a Images </label>
+                      <uploader
+                        v-model="fileList"
+                        :url="remoteUrl"
+                        @on-change="onChange"
+                        @on-cancel="onCancel"
+                        @on-success="onSuccess"
+                        @on-error="onError"
+                        @on-delete="onDelete"
+                      ></uploader>
+                    </div>
+                    <has-error :form="form" field="spliceStatus"></has-error>
+                  </div>
+                </div>
               </div>
               <div class="modal-footer">
                 <button
@@ -769,10 +788,12 @@
 
 <script>
 import Select2 from "v-select2-component";
+import Uploader from "vux-uploader-component";
 
 export default {
   title: "Constarution -",
-  components: { Select2 },
+  components: { Select2, Uploader },
+  
   data() {
     return {
       loader: null,
@@ -781,6 +802,7 @@ export default {
       building: [],
       generatingactions: [],
       teamserways: [],
+      fileList: [],
       settings: {
         placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
         allowClear: false,

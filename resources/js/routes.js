@@ -14,6 +14,14 @@ export default [{
         }
     },
     {
+        path: "/test",
+        component: require("./components/building/Test.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user"]
+        }
+    },
+    {
         path: "/building/all",
         component: require("./components/building/BuildingList.vue").default,
         meta: {
