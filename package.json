@@ -128,6 +128,7 @@
         "vue-property-decorator": "^8.0.0",
         "vue-router": "^3.5.1",
         "vue-select2": "^0.2.6",
+        "vue-step-wizard": "^0.1.17",
         "vue-thailand-address-autocomplete": "^0.1.1",
         "vue2-editor": "^2.10.2",
         "vue2-timepicker": "^1.1.6",

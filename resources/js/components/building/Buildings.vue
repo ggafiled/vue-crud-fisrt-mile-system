@@ -194,18 +194,6 @@
                                         <div class="form-group">
                                             <label>Buildingsum</label>
                                             <small>/จำนวนอาคาร</small>
-                                            <!-- <input
-                                                v-model="form.subBuildingsum"
-                                                type="number"
-                                                min="0"
-                                                class="form-control"
-                                                placeholder="จำนวนอาคาร"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'subBuildingsum'
-                                                    )
-                                                }"
-                                            /> -->
                                             <number-input
                                                 inline
                                                 controls
