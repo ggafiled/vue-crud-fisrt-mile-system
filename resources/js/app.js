@@ -77,6 +77,11 @@ Vue.use(ColorPicker);
 import ThailandAutoComplete from "vue-thailand-address-autocomplete";
 Vue.component("ThailandAutoComplete", ThailandAutoComplete);
 
+import VueStepWizard from "vue-step-wizard";
+Vue.use(VueStepWizard);
+
+import VueFormWizard from "vue-form-wizard";
+Vue.use(VueFormWizard);
 /**
  * Custom mixins function to rename title.
  */

@@ -169,35 +169,46 @@
 
                         <!-- <form @submit.prevent="createUser"> -->
 
-                        <form>
-                            <div class="modal-body">
+                        <form-wizard
+                            ref="wizard"
+                            :title="null" :subtitle="null"
+                            color="#4051B7"
+                            shape="eclipse"
+                            stepSize="xs"
+
+                        >
+                            <wizard-step
+                                slot-scope="props"
+                                slot="step"
+                                :tab="props.tab"
+                                :transition="props.transition"
+                                :index="props.index"
+                            >
+                            </wizard-step>
+                            <tab-content title="Sub-Building" :selected="true">
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <label>Project Name</label>
                                             <small>/ชื่อโปรเจ็ค</small>
                                             <input
-                                                v-model="form.projectName"
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="ชื่อโปรเจ็ค"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'projectName'
-                                                    )
-                                                }"
+                                                v-model="form.projectName"
                                             />
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-2">
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Buildingsum</label>
                                             <small>/จำนวนอาคาร</small>
                                             <number-input
+                                                v-model="form.subBuildingsum"
                                                 inline
                                                 controls
-                                                v-model="form.subBuildingsum"
                                                 :min="1"
                                                 @change="onSubBuildingUpdate"
                                             ></number-input>
@@ -207,25 +218,19 @@
                                             ></has-error>
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Floor</label>
                                             <small>/ชั้น</small>
                                             <input
-                                                v-model="form.floorSum"
                                                 type="number"
                                                 min="0"
                                                 class="form-control"
                                                 placeholder="ชั้น"
+                                                v-model="form.floorSum"
                                                 :disabled="
                                                     form.subBuildingsum > 1
                                                 "
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'floorSum'
-                                                    )
-                                                }"
                                             />
                                             <has-error
                                                 :form="form"
@@ -233,25 +238,19 @@
                                             ></has-error>
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Room</label>
                                             <small>/ห้อง</small>
                                             <input
-                                                v-model="form.roomSum"
                                                 type="number"
                                                 min="0"
                                                 class="form-control"
                                                 placeholder="ห้อง"
+                                                v-model="form.roomSum"
                                                 :disabled="
                                                     form.subBuildingsum > 1
                                                 "
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'roomSum'
-                                                    )
-                                                }"
                                             />
                                             <has-error
                                                 :form="form"
@@ -347,8 +346,8 @@
                                     </div>
                                     <label class="text-danger">***</label>
                                 </div>
-
-                                <hr />
+                            </tab-content>
+                            <tab-content title="Project Detail">
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
@@ -549,7 +548,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <hr />
                                 <div class="row">
                                     <div class="col">
@@ -767,26 +765,11 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-sm-2">
-                                        <div
-                                            class="form-group mx-auto mt-auto mb-auto"
-                                        >
-                                            <button
-                                                type="button"
-                                                class="btn btn-outline-success mx-auto mt-auto mb-auto btn-block"
-                                                @click="openMapPickerLocation"
-                                            >
-                                                <i
-                                                    class="mdi mdi-map-marker-radius-outline"
-                                                ></i>
-                                                Pick
-                                            </button>
-                                        </div>
-                                    </div> -->
                                 </div>
-                                <hr />
+                            </tab-content>
+                            <tab-content title="Sale Detail">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Sale Name</label><br />
                                             <small>/ชื่อเซลล์</small>
@@ -812,7 +795,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Date Contact Start</label
                                             ><br />
@@ -834,7 +817,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Date Contact End</label
                                             ><br />
@@ -885,7 +868,8 @@
                                             ></has-error>
                                         </div>
                                     </div>
-
+                                </div>
+                                <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Revenue sharing model</label
@@ -910,23 +894,14 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                </div>
-                                <div
-                                    class="row"
-                                    v-show="
-                                        form.paymentType_id == '' ||
-                                            form.paymentType_id == '3' ||
-                                            form.paymentType_id == '1'
-                                    "
-                                >
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Price to Pay</label>
+                                            <br />
                                             <small>/ยอดเงิน</small>
                                             <input
                                                 v-model="form.balance"
                                                 type="text"
-                                                value="0"
                                                 class="form-control"
                                                 placeholder="ยอดเงิน"
                                                 :class="{
@@ -947,11 +922,11 @@
                                         <div class="form-group">
                                             <label>Remark contract</label>
                                             <small>/หมายเหตุรูปแบบสัญญา</small>
-                                            <input
+                                            <textarea
+                                                id="remark"
                                                 v-model="form.remarkContract"
-                                                type="text"
                                                 class="form-control"
-                                                placeholder="หมายเหตุรูปแบบสัญญา"
+                                                placeholder="-"
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'remarkContract'
@@ -965,13 +940,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
+                            </tab-content>
+                            <tab-content title="Area Project">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.area")
-                                            }}</label>
+                                            <label>Area</label><br />
+                                            <small>/พื้นที่</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areas_id"
@@ -994,11 +969,10 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.areabbn")
-                                            }}</label>
+                                            <label>Area BBN</label><br />
+                                            <small>/พื้นที่ บบน.</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.bbns_id"
@@ -1022,11 +996,10 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.areatbb")
-                                            }}</label>
+                                            <label>Area 3BB</label><br />
+                                            <small>/พื้นที่ สามบีบี</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.area3bb_id"
@@ -1049,11 +1022,10 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.areatrue")
-                                            }}</label>
+                                            <label>Area TRUE</label><br />
+                                            <small>/พื้นที่ ทรู</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaTrue_id"
@@ -1076,11 +1048,12 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.areaTnew")
-                                            }}</label>
+                                            <label>Area TRUE NEW</label><br />
+                                            <small>/พื้นที่ ทรูใหม่</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaTrueNew_id"
@@ -1103,11 +1076,10 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate("building.areaais")
-                                            }}</label>
+                                            <label>Area AIS</label><br />
+                                            <small>/พื้นที่ เอไอเอส</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaAis_id"
@@ -1130,15 +1102,10 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.areafibernet"
-                                                )
-                                            }}</label>
+                                            <label>Area Fibernet</label><br />
+                                            <small>/พื้นที่ ไฟเบอเน็ต</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaFibernet_id"
@@ -1161,13 +1128,10 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "building.operatingtime"
-                                                )
-                                            }}</label>
+                                            <label>Operating Time</label><br />
+                                            <small>/เวลาการเข้างาน</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.workTime_id"
@@ -1191,7 +1155,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
@@ -1215,33 +1178,50 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button
-                                    type="button"
-                                    class="btn btn-secondary"
-                                    data-dismiss="modal"
-                                >
-                                    {{ translate("building.actions.close") }}
-                                </button>
-                                <button
-                                    v-show="editmode"
-                                    type="button"
-                                    class="btn btn-success"
-                                    @click="updateBuilding()"
-                                >
-                                    {{ translate("building.actions.update") }}
-                                </button>
-                                <button
-                                    v-show="!editmode"
-                                    type="button"
-                                    class="btn btn-primary"
-                                    @click="createBuilding()"
-                                >
-                                    {{ translate("building.actions.create") }}
-                                </button>
-                            </div>
-                        </form>
+                            </tab-content>
+                            <template slot="footer" slot-scope="props">
+                                <div class="wizard-footer-left">
+                                    <wizard-button
+                                        v-if="
+                                            props.activeTabIndex > 0 &&
+                                                !props.isLastStep
+                                        "
+                                        @click.native="props.prevTab()"
+                                        :style="props.fillButtonStyle"
+                                        >Previous</wizard-button
+                                    >
+                                </div>
+                                <div class="wizard-footer-right">
+                                    <wizard-button
+                                        v-if="!props.isLastStep"
+                                        @click.native="props.nextTab()"
+                                        class="wizard-footer-right"
+                                        :style="props.fillButtonStyle"
+                                        >Next</wizard-button
+                                    >
+                                    <wizard-button
+                                        v-show="editmode && props.isLastStep"
+                                        class="wizard-footer-right finish-button"
+                                        :style="props.fillButtonStyle"
+                                        @click.native="updateBuilding()"
+                                    >
+                                        {{
+                                            translate("building.actions.update")
+                                        }}
+                                    </wizard-button>
+                                    <wizard-button
+                                        v-show="!editmode && props.isLastStep"
+                                        class="wizard-footer-right finish-button"
+                                        :style="props.fillButtonStyle"
+                                        @click.native="createBuilding()"
+                                    >
+                                        {{
+                                            translate("building.actions.create")
+                                        }}
+                                    </wizard-button>
+                                </div>
+                            </template>
+                        </form-wizard>
                     </div>
                 </div>
             </div>
@@ -1309,9 +1289,10 @@ export default {
                 saleFm_id: "",
                 contractTerm: "",
                 contractEndDate: new Date().toISOString().slice(0, 10),
-                balance: 0,
+                balance: "",
                 workTime_id: "",
-                remark: "",
+                remarkContract: "-",
+                remark: "-",
                 subbuilding: []
             })
         };
@@ -1474,6 +1455,7 @@ export default {
             this.editmode = true;
             this.form.reset();
             this.form.errors.clear();
+            this.$refs.wizard.activateAll();
             building.subbuilding = building.subbuilding;
             console.log(building);
             $("#addNew").modal("show");
@@ -1486,6 +1468,7 @@ export default {
             this.editmode = false;
             this.selected = "";
             this.form.reset();
+            this.$refs.wizard.reset();
             this.form.errors.clear();
             $("#addNew").modal("show");
         },

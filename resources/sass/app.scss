@@ -26,6 +26,8 @@
 // @import vue-loading-overlay style.
 @import "~vue-loading-overlay/dist/vue-loading.css";
 @import "~vue2-timepicker/dist/VueTimepicker.css";
+// @import "~vue-step-wizard/dist/vue-step-wizard.css";
+@import "~vue-form-wizard/dist/vue-form-wizard.min.css";
 .navbar-laravel {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -146,6 +148,10 @@
         min-height: 80px;
         max-height: 200px;
     }
+}
+
+.wizard-icon-container {
+    border-radius: 50% !important;
 }
 
 #addNew>div>div>form>div.modal-body>div:nth-child(5)>div:nth-child(3)>div>span>input {
