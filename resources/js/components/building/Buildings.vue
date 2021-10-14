@@ -1183,8 +1183,7 @@
                                 <div class="wizard-footer-left">
                                     <wizard-button
                                         v-if="
-                                            props.activeTabIndex > 0 &&
-                                                !props.isLastStep
+                                            props.activeTabIndex > 0 
                                         "
                                         @click.native="props.prevTab()"
                                         :style="props.fillButtonStyle"

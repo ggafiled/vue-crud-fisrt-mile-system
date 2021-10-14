@@ -1,1481 +1,1335 @@
 <template>
-    <form-wizard
-        title=""
-        subtitle=""
-        color="#4051B7"
-        shape="eclipse"
-        stepSize="xs"
-    >
-        <tab-content title="Sub-Building" :selected="true">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>Project Name</label>
-                        <small>/ชื่อโปรเจ็ค</small>
-                        <input
-                            type="text"
-                            class="form-control"
-                            placeholder="ชื่อโปรเจ็ค"
-                            v-model="form.projectName"
-                        />
-                    </div>
-                </div>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <i class="fas fa-fw bi bi-aspect-ratio"></i>
+              {{ translate("constitution.header") }}
+            </h2>
+            <div class="card-tools">
+              <button
+                type="button"
+                class="btn btn-sm btn-primary"
+                @click="newModal"
+              >
+                <i class="fa fa-plus-square"></i>
+                {{ translate("constitution.addnew") }}
+              </button>
             </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Buildingsum</label>
-                        <small>/จำนวนอาคาร</small>
-                        <number-input
-                            v-model="form.subBuildingsum"
-                            inline
-                            controls
-                            :min="1"
-                            @change="onSubBuildingUpdate"
-                        ></number-input>
-                        <has-error
-                            :form="form"
-                            field="subBuildingsum"
-                        ></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Floor</label>
-                        <small>/ชั้น</small>
-                        <input
-                            type="number"
-                            min="0"
-                            class="form-control"
-                            placeholder="ชั้น"
-                            v-model="form.floorSum"
-                        />
-                        <has-error :form="form" field="floorSum"></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Room</label>
-                        <small>/ห้อง</small>
-                        <input
-                            type="number"
-                            min="0"
-                            class="form-control"
-                            placeholder="ห้อง"
-                            v-model="form.roomSum"
-                        />
-                        <has-error :form="form" field="roomSum"></has-error>
-                    </div>
-                </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="table-responsive">
+              <table
+                id="constarution"
+                ref="constarution"
+                class="display nowrap"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr class="info">
+                    <th></th>
+                    <th>Project Name</th>
+                    <th>Project Name ToT</th>
+                    <th>Project Name 3BB</th>
+                    <th>Project Name True</th>
+                    <th>Project Name Ais</th>
+                    <th>Project Name FiberNet</th>
+                    <th>Building Sum</th>
+                    <th>Building Number</th>
+                    <th>Building Floor</th>
+                    <th>Unit Floor</th>
+                    <th>Fm Progress</th>
+                    <th>Team Serway</th>
+                    <th>Surwey Date</th>
+                    <th>Ifccc Type</th>
+                    <th>Ifccc Status</th>
+                    <th>Update At</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+              </table>
             </div>
-            <div v-show="form.subBuildingsum > 1">
-                <label class="text-danger"
-                    >***เงื่อนไข เมื่อกรอกจำนวนอาคารย่อยในพื้นที่โครงการ</label
-                >
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="addNew"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="addNew"
+        aria-hidden="true"
+        data-backdrop="static"
+        data-keyboard="false"
+      >
+        <div class="modal-dialog modal-xl" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" v-show="!editmode">
+                {{ translate("constitution.create.header") }}
+              </h5>
+              <h5 class="modal-title" v-show="editmode">
+                {{ translate("constitution.update.header") }}
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <!-- <form @submit.prevent="createUser"> -->
+
+            <form-wizard
+              ref="wizard"
+              :title="null"
+              :subtitle="null"
+              color="#4051B7"
+              shape="eclipse"
+              stepSize="xs"
+            >
+              <wizard-step
+                slot-scope="props"
+                slot="step"
+                :tab="props.tab"
+                :transition="props.transition"
+                :index="props.index"
+              >
+              </wizard-step>
+              <tab-content title="Project Names" :selected="true">
                 <div class="row">
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-5">ชื่ออาคาร</div>
-                    <div class="col-sm-3">
-                        จำนวนชั้นของอาคาร
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Project Name</label>
+                      <small>/ชื่อโปรเจ็ค</small>
+                      <Select2
+                        v-model="form.building_id"
+                        :options="building"
+                        :settings="settings"
+                      >
+                      </Select2>
+                      <has-error :form="form" field="projectName"></has-error>
                     </div>
-                    <div class="col-sm-3">
-                        จำนวนห้องของอาคาร
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Project Name ToT / ชื่อโครงการของทีโอที</label>
+                      <br />
+                      <label class="radio-inline">
+                        <input
+                          type="radio"
+                          name="totName"
+                          checked
+                        />ชื่อเดียวกัน
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="totName" />ต่างชื่อกัน
+                      </label>
+                      <input
+                        v-model="form.projectNameTot"
+                        type="text"
+                        class="form-control"
+                        placeholder="ชื่อโครงการของทีโอที"
+                        :class="{
+                          'is-invalid': form.errors.has('projectNameTot'),
+                        }"
+                      />
                     </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Project Name Ais / ชื่อโครงการของเอไอเอส</label>
+                      <br />
+                      <label class="radio-inline">
+                        <input
+                          type="radio"
+                          name="aisName"
+                          checked
+                        />ชื่อเดียวกัน
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="aisName" />ต่างชื่อกัน
+                      </label>
+                      <input
+                        v-model="form.projectNameAis"
+                        type="text"
+                        class="form-control"
+                        placeholder="ชื่อโครงการของทีเอไอเอส"
+                        :class="{
+                          'is-invalid': form.errors.has('projectNameAis'),
+                        }"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Project Name 3BB / ชื่อโครงการของสามบีบี</label>
+                      <br />
+                      <label class="radio-inline">
+                        <input
+                          type="radio"
+                          name="tbbName"
+                          checked
+                        />ชื่อเดียวกัน
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="tbbName" />ต่างชื่อกัน
+                      </label>
+                      <input
+                        v-model="form.projectName3bb"
+                        type="text"
+                        class="form-control"
+                        placeholder="ชื่อโครงการของสามบีบี"
+                        :class="{
+                          'is-invalid': form.errors.has('projectName3bb'),
+                        }"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Project Name True / ชื่อโครงการของทรู</label>
+                      <br />
+                      <label class="radio-inline">
+                        <input
+                          type="radio"
+                          name="trueName"
+                          checked
+                        />ชื่อเดียวกัน
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="trueName" />ต่างชื่อกัน
+                      </label>
+                      <input
+                        v-model="form.projectNameTrue"
+                        type="text"
+                        class="form-control"
+                        placeholder="ชื่อโครงการของทรู"
+                        :class="{
+                          'is-invalid': form.errors.has('projectNameTrue'),
+                        }"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </tab-content>
+              <tab-content title="Progress">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>FM-Progress*</label>
+                      <select
+                        v-model="form.fmProgress"
+                        type="text"
+                        class="form-control"
+                        placeholder="FM-Progress"
+                        :class="{
+                          'is-invalid': form.errors.has('fmProgress'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="Now Building">Now Building</option>
+                        <option value="Old Building">Old Building</option>
+                      </select>
+                      <has-error :form="form" field="fmProgress"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Surwey/Design</label>
+                      <div class="input-group mb-3">
+                        <input
+                          v-model="form.teamserway"
+                          type="text"
+                          class="form-control"
+                          placeholder="Surwey/Design"
+                          :class="{
+                            'is-invalid': form.errors.has('teamserway'),
+                          }"
+                        />
+                      </div>
+                      <has-error :form="form" field="teamserway"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Date Surwey/Design</label>
+                      <div class="input-group mb-3">
+                        <input
+                          v-model="form.surweyDate"
+                          type="date"
+                          class="form-control"
+                          placeholder="DateSurwey/Design"
+                          :class="{
+                            'is-invalid': form.errors.has('surweyDate'),
+                          }"
+                        />
+                      </div>
+                      <has-error :form="form" field="surweyDate"></has-error>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <!-- ******************* EDIT TO SELECTION ******************* -->
+                      <label>IFCCC Type(ODF) *</label>
+                      <select
+                        v-model="form.ifcccType"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('ifcccType'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="120">120</option>
+                        <option value="288">288</option>
+                        <option value="576">576</option>
+                      </select>
+                      <has-error :form="form" field="ifcccType"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <!-- ******************* EDIT TO SELECTION ******************* -->
+                      <label>IFCCC Status (ODF) *</label>
+                      <select
+                        v-model="form.ifcccStatus"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('ifcccStatus'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="Waiting">Waiting</option>
+                        <option value="Completed">Completed</option>
+                      </select>
+                      <has-error :form="form" field="ifcccStatus"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Wall Box Type *</label>
+                      <select
+                        v-model="form.wallboxType"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('wallboxType'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="24">24</option>
+                        <option value="48">48</option>
+                      </select>
+                      <has-error :form="form" field="wallboxType"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Wall Box Status *</label>
+                      <select
+                        v-model="form.wallboxStatus"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('wallboxStatus'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="Waiting">Waiting</option>
+                        <option value="Completed">Completed</option>
+                      </select>
+                      <has-error :form="form" field="wallboxStatus"></has-error>
+                    </div>
+                  </div>
+                </div>
+              </tab-content>
+              <tab-content title="Type">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Microduct Type *</label>
+                      <small>/ประเภทท่อ</small>
+                      <select
+                        v-model="form.microductType"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('microductType'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="FiberBlow">FiberBlow</option>
+                        <option value="FiberConvertional">
+                          FiberConvertional
+                        </option>
+                      </select>
+                      <has-error :form="form" field="microductType"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <!-- ******************* EDIT TO SELECTION ******************* -->
+                      <label>Microduct Status*</label>
+                      <small>/สถานะของท่อ</small>
+                      <select
+                        v-model="form.microductStatus"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('microductStatus'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="Waiting">Waiting</option>
+                        <option value="Completed">Completed</option>
+                      </select>
+                      <has-error
+                        :form="form"
+                        field="microductStatus"
+                      ></has-error>
+                    </div>
+                  </div>
+                </div>
+              </tab-content>
+              <tab-content title="FiberBlow & Fiber Convertional">
+                <div
+                  class="row"
+                  v-show="
+                    form.microductType == '' ||
+                    form.microductType == 'FiberBlow'
+                  "
+                >
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <!-- ******************* EDIT TO SELECTION ******************* -->
+                      <label>Microduct Type1</label>
+                      <select
+                        v-model="form.microductType1"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('microductType1'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="4">4</option>
+                        <option value="7">7</option>
+                        <option value="12">12</option>
+                        <option value="19">19</option>
+                      </select>
+                      <has-error
+                        :form="form"
+                        field="microductType1"
+                      ></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Microduct Type2</label>
+                      <select
+                        v-model="form.microductType2"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('microductType2'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="4">4</option>
+                        <option value="7">7</option>
+                        <option value="12">12</option>
+                        <option value="19">19</option>
+                      </select>
+                      <has-error
+                        :form="form"
+                        field="microductType2"
+                      ></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Microduct Size</label>
+                      <small>/ขนาดท่อ</small>
+                      <select
+                        v-model="form.microductSize"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('microductSize'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="4/2.5">4/2.5</option>
+                        <option value="5/3">5/3</option>
+                      </select>
+                      <has-error :form="form" field="microductSize"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <!-- ******************* EDIT TO SELECTION ******************* -->
+                      <label>Microduct Floor</label>
+                      <small>/ชั้น</small>
+                      <div class="input-group mb-3">
+                        <input
+                          v-model="form.microductFloor"
+                          type="text"
+                          class="form-control"
+                          placeholder="Microduct Floor"
+                          :class="{
+                            'is-invalid': form.errors.has('microductFloor'),
+                          }"
+                        />
+                      </div>
+                      <has-error
+                        :form="form"
+                        field="microductFloor"
+                      ></has-error>
+                    </div>
+                  </div>
                 </div>
                 <div
-                    class="d-flex p-0 m-0 flex-fill"
-                    v-for="(item, i) in form.subbuilding"
-                    :key="i"
+                  class="row"
+                  v-show="
+                    form.microductType == '' ||
+                    form.microductType == 'FiberBlow'
+                  "
                 >
-                    <div class="col-sm-1">
-                        <div class="input-group">
-                            <span class="input-group-text">{{ i + 1 }}</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-5">
-                        <div class="input-group">
-                            <input
-                                v-model="item.projectName"
-                                type="text"
-                                class="form-control"
-                                placeholder="กรอกชื่ออาคาร"
-                                value="0"
-                                required
-                                :class="{
-                                    'is-invalid': form.errors.has('projectName')
-                                }"
-                            />
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="input-group">
-                            <number-input
-                                inline
-                                v-model="item.floorSum"
-                                :min="1"
-                                placeholder="จำนวนชั้นของอาคาร"
-                                :class="{
-                                    'is-invalid': form.errors.has('floorSum')
-                                }"
-                            ></number-input>
-                            <has-error
-                                :form="form"
-                                field="floorSum"
-                            ></has-error>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="input-group">
-                            <number-input
-                                inline
-                                v-model="item.roomSum"
-                                :min="1"
-                                required
-                                placeholder="จำนวนห้องในชั้น"
-                                :class="{
-                                    'is-invalid': form.errors.has('floorSum')
-                                }"
-                            ></number-input>
-                            <has-error :form="form" field="roomSum"></has-error>
-                        </div>
-                    </div>
-                </div>
-                <label class="text-danger">***</label>
-            </div>
-        </tab-content>
-        <tab-content title="Project Detail">
-            <div class="row">
-                <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <div class="form-group">
-                        <label>Manager Name</label>
-                        <small>/ชื่อผู้จัดการ</small>
-                        <input
-                            v-model="form.nameManager"
-                            type="text"
-                            class="form-control"
-                            placeholder="ชื่อผู้จัดการ"
-                            :class="{
-                                'is-invalid': form.errors.has('nameManager')
-                            }"
-                        />
-                        <has-error :form="form" field="nameManager"></has-error>
+                      <label>Blow Status</label>
+                      <select
+                        v-model="form.blowStatus"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('blowStatus'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="Wailing">4/2.5</option>
+                        <option value="5/3">5/3</option>
+                      </select>
+                      <has-error :form="form" field="blowStatus"></has-error>
                     </div>
-                </div>
-                <div class="col-sm-4">
+                  </div>
+                  <div class="col-sm-3">
                     <div class="form-group">
-                        <label>Manager Tel</label>
-                        <small>/เบอร์ผู้จัดการ</small>
+                      <label>Blow Core</label>
+                      <div class="input-group mb-3">
                         <input
-                            v-model="form.phoneManager"
-                            type="text"
-                            class="form-control"
-                            placeholder="เบอร์ผู้จัดการ"
-                            :class="{
-                                'is-invalid': form.errors.has('phoneManager')
-                            }"
+                          v-model="form.blowCore"
+                          type="text"
+                          class="form-control"
+                          placeholder="Blow Core"
+                          :class="{
+                            'is-invalid': form.errors.has('blowCore'),
+                          }"
                         />
-                        <has-error
-                            :form="form"
-                            field="phoneManager"
-                        ></has-error>
+                      </div>
+                      <has-error :form="form" field="blowCore"></has-error>
                     </div>
+                  </div>
                 </div>
-                <div class="col-sm-4">
+                <div
+                  class="row"
+                  v-show="
+                    form.microductType == '' ||
+                    form.microductType == 'FiberConvertional'
+                  "
+                >
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <!-- ******************* EDIT TO SELECTION ******************* -->
+                      <label>Convertional Type</label>
+                      <div class="input-group mb-3">
+                        <input
+                          v-model="form.convertionalType"
+                          type="text"
+                          class="form-control"
+                          placeholder="Convertional Type"
+                          :class="{
+                            'is-invalid': form.errors.has('convertionalType'),
+                          }"
+                        />
+                      </div>
+                      <has-error
+                        :form="form"
+                        field="convertionalType"
+                      ></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Convertional Floor</label>
+                      <div class="input-group mb-3">
+                        <input
+                          v-model="form.convertionalFloor"
+                          type="text"
+                          class="form-control"
+                          placeholder="Convertional Floor"
+                          :class="{
+                            'is-invalid': form.errors.has('convertionalFloor'),
+                          }"
+                        />
+                      </div>
+                      <has-error
+                        :form="form"
+                        field="convertionalFloor"
+                      ></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <!-- ******************* EDIT TO SELECTION ******************* -->
+                      <label>Vertically</label>
+                      <select
+                        v-model="form.vertically"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('vertically'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="มี">มี</option>
+                        <option value="ไม่มี">ไม่มี</option>
+                      </select>
+                      <has-error :form="form" field="vertically"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <!-- ******************* EDIT TO SELECTION ******************* -->
+                      <label>Vertically Type</label>
+                      <select
+                        v-model="form.verticallyType"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('verticallyType'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="Fiber Drop">FiberDrop</option>
+                        <option value="Fiber Blow">Fiber Blow</option>
+                      </select>
+                      <has-error
+                        :form="form"
+                        field="verticallyType"
+                      ></has-error>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="row"
+                  v-show="
+                    form.microductType == '' ||
+                    form.microductType == 'FiberConvertional'
+                  "
+                >
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Building status</label>
+                      <div class="input-group mb-3">
+                        <input
+                          v-model="form.buildingStatus"
+                          type="text"
+                          class="form-control"
+                          placeholder="Building status"
+                          :class="{
+                            'is-invalid': form.errors.has('buildingStatus'),
+                          }"
+                        />
+                      </div>
+                      <has-error
+                        :form="form"
+                        field="buildingStatus"
+                      ></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Building Date</label>
+                      <div class="input-group mb-3">
+                        <input
+                          v-model="form.buildingDate"
+                          type="date"
+                          class="form-control"
+                          placeholder=""
+                          :class="{
+                            'is-invalid': form.errors.has('buildingDate'),
+                          }"
+                        />
+                      </div>
+                      <has-error :form="form" field="buildingDate"></has-error>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-sm-3">
                     <!-- text input -->
                     <div class="form-group">
-                        <label>Manager Email</label>
-                        <small>/อีเมลล์ผู้จัดการ</small>
-                        <input
-                            v-model="form.mailManager"
-                            type="text"
-                            class="form-control"
-                            placeholder="อีเมลล์ผู้จัดการ"
-                            :class="{
-                                'is-invalid': form.errors.has('mailManager')
-                            }"
-                        />
-                        <has-error :form="form" field="mailManager"></has-error>
+                      <label>Splice Status</label>
+                      <select
+                        v-model="form.spliceStatus"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your splice..."
+                        :class="{
+                          'is-invalid': form.errors.has('spliceStatus'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Status ---</option>
+                        <option value="Waiting">Waiting</option>
+                        <option value="Completed">Completed</option>
+                      </select>
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label>Corporation Name</label>
-                        <small>/ชื่อนิติบุคคล</small>
-                        <input
-                            v-model="form.nameNiti"
-                            type="text"
-                            class="form-control"
-                            placeholder="ชื่อนิติบุคคล"
-                            :class="{
-                                'is-invalid': form.errors.has('nameNiti')
-                            }"
-                        />
-                        <has-error :form="form" field="nameNiti"></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label>Corporation Tel</label>
-                        <small>/เบอร์นิติบุคคล</small>
-                        <input
-                            v-model="form.phoneNiti"
-                            type="text"
-                            class="form-control"
-                            placeholder="เบอร์นิติบุคคล"
-                            :class="{
-                                'is-invalid': form.errors.has('phoneNiti')
-                            }"
-                        />
-                        <has-error :form="form" field="phoneNiti"></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-4">
+                    <has-error :form="form" field="spliceStatus"></has-error>
+                  </div>
+                  <div class="col-sm-3">
                     <!-- text input -->
                     <div class="form-group">
-                        <label>Corporation Email</label>
-                        <small>/เมลล์นิติบุคคล</small>
+                      <label>Splice Core</label>
+                      <div class="input-group mb-3">
                         <input
-                            v-model="form.mailNiti"
-                            type="text"
-                            class="form-control"
-                            placeholder="เมลล์นิติบุคคล"
-                            :class="{
-                                'is-invalid': form.errors.has('mailNiti')
-                            }"
+                          v-model="form.spliceCore"
+                          type="text"
+                          class="form-control"
+                          placeholder="Splice Core"
+                          :class="{
+                            'is-invalid': form.errors.has('spliceCore'),
+                          }"
                         />
-                        <has-error :form="form" field="mailNiti"></has-error>
+                      </div>
+                      <has-error :form="form" field="spliceCore"></has-error>
                     </div>
+                  </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label>Technician Name</label>
-                        <small>/ชื่อช่าง</small>
-                        <input
-                            v-model="form.nameTechnician"
-                            type="text"
-                            class="form-control"
-                            placeholder="ชื่อช่าง"
-                            :class="{
-                                'is-invalid': form.errors.has('nameTechnician')
-                            }"
-                        />
-                        <has-error
-                            :form="form"
-                            field="nameTechnician"
-                        ></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <label>Technician Tel</label>
-                        <small>/เบอร์ช่าง</small>
-                        <input
-                            v-model="form.phoneTechnician"
-                            type="text"
-                            class="form-control"
-                            placeholder="เบอร์ช่าง"
-                            :class="{
-                                'is-invalid': form.errors.has('phoneTechnician')
-                            }"
-                        />
-                        <has-error
-                            :form="form"
-                            field="phoneTechnician"
-                        ></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-4">
+              </tab-content>
+              <tab-content title="Project Images">
+                <div class="row">
+                  <div class="col-sm-12">
                     <!-- text input -->
                     <div class="form-group">
-                        <label>Technician Email</label>
-                        <small>/เมลล์ช่าง</small>
-                        <input
-                            v-model="form.mailTechnician"
-                            type="text"
-                            class="form-control"
-                            placeholder="เมลล์ช่าง"
-                            :class="{
-                                'is-invalid': form.errors.has('mailTechnician')
-                            }"
-                        />
-                        <has-error
-                            :form="form"
-                            field="mailTechnician"
-                        ></has-error>
+                      <label>Select a Images </label>
+                      <div class="input-group">
+                      <uploader
+                        v-model="fileList"
+                        :url="remoteUrl"
+                        title="Images"
+                        limit="24"
+                        multiple
+                        @on-change="onChange"
+                        @on-cancel="onCancel"
+                        @on-success="onSuccess"
+                        @on-error="onError"
+                        @on-delete="onDelete"
+                      ></uploader>
+                      </div>
                     </div>
+                    <has-error :form="form" field="spliceStatus"></has-error>
+                  </div>
                 </div>
-            </div>
-            <hr />
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <label>House Number</label>
-                        <small>/บ้านเลขที่</small>
-                        <input
-                            v-model="form.houseNumber"
-                            type="text"
-                            class="form-control"
-                            placeholder="บ้านเลขที่"
-                            :class="{
-                                'is-invalid': form.errors.has('houseNumber')
-                            }"
-                        />
-                        <has-error :form="form" field="houseNumber"></has-error>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label>Moo.</label>
-                        <small>/หมู่</small>
-                        <input
-                            v-model="form.squadNumber"
-                            type="text"
-                            class="form-control"
-                            placeholder="หมู่"
-                            :class="{
-                                'is-invalid': form.errors.has('squadNumber')
-                            }"
-                        />
-                        <has-error :form="form" field="squadNumber"></has-error>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label>Alley</label>
-                        <small>/ซอย</small>
-                        <input
-                            v-model="form.alleyName"
-                            type="text"
-                            class="form-control"
-                            placeholder="ซอย"
-                            :class="{
-                                'is-invalid': form.errors.has('alleyName')
-                            }"
-                        />
-                        <has-error :form="form" field="alleyName"></has-error>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <label>Road</label>
-                        <small>/ถนน</small>
-                        <input
-                            v-model="form.roadName"
-                            type="text"
-                            class="form-control"
-                            placeholder="ถนน"
-                            :class="{
-                                'is-invalid': form.errors.has('roadName')
-                            }"
-                        />
-                        <has-error :form="form" field="roadName"></has-error>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label>Sub-district</label>
-                        <small>/ตำบล</small>
-                        <ThailandAutoComplete
-                            v-model="form.districtName"
-                            type="district"
-                            @select="select"
-                            color="#42b883"
-                            size="default"
-                            autocomplete="chrome-off"
-                            placeholder="ตำบล"
-                        />
-                        <has-error
-                            :form="form"
-                            field="districtName"
-                        ></has-error>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label>District</label>
-                        <small>/อำเภอ</small>
-                        <ThailandAutoComplete
-                            v-model="form.countyName"
-                            type="amphoe"
-                            @select="select"
-                            color="#42b883"
-                            size="default"
-                            autocomplete="chrome-off"
-                            placeholder="อำเภอ"
-                        />
-                        <has-error :form="form" field="countyName"></has-error>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label>Province</label>
-                        <small>/จังหวัด</small>
-                        <ThailandAutoComplete
-                            v-model="form.provinceName"
-                            type="province"
-                            @select="select"
-                            size="default"
-                            color="#42b883"
-                            autocomplete="chrome-off"
-                            placeholder="จังหวัด"
-                        />
-                        <has-error
-                            :form="form"
-                            field="provinceName"
-                        ></has-error>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <!-- text input -->
-                    <div class="form-group">
-                        <label>Postalcode</label>
-                        <small>/รหัสไปรษณีย์</small>
-                        <ThailandAutoComplete
-                            v-model="form.postalCode"
-                            type="zipcode"
-                            @select="select"
-                            size="default"
-                            color="#42b883"
-                            autocomplete="chrome-off"
-                            placeholder="รหัสไปรษณีย์"
-                        />
-                        <has-error :form="form" field="postalCode"></has-error>
-                    </div>
-                </div>
-            </div>
-            <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>{{ translate("building.latitude") }}</label>
-                        <input
-                            v-model="form.latitude"
-                            type="text"
-                            class="form-control"
-                            placeholder="Enter your latitude..."
-                            :class="{
-                                'is-invalid': form.errors.has('latitude')
-                            }"
-                        />
-                        <has-error :form="form" field="latitude"></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>{{ translate("building.longitude") }}</label>
-                        <div class="input-group mb-3">
-                            <input
-                                v-model="form.longitude"
-                                type="text"
-                                class="form-control"
-                                placeholder="Enter your longitude..."
-                                :class="{
-                                    'is-invalid': form.errors.has('longitude')
-                                }"
-                            />
-                        </div>
-                        <has-error :form="form" field="longitude"></has-error>
-                    </div>
-                </div>
-            </div>
-        </tab-content>
-        <tab-content title="Sale Detail">
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label>Sale Name</label><br />
-                        <small>/ชื่อเซลล์</small>
-                        <select class="form-control" v-model="form.saleFm_id">
-                            <option value="" disabled
-                                >--- Select a Class ---</option
-                            >
-                            <option
-                                :value="item.id"
-                                v-for="item in saleFms"
-                                :key="item.id"
-                            >
-                                {{ item.nameSale }}
-                            </option>
-                        </select>
-                        <has-error :form="form" field="nameSale"></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label>Date Contact Start</label><br />
-                        <small>/วันเริ่มทำสัญญา</small>
-                        <input
-                            v-model="form.contractStartDate"
-                            type="date"
-                            class="form-control"
-                            :disabled="editmode"
-                            :class="{
-                                'is-invalid': form.errors.has(
-                                    'contractStartDate'
-                                )
-                            }"
-                        />
-                        <has-error
-                            :form="form"
-                            field="contractStartDate"
-                        ></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label>Date Contact End</label><br />
-                        <small>/วันสิ้นสุดทำสัญญา</small>
-                        <input
-                            ref="contractEndDate"
-                            v-model="form.contractEndDate"
-                            type="date"
-                            class="form-control"
-                            :disabled="editmode"
-                            :class="{
-                                'is-invalid': form.errors.has('contractEndDate')
-                            }"
-                        />
-                        <has-error
-                            :form="form"
-                            field="contractEndDate"
-                        ></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Income payment format *</label><br />
-                        <small>/รูปแบบการชำระรายได้</small>
-                        <select
-                            class="form-control"
-                            v-model="form.paymentType_id"
-                        >
-                            <option disabled value=""
-                                >--- Select a Class ---</option
-                            >
-                            <option
-                                :value="item.id"
-                                v-for="item in spendSpaces"
-                                :key="item.id"
-                            >
-                                {{ item.paymentType }}
-                            </option>
-                        </select>
-                        <has-error :form="form" field="paymentType"></has-error>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Revenue sharing model</label><br />
-                        <small>/รูปแบบการชำระรายได้</small>
-                        <div class="input-group mb-3">
-                            <input
-                                v-model="form.contractTerm"
-                                type="text"
-                                class="form-control"
-                                placeholder="รูปแบบการชำระรายได้"
-                                :class="{
-                                    'is-invalid': form.errors.has(
-                                        'contractTerm'
-                                    )
-                                }"
-                            />
-                        </div>
-                        <has-error
-                            :form="form"
-                            field="contractTerm"
-                        ></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Price to Pay</label>
-                        <small>/ยอดเงิน</small>
-                        <input
-                            v-model="form.balance"
-                            type="text"
-                            class="form-control"
-                            placeholder="ยอดเงิน"
-                            :class="{
-                                'is-invalid': form.errors.has('balance')
-                            }"
-                        />
-                        <has-error :form="form" field="balance"></has-error>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>Remark contract</label>
-                        <small>/หมายเหตุรูปแบบสัญญา</small>
-                        <input
-                            v-model="form.remarkContract"
-                            type="text"
-                            class="form-control"
-                            placeholder="หมายเหตุรูปแบบสัญญา"
-                            :class="{
-                                'is-invalid': form.errors.has('remarkContract')
-                            }"
-                        />
-                        <has-error
-                            :form="form"
-                            field="remarkContract"
-                        ></has-error>
-                    </div>
-                </div>
-            </div>
-        </tab-content>
-        <tab-content title="Area Project">
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Area</label><br />
-                        <small>/พื้นที่</small>
-                        <select class="form-control" v-model="form.areas_id">
-                            <option value="" disabled
-                                >--- Select a Class ---</option
-                            >
-                            <option
-                                :value="item.id"
-                                v-for="item in areas"
-                                :key="item.id"
-                            >
-                                {{ item.name }}
-                            </option>
-                        </select>
-                        <has-error :form="form" field="areas_id"></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Area BBN</label><br />
-                        <small>/พื้นที่ บบน.</small>
-                        <select
-                            class="form-control"
-                            v-model="form.bbns_id"
-                            :disabled="form.areas_id == ''"
-                            required
-                        >
-                            <option value="" disabled>Select a Section</option>
-                            <option
-                                v-for="bbn in bbns"
-                                :key="bbn.id"
-                                :value="bbn.id"
-                            >
-                                {{ bbn.name }}
-                            </option>
-                        </select>
-                        <has-error :form="form" field="bbns_id"></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Area 3BB</label><br />
-                        <small>/พื้นที่ สามบีบี</small>
-                        <select class="form-control" v-model="form.area3bb_id">
-                            <option value="" disabled
-                                >--- Select a Class ---</option
-                            >
-                            <option
-                                :value="item.id"
-                                v-for="item in area3bbs"
-                                :key="item.id"
-                            >
-                                {{ item.area3BB }}
-                            </option>
-                        </select>
-                        <has-error :form="form" field="area3BB"></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Area TRUE</label><br />
-                        <small>/พื้นที่ ทรู</small>
-                        <select class="form-control" v-model="form.areaTrue_id">
-                            <option value="" disabled
-                                >--- Select a Class ---</option
-                            >
-                            <option
-                                :value="item.id"
-                                v-for="item in areaTrues"
-                                :key="item.id"
-                            >
-                                {{ item.areaTrue }}
-                            </option>
-                        </select>
-                        <has-error :form="form" field="areaTrue"></has-error>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Area TRUE NEW</label><br />
-                        <small>/พื้นที่ ทรูใหม่</small>
-                        <select
-                            class="form-control"
-                            v-model="form.areaTrueNew_id"
-                        >
-                            <option value="" disabled
-                                >--- Select a Class ---</option
-                            >
-                            <option
-                                :value="item.id"
-                                v-for="item in areaTrueNews"
-                                :key="item.id"
-                            >
-                                {{ item.areaTrueNew }}
-                            </option>
-                        </select>
-                        <has-error :form="form" field="areaTrueNew"></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Area AIS</label><br />
-                        <small>/พื้นที่ เอไอเอส</small>
-                        <select class="form-control" v-model="form.areaAis_id">
-                            <option value="" disabled
-                                >--- Select a Class ---</option
-                            >
-                            <option
-                                :value="item.id"
-                                v-for="item in areaAises"
-                                :key="item.id"
-                            >
-                                {{ item.areaAis }}
-                            </option>
-                        </select>
-                        <has-error :form="form" field="areaAis"></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Area Fibernet</label><br />
-                        <small>/พื้นที่ ไฟเบอเน็ต</small>
-                        <select
-                            class="form-control"
-                            v-model="form.areaFibernet_id"
-                        >
-                            <option value="" disabled
-                                >--- Select a Class ---</option
-                            >
-                            <option
-                                :value="item.id"
-                                v-for="item in areaFiberNets"
-                                :key="item.id"
-                            >
-                                {{ item.areaFiberNet }}
-                            </option>
-                        </select>
-                        <has-error
-                            :form="form"
-                            field="areaFiberNet"
-                        ></has-error>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label>Operating Time</label><br />
-                        <small>/เวลาการเข้างาน</small>
-                        <select class="form-control" v-model="form.workTime_id">
-                            <option value="" disabled
-                                >--- Select a Class ---</option
-                            >
-                            <option
-                                :value="item.id"
-                                v-for="item in workTimes"
-                                :key="item.id"
-                            >
-                                {{ item.workTime }}
-                            </option>
-                        </select>
-                        <has-error :form="form" field="workTime"></has-error>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>Remark</label>
-                        <small>/รีมาร์ค</small>
-                        <textarea
-                            id="remark"
-                            v-model="form.remark"
-                            class="form-control"
-                            placeholder="-"
-                            :class="{
-                                'is-invalid': form.errors.has('remark')
-                            }"
-                        />
-                        <has-error :form="form" field="remark"></has-error>
-                    </div>
-                </div>
-            </div>
-        </tab-content>
-        <template slot="footer" slot-scope="props">
-            <div class="wizard-footer-left">
-                <wizard-button
-                    v-if="props.activeTabIndex > 0 && !props.isLastStep"
+              </tab-content>
+              <template slot="footer" slot-scope="props">
+                <div class="wizard-footer-left">
+                  <wizard-button
+                    v-if="props.activeTabIndex > 0 "
                     @click.native="props.prevTab()"
                     :style="props.fillButtonStyle"
                     >Previous</wizard-button
-                >
-            </div>
-            <div class="wizard-footer-right">
-                <wizard-button
+                  >
+                </div>
+                <div class="wizard-footer-right">
+                  <wizard-button
                     v-if="!props.isLastStep"
                     @click.native="props.nextTab()"
                     class="wizard-footer-right"
                     :style="props.fillButtonStyle"
                     >Next</wizard-button
-                >
-                <wizard-button
+                  >
+                  <wizard-button
                     v-show="editmode && props.isLastStep"
                     class="wizard-footer-right finish-button"
                     :style="props.fillButtonStyle"
-                    @click="updateBuilding()"
-                >
-                    {{ translate("building.actions.update") }}
-                </wizard-button>
-                <wizard-button
+                    @click.native="updateConstarution()"
+                  >
+                    {{ translate("constitution.actions.update") }}
+                  </wizard-button>
+                  <wizard-button
                     v-show="!editmode && props.isLastStep"
                     class="wizard-footer-right finish-button"
                     :style="props.fillButtonStyle"
-                    @click="createBuilding()"
-                >
-                    {{ translate("building.actions.create") }}
-                </wizard-button>
-            </div>
-        </template>
-    </form-wizard>
+                    @click.native="createConstarution()"
+                  >
+                    {{ translate("constitution.actions.create") }}
+                  </wizard-button>
+                </div>
+              </template>
+            </form-wizard>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import { FormWizard, TabContent } from "vue-step-wizard";
-import "vue-step-wizard/dist/vue-step-wizard.css";
+import Select2 from "v-select2-component";
+import Uploader from "vux-uploader-component";
 import { mapGetters, mapState } from "vuex";
 import NumberInput from "../partials/NumberInput.vue";
-export default {
-    name: "BasicStepperForm",
-    title: "All -",
-    components: {
-        NumberInput,
-        FormWizard,
-        TabContent
-    },
-    data() {
-        return {
-            fullName: "",
-            companyName: "",
-            referral: "",
-            loader: null,
-            openWindowPortal: false,
-            editmode: false,
-            selected: "",
-            areas: [],
-            bbns: [],
-            area3bbs: [],
-            areaTrues: [],
-            areaTrueNews: [],
-            areaAises: [],
-            areaFiberNets: [],
-            workTimes: [],
-            spendSpaces: [],
-            saleFms: [],
-            form: new Form({
-                id: "",
-                areas_id: "",
-                bbns_id: "",
-                area3bb_id: "",
-                areaTrue_id: "",
-                areaTrueNew_id: "",
-                areaAis_id: "",
-                areaFibernet_id: "",
-                projectName: "",
-                subBuildingsum: 1,
-                floorSum: 0,
-                roomSum: 0,
-                roadName: "",
-                nameManager: "",
-                phoneManager: "",
-                mailManager: "",
-                nameNiti: "",
-                phoneNiti: "",
-                mailNiti: "",
-                nameTechnician: "",
-                phoneTechnician: "",
-                mailTechnician: "",
-                houseNumber: "",
-                squadNumber: "",
-                alleyName: "",
-                roadName: "",
-                districtName: "",
-                provinceName: "",
-                countyName: "",
-                postalCode: "",
-                latitude: "",
-                longitude: "",
-                contractStartDate: new Date().toISOString().slice(0, 10),
-                paymentType_id: "",
-                saleFm_id: "",
-                contractTerm: "",
-                contractEndDate: new Date().toISOString().slice(0, 10),
-                balance: 0,
-                workTime_id: "",
-                remark: "",
-                subbuilding: []
-            })
-        };
-    },
-    computed: {
-        ...mapGetters(["buildings"]),
-        ...mapState(["buildings"]),
-        areaID() {
-            return this.form.areas_id;
-        },
-        location() {
-            return { lon: this.form.longitude, lat: this.form.latitude };
-        },
-        subBuildingsum() {
-            return this.form.subBuildingsum;
-        },
-        subbuilding() {
-            return this.form.subbuilding.length;
-        },
-        sumFloorOfSubbuilding() {
-            return this.form.subbuilding.reduce((total, obj) => {
-                return parseInt(obj.floorSum) + parseInt(total);
-            }, 0);
-        },
-        sumRoomOfSubbuilding() {
-            return this.form.subbuilding.reduce((total, obj) => {
-                return parseInt(obj.roomSum) + parseInt(total);
-            }, 0);
-        }
-    },
-    watch: {
-        areaID: function(value) {
-            this.form.bbN = "";
-            axios.get("/bbns?area_id=" + this.form.areas_id).then(response => {
-                // console.log(response.data);
-                this.bbns = response.data.data;
-            });
-        },
-        form: {
-            deep: true,
-            handler(value) {
-                if (this.form.subBuildingsum > 1) {
-                    this.form.floorSum = this.sumFloorOfSubbuilding;
-                    this.form.roomSum = this.sumRoomOfSubbuilding;
-                }
-            }
-        }
-    },
-    methods: {
-        onSubBuildingUpdate(newVal, oldVal) {
-            console.log(newVal, oldVal);
-            if (this.subbuilding != newVal) {
-                if (newVal > oldVal) {
-                    const loop = newVal - this.subbuilding;
-                    if (loop >= 1) {
-                        for (var i = 0; i < loop; i++) {
-                            this.form.subbuilding.push({
-                                projectName: "",
-                                floorSum: 0,
-                                roomSum: 0
-                            });
-                        }
-                    }
-                } else if (newVal < oldVal) {
-                    const loop = this.subbuilding - newVal;
-                    console.log("onSubBuildingUpdate else" + loop);
-                    if (newVal == 1) {
-                        this.form.subbuilding = [];
-                    }
-                    if (loop >= 1) {
-                        for (var i = 0; i < loop; i++) {
-                            this.form.subbuilding.pop();
-                        }
-                    }
-                }
-            }
-        },
-        select(address) {
-            this.form.districtName = address.district;
-            this.form.countyName = address.amphoe;
-            this.form.provinceName = address.province;
-            this.form.postalCode = address.zipcode;
-        },
-        loadSaleFm() {
-            axios.get("/saleFms").then(response => {
-                this.saleFms = response.data.data;
-            });
-        },
-        loadSpendSpace() {
-            axios.get("/spendSpaces").then(response => {
-                this.spendSpaces = response.data.data;
-            });
-        },
-        loadArea() {
-            axios.get("/areas").then(response => {
-                this.areas = response.data.data;
-            });
-        },
-        loadArea3BB() {
-            axios.get("/area3bbs").then(response => {
-                this.area3bbs = response.data.data;
-            });
-        },
-        loadAreaTrue() {
-            axios.get("/areaTrues").then(response => {
-                this.areaTrues = response.data.data;
-            });
-        },
-        loadAreaTrueNew() {
-            axios.get("/areaTrueNews").then(response => {
-                this.areaTrueNews = response.data.data;
-            });
-        },
-        loadAreaAis() {
-            axios.get("/areaAises").then(response => {
-                this.areaAises = response.data.data;
-            });
-        },
-        loadAreaFiberNet() {
-            axios.get("/areaFiberNets").then(response => {
-                this.areaFiberNets = response.data.data;
-            });
-        },
-        loadWorkTime() {
-            axios.get("/workTimes").then(response => {
-                this.workTimes = response.data.data;
-            });
-        },
-        loadBuildings() {
-            this.$Progress.start();
-            if (this.$gate.isAdmin()) {
-                this.$store.dispatch("GET_BUILDINGS");
-                $("#buildings")
-                    .DataTable()
-                    .ajax.reload();
-            }
-            this.$Progress.finish();
-        },
-        updateBuilding() {
-            this.$Progress.start();
-            // console.log('Editing data');
-            this.form
-                .put("/building/" + this.form.id)
-                .then(response => {
-                    // success
-                    $("#addNew").modal("hide");
-                    Toast.fire({
-                        icon: "success",
-                        title: response.data.message
-                    });
-                    this.$Progress.finish();
-                    //  Fire.$emit('AfterCreate');
-                    this.loadBuildings();
-                })
-                .catch(() => {
-                    this.$Progress.fail();
-                });
-        },
-        editModal(building) {
-            this.editmode = true;
-            this.form.reset();
-            this.form.errors.clear();
-            building.subbuilding = building.subbuilding;
-            console.log(building);
-            $("#addNew").modal("show");
-            this.form.fill(building);
-        },
-        openMapPickerLocation() {
-            $("#pickermap").modal("show");
-        },
-        newModal() {
-            this.editmode = false;
-            this.selected = "";
-            this.form.reset();
-            this.form.errors.clear();
-            $("#addNew").modal("show");
-        },
-        deleteBuilding(item) {
-            Swal.fire({
-                title: window.translate("building.alert.delete_building_title"),
-                text:
-                    window.translate("building.alert.delete_building_text") +
-                    ` [${item.projectName}]`,
-                showCancelButton: true,
-                confirmButtonColor: "#d33",
-                cancelButtonColor: "#3085d6",
-                cancelButtonText: window.translate(
-                    "building.alert.delete_building_cancel_button_text"
-                ),
-                confirmButtonText: window.translate(
-                    "building.alert.delete_building_confirm_button_text"
-                )
-            }).then(result => {
-                // Send request to the server
-                if (result.value) {
-                    this.form
-                        .delete("/building/" + item.id)
-                        .then(() => {
-                            Swal.fire(
-                                window.translate(
-                                    "building.alert.comfirm_delete_title"
-                                ),
-                                window.translate(
-                                    "building.alert.confirm_delete_message"
-                                ),
-                                "success"
-                            );
-                            // Fire.$emit('AfterCreate');
-                            this.loadBuildings();
-                        })
-                        .catch(data => {
-                            Swal.fire("Failed!", data.message, "warning");
-                        });
-                }
-            });
-        },
-        createBuilding() {
-            console.log("createBuilding");
-            if (this.selected == null || this.selected == undefined)
-                return false;
-            this.form
-                .post("/building")
-                .then(response => {
-                    $("#addNew").modal("hide");
-                    Toast.fire({
-                        icon: "success",
-                        title: response.data.message
-                    });
-                    this.$Progress.finish();
-                    this.loadBuildings();
-                })
-                .catch(() => {
-                    Toast.fire({
-                        icon: "error",
-                        title: "Some error occured! Please try again"
-                    });
-                });
-        },
-        generateTable() {
-            var vm = this;
-            var table = $(this.$refs.buildings).DataTable({
-                dom: "Blfrtip",
-                ajax: "/api/building",
-                responsive: true,
-                processing: true,
-                autoWidth: true,
-                pageLength: 10,
-                lengthMenu: [
-                    [10, 15, 25, 50, -1],
-                    [10, 15, 25, 50, "All"]
-                ],
-                fixedHeader: true,
-                fixedColumns: true,
-                fixedColumns: {
-                    leftColumns: 2,
-                    rightColumns: 1
-                },
-                scrollX: true,
-                scrollCollapse: true,
-                select: true,
-                buttons: [
-                    "colvis",
-                    {
-                        extend: "copy",
-                        text: "<i class='bi bi-clipboard mr-1'></i>Copy",
-                        exportOptions: {
-                            columns: "th:not(.notexport)"
-                        }
-                    },
-                    {
-                        extend: "excelHtml5",
-                        autoFilter: true,
-                        sheetName: "Building",
-                        text:
-                            "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
-                        exportOptions: {
-                            columns: "th:not(.notexport)"
-                        }
-                    },
-                    {
-                        extend: "print",
-                        text: "<i class='bi bi-printer mr-1'></i>Print"
-                    },
-                    {
-                        className: "bg-danger",
-                        text:
-                            "<i class='bi bi-file-text mr-1'></i>ยังไม่ทำสัญญา",
-                        action: function(e, dt, node, config) {
-                            dt.columns(4)
-                                .search("ยังไม่ได้ทำสัญญา")
-                                .draw();
-                        }
-                    },
-                    {
-                        text:
-                            "<i class='bi bi-list-check mr-1'></i>" +
-                            window.translate(
-                                "datatables.alert.display_selected_record_title"
-                            ) +
-                            "",
-                        action: function(e, dt, node, config) {
-                            var rowsel = dt
-                                .rows({ selected: true })
-                                .data()
-                                .map(function(item) {
-                                    return item.id;
-                                })
-                                .join(",");
-                            if (!rowsel) {
-                                return Swal.fire({
-                                    title: window.translate(
-                                        "datatables.alert.display_selected_record_empty_title"
-                                    ),
-                                    text: window.translate(
-                                        "datatables.alert.display_selected_record_empty_text"
-                                    ),
-                                    timer: 2000,
-                                    showCancelButton: false,
-                                    showConfirmButton: false
-                                });
-                            }
-                            $.fn.dataTable.ext.search.pop();
-                            $.fn.dataTable.ext.search.push(function(
-                                settings,
-                                data,
-                                dataIndex
-                            ) {
-                                return $(table.row(dataIndex).node()).hasClass(
-                                    "selected"
-                                )
-                                    ? true
-                                    : false;
-                            });
-                            table.draw();
-                        }
-                    },
-                    {
-                        text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
-                        action: function(e, dt, node, config) {
-                            console.info("button: Clear");
-                            $.fn.dataTable.ext.search.pop();
-                            dt.search("").draw();
-                            dt.columns()
-                                .search("")
-                                .draw();
-                            dt.rows().deselect();
-                            dt.ajax.reload();
-                        }
-                    }
-                ],
-                columns: [
-                    {
-                        data: null,
-                        defaultContent: "",
-                        className: "dt-body-center notexport"
-                    },
-                    {
-                        data: "projectName",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                "</span>"
-                            );
-                        }
-                    },
-                    {
-                        data: "subBuildingsum",
-                        render: function(data, type, row, meta) {
-                            return (
-                                '<span><i class="bi bi-building pr-2"></i>' +
-                                data +
-                                " ตึก" +
-                                "</span>"
-                            );
-                        }
-                    },
-                    {
-                        data: "floorSum"
-                    },
-                    {
-                        data: "roomSum"
-                    },
 
-                    {
-                        data: "nameManager"
-                    },
-                    {
-                        data: "phoneManager"
-                    },
-                    {
-                        data: "mailManager"
-                    },
-                    {
-                        data: "nameNiti"
-                    },
-                    {
-                        data: "phoneNiti"
-                    },
-                    {
-                        data: "mailNiti"
-                    },
-                    {
-                        data: "nameTechnician"
-                    },
-                    {
-                        data: "phoneTechnician"
-                    },
-                    {
-                        data: "mailTechnician"
-                    },
-                    {
-                        data: "houseNumber"
-                    },
-                    {
-                        data: "squadNumber"
-                    },
-                    {
-                        data: "alleyName"
-                    },
-                    {
-                        data: "districtName"
-                    },
-                    {
-                        data: "provinceName"
-                    },
-                    {
-                        data: "countyName"
-                    },
-                    {
-                        data: "postalCode"
-                    },
-                    {
-                        data: "countyName"
-                    },
-                    {
-                        data: "latitude"
-                    },
-                    {
-                        data: "longitude"
-                    },
-                    {
-                        data: "contractStartDate"
-                    },
-                    {
-                        data: "contractTerm"
-                    },
-                    {
-                        data: "contractEndDate"
-                    },
-                    {
-                        data: "balance"
-                    },
-                    {
-                        data: "remarkContract"
-                    },
-                    {
-                        data: "remark"
-                    },
-                    {
-                        data: "created_at",
-                        render: function(data, type, row, meta) {
-                            return moment(data).format("MM/DD/YYYY HH:MM");
-                        }
-                    },
-                    {
-                        data: "updated_at",
-                        render: function(data, type, row, meta) {
-                            return moment(data).format("MM/DD/YYYY HH:MM");
-                        }
-                    },
-                    {
-                        data: null,
-                        className: "dt-body-center notexport",
-                        render: function(data, type, row, meta) {
-                            return "<a class='edit-building btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-building btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
-                        }
-                    }
-                ],
-                columnDefs: [
-                    {
-                        targets: 0,
-                        searchable: false,
-                        orderable: false,
-                        className: "dt-body-center",
-                        checkboxes: {
-                            selectRow: true
-                        }
-                    }
-                ],
-                select: { selector: "td:not(:last-child)", style: "os" },
-                order: [[1, "desc"]]
+export default {
+  title: "Constarution -",
+  components: { Select2, Uploader, NumberInput },
+
+  data() {
+    return {
+      loader: null,
+      openWindowPortal: false,
+      editmode: false,
+      selected: "",
+      building: [],
+      generatingactions: [],
+      teamserways: [],
+      fileList: [],
+      settings: {
+        placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
+        allowClear: false,
+        dropdownParent: ".modal",
+      },
+      sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
+      form: new Form({
+        id: "",
+        //Relationship In TableConstarution
+        building_id: "", //modelBuilding->modelConstarution GET field projectName
+        // desingBy_id: "", //modelTeamserway->modelConstarution GET field nameSerway
+        // surveyDesing_id: "", //modelGeneratingaction->modelConstarution GET field nameSerway
+        // ifcc_id: "", //modelGeneratingaction->modelConstarution GET field status
+        // wallBox_id: "", //modelGeneratingaction->modelConstarution GET field status
+        // microductD_id: "", //modelGeneratingaction->modelConstarution GET field status
+        // microductK_id: "", //modelGeneratingaction->modelConstarution GET field status
+        // fiberConvertion_id: "", //modelGeneratingaction->modelConstarution GET field status
+        projectName: "",
+        projectNameTot: "",
+        projectName3bb: "",
+        projectNameTrue: "",
+        projectNameAis: "",
+        projectNameFiberNet: "",
+        buildingSum: "",
+        buildingNumber: "",
+        buildingFloor: "",
+        unitFloor: "",
+        fmProgress: "",
+        teamserway: "",
+        surweyDate: new Date().toISOString().slice(0, 10),
+        ifcccType: "",
+        ifcccStatus: "",
+        wallboxType: "",
+        wallboxStatus: "",
+        microductType: "",
+        microductStatus: "",
+        microductType1: "",
+        microductType2: "",
+        microductSize: "",
+        blowStatus: "",
+        blowCore: "",
+        convertionalType: "",
+        convertionalFloor: "",
+        vertically: "",
+        verticallyType: "",
+        buildingStatus: "",
+        buildingDate: new Date().toISOString().slice(0, 10),
+        spliceStatus: "",
+        spliceCore: "",
+        // microductDateK: new Date().toLocaleDateString("th").toString("d/m/Y"),
+        // microductK: "",
+        // surveyDesingDate: new Date().toLocaleDateString("th").toString("d/m/Y"),
+        // ifccDate: new Date().toLocaleDateString("th").toString("d/m/Y"),
+        // wallBoxDate: new Date().toLocaleDateString("th").toString("d/m/Y"),
+        // type: "",
+        // microductDateD: new Date().toLocaleDateString("th").toString("d/m/Y"),
+        // fiberConvertionDateD: new Date()
+        //   .toLocaleDateString("th")
+        //   .toString("d/m/Y"),
+        // blow: "",
+        // splice: "",
+      }),
+    };
+  },
+  methods: {
+    setSameProjectName() {
+      let name = this.building.filter(
+        (obj) => obj.id == this.form.building_id
+      )[0];
+      this.form.projectNameTot =
+        this.form.projectName3bb =
+        this.form.projectNameTrue =
+        this.form.projectNameAis =
+        this.form.projectNameFiberNet =
+          name.text;
+      Toast.fire({
+        title: translate("Copy to clipboard and pate already."),
+        timerProgressBar: false,
+      });
+    },
+    loadGeneratingaction() {
+      axios.get("/generatingactions").then((response) => {
+        this.generatingactions = response.data.data;
+      });
+    },
+    loadTeamserway() {
+      axios.get("/teamserways").then((response) => {
+        this.teamserways = response.data.data;
+      });
+    },
+    loadBuildings() {
+      axios.get("/building").then(
+        (response) =>
+          (this.building = response.data.data.map((a) => {
+            return { text: a.projectName, id: a.id };
+          }))
+      );
+    },
+    loadConstarution() {
+      this.$Progress.start();
+
+      if (this.$gate.isAdmin()) {
+        $("#constarution").DataTable().ajax.reload();
+      }
+
+      this.$Progress.finish();
+    },
+    updateConstarution() {
+      this.$Progress.start();
+      // console.log('Editing data');
+      this.form
+        .put("/constarution/" + this.form.id)
+        .then((response) => {
+          // success
+          $("#addNew").modal("hide");
+          Toast.fire({
+            icon: "success",
+            title: response.data.message,
+          });
+          this.$Progress.finish();
+          //  Fire.$emit('AfterCreate');
+
+          this.loadConstarution();
+        })
+        .catch(() => {
+          this.$Progress.fail();
+        });
+    },
+    editModal(constarution) {
+      this.editmode = true;
+      this.form.reset();
+      this.form.errors.clear();
+      console.log(constarution);
+      $("#addNew").modal("show");
+      this.form.fill(constarution);
+    },
+    newModal() {
+      this.editmode = false;
+      this.selected = "";
+      this.form.reset();
+      $("#addNew").modal("show");
+    },
+    deleteConstarution(item) {
+      Swal.fire({
+        title: window.translate("constitution.alert.delete_building_title"),
+        text:
+          window.translate("constitution.alert.delete_building_text") +
+          ` [${item.building.projectName}]`,
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        cancelButtonText: window.translate(
+          "constitution.alert.delete_building_cancel_button_text"
+        ),
+        confirmButtonText: window.translate(
+          "constitution.alert.delete_building_confirm_button_text"
+        ),
+      }).then((result) => {
+        // Send request to the server
+        if (result.value) {
+          this.form
+            .delete("/constarution/" + item.id)
+            .then(() => {
+              Swal.fire(
+                window.translate("constitution.alert.comfirm_delete_title"),
+                window.translate("constitution.alert.confirm_delete_message"),
+                "success"
+              );
+              // Fire.$emit('AfterCreate');
+              this.loadBuildings();
+              this.loadConstarution();
+            })
+            .catch((data) => {
+              Swal.fire("Failed!", data.message, "warning");
             });
-            $("tbody", this.$refs.buildings).on(
-                "click",
-                ".edit-building",
-                function(e) {
-                    e.preventDefault();
-                    var tr = $(this).closest("tr");
-                    var row = table.row(tr);
-                    vm.editModal(row.data());
-                }
-            );
-            $("tbody", this.$refs.buildings).on(
-                "click",
-                ".delete-building",
-                function(e) {
-                    e.preventDefault();
-                    var tr = $(this).closest("tr");
-                    var row = table.row(tr);
-                    vm.deleteBuilding(row.data());
-                }
-            );
         }
+      });
     },
-    created() {
-        this.$Progress.start();
-        LoadingWait.fire();
-        this.loadBuildings();
-        this.$Progress.finish();
+    createConstarution() {
+      if (this.selected == null || this.selected == undefined) return false;
+      this.form
+        .post("/constarution")
+        .then((response) => {
+          $("#addNew").modal("hide");
+          Toast.fire({
+            icon: "success",
+            title: response.data.message,
+          });
+          this.loadConstarution();
+        })
+        .catch(() => {
+          Toast.fire({
+            icon: "error",
+            title: "Some error occured! Please try again",
+          });
+        });
     },
-    mounted() {
-        const vm = this;
-        this.loadSaleFm();
-        this.loadSpendSpace();
-        this.loadArea();
-        this.loadArea3BB();
-        this.loadAreaTrue();
-        this.loadAreaTrueNew();
-        this.loadAreaAis();
-        this.loadAreaFiberNet();
-        this.loadWorkTime();
-        this.generateTable();
-        // $("#addNew").on("hide.bs.modal", function() {
-        //     vm.form.reset();
-        // });
-        setTimeout(() => {
-            LoadingWait.close();
-        }, 3000);
-        // $("input").attr("autocomplete", this.isChrome ? "chrome-off" : "off");
-    }
+    generateTable() {
+      var vm = this;
+      var table = $(this.$refs.constarution).DataTable({
+        dom: "Blfrtip",
+        ajax: "/api/constarution",
+        responsive: true,
+        processing: true,
+        pageLength: 10,
+        lengthMenu: [
+          [10, 15, 25, 50, -1],
+          [10, 15, 25, 50, "All"],
+        ],
+        fixedHeader: true,
+        fixedColumns: true,
+        fixedColumns: {
+          leftColumns: 2,
+          rightColumns: 1,
+        },
+        scrollX: true,
+        scrollCollapse: true,
+        select: true,
+        buttons: [
+          "colvis",
+          {
+            extend: "copy",
+            text: "<i class='bi bi-clipboard mr-1'></i>Copy",
+            exportOptions: {
+              columns: "th:not(.notexport)",
+            },
+          },
+          {
+            extend: "excelHtml5",
+            autoFilter: true,
+            sheetName: "Building",
+            text: "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+            exportOptions: {
+              columns: "th:not(.notexport)",
+            },
+          },
+          {
+            extend: "print",
+            text: "<i class='bi bi-printer mr-1'></i>Print",
+          },
+          {
+            text:
+              "<i class='bi bi-list-check mr-1'></i>" +
+              window.translate(
+                "datatables.alert.display_selected_record_title"
+              ) +
+              "",
+            action: function (e, dt, node, config) {
+              var rowsel = dt
+                .rows({ selected: true })
+                .data()
+                .map(function (item) {
+                  return item.id;
+                })
+                .join(",");
+              if (!rowsel.length) {
+                return Swal.fire({
+                  title: window.translate(
+                    "datatables.alert.display_selected_record_empty_title"
+                  ),
+                  text: window.translate(
+                    "datatables.alert.display_selected_record_empty_text"
+                  ),
+                  timer: 2000,
+                  showCancelButton: false,
+                  showConfirmButton: false,
+                });
+              }
+              $.fn.dataTable.ext.search.pop();
+              $.fn.dataTable.ext.search.push(function (
+                settings,
+                data,
+                dataIndex
+              ) {
+                return $(table.row(dataIndex).node()).hasClass("selected")
+                  ? true
+                  : false;
+              });
+
+              table.draw();
+            },
+          },
+          {
+            text: "<i class='bi bi-arrow-repeat mr-1'></i>Refresh",
+            action: function (e, dt, node, config) {
+              console.info("button: Clear");
+              $.fn.dataTable.ext.search.pop();
+              dt.search("").draw();
+              dt.columns().search("").draw();
+              dt.rows().deselect();
+              dt.ajax.reload();
+            },
+          },
+        ],
+        columns: [
+          {
+            data: null,
+            defaultContent: "",
+            className: "dt-body-center notexport",
+          },
+          {
+            data: "building.projectName",
+          },
+          {
+            data: "projectNameTot",
+            render: function (data, type, row, meta) {
+              if (data == "ยังไม่ได้ทำสัญญา") {
+                return '<span class="text-danger">' + data + "</span>";
+              } else if (!data) {
+                return "ไม่ได้ระบุ";
+              } else {
+                return data;
+              }
+            },
+          },
+          {
+            data: "projectName3bb",
+            render: function (data, type, row, meta) {
+              if (data == "ยังไม่ได้ทำสัญญา") {
+                return '<span class="text-danger">' + data + "</span>";
+              } else if (!data) {
+                return "ไม่ได้ระบุ";
+              } else {
+                return data;
+              }
+            },
+          },
+          {
+            data: "projectNameTrue",
+            render: function (data, type, row, meta) {
+              if (data == "ยังไม่ได้ทำสัญญา") {
+                return '<span class="text-danger">' + data + "</span>";
+              } else if (!data) {
+                return "ไม่ได้ระบุ";
+              } else {
+                return data;
+              }
+            },
+          },
+          {
+            data: "projectNameAis",
+          },
+          {
+            data: "projectNameFiberNet",
+            render: function (data, type, row, meta) {
+              if (data == "ยังไม่ได้ทำสัญญา") {
+                return '<span class="text-danger">' + data + "</span>";
+              } else if (!data) {
+                return "ไม่ได้ระบุ";
+              } else {
+                return data;
+              }
+            },
+          },
+          {
+            data: "buildingSum",
+          },
+          {
+            data: "buildingNumber",
+            render: function (data, type, row, meta) {
+              if (!data) {
+                return "ไม่ได้ระบุ";
+              } else {
+                return data;
+              }
+            },
+            // visible: false
+          },
+          {
+            data: "buildingFloor",
+            render: function (data, type, row, meta) {
+              if (!data) {
+                return "ไม่ได้ระบุ";
+              } else {
+                return data;
+              }
+            },
+          },
+          {
+            data: "unitFloor",
+            render: function (data, type, row, meta) {
+              if (!data) {
+                return "ไม่ได้ระบุ";
+              } else {
+                return data;
+              }
+            },
+          },
+          {
+            data: "fmProgress",
+            render: function (data, type, row, meta) {
+              if (!data) {
+                return "ไม่ได้ระบุ";
+              } else {
+                return data;
+              }
+            },
+          },
+          {
+            data: "teamserway",
+            render: function (data, type, row, meta) {
+              if (!data) {
+                return "ไม่ได้ระบุ";
+              } else {
+                return data;
+              }
+            },
+            // visible: false
+          },
+          {
+            data: "surweyDate",
+            render: function (data, type, row, meta) {
+              if (!data) {
+                return "ไม่ได้ระบุ";
+              } else {
+                return data;
+              }
+            },
+          },
+          {
+            data: "ifcccType",
+            // visible: false
+          },
+          {
+            data: "ifcccStatus",
+            // visible: false
+          },
+          {
+            data: "updated_at",
+            render: function (data, type, row, meta) {
+              return moment(data).format("MM/DD/YYYY HH:MM");
+            },
+          },
+          {
+            data: null,
+            className: "dt-body-center notexport",
+            render: function (data, type, row, meta) {
+              return "<a class='edit-constarution btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-constarution btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
+            },
+          },
+        ],
+        columnDefs: [
+          {
+            targets: 0,
+            searchable: false,
+            orderable: false,
+            className: "dt-body-center",
+            checkboxes: {
+              selectRow: true,
+            },
+          },
+        ],
+        select: { selector: "td:not(:last-child)", style: "os" },
+        order: [[1, "desc"]],
+      });
+
+      $("tbody", this.$refs.constarution).on(
+        "click",
+        ".edit-constarution",
+        function (e) {
+          e.preventDefault();
+          var tr = $(this).closest("tr");
+          var row = table.row(tr);
+          vm.editModal(row.data());
+        }
+      );
+
+      $("tbody", this.$refs.constarution).on(
+        "click",
+        ".delete-constarution",
+        function (e) {
+          e.preventDefault();
+          var tr = $(this).closest("tr");
+          var row = table.row(tr);
+          vm.deleteConstarution(row.data());
+        }
+      );
+    },
+  },
+  created() {
+    this.$Progress.start();
+    LoadingWait.fire();
+    this.loadBuildings();
+    this.$Progress.finish();
+  },
+  mounted() {
+    this.loadGeneratingaction();
+    this.generateTable();
+    this.loadTeamserway();
+    $(".datepicker").datepicker({
+      language: "th-th",
+      format: "dd/mm/yyyy",
+      autoclose: true,
+    });
+    setTimeout(() => {
+      LoadingWait.close();
+    }, 2000);
+  },
 };
 </script>

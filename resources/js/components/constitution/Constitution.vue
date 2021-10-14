@@ -90,12 +90,23 @@
 
             <!-- <form @submit.prevent="createUser"> -->
 
-            <form
-              @submit.prevent="
-                editmode ? updateConstarution() : createConstarution()
-              "
+            <form-wizard
+              ref="wizard"
+              :title="null"
+              :subtitle="null"
+              color="#4051B7"
+              shape="eclipse"
+              stepSize="xs"
             >
-              <div class="modal-body">
+              <wizard-step
+                slot-scope="props"
+                slot="step"
+                :tab="props.tab"
+                :transition="props.transition"
+                :index="props.index"
+              >
+              </wizard-step>
+              <tab-content title="Project Names" :selected="true">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
@@ -111,9 +122,8 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="row">
-                  <div class="col-sm-12">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>Project Name ToT / ชื่อโครงการของทีโอที</label>
                       <br />
@@ -138,10 +148,7 @@
                       />
                     </div>
                   </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-12">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>Project Name Ais / ชื่อโครงการของเอไอเอส</label>
                       <br />
@@ -169,7 +176,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-12">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>Project Name 3BB / ชื่อโครงการของสามบีบี</label>
                       <br />
@@ -194,10 +201,7 @@
                       />
                     </div>
                   </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-12">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>Project Name True / ชื่อโครงการของทรู</label>
                       <br />
@@ -223,8 +227,8 @@
                     </div>
                   </div>
                 </div>
-
-                <hr />
+              </tab-content>
+              <tab-content title="Progress">
                 <div class="row">
                   <div class="col-sm-3">
                     <div class="form-group">
@@ -366,7 +370,8 @@
                     </div>
                   </div>
                 </div>
-                <hr />
+              </tab-content>
+              <tab-content title="Type">
                 <div class="row">
                   <div class="col-sm-3">
                     <div class="form-group">
@@ -416,7 +421,8 @@
                     </div>
                   </div>
                 </div>
-                <hr />
+              </tab-content>
+              <tab-content title="FiberBlow & Fiber Convertional">
                 <div
                   class="row"
                   v-show="
@@ -560,7 +566,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div
                   class="row"
                   v-show="
@@ -739,7 +744,8 @@
                     </div>
                   </div>
                 </div>
-                <hr />
+              </tab-content>
+              <tab-content title="Project Images">
                 <div class="row">
                   <div class="col-sm-12">
                     <!-- text input -->
@@ -763,27 +769,43 @@
                     <has-error :form="form" field="spliceStatus"></has-error>
                   </div>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  {{ translate("constitution.actions.close") }}
-                </button>
-                <button v-show="editmode" type="submit" class="btn btn-success">
-                  {{ translate("constitution.actions.update") }}
-                </button>
-                <button
-                  v-show="!editmode"
-                  type="submit"
-                  class="btn btn-primary"
-                >
-                  {{ translate("constitution.actions.create") }}
-                </button>
-              </div>
-            </form>
+              </tab-content>
+              <template slot="footer" slot-scope="props">
+                <div class="wizard-footer-left">
+                  <wizard-button
+                    v-if="props.activeTabIndex > 0 "
+                    @click.native="props.prevTab()"
+                    :style="props.fillButtonStyle"
+                    >Previous</wizard-button
+                  >
+                </div>
+                <div class="wizard-footer-right">
+                  <wizard-button
+                    v-if="!props.isLastStep"
+                    @click.native="props.nextTab()"
+                    class="wizard-footer-right"
+                    :style="props.fillButtonStyle"
+                    >Next</wizard-button
+                  >
+                  <wizard-button
+                    v-show="editmode && props.isLastStep"
+                    class="wizard-footer-right finish-button"
+                    :style="props.fillButtonStyle"
+                    @click.native="updateConstarution()"
+                  >
+                    {{ translate("constitution.actions.update") }}
+                  </wizard-button>
+                  <wizard-button
+                    v-show="!editmode && props.isLastStep"
+                    class="wizard-footer-right finish-button"
+                    :style="props.fillButtonStyle"
+                    @click.native="createConstarution()"
+                  >
+                    {{ translate("constitution.actions.create") }}
+                  </wizard-button>
+                </div>
+              </template>
+            </form-wizard>
           </div>
         </div>
       </div>
@@ -794,14 +816,17 @@
 <script>
 import Select2 from "v-select2-component";
 import Uploader from "vux-uploader-component";
+import { mapGetters, mapState } from "vuex";
+import NumberInput from "../partials/NumberInput.vue";
 
 export default {
   title: "Constarution -",
-  components: { Select2, Uploader },
-  
+  components: { Select2, Uploader, NumberInput },
+
   data() {
     return {
       loader: null,
+      openWindowPortal: false,
       editmode: false,
       selected: "",
       building: [],
