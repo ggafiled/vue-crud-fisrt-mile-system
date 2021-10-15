@@ -187,7 +187,7 @@
                             </wizard-step>
                             <tab-content title="Sub-Building" :selected="true">
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Project Name</label>
                                             <small>/ชื่อโปรเจ็ค</small>
@@ -199,9 +199,7 @@
                                             />
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-3">
+                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Buildingsum</label>
                                             <small>/จำนวนอาคาร</small>
@@ -218,7 +216,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Floor</label>
                                             <small>/ชั้น</small>
@@ -238,7 +236,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Room</label>
                                             <small>/ห้อง</small>
@@ -259,6 +257,7 @@
                                         </div>
                                     </div>
                                 </div>
+                
                                 <div v-show="form.subBuildingsum > 1">
                                     <label class="text-danger"
                                         >***เงื่อนไข
@@ -304,7 +303,7 @@
                                                 />
                                             </div>
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
                                             <div class="input-group">
                                                 <number-input
                                                     inline

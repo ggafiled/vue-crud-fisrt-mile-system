@@ -78,10 +78,6 @@
         </div>
       </div>
 
-      <div v-if="!$gate.isAdmin()">
-        <not-found></not-found>
-      </div>
-
       <!-- Modal -->
       <div
         class="modal fade"
@@ -114,24 +110,62 @@
 
             <!-- <form @submit.prevent="createUser"> -->
 
-            <form
-              @submit.prevent="editmode ? updateCustomer() : createCustomer()"
+            <form-wizard
+              ref="wizard"
+              :title="null"
+              :subtitle="null"
+              color="#4051B7"
+              shape="eclipse"
+              stepSize="xs"
             >
-              <div class="modal-body">
+              <wizard-step
+                slot-scope="props"
+                slot="step"
+                :tab="props.tab"
+                :transition="props.transition"
+                :index="props.index"
+              >
+              </wizard-step>
+              <tab-content title="Customer Detail" :selected="true">
                 <div class="row">
-                  <div class="col-sm-5">
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                      <label>Tpye*</label>
+                      <select
+                        type="text"
+                        class="form-control"
+                        placeholder="FM-Progress"
+                        :class="hasError('type') ? 'is-invalid' : ''"
+                        v-model="form.type"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="ติดตั้ง">ติดตั้ง</option>
+                        <option value=" ซ่อม">ซ่อม</option>
+                        <option value="Blow Fiber">Blow Fiber</option>
+                        <option value="ซ่อมแซมฝ้า">ซ่อมแซมฝ้า</option>
+                      </select>
+                      <div v-if="hasError('type')" class="invalid-feedback">
+                        <div class="error" v-if="!$v.form.type.required">
+                          Please provide a valid type.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
                     <div class="form-group">
                       <label>{{ translate("planing.planing_name") }}</label>
                       <input
-                        v-model="form.name"
                         type="text"
                         class="form-control"
                         placeholder="Enter your Name..."
-                        :class="{
-                          'is-invalid': form.errors.has('name'),
-                        }"
+                        :class="hasError('name') ? 'is-invalid' : ''"
+                        v-model="form.name"
                       />
-                      <has-error :form="form" field="name"></has-error>
+                      <div v-if="hasError('name')" class="invalid-feedback">
+                        <div class="error" v-if="!$v.form.name.required">
+                          Please provide a valid name.
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -142,11 +176,13 @@
                         type="text"
                         class="form-control"
                         placeholder="Enter your surname..."
-                        :class="{
-                          'is-invalid': form.errors.has('surname'),
-                        }"
+                        :class="hasError('surname') ? 'is-invalid' : ''"
                       />
-                      <has-error :form="form" field="surname"></has-error>
+                      <div v-if="hasError('surname')" class="invalid-feedback">
+                        <div class="error" v-if="!$v.form.surname.required">
+                          Please provide a valid surname.
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-sm-2">
@@ -157,11 +193,13 @@
                         type="text"
                         class="form-control"
                         placeholder="Enter your tel..."
-                        :class="{
-                          'is-invalid': form.errors.has('tel'),
-                        }"
+                        :class="hasError('tel') ? 'is-invalid' : ''"
                       />
-                      <has-error :form="form" field="tel"></has-error>
+                      <div v-if="hasError('tel')" class="invalid-feedback">
+                        <div class="error" v-if="!$v.form.tel.required">
+                          Please provide a valid tel.
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-sm-2">
@@ -172,11 +210,13 @@
                         type="text"
                         class="form-control"
                         placeholder="Enter your tel2..."
-                        :class="{
-                          'is-invalid': form.errors.has('tel2'),
-                        }"
+                        :class="hasError('tel2') ? 'is-invalid' : ''"
                       />
-                      <has-error :form="form" field="tel2"></has-error>
+                      <div v-if="hasError('tel2')" class="invalid-feedback">
+                        <div class="error" v-if="!$v.form.tel2.required">
+                          Please provide a valid tel2.
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -188,9 +228,17 @@
                         v-model="form.building_id"
                         :options="building"
                         :settings="settings"
+                        :class="hasError('building_id') ? 'is-invalid' : ''"
                       >
                       </Select2>
-                      <has-error :form="form" field="projectName"></has-error>
+                      <div
+                        v-if="hasError('building_id')"
+                        class="invalid-feedback"
+                      >
+                        <div class="error" v-if="!$v.form.building_id.required">
+                          Please provide a valid building_id.
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -208,11 +256,16 @@
                         type="text"
                         class="form-control"
                         placeholder="Enter your building..."
-                        :class="{
-                          'is-invalid': form.errors.has('theBuilding'),
-                        }"
+                        :class="hasError('theBuilding') ? 'is-invalid' : ''"
                       />
-                      <has-error :form="form" field="theBuilding"></has-error>
+                      <div
+                        v-if="hasError('theBuilding')"
+                        class="invalid-feedback"
+                      >
+                        <div class="error" v-if="!$v.form.theBuilding.required">
+                          Please provide a valid theBuilding.
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -223,11 +276,13 @@
                         type="text"
                         class="form-control"
                         placeholder="Enter your floor..."
-                        :class="{
-                          'is-invalid': form.errors.has('floor'),
-                        }"
+                        :class="hasError('floor') ? 'is-invalid' : ''"
                       />
-                      <has-error :form="form" field="floor"></has-error>
+                      <div v-if="hasError('floor')" class="invalid-feedback">
+                        <div class="error" v-if="!$v.form.floor.required">
+                          Please provide a valid floor.
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -238,17 +293,23 @@
                         type="text"
                         class="form-control"
                         placeholder="Enter your room..."
-                        :class="{
-                          'is-invalid': form.errors.has('room'),
-                        }"
+                        :class="hasError('room') ? 'is-invalid' : ''"
                       />
-                      <has-error :form="form" field="room"></has-error>
+                      <div v-if="hasError('room')" class="invalid-feedback">
+                        <div class="error" v-if="!$v.form.room.required">
+                          Please provide a valid room.
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-sm-3">
                     <div class="form-group">
                       <label>{{ translate("planing.planing_isp") }}</label>
-                      <select class="form-control" v-model="form.isp_id">
+                      <select
+                        class="form-control"
+                        :class="hasError('isp_id') ? 'is-invalid' : ''"
+                        v-model="form.isp_id"
+                      >
                         <option value="" disabled>
                           --- Select a Class ---
                         </option>
@@ -260,7 +321,11 @@
                           {{ item.isp }}
                         </option>
                       </select>
-                      <has-error :form="form" field="isp"></has-error>
+                      <div v-if="hasError('isp_id')" class="invalid-feedback">
+                        <div class="error" v-if="!$v.form.isp_id.required">
+                          Please provide a valid isp_id.
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -274,6 +339,7 @@
                       <select
                         class="form-control"
                         v-model="form.agentDetail_id"
+                        :class="hasError('agentDetail_id') ? 'is-invalid' : ''"
                       >
                         <option value="" disabled>
                           --- Select a Class ---
@@ -286,7 +352,17 @@
                           {{ item.agentDetail }}
                         </option>
                       </select>
-                      <has-error :form="form" field="agent"></has-error>
+                      <div
+                        v-if="hasError('agentDetail_id')"
+                        class="invalid-feedback"
+                      >
+                        <div
+                          class="error"
+                          v-if="!$v.form.agentDetail_id.required"
+                        >
+                          Please provide a valid agentDetail_id.
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -297,11 +373,13 @@
                         type="text"
                         class="form-control"
                         placeholder="Enter your circuit..."
-                        :class="{
-                          'is-invalid': form.errors.has('circuit'),
-                        }"
+                        :class="hasError('circuit') ? 'is-invalid' : ''"
                       />
-                      <has-error :form="form" field="circuit"></has-error>
+                      <div v-if="hasError('circuit')" class="invalid-feedback">
+                        <div class="error" v-if="!$v.form.circuit.required">
+                          Please provide a valid circuit.
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -314,15 +392,21 @@
                         type="text"
                         class="form-control"
                         placeholder="Enter your entrance fee..."
-                        :class="{
-                          'is-invalid': form.errors.has('entranceFee'),
-                        }"
+                        :class="hasError('entranceFee') ? 'is-invalid' : ''"
                       />
-                      <has-error :form="form" field="entranceFee"></has-error>
+                      <div
+                        v-if="hasError('entranceFee')"
+                        class="invalid-feedback"
+                      >
+                        <div class="error" v-if="!$v.form.entranceFee.required">
+                          Please provide a valid entranceFee.
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-
+              </tab-content>
+              <tab-content title="Project Detail">
                 <div class="row">
                   <div class="col-sm-3">
                     <div class="form-group">
@@ -411,46 +495,6 @@
                       ></has-error>
                     </div>
                   </div>
-                  <!-- <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>เบอร์โทรช่าง</label>
-                                            <input
-                                                v-model="form.technician_id"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your phone technician..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'technicianPlaning'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="technicianPlaning"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>อีเมลล์ช่าง</label>
-                                            <input
-                                                v-model="form.technician_id"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your phone technician..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'technicianPlaning'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="technicianPlaning"
-                                            ></has-error>
-                                        </div>
-                                    </div> -->
                   <div class="col-sm-3">
                     <div class="form-group">
                       <label>จำนวนการติดต่อ</label>
@@ -514,29 +558,7 @@
                       ></has-error>
                     </div>
                   </div>
-                  <div class="col-sm-3">
-                    <div class="form-group">
-                      <label>Tpye*</label>
-                      <select
-                        v-model="form.type"
-                        type="text"
-                        class="form-control"
-                        placeholder="FM-Progress"
-                        :class="{
-                          'is-invalid': form.errors.has('type'),
-                        }"
-                      >
-                        <option disabled value="">--- Select Type ---</option>
-                        <option value="ติดตั้ง">ติดตั้ง</option>
-                        <option value=" ซ่อม">ซ่อม</option>
-                        <option value="Blow Fiber">Blow Fiber</option>
-                        <option value="ซ่อมแซมฝ้า">ซ่อมแซมฝ้า</option>
-                      </select>
-                      <has-error :form="form" field="type"></has-error>
-                    </div>
-                  </div>
                 </div>
-
                 <div class="row">
                   <div class="col-sm-4">
                     <div class="form-group">
@@ -587,7 +609,8 @@
                     </div>
                   </div>
                 </div>
-
+              </tab-content>
+              <tab-content title="Remark">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
@@ -606,28 +629,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  {{ translate("planing.actions.close") }}
-                </button>
-                <button v-show="editmode" type="submit" class="btn btn-success">
-                  {{ translate("planing.actions.update") }}
-                </button>
-                <button
-                  v-show="!editmode"
-                  type="submit"
-                  class="btn btn-primary"
-                >
-                  {{ translate("planing.actions.create") }}
-                </button>
-              </div>
-            </form>
+              </tab-content>
+            </form-wizard>
           </div>
         </div>
       </div>
@@ -638,11 +641,18 @@
 <script>
 // import {en, th} from 'vuejs-datepicker/dist/locale';
 import Select2 from "v-select2-component";
+import { ValidationHelper } from "vue-step-wizard";
+import "vue-step-wizard/dist/vue-step-wizard.css";
+import { required } from "vuelidate/lib/validators";
+import { email } from "vuelidate/lib/validators";
+import { numeric } from "vuelidate/lib/validators";
 // import Datepicker from 'vuejs-datepicker';
 
 export default {
   title: "Customer -",
+  name: "StepFormValidation",
   components: { Select2 /*Datepicker*/ },
+  mixins: [ValidationHelper],
   data() {
     return {
       // en: en,
@@ -702,6 +712,24 @@ export default {
         subStatus: "-",
         reMark: "-",
       }),
+      validationRules: [
+        {
+          type: { required },
+          building_id: { required },
+          name: { required },
+          tel: { required },
+          tel2: { required },
+          theBuilding: { required },
+          floor: { required },
+          room: { required },
+          isp_id: { required },
+          agentDetail: { required },
+          circuit: { required },
+          entranceFee: { required },
+        }, //Validation Rules for step 1
+        { companyName: { required }, numberOfEmployees: { required, numeric } }, //Validation for step 2
+        { referral: { required }, terms: { required, numeric } }, //Validation for step 3
+      ],
     };
   },
   methods: {
@@ -750,7 +778,6 @@ export default {
     },
     loadPlaning() {
       this.$Progress.start();
-
       if (this.$gate.isAdmin()) {
         this.$store.dispatch("GET_BUILDINGS");
         $("#customer").DataTable().ajax.reload();
@@ -828,7 +855,6 @@ export default {
             icon: "success",
             title: response.data.message,
           });
-
           this.$Progress.finish();
           this.loadPlaning();
         })
@@ -1434,7 +1460,6 @@ export default {
         select: { selector: "td:not(:last-child)", style: "os" },
         order: [[1, "desc"]],
       });
-
       $("tbody", this.$refs.planing).on(
         "click",
         ".edit-customer",
@@ -1445,7 +1470,6 @@ export default {
           vm.editModal(row.data());
         }
       );
-
       $("tbody", this.$refs.planing).on(
         "click",
         ".delete-customer",
