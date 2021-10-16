@@ -37,6 +37,8 @@ return [
 
     'header' => 'Constrution Management',
     'addnew' => 'Add New',
+    'download' => 'Download Template',
+    'import' => 'Import data from csv',
     'create' => [
         'header' => 'Create New Constitution',
     ],

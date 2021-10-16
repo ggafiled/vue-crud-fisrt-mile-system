@@ -12,6 +12,17 @@
                             <button
                                 type="button"
                                 class="btn btn-sm btn-primary"
+                                @click="dowloadExcelTemplate"
+                            >
+                                <i
+                                    class="fa fa-download"
+                                    aria-hidden="true"
+                                ></i>
+                                {{ translate("constitution.download") }}
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-primary"
                                 @click="newModal"
                             >
                                 <i class="fa fa-plus-square"></i>
@@ -21,58 +32,19 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="card-body">
+                        <div class="card-body m-0">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <form class="form-inline">
-                                            <label
-                                                for="colFormLabelSm"
-                                                class="col-form-label"
-                                                >Import Template Excel :</label
-                                            >
-
-                                            <div class="form-group mx-sm-2">
-                                                <input
-                                                    class="form-control"
-                                                    type="file"
-                                                    id="excelTemp"
-                                                />
-                                            </div>
-                                            <button
-                                                type="submit"
-                                                class="btn btn-primary"
-                                            >
-                                                Import
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <form class="form-inline">
-                                            <label
-                                                for="colFormLabelSm"
-                                                class="col-form-label"
-                                                >Import Excel :</label
-                                            >
-
-                                            <div class="form-group mx-sm-2">
-                                                <input
-                                                    class="form-control"
-                                                    type="file"
-                                                    id="excelTemp"
-                                                />
-                                            </div>
-                                            <button
-                                                type="submit"
-                                                class="btn btn-primary"
-                                            >
-                                                Import
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
+                                <button
+                                    type="button"
+                                    class="dt-button"
+                                    @click="dowloadExcelTemplate"
+                                >
+                                    <i
+                                        class="fa fa-upload"
+                                        aria-hidden="true"
+                                    ></i>
+                                    {{ translate("constitution.import") }}
+                                </button>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -1171,6 +1143,20 @@ export default {
         };
     },
     methods: {
+        dowloadExcelTemplate() {
+            const workbook = ExcelJS.Workbook();
+            workbook.creator = "Firstmile System";
+            workbook.created = new Date();
+            workbook.modified = new Date();
+            const customerSheet = workbook.addWorksheet("customer");
+            customerSheet.columns = [
+                { header: "Name", key: "name" },
+                { header: "Surname", key: "surname" },
+                { header: "Tel.", key: "tel" },
+                { header: "Tel2.", key: "tel2" }
+            ];
+            workbook.xlsx.writeFile("customer");
+        },
         setSameProjectName() {
             let name = this.building.filter(
                 obj => obj.id == this.form.building_id
