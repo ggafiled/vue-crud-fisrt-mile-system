@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Requests\Constarution\ConstarutionRequest;
 use App\Models\Constarution;
+use App\Models\Building;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,18 @@ class ConstarutionController extends BaseController
     {
         try {
             $constarution = Constarution::with(
-                'building:id,subBuildingsum')->get();
+                'building:id,subBuildingsum'
+            )->get();
+            return $this->sendResponse($constarution, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.get.failed'));
+        }
+    }
+
+    public function queryBuilding()
+    {
+        try {
+            $constarution = Building::where('balance', '=', '1000' )->get();
             return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.failed'));
@@ -154,10 +166,10 @@ class ConstarutionController extends BaseController
                 'microductType2' => strtolower($request->input('microductType')) == strtolower('FiberBlow') ? $request->input('microductType2') : null,
                 'microductSize' => strtolower($request->input('microductType')) == strtolower('FiberBlow') ? $request->input('microductSize') : null,
                 'microductFloor' => strtolower($request->input('microductType')) == strtolower('FiberBlow') ? $request->input('microductFloor') : null,
-                
+
                 'blowStatus' => strtolower($request->input('microductType')) == strtolower('FiberBlow') ? $request->input('blowStatus') : null,
                 'blowCore' => strtolower($request->input('microductType')) == strtolower('FiberBlow') ? $request->input('blowCore') : null,
-                
+
                 'convertionalType' => strtolower($request->input('microductType')) == strtolower('FiberConvertional') ? $request->input('convertionalType') : null,
                 'convertionalFloor' => strtolower($request->input('microductType')) == strtolower('FiberConvertional') ? $request->input('convertionalFloor') : null,
                 'vertically' => strtolower($request->input('microductType')) == strtolower('FiberConvertional') ? $request->input('vertically') : null,

@@ -968,7 +968,7 @@ export default {
       });
     },
     loadBuildings() {
-      axios.get("/building").then(
+      axios.get("/getbulding").then(
         (response) =>
           (this.building = response.data.data.map((a) => {
             return { text: a.projectName, id: a.id };
