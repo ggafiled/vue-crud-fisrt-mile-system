@@ -51,7 +51,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('buildinglist/nonContract', 'BuildingListController@nonContract');
     Route::post('planing/loadCoordinatePlanningOfBuilding', 'PlaningController@loadCoordinatePlanningOfBuilding');
     Route::post('backup/actionBackup', 'BackupController@actionBackup');
-    Route::post('/getbulding', 'ConstarutionController@queryBuilding');
+    Route::get('/constarution/retrieveBuilding', 'ConstarutionController@queryBuilding');
 
     // Route::post('close_ticket/{ticket_id}', 'TicketsController@close'); // ปิดตั๋ว
     // Route::get('my_tickets', 'TicketsController@userTickets'); // แสดงตั๋วของผู้ใช้งานคนนั้นๆ

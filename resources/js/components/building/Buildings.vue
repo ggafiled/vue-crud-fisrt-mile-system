@@ -171,11 +171,11 @@
 
                         <form-wizard
                             ref="wizard"
-                            :title="null" :subtitle="null"
+                            :title="null"
+                            :subtitle="null"
                             color="#4051B7"
                             shape="eclipse"
                             stepSize="xs"
-
                         >
                             <wizard-step
                                 slot-scope="props"
@@ -199,7 +199,7 @@
                                             />
                                         </div>
                                     </div>
-                                     <div class="col-sm-2">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Buildingsum</label>
                                             <small>/จำนวนอาคาร</small>
@@ -216,7 +216,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                     <div class="col-sm-2">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
                                             <label>Floor</label>
                                             <small>/ชั้น</small>
@@ -257,7 +257,7 @@
                                         </div>
                                     </div>
                                 </div>
-                
+
                                 <div v-show="form.subBuildingsum > 1">
                                     <label class="text-danger"
                                         >***เงื่อนไข
@@ -1181,9 +1181,7 @@
                             <template slot="footer" slot-scope="props">
                                 <div class="wizard-footer-left">
                                     <wizard-button
-                                        v-if="
-                                            props.activeTabIndex > 0 
-                                        "
+                                        v-if="props.activeTabIndex > 0"
                                         @click.native="props.prevTab()"
                                         :style="props.fillButtonStyle"
                                         >Previous</wizard-button
@@ -1199,20 +1197,34 @@
                                     >
                                     <wizard-button
                                         v-show="editmode && props.isLastStep"
-                                        class="wizard-footer-right finish-button"
+                                        class="btn wizard-footer-right finish-button"
                                         :style="props.fillButtonStyle"
                                         @click.native="updateBuilding()"
+                                        :disabled="onprogress"
                                     >
+                                        <span
+                                            v-show="onprogress"
+                                            class="spinner-border spinner-border-sm"
+                                            role="status"
+                                            aria-hidden="true"
+                                        ></span>
                                         {{
                                             translate("building.actions.update")
                                         }}
                                     </wizard-button>
                                     <wizard-button
                                         v-show="!editmode && props.isLastStep"
-                                        class="wizard-footer-right finish-button"
+                                        class="btn wizard-footer-right finish-button"
                                         :style="props.fillButtonStyle"
                                         @click.native="createBuilding()"
+                                        :disabled="onprogress"
                                     >
+                                        <span
+                                            v-show="onprogress"
+                                            class="spinner-border spinner-border-sm"
+                                            role="status"
+                                            aria-hidden="true"
+                                        ></span>
                                         {{
                                             translate("building.actions.create")
                                         }}
@@ -1238,6 +1250,7 @@ export default {
             loader: null,
             openWindowPortal: false,
             editmode: false,
+            onprogress: false,
             selected: "",
             areas: [],
             bbns: [],
@@ -1429,10 +1442,11 @@ export default {
             }
             this.$Progress.finish();
         },
-        updateBuilding() {
+        async updateBuilding() {
             this.$Progress.start();
             // console.log('Editing data');
-            this.form
+            this.onprogress = true;
+            await this.form
                 .put("/building/" + this.form.id)
                 .then(response => {
                     // success
@@ -1448,6 +1462,9 @@ export default {
                 .catch(() => {
                     this.$Progress.fail();
                 });
+            setTimeout(() => {
+                this.onprogress = false;
+            }, 2000);
         },
         editModal(building) {
             this.editmode = true;
@@ -1509,11 +1526,12 @@ export default {
                 }
             });
         },
-        createBuilding() {
+        async createBuilding() {
             console.log("createBuilding");
             if (this.selected == null || this.selected == undefined)
                 return false;
-            this.form
+            this.onprogress = true;
+            await this.form
                 .post("/building")
                 .then(response => {
                     $("#addNew").modal("hide");
@@ -1530,6 +1548,9 @@ export default {
                         title: "Some error occured! Please try again"
                     });
                 });
+            setTimeout(() => {
+                this.onprogress = false;
+            }, 2000);
         },
         generateTable() {
             var vm = this;

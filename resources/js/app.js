@@ -114,7 +114,7 @@ Vue.component(AlertError.name, AlertError);
 // หากจะใช้ก็แค่เพิ่ม attribute : active_url ในไฟล์ adminlte.config โดยใส่เป็น path เริ่มต้นที่จะให้แมทช์
 Vue.directive("active-when", {
     bind(el, binding, vnode) {
-        console.log(binding.expression);
+        // console.log(binding.expression);
         var regexActiveRoute = new RegExp(
             "[/]?" +
             binding.expression.replace(/\//g, "\\/") +
