@@ -403,12 +403,19 @@ return [
             'roles' => ['superadministrator', 'administrator'],
         ],
         [
+            'text' => 'Import CSV',
+            'url' => '/csv/import',
+            'icon' => 'bi bi-file-earmark-excel',
+            'roles' => ['superadministrator'],
+        ],
+        [
             'text' => 'Data Validation',
             'url' => '/settings?tab=building',
             'icon' => 'bi bi-gear-fill',
             'roles' => ['superadministrator'],
             'active_url' => 'settings',
         ],
+        
     ],
 
     /*

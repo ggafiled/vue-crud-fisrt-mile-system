@@ -190,6 +190,14 @@ export default [{
         }
     },
     {
+        path: "/csv/import",
+        component: require("./components/importfile/importCSV.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator"]
+        }
+    },
+    {
         path: "/settings",
         component: require("./components/datavalidation/Datavalidation.vue")
             .default,

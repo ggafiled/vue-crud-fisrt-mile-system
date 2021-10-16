@@ -21,6 +21,50 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <form class="form-inline">
+                      <label for="colFormLabelSm" class="col-form-label"
+                        >Import Template Excel :</label
+                      >
+
+                      <div class="form-group mx-sm-2">
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="excelTemp"
+                        />
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        Import
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <form class="form-inline">
+                      <label for="colFormLabelSm" class="col-form-label"
+                        >Import Excel :</label
+                      >
+
+                      <div class="form-group mx-sm-2">
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="excelTemp"
+                        />
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        Import
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="table-responsive">
               <table
                 id="constarution"
@@ -752,18 +796,18 @@
                     <div class="form-group">
                       <label>Select a Images </label>
                       <div class="input-group">
-                      <uploader
-                        v-model="fileList"
-                        :url="remoteUrl"
-                        title="Images"
-                        limit="24"
-                        multiple
-                        @on-change="onChange"
-                        @on-cancel="onCancel"
-                        @on-success="onSuccess"
-                        @on-error="onError"
-                        @on-delete="onDelete"
-                      ></uploader>
+                        <uploader
+                          v-model="fileList"
+                          :url="remoteUrl"
+                          title="Images"
+                          limit="24"
+                          multiple
+                          @on-change="onChange"
+                          @on-cancel="onCancel"
+                          @on-success="onSuccess"
+                          @on-error="onError"
+                          @on-delete="onDelete"
+                        ></uploader>
                       </div>
                     </div>
                     <has-error :form="form" field="spliceStatus"></has-error>
@@ -773,7 +817,7 @@
               <template slot="footer" slot-scope="props">
                 <div class="wizard-footer-left">
                   <wizard-button
-                    v-if="props.activeTabIndex > 0 "
+                    v-if="props.activeTabIndex > 0"
                     @click.native="props.prevTab()"
                     :style="props.fillButtonStyle"
                     >Previous</wizard-button
