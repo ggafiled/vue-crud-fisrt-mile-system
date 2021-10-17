@@ -37,7 +37,7 @@
                                 <button
                                     type="button"
                                     class="dt-button"
-                                    @click="dowloadExcelTemplate"
+                                    @click.prevent="goToImportPanel"
                                 >
                                     <i
                                         class="fa fa-upload"
@@ -1143,6 +1143,9 @@ export default {
         };
     },
     methods: {
+        goToImportPanel(){
+            this.$router.push({  path: "importData"});
+        },
         dowloadExcelTemplate() {
             const workbook = ExcelJS.Workbook();
             workbook.creator = "Firstmile System";

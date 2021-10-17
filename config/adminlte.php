@@ -402,11 +402,13 @@ return [
             'icon' => 'bi bi-people',
             'roles' => ['superadministrator', 'administrator'],
         ],
+        ['header' => 'SETTINGS'],
         [
             'text' => 'Import CSV',
-            'url' => '/csv/import',
+            'url' => '/importData',
             'icon' => 'bi bi-file-earmark-excel',
             'roles' => ['superadministrator'],
+            'active_url' => 'importData',
         ],
         [
             'text' => 'Data Validation',
@@ -415,7 +417,7 @@ return [
             'roles' => ['superadministrator'],
             'active_url' => 'settings',
         ],
-        
+
     ],
 
     /*
