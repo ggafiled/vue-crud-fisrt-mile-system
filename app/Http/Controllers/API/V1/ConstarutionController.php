@@ -38,7 +38,7 @@ class ConstarutionController extends BaseController
     public function queryBuilding()
     {
         try {
-            $constarution = Building::where('balance', '=', '1000' )->get();
+            $constarution = Building::where('statusBuilding', '=', 'Complete' )->get();
             return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.failed'));
@@ -59,11 +59,11 @@ class ConstarutionController extends BaseController
                 'projectNameTrue' => $request->input('projectNameTrue'),
                 'projectNameAis' => $request->input('projectNameAis'),
                 'projectName3bb' => $request->input('projectName3bb'),
-                'projectNameFiberNet' => $request->input('projectNameFiberNet'),
-                'buildingSum' => $request->input('buildingSum'),
-                'buildingNumber' => $request->input('buildingNumber'),
-                'buildingFloor' => $request->input('buildingFloor'),
-                'unitFloor' => $request->input('unitFloor'),
+                // 'projectNameFiberNet' => $request->input('projectNameFiberNet'),
+                // 'buildingSum' => $request->input('buildingSum'),
+                // 'buildingNumber' => $request->input('buildingNumber'),
+                // 'buildingFloor' => $request->input('buildingFloor'),
+                // 'unitFloor' => $request->input('unitFloor'),
                 'fmProgress' => $request->input('fmProgress'),
                 'teamserway' => $request->input('teamserway'),
                 'surweyDate' => $request->input('surweyDate'),
@@ -149,10 +149,10 @@ class ConstarutionController extends BaseController
                 'projectNameAis' => $request->input('projectNameAis'),
                 'projectName3bb' => $request->input('projectName3bb'),
                 'projectNameFiberNet' => $request->input('projectNameFiberNet'),
-                'buildingSum' => $request->input('buildingSum'),
-                'buildingNumber' => $request->input('buildingNumber'),
-                'buildingFloor' => $request->input('buildingFloor'),
-                'unitFloor' => $request->input('unitFloor'),
+                // 'buildingSum' => $request->input('buildingSum'),
+                // 'buildingNumber' => $request->input('buildingNumber'),
+                // 'buildingFloor' => $request->input('buildingFloor'),
+                // 'unitFloor' => $request->input('unitFloor'),
                 'fmProgress' => $request->input('fmProgress'),
                 'teamserway' => $request->input('teamserway'),
                 'surweyDate' => $request->input('surweyDate'),

@@ -95,6 +95,7 @@ class Buildingcontroller extends BaseController
                 'remarkContract' => $request->input('remarkContract'),
                 'workTime_id' => $request->input('workTime_id'),
                 'remark' => $request->input('remark'),
+                'statusBuilding' => $request->input('statusBuilding'),
             ]);
 
             if ((int) $request->input('subBuildingsum') > 0) {

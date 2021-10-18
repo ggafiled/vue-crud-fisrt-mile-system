@@ -71,6 +71,7 @@ class BuildingRequest extends FormRequest
             'contractPeriod' => "string|max:191",
             'reNewContact' => "string|max:191",
             'balance' => "numeric",
+            'statusBuilding' => "string|max:191",
         ];
     }
 
@@ -120,6 +121,7 @@ class BuildingRequest extends FormRequest
             'contractPeriod' => "string|max:191",
             'reNewContact' => "string|max:191",
             'balance' => "numeric",
+            'statusBuilding' => "string|max:191",
         ];
     }
 }

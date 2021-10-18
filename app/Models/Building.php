@@ -53,7 +53,7 @@ class Building extends Model
         'remarkContract',
         'workTime_id',
         'remark',
-
+        'statusBuilding',
     ];
 
     // protected $appends = ['salefm', 'payment', 'area', 'bbn', 'area3bb', 'areaTrue', 'areaAis', 'areaFibernet', 'worktime'];

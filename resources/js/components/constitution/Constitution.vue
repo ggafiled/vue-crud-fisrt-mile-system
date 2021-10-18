@@ -62,11 +62,11 @@
                                         <th>Project Name 3BB</th>
                                         <th>Project Name True</th>
                                         <th>Project Name Ais</th>
-                                        <th>Project Name FiberNet</th>
-                                        <th>Building Sum</th>
+                                        <!-- <th>Project Name FiberNet</th> -->
+                                        <!-- <th>Building Sum</th>
                                         <th>Building Number</th>
                                         <th>Building Floor</th>
-                                        <th>Unit Floor</th>
+                                        <th>Unit Floor</th> -->
                                         <th>Fm Progress</th>
                                         <th>Team Serway</th>
                                         <th>Surwey Date</th>
@@ -970,10 +970,10 @@
                                     </div>
                                 </div>
                             </tab-content>
-                            <tab-content title="Project Images">
+                            <!-- <tab-content title="Project Images">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <!-- text input -->
+                                    
                                         <div class="form-group">
                                             <label>Select a Images </label>
                                             <div class="input-group">
@@ -991,7 +991,7 @@
                                         ></has-error>
                                     </div>
                                 </div>
-                            </tab-content>
+                            </tab-content> -->
                             <template slot="footer" slot-scope="props">
                                 <div class="wizard-footer-left">
                                     <wizard-button
@@ -1415,7 +1415,7 @@ export default {
                         className: "dt-body-center notexport"
                     },
                     {
-                        data: "building.projectName"
+                        data: "building[0].projectName"
                     },
                     {
                         data: "projectNameTot",
@@ -1468,56 +1468,56 @@ export default {
                     {
                         data: "projectNameAis"
                     },
-                    {
-                        data: "projectNameFiberNet",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ได้ทำสัญญา") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "buildingSum"
-                    },
-                    {
-                        data: "buildingNumber",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                        // visible: false
-                    },
-                    {
-                        data: "buildingFloor",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
-                    {
-                        data: "unitFloor",
-                        render: function(data, type, row, meta) {
-                            if (!data) {
-                                return "ไม่ได้ระบุ";
-                            } else {
-                                return data;
-                            }
-                        }
-                    },
+                    // {
+                    //     data: "projectNameFiberNet",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "ยังไม่ได้ทำสัญญา") {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 data +
+                    //                 "</span>"
+                    //             );
+                    //         } else if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "buildingSum"
+                    // },
+                    // {
+                    //     data: "buildingNumber",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    //     // visible: false
+                    // },
+                    // {
+                    //     data: "buildingFloor",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "unitFloor",
+                    //     render: function(data, type, row, meta) {
+                    //         if (!data) {
+                    //             return "ไม่ได้ระบุ";
+                    //         } else {
+                    //             return data;
+                    //         }
+                    //     }
+                    // },
                     {
                         data: "fmProgress",
                         render: function(data, type, row, meta) {

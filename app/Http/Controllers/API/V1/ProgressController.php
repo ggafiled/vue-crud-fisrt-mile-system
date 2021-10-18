@@ -7,6 +7,7 @@ use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Progress;
+use App\Models\Building;
 use App\Http\Requests\Progress\ProgressRequest;
 
 class ProgressController extends BaseController
@@ -36,6 +37,16 @@ class ProgressController extends BaseController
             'trueProgress:id,status as name'
             )->get();
             return $this->sendResponse($progress, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.get.failed'));
+        }
+    }
+
+    public function queryProgress()
+    {
+        try {
+            $constarution = Building::where('statusBuilding', '=', 'complete' )->get();
+            return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.failed'));
         }

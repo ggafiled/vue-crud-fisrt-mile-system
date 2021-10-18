@@ -52,6 +52,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::post('planing/loadCoordinatePlanningOfBuilding', 'PlaningController@loadCoordinatePlanningOfBuilding');
     Route::post('backup/actionBackup', 'BackupController@actionBackup');
     Route::get('/constarution/retrieveBuilding', 'ConstarutionController@queryBuilding');
+    Route::get('/progress/retrieveBuilding', 'ProgressController@queryProgress');
 
     // Route::post('close_ticket/{ticket_id}', 'TicketsController@close'); // ปิดตั๋ว
     // Route::get('my_tickets', 'TicketsController@userTickets'); // แสดงตั๋วของผู้ใช้งานคนนั้นๆ

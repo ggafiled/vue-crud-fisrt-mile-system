@@ -31,7 +31,7 @@ class CreateProgressTable extends Migration
             $table->date('dateTot')->nullable();
             // $table->string('aisProgress')->nullable();
             $table->date('dateAis')->nullable();
-            // $table->string('Progress3bb')->nullable();\
+            // $table->string('Progress3bb')->nullable();
             $table->date('date3BB')->nullable();
             // $table->string('sinetProgress')->nullable();
             $table->date('dateSinet')->nullable();
@@ -47,6 +47,7 @@ class CreateProgressTable extends Migration
                 ->references('id')
                 ->on('buildings')
                 ->onDelete('cascade');
+
 
             $table->foreign('fmProgress_id')
                 ->references('id')
