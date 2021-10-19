@@ -17,6 +17,7 @@ class CreateProgressTable extends Migration
         Schema::create('progress', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned()->nullable();
+            $table->bigInteger('constarution_id')->unsigned()->nullable();
             $table->bigInteger('fmProgress_id')->unsigned()->nullable();
             $table->bigInteger('aisProgress_id')->unsigned()->nullable();
             $table->bigInteger('totProgress_id')->unsigned()->nullable();
@@ -40,12 +41,18 @@ class CreateProgressTable extends Migration
             // $table->string('trueProgress')->nullable();
             $table->date('dateTrue')->nullable();
             $table->date('dateTxrx')->nullable();
+            $table->string('statusProgress')->nullable();//สถานะตึก
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('building_id')
                 ->references('id')
                 ->on('buildings')
+                ->onDelete('cascade');
+
+            $table->foreign('constarution_id')
+                ->references('id')
+                ->on('constarutions')
                 ->onDelete('cascade');
 
 

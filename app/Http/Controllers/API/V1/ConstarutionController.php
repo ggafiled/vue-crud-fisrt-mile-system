@@ -166,10 +166,8 @@ class ConstarutionController extends BaseController
                 'microductType2' => strtolower($request->input('microductType')) == strtolower('FiberBlow') ? $request->input('microductType2') : null,
                 'microductSize' => strtolower($request->input('microductType')) == strtolower('FiberBlow') ? $request->input('microductSize') : null,
                 'microductFloor' => strtolower($request->input('microductType')) == strtolower('FiberBlow') ? $request->input('microductFloor') : null,
-
                 'blowStatus' => strtolower($request->input('microductType')) == strtolower('FiberBlow') ? $request->input('blowStatus') : null,
                 'blowCore' => strtolower($request->input('microductType')) == strtolower('FiberBlow') ? $request->input('blowCore') : null,
-
                 'convertionalType' => strtolower($request->input('microductType')) == strtolower('FiberConvertional') ? $request->input('convertionalType') : null,
                 'convertionalFloor' => strtolower($request->input('microductType')) == strtolower('FiberConvertional') ? $request->input('convertionalFloor') : null,
                 'vertically' => strtolower($request->input('microductType')) == strtolower('FiberConvertional') ? $request->input('vertically') : null,

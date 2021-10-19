@@ -371,6 +371,28 @@
                       <has-error :form="form" field="dateTrue"></has-error>
                     </div>
                   </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Status Building</label>
+                      <select
+                        v-model="form.statusProgress"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('statusProgress'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="Complete">Completed</option>
+                        <option value="Unready">Unready</option>
+                      </select>
+                      <has-error
+                        :form="form"
+                        field="statusProgress"
+                      ></has-error>
+                    </div>
+                  </div>
                 </div>
               </div>
 

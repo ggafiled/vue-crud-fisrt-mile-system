@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Progress;
 use App\Models\Building;
+use App\Models\Constarution;
 use App\Http\Requests\Progress\ProgressRequest;
 
 class ProgressController extends BaseController
@@ -45,7 +46,7 @@ class ProgressController extends BaseController
     public function queryProgress()
     {
         try {
-            $constarution = Building::where('statusBuilding', '=', 'complete' )->get();
+            $constarution = Constarution::where('spliceStatus', '=', 'Completed' )->get();
             return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.failed'));
@@ -88,7 +89,8 @@ class ProgressController extends BaseController
                 'date3BB' => $request->input('date3BB'),
                 'dateSinet' => $request->input('dateSinet'),
                 'dateFn' => $request->input('dateFn'),
-                'dateTrue' => $request->input('dateTrue')
+                'dateTrue' => $request->input('dateTrue'),
+                'statusProgress' => $request->input('statusProgress')
             ]);
             $progress->save();
             return $this->sendResponse($progress, trans('actions.created.success'));

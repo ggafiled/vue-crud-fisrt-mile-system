@@ -1322,7 +1322,7 @@ export default {
         fixedColumns: true,
         fixedColumns: {
           leftColumns: 3,
-          rightColumns: 1,
+          rightColumns: 3,
         },
         scrollX: true,
         scrollCollapse: true,
@@ -1416,17 +1416,23 @@ export default {
             className: "dt-body-center notexport",
           },
           {
-            data: "statusBuilding"
-            // ,
-            // render: function (data, type, row, meta) {
-            //   if (data = "complete") {
-            //     return (
-            //       '<span class="badge bg-primary text-wrap>' + data + "</span>"
-            //     );
-            //   } else {
-            //     return data;
-            //   }
-            // },
+            data: "statusBuilding",
+            className: "text-capitalize",
+            render: function (data, type, row, meta) {
+              if (data == "Unready") {
+                return (
+                  '<span class="badge rounded-pill bg-danger">' +
+                  data +
+                  "</span>"
+                );
+              } else if (data == "Complete") {
+                return (
+                  '<span class="badge rounded-pill bg-success">' +
+                  data +
+                  "</span>"
+                );
+              }
+            },
           },
           {
             data: "projectName",
