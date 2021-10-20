@@ -384,7 +384,7 @@
                         }"
                       >
                         <option disabled value="">--- Select Type ---</option>
-                        <option value="Complete">Completed</option>
+                        <option value="Completed">Completed</option>
                         <option value="Unready">Unready</option>
                       </select>
                       <has-error

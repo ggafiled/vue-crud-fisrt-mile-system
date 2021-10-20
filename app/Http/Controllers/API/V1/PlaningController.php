@@ -5,7 +5,6 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Requests\Planing\PlaningRequest;
 use App\Models\Planing;
-use App\Models\Progress;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -40,16 +39,6 @@ class PlaningController extends BaseController
             return $this->sendResponse($planing, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError($ex, trans('actions.get.failed'));
-        }
-    }
-
-    public function queryPlaning()
-    {
-        try {
-            $planing = Progress::where('statusProgress', '=', 'Completed' )->get();
-            return $this->sendResponse($planing, trans('actions.get.success'));
-        } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 

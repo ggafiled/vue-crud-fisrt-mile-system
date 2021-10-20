@@ -1107,7 +1107,7 @@ export default {
             workbook.xlsx.writeFile("customer");
         },
         loadBuildings() {
-            axios.get("/planing/retrieveBuilding").then(
+            axios.get("/building").then(
                 response =>
                     (this.building = response.data.data.map(a => {
                         return { text: a.projectName, id: a.id };
