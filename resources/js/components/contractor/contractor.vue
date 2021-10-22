@@ -1,85 +1,65 @@
 <template>
   <section class="content">
     <div class="container-fluid">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h2 class="card-title">
-              <i class="fas fa-fw bi bi-aspect-ratio"></i>
-              Contractor 
-            </h2>
-            <div class="card-tools">
-              <button
-                type="button"
-                class="btn btn-sm btn-primary"
-                @click="dowloadExcelTemplate"
-              >
-                <i class="fa fa-download" aria-hidden="true"></i>
-                {{ translate("constitution.download") }}
-              </button>
-              <button
-                type="button"
-                class="btn btn-sm btn-primary"
-                @click="newModal"
-              >
-                <i class="fa fa-plus-square"></i>
-                {{ translate("constitution.addnew") }}
-              </button>
-            </div>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <div class="card-body m-0">
-              <div class="row">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-fw bi bi-building"></i>
+                {{ translate("building.header") }}
+              </h3>
+              <div class="card-tools">
                 <button
                   type="button"
-                  class="dt-button"
-                  @click.prevent="goToImportPanel"
+                  class="btn btn-sm btn-primary"
+                  @click="newModal"
                 >
-                  <i class="fa fa-upload" aria-hidden="true"></i>
-                  {{ translate("constitution.import") }}
+                  <i class="fa fa-plus-square"></i>
+                  {{ translate("building.addnew") }}
                 </button>
               </div>
             </div>
-            <div class="table-responsive">
-              <table
-                id="constarution"
-                ref="constarution"
-                class="display nowrap"
-                style="width: 100%"
-              >
-                <thead>
-                  <tr class="info">
-                    <th></th>
-                    <th>Project Name</th>
-                    <th>callverStatus</th>
-                    <th>problemsolution</th>
-                    <th>confirmAppointment</th>
-                    <th>appointmentTimeCustomer</th>
-                    <th>reMarkzone</th>
-                    <th>equipmentInstall1</th>
-                    <th>snInstall1</th>
-                    <th>equipmentInstall2</th>
-                    <th>snInstall2</th>
-                    <th>equipmentInstall3</th>
-                    <th>snInstall3</th>
-                    <th>equipmentInstall4</th>
-                    <th>snInstall4</th>
-                    <th>equipmentInstall5</th>
-                    <th>snInstall5</th>
-                    <th>equipmentInstall6</th>
-                    <th>snInstall6</th>
-                    <th>equipmentInstall7</th>
-                    <th>snInstall7</th>
-                    <th>Update At</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-              </table>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="table-responsive">
+                <table
+                  id="buildings"
+                  ref="buildings"
+                  class="display nowrap"
+                  style="width: 100%"
+                >
+                  <thead>
+                    <tr class="info">
+                      <th></th>
+                      <th>Project Name</th>
+                      <th>callverStatus</th>
+                      <th>problemsolution</th>
+                      <th>confirmAppointment</th>
+                      <th>appointmentTimeCustomer</th>
+                      <th>reMarkzone</th>
+                      <th>equipmentInstall1</th>
+                      <th>snInstall1</th>
+                      <th>equipmentInstall2</th>
+                      <th>snInstall2</th>
+                      <th>equipmentInstall3</th>
+                      <th>snInstall3</th>
+                      <th>equipmentInstall4</th>
+                      <th>snInstall4</th>
+                      <th>equipmentInstall5</th>
+                      <th>snInstall5</th>
+                      <th>equipmentInstall6</th>
+                      <th>snInstall6</th>
+                      <th>equipmentInstall7</th>
+                      <th>snInstall7</th>
+                      <th>Update At</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
             </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
         </div>
       </div>
 
@@ -98,10 +78,10 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" v-show="!editmode">
-                {{ translate("constitution.create.header") }}
+                {{ translate("building.create.header") }}
               </h5>
               <h5 class="modal-title" v-show="editmode">
-                {{ translate("constitution.update.header") }}
+                {{ translate("building.update.header") }}
               </h5>
               <button
                 type="button"
@@ -131,71 +111,423 @@
                 :index="props.index"
               >
               </wizard-step>
-              <tab-content title="Project Names" :selected="true">
+              <tab-content title="Sub-Building" :selected="true">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label>Project Name</label>
                       <small>/ชื่อโปรเจ็ค</small>
-                      <Select2
-                        v-model="form.building_id"
-                        :options="building"
-                        :settings="settings"
-                      >
-                      </Select2>
-                      <has-error :form="form" field="projectName"></has-error>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="ชื่อโปรเจ็ค"
+                        v-model="form.projectName"
+                      />
                     </div>
                   </div>
                 </div>
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Manager Name</label>
+                      <small>/เวลานัดหมายที่ลูกค้าต้องการ</small>
+                      <input
+                        v-model="form.nameManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="ชื่อผู้จัดการ"
+                        :class="{
+                          'is-invalid': form.errors.has('nameManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="nameManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Manager Tel</label>
+                      <small>/สถานะการโทรยืนยันนัดหมาย</small>
+                      <input
+                        v-model="form.phoneManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="เบอร์ผู้จัดการ"
+                        :class="{
+                          'is-invalid': form.errors.has('phoneManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="phoneManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Manager Email</label>
+                      <small>/ทีมช่าง</small>
+                      <input
+                        v-model="form.mailManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="อีเมลล์ผู้จัดการ"
+                        :class="{
+                          'is-invalid': form.errors.has('mailManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="mailManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Manager Email</label>
+                      <small>/ID ที่ต้องใช้</small>
+                      <input
+                        v-model="form.mailManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="ID ที่ต้องใช้"
+                        :class="{
+                          'is-invalid': form.errors.has('mailManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="mailManager"></has-error>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Manager Name</label>
+                      <small>/เบอร์ติดต่อทีมช่าง</small>
+                      <input
+                        v-model="form.nameManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="เบอร์ติดต่อทีมช่าง"
+                        :class="{
+                          'is-invalid': form.errors.has('nameManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="nameManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Manager Tel</label>
+                      <small>/สถานะงาน</small>
+                      <input
+                        v-model="form.phoneManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="สถานะงาน"
+                        :class="{
+                          'is-invalid': form.errors.has('phoneManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="phoneManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Manager Email</label>
+                      <small>/อีเมลล์ผู้จัดการ</small>
+                      <input
+                        v-model="form.mailManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="อีเมลล์ผู้จัดการ"
+                        :class="{
+                          'is-invalid': form.errors.has('mailManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="mailManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Manager Email</label>
+                      <small>/อีเมลล์ผู้จัดการ</small>
+                      <input
+                        v-model="form.mailManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="อีเมลล์ผู้จัดการ"
+                        :class="{
+                          'is-invalid': form.errors.has('mailManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="mailManager"></has-error>
+                    </div>
+                  </div>
+                </div>
+              </tab-content>
+              <tab-content title="Remark">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label>Remark (For Zone)</label>
+                      <small>/รีมาร์ค</small>
+                      <textarea
+                        id="remark"
+                        v-model="form.remark"
+                        class="form-control"
+                        placeholder="-"
+                        :class="{
+                          'is-invalid': form.errors.has('remark'),
+                        }"
+                      />
+                      <has-error :form="form" field="remark"></has-error>
+                    </div>
+                  </div>
+                </div>
+              </tab-content>
+              <tab-content title="Sale Detail">
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Project Name ToT / ชื่อโครงการของทีโอที</label>
-                      <br />
-                      <label class="radio-inline">
-                        <input
-                          type="radio"
-                          name="totName"
-                          checked
-                        />ชื่อเดียวกัน
-                      </label>
-                      <label class="radio-inline">
-                        <input type="radio" name="totName" />ต่างชื่อกัน
-                      </label>
+                      <label>Manager Name</label>
+                      <small>/อุปกรณ์ที่ใช้ติดตั้ง 1</small>
                       <input
-                        v-model="form.projectNameTot"
+                        v-model="form.nameManager"
                         type="text"
                         class="form-control"
-                        placeholder="ชื่อโครงการของทีโอที"
+                        placeholder="อุปกรณ์ที่ใช้ติดตั้ง 1"
                         :class="{
-                          'is-invalid': form.errors.has('projectNameTot'),
+                          'is-invalid': form.errors.has('nameManager'),
                         }"
                       />
+                      <has-error :form="form" field="nameManager"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Project Name Ais / ชื่อโครงการของเอไอเอส</label>
-                      <br />
-                      <label class="radio-inline">
-                        <input
-                          type="radio"
-                          name="aisName"
-                          checked
-                        />ชื่อเดียวกัน
-                      </label>
-                      <label class="radio-inline">
-                        <input type="radio" name="aisName" />ต่างชื่อกัน
-                      </label>
+                      <label>Manager Tel</label>
+                      <small>/ S/N ที่ใช้ติดตั้ง 1</small>
                       <input
-                        v-model="form.projectNameAis"
+                        v-model="form.phoneManager"
                         type="text"
                         class="form-control"
-                        placeholder="ชื่อโครงการของทีเอไอเอส"
+                        placeholder="S/N ที่ใช้ติดตั้ง 1"
                         :class="{
-                          'is-invalid': form.errors.has('projectNameAis'),
+                          'is-invalid': form.errors.has('phoneManager'),
                         }"
                       />
+                      <has-error :form="form" field="phoneManager"></has-error>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Name</label>
+                      <small>/อุปกรณ์ที่ใช้ติดตั้ง 2</small>
+                      <input
+                        v-model="form.nameManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="อุปกรณ์ที่ใช้ติดตั้ง 2"
+                        :class="{
+                          'is-invalid': form.errors.has('nameManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="nameManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Tel</label>
+                      <small>/S/N ที่ใช้ติดตั้ง 2</small>
+                      <input
+                        v-model="form.phoneManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="S/N ที่ใช้ติดตั้ง 2"
+                        :class="{
+                          'is-invalid': form.errors.has('phoneManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="phoneManager"></has-error>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Name</label>
+                      <small>/อุปกรณ์ที่ใช้ติดตั้ง 3</small>
+                      <input
+                        v-model="form.nameManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="อุปกรณ์ที่ใช้ติดตั้ง 3"
+                        :class="{
+                          'is-invalid': form.errors.has('nameManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="nameManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Tel</label>
+                      <small>/S/N ที่ใช้ติดตั้ง 3</small>
+                      <input
+                        v-model="form.phoneManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="S/N ที่ใช้ติดตั้ง 3"
+                        :class="{
+                          'is-invalid': form.errors.has('phoneManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="phoneManager"></has-error>
+                    </div>
+                  </div>
+                </div>
+              </tab-content>
+              <tab-content title="Area Project">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Name</label>
+                      <small>/อุปกรณ์ที่ใช้ติดตั้ง 4</small>
+                      <input
+                        v-model="form.nameManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="อุปกรณ์ที่ใช้ติดตั้ง 4"
+                        :class="{
+                          'is-invalid': form.errors.has('nameManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="nameManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Tel</label>
+                      <small>/S/N ที่ใช้ติดตั้ง 4</small>
+                      <input
+                        v-model="form.phoneManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="S/N ที่ใช้ติดตั้ง 4"
+                        :class="{
+                          'is-invalid': form.errors.has('phoneManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="phoneManager"></has-error>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Name</label>
+                      <small>/อุปกรณ์ที่ใช้ติดตั้ง 5</small>
+                      <input
+                        v-model="form.nameManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="อุปกรณ์ที่ใช้ติดตั้ง 5"
+                        :class="{
+                          'is-invalid': form.errors.has('nameManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="nameManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Tel</label>
+                      <small>/S/N ที่ใช้ติดตั้ง 5</small>
+                      <input
+                        v-model="form.phoneManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="S/N ที่ใช้ติดตั้ง 5"
+                        :class="{
+                          'is-invalid': form.errors.has('phoneManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="phoneManager"></has-error>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Name</label>
+                      <small>/อุปกรณ์ที่ใช้ติดตั้ง 6</small>
+                      <input
+                        v-model="form.nameManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="อุปกรณ์ที่ใช้ติดตั้ง 6"
+                        :class="{
+                          'is-invalid': form.errors.has('nameManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="nameManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Tel</label>
+                      <small>/S/N ที่ใช้ติดตั้ง 6</small>
+                      <input
+                        v-model="form.phoneManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="S/N ที่ใช้ติดตั้ง 6"
+                        :class="{
+                          'is-invalid': form.errors.has('phoneManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="phoneManager"></has-error>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Name</label>
+                      <small>/อุปกรณ์ที่ใช้ติดตั้ง 7</small>
+                      <input
+                        v-model="form.nameManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="อุปกรณ์ที่ใช้ติดตั้ง 7"
+                        :class="{
+                          'is-invalid': form.errors.has('nameManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="nameManager"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Manager Tel</label>
+                      <small>/S/N ที่ใช้ติดตั้ง 7</small>
+                      <input
+                        v-model="form.phoneManager"
+                        type="text"
+                        class="form-control"
+                        placeholder="S/N ที่ใช้ติดตั้ง 7"
+                        :class="{
+                          'is-invalid': form.errors.has('phoneManager'),
+                        }"
+                      />
+                      <has-error :form="form" field="phoneManager"></has-error>
                     </div>
                   </div>
                 </div>
@@ -219,9 +551,9 @@
                   >
                   <wizard-button
                     v-show="editmode && props.isLastStep"
-                    class="wizard-footer-right finish-button"
+                    class="btn wizard-footer-right finish-button"
                     :style="props.fillButtonStyle"
-                    @click.native="updateConstarution()"
+                    @click.native="updateBuilding()"
                     :disabled="onprogress"
                   >
                     <span
@@ -230,13 +562,13 @@
                       role="status"
                       aria-hidden="true"
                     ></span>
-                    {{ translate("constitution.actions.update") }}
+                    {{ translate("building.actions.update") }}
                   </wizard-button>
                   <wizard-button
                     v-show="!editmode && props.isLastStep"
-                    class="wizard-footer-right finish-button"
+                    class="btn wizard-footer-right finish-button"
                     :style="props.fillButtonStyle"
-                    @click.native="createConstarution()"
+                    @click.native="createBuilding()"
                     :disabled="onprogress"
                   >
                     <span
@@ -245,7 +577,7 @@
                       role="status"
                       aria-hidden="true"
                     ></span>
-                    {{ translate("constitution.actions.create") }}
+                    {{ translate("building.actions.create") }}
                   </wizard-button>
                 </div>
               </template>
@@ -258,15 +590,11 @@
 </template>
 
 <script>
-import Select2 from "v-select2-component";
-import Uploader from "vux-uploader-component";
 import { mapGetters, mapState } from "vuex";
 import NumberInput from "../partials/NumberInput.vue";
-
 export default {
-  title: "Constarution -",
-  components: { Select2, Uploader, NumberInput },
-
+  title: "All -",
+  components: { NumberInput },
   data() {
     return {
       loader: null,
@@ -274,16 +602,16 @@ export default {
       editmode: false,
       onprogress: false,
       selected: "",
-      building: [],
-      generatingactions: [],
-      teamserways: [],
-      fileList: [],
-      settings: {
-        placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
-        allowClear: false,
-        dropdownParent: ".modal",
-      },
-      sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
+      areas: [],
+      bbns: [],
+      area3bbs: [],
+      areaTrues: [],
+      areaTrueNews: [],
+      areaAises: [],
+      areaFiberNets: [],
+      workTimes: [],
+      spendSpaces: [],
+      saleFms: [],
       form: new Form({
         id: "",
         building_id: "",
@@ -311,43 +639,144 @@ export default {
       }),
     };
   },
-  methods: {
-    goToImportPanel() {
-      this.$router.push({ path: "importData" });
+  computed: {
+    ...mapGetters(["buildings"]),
+    ...mapState(["buildings"]),
+    areaID() {
+      return this.form.areas_id;
     },
-    loadGeneratingaction() {
-      axios.get("/generatingactions").then((response) => {
-        this.generatingactions = response.data.data;
+    location() {
+      return { lon: this.form.longitude, lat: this.form.latitude };
+    },
+    subBuildingsum() {
+      return this.form.subBuildingsum;
+    },
+    subbuilding() {
+      return this.form.subbuilding.length;
+    },
+    sumFloorOfSubbuilding() {
+      return this.form.subbuilding.reduce((total, obj) => {
+        return parseInt(obj.floorSum) + parseInt(total);
+      }, 0);
+    },
+    sumRoomOfSubbuilding() {
+      return this.form.subbuilding.reduce((total, obj) => {
+        return parseInt(obj.roomSum) + parseInt(total);
+      }, 0);
+    },
+  },
+  watch: {
+    areaID: function (value) {
+      this.form.bbN = "";
+      axios.get("/bbns?area_id=" + this.form.areas_id).then((response) => {
+        // console.log(response.data);
+        this.bbns = response.data.data;
       });
     },
-    loadTeamserway() {
-      axios.get("/teamserways").then((response) => {
-        this.teamserways = response.data.data;
+    form: {
+      deep: true,
+      handler(value) {
+        if (this.form.subBuildingsum > 1) {
+          this.form.floorSum = this.sumFloorOfSubbuilding;
+          this.form.roomSum = this.sumRoomOfSubbuilding;
+        }
+      },
+    },
+  },
+  methods: {
+    onSubBuildingUpdate(newVal, oldVal) {
+      console.log(newVal, oldVal);
+      if (this.subbuilding != newVal) {
+        if (newVal > oldVal) {
+          const loop = newVal - this.subbuilding;
+          if (loop >= 1) {
+            for (var i = 0; i < loop; i++) {
+              this.form.subbuilding.push({
+                projectName: "",
+                floorSum: 0,
+                roomSum: 0,
+              });
+            }
+          }
+        } else if (newVal < oldVal) {
+          const loop = this.subbuilding - newVal;
+          console.log("onSubBuildingUpdate else" + loop);
+          if (newVal == 1) {
+            this.form.subbuilding = [];
+          }
+          if (loop >= 1) {
+            for (var i = 0; i < loop; i++) {
+              this.form.subbuilding.pop();
+            }
+          }
+        }
+      }
+    },
+    select(address) {
+      this.form.districtName = address.district;
+      this.form.countyName = address.amphoe;
+      this.form.provinceName = address.province;
+      this.form.postalCode = address.zipcode;
+    },
+    loadSaleFm() {
+      axios.get("/saleFms").then((response) => {
+        this.saleFms = response.data.data;
+      });
+    },
+    loadSpendSpace() {
+      axios.get("/spendSpaces").then((response) => {
+        this.spendSpaces = response.data.data;
+      });
+    },
+    loadArea() {
+      axios.get("/areas").then((response) => {
+        this.areas = response.data.data;
+      });
+    },
+    loadArea3BB() {
+      axios.get("/area3bbs").then((response) => {
+        this.area3bbs = response.data.data;
+      });
+    },
+    loadAreaTrue() {
+      axios.get("/areaTrues").then((response) => {
+        this.areaTrues = response.data.data;
+      });
+    },
+    loadAreaTrueNew() {
+      axios.get("/areaTrueNews").then((response) => {
+        this.areaTrueNews = response.data.data;
+      });
+    },
+    loadAreaAis() {
+      axios.get("/areaAises").then((response) => {
+        this.areaAises = response.data.data;
+      });
+    },
+    loadAreaFiberNet() {
+      axios.get("/areaFiberNets").then((response) => {
+        this.areaFiberNets = response.data.data;
+      });
+    },
+    loadWorkTime() {
+      axios.get("/workTimes").then((response) => {
+        this.workTimes = response.data.data;
       });
     },
     loadBuildings() {
-      axios.get("/constarution/retrieveBuilding").then(
-        (response) =>
-          (this.building = response.data.data.map((a) => {
-            return { text: a.projectName, id: a.id };
-          }))
-      );
-    },
-    loadConstarution() {
       this.$Progress.start();
-
       if (this.$gate.isAdmin()) {
-        $("#constarution").DataTable().ajax.reload();
+        this.$store.dispatch("GET_BUILDINGS");
+        $("#buildings").DataTable().ajax.reload();
       }
-
       this.$Progress.finish();
     },
-    async updateConstarution() {
+    async updateBuilding() {
       this.$Progress.start();
       // console.log('Editing data');
       this.onprogress = true;
       await this.form
-        .put("/constarution/" + this.form.id)
+        .put("/building/" + this.form.id)
         .then((response) => {
           // success
           $("#addNew").modal("hide");
@@ -357,8 +786,7 @@ export default {
           });
           this.$Progress.finish();
           //  Fire.$emit('AfterCreate');
-
-          this.loadConstarution();
+          this.loadBuildings();
         })
         .catch(() => {
           this.$Progress.fail();
@@ -367,49 +795,55 @@ export default {
         this.onprogress = false;
       }, 2000);
     },
-    editModal(constarution) {
+    editModal(building) {
       this.editmode = true;
       this.form.reset();
       this.form.errors.clear();
-      console.log(constarution);
+      this.$refs.wizard.activateAll();
+      building.subbuilding = building.subbuilding;
+      console.log(building);
       $("#addNew").modal("show");
-      this.form.fill(constarution);
+      this.form.fill(building);
+    },
+    openMapPickerLocation() {
+      $("#pickermap").modal("show");
     },
     newModal() {
       this.editmode = false;
       this.selected = "";
       this.form.reset();
+      this.$refs.wizard.reset();
+      this.form.errors.clear();
       $("#addNew").modal("show");
     },
-    deleteConstarution(item) {
+    deleteBuilding(item) {
       Swal.fire({
-        title: window.translate("constitution.alert.delete_building_title"),
+        title: window.translate("building.alert.delete_building_title"),
         text:
-          window.translate("constitution.alert.delete_building_text") +
-          ` [${item.building.projectName}]`,
+          window.translate("building.alert.delete_building_text") +
+          ` [${item.projectName}]`,
         showCancelButton: true,
         confirmButtonColor: "#d33",
         cancelButtonColor: "#3085d6",
         cancelButtonText: window.translate(
-          "constitution.alert.delete_building_cancel_button_text"
+          "building.alert.delete_building_cancel_button_text"
         ),
         confirmButtonText: window.translate(
-          "constitution.alert.delete_building_confirm_button_text"
+          "building.alert.delete_building_confirm_button_text"
         ),
       }).then((result) => {
         // Send request to the server
         if (result.value) {
           this.form
-            .delete("/constarution/" + item.id)
+            .delete("/building/" + item.id)
             .then(() => {
               Swal.fire(
-                window.translate("constitution.alert.comfirm_delete_title"),
-                window.translate("constitution.alert.confirm_delete_message"),
+                window.translate("building.alert.comfirm_delete_title"),
+                window.translate("building.alert.confirm_delete_message"),
                 "success"
               );
               // Fire.$emit('AfterCreate');
               this.loadBuildings();
-              this.loadConstarution();
             })
             .catch((data) => {
               Swal.fire("Failed!", data.message, "warning");
@@ -417,18 +851,20 @@ export default {
         }
       });
     },
-    async createConstarution() {
+    async createBuilding() {
+      console.log("createBuilding");
       if (this.selected == null || this.selected == undefined) return false;
       this.onprogress = true;
       await this.form
-        .post("/constarution")
+        .post("/building")
         .then((response) => {
           $("#addNew").modal("hide");
           Toast.fire({
             icon: "success",
             title: response.data.message,
           });
-          this.loadConstarution();
+          this.$Progress.finish();
+          this.loadBuildings();
         })
         .catch(() => {
           Toast.fire({
@@ -442,11 +878,12 @@ export default {
     },
     generateTable() {
       var vm = this;
-      var table = $(this.$refs.constarution).DataTable({
+      var table = $(this.$refs.buildings).DataTable({
         dom: "Blfrtip",
-        ajax: "/api/constarution",
+        ajax: "/api/building",
         responsive: true,
         processing: true,
+        autoWidth: true,
         pageLength: 10,
         lengthMenu: [
           [10, 15, 25, 50, -1],
@@ -455,8 +892,8 @@ export default {
         fixedHeader: true,
         fixedColumns: true,
         fixedColumns: {
-          leftColumns: 2,
-          rightColumns: 1,
+          leftColumns: 3,
+          rightColumns: 3,
         },
         scrollX: true,
         scrollCollapse: true,
@@ -484,6 +921,13 @@ export default {
             text: "<i class='bi bi-printer mr-1'></i>Print",
           },
           {
+            className: "bg-danger",
+            text: "<i class='bi bi-file-text mr-1'></i>ยังไม่ทำสัญญา",
+            action: function (e, dt, node, config) {
+              dt.columns(4).search("ยังไม่ได้ทำสัญญา").draw();
+            },
+          },
+          {
             text:
               "<i class='bi bi-list-check mr-1'></i>" +
               window.translate(
@@ -498,7 +942,7 @@ export default {
                   return item.id;
                 })
                 .join(",");
-              if (!rowsel.length) {
+              if (!rowsel) {
                 return Swal.fire({
                   title: window.translate(
                     "datatables.alert.display_selected_record_empty_title"
@@ -521,7 +965,6 @@ export default {
                   ? true
                   : false;
               });
-
               table.draw();
             },
           },
@@ -544,64 +987,64 @@ export default {
             className: "dt-body-center notexport",
           },
           {
-            data: "building[0].projectName"
+            data: "building[0].projectName",
           },
           {
-            data: "callverStatus_id"
+            data: "callverStatus_id",
           },
           {
-            data: "problemsolution_id"
+            data: "problemsolution_id",
           },
           {
-            data: "confirmAppointment"
+            data: "confirmAppointment",
           },
           {
-            data: "appointmentTimeCustomer"
+            data: "appointmentTimeCustomer",
           },
           {
             data: "reMarkzone",
           },
           {
-            data: "equipmentInstall1"
+            data: "equipmentInstall1",
           },
           {
-            data: "snInstall1"
+            data: "snInstall1",
           },
           {
-            data: "equipmentInstall2"
+            data: "equipmentInstall2",
           },
           {
-            data: "snInstall2"
+            data: "snInstall2",
           },
           {
-            data: "equipmentInstall3"
+            data: "equipmentInstall3",
           },
           {
-            data: "snInstall3"
+            data: "snInstall3",
           },
           {
-            data: "equipmentInstall4"
+            data: "equipmentInstall4",
           },
           {
-            data: "snInstall4"
+            data: "snInstall4",
           },
           {
-            data: "equipmentInstall5"
+            data: "equipmentInstall5",
           },
           {
-            data: "snInstall5"
+            data: "snInstall5",
           },
           {
-            data: "equipmentInstall6"
+            data: "equipmentInstall6",
           },
           {
-            data: "snInstall6"
+            data: "snInstall6",
           },
           {
-            data: "equipmentInstall7"
+            data: "equipmentInstall7",
           },
           {
-            data: "snInstall7"
+            data: "snInstall7",
           },
           {
             data: "updated_at",
@@ -631,10 +1074,9 @@ export default {
         select: { selector: "td:not(:last-child)", style: "os" },
         order: [[1, "desc"]],
       });
-
-      $("tbody", this.$refs.constarution).on(
+      $("tbody", this.$refs.buildings).on(
         "click",
-        ".edit-constarution",
+        ".edit-building",
         function (e) {
           e.preventDefault();
           var tr = $(this).closest("tr");
@@ -642,15 +1084,14 @@ export default {
           vm.editModal(row.data());
         }
       );
-
-      $("tbody", this.$refs.constarution).on(
+      $("tbody", this.$refs.buildings).on(
         "click",
-        ".delete-constarution",
+        ".delete-building",
         function (e) {
           e.preventDefault();
           var tr = $(this).closest("tr");
           var row = table.row(tr);
-          vm.deleteConstarution(row.data());
+          vm.deleteBuilding(row.data());
         }
       );
     },
@@ -662,17 +1103,24 @@ export default {
     this.$Progress.finish();
   },
   mounted() {
-    this.loadGeneratingaction();
+    const vm = this;
+    this.loadSaleFm();
+    this.loadSpendSpace();
+    this.loadArea();
+    this.loadArea3BB();
+    this.loadAreaTrue();
+    this.loadAreaTrueNew();
+    this.loadAreaAis();
+    this.loadAreaFiberNet();
+    this.loadWorkTime();
     this.generateTable();
-    this.loadTeamserway();
-    $(".datepicker").datepicker({
-      language: "th-th",
-      format: "dd/mm/yyyy",
-      autoclose: true,
-    });
+    // $("#addNew").on("hide.bs.modal", function() {
+    //     vm.form.reset();
+    // });
     setTimeout(() => {
       LoadingWait.close();
-    }, 2000);
+    }, 3000);
+    // $("input").attr("autocomplete", this.isChrome ? "chrome-off" : "off");
   },
 };
 </script>
