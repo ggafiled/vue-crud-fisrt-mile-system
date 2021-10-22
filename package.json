@@ -131,6 +131,7 @@
         "vue-select2": "^0.2.6",
         "vue-step-wizard": "^0.1.17",
         "vue-thailand-address-autocomplete": "^0.1.1",
+        "vue2-dropzone": "^3.6.0",
         "vue2-editor": "^2.10.2",
         "vue2-timepicker": "^1.1.6",
         "vueble": "^0.1.3",

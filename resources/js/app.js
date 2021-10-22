@@ -94,6 +94,9 @@ Vue.mixin(titleMixin);
 import FullCalendar from "vue-full-calendar";
 Vue.use(FullCalendar);
 
+import vue2Dropzone from "vue2-dropzone";
+Vue.component("vueDropzone", vue2Dropzone);
+
 import Select2 from "v-select2-component";
 Vue.component("Select2", Select2);
 
