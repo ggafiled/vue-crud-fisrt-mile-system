@@ -92,6 +92,16 @@ class Building extends Model
         return $this->belongsTo('App\Models\Planning', 'building_id', 'id');
     }
 
+    public function contractor()
+    {
+        return $this->belongsTo('App\Models\Contractor', 'building_id', 'id');
+    }
+
+    public function report()
+    {
+        return $this->belongsTo('App\Models\Report', 'building_id', 'id');
+    }
+
     public function saleFm()
     {
         return $this->hasOne('App\Models\Salefm', 'id', 'saleFm_id');

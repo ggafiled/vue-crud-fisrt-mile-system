@@ -14,6 +14,7 @@ class Progress extends Model
     protected $fillable = [
         'id',
         'building_id',
+        'constarution_id',
         'fmProgress_id',
         'totProgress_id',
         'aisProgress_id',
@@ -28,6 +29,7 @@ class Progress extends Model
         'dateSinet',
         'dateFn',
         'dateTrue',
+        'statusProgress'
     ];
 
     public function getActivitylogOptions(): LogOptions
@@ -46,6 +48,11 @@ class Progress extends Model
     public function building()
     {
         return $this->belongsTo('App\Models\Building', 'building_id', 'id');
+    }
+
+    public function constarution()
+    {
+        return $this->belongsTo('App\Models\Constarution', 'constarution_id', 'id');
     }
 
     public function fmProgress()

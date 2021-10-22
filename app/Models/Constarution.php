@@ -53,10 +53,10 @@ class Constarution extends Model
         return $this->belongsTo('App\Models\Building', 'building_id', 'id');
     }
 
-    // public function Teamserway()
-    // {
-    //     return $this->hasOne('App\Models\Teamserway', 'id', 'teamserway_id');
-    // }
+    public function progress()
+    {
+        return $this->hasOne('App\Models\Progress', 'constarution_id', 'id');
+    }
 
 
 }

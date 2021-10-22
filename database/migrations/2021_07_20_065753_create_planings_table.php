@@ -22,10 +22,7 @@ class CreatePlaningsTable extends Migration
             $table->bigInteger('agentDetail_id')->unsigned();//ตัวแทน/พื้นที่
             $table->bigInteger('jobtype_id')->unsigned();//ประเภทงาน
             $table->bigInteger('technician_id')->unsigned();//ชื่อช่าง
-            $table->bigInteger('callver_id')->unsigned();//จำนวนการติดต่อ
-            $table->bigInteger('callverStatus_id')->unsigned();//สถานะการติดต่อ
             $table->bigInteger('ispId_id')->unsigned();//ผู้ให้ บริการ
-            $table->bigInteger('problemsolution_id')->unsigned();//ปัญหาและวิธีการแก้ไข
             $table->string('type')->nullable();//Type งาน
             $table->string('name')->nullable();//ชื่อ/บริษัท
             $table->string('surname')->nullable();//นามสกุล
@@ -69,25 +66,12 @@ class CreatePlaningsTable extends Migration
             ->on('technicians')
             ->onDelete('cascade');
 
-            $table->foreign('callver_id')
-            ->references('id')
-            ->on('callvers')
-            ->onDelete('cascade');
-
-            $table->foreign('callverStatus_id')
-            ->references('id')
-            ->on('callverstatuses')
-            ->onDelete('cascade');
 
             $table->foreign('ispId_id')
             ->references('id')
             ->on('isps')
             ->onDelete('cascade');
 
-            $table->foreign('problemsolution_id')
-            ->references('id')
-            ->on('problemsolutions')
-            ->onDelete('cascade');
 
         });
     }
