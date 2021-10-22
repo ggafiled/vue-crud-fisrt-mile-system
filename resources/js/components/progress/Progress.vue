@@ -42,9 +42,10 @@
                     <th>3BB-Date</th>
                     <th>SINET-Progress</th>
                     <th>SINET-Date</th>
-                    <!-- <th>FN-Progress</th> -->
                     <th>TRUE-Progress</th>
                     <th>TRUE-Date</th>
+                    <th>TXRX-Progress</th>
+                    <th>TXRX-Date</th>
                     <th>Create At</th>
                     <th>Update At</th>
                     <th>Action</th>
@@ -121,7 +122,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>FM Progress :</label>
                       <select class="form-control" v-model="form.fmProgress_id">
@@ -137,7 +138,7 @@
                       <has-error :form="form" field="fmProgress"></has-error>
                     </div>
                   </div>
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>วันที่เข้าวางโครงข่าย :</label>
                       <input
@@ -152,8 +153,10 @@
                       <has-error :form="form" field="dateFn"></has-error>
                     </div>
                   </div>
+                </div>
 
-                  <div class="col-sm-3">
+                <div class="row">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>TOT Progress :</label>
                       <select
@@ -172,7 +175,7 @@
                       <has-error :form="form" field="totProgress"></has-error>
                     </div>
                   </div>
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>TOT วันวางโครงข่าย :</label>
                       <input
@@ -190,7 +193,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <!-- ******************* EDIT TO SELECTION ******************* -->
                       <label>AIS Progress :</label>
@@ -211,7 +214,7 @@
                     </div>
                   </div>
 
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>AIS วันวางโครงข่าย :</label>
                       <input
@@ -226,8 +229,10 @@
                       <has-error :form="form" field="dateAis"></has-error>
                     </div>
                   </div>
+                </div>
 
-                  <div class="col-sm-3">
+                <div class="row"> 
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <!-- ******************* EDIT TO SELECTION ******************* -->
                       <label>3BB Progress :</label>
@@ -247,7 +252,7 @@
                       <has-error :form="form" field="Progress3bb"></has-error>
                     </div>
                   </div>
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>3BB วันวางโครงข่าย :</label>
                       <input
@@ -265,12 +270,12 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Sinet Progress :</label>
+                      <label>TXRX Progress :</label>
                       <select
                         class="form-control"
-                        v-model="form.sinetProgress_id"
+                        v-model="form.txrtProgress_id"
                       >
                         <option disabled value="">Select a Class</option>
                         <option
@@ -281,28 +286,30 @@
                           {{ item.status }}
                         </option>
                       </select>
-                      <has-error :form="form" field="sinetProgress"></has-error>
+                      <has-error :form="form" field="txrtProgress"></has-error>
                     </div>
                   </div>
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Sinet วันวางโครงข่าย :</label>
+                      <label>TXRX วันวางโครงข่าย :</label>
                       <input
-                        v-model="form.dateSinet"
+                        v-model="form.dateTxrx"
                         type="date"
                         class="form-control datepicker"
-                        placeholder="Enter your dateSinet..."
+                        placeholder="Enter your dateTxrx..."
                         :class="{
-                          'is-invalid': form.errors.has('dateSinet'),
+                          'is-invalid': form.errors.has('dateTxrx'),
                         }"
                       />
-                      <has-error :form="form" field="dateSinet"></has-error>
+                      <has-error :form="form" field="dateTxrx"></has-error>
                     </div>
                   </div>
+                </div>
 
-                  <div class="col-sm-3">
+                <div class="row">
+                  <div class="col-sm-6">
                     <div class="form-group">
-                      <label>FN Progress :</label>
+                      <label>FiberNet Progress :</label>
                       <select class="form-control" v-model="form.fnProgress_id">
                         <option disabled value="">Select a Class</option>
                         <option
@@ -317,9 +324,9 @@
                     </div>
                   </div>
 
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Sinet วันวางโครงข่าย :</label>
+                      <label>FiberNet วันวางโครงข่าย :</label>
                       <input
                         v-model="form.dateFn"
                         type="date"
@@ -335,7 +342,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <!-- ******************* EDIT TO SELECTION ******************* -->
 
@@ -356,7 +363,7 @@
                       <has-error :form="form" field="trueProgress"></has-error>
                     </div>
                   </div>
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>True วันวางโครงข่าย :</label>
                       <input
@@ -371,9 +378,12 @@
                       <has-error :form="form" field="dateTrue"></has-error>
                     </div>
                   </div>
-                  <div class="col-sm-3">
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12">
                     <div class="form-group">
-                      <label>Status Building</label>
+                      <label>Status Progress</label>
                       <select
                         v-model="form.statusProgress"
                         type="text"
@@ -453,6 +463,7 @@ export default {
         sinetProgress_id: "", //modelGeneratingaction->modelProgress GET field status
         fnProgress_id: "", //modelGeneratingaction->modelProgress GET field status
         trueProgress_id: "", //modelGeneratingaction->modelProgress GET field status
+        txrtProgress_id: "", //modelGeneratingaction->modelProgress GET field status
         projectName: "",
         fmProgress: "",
         totProgress: "",
@@ -461,6 +472,7 @@ export default {
         sinetProgress: "",
         fnProgress: "",
         trueProgress: "",
+        txrtProgress: "",
         dateFm: new Date().toISOString().slice(0, 10),
         dateTot: new Date().toISOString().slice(0, 10),
         dateAis: new Date().toISOString().slice(0, 10),
@@ -468,6 +480,7 @@ export default {
         dateSinet: new Date().toISOString().slice(0, 10),
         dateFn: new Date().toISOString().slice(0, 10),
         dateTrue: new Date().toISOString().slice(0, 10),
+        dateTxrx: new Date().toISOString().slice(0, 10),
       }),
     };
   },
@@ -794,6 +807,21 @@ export default {
           //         }
           //     }
           // },
+          {
+            data: "true_progress.name",
+            render: function (data, type, row, meta) {
+              if (data == "") {
+                return (
+                  '<span class="text-danger">' + "ไม่ได้กรอกข้อมูล" + "</span>"
+                );
+              } else {
+                return "<span>" + data + "</span>";
+              }
+            },
+          },
+          {
+            data: "dateTrue",
+          },
           {
             data: "true_progress.name",
             render: function (data, type, row, meta) {

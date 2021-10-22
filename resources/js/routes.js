@@ -128,6 +128,22 @@ export default [{
             roles: ["superadministrator", "administrator"]
         }
     },
+    {
+        path: "/contractor",
+        component: require("./components/contractor/contractor.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator"]
+        }
+    },
+    {
+        path: "/report",
+        component: require("./components/report/report.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator"]
+        }
+    },
     // {
     //     path: "/issue-tickets",
     //     component: require("./components/issue/IssueTickets.vue").default,

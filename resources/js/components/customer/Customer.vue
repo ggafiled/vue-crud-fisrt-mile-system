@@ -758,80 +758,6 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>จำนวนการติดต่อ</label>
-                                            <select
-                                                class="form-control"
-                                                v-model="form.callver_id"
-                                            >
-                                                <option value="" disabled>
-                                                    --- Select a Class ---
-                                                </option>
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in callvers"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.callVer }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="callver"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>สถานะการติดต่อ</label>
-                                            <select
-                                                class="form-control"
-                                                v-model="form.callverStatus_id"
-                                            >
-                                                <option value="" disabled>
-                                                    --- Select a Class ---
-                                                </option>
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in callverstatuses"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.callVerStatus }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="callverstatus"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>ปัญหาและวิธีการแก้ไข</label>
-                                            <select
-                                                class="form-control"
-                                                v-model="
-                                                    form.problemsolution_id
-                                                "
-                                            >
-                                                <option value="" disabled>
-                                                    --- Select a Class ---
-                                                </option>
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in problemsolutions"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.problemSolution }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="problemsolution"
-                                            ></has-error>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -899,8 +825,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </tab-content>
-                            <tab-content title="Remark">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
@@ -1015,13 +939,9 @@ export default {
             selected: "",
             building: [],
             technician: [],
-            problemsolutions: [],
             technicians: [],
             jobtpyes: [],
             isps: [],
-            callvers: [],
-            callverstatuses: [],
-            agents: [],
             settings: {
                 placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
                 allowClear: false,
@@ -1034,19 +954,13 @@ export default {
                 agentDetail_id: "",
                 jobtype_id: "",
                 technician_id: "",
-                callver_id: "",
-                callverStatus_id: "",
                 ispId_id: "",
-                problemsolution_id: "",
                 projectName: "",
                 isp: "",
                 agentDetail: "",
                 jobtype: "",
                 technician: "",
-                callver: "",
-                callverstatus: "",
                 ispId: "",
-                problemsolution: "",
                 type: "",
                 name: "",
                 surname: "",
@@ -1064,28 +978,7 @@ export default {
                 status: "-",
                 subStatus: "-",
                 reMark: "-"
-            }),
-            validationRules: [
-                {
-                    type: { required },
-                    building_id: { required },
-                    name: { required },
-                    tel: { required },
-                    tel2: { required },
-                    theBuilding: { required },
-                    floor: { required },
-                    room: { required },
-                    isp_id: { required },
-                    agentDetail: { required },
-                    circuit: { required },
-                    entranceFee: { required }
-                }, //Validation Rules for step 1
-                {
-                    companyName: { required },
-                    numberOfEmployees: { required, numeric }
-                }, //Validation for step 2
-                { referral: { required }, terms: { required, numeric } } //Validation for step 3
-            ]
+            })
         };
     },
     methods: {

@@ -18,10 +18,7 @@ class Planing extends Model
         'agentDetail_id',//
         'jobtype_id',
         'technician_id',
-        'callver_id',
-        'callverStatus_id',
         'ispId_id',
-        'problemsolution_id',
         'type',
         'name',
         'surname',
@@ -30,7 +27,6 @@ class Planing extends Model
         'theBuilding',
         'floor',
         'room',
-        'agent',
         'circuit',
         'entranceFee',
         'appointmentDate',
@@ -54,6 +50,16 @@ class Planing extends Model
         return $this->hasOne('App\Models\Building', 'id', 'building_id');
     }
 
+    public function contractor()
+    {
+        return $this->belongsTo('App\Models\Contractor', 'customer_id', 'id');
+    }
+
+    public function report()
+    {
+        return $this->belongsTo('App\Models\Report', 'customer_id', 'id');
+    }
+
     public function isp()
     {
         return $this->hasOne('App\Models\Isp', 'id', 'isp_id');
@@ -69,24 +75,9 @@ class Planing extends Model
         return $this->hasOne('App\Models\Technician', 'id', 'technician_id');
     }
 
-    public function callver()
-    {
-        return $this->hasOne('App\Models\Callver', 'id', 'callver_id');
-    }
-
-    public function callverstatus()
-    {
-        return $this->hasOne('App\Models\Callverstatus', 'id', 'callverStatus_id');
-    }
-
     public function ispId()
     {
         return $this->hasOne('App\Models\Isp', 'id', 'ispId_id');
-    }
-
-    public function problemsolution()
-    {
-        return $this->hasOne('App\Models\Problemsolution', 'id', 'problemsolution_id');
     }
 
     public function agentDetail()

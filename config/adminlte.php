@@ -308,13 +308,13 @@ return [
                 ],
                 [
                     'text' => 'contractor_managment', //contractor
-                    'url' => '/',
+                    'url' => '/contractor',
                     'icon' => 'fas fa-fw fas fa-file-signature',
                     'roles' => ["superadministrator", "administrator"],
                 ],
                 [
                     'text' => 'accountant_managment', //accountant
-                    'url' => '/',
+                    'url' => '/report',
                     'icon' => 'fas fa-fw fa-file-invoice-dollar',
                     'roles' => ["superadministrator", "administrator"],
                 ],

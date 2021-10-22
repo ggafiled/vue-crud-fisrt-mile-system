@@ -22,7 +22,8 @@ class CreateConstarutionsTable extends Migration
             $table->string('projectNameTrue')->nullable();
             $table->string('projectNameAis')->nullable();
             $table->string('projectNameFiberNet')->nullable();
-
+            $table->string('projectNameTxrt')->nullable();
+    
             $table->string('buildingSum')->nullable();
             $table->string('buildingNumber')->nullable();
             $table->string('buildingFloor')->nullable();

@@ -62,7 +62,8 @@
                                         <th>Project Name 3BB</th>
                                         <th>Project Name True</th>
                                         <th>Project Name Ais</th>
-                                        <!-- <th>Project Name FiberNet</th> -->
+                                        <th>Project Name FiberNet</th>
+                                        <th>Project Name Txrx</th>
                                         <!-- <th>Building Sum</th>
                                         <th>Building Number</th>
                                         <th>Building Floor</th>
@@ -282,6 +283,74 @@
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'projectNameTrue'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label
+                                                >Project Name FiberNet /
+                                                ชื่อโครงการของไฟเบอเน็ต</label
+                                            >
+                                            <br />
+                                            <label class="radio-inline">
+                                                <input
+                                                    type="radio"
+                                                    name="tbbName"
+                                                    checked
+                                                />ชื่อเดียวกัน
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input
+                                                    type="radio"
+                                                    name="tbbName"
+                                                />ต่างชื่อกัน
+                                            </label>
+                                            <input
+                                                v-model="form.projectNameFiberNet"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="ชื่อโครงการของสามบีบี"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameFiberNet'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label
+                                                >Project Name TXRX /
+                                                ชื่อโครงการของทีเอ็กอาเอ็ก</label
+                                            >
+                                            <br />
+                                            <label class="radio-inline">
+                                                <input
+                                                    type="radio"
+                                                    name="trueName"
+                                                    checked
+                                                />ชื่อเดียวกัน
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input
+                                                    type="radio"
+                                                    name="trueName"
+                                                />ต่างชื่อกัน
+                                            </label>
+                                            <input
+                                                v-model="form.projectNameTxrt"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="ชื่อโครงการของทรู"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameTxrt'
                                                     )
                                                 }"
                                             />
@@ -1101,6 +1170,7 @@ export default {
                 projectNameTrue: "",
                 projectNameAis: "",
                 projectNameFiberNet: "",
+                projectNameTxrt: "",
                 buildingSum: "",
                 buildingNumber: "",
                 buildingFloor: "",
@@ -1468,22 +1538,25 @@ export default {
                     {
                         data: "projectNameAis"
                     },
-                    // {
-                    //     data: "projectNameFiberNet",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "ยังไม่ได้ทำสัญญา") {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 data +
-                    //                 "</span>"
-                    //             );
-                    //         } else if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
+                    {
+                        data: "projectNameFiberNet",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ได้ทำสัญญา") {
+                                return (
+                                    '<span class="text-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "projectNameTxrt"
+                    },
                     // {
                     //     data: "buildingSum"
                     // },
