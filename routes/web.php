@@ -25,11 +25,6 @@ Auth::routes(['verify' => true, 'register' => false]);
 
 Route::get('/dowloadCustomerTemplate', function () {
     return ExportCustomerTemplatService::getCustomerTemplate();
-    $headers = array(
-        'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    );
-
-    return Response::download(storage_path("app/template/Customer-Template" . Carbon::now()->format('d-m-Y') . ".xlsx"), "Customer-Template.xlsx", $headers);
 });
 
 Route::get('/', function () {
