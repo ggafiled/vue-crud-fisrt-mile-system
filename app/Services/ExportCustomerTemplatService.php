@@ -9,12 +9,8 @@ use \PhpOffice\PhpSpreadsheet\IOFactory;
 
 class ExportCustomerTemplatService
 {
-    protected $inputFileName;
 
-    public function __construct()
-    {
-        $this->inputFileName = storage_path("app/template/Customer-Template.xlsx");
-    }
+    public function __construct(){}
 
     public static function getCustomerTemplate()
     {
@@ -51,7 +47,7 @@ class ExportCustomerTemplatService
             (new DataValidation())
                 ->setType(DataValidation::TYPE_LIST)
                 ->setShowDropDown(true)
-                ->setFormula1('=RefProject!$A$2:$A$'.(string)(count($building_display_name)+1))
+                ->setFormula1('=RefProject!$A$2:$A$' . (string) (count($building_display_name) + 1))
         );
 
         $worktsheet->setDataValidation(
