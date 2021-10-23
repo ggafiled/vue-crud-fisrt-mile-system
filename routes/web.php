@@ -1,8 +1,11 @@
 <?php
+
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use App\Services\ExportCustomerTemplatService;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,11 +24,12 @@ Route::post('locale/{locale}', function ($locale) {
 Auth::routes(['verify' => true, 'register' => false]);
 
 Route::get('/dowloadCustomerTemplate', function () {
+    return ExportCustomerTemplatService::getCustomerTemplate();
     $headers = array(
         'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     );
 
-    return Response::download(storage_path("app/template/Customer-Template.xlsx"), "Customer-Template.xlsx", $headers);
+    return Response::download(storage_path("app/template/Customer-Template" . Carbon::now()->format('d-m-Y') . ".xlsx"), "Customer-Template.xlsx", $headers);
 });
 
 Route::get('/', function () {
