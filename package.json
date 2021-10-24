@@ -125,6 +125,7 @@
         "vue-meta": "^2.4.0",
         "vue-moment": "^4.1.0",
         "vue-multiselect": "^2.1.6",
+        "vue-phone-number-input": "^1.1.12",
         "vue-progressbar": "^0.7.5",
         "vue-property-decorator": "^8.0.0",
         "vue-router": "^3.5.1",

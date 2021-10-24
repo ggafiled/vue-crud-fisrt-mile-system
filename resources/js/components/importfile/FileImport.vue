@@ -15,13 +15,15 @@
                                             id="fileImport"
                                             :options="dropzoneOptions"
                                             v-on:vdropzone-file-added="selectedFile"
+                                            v-on:vdropzone-queue-complete="completeProgress"
                                         ></vue-dropzone>
                                     <p class="p-1">
                                         *Supported file formats are xls,xlsx,csv
-                                        & txt. Maximum file size allowed is 3MB
+                                        & txt. Maximum file size allowed is 10MB
                                         (Megea Bytes). Please click
                                         <a
                                             href="https://www.facebook.com/photo/?fbid=4102790519819775&set=a.102925693139631"
+                                            target="_blank"
                                             >this link</a
                                         >
                                         to know more
@@ -88,12 +90,12 @@ export default {
                 autoProcessQueue: false,
                 clickable: true,
                 thumbnailWidth: 150,
-                maxFilesize: 0.5,
+                maxFilesize: 10000000,
                 maxFiles: 1,
                 duplicateCheck: true,
                 addRemoveLinks: true,
                 acceptedFiles:".csv,.xlsx,.xls",
-                dictDefaultMessage: "<div class='row g-1'><div class='col-md-4'><img src='https://i.pinimg.com/originals/26/05/43/26054324d69957afdbc56e4c113592b5.png' class='img-fluid'/></div><div class='col-md-6'><div class='card-body'><br /><br /><br /><h1>Click or Drop</h1><p class='normal'style='color: Gray'>To upload your files</p></div></div></div>"
+                dictDefaultMessage: "<div class='row g-1'><div class='col-md-4 flex-grow-1'><img src='https://i.pinimg.com/originals/26/05/43/26054324d69957afdbc56e4c113592b5.png' class='img-fluid mb-3'/></div><div class='col-md-6'><div class='card-body'><br /><br /><br /><h1>Click or Drop</h1><p class='normal'style='color: Gray'>To upload your files</p></div></div></div>"
             }
         };
     },
@@ -103,6 +105,10 @@ export default {
         },
         removeFile(){
             this.$refs.fileImport.removeAllFiles();
+        },
+        completeProgress() {
+            document.querySelector("#total-progress").style.opacity = "0.0";
+            console.log("completeProgress");
         }
     }
 };

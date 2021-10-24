@@ -10,7 +10,7 @@
                         </h2>
                         <div class="card-tools">
                             <a
-                                href="/dowloadCustomerTemplate"
+                                href="/dowloadConstitutionTemplate"
                                 class="btn btn-sm btn-primary"
                                 target="blank"
                             >
@@ -105,14 +105,24 @@
                             <h5 class="modal-title" v-show="editmode">
                                 {{ translate("constitution.update.header") }}
                             </h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
+                            <div
+                                class="d-flex flex-row justify-space-between align-items-center text-wrap"
                             >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                                <h5
+                                    class="text-muted mr-2"
+                                    v-show="form.projectName"
+                                >
+                                    [{{ form.projectName | limit(60) }}]
+                                </h5>
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
 
                         <!-- <form @submit.prevent="createUser"> -->

@@ -37,13 +37,13 @@
                                     />
                                 </tab-content>
                                 <tab-content title="Select Sheet">
-                                    <SheetsSelect :sheets="sheets"/>
+                                    <SheetsSelect :sheetsList="spreadsheet" @selectedSheet="selectedSheetHandler"/>
                                 </tab-content>
                                 <tab-content title="Map Fields">
-                                    <MapSheet/>
+                                    <MapSheet />
                                 </tab-content>
                                 <tab-content title="Review&Upload">
-                                    <ReviewUpload/>
+                                    <ReviewUpload />
                                 </tab-content>
                                 <template slot="footer" slot-scope="props">
                                     <div class="wizard-footer-left">
@@ -103,13 +103,17 @@ export default {
         return {
             onprogress: false,
             spreadsheet: [],
-            file: null
+            file: null,
+            selectedSheet: ""
         };
     },
     methods: {
         async getTemplateInfo() {
             if (this.file == null) {
-                alert("กรุณานำเข้าไฟล์งาน ก่อนไปขั้นตอนถัดไปค่ะ!");
+                Toast.fire({
+                    icon: "error",
+                    title: "กรุณานำเข้าไฟล์งาน ก่อนไปขั้นตอนถัดไปค่ะ!"
+                });
                 return false;
             }
 
@@ -117,21 +121,48 @@ export default {
             form.append("file", this.file);
             const headers = { "Content-Type": "multipart/form-data" };
             LoadingWait.fire();
-            await axios.post("/import/getInfo", form, { headers }).then(response => {
-                console.log(response.data.data);
-                // this.file = null;
-                // this.$refs.import.removeFile();
-            });
+            await axios
+                .post("/import/getInfo", form, { headers })
+                .then(response => {
+                    // console.log(response.data.data);
+                    this.spreadsheet = response.data.data.sheetNames;
+                    // this.file = null;
+                    // this.$refs.import.removeFile();
+                    this.$refs.import.$emit("vdropzone-queue-complete");
+                });
             setTimeout(() => {
                 LoadingWait.close();
-            },2000);
+            }, 2000);
             return true;
         },
         selectedFile(file) {
             this.file = file;
+        },
+        selectedSheetHandler(sheetname) {
+            this.selectedSheet = sheetname;
         }
+    },
+    mounted() {
+        var vm = this;
+        window.onbeforeunload = function(e) {
+            if (vm.file || vm.file.length > 0) {
+                e = e || window.event;
+                //old browsers
+                if (e) {
+                    e.returnValue = "Changes you made may not be saved";
+                }
+                //safari, chrome(chrome ignores text)
+                return "Changes you made may not be saved";
+            } else {
+                return null;
+            }
+        };
     }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.dz-progress {
+    display: none;
+}
+</style>

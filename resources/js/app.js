@@ -201,6 +201,9 @@ Vue.component(
 
 Vue.component("not-found", require("./components/NotFound.vue").default);
 
+import VuePhoneNumberInput from "vue-phone-number-input";
+Vue.component("vue-phone-number-input", VuePhoneNumberInput);
+
 // Filter Section
 
 Vue.filter("myDate", function(created) {
@@ -215,6 +218,14 @@ Vue.filter("yesno", value =>
 
 Vue.filter("numberFormat", value => {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+});
+
+Vue.filter("limit", (value, limit_at = 20) => {
+    if (value && value.length > limit_at) {
+        return value.substring(0, limit_at) + "...";
+    } else {
+        return value;
+    }
 });
 // end Filter
 

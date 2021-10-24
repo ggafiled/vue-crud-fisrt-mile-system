@@ -128,14 +128,24 @@
                             <h5 class="modal-title" v-show="editmode">
                                 Update Customer's Info
                             </h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
+                            <div
+                                class="d-flex flex-row justify-space-between align-items-center text-wrap"
                             >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                                <h5
+                                    class="text-muted mr-2"
+                                    v-show="form.projectName"
+                                >
+                                    [{{ form.projectName | limit(60) }}]
+                                </h5>
+                                <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
 
                         <!-- <form @submit.prevent="createUser"> -->
@@ -982,8 +992,8 @@ export default {
         };
     },
     methods: {
-        goToImportPanel(){
-            this.$router.push({  path: "importData"});
+        goToImportPanel() {
+            this.$router.push({ path: "importData" });
         },
         dowloadExcelTemplate() {
             const workbook = ExcelJS.Workbook();
@@ -1054,6 +1064,7 @@ export default {
         },
         updateCustomer() {
             this.$Progress.start();
+            this.onprogress = true;
             // console.log('Editing data');
             this.form
                 .put("/planing/" + this.form.id)
@@ -1071,6 +1082,9 @@ export default {
                 .catch(() => {
                     this.$Progress.fail();
                 });
+            setTimeout(() => {
+                this.onprogress = false;
+            }, 2000);
         },
         editModal(planing) {
             this.editmode = true;
@@ -1119,7 +1133,8 @@ export default {
         createCustomer() {
             if (this.selected == null || this.selected == undefined)
                 return false;
-            console.log(this.form);
+            this.onprogress = true;
+            // console.log(this.form);
             this.form
                 .post("/planing")
                 .then(response => {
@@ -1137,6 +1152,9 @@ export default {
                         title: "Some error occured! Please try again"
                     });
                 });
+            setTimeout(() => {
+                this.onprogress = false;
+            }, 2000);
         },
         generateTable() {
             var vm = this;
