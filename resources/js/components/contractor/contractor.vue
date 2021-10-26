@@ -7,7 +7,7 @@
             <div class="card-header">
               <h3 class="card-title">
                 <i class="fas fa-fw bi bi-building"></i>
-                {{ translate("building.header") }}
+                Constractor Management
               </h3>
               <div class="card-tools">
                 <button
@@ -130,142 +130,154 @@
                 <div class="row">
                   <div class="col-sm-3">
                     <div class="form-group">
-                      <label>Manager Name</label>
-                      <small>/เวลานัดหมายที่ลูกค้าต้องการ</small>
-                      <input
-                        v-model="form.nameManager"
-                        type="text"
+                      <label>Callver</label>
+                      <small>/โทรยืนยัดนัดหมาย</small>
+                      <select
                         class="form-control"
-                        placeholder="ชื่อผู้จัดการ"
-                        :class="{
-                          'is-invalid': form.errors.has('nameManager'),
-                        }"
-                      />
-                      <has-error :form="form" field="nameManager"></has-error>
+                        v-model="form.progress3bb_id"
+                      >
+                        <option disabled value="">Select a Class</option>
+                        <option
+                          :value="item.id"
+                          v-for="item in callvers"
+                          :key="item.id"
+                        >
+                          {{ item.callVer }}
+                        </option>
+                      </select>
+                      <has-error :form="form" field="Progress3bb"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-3">
                     <div class="form-group">
-                      <label>Manager Tel</label>
-                      <small>/สถานะการโทรยืนยันนัดหมาย</small>
+                      <label>Appointment Time</label>
+                      <small>/เวลานัดหมาย ในระบบ</small>
                       <input
-                        v-model="form.phoneManager"
-                        type="text"
+                        v-model="form.appointmentTimeCustomer"
+                        type="time"
                         class="form-control"
-                        placeholder="เบอร์ผู้จัดการ"
+                        placeholder="เวลานัดหมาย ในระบบ"
                         :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
+                          'is-invalid': form.errors.has(
+                            'appointmentTimeCustomer'
+                          ),
                         }"
                       />
-                      <has-error :form="form" field="phoneManager"></has-error>
+                      <has-error
+                        :form="form"
+                        field="appointmentTimeCustomer"
+                      ></has-error>
                     </div>
                   </div>
-                  <div class="col-sm-3">
+                  <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                      <label>Manager Email</label>
-                      <small>/ทีมช่าง</small>
-                      <input
-                        v-model="form.mailManager"
-                        type="text"
+                      <label>Callver Status</label>
+                      <small>/สถานะการยืนยันนัดหมาย</small>
+                     <select
                         class="form-control"
-                        placeholder="อีเมลล์ผู้จัดการ"
-                        :class="{
-                          'is-invalid': form.errors.has('mailManager'),
-                        }"
-                      />
-                      <has-error :form="form" field="mailManager"></has-error>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <!-- text input -->
-                    <div class="form-group">
-                      <label>Manager Email</label>
-                      <small>/ID ที่ต้องใช้</small>
-                      <input
-                        v-model="form.mailManager"
-                        type="text"
-                        class="form-control"
-                        placeholder="ID ที่ต้องใช้"
-                        :class="{
-                          'is-invalid': form.errors.has('mailManager'),
-                        }"
-                      />
-                      <has-error :form="form" field="mailManager"></has-error>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-3">
-                    <div class="form-group">
-                      <label>Manager Name</label>
-                      <small>/เบอร์ติดต่อทีมช่าง</small>
-                      <input
-                        v-model="form.nameManager"
-                        type="text"
-                        class="form-control"
-                        placeholder="เบอร์ติดต่อทีมช่าง"
-                        :class="{
-                          'is-invalid': form.errors.has('nameManager'),
-                        }"
-                      />
-                      <has-error :form="form" field="nameManager"></has-error>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="form-group">
-                      <label>Manager Tel</label>
-                      <small>/สถานะงาน</small>
-                      <input
-                        v-model="form.phoneManager"
-                        type="text"
-                        class="form-control"
-                        placeholder="สถานะงาน"
-                        :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
-                        }"
-                      />
-                      <has-error :form="form" field="phoneManager"></has-error>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <!-- text input -->
-                    <div class="form-group">
-                      <label>Manager Email</label>
-                      <small>/อีเมลล์ผู้จัดการ</small>
-                      <input
-                        v-model="form.mailManager"
-                        type="text"
-                        class="form-control"
-                        placeholder="อีเมลล์ผู้จัดการ"
-                        :class="{
-                          'is-invalid': form.errors.has('mailManager'),
-                        }"
-                      />
-                      <has-error :form="form" field="mailManager"></has-error>
-                    </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <!-- text input -->
-                    <div class="form-group">
-                      <label>Manager Email</label>
-                      <small>/อีเมลล์ผู้จัดการ</small>
-                      <input
-                        v-model="form.mailManager"
-                        type="text"
-                        class="form-control"
-                        placeholder="อีเมลล์ผู้จัดการ"
-                        :class="{
-                          'is-invalid': form.errors.has('mailManager'),
-                        }"
-                      />
-                      <has-error :form="form" field="mailManager"></has-error>
+                        v-model="form.aisProgress_id"
+                      >
+                        <option disabled value="">Select a Class</option>
+                        <option
+                          :value="item.id"
+                          v-for="item in callverstatuses"
+                          :key="item.id"
+                        >
+                          {{ item.callVerStatus }}
+                        </option>
+                      </select>
+                      <has-error :form="form" field="aisProgress"></has-error>
                     </div>
                   </div>
                 </div>
               </tab-content>
+
               <tab-content title="Remark">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Technician</label>
+                      <small>/ทีมช่าง</small>
+                      <select
+                        class="form-control"
+                        v-model="form.aisProgress_id"
+                      >
+                        <option disabled value="">Select a Class</option>
+                        <option
+                          :value="item.id"
+                          v-for="item in technicians"
+                          :key="item.id"
+                        >
+                          {{ item.teamTechnician }}
+                        </option>
+                      </select>
+                      <has-error :form="form" field="aisProgress"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>ID Required</label>
+                      <small>/ID ที่ต้องใช้</small>
+                      <input
+                        v-model="form.idRequired"
+                        type="text"
+                        class="form-control"
+                        placeholder="ID ที่ต้องใช้"
+                        :class="{
+                          'is-invalid': form.errors.has(
+                            'idRequired'
+                          ),
+                        }"
+                      />
+                      <has-error
+                        :form="form"
+                        field="idRequired"
+                      ></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Problemsolution</label>
+                      <small>/สถานะงาน</small>
+                      <select
+                        class="form-control"
+                        v-model="form.aisProgress_id"
+                      >
+                        <option disabled value="">Select a Class</option>
+                        <option
+                          :value="item.id"
+                          v-for="item in problemsolutions"
+                          :key="item.id"
+                        >
+                          {{ item.problemSolution }}
+                        </option>
+                      </select>
+                      <has-error :form="form" field="aisProgress"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Confirm Appointment</label>
+                      <small>/วันนัดหมาย</small>
+                      <input
+                        v-model="form.confirmAppointment"
+                        type="text"
+                        class="form-control"
+                        placeholder="สถานะการยืนยันนัดหมาย"
+                        :class="{
+                          'is-invalid': form.errors.has('confirmAppointment'),
+                        }"
+                      />
+                      <has-error
+                        :form="form"
+                        field="confirmAppointment"
+                      ></has-error>
+                    </div>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
@@ -390,8 +402,6 @@
                     </div>
                   </div>
                 </div>
-              </tab-content>
-              <tab-content title="Area Project">
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -642,125 +652,26 @@ export default {
   computed: {
     ...mapGetters(["buildings"]),
     ...mapState(["buildings"]),
-    areaID() {
-      return this.form.areas_id;
-    },
-    location() {
-      return { lon: this.form.longitude, lat: this.form.latitude };
-    },
-    subBuildingsum() {
-      return this.form.subBuildingsum;
-    },
-    subbuilding() {
-      return this.form.subbuilding.length;
-    },
-    sumFloorOfSubbuilding() {
-      return this.form.subbuilding.reduce((total, obj) => {
-        return parseInt(obj.floorSum) + parseInt(total);
-      }, 0);
-    },
-    sumRoomOfSubbuilding() {
-      return this.form.subbuilding.reduce((total, obj) => {
-        return parseInt(obj.roomSum) + parseInt(total);
-      }, 0);
-    },
-  },
-  watch: {
-    areaID: function (value) {
-      this.form.bbN = "";
-      axios.get("/bbns?area_id=" + this.form.areas_id).then((response) => {
-        // console.log(response.data);
-        this.bbns = response.data.data;
-      });
-    },
-    form: {
-      deep: true,
-      handler(value) {
-        if (this.form.subBuildingsum > 1) {
-          this.form.floorSum = this.sumFloorOfSubbuilding;
-          this.form.roomSum = this.sumRoomOfSubbuilding;
-        }
-      },
-    },
   },
   methods: {
-    onSubBuildingUpdate(newVal, oldVal) {
-      console.log(newVal, oldVal);
-      if (this.subbuilding != newVal) {
-        if (newVal > oldVal) {
-          const loop = newVal - this.subbuilding;
-          if (loop >= 1) {
-            for (var i = 0; i < loop; i++) {
-              this.form.subbuilding.push({
-                projectName: "",
-                floorSum: 0,
-                roomSum: 0,
-              });
-            }
-          }
-        } else if (newVal < oldVal) {
-          const loop = this.subbuilding - newVal;
-          console.log("onSubBuildingUpdate else" + loop);
-          if (newVal == 1) {
-            this.form.subbuilding = [];
-          }
-          if (loop >= 1) {
-            for (var i = 0; i < loop; i++) {
-              this.form.subbuilding.pop();
-            }
-          }
-        }
-      }
-    },
-    select(address) {
-      this.form.districtName = address.district;
-      this.form.countyName = address.amphoe;
-      this.form.provinceName = address.province;
-      this.form.postalCode = address.zipcode;
-    },
-    loadSaleFm() {
-      axios.get("/saleFms").then((response) => {
-        this.saleFms = response.data.data;
+    loadcallver() {
+      axios.get("/callvers").then((response) => {
+        this.callvers = response.data.data;
       });
     },
-    loadSpendSpace() {
-      axios.get("/spendSpaces").then((response) => {
-        this.spendSpaces = response.data.data;
+    loadcallverStatus() {
+      axios.get("/callverstatuses").then((response) => {
+        this.callverstatuses = response.data.data;
       });
     },
-    loadArea() {
-      axios.get("/areas").then((response) => {
-        this.areas = response.data.data;
+    loadTechnicians() {
+      axios.get("/technicians").then((response) => {
+        this.technicians = response.data.data;
       });
     },
-    loadArea3BB() {
-      axios.get("/area3bbs").then((response) => {
-        this.area3bbs = response.data.data;
-      });
-    },
-    loadAreaTrue() {
-      axios.get("/areaTrues").then((response) => {
-        this.areaTrues = response.data.data;
-      });
-    },
-    loadAreaTrueNew() {
-      axios.get("/areaTrueNews").then((response) => {
-        this.areaTrueNews = response.data.data;
-      });
-    },
-    loadAreaAis() {
-      axios.get("/areaAises").then((response) => {
-        this.areaAises = response.data.data;
-      });
-    },
-    loadAreaFiberNet() {
-      axios.get("/areaFiberNets").then((response) => {
-        this.areaFiberNets = response.data.data;
-      });
-    },
-    loadWorkTime() {
-      axios.get("/workTimes").then((response) => {
-        this.workTimes = response.data.data;
+    loadProblemsolution() {
+      axios.get("/problemsolutions").then((response) => {
+        this.problemsolutions = response.data.data;
       });
     },
     loadBuildings() {
@@ -892,8 +803,8 @@ export default {
         fixedHeader: true,
         fixedColumns: true,
         fixedColumns: {
-          leftColumns: 3,
-          rightColumns: 3,
+          leftColumns: 2,
+          rightColumns: 1,
         },
         scrollX: true,
         scrollCollapse: true,
@@ -1104,23 +1015,14 @@ export default {
   },
   mounted() {
     const vm = this;
-    this.loadSaleFm();
-    this.loadSpendSpace();
-    this.loadArea();
-    this.loadArea3BB();
-    this.loadAreaTrue();
-    this.loadAreaTrueNew();
-    this.loadAreaAis();
-    this.loadAreaFiberNet();
-    this.loadWorkTime();
+    this.loadcallver();
+    this.loadcallverStatus();
+    this.loadTechnicians();
+    this.loadProblemsolution();
     this.generateTable();
-    // $("#addNew").on("hide.bs.modal", function() {
-    //     vm.form.reset();
-    // });
     setTimeout(() => {
       LoadingWait.close();
     }, 3000);
-    // $("input").attr("autocomplete", this.isChrome ? "chrome-off" : "off");
   },
 };
 </script>

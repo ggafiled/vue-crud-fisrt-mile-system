@@ -18,10 +18,13 @@ class CreateContractorsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();//ชื่อตึก
             $table->bigInteger('customer_id')->unsigned();//ชื่อตึก
-            $table->bigInteger('callverStatus_id')->unsigned();//สถานะการติดต่อ
-            $table->bigInteger('problemsolution_id')->unsigned();//ปัญหาและวิธีการแก้ไข
-            $table->date('confirmAppointment')->nullable();//วันนัดหมาย
+            $table->bigInteger('callver_id')->unsigned();// โทรยืนยัดนัดหมาย
             $table->time('appointmentTimeCustomer')->nullable();//เวลานัดหมาย ในระบบ
+            $table->bigInteger('callverStatus_id')->unsigned();//สถานะการยืนยันนัดหมาย
+            $table->bigInteger('technicians_id')->unsigned();//ทีมช่าง
+            $table->string('idRequired')->nullable();//ID ที่ต้องใช้
+            $table->bigInteger('problemsolution_id')->unsigned();//สถานะงาน
+            $table->date('confirmAppointment')->nullable();//วันนัดหมาย
             $table->string('reMarkzone')->nullable();//รีมาร์ค (For Zone)
             $table->string('equipmentInstall1')->nullable();//อุปกรณ์ที่ใช้ติดตั้ง1
             $table->string('snInstall1')->nullable();// S/Nที่ใช้ติดตั้ง1
@@ -53,6 +56,11 @@ class CreateContractorsTable extends Migration
             $table->foreign('callverStatus_id')
             ->references('id')
             ->on('callverstatuses')
+            ->onDelete('cascade');
+
+            $table->foreign('technicians_id')
+            ->references('id')
+            ->on('technicians')
             ->onDelete('cascade');
 
             $table->foreign('problemsolution_id')

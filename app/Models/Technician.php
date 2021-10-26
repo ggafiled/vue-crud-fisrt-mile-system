@@ -23,8 +23,8 @@ class Technician extends Model
         return $this->hasMany('App\Models\Planing', 'technician_id', 'id');
     }
 
-    // public function building()
+    // public function Contractor()
     // {
-    //     return $this->hasMany('App\Models\Building', 'technician_id', 'id');
+    //     return $this->hasMany('App\Models\Contractor', 'technicians_id', 'id');
     // }
 }
