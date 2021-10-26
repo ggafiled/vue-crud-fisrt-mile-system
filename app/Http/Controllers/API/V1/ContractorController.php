@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\API\V1\BaseController;
-use App\Http\Requests\Building\BuildingRequest;
+// use App\Http\Requests\Building\;
 use App\Models\Contractor;
 use Exception;
 use Illuminate\Http\Request;
 
-class Buildingcontroller extends BaseController
+class ContractorController extends BaseController
 {
 
     public function __construct()
@@ -50,65 +50,38 @@ class Buildingcontroller extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BuildingRequest $request)
+    public function store($request)
     {
         try {
             $buiding = Contractor::create([
                 // 'technician_id' => $request->input('technician_id'),
-                'areas_id' => $request->input('areas_id'),
-                'bbns_id' => $request->input('bbns_id'),
-                'area3bb_id' => $request->input('area3bb_id'),
-                'areaAis_id' => $request->input('areaAis_id'),
-                'areaTrue_id' => $request->input('areaTrue_id'),
-                'areaTrueNew_id' => $request->input('areaTrueNew_id'),
-                'areaFibernet_id' => $request->input('areaFibernet_id'),
-                'projectName' => $request->input('projectName'),
-                'subBuildingsum' => $request->input('subBuildingsum'),
-                'floorSum' => $request->input('floorSum'),
-                'roomSum' => $request->input('roomSum'),
-                'nameManager' => $request->input('nameManager'),
-                'phoneManager' => $request->input('phoneManager'),
-                'mailManager' => $request->input('mailManager'),
-                'nameNiti' => $request->input('nameNiti'),
-                'phoneNiti' => $request->input('phoneNiti'),
-                'mailNiti' => $request->input('mailNiti'),
-                'nameTechnician' => $request->input('nameTechnician'),
-                'phoneTechnician' => $request->input('phoneTechnician'),
-                'mailTechnician' => $request->input('mailTechnician'),
-                'houseNumber' => $request->input('houseNumber'),
-                'squadNumber' => $request->input('squadNumber'),
-                'alleyName' => $request->input('alleyName'),
-                'roadName' => $request->input('roadName'),
-                'districtName' => $request->input('districtName'),
-                'provinceName' => $request->input('provinceName'),
-                'countyName' => $request->input('countyName'),
-                'postalCode' => $request->input('postalCode'),
-                'latitude' => $request->input('latitude'),
-                'longitude' => $request->input('longitude'),
-                'contractStartDate' => $request->input('contractStartDate'),
-                'paymentType_id' => $request->input('paymentType_id'),
-                'saleFm_id' => $request->input('saleFm_id'),
-                'contractTerm' => $request->input('contractTerm'),
-                'contractEndDate' => $request->input('contractEndDate'),
-                // Carbon::parse($request->input("contractDateEnd")),
-                'balance' => $request->input('balance'),
-                'remarkContract' => $request->input('remarkContract'),
-                'workTime_id' => $request->input('workTime_id'),
-                'remark' => $request->input('remark'),
-                'statusBuilding' => $request->input('statusBuilding'),
+                'building_id' => $request->input('building_id'),
+                'callver_id' => $request->input('callver_id'),
+                'appointmentTimeCustomer' => $request->input('appointmentTimeCustomer'),
+                'callverStatus_id' => $request->input('callverStatus_id'),
+                'technicians_id' => $request->input('technicians_id'),
+                'idRequired' => $request->input('idRequired'),
+                'problemsolution_id' => $request->input('problemsolution_id'),
+                'confirmAppointment' => $request->input('confirmAppointment'),
+                'reMarkzone' => $request->input('reMarkzone'),
+                'equipmentInstall1' => $request->input('equipmentInstall1'),
+                'snInstall1' => $request->input('snInstall1'),
+                'equipmentInstall2' => $request->input('equipmentInstall2'),
+                'snInstall2' => $request->input('snInstall2'),
+                'equipmentInstall3' => $request->input('equipmentInstall3'),
+                'snInstall3' => $request->input('snInstall3'),
+                'equipmentInstall4' => $request->input('equipmentInstall4'),
+                'snInstall4' => $request->input('snInstall4'),
+                'equipmentInstall5' => $request->input('equipmentInstall5'),
+                'snInstall5' => $request->input('snInstall5'),
+                'equipmentInstall6' => $request->input('equipmentInstall6'),
+                'snInstall6' => $request->input('snInstall6'),
+                'equipmentInstall7' => $request->input('equipmentInstall7'),
+                'snInstall7' => $request->input('snInstall7')
             ]);
 
-            if ((int) $request->input('subBuildingsum') > 0) {
-                foreach ($request->input('subbuilding') as $item) {
-                    $buiding->subbuilding()->create([
-                        'projectName' => $item['projectName'],
-                        'floorSum' => $item['floorSum'],
-                        'roomSum' => $item['roomSum'],
-                    ]);
-                }
-            }
 
-            return $this->sendResponse($buiding, trans('actions.created.success'));
+            return $this->sendResponse($contractor, trans('actions.created.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.created.failed'));
         }
@@ -121,24 +94,13 @@ class Buildingcontroller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BuildingRequest $request, $id)
+    public function update( $request, $id)
     {
         try {
-            $building = Contractor::find($id);
-            $building->update($request->all());
+            $contractor = Contractor::find($id);
+            $contractor->update($request->all());
 
-            if ((int) $request->input('subBuildingsum') > 0) {
-                $building->subbuilding()->delete();
-                foreach ($request->input('subbuilding') as $item) {
-                    $building->subbuilding()->create([
-                        'projectName' => $item['projectName'],
-                        'floorSum' => $item['floorSum'],
-                        'roomSum' => $item['roomSum'],
-                    ]);
-                }
-            }
-
-            return $this->sendResponse($building, trans('actions.updated.success'));
+            return $this->sendResponse($contractor, trans('actions.updated.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.updated.failed'));
         }
@@ -152,12 +114,7 @@ class Buildingcontroller extends BaseController
      */
     public function destroy($id)
     {
-        try {
-            $building = Contractor::find($id);
-            $building->subbuilding()->delete();
-            $building->delete();
-
-            return $this->sendResponse($building, trans('actions.destroy.success'));
+            return $this->sendResponse($contractor, trans('actions.destroy.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.destroy.failed'));
         }

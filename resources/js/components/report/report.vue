@@ -115,16 +115,27 @@
                     <div class="form-group">
                       <label>Status</label>
                       <small>/สถานะ</small>
-                      <input
-                        v-model="form.nameManager"
+                      <select
+                        v-model="form.statusBuilding"
                         type="text"
                         class="form-control"
-                        placeholder="สถานะ"
+                        placeholder="Enter your type..."
                         :class="{
-                          'is-invalid': form.errors.has('nameManager'),
+                          'is-invalid': form.errors.has('statusBuilding'),
                         }"
-                      />
-                      <has-error :form="form" field="nameManager"></has-error>
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="ปิด Port">ปิด Port</option>
+                        <option value="ยกเลิกงาน">ยกเลิกงาน</option>
+                        <option value="ยังไม่ปิดงาน">ยังไม่ปิดงาน</option>
+                        <option value="ทีมช่างไม่ส่งงาน">ทีมช่างไม่ส่งงาน</option>
+                        <option value="ส่งกลับให้แอดมินตรวจสอบ">ส่งกลับให้แอดมินตรวจสอบ</option>
+                        <option value="อื่นๆ โปรดระบุในรีมาร์ค">อื่นๆ โปรดระบุในรีมาร์ค</option>
+                      </select>
+                      <has-error
+                        :form="form"
+                        field="statusBuilding"
+                      ></has-error>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -133,7 +144,7 @@
                       <small>/ วันที่เชื่อมต่อ</small>
                       <input
                         v-model="form.phoneManager"
-                        type="text"
+                        type="date"
                         class="form-control"
                         placeholder="วันที่เชื่อมต่อ"
                         :class="{
@@ -149,7 +160,7 @@
                       <small>/ วันที่ตัดการเชื่อมต่อ</small>
                       <input
                         v-model="form.phoneManager"
-                        type="text"
+                        type="date"
                         class="form-control"
                         placeholder="วันที่ตัดการเชื่อมต่อ"
                         :class="{
@@ -419,7 +430,7 @@ export default {
         fixedColumns: true,
         fixedColumns: {
           leftColumns: 2,
-          rightColumns: 3,
+          rightColumns: 2,
         },
         scrollX: true,
         scrollCollapse: true,

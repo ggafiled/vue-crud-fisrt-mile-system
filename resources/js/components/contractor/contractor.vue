@@ -33,25 +33,25 @@
                     <tr class="info">
                       <th></th>
                       <th>Project Name</th>
-                      <th>callverStatus</th>
-                      <th>problemsolution</th>
-                      <th>confirmAppointment</th>
-                      <th>appointmentTimeCustomer</th>
-                      <th>reMarkzone</th>
-                      <th>equipmentInstall1</th>
-                      <th>snInstall1</th>
-                      <th>equipmentInstall2</th>
-                      <th>snInstall2</th>
-                      <th>equipmentInstall3</th>
-                      <th>snInstall3</th>
-                      <th>equipmentInstall4</th>
-                      <th>snInstall4</th>
-                      <th>equipmentInstall5</th>
-                      <th>snInstall5</th>
-                      <th>equipmentInstall6</th>
-                      <th>snInstall6</th>
-                      <th>equipmentInstall7</th>
-                      <th>snInstall7</th>
+                      <th>Callver Status</th>
+                      <th>Problemsolution</th>
+                      <th>Confirm Appointment</th>
+                      <th>Appointment Time Customer</th>
+                      <th>ReMark Zone</th>
+                      <th>EquipmentInstall1</th>
+                      <th>SnInstall1</th>
+                      <th>EquipmentInstall2</th>
+                      <th>SnInstall2</th>
+                      <th>EquipmentInstall3</th>
+                      <th>SnInstall3</th>
+                      <th>EquipmentInstall4</th>
+                      <th>SnInstall4</th>
+                      <th>EquipmentInstall5</th>
+                      <th>SnInstall5</th>
+                      <th>EquipmentInstall6</th>
+                      <th>SnInstall6</th>
+                      <th>EquipmentInstall7</th>
+                      <th>SnInstall7</th>
                       <th>Update At</th>
                       <th>Action</th>
                     </tr>
@@ -598,7 +598,6 @@
     </div>
   </section>
 </template>
-
 <script>
 import { mapGetters, mapState } from "vuex";
 import NumberInput from "../partials/NumberInput.vue";
@@ -612,16 +611,10 @@ export default {
       editmode: false,
       onprogress: false,
       selected: "",
-      areas: [],
-      bbns: [],
-      area3bbs: [],
-      areaTrues: [],
-      areaTrueNews: [],
-      areaAises: [],
-      areaFiberNets: [],
-      workTimes: [],
-      spendSpaces: [],
-      saleFms: [],
+      callver: [],
+      callverStatus: [],
+      technicians: [],
+      problemsolution: [],
       form: new Form({
         id: "",
         building_id: "",
