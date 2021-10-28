@@ -19,6 +19,7 @@ class Constarution extends Model
         'projectNameTrue',
         'projectNameAis',
         'projectNameFiberNet',
+        'projectNameTxrt',
         'buildingSum',
         'buildingNumber',
         'buildingFloor',

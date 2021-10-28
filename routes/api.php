@@ -78,6 +78,8 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'constarution' => 'ConstarutionController',
         'progress' => 'ProgressController',
         'planing' => 'PlaningController',
+        'contractor' => 'ContractorController',
+        'report' => 'ReportController',
         'team' => 'TeamController',
         'dashboard' => 'DashboardController',
         'problemsolution' => 'ProblemsolutionController',

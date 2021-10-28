@@ -1185,6 +1185,16 @@ export default {
                         text: "<i class='bi bi-printer mr-1'></i>Print"
                     },
                     {
+                        extend: "excelHtml5",
+                        autoFilter: true,
+                        sheetName: "Building",
+                        text:
+                            "<i class='bi bi-file-earmark-excel mr-1'></i>Excel",
+                        exportOptions: {
+                            columns: "th:not(.notexport)"
+                        }
+                    },
+                    {
                         className: "bg-success",
                         text: "<i class='bi bi-file-text mr-1'></i>AIS",
                         action: function(e, dt, node, config) {

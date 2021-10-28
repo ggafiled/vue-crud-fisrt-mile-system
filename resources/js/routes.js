@@ -111,6 +111,14 @@ export default [{
             roles: ["superadministrator", "administrator"]
         }
     },
+    {
+        path: "/connect/all",
+        component: require("./components/customer/FmConnect.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator"]
+        }
+    },
     // {
     //     path: "/customer/treeview",
     //     component: require("./components/customer/CustomerTreeView.vue")

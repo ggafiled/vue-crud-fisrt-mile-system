@@ -56,6 +56,7 @@
                                             <th>Postal Code</th>
                                             <th>Latitude</th>
                                             <th>Longitude</th>
+                                            
                                             <th>Contract Start Date</th>
                                             <th>Contract Term</th>
                                             <th>Contract End Date</th>

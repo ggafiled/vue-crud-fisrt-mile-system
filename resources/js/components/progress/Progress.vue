@@ -779,7 +779,7 @@ export default {
             data: "date3BB",
           },
           {
-            data: "sinet_progress.name",
+            data: "txrt_progress.name",
             render: function (data, type, row, meta) {
               if (data == "") {
                 return (

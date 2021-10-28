@@ -23,8 +23,8 @@
           <div class="card-body">
             <div class="table-responsive">
               <table
-                id="progress"
-                ref="progress"
+                id="report"
+                ref="report"
                 class="display nowrap"
                 style="width: 100%"
               >
@@ -414,9 +414,9 @@ export default {
     },
     generateTable() {
       var vm = this;
-      var table = $(this.$refs.progress).DataTable({
+      var table = $(this.$refs.report).DataTable({
         dom: "Blfrtip",
-        ajax: "/api/progress",
+        ajax: "/api/report",
         responsive: true,
         processing: true,
         autoWidth: true,
@@ -521,19 +521,19 @@ export default {
             data: "building.projectName",
           },
           {
-            data: "fm_progress.name",
+            data: "statusContrater",
           },
           {
-            data: "dateFm",
+            data: "dateConnect",
           },
           {
-            data: "tot_progress.name",
+            data: "dateDisconnect",
           },
           {
-            data: "dateTot",
+            data: "workSheet",
           },
           {
-            data: "ais_progress.name",
+            data: "reMarkAccount",
           },
           {
             data: "updated_at",

@@ -19,7 +19,7 @@ class Progress extends Model
         'totProgress_id',
         'aisProgress_id',
         'progress3bb_id',
-        'sinetProgress_id',
+        'txrtProgress_id',
         'fnProgress_id',
         'trueProgress_id',
         'dateFm',
@@ -29,6 +29,7 @@ class Progress extends Model
         'dateSinet',
         'dateFn',
         'dateTrue',
+        'dateTxrx',
         'statusProgress'
     ];
 

@@ -332,31 +332,36 @@ return [
                     'active_url' => 'building/all'
                 ],
                 [
-                    'text' => 'project_tot_table',
-                    'url' => '/building/tot',
+                    'text' => 'FM Connect Table',
+                    'url' => '/connect/all',
                     'icon' => 'fas fa-fw fas fa-file-alt',
                 ],
-                [
-                    'text' => 'project_3bb_table',
-                    'url' => '/building/3bb',
-                    'icon' => 'fas fa-fw fas fa-file-alt',
-                ],
-                [
-                    'text' => 'project_true_table',
-                    'url' => '/building/true',
-                    'icon' => 'fas fa-fw fas fa-file-alt',
-                ],
-                [
-                    'text' => 'project_ais_table',
-                    'url' => '/building/ais',
-                    'icon' => 'fas fa-fw fas fa-file-alt',
-                    // 'icon' => 'c-icon c-icon-ais',
-                ],
-                [
-                    'text' => 'project_fibernet_table',
-                    'url' => '/building/fibernet',
-                    'icon' => 'fas fa-fw fas fa-file-alt',
-                ],
+                // [
+                //     'text' => 'project_tot_table',
+                //     'url' => '/building/tot',
+                //     'icon' => 'fas fa-fw fas fa-file-alt',
+                // ],
+                // [
+                //     'text' => 'project_3bb_table',
+                //     'url' => '/building/3bb',
+                //     'icon' => 'fas fa-fw fas fa-file-alt',
+                // ],
+                // [
+                //     'text' => 'project_true_table',
+                //     'url' => '/building/true',
+                //     'icon' => 'fas fa-fw fas fa-file-alt',
+                // ],
+                // [
+                //     'text' => 'project_ais_table',
+                //     'url' => '/building/ais',
+                //     'icon' => 'fas fa-fw fas fa-file-alt',
+                //     // 'icon' => 'c-icon c-icon-ais',
+                // ],
+                // [
+                //     'text' => 'project_fibernet_table',
+                //     'url' => '/building/fibernet',
+                //     'icon' => 'fas fa-fw fas fa-file-alt',
+                // ],
             ],
         ],
         // [

@@ -1,3 +1,4 @@
+
 <?php
 
 namespace App\Http\Controllers\API\V1;
@@ -25,19 +26,8 @@ class ContractorController extends BaseController
      */
     public function index()
     {
-        $buiding = Contractor::with(
-            'saleFm:id,nameSale as name',
-            'paymentType:id,paymentType as name',
-            'areas:id,name',
-            'bbns:id,name',
-            'area3bb:id,area3BB as name',
-            'areaTrue:id,areaTrue as name',
-            'areaTrueNew:id,areaTrueNew as name',
-            'areaAis:id,areaAis as name',
-            'areaFibernet:id,areaFiberNet as name',
-            'workTime:id,workTime as name',
-            'subbuilding')->get();
-        return $this->sendResponse($buiding, trans('actions.get.success'));
+        $contractor = Contractor::with('contractor',)->get();
+        return $this->sendResponse($contractor, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.failed'));
@@ -53,7 +43,7 @@ class ContractorController extends BaseController
     public function store($request)
     {
         try {
-            $buiding = Contractor::create([
+            $contractor = Contractor::create([
                 // 'technician_id' => $request->input('technician_id'),
                 'building_id' => $request->input('building_id'),
                 'callver_id' => $request->input('callver_id'),

@@ -1,65 +1,65 @@
 <template>
   <section class="content">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">
-                <i class="fas fa-fw bi bi-building"></i>
-                Constractor Management
-              </h3>
-              <div class="card-tools">
-                <button
-                  type="button"
-                  class="btn btn-sm btn-primary"
-                  @click="newModal"
-                >
-                  <i class="fa fa-plus-square"></i>
-                  {{ translate("building.addnew") }}
-                </button>
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <div class="table-responsive">
-                <table
-                  id="buildings"
-                  ref="buildings"
-                  class="display nowrap"
-                  style="width: 100%"
-                >
-                  <thead>
-                    <tr class="info">
-                      <th></th>
-                      <th>Project Name</th>
-                      <th>Callver Status</th>
-                      <th>Problemsolution</th>
-                      <th>Confirm Appointment</th>
-                      <th>Appointment Time Customer</th>
-                      <th>ReMark Zone</th>
-                      <th>EquipmentInstall1</th>
-                      <th>SnInstall1</th>
-                      <th>EquipmentInstall2</th>
-                      <th>SnInstall2</th>
-                      <th>EquipmentInstall3</th>
-                      <th>SnInstall3</th>
-                      <th>EquipmentInstall4</th>
-                      <th>SnInstall4</th>
-                      <th>EquipmentInstall5</th>
-                      <th>SnInstall5</th>
-                      <th>EquipmentInstall6</th>
-                      <th>SnInstall6</th>
-                      <th>EquipmentInstall7</th>
-                      <th>SnInstall7</th>
-                      <th>Update At</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                </table>
-              </div>
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <i class="fas fa-fw bi bi-aspect-ratio"></i>
+              Contractor Management
+            </h2>
+            <div class="card-tools">
+              <button
+                type="button"
+                class="btn btn-sm btn-primary"
+                @click="newModal"
+              >
+                <i class="fa fa-plus-square"></i>
+                {{ translate("constitution.addnew") }}
+              </button>
             </div>
           </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="table-responsive">
+              <table
+                id="contractor"
+                ref="contractor"
+                class="display nowrap"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr class="info">
+                    <th></th>
+                    <th>Project Name</th>
+                    <th>Callver Status</th>
+                    <th>Problemsolution</th>
+                    <th>Confirm Appointment</th>
+                    <th>Appointment Time Customer</th>
+                    <th>ReMark Zone</th>
+                    <th>EquipmentInstall1</th>
+                    <th>SnInstall1</th>
+                    <th>EquipmentInstall2</th>
+                    <th>SnInstall2</th>
+                    <th>EquipmentInstall3</th>
+                    <th>SnInstall3</th>
+                    <th>EquipmentInstall4</th>
+                    <th>SnInstall4</th>
+                    <th>EquipmentInstall5</th>
+                    <th>SnInstall5</th>
+                    <th>EquipmentInstall6</th>
+                    <th>SnInstall6</th>
+                    <th>EquipmentInstall7</th>
+                    <th>SnInstall7</th>
+                    <th>Update At</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
         </div>
       </div>
 
@@ -78,19 +78,32 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" v-show="!editmode">
-                {{ translate("building.create.header") }}
+                {{ translate("constitution.create.header") }}
               </h5>
               <h5 class="modal-title" v-show="editmode">
-                {{ translate("building.update.header") }}
+                {{ translate("constitution.update.header") }}
               </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
+              <div
+                class="
+                  d-flex
+                  flex-row
+                  justify-space-between
+                  align-items-center
+                  text-wrap
+                "
               >
-                <span aria-hidden="true">&times;</span>
-              </button>
+                <h5 class="text-muted mr-2" v-show="form.projectName">
+                  [{{ form.projectName | limit(60) }}]
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
             </div>
 
             <!-- <form @submit.prevent="createUser"> -->
@@ -111,22 +124,22 @@
                 :index="props.index"
               >
               </wizard-step>
-              <tab-content title="Sub-Building" :selected="true">
+              <tab-content title="Project Names" :selected="true">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label>Project Name</label>
                       <small>/ชื่อโปรเจ็ค</small>
-                      <input
-                        type="text"
-                        class="form-control"
-                        placeholder="ชื่อโปรเจ็ค"
-                        v-model="form.projectName"
-                      />
+                      <Select2
+                        v-model="form.building_id"
+                        :options="building"
+                        :settings="settings"
+                      >
+                      </Select2>
+                      <has-error :form="form" field="projectName"></has-error>
                     </div>
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col-sm-3">
                     <div class="form-group">
@@ -134,7 +147,7 @@
                       <small>/โทรยืนยัดนัดหมาย</small>
                       <select
                         class="form-control"
-                        v-model="form.progress3bb_id"
+                        v-model="form.callver_id"
                       >
                         <option disabled value="">Select a Class</option>
                         <option
@@ -145,7 +158,7 @@
                           {{ item.callVer }}
                         </option>
                       </select>
-                      <has-error :form="form" field="Progress3bb"></has-error>
+                      <has-error :form="form" field="callver"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -174,9 +187,9 @@
                     <div class="form-group">
                       <label>Callver Status</label>
                       <small>/สถานะการยืนยันนัดหมาย</small>
-                     <select
+                      <select
                         class="form-control"
-                        v-model="form.aisProgress_id"
+                        v-model="form.callverStatus_id"
                       >
                         <option disabled value="">Select a Class</option>
                         <option
@@ -187,13 +200,12 @@
                           {{ item.callVerStatus }}
                         </option>
                       </select>
-                      <has-error :form="form" field="aisProgress"></has-error>
+                      <has-error :form="form" field="callverStatus"></has-error>
                     </div>
                   </div>
                 </div>
               </tab-content>
-
-              <tab-content title="Remark">
+              <tab-content title="Progress">
                 <div class="row">
                   <div class="col-sm-3">
                     <div class="form-group">
@@ -201,7 +213,7 @@
                       <small>/ทีมช่าง</small>
                       <select
                         class="form-control"
-                        v-model="form.aisProgress_id"
+                        v-model="form.technicians_id"
                       >
                         <option disabled value="">Select a Class</option>
                         <option
@@ -212,7 +224,7 @@
                           {{ item.teamTechnician }}
                         </option>
                       </select>
-                      <has-error :form="form" field="aisProgress"></has-error>
+                      <has-error :form="form" field="technicians"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -225,15 +237,10 @@
                         class="form-control"
                         placeholder="ID ที่ต้องใช้"
                         :class="{
-                          'is-invalid': form.errors.has(
-                            'idRequired'
-                          ),
+                          'is-invalid': form.errors.has('idRequired'),
                         }"
                       />
-                      <has-error
-                        :form="form"
-                        field="idRequired"
-                      ></has-error>
+                      <has-error :form="form" field="idRequired"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -243,7 +250,7 @@
                       <small>/สถานะงาน</small>
                       <select
                         class="form-control"
-                        v-model="form.aisProgress_id"
+                        v-model="form.problemsolution_id"
                       >
                         <option disabled value="">Select a Class</option>
                         <option
@@ -254,7 +261,7 @@
                           {{ item.problemSolution }}
                         </option>
                       </select>
-                      <has-error :form="form" field="aisProgress"></has-error>
+                      <has-error :form="form" field="problemsolution"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -304,15 +311,15 @@
                       <label>Manager Name</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 1</small>
                       <input
-                        v-model="form.nameManager"
+                        v-model="form.equipmentInstall1"
                         type="text"
                         class="form-control"
                         placeholder="อุปกรณ์ที่ใช้ติดตั้ง 1"
                         :class="{
-                          'is-invalid': form.errors.has('nameManager'),
+                          'is-invalid': form.errors.has('equipmentInstall1'),
                         }"
                       />
-                      <has-error :form="form" field="nameManager"></has-error>
+                      <has-error :form="form" field="equipmentInstall1"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -320,15 +327,15 @@
                       <label>Manager Tel</label>
                       <small>/ S/N ที่ใช้ติดตั้ง 1</small>
                       <input
-                        v-model="form.phoneManager"
+                        v-model="form.snInstall1"
                         type="text"
                         class="form-control"
                         placeholder="S/N ที่ใช้ติดตั้ง 1"
                         :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
+                          'is-invalid': form.errors.has('snInstall1'),
                         }"
                       />
-                      <has-error :form="form" field="phoneManager"></has-error>
+                      <has-error :form="form" field="snInstall1"></has-error>
                     </div>
                   </div>
                 </div>
@@ -339,15 +346,15 @@
                       <label>Manager Name</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 2</small>
                       <input
-                        v-model="form.nameManager"
+                        v-model="form.equipmentInstall2"
                         type="text"
                         class="form-control"
                         placeholder="อุปกรณ์ที่ใช้ติดตั้ง 2"
                         :class="{
-                          'is-invalid': form.errors.has('nameManager'),
+                          'is-invalid': form.errors.has('equipmentInstall2'),
                         }"
                       />
-                      <has-error :form="form" field="nameManager"></has-error>
+                      <has-error :form="form" field="equipmentInstall2"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -355,15 +362,15 @@
                       <label>Manager Tel</label>
                       <small>/S/N ที่ใช้ติดตั้ง 2</small>
                       <input
-                        v-model="form.phoneManager"
+                        v-model="form.snInstall2"
                         type="text"
                         class="form-control"
                         placeholder="S/N ที่ใช้ติดตั้ง 2"
                         :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
+                          'is-invalid': form.errors.has('snInstall2'),
                         }"
                       />
-                      <has-error :form="form" field="phoneManager"></has-error>
+                      <has-error :form="form" field="snInstall2"></has-error>
                     </div>
                   </div>
                 </div>
@@ -374,15 +381,15 @@
                       <label>Manager Name</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 3</small>
                       <input
-                        v-model="form.nameManager"
+                        v-model="form.equipmentInstall3"
                         type="text"
                         class="form-control"
                         placeholder="อุปกรณ์ที่ใช้ติดตั้ง 3"
                         :class="{
-                          'is-invalid': form.errors.has('nameManager'),
+                          'is-invalid': form.errors.has('equipmentInstall3'),
                         }"
                       />
-                      <has-error :form="form" field="nameManager"></has-error>
+                      <has-error :form="form" field="equipmentInstall3"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -390,15 +397,15 @@
                       <label>Manager Tel</label>
                       <small>/S/N ที่ใช้ติดตั้ง 3</small>
                       <input
-                        v-model="form.phoneManager"
+                        v-model="form.snInstall3"
                         type="text"
                         class="form-control"
                         placeholder="S/N ที่ใช้ติดตั้ง 3"
                         :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
+                          'is-invalid': form.errors.has('snInstall3'),
                         }"
                       />
-                      <has-error :form="form" field="phoneManager"></has-error>
+                      <has-error :form="form" field="snInstall3"></has-error>
                     </div>
                   </div>
                 </div>
@@ -408,15 +415,15 @@
                       <label>Manager Name</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 4</small>
                       <input
-                        v-model="form.nameManager"
+                        v-model="form.equipmentInstall4"
                         type="text"
                         class="form-control"
                         placeholder="อุปกรณ์ที่ใช้ติดตั้ง 4"
                         :class="{
-                          'is-invalid': form.errors.has('nameManager'),
+                          'is-invalid': form.errors.has('equipmentInstall4'),
                         }"
                       />
-                      <has-error :form="form" field="nameManager"></has-error>
+                      <has-error :form="form" field="equipmentInstall4"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -424,15 +431,15 @@
                       <label>Manager Tel</label>
                       <small>/S/N ที่ใช้ติดตั้ง 4</small>
                       <input
-                        v-model="form.phoneManager"
+                        v-model="form.snInstall4"
                         type="text"
                         class="form-control"
                         placeholder="S/N ที่ใช้ติดตั้ง 4"
                         :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
+                          'is-invalid': form.errors.has('snInstall4'),
                         }"
                       />
-                      <has-error :form="form" field="phoneManager"></has-error>
+                      <has-error :form="form" field="snInstall4"></has-error>
                     </div>
                   </div>
                 </div>
@@ -443,15 +450,15 @@
                       <label>Manager Name</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 5</small>
                       <input
-                        v-model="form.nameManager"
+                        v-model="form.equipmentInstall5"
                         type="text"
                         class="form-control"
                         placeholder="อุปกรณ์ที่ใช้ติดตั้ง 5"
                         :class="{
-                          'is-invalid': form.errors.has('nameManager'),
+                          'is-invalid': form.errors.has('equipmentInstall5'),
                         }"
                       />
-                      <has-error :form="form" field="nameManager"></has-error>
+                      <has-error :form="form" field="equipmentInstall5"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -459,15 +466,15 @@
                       <label>Manager Tel</label>
                       <small>/S/N ที่ใช้ติดตั้ง 5</small>
                       <input
-                        v-model="form.phoneManager"
+                        v-model="form.snInstall5"
                         type="text"
                         class="form-control"
                         placeholder="S/N ที่ใช้ติดตั้ง 5"
                         :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
+                          'is-invalid': form.errors.has('snInstall5'),
                         }"
                       />
-                      <has-error :form="form" field="phoneManager"></has-error>
+                      <has-error :form="form" field="snInstall5"></has-error>
                     </div>
                   </div>
                 </div>
@@ -478,15 +485,15 @@
                       <label>Manager Name</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 6</small>
                       <input
-                        v-model="form.nameManager"
+                        v-model="form.equipmentInstall6"
                         type="text"
                         class="form-control"
                         placeholder="อุปกรณ์ที่ใช้ติดตั้ง 6"
                         :class="{
-                          'is-invalid': form.errors.has('nameManager'),
+                          'is-invalid': form.errors.has('equipmentInstall6'),
                         }"
                       />
-                      <has-error :form="form" field="nameManager"></has-error>
+                      <has-error :form="form" field="equipmentInstall6"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -494,15 +501,15 @@
                       <label>Manager Tel</label>
                       <small>/S/N ที่ใช้ติดตั้ง 6</small>
                       <input
-                        v-model="form.phoneManager"
+                        v-model="form.snInstall6"
                         type="text"
                         class="form-control"
                         placeholder="S/N ที่ใช้ติดตั้ง 6"
                         :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
+                          'is-invalid': form.errors.has('snInstall6'),
                         }"
                       />
-                      <has-error :form="form" field="phoneManager"></has-error>
+                      <has-error :form="form" field="snInstall6"></has-error>
                     </div>
                   </div>
                 </div>
@@ -513,15 +520,15 @@
                       <label>Manager Name</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 7</small>
                       <input
-                        v-model="form.nameManager"
+                        v-model="form.equipmentInstall7"
                         type="text"
                         class="form-control"
                         placeholder="อุปกรณ์ที่ใช้ติดตั้ง 7"
                         :class="{
-                          'is-invalid': form.errors.has('nameManager'),
+                          'is-invalid': form.errors.has('equipmentInstall7'),
                         }"
                       />
-                      <has-error :form="form" field="nameManager"></has-error>
+                      <has-error :form="form" field="equipmentInstall7"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -529,15 +536,15 @@
                       <label>Manager Tel</label>
                       <small>/S/N ที่ใช้ติดตั้ง 7</small>
                       <input
-                        v-model="form.phoneManager"
+                        v-model="form.snInstall7"
                         type="text"
                         class="form-control"
                         placeholder="S/N ที่ใช้ติดตั้ง 7"
                         :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
+                          'is-invalid': form.errors.has('snInstall7'),
                         }"
                       />
-                      <has-error :form="form" field="phoneManager"></has-error>
+                      <has-error :form="form" field="snInstall7"></has-error>
                     </div>
                   </div>
                 </div>
@@ -561,9 +568,9 @@
                   >
                   <wizard-button
                     v-show="editmode && props.isLastStep"
-                    class="btn wizard-footer-right finish-button"
+                    class="wizard-footer-right finish-button"
                     :style="props.fillButtonStyle"
-                    @click.native="updateBuilding()"
+                    @click.native="updateConstarution()"
                     :disabled="onprogress"
                   >
                     <span
@@ -572,13 +579,13 @@
                       role="status"
                       aria-hidden="true"
                     ></span>
-                    {{ translate("building.actions.update") }}
+                    {{ translate("constitution.actions.update") }}
                   </wizard-button>
                   <wizard-button
                     v-show="!editmode && props.isLastStep"
-                    class="btn wizard-footer-right finish-button"
+                    class="wizard-footer-right finish-button"
                     :style="props.fillButtonStyle"
-                    @click.native="createBuilding()"
+                    @click.native="createConstarution()"
                     :disabled="onprogress"
                   >
                     <span
@@ -587,7 +594,7 @@
                       role="status"
                       aria-hidden="true"
                     ></span>
-                    {{ translate("building.actions.create") }}
+                    {{ translate("constitution.actions.create") }}
                   </wizard-button>
                 </div>
               </template>
@@ -598,12 +605,17 @@
     </div>
   </section>
 </template>
+
 <script>
+import Select2 from "v-select2-component";
+import Uploader from "vux-uploader-component";
 import { mapGetters, mapState } from "vuex";
 import NumberInput from "../partials/NumberInput.vue";
+
 export default {
-  title: "All -",
-  components: { NumberInput },
+  title: "Constarution -",
+  components: { Select2, Uploader, NumberInput },
+
   data() {
     return {
       loader: null,
@@ -611,17 +623,31 @@ export default {
       editmode: false,
       onprogress: false,
       selected: "",
+      building: [],
       callver: [],
       callverStatus: [],
       technicians: [],
       problemsolution: [],
+      fileList: [],
+      settings: {
+        placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
+        allowClear: false,
+        dropdownParent: ".modal",
+      },
+      sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
       form: new Form({
         id: "",
         building_id: "",
         projectName: "",
         customer_id: "",
+        callver_id: "",
+        callver: "",
         callverStatus_id: "",
+        callverStatus: "",
         problemsolution_id: "",
+        problemsolution: "",
+        technicians_id: "",
+        technicians: "",
         confirmAppointment: "",
         appointmentTimeCustomer: "",
         reMarkzone: "",
@@ -641,10 +667,6 @@ export default {
         snInstall7: "",
       }),
     };
-  },
-  computed: {
-    ...mapGetters(["buildings"]),
-    ...mapState(["buildings"]),
   },
   methods: {
     loadcallver() {
@@ -668,19 +690,28 @@ export default {
       });
     },
     loadBuildings() {
+      axios.get("/constarution/retrieveBuilding").then(
+        (response) =>
+          (this.building = response.data.data.map((a) => {
+            return { text: a.projectName, id: a.id };
+          }))
+      );
+    },
+    loadConstarution() {
       this.$Progress.start();
+
       if (this.$gate.isAdmin()) {
-        this.$store.dispatch("GET_BUILDINGS");
-        $("#buildings").DataTable().ajax.reload();
+        $("#contractor").DataTable().ajax.reload();
       }
+
       this.$Progress.finish();
     },
-    async updateBuilding() {
+    async updateConstarution() {
       this.$Progress.start();
       // console.log('Editing data');
       this.onprogress = true;
       await this.form
-        .put("/building/" + this.form.id)
+        .put("/contractor/" + this.form.id)
         .then((response) => {
           // success
           $("#addNew").modal("hide");
@@ -690,7 +721,8 @@ export default {
           });
           this.$Progress.finish();
           //  Fire.$emit('AfterCreate');
-          this.loadBuildings();
+
+          this.loadConstarution();
         })
         .catch(() => {
           this.$Progress.fail();
@@ -699,55 +731,49 @@ export default {
         this.onprogress = false;
       }, 2000);
     },
-    editModal(building) {
+    editModal(constarution) {
       this.editmode = true;
       this.form.reset();
       this.form.errors.clear();
-      this.$refs.wizard.activateAll();
-      building.subbuilding = building.subbuilding;
-      console.log(building);
+      console.log(constarution);
       $("#addNew").modal("show");
-      this.form.fill(building);
-    },
-    openMapPickerLocation() {
-      $("#pickermap").modal("show");
+      this.form.fill(constarution);
     },
     newModal() {
       this.editmode = false;
       this.selected = "";
       this.form.reset();
-      this.$refs.wizard.reset();
-      this.form.errors.clear();
       $("#addNew").modal("show");
     },
-    deleteBuilding(item) {
+    deleteConstarution(item) {
       Swal.fire({
-        title: window.translate("building.alert.delete_building_title"),
+        title: window.translate("constitution.alert.delete_building_title"),
         text:
-          window.translate("building.alert.delete_building_text") +
-          ` [${item.projectName}]`,
+          window.translate("constitution.alert.delete_building_text") +
+          ` [${item.building.projectName}]`,
         showCancelButton: true,
         confirmButtonColor: "#d33",
         cancelButtonColor: "#3085d6",
         cancelButtonText: window.translate(
-          "building.alert.delete_building_cancel_button_text"
+          "constitution.alert.delete_building_cancel_button_text"
         ),
         confirmButtonText: window.translate(
-          "building.alert.delete_building_confirm_button_text"
+          "constitution.alert.delete_building_confirm_button_text"
         ),
       }).then((result) => {
         // Send request to the server
         if (result.value) {
           this.form
-            .delete("/building/" + item.id)
+            .delete("/contractor/" + item.id)
             .then(() => {
               Swal.fire(
-                window.translate("building.alert.comfirm_delete_title"),
-                window.translate("building.alert.confirm_delete_message"),
+                window.translate("constitution.alert.comfirm_delete_title"),
+                window.translate("constitution.alert.confirm_delete_message"),
                 "success"
               );
               // Fire.$emit('AfterCreate');
               this.loadBuildings();
+              this.loadConstarution();
             })
             .catch((data) => {
               Swal.fire("Failed!", data.message, "warning");
@@ -755,20 +781,18 @@ export default {
         }
       });
     },
-    async createBuilding() {
-      console.log("createBuilding");
+    async createConstarution() {
       if (this.selected == null || this.selected == undefined) return false;
       this.onprogress = true;
       await this.form
-        .post("/building")
+        .post("/contractor")
         .then((response) => {
           $("#addNew").modal("hide");
           Toast.fire({
             icon: "success",
             title: response.data.message,
           });
-          this.$Progress.finish();
-          this.loadBuildings();
+          this.loadConstarution();
         })
         .catch(() => {
           Toast.fire({
@@ -782,12 +806,11 @@ export default {
     },
     generateTable() {
       var vm = this;
-      var table = $(this.$refs.buildings).DataTable({
+      var table = $(this.$refs.contractor).DataTable({
         dom: "Blfrtip",
-        ajax: "/api/building",
+        ajax: "/api/contractor",
         responsive: true,
         processing: true,
-        autoWidth: true,
         pageLength: 10,
         lengthMenu: [
           [10, 15, 25, 50, -1],
@@ -825,13 +848,6 @@ export default {
             text: "<i class='bi bi-printer mr-1'></i>Print",
           },
           {
-            className: "bg-danger",
-            text: "<i class='bi bi-file-text mr-1'></i>ยังไม่ทำสัญญา",
-            action: function (e, dt, node, config) {
-              dt.columns(4).search("ยังไม่ได้ทำสัญญา").draw();
-            },
-          },
-          {
             text:
               "<i class='bi bi-list-check mr-1'></i>" +
               window.translate(
@@ -846,7 +862,7 @@ export default {
                   return item.id;
                 })
                 .join(",");
-              if (!rowsel) {
+              if (!rowsel.length) {
                 return Swal.fire({
                   title: window.translate(
                     "datatables.alert.display_selected_record_empty_title"
@@ -869,6 +885,7 @@ export default {
                   ? true
                   : false;
               });
+
               table.draw();
             },
           },
@@ -978,9 +995,10 @@ export default {
         select: { selector: "td:not(:last-child)", style: "os" },
         order: [[1, "desc"]],
       });
-      $("tbody", this.$refs.buildings).on(
+
+      $("tbody", this.$refs.constarution).on(
         "click",
-        ".edit-building",
+        ".edit-constarution",
         function (e) {
           e.preventDefault();
           var tr = $(this).closest("tr");
@@ -988,14 +1006,15 @@ export default {
           vm.editModal(row.data());
         }
       );
-      $("tbody", this.$refs.buildings).on(
+
+      $("tbody", this.$refs.constarution).on(
         "click",
-        ".delete-building",
+        ".delete-constarution",
         function (e) {
           e.preventDefault();
           var tr = $(this).closest("tr");
           var row = table.row(tr);
-          vm.deleteBuilding(row.data());
+          vm.deleteConstarution(row.data());
         }
       );
     },
@@ -1007,15 +1026,19 @@ export default {
     this.$Progress.finish();
   },
   mounted() {
-    const vm = this;
+    this.generateTable();
     this.loadcallver();
     this.loadcallverStatus();
     this.loadTechnicians();
     this.loadProblemsolution();
-    this.generateTable();
+    $(".datepicker").datepicker({
+      language: "th-th",
+      format: "dd/mm/yyyy",
+      autoclose: true,
+    });
     setTimeout(() => {
       LoadingWait.close();
-    }, 3000);
+    }, 2000);
   },
 };
 </script>
