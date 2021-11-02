@@ -48,6 +48,11 @@ class Generatingaction extends Model
         return $this->belongsTo('App\Models\Progress', 'trueProgress_id', 'id');
     }
 
+    public function txrxProgress()
+    {
+        return $this->belongsTo('App\Models\Progress', 'txrtProgress_id', 'id');
+    }
+
     public function ifcc()
     {
         return $this->belongsTo('App\Models\Constarution', 'ifcc_id', 'id');

@@ -145,8 +145,8 @@ export default [{
         }
     },
     {
-        path: "/report",
-        component: require("./components/report/report.vue").default,
+        path: "/accountant",
+        component: require("./components/accountant/accountant.vue").default,
         meta: {
             requiresAuth: true,
             roles: ["superadministrator", "administrator"]

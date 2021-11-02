@@ -90,4 +90,9 @@ class Progress extends Model
     {
         return $this->hasOne('App\Models\Generatingaction', 'id', 'trueProgress_id');
     }
+
+    public function txrtProgress()
+    {
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'txrtProgress_id');
+    }
 }

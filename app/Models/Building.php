@@ -97,9 +97,9 @@ class Building extends Model
         return $this->belongsTo('App\Models\Contractor', 'building_id', 'id');
     }
 
-    public function report()
+    public function Accountant()
     {
-        return $this->belongsTo('App\Models\Report', 'building_id', 'id');
+        return $this->belongsTo('App\Models\Accountant', 'building_id', 'id');
     }
 
     public function saleFm()

@@ -660,7 +660,7 @@
                             </tab-content>
                             <tab-content title="Project Detail">
                                 <div class="row">
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
@@ -688,7 +688,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
@@ -713,7 +713,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>{{
                                                 translate(
@@ -744,9 +744,35 @@
                                             ></has-error>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">                              
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>ชื่อช่าง Planing</label>
+                                            <select
+                                                class="form-control"
+                                                v-model="form.technician_id"
+                                            >
+                                                <option value="" disabled>
+                                                    --- Select a Class ---
+                                                </option>
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in technicians"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.teamTechnician }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="technicianPlaning"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>ชื่อช่าง Planing ทีมที่2</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.technician_id"

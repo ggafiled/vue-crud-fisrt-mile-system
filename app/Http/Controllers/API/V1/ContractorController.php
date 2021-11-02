@@ -1,10 +1,8 @@
-
 <?php
 
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\API\V1\BaseController;
-// use App\Http\Requests\Building\;
 use App\Models\Contractor;
 use Exception;
 use Illuminate\Http\Request;
@@ -104,9 +102,13 @@ class ContractorController extends BaseController
      */
     public function destroy($id)
     {
-            return $this->sendResponse($contractor, trans('actions.destroy.success'));
+        try {
+            $contractor = Contractor::find($id);
+            $contractor->delete();
+            
+            return $this->sendResponse($contractor, trans('actions.updated.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.destroy.failed'));
+            return $this->sendError([], trans('actions.updated.failed'));
         }
     }
 }

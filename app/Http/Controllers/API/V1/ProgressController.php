@@ -34,7 +34,8 @@ class ProgressController extends BaseController
             'aisProgress:id,status as name',
             'Progress3bb:id,status as name',
             'fnProgress:id,status as name',
-            'trueProgress:id,status as name'
+            'trueProgress:id,status as name',
+            'txrtProgress:id,status as name'
             )->get();
             return $this->sendResponse($progress, trans('actions.get.success'));
         } catch (Exception $ex) {

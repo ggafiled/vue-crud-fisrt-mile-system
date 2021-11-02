@@ -314,7 +314,7 @@ return [
                 ],
                 [
                     'text' => 'accountant_managment', //accountant
-                    'url' => '/report',
+                    'url' => '/accountant',
                     'icon' => 'fas fa-fw fa-file-invoice-dollar',
                     'roles' => ["superadministrator", "administrator"],
                 ],

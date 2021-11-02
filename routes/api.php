@@ -79,7 +79,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'progress' => 'ProgressController',
         'planing' => 'PlaningController',
         'contractor' => 'ContractorController',
-        'report' => 'ReportController',
+        'accountant' => 'AccountantController',
         'team' => 'TeamController',
         'dashboard' => 'DashboardController',
         'problemsolution' => 'ProblemsolutionController',

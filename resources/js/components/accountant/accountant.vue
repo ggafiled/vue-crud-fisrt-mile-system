@@ -6,7 +6,7 @@
           <div class="card-header">
             <h3 class="card-title">
               <span class="mdi mdi-progress-wrench"></span>
-              Report Management
+                Accountant Management
             </h3>
             <div class="card-tools">
               <button
@@ -23,8 +23,8 @@
           <div class="card-body">
             <div class="table-responsive">
               <table
-                id="report"
-                ref="report"
+                id="accountant"
+                ref="accountant"
                 class="display nowrap"
                 style="width: 100%"
               >
@@ -256,33 +256,12 @@ export default {
       sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
       form: new Form({
         id: "",
-        //Relationship In TableProgress
-        building_id: "", //modelBuilding->modelProgress GET field projectName
-        fmProgress_id: "", //modelGeneratingaction->modelProgress GET field status
-        totProgress_id: "", //modelGeneratingaction->modelProgress GET field status
-        aisProgress_id: "", //modelGeneratingaction->modelProgress GET field status
-        progress3bb_id: "", //modelGeneratingaction->modelProgress GET field status
-        sinetProgress_id: "", //modelGeneratingaction->modelProgress GET field status
-        fnProgress_id: "", //modelGeneratingaction->modelProgress GET field status
-        trueProgress_id: "", //modelGeneratingaction->modelProgress GET field status
-        txrtProgress_id: "", //modelGeneratingaction->modelProgress GET field status
-        projectName: "",
-        fmProgress: "",
-        totProgress: "",
-        aisProgress: "",
-        Progress3bb: "",
-        sinetProgress: "",
-        fnProgress: "",
-        trueProgress: "",
-        txrtProgress: "",
-        dateFm: new Date().toISOString().slice(0, 10),
-        dateTot: new Date().toISOString().slice(0, 10),
-        dateAis: new Date().toISOString().slice(0, 10),
-        date3BB: new Date().toISOString().slice(0, 10),
-        dateSinet: new Date().toISOString().slice(0, 10),
-        dateFn: new Date().toISOString().slice(0, 10),
-        dateTrue: new Date().toISOString().slice(0, 10),
-        dateTxrx: new Date().toISOString().slice(0, 10),
+        building_id: "", 
+        statusContrater: "", 
+        dateConnect: new Date().toISOString().slice(0, 10),
+        dateDisconnect: new Date().toISOString().slice(0, 10),
+        workSheet: "",
+        reMarkAccount: "",
       }),
     };
   },
@@ -414,9 +393,9 @@ export default {
     },
     generateTable() {
       var vm = this;
-      var table = $(this.$refs.report).DataTable({
+      var table = $(this.$refs.accountant).DataTable({
         dom: "Blfrtip",
-        ajax: "/api/report",
+        ajax: "/api/accountant",
         responsive: true,
         processing: true,
         autoWidth: true,

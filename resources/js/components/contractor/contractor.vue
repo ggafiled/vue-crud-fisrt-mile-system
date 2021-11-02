@@ -697,7 +697,7 @@ export default {
           }))
       );
     },
-    loadConstarution() {
+    loadContractor() {
       this.$Progress.start();
 
       if (this.$gate.isAdmin()) {
@@ -706,7 +706,7 @@ export default {
 
       this.$Progress.finish();
     },
-    async updateConstarution() {
+    async updateContractor() {
       this.$Progress.start();
       // console.log('Editing data');
       this.onprogress = true;
@@ -722,7 +722,7 @@ export default {
           this.$Progress.finish();
           //  Fire.$emit('AfterCreate');
 
-          this.loadConstarution();
+          this.loadContractor();
         })
         .catch(() => {
           this.$Progress.fail();
@@ -731,13 +731,13 @@ export default {
         this.onprogress = false;
       }, 2000);
     },
-    editModal(constarution) {
+    editModal(Contractor) {
       this.editmode = true;
       this.form.reset();
       this.form.errors.clear();
-      console.log(constarution);
+      console.log(Contractor);
       $("#addNew").modal("show");
-      this.form.fill(constarution);
+      this.form.fill(Contractor);
     },
     newModal() {
       this.editmode = false;
@@ -745,7 +745,7 @@ export default {
       this.form.reset();
       $("#addNew").modal("show");
     },
-    deleteConstarution(item) {
+    deleteContractor(item) {
       Swal.fire({
         title: window.translate("constitution.alert.delete_building_title"),
         text:
@@ -773,7 +773,7 @@ export default {
               );
               // Fire.$emit('AfterCreate');
               this.loadBuildings();
-              this.loadConstarution();
+              this.loadContractor();
             })
             .catch((data) => {
               Swal.fire("Failed!", data.message, "warning");
@@ -781,7 +781,7 @@ export default {
         }
       });
     },
-    async createConstarution() {
+    async createContractor() {
       if (this.selected == null || this.selected == undefined) return false;
       this.onprogress = true;
       await this.form
@@ -792,7 +792,7 @@ export default {
             icon: "success",
             title: response.data.message,
           });
-          this.loadConstarution();
+          this.loadContractor();
         })
         .catch(() => {
           Toast.fire({
@@ -977,7 +977,7 @@ export default {
             data: null,
             className: "dt-body-center notexport",
             render: function (data, type, row, meta) {
-              return "<a class='edit-constarution btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-constarution btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
+              return "<a class='edit-Contractor btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-Contractor btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
             },
           },
         ],
@@ -996,9 +996,9 @@ export default {
         order: [[1, "desc"]],
       });
 
-      $("tbody", this.$refs.constarution).on(
+      $("tbody", this.$refs.Contractor).on(
         "click",
-        ".edit-constarution",
+        ".edit-Contractor",
         function (e) {
           e.preventDefault();
           var tr = $(this).closest("tr");
@@ -1007,14 +1007,14 @@ export default {
         }
       );
 
-      $("tbody", this.$refs.constarution).on(
+      $("tbody", this.$refs.Contractor).on(
         "click",
-        ".delete-constarution",
+        ".delete-Contractor",
         function (e) {
           e.preventDefault();
           var tr = $(this).closest("tr");
           var row = table.row(tr);
-          vm.deleteConstarution(row.data());
+          vm.deleteContractor(row.data());
         }
       );
     },

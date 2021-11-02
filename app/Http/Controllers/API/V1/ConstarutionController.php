@@ -27,7 +27,7 @@ class ConstarutionController extends BaseController
     {
         try {
             $constarution = Constarution::with(
-                'building:id,subBuildingsum'
+                'building:id,subBuildingsum,projectName'
             )->get();
             return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {

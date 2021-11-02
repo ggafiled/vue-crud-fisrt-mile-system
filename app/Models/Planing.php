@@ -55,9 +55,9 @@ class Planing extends Model
         return $this->belongsTo('App\Models\Contractor', 'customer_id', 'id');
     }
 
-    public function report()
+    public function Accountant()
     {
-        return $this->belongsTo('App\Models\Report', 'customer_id', 'id');
+        return $this->belongsTo('App\Models\Accountant', 'customer_id', 'id');
     }
 
     public function isp()

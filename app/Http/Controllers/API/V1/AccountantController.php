@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\API\V1\BaseController;
-use App\Http\Requests\Building\BuildingRequest;
-use App\Models\Report;
+// use App\Http\Requests\Building\BuildingRequest;
+use App\Models\Accountant;
 use Exception;
 use Illuminate\Http\Request;
 
-class Buildingcontroller extends BaseController
+class AccountantController extends BaseController
 {
 
     public function __construct()
@@ -25,8 +25,8 @@ class Buildingcontroller extends BaseController
      */
     public function index()
     {
-        $report = Report::with('report')->get();
-        return $this->sendResponse($report, trans('actions.get.success'));
+        $accountant = Accountant::with('accountant')->get();
+        return $this->sendResponse($accountant, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.failed'));
@@ -39,10 +39,10 @@ class Buildingcontroller extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BuildingRequest $request)
+    public function store($request)
     {
         try {
-            $report = Report::create([
+            $accountant = Accountant::create([
                 // 'technician_id' => $request->input('technician_id'),
                 'building_id' => $request->input('building_id'),
                 'statusContrater' => $request->input('statusContrater'),
@@ -54,7 +54,7 @@ class Buildingcontroller extends BaseController
             ]);
 
 
-            return $this->sendResponse($report, trans('actions.created.success'));
+            return $this->sendResponse($accountant, trans('actions.created.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.created.failed'));
         }
@@ -67,13 +67,13 @@ class Buildingcontroller extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BuildingRequest $request, $id)
+    public function update($request, $id)
     {
         try {
-            $contractor = Contractor::find($id);
-            $contractor->update($request->all());
+            $accountant = Accountant::find($id);
+            $accountant->update($request->all());
 
-            return $this->sendResponse($contractor, trans('actions.updated.success'));
+            return $this->sendResponse($accountant, trans('actions.updated.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.updated.failed'));
         }
@@ -87,7 +87,11 @@ class Buildingcontroller extends BaseController
      */
     public function destroy($id)
     {
-            return $this->sendResponse($contractor, trans('actions.destroy.success'));
+        try {
+            $accountant = Accountant::find($id);
+            $accountant->delete();
+
+            return $this->sendResponse($accountant, trans('actions.destroy.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.destroy.failed'));
         }
