@@ -47,4 +47,24 @@ class Contractor extends Model
     {
         return $this->hasOne('App\Models\Planing', 'id', 'customer_id');
     }
+
+    public function callver()
+    {
+        return $this->hasOne('App\Models\Callver', 'id', 'callver_id');
+    }
+
+    public function callverstatus()
+    {
+        return $this->hasOne('App\Models\Callverstatus', 'id', 'callverStatus_id');
+    }
+
+    public function technicians()
+    {
+        return $this->hasOne('App\Models\Technician', 'id', 'technicians_id');
+    }
+
+    public function problemSolution()
+    {
+        return $this->hasOne('App\Models\Problemsolution', 'id', 'problemsolution_id');
+    }
 }

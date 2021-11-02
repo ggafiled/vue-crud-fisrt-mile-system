@@ -548,7 +548,7 @@
                     </div>
                   </div>
                 </div>
-              </tab-content>
+              </tab-content>             
               <template slot="footer" slot-scope="props">
                 <div class="wizard-footer-left">
                   <wizard-button
@@ -585,7 +585,7 @@
                     v-show="!editmode && props.isLastStep"
                     class="wizard-footer-right finish-button"
                     :style="props.fillButtonStyle"
-                    @click.native="createConstarution()"
+                    @click.native="createContractor()"
                     :disabled="onprogress"
                   >
                     <span

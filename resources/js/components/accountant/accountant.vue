@@ -37,7 +37,6 @@
                     <th>Date Disconnect</th>
                     <th>Work Sheet</th>
                     <th>Remark Account</th>
-                    <th>Update At</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -513,12 +512,6 @@ export default {
           },
           {
             data: "reMarkAccount",
-          },
-          {
-            data: "updated_at",
-            render: function (data, type, row, meta) {
-              return moment(data).format("MM/DD/YYYY HH:MM");
-            },
           },
           {
             data: null,

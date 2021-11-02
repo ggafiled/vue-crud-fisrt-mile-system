@@ -24,11 +24,12 @@ class ContractorController extends BaseController
      */
     public function index()
     {
-        $contractor = Contractor::with('contractor',)->get();
-        return $this->sendResponse($contractor, trans('actions.get.success'));
         try {
+            $contractor = Contractor::with(
+            'contractor' )->get();
+            return $this->sendResponse($contractor, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.failed'));
+            return $this->sendError([$ex], trans('actions.get.failed'));
         }
     }
 
