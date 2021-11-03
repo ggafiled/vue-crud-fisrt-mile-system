@@ -152,7 +152,7 @@
                         <option disabled value="">Select a Class</option>
                         <option
                           :value="item.id"
-                          v-for="item in callvers"
+                          v-for="item in callver"
                           :key="item.id"
                         >
                           {{ item.callVer }}
@@ -194,7 +194,7 @@
                         <option disabled value="">Select a Class</option>
                         <option
                           :value="item.id"
-                          v-for="item in callverstatuses"
+                          v-for="item in callverStatus"
                           :key="item.id"
                         >
                           {{ item.callVerStatus }}
@@ -547,7 +547,7 @@
                     </div>
                   </div>
                 </div>
-              </tab-content>             
+              </tab-content>
               <template slot="footer" slot-scope="props">
                 <div class="wizard-footer-left">
                   <wizard-button
@@ -670,12 +670,12 @@ export default {
   methods: {
     loadcallver() {
       axios.get("/callvers").then((response) => {
-        this.callvers = response.data.data;
+        this.callver = response.data.data;
       });
     },
     loadcallverStatus() {
       axios.get("/callverstatuses").then((response) => {
-        this.callverstatuses = response.data.data;
+        this.callverStatus = response.data.data;
       });
     },
     loadTechnicians() {
