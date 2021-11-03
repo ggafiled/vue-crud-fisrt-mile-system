@@ -15,9 +15,9 @@ class Callverstatus extends Model
     ];
 
 
-    public function callVerStatus()
+    public function Contractor()
     {
-        return $this->hasMany('App\Models\Contractor', 'callverStatus_id', 'id');
+        return $this->belongsTo('App\Models\Contractor', 'callverStatus_id', 'id');
     }
 
 }

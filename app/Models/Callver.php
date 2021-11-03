@@ -14,9 +14,10 @@ class Callver extends Model
         'callVer'
     ];
 
-    public function callVer()
+
+    public function Contractor()
     {
-        return $this->hasMany('App\Models\Contractor', 'callver_id', 'id');
+        return $this->belongsTo('App\Models\Contractor', 'callver_id', 'id');
     }
 
 }

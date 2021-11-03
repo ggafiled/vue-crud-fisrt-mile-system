@@ -14,9 +14,10 @@ class Problemsolution extends Model
         'problemSolution'
     ];
 
-    public function problemSolution()
+   
+    public function Contractor()
     {
-        return $this->hasMany('App\Models\Contractor', 'problemsolution_id', 'id');
+        return $this->belongsTo('App\Models\Contractor', 'problemsolution_id', 'id');
     }
 
 }

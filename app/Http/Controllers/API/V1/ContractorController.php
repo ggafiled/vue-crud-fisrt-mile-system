@@ -26,7 +26,8 @@ class ContractorController extends BaseController
     {
         try {
             $contractor = Contractor::with(
-            'contractor' )->get();
+                'contractor'
+            )->get();
             return $this->sendResponse($contractor, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([$ex], trans('actions.get.failed'));
@@ -42,8 +43,7 @@ class ContractorController extends BaseController
     public function store($request)
     {
         try {
-            $contractor = Contractor::create([
-                // 'technician_id' => $request->input('technician_id'),
+            $contractor = new Contractor([
                 'building_id' => $request->input('building_id'),
                 'callver_id' => $request->input('callver_id'),
                 'appointmentTimeCustomer' => $request->input('appointmentTimeCustomer'),
@@ -66,13 +66,12 @@ class ContractorController extends BaseController
                 'equipmentInstall6' => $request->input('equipmentInstall6'),
                 'snInstall6' => $request->input('snInstall6'),
                 'equipmentInstall7' => $request->input('equipmentInstall7'),
-                'snInstall7' => $request->input('snInstall7')
+                'snInstall7' => $request->input('snInstall7'),
             ]);
-
-
+            $contractor->save();
             return $this->sendResponse($contractor, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
+            return $this->sendError($ex, trans('actions.created.failed'));
         }
     }
 
@@ -83,7 +82,7 @@ class ContractorController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update( $request, $id)
+    public function update($request, $id)
     {
         try {
             $contractor = Contractor::find($id);
@@ -106,7 +105,7 @@ class ContractorController extends BaseController
         try {
             $contractor = Contractor::find($id);
             $contractor->delete();
-            
+
             return $this->sendResponse($contractor, trans('actions.updated.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.updated.failed'));

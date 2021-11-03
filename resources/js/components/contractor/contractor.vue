@@ -291,15 +291,14 @@
                       <label>Remark (For Zone)</label>
                       <small>/รีมาร์ค</small>
                       <textarea
-                        id="remark"
-                        v-model="form.remark"
+                        v-model="form.reMarkzone"
                         class="form-control"
                         placeholder="-"
                         :class="{
-                          'is-invalid': form.errors.has('remark'),
+                          'is-invalid': form.errors.has('reMarkzone'),
                         }"
                       />
-                      <has-error :form="form" field="remark"></has-error>
+                      <has-error :form="form" field="reMarkzone"></has-error>
                     </div>
                   </div>
                 </div>
@@ -308,7 +307,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Name</label>
+                      <label>Installation equipment 1</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 1</small>
                       <input
                         v-model="form.equipmentInstall1"
@@ -324,7 +323,7 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Tel</label>
+                      <label>S/N used to install 1</label>
                       <small>/ S/N ที่ใช้ติดตั้ง 1</small>
                       <input
                         v-model="form.snInstall1"
@@ -343,7 +342,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Name</label>
+                      <label>Installation equipment 2</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 2</small>
                       <input
                         v-model="form.equipmentInstall2"
@@ -359,7 +358,7 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Tel</label>
+                      <label>S/N used to install 2</label>
                       <small>/S/N ที่ใช้ติดตั้ง 2</small>
                       <input
                         v-model="form.snInstall2"
@@ -378,7 +377,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Name</label>
+                      <label>Installation equipment 3</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 3</small>
                       <input
                         v-model="form.equipmentInstall3"
@@ -394,7 +393,7 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Tel</label>
+                      <label>S/N used to install 3</label>
                       <small>/S/N ที่ใช้ติดตั้ง 3</small>
                       <input
                         v-model="form.snInstall3"
@@ -412,7 +411,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Name</label>
+                      <label>Installation equipment 4</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 4</small>
                       <input
                         v-model="form.equipmentInstall4"
@@ -428,7 +427,7 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Tel</label>
+                      <label>S/N used to install 4</label>
                       <small>/S/N ที่ใช้ติดตั้ง 4</small>
                       <input
                         v-model="form.snInstall4"
@@ -447,7 +446,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Name</label>
+                      <label>Installation equipment 5</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 5</small>
                       <input
                         v-model="form.equipmentInstall5"
@@ -463,7 +462,7 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Tel</label>
+                      <label>S/N used to install 5</label>
                       <small>/S/N ที่ใช้ติดตั้ง 5</small>
                       <input
                         v-model="form.snInstall5"
@@ -482,7 +481,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Name</label>
+                      <label>Installation equipment 6</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 6</small>
                       <input
                         v-model="form.equipmentInstall6"
@@ -498,7 +497,7 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Tel</label>
+                      <label>S/N used to install 6</label>
                       <small>/S/N ที่ใช้ติดตั้ง 6</small>
                       <input
                         v-model="form.snInstall6"
@@ -517,7 +516,7 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Name</label>
+                      <label>Installation equipment 7</label>
                       <small>/อุปกรณ์ที่ใช้ติดตั้ง 7</small>
                       <input
                         v-model="form.equipmentInstall7"
@@ -533,7 +532,7 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Manager Tel</label>
+                      <label>S/N used to install 7</label>
                       <small>/S/N ที่ใช้ติดตั้ง 7</small>
                       <input
                         v-model="form.snInstall7"

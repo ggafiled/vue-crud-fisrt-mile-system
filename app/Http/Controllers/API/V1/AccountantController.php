@@ -25,7 +25,8 @@ class AccountantController extends BaseController
      */
     public function index()
     {
-        $accountant = Accountant::with('accountant')->get();
+        $accountant = Accountant::with(
+            'building')->get();
         return $this->sendResponse($accountant, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
@@ -39,24 +40,22 @@ class AccountantController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($request)
+    public function store( $request)
     {
         try {
-            $accountant = Accountant::create([
-                // 'technician_id' => $request->input('technician_id'),
+            $accountant = new Accountant([
                 'building_id' => $request->input('building_id'),
+                'customer_id' => $request->input('customer_id'),
                 'statusContrater' => $request->input('statusContrater'),
                 'dateConnect' => $request->input('dateConnect'),
                 'dateDisconnect' => $request->input('dateDisconnect'),
                 'workSheet' => $request->input('workSheet'),
-                'idRequired' => $request->input('idRequired'),
                 'reMarkAccount' => $request->input('reMarkAccount')
             ]);
-
-
+            $accountant->save();
             return $this->sendResponse($accountant, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
+            return $this->sendError($ex, trans('actions.created.failed'));
         }
     }
 
@@ -67,12 +66,11 @@ class AccountantController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($request, $id)
+    public function update( $request, $id)
     {
         try {
             $accountant = Accountant::find($id);
             $accountant->update($request->all());
-
             return $this->sendResponse($accountant, trans('actions.updated.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.updated.failed'));

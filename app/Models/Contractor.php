@@ -7,12 +7,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
+
 class Contractor extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'id',
         'building_id',
-        'customer_id',
         'callver_id',
         'appointmentTimeCustomer',
         'callverStatus_id',
@@ -41,11 +42,6 @@ class Contractor extends Model
     public function building()
     {
         return $this->hasOne('App\Models\Building', 'id', 'building_id');
-    }
-
-    public function customer()
-    {
-        return $this->hasOne('App\Models\Planing', 'id', 'customer_id');
     }
 
     public function callver()

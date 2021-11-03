@@ -18,13 +18,8 @@ class Technician extends Model
         'true',
     ];
 
-    public function technician()
+    public function Contractor()
     {
-        return $this->hasMany('App\Models\Contractor', 'technicians_id', 'id');
+        return $this->belongsTo('App\Models\Contractor', 'technicians_id', 'id');
     }
-
-    // public function Contractor()
-    // {
-    //     return $this->hasMany('App\Models\Contractor', 'technicians_id', 'id');
-    // }
 }
