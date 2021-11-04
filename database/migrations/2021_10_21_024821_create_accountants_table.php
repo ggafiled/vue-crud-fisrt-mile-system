@@ -14,7 +14,7 @@ class CreateAccountantsTable extends Migration
     public function up()
     {
         Schema::enableForeignKeyConstraints();
-        Schema::create('reports', function (Blueprint $table) {
+        Schema::create('accountants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();//ชื่อตึก
             $table->bigInteger('customer_id')->unsigned();//ชื่อตึก
