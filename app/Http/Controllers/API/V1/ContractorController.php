@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\API\V1;
+namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\API\V1\BaseController;
 use App\Models\Contractor;
-use Exception;
 use Illuminate\Http\Request;
+use Exception;
 
 class ContractorController extends BaseController
 {
@@ -40,7 +40,7 @@ class ContractorController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($request)
+    public function store(Request $request)
     {
         try {
             $contractor = new Contractor([

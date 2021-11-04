@@ -115,12 +115,12 @@
                       <label>Status</label>
                       <small>/สถานะ</small>
                       <select
-                        v-model="form.statusBuilding"
+                        v-model="form.statusContrater"
                         type="text"
                         class="form-control"
                         placeholder="Enter your type..."
                         :class="{
-                          'is-invalid': form.errors.has('statusBuilding'),
+                          'is-invalid': form.errors.has('statusContrater'),
                         }"
                       >
                         <option disabled value="">--- Select Type ---</option>
@@ -142,15 +142,15 @@
                       <label>Date Connect</label>
                       <small>/ วันที่เชื่อมต่อ</small>
                       <input
-                        v-model="form.phoneManager"
+                        v-model="form.dateConnect"
                         type="date"
                         class="form-control"
                         placeholder="วันที่เชื่อมต่อ"
                         :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
+                          'is-invalid': form.errors.has('dateConnect'),
                         }"
                       />
-                      <has-error :form="form" field="phoneManager"></has-error>
+                      <has-error :form="form" field="dateConnect"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -158,15 +158,15 @@
                       <label>Date Disconnect</label>
                       <small>/ วันที่ตัดการเชื่อมต่อ</small>
                       <input
-                        v-model="form.phoneManager"
+                        v-model="form.dateDisconnect"
                         type="date"
                         class="form-control"
                         placeholder="วันที่ตัดการเชื่อมต่อ"
                         :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
+                          'is-invalid': form.errors.has('dateDisconnect'),
                         }"
                       />
-                      <has-error :form="form" field="phoneManager"></has-error>
+                      <has-error :form="form" field="dateDisconnect"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-3">
@@ -174,15 +174,15 @@
                       <label>Work Sheet</label>
                       <small>/ใบงาน</small>
                       <input
-                        v-model="form.phoneManager"
+                        v-model="form.workSheet"
                         type="text"
                         class="form-control"
                         placeholder="ใบงาน"
                         :class="{
-                          'is-invalid': form.errors.has('phoneManager'),
+                          'is-invalid': form.errors.has('workSheet'),
                         }"
                       />
-                      <has-error :form="form" field="phoneManager"></has-error>
+                      <has-error :form="form" field="workSheet"></has-error>
                     </div>
                   </div>
                 </div>
@@ -371,7 +371,7 @@ export default {
     createProgress() {
       if (this.selected == null || this.selected == undefined) return false;
       this.form
-        .post("/progress")
+        .post("/accountant")
         .then((response) => {
           $("#addNew").modal("hide");
 

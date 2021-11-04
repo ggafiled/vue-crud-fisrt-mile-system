@@ -1091,7 +1091,7 @@
                                         v-show="editmode && props.isLastStep"
                                         class="wizard-footer-right finish-button"
                                         :style="props.fillButtonStyle"
-                                        @click.native="updateContractor()"
+                                        @click.native="updateConstarution()"
                                         :disabled="onprogress"
                                     >
                                         <span
@@ -1110,7 +1110,7 @@
                                         v-show="!editmode && props.isLastStep"
                                         class="wizard-footer-right finish-button"
                                         :style="props.fillButtonStyle"
-                                        @click.native="createContractor()"
+                                        @click.native="createConstarution()"
                                         :disabled="onprogress"
                                     >
                                         <span

@@ -17,7 +17,6 @@ class CreateContractorsTable extends Migration
         Schema::create('contractors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();//ชื่อตึก
-            $table->bigInteger('customer_id')->unsigned();//ชื่อตึก
             $table->bigInteger('callver_id')->unsigned();// โทรยืนยัดนัดหมาย
             $table->time('appointmentTimeCustomer')->nullable();//เวลานัดหมาย ในระบบ
             $table->bigInteger('callverStatus_id')->unsigned();//สถานะการยืนยันนัดหมาย
@@ -46,11 +45,6 @@ class CreateContractorsTable extends Migration
             $table->foreign('building_id')
             ->references('id')
             ->on('buildings')
-            ->onDelete('cascade');
-
-            $table->foreign('customer_id')
-            ->references('id')
-            ->on('planings')
             ->onDelete('cascade');
 
             $table->foreign('callverStatus_id')

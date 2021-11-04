@@ -271,7 +271,7 @@
                       <small>/วันนัดหมาย</small>
                       <input
                         v-model="form.confirmAppointment"
-                        type="text"
+                        type="date"
                         class="form-control"
                         placeholder="สถานะการยืนยันนัดหมาย"
                         :class="{

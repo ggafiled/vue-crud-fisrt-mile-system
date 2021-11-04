@@ -41,26 +41,26 @@ class Contractor extends Model
 
     public function building()
     {
-        return $this->hasOne('App\Models\Building', 'id', 'building_id');
+        return $this->belongsTo('App\Models\Building', 'building_id', 'id');
     }
 
     public function callver()
     {
-        return $this->hasOne('App\Models\Callver', 'id', 'callver_id');
+        return $this->belongsTo('App\Models\Callver', 'id', 'callver_id');
     }
 
     public function callverstatus()
     {
-        return $this->hasOne('App\Models\Callverstatus', 'id', 'callverStatus_id');
+        return $this->belongsTo('App\Models\Callverstatus', 'id', 'callverStatus_id');
     }
 
     public function technicians()
     {
-        return $this->hasOne('App\Models\Technician', 'id', 'technicians_id');
+        return $this->belongsTo('App\Models\Technician', 'id', 'technicians_id');
     }
 
     public function problemSolution()
     {
-        return $this->hasOne('App\Models\Problemsolution', 'id', 'problemsolution_id');
+        return $this->belongsTo('App\Models\Problemsolution', 'id', 'problemsolution_id');
     }
 }
