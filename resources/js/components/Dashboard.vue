@@ -136,7 +136,7 @@
                             </h5>
                             <div>
                                 <router-link
-                                    to="/constitution"
+                                    to="/contractor"
                                     class="small-box-footer"
                                     >{{ translate("dashboard.actions.click") }}
                                     <i class="fas fa-arrow-circle-right"></i
@@ -162,7 +162,7 @@
                             </h5>
                             <div>
                                 <router-link
-                                    to="/progress"
+                                    to="accountant"
                                     class="small-box-footer"
                                     >{{ translate("dashboard.actions.click") }}
                                     <i class="fas fa-arrow-circle-right"></i

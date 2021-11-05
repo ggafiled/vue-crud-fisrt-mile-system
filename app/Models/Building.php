@@ -94,7 +94,7 @@ class Building extends Model
 
     public function contractor()
     {
-        return $this->hasOne('App\Models\Contractor', 'building_id', 'id');
+        return $this->belongsTo('App\Models\Contractor', 'building_id', 'id');
     }
 
     public function Accountant()

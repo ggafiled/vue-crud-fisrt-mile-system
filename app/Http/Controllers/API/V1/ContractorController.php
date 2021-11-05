@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\API\V1\BaseController;
@@ -9,7 +8,6 @@ use Exception;
 
 class ContractorController extends BaseController
 {
-
     public function __construct()
     {
         $this->middleware('auth:api');

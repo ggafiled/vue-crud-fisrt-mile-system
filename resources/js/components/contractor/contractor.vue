@@ -32,10 +32,13 @@
                   <tr class="info">
                     <th></th>
                     <th>Project Name</th>
+                    <th>Callver</th>
+                    <th>Appointment Time Customer</th>
                     <th>Callver Status</th>
+                    <th>Technicians</th>
+                    <th>ID Required</th>
                     <th>Problemsolution</th>
                     <th>Confirm Appointment</th>
-                    <th>Appointment Time Customer</th>
                     <th>ReMark Zone</th>
                     <th>EquipmentInstall1</th>
                     <th>SnInstall1</th>
@@ -910,16 +913,25 @@ export default {
             data: "building[0].projectName",
           },
           {
+            data: "callver_id",
+          },
+          {
+            data: "appointmentTimeCustomer",
+          },
+          {
             data: "callverStatus_id",
+          },
+          {
+            data: "technicians_id",
+          },
+          {
+            data: "idRequired",
           },
           {
             data: "problemsolution_id",
           },
           {
             data: "confirmAppointment",
-          },
-          {
-            data: "appointmentTimeCustomer",
           },
           {
             data: "reMarkzone",

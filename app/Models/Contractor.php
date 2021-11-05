@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Activitylog\LogOptions;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
-
+use Spatie\Activitylog\LogOptions;
 
 class Contractor extends Model
 {
@@ -41,26 +41,26 @@ class Contractor extends Model
 
     public function building()
     {
-        return $this->belongsTo('App\Models\Building', 'building_id', 'id');
+        return $this->hasOne('App\Models\Building', 'building_id', 'id');
     }
 
     public function callver()
     {
-        return $this->belongsTo('App\Models\Callver', 'id', 'callver_id');
+        return $this->hasOne('App\Models\Callver', 'id', 'callver_id');
     }
 
     public function callverstatus()
     {
-        return $this->belongsTo('App\Models\Callverstatus', 'id', 'callverStatus_id');
+        return $this->hasOne('App\Models\Callverstatus', 'id', 'callverStatus_id');
     }
 
     public function technicians()
     {
-        return $this->belongsTo('App\Models\Technician', 'id', 'technicians_id');
+        return $this->hasOne('App\Models\Technician', 'id', 'technicians_id');
     }
 
     public function problemSolution()
     {
-        return $this->belongsTo('App\Models\Problemsolution', 'id', 'problemsolution_id');
+        return $this->hasOne('App\Models\Problemsolution', 'id', 'problemsolution_id');
     }
 }
