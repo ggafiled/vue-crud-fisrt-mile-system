@@ -246,7 +246,6 @@ export default {
       editmode: false,
       selected: "",
       building: [],
-      generatingactions: [],
       settings: {
         placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
         allowClear: false,
@@ -255,8 +254,8 @@ export default {
       sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
       form: new Form({
         id: "",
-        building_id: "", 
-        statusContrater: "", 
+        building_id: "",
+        statusContrater: "",
         dateConnect: new Date().toISOString().slice(0, 10),
         dateDisconnect: new Date().toISOString().slice(0, 10),
         workSheet: "",
@@ -274,13 +273,8 @@ export default {
         $(this.$refs.progress).DataTable().search(query.task).draw();
       }
     },
-    loadGeneratingaction() {
-      axios.get("/generatingactions").then((response) => {
-        this.generatingactions = response.data.data;
-      });
-    },
     loadBuildings() {
-      axios.get("/progress/retrieveBuilding").then(
+      axios.get("/constarution/retrieveBuilding").then(
         (response) =>
           (this.building = response.data.data.map((a) => {
             return { text: a.projectName, id: a.id };
@@ -301,7 +295,7 @@ export default {
       this.$Progress.start();
       // console.log('Editing data');
       this.form
-        .put("/progress/" + this.form.id)
+        .put("/accountant/" + this.form.id)
         .then((response) => {
           // success
           $("#addNew").modal("hide");
@@ -352,7 +346,7 @@ export default {
         // Send request to the server
         if (result.value) {
           this.form
-            .delete("/progress/" + item.id)
+            .delete("/accountant/" + item.id)
             .then(() => {
               Swal.fire(
                 window.translate("progress.alert.comfirm_delete_title"),
@@ -496,7 +490,7 @@ export default {
             className: "dt-body-center notexport",
           },
           {
-            data: "building.projectName",
+            data: "building[0].projectName",
           },
           {
             data: "statusContrater",
@@ -585,7 +579,6 @@ export default {
     this.$Progress.finish();
   },
   mounted() {
-    this.loadGeneratingaction();
     this.generateTable();
     this.setSearchText(this.$route.query);
     $(".datepicker").datepicker({

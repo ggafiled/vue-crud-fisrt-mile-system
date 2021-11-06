@@ -12,7 +12,6 @@ class Accountant extends Model
     protected $fillable = [
         'id',
         'building_id',
-        'customer_id',
         'statusContrater',
         'dateConnect',
         'dateDisconnect',
@@ -20,14 +19,4 @@ class Accountant extends Model
         'reMarkAccount',
     ];
 
-
-    public function building()
-    {
-        return $this->hasOne('App\Models\Building', 'id', 'building_id');
-    }
-
-    public function customer()
-    {
-        return $this->hasOne('App\Models\Planing', 'id', 'customer_id');
-    }
 }

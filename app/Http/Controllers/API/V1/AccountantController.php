@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\API\V1\BaseController;
-// use App\Http\Requests\Building\BuildingRequest;
 use App\Models\Accountant;
+use App\Models\Building;
 use Exception;
 use Illuminate\Http\Request;
 
 class AccountantController extends BaseController
 {
-
     public function __construct()
     {
         $this->middleware('auth:api');
@@ -26,11 +25,11 @@ class AccountantController extends BaseController
     public function index()
     {
         $accountant = Accountant::with(
-            'building')->get();
+            'accountant','building')->get();
         return $this->sendResponse($accountant, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.failed'));
+            return $this->sendError([ex], trans('actions.get.failed'));
         }
     }
 
@@ -40,12 +39,11 @@ class AccountantController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( $request)
+    public function store( Request $request)
     {
         try {
             $accountant = new Accountant([
                 'building_id' => $request->input('building_id'),
-                'customer_id' => $request->input('customer_id'),
                 'statusContrater' => $request->input('statusContrater'),
                 'dateConnect' => $request->input('dateConnect'),
                 'dateDisconnect' => $request->input('dateDisconnect'),

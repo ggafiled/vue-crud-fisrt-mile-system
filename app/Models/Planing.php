@@ -50,11 +50,6 @@ class Planing extends Model
         return $this->hasOne('App\Models\Building', 'id', 'building_id');
     }
 
-    public function Accountant()
-    {
-        return $this->belongsTo('App\Models\Accountant', 'customer_id', 'id');
-    }
-
     public function isp()
     {
         return $this->hasOne('App\Models\Isp', 'id', 'isp_id');

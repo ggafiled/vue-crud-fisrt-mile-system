@@ -24,7 +24,7 @@ class ContractorController extends BaseController
     {
         try {
             $contractor = Contractor::with(
-                'contractor'
+                'contractor','building'
             )->get();
             return $this->sendResponse($contractor, trans('actions.get.success'));
         } catch (Exception $ex) {

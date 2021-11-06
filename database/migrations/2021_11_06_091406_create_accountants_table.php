@@ -17,7 +17,6 @@ class CreateAccountantsTable extends Migration
         Schema::create('accountants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();//ชื่อตึก
-            $table->bigInteger('customer_id')->unsigned();//ชื่อตึก
             $table->string('statusContrater')->nullable();// สถานะ
             $table->date('dateConnect')->nullable();//Date Connect
             $table->date('dateDisconnect')->nullable();//Date Disconnect
@@ -32,10 +31,6 @@ class CreateAccountantsTable extends Migration
             ->on('buildings')
             ->onDelete('cascade');
 
-            $table->foreign('customer_id')
-            ->references('id')
-            ->on('planings')
-            ->onDelete('cascade');
         });
     }
 
@@ -47,6 +42,6 @@ class CreateAccountantsTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('reports');
+        Schema::dropIfExists('accountants');
     }
 }
