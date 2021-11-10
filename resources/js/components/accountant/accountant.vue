@@ -401,8 +401,8 @@ export default {
         fixedHeader: true,
         fixedColumns: true,
         fixedColumns: {
-          leftColumns: 2,
-          rightColumns: 2,
+          leftColumns: 1,
+          rightColumns: 1,
         },
         scrollX: true,
         scrollCollapse: true,

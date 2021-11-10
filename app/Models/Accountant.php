@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Activitylog\LogOptions;
-use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Model;
 
 class Accountant extends Model
 {
+    use HasFactory, SoftDeletes;
     protected $fillable = [
         'id',
         'building_id',
@@ -18,5 +18,10 @@ class Accountant extends Model
         'workSheet',
         'reMarkAccount',
     ];
+
+    public function building()
+    {
+        return $this->hasMany('App\Models\Building', 'building_id', 'id');
+    }
 
 }

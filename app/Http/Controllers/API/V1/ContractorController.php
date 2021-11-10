@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\API\V1\BaseController;
@@ -23,9 +24,10 @@ class ContractorController extends BaseController
     public function index()
     {
         try {
-            $contractor = Contractor::with(
-                'contractor','building'
-            )->get();
+            $contractor = Contractor::all();
+            // $contractor = Contractor::with(
+            //     'building',
+            // )->get();
             return $this->sendResponse($contractor, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([$ex], trans('actions.get.failed'));

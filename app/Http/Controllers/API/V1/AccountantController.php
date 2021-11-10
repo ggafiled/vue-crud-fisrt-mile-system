@@ -24,12 +24,11 @@ class AccountantController extends BaseController
      */
     public function index()
     {
-        $accountant = Accountant::with(
-            'accountant','building')->get();
+        $accountant = Accountant::all();
         return $this->sendResponse($accountant, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError([ex], trans('actions.get.failed'));
+            return $this->sendError($ex, trans('actions.get.failed'));
         }
     }
 
