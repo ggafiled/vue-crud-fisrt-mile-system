@@ -24,7 +24,9 @@ class AccountantController extends BaseController
      */
     public function index()
     {
-        $accountant = Accountant::all();
+        $accountant = Accountant::with(
+            'building:id,projectName'
+        )->get();
         return $this->sendResponse($accountant, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {

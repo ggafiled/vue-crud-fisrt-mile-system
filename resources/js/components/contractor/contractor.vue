@@ -910,7 +910,7 @@ export default {
             className: "dt-body-center notexport",
           },
           {
-            data: "building[0].projectName",
+            data: "building.projectName",
           },
           {
             data: "callver_id",

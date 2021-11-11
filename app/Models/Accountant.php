@@ -21,7 +21,7 @@ class Accountant extends Model
 
     public function building()
     {
-        return $this->hasMany('App\Models\Building', 'building_id', 'id');
+        return $this->belongsTo('App\Models\Building', 'building_id', 'id');
     }
 
 }

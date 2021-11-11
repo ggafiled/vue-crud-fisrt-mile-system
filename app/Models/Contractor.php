@@ -40,7 +40,7 @@ class Contractor extends Model
 
     public function building()
     {
-        return $this->hasOne('App\Models\Building', 'building_id', 'id');
+        return $this->belongsTo('App\Models\Building', 'building_id', 'id');
     }
 
     public function callver()

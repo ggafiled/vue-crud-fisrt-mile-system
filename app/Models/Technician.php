@@ -20,6 +20,6 @@ class Technician extends Model
 
     public function Contractor()
     {
-        return $this->belongsTo('App\Models\Contractor', 'technicians_id', 'id');
+        return $this->belongsTo('App\Models\Planning', 'technicians_id', 'id');
     }
 }

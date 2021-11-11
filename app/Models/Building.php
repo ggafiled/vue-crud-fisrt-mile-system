@@ -99,7 +99,7 @@ class Building extends Model
 
     public function accountant()
     {
-        return $this->hasMany('App\Models\Accountant', 'building_id', 'id');
+        return $this->belongsTo('App\Models\Accountant', 'building_id', 'id');
     }
 
     public function saleFm()
