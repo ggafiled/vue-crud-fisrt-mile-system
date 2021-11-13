@@ -85,7 +85,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </section>
 </template>
 
@@ -737,9 +736,7 @@ export default {
           {
             data: "equipmentInstall1",
           },
-
-                    
-                    {
+          {
             data: "snInstall1",
           },
           {
@@ -778,7 +775,7 @@ export default {
           {
             data: "snInstall7",
           },
-                    {
+          {
             data: "statusContrater",
           },
           {

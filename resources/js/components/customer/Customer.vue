@@ -90,7 +90,8 @@
                                         <th>ประเภทงาน</th>
                                         <th>วันที่นัดหมาย</th>
                                         <th>เวลานัดหมาย</th>
-                                        <th>ช่าง</th>
+                                        <th>ช่างทีมที่1</th>
+                                        <th>ช่างทีมที่2</th>
                                         <th>เบอร์โทร</th>
                                         <th>อีเมลล์</th>
                                         <th>ผู้ให้บริการ</th>
@@ -766,7 +767,7 @@
                                             </select>
                                             <has-error
                                                 :form="form"
-                                                field="technicianPlaning"
+                                                field="technician"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -775,7 +776,7 @@
                                             <label>ชื่อช่าง Planing ทีมที่2</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.technician_id"
+                                                v-model="form.technician2_id"
                                             >
                                                 <option value="" disabled>
                                                     --- Select a Class ---
@@ -790,7 +791,7 @@
                                             </select>
                                             <has-error
                                                 :form="form"
-                                                field="technicianPlaning"
+                                                field="technician2"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -975,7 +976,6 @@ export default {
             selected: "",
             building: [],
             technician: [],
-            technicians: [],
             jobtpyes: [],
             isps: [],
             settings: {
@@ -990,12 +990,14 @@ export default {
                 agentDetail_id: "",
                 jobtype_id: "",
                 technician_id: "",
+                technician2_id: "",
                 ispId_id: "",
                 projectName: "",
                 isp: "",
                 agentDetail: "",
                 jobtype: "",
                 technician: "",
+                technician2: "",
                 ispId: "",
                 type: "",
                 name: "",
@@ -1713,6 +1715,21 @@ export default {
                         }
                     },
                     {
+                        data: "technician.teamTechnician",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                     {
                         data: "technician.teamTechnician",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {

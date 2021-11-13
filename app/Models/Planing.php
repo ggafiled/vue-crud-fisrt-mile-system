@@ -18,6 +18,7 @@ class Planing extends Model
         'agentDetail_id',//
         'jobtype_id',
         'technician_id',
+        'technician2_id',
         'ispId_id',
         'type',
         'name',
@@ -63,6 +64,16 @@ class Planing extends Model
     public function technician()
     {
         return $this->hasOne('App\Models\Technician', 'id', 'technician_id');
+    }
+
+    public function technician2()
+    {
+        return $this->hasOne('App\Models\Technician', 'id', 'technician2_id');
+    }
+
+    public function callverstatus()
+    {
+        return $this->hasOne('App\Models\Callverstatus', 'id', 'technician_id');
     }
 
     public function ispId()

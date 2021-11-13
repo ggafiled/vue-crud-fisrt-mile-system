@@ -181,7 +181,7 @@
                             <h5 class="info-box-text">
                                 {{ translate("dashboard.table_all") }}
                             </h5>
-                            <router-link to="/customer" class="small-box-footer"
+                            <router-link to="/building/all" class="small-box-footer"
                                 >{{ translate("dashboard.actions.click") }}
                                 <i class="fas fa-arrow-circle-right"></i
                             ></router-link>

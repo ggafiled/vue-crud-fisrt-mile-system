@@ -22,4 +22,9 @@ class Technician extends Model
     {
         return $this->belongsTo('App\Models\Planning', 'technicians_id', 'id');
     }
+
+    public function Contractor2()
+    {
+        return $this->belongsTo('App\Models\Planning', 'technicians2_id', 'id');
+    }
 }

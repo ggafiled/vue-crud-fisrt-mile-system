@@ -31,6 +31,8 @@ class PlaningController extends BaseController
         try {
             $planing = Planing::with(
                 'building', 'technician',
+                'technician:id,teamTechnician as name',
+                'technician2:id,teamTechnician as name',
                 'isp:id,isps_color,isp as name',
                 'agentDetail:id,agentDetail as name',
                 'jobtype:id,jobType as name',
@@ -67,6 +69,7 @@ class PlaningController extends BaseController
                 'agentDetail_id' => $request->input('agentDetail_id'),
                 'jobtype_id' => $request->input('jobtype_id'),
                 'technician_id' => $request->input('technician_id'),
+                'technician2_id' => $request->input('technician2_id'),
                 'callver_id' => $request->input('callver_id'),
                 'callverStatus_id' => $request->input('callverStatus_id'),
                 'ispId_id' => $request->input('ispId_id'),

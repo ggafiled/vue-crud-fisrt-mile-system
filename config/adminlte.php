@@ -47,7 +47,7 @@ return [
 
     'logo' => '<b>FIRST MILE System </b>',
     'logo_img' => 'https://sv1.picz.in.th/images/2021/02/11/o138qN.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo_img_class' => 'brand-image img-circle elevation-5',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'FIRST MILE System',
@@ -66,7 +66,7 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => true,
-    'usermenu_header_class' => 'bg-secondary',
+    'usermenu_header_class' => 'bg-Dark',
     'usermenu_image' => true,
     'usermenu_desc' => false,
     'usermenu_profile_url' => true,
@@ -328,40 +328,40 @@ return [
                 [
                     'text' => 'project_name_table',
                     'url' => '/building/all',
-                    'icon' => 'fas fa-fw fas fa-file-alt',
+                    'icon' => 'fas fa-fw fas fa-table',
                     'active_url' => 'building/all'
                 ],
                 [
                     'text' => 'FM Connect Table',
                     'url' => '/connect/all',
-                    'icon' => 'fas fa-fw fas fa-file-alt',
+                    'icon' => 'fas fa-fw fas fa-table',
                 ],
-                // [
-                //     'text' => 'project_tot_table',
-                //     'url' => '/building/tot',
-                //     'icon' => 'fas fa-fw fas fa-file-alt',
-                // ],
-                // [
-                //     'text' => 'project_3bb_table',
-                //     'url' => '/building/3bb',
-                //     'icon' => 'fas fa-fw fas fa-file-alt',
-                // ],
-                // [
-                //     'text' => 'project_true_table',
-                //     'url' => '/building/true',
-                //     'icon' => 'fas fa-fw fas fa-file-alt',
-                // ],
-                // [
-                //     'text' => 'project_ais_table',
-                //     'url' => '/building/ais',
-                //     'icon' => 'fas fa-fw fas fa-file-alt',
-                //     // 'icon' => 'c-icon c-icon-ais',
-                // ],
-                // [
-                //     'text' => 'project_fibernet_table',
-                //     'url' => '/building/fibernet',
-                //     'icon' => 'fas fa-fw fas fa-file-alt',
-                // ],
+                [
+                    'text' => 'project_tot_table',
+                    'url' => '/building/tot',
+                    'icon' => 'fas fa-fw fas fa-table',
+                ],
+                [
+                    'text' => 'project_3bb_table',
+                    'url' => '/building/3bb',
+                    'icon' => 'fas fa-fw fas fa-table',
+                ],
+                [
+                    'text' => 'project_true_table',
+                    'url' => '/building/true',
+                    'icon' => 'fas fa-fw fas fa-table',
+                ],
+                [
+                    'text' => 'project_ais_table',
+                    'url' => '/building/ais',
+                    'icon' => 'fas fa-fw fas fa-table',
+                    // 'icon' => 'c-icon c-icon-ais',
+                ],
+                [
+                    'text' => 'project_fibernet_table',
+                    'url' => '/building/fibernet',
+                    'icon' => 'fas fa-fw fas fa-table',
+                ],
             ],
         ],
         // [

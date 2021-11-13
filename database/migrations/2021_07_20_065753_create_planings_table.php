@@ -22,6 +22,7 @@ class CreatePlaningsTable extends Migration
             $table->bigInteger('agentDetail_id')->unsigned();//ตัวแทน/พื้นที่
             $table->bigInteger('jobtype_id')->unsigned();//ประเภทงาน
             $table->bigInteger('technician_id')->unsigned();//ชื่อช่าง
+            $table->bigInteger('technician2_id')->unsigned();//ชื่อช่าง
             $table->bigInteger('ispId_id')->unsigned();//ผู้ให้ บริการ
             $table->string('type')->nullable();//Type งาน
             $table->string('name')->nullable();//ชื่อ/บริษัท
@@ -62,6 +63,11 @@ class CreatePlaningsTable extends Migration
             ->onDelete('cascade');
 
             $table->foreign('technician_id')
+            ->references('id')
+            ->on('technicians')
+            ->onDelete('cascade');
+
+            $table->foreign('technician2_id')
             ->references('id')
             ->on('technicians')
             ->onDelete('cascade');
