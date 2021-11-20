@@ -54,6 +54,7 @@ class Building extends Model
         'workTime_id',
         'remark',
         'statusBuilding',
+        'spendSpace',
     ];
 
     // protected $appends = ['salefm', 'payment', 'area', 'bbn', 'area3bb', 'areaTrue', 'areaAis', 'areaFibernet', 'worktime'];

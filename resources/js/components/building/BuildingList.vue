@@ -98,6 +98,7 @@
                     <th>Niti Name</th>
                     <th>Phone Niti</th>
                     <th>Mail Niti</th>
+
                     <th>Technician Name</th>
                     <th>Phone Technician</th>
                     <th>Mail Technician</th>
@@ -108,23 +109,24 @@
                     <th>District Name</th>
                     <th>Province Name</th>
                     <th>County Name</th>
+
                     <th>Postal Code</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
-
                     <th>Fm-Progress</th>
                     <th>TOT-Progress</th>
                     <th>AIS-Progress</th>
                     <th>3BB-Progress</th>
                     <th>SINET-Progress</th>
                     <th>TRUE-Progress</th>
-
                     <th>Contract Start Date</th>
+
                     <th>Contract Term</th>
                     <th>Contract End Date</th>
                     <th>Balance</th>
                     <th>Remark Contract</th>
                     <th>Remark</th>
+                    <th>spendSpace</th>
                   </tr>
                 </thead>
               </table>
@@ -246,7 +248,7 @@ export default {
             className: "bg-danger",
             text: "<i class='bi bi-file-text mr-1'></i>ยังไม่ทำสัญญา",
             action: function (e, dt, node, config) {
-              dt.column(44).search("ยังไม่ได้ทำสัญญา").draw();
+              dt.column(35).search("ยังไม่ได้ทำสัญญา").draw();
             },
           },
           {
@@ -556,6 +558,9 @@ export default {
           },
           {
             data: "remark",
+          },
+          {
+            data: "spendSpace",
           },
         ],
         columnDefs: [
