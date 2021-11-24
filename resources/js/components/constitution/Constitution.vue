@@ -471,6 +471,8 @@
                                                 <option value="120">120</option>
                                                 <option value="288">288</option>
                                                 <option value="576">576</option>
+                                                <option value="700">700</option>
+                                                <option value="900">900</option>
                                             </select>
                                             <has-error
                                                 :form="form"
@@ -572,7 +574,7 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Microduct Type *</label>
+                                            <label>Vertical Type*</label>
                                             <small>/ประเภทท่อ</small>
                                             <select
                                                 v-model="form.microductType"
@@ -798,7 +800,7 @@
                                         <div class="form-group">
                                             <label>Blow Core</label>
                                             <div class="input-group mb-3">
-                                                <input
+                                                <select
                                                     v-model="form.blowCore"
                                                     type="text"
                                                     class="form-control"
@@ -808,7 +810,16 @@
                                                             'blowCore'
                                                         )
                                                     }"
-                                                />
+                                                >
+                                                <option disabled value=""
+                                                    >--- Select Type ---</option
+                                                >
+                                                <option value="4"
+                                                    >4</option
+                                                >
+                                                <option value="12">12</option>
+                                                <option value="24">24</option>
+                                            </select>
                                             </div>
                                             <has-error
                                                 :form="form"
@@ -1029,7 +1040,7 @@
                                         <div class="form-group">
                                             <label>Splice Core</label>
                                             <div class="input-group mb-3">
-                                                <input
+                                                <select
                                                     v-model="form.spliceCore"
                                                     type="text"
                                                     class="form-control"
@@ -1039,7 +1050,15 @@
                                                             'spliceCore'
                                                         )
                                                     }"
-                                                />
+                                                >
+                                                <option disabled value=""
+                                                    >--- Select Type ---</option
+                                                >
+                                                <option value="1">1</option>
+                                                <option value="4">4</option>
+                                                <option value="12">12</option>
+                                                <option value="24">24</option>
+                                            </select>
                                             </div>
                                             <has-error
                                                 :form="form"

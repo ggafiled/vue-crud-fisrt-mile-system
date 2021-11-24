@@ -174,7 +174,7 @@ class PlaningController extends BaseController
                     ->with(
                         ['building:id,workTime_id,longitude,latitude,projectName as name',
                             'building.workTime:id,workTime as name',
-                            'isp'])
+                            'isp','technician'])
                     ->whereHas('building', function ($query) {
                         return $query->where('longitude', '!=', 0)->where('latitude', '!=', 0);
                     })
@@ -185,7 +185,7 @@ class PlaningController extends BaseController
                         $collection["options"]["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
                     <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
                     <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
-                    <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
+                    <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->status->status . "</p>
                     </div>";
                         $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
                         return $collection;
@@ -194,7 +194,7 @@ class PlaningController extends BaseController
                 $planing["coordinate"] = Planing::with(
                     ['building:id,workTime_id,longitude,latitude,projectName as name',
                         'building.workTime:id,workTime as name',
-                        'isp'])
+                        'isp','technician'])
                     ->whereHas('building', function ($query) {
                         return $query->where('longitude', '!=', 0)->where('latitude', '!=', 0);
                     })
@@ -205,7 +205,7 @@ class PlaningController extends BaseController
                         $collection["options"]["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
                     <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
                     <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
-                    <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
+                    <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->technician->technician . "</p>
                     </div>";
                         $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
                         return $collection;
