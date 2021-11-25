@@ -20,6 +20,7 @@ class Contractor extends Model
         'idRequired',
         'problemsolution_id',
         'confirmAppointment',
+        'confirmAppointmentTime',
         'reMarkzone',
         'equipmentInstall1',
         'snInstall1',

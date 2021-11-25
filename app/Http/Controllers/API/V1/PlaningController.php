@@ -183,9 +183,11 @@ class PlaningController extends BaseController
                         $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
                         $collection["options"]["title"] = $item->building->name;
                         $collection["options"]["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
+                    <p class='p-0 m-0'>ชื่อ: " . $item->name . " นามสกุล : " . $item->surname . "</p>
                     <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
                     <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
-                    <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->status->status . "</p>
+                    <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->technician->technician . "</p>
+                    <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->technician->technician . "</p>
                     </div>";
                         $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
                         return $collection;
@@ -203,9 +205,11 @@ class PlaningController extends BaseController
                         $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
                         $collection["options"]["title"] = $item->building->name;
                         $collection["options"]["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
+                    <p class='p-0 m-0'>ชื่อ: " . $item->name . " นามสกุล : " . $item->surname . "</p>
                     <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
                     <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
                     <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->technician->technician . "</p>
+                    <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->isp->isp . "</p>
                     </div>";
                         $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
                         return $collection;
@@ -214,7 +218,7 @@ class PlaningController extends BaseController
             $planing["taskTotal"] = (bool) $request->input('getOnlyToday') ? Planing::whereBetween('appointmentDate', [$from_date, $end_date])->count() : Planing::count();
             return $this->sendResponse($planing, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.failed'));
+            return $this->sendError([$ex], trans('actions.get.failed'));
         }
     }
 }
