@@ -183,13 +183,14 @@ class PlaningController extends BaseController
                         $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
                         $collection["options"]["title"] = $item->building->name;
                         $collection["options"]["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
-                    <p class='p-0 m-0'>ชื่อ: " . $item->name . " นามสกุล : " . $item->surname . "</p>
-                    <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
-                    <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
-                    <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->technician->technician . "</p>
-                    <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->technician->technician . "</p>
-                    </div>";
+                            <p class='p-0 m-0'>ชื่อ: " . $item->name . " นามสกุล : " . $item->surname . "</p>
+                            <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
+                            <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
+                            <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->technician->teamTechnician . "</p>
+                            <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->technician->teamTechnician . "</p>
+                            </div>";
                         $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
+                        $collection["customData"] = $item->toArray();
                         return $collection;
                     });
             } else {
@@ -205,13 +206,14 @@ class PlaningController extends BaseController
                         $collection["location"] = ["lon" => $item->building->longitude, "lat" => $item->building->latitude];
                         $collection["options"]["title"] = $item->building->name;
                         $collection["options"]["detail"] = "<div><p class='p-0 m-0'>" . ($item->building->workTime->name ?? "unknown") . "</p>
-                    <p class='p-0 m-0'>ชื่อ: " . $item->name . " นามสกุล : " . $item->surname . "</p>
-                    <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
-                    <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
-                    <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->technician->technician . "</p>
-                    <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->isp->isp . "</p>
-                    </div>";
+                            <p class='p-0 m-0'>ชื่อ: " . $item->name . " นามสกุล : " . $item->surname . "</p>
+                            <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
+                            <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
+                            <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->technician->teamTechnician . "</p>
+                            <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->isp->isp . "</p>
+                            </div>";
                         $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
+                        $collection["customData"] = $item->toArray();
                         return $collection;
                     });
             }

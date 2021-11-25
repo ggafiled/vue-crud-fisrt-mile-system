@@ -173,15 +173,16 @@
                                     :lastView="false"
                                     @load="initMap"
                                 >
-                                    <longdo-map-marker-cluster :markerList="coordinate" />
-                                    <!-- <longdo-map-marker
+                                    <!-- <longdo-map-marker-cluster :markerList="coordinate"/> -->
+                                    <longdo-map-marker
                                         v-for="(item, i) in coordinate"
                                         :key="i"
                                         :location="item.location"
-                                        :title="item.title"
-                                        :detail="item.detail"
-                                        :icon="item.icon"
-                                    /> -->
+                                        :title="item.options.title"
+                                        :detail="item.options.detail"
+                                        :icon="item.options.icon"
+                                        @add="(markerObj) => onAddMarker(markerObj, item)"
+                                    />
                                 </longdo-map>
                             </section>
                         </div>
@@ -263,9 +264,13 @@ export default {
                             longdo.LocationMode.Pointer
                         );
                         map.location(mouseLocation, true);
+                        console.log(overlay.customData);
                     }
                 });
             });
+        },
+        onAddMarker(markerObject, item){
+            markerObject.customData = item.customData;
         },
         loadCoordinatePlanningOfBuilding() {
             this.form
