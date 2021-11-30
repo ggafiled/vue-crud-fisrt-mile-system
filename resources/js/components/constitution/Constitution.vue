@@ -917,7 +917,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <!-- ******************* EDIT TO SELECTION ******************* -->
-                                            <label>Vertically Type</label>
+                                            <label>Verticall Type</label>
                                             <select
                                                 v-model="form.verticallyType"
                                                 type="text"

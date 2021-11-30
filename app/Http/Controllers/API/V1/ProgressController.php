@@ -46,14 +46,14 @@ class ProgressController extends BaseController
     public function queryProgress()
     {
         try {
-            $constarution = Constarution::where('spliceStatus', '=', 'Completed' )->get();
+            $constarution = Constarution::all();
             return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
-    
+
 
     /**
      * Show the form for creating a new resource.

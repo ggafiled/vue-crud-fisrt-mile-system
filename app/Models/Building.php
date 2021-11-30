@@ -53,7 +53,6 @@ class Building extends Model
         'remarkContract',
         'workTime_id',
         'remark',
-        'statusBuilding',
         'spendSpace',
     ];
 

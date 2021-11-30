@@ -32,7 +32,6 @@
                                     <thead>
                                         <tr class="info">
                                             <th></th>
-                                            <th>Status</th>
                                             <th>Project Name</th>
                                             <th>SubBuilding Sum</th>
                                             <th>Floor Sum</th>
@@ -897,38 +896,6 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>Status Building</label>
-                                            <br />
-                                            <small>/สถานะข้อมูล</small>
-                                            <select
-                                                v-model="form.statusBuilding"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your type..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'statusBuilding'
-                                                    )
-                                                }"
-                                            >
-                                                <option disabled value=""
-                                                    >--- Select Type ---</option
-                                                >
-                                                <option value="Complete"
-                                                    >Complete</option
-                                                >
-                                                <option value="Unready"
-                                                    >Unready</option
-                                                >
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="statusBuilding"
-                                            ></has-error>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -1302,7 +1269,6 @@ export default {
                 postalCode: "",
                 latitude: "",
                 longitude: "",
-                statusBuilding: "",
                 contractStartDate: new Date().toISOString().slice(0, 10),
                 paymentType_id: "",
                 saleFm_id: "",
@@ -1677,25 +1643,6 @@ export default {
                         data: null,
                         defaultContent: "",
                         className: "dt-body-center notexport"
-                    },
-                    {
-                        data: "statusBuilding",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            if (data == "Unready") {
-                                return (
-                                    '<span class="badge rounded-pill bg-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else if (data == "Complete") {
-                                return (
-                                    '<span class="badge rounded-pill bg-success">' +
-                                    data +
-                                    "</span>"
-                                );
-                            }
-                        }
                     },
                     {
                         data: "projectName",

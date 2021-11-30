@@ -187,7 +187,7 @@ class PlaningController extends BaseController
                             <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
                             <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
                             <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->technician->teamTechnician . "</p>
-                            <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->technician->teamTechnician . "</p>
+                            <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->technician2->teamTechnician2 . "</p>
                             </div>";
                         $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
                         $collection["customData"] = $item->toArray();
@@ -210,7 +210,7 @@ class PlaningController extends BaseController
                             <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
                             <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
                             <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->technician->teamTechnician . "</p>
-                            <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->isp->isp . "</p>
+                            <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->technician2->teamTechnician . "</p>
                             </div>";
                         $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
                         $collection["customData"] = $item->toArray();

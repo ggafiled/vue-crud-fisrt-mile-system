@@ -746,8 +746,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">                              
-                                    <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>ชื่อช่าง Planing</label>
                                             <select
@@ -771,7 +771,7 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>ชื่อช่าง Planing ทีมที่2</label>
                                             <select

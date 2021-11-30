@@ -52,6 +52,7 @@ class ContractorController extends BaseController
                 'idRequired' => $request->input('idRequired'),
                 'problemsolution_id' => $request->input('problemsolution_id'),
                 'confirmAppointment' => $request->input('confirmAppointment'),
+                'confirmAppointmentTime' => $request->input('confirmAppointmentTime'),
                 'reMarkzone' => $request->input('reMarkzone'),
                 'equipmentInstall1' => $request->input('equipmentInstall1'),
                 'snInstall1' => $request->input('snInstall1'),
