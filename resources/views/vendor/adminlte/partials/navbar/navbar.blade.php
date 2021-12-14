@@ -16,9 +16,9 @@
 
     <div class="d-none d-lg-inline text-uppercase mx-auto my-auto" style="color: #cecdcd">
         <h4>
-            {{ config('adminlte.title', 'Fist Mile ERP System') }}
+            <!-- {{ config('adminlte.title', 'Fist Mile ERP System') }}
 
-            V {{ config('app.version', '1.0') }}
+            V {{ config('app.version', '1.0') }} -->
         </h4>
     </div>
 

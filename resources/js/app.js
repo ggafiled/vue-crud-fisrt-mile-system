@@ -100,6 +100,8 @@ Vue.component("vueDropzone", vue2Dropzone);
 import Select2 from "v-select2-component";
 Vue.component("Select2", Select2);
 
+
+
 import VueTimepicker from "vue2-timepicker";
 Vue.component("VueTimepicker", VueTimepicker);
 

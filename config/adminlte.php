@@ -237,11 +237,11 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type' => 'navbar-search',
-            'text' => 'global_search',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type' => 'navbar-search',
+        //     'text' => 'global_search',
+        //     'topnav_right' => true,
+        // ],
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
@@ -254,7 +254,7 @@ return [
         // ],
         ['header' => 'MENU'],
         [
-            'text' => 'dashboard',
+            'text' => 'Menu Dashboard',
             'url' => '/dashboard',
             'icon' => 'fas fa-fw bi bi-kanban',
             'active_url' => 'dashboard'

@@ -92,7 +92,7 @@
             <div
                 class="d-flex flex-row flex-grow-1 p-3 justify-content-between"
             >
-                <div class="left mr-3" style="width: 30vw;">
+                <div class="left mr-3" style="width: 10vw;">
                     <div class="card" style="height: 20%;">
                         <div class="card-body">
                             <div
@@ -165,7 +165,7 @@
                     <div class="tab-content">
                         <div id="gis" class="tab-pane active">
                             <section
-                                style="height: 70vh !important; width: 65vw !important; padding: 3; margin: 0;"
+                                style="height: 70vh !important; width: 82vw !important; padding: 3; margin: 0;"
                             >
                                 <longdo-map
                                     id="map"

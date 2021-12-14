@@ -1,6 +1,7 @@
 <template>
     <section class="content">
         <div class="container-fluid">
+            <h3>MENU</h3>
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box shadow">
@@ -191,7 +192,8 @@
                     <!-- /.info-box -->
                 </div>
             </div>
-
+            <br>
+            <h3>DASHBOARD</h3>
             <div class="row">
                 <!-- Left col -->
                 <div class="col-md-8">
