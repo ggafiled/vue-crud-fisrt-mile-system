@@ -65,6 +65,7 @@
                       }}</span>
                     </label>
                   </div>
+                  
                   <button
                     type="button"
                     class="btn btn-secondary"
@@ -89,6 +90,7 @@
                   <tr class="info">
                     <th></th>
                     <th>Project Name</th>
+                    <th>spendSpace</th>
                     <th>SubBuilding Sum</th>
                     <th>Floor Sum</th>
                     <th>Room Sum</th>
@@ -98,7 +100,6 @@
                     <th>Niti Name</th>
                     <th>Phone Niti</th>
                     <th>Mail Niti</th>
-
                     <th>Technician Name</th>
                     <th>Phone Technician</th>
                     <th>Mail Technician</th>
@@ -109,7 +110,6 @@
                     <th>District Name</th>
                     <th>Province Name</th>
                     <th>County Name</th>
-
                     <th>Postal Code</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
@@ -120,13 +120,11 @@
                     <th>SINET-Progress</th>
                     <th>TRUE-Progress</th>
                     <th>Contract Start Date</th>
-
                     <th>Contract Term</th>
                     <th>Contract End Date</th>
                     <th>Balance</th>
                     <th>Remark Contract</th>
                     <th>Remark</th>
-                    <th>spendSpace</th>
                   </tr>
                 </thead>
               </table>
@@ -206,7 +204,7 @@ export default {
         fixedHeader: true,
         fixedColumns: true,
         fixedColumns: {
-          leftColumns: 2,
+          leftColumns: 3,
         },
         scrollX: true,
         scrollCollapse: true,
@@ -248,7 +246,7 @@ export default {
             className: "bg-danger",
             text: "<i class='bi bi-file-text mr-1'></i>ยังไม่ทำสัญญา",
             action: function (e, dt, node, config) {
-              dt.column(35).search("ยังไม่ได้ทำสัญญา").draw();
+              dt.column(2).search("ยังไม่ทำสัญญา").draw();
             },
           },
           {
@@ -318,6 +316,16 @@ export default {
               return (
                 '<span><i class="bi bi-building pr-2"></i>' + data + "</span>"
               );
+            },
+          },
+          {
+            data: "spendSpace",
+            render: function (data, type, row, meta) {
+              if (data == "ยังไม่ทำสัญญา") {
+                return '<span class="badge badge-danger">' + data + "</span>";
+              } else {
+                return '<span class="badge badge-success">' + data + "</span>";
+              }
             },
           },
           {
@@ -558,9 +566,6 @@ export default {
           },
           {
             data: "remark",
-          },
-          {
-            data: "spendSpace",
           },
         ],
         columnDefs: [

@@ -331,37 +331,37 @@ return [
                     'icon' => 'fas fa-fw fas fa-table',
                     'active_url' => 'building/all'
                 ],
-                [
-                    'text' => 'FM Connect Table',
-                    'url' => '/connect/all',
-                    'icon' => 'fas fa-fw fas fa-table',
-                ],
-                [
-                    'text' => 'project_tot_table',
-                    'url' => '/building/tot',
-                    'icon' => 'fas fa-fw fas fa-table',
-                ],
-                [
-                    'text' => 'project_3bb_table',
-                    'url' => '/building/3bb',
-                    'icon' => 'fas fa-fw fas fa-table',
-                ],
-                [
-                    'text' => 'project_true_table',
-                    'url' => '/building/true',
-                    'icon' => 'fas fa-fw fas fa-table',
-                ],
-                [
-                    'text' => 'project_ais_table',
-                    'url' => '/building/ais',
-                    'icon' => 'fas fa-fw fas fa-table',
-                    // 'icon' => 'c-icon c-icon-ais',
-                ],
-                [
-                    'text' => 'project_fibernet_table',
-                    'url' => '/building/fibernet',
-                    'icon' => 'fas fa-fw fas fa-table',
-                ],
+                // [
+                //     'text' => 'FM Connect Table',
+                //     'url' => '/connect/all',
+                //     'icon' => 'fas fa-fw fas fa-table',
+                // ],
+                // [
+                //     'text' => 'project_tot_table',
+                //     'url' => '/building/tot',
+                //     'icon' => 'fas fa-fw fas fa-table',
+                // ],
+                // [
+                //     'text' => 'project_3bb_table',
+                //     'url' => '/building/3bb',
+                //     'icon' => 'fas fa-fw fas fa-table',
+                // ],
+                // [
+                //     'text' => 'project_true_table',
+                //     'url' => '/building/true',
+                //     'icon' => 'fas fa-fw fas fa-table',
+                // ],
+                // [
+                //     'text' => 'project_ais_table',
+                //     'url' => '/building/ais',
+                //     'icon' => 'fas fa-fw fas fa-table',
+                //     // 'icon' => 'c-icon c-icon-ais',
+                // ],
+                // [
+                //     'text' => 'project_fibernet_table',
+                //     'url' => '/building/fibernet',
+                //     'icon' => 'fas fa-fw fas fa-table',
+                // ],
             ],
         ],
         // [

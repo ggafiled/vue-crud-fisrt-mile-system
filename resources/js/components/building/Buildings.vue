@@ -4,19 +4,35 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <div class="card-tools">
-                                    <button
-                                        type="button"
-                                        class="btn btn-sm btn-primary"
-                                        @click="newModal"
-                                    >
-                                        <i class="fa fa-plus-square"></i>
-                                        {{ translate("building.addnew") }}
-                                    </button>
+                            <div class="card-body m-0">
+                                <div class="row">
+                                    <div class="card-tools">
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-primary"
+                                            @click="newModal"
+                                        >
+                                            <i class="fa fa-plus-square"></i>
+                                            {{ translate("building.addnew") }}
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-primary"
+                                            @click.prevent="goToImportPanel"
+                                        >
+                                            <i
+                                                class="fa fa-upload"
+                                                aria-hidden="true"
+                                            ></i>
+                                            {{
+                                                translate("constitution.import")
+                                            }}
+                                        </button>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="table-responsive">
                                 <table
                                     id="buildings"
                                     ref="buildings"
@@ -55,8 +71,7 @@
                                             <th>Balance</th>
                                             <th>Remark Contract</th>
                                             <th>Remark</th>
-                                            <th>Create At</th>
-                                            <th>Update At</th>
+                                            <th>spendSpace</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -777,7 +792,7 @@
                                                 </option>
                                                 <option
                                                     :value="item.id"
-                                                    v-for="item in spendSpaces"
+                                                    v-for="item in paymentTypes"
                                                     :key="item.id"
                                                 >
                                                     {{ item.paymentType }}
@@ -828,6 +843,29 @@
                                             <has-error
                                                 :form="form"
                                                 field="balance"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <select
+                                                type="text"
+                                                class="form-control"
+                                                v-model="form.spendSpace"
+                                            >
+                                                 <option disabled value=""
+                                                    >--- Select Type ---</option
+                                                >
+                                                <option value="ทำสัญญาแล้ว"
+                                                    >ทำสัญญาแล้ว</option
+                                                >
+                                                <option value=" ยังไม่ทำสัญญา"
+                                                    >ยังไม่ทำสัญญา</option
+                                                >
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="spendSpace"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -1383,6 +1421,16 @@ export default {
             $("#addNew").modal("show");
             this.form.fill(building);
         },
+        viweModal(building) {
+            this.editmode = true;
+            this.form.reset();
+            this.form.errors.clear();
+            this.$refs.wizard.activateAll();
+            building.subbuilding = building.subbuilding;
+            console.log(building);
+            $("#addNew").modal("show");
+            this.form.fill(building);
+        },
         openMapPickerLocation() {
             $("#pickermap").modal("show");
         },
@@ -1475,20 +1523,20 @@ export default {
                 fixedHeader: true,
                 fixedColumns: true,
                 fixedColumns: {
-                    leftColumns: 3,
-                    rightColumns: 3
+                    leftColumns: 2,
+                    rightColumns: 2
                 },
                 scrollX: true,
                 scrollCollapse: true,
                 select: true,
                 buttons: [
-                    {
-                        className: "bg-primary",
-                        text: "<i class='fa fa-plus-square'></i> Add New",
-                        action: function() {
-                            newModal();
-                        }
-                    },
+                    // {
+                    //     className: "bg-primary",
+                    //     text: "<i class='fa fa-plus-square'></i> Add New",
+                    //     action: function(e, dt, node, config) {
+                    //         newModal();
+                    //     }
+                    // },
                     "colvis",
                     {
                         extend: "copy",
@@ -1689,22 +1737,40 @@ export default {
                         data: "remark"
                     },
                     {
-                        data: "created_at",
+                        data: "spendSpace",
                         render: function(data, type, row, meta) {
-                            return moment(data).format("MM/DD/YYYY HH:MM");
+                            if (data == "ยังไม่ทำสัญญา") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
                         }
                     },
-                    {
-                        data: "updated_at",
-                        render: function(data, type, row, meta) {
-                            return moment(data).format("MM/DD/YYYY HH:MM");
-                        }
-                    },
+                    // {
+                    //     data: "created_at",
+                    //     render: function(data, type, row, meta) {
+                    //         return moment(data).format("MM/DD/YYYY HH:MM");
+                    //     }
+                    // },
+                    // {
+                    //     data: "updated_at",
+                    //     render: function(data, type, row, meta) {
+                    //         return moment(data).format("MM/DD/YYYY HH:MM");
+                    //     }
+                    // },
                     {
                         data: null,
                         className: "dt-body-center notexport",
                         render: function(data, type, row, meta) {
-                            return "<a class='edit-building btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-building btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
+                            return "<a class='viwe-building btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-eye'></i> </a>  <a class='edit-building btn btn-warning btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> ";
                         }
                     }
                 ],
@@ -1722,6 +1788,16 @@ export default {
                 select: { selector: "td:not(:last-child)", style: "os" },
                 order: [[1, "desc"]]
             });
+            $("tbody", this.$refs.buildings).on(
+                "click",
+                ".viwe-building",
+                function(e) {
+                    e.preventDefault();
+                    var tr = $(this).closest("tr");
+                    var row = table.row(tr);
+                    vm.viweModal(row.data());
+                }
+            );
             $("tbody", this.$refs.buildings).on(
                 "click",
                 ".edit-building",
