@@ -28,15 +28,15 @@ class CreateBuildingsTable extends Migration
             $table->string('subBuildingsum')->nullable();//อาคารทั้งหมด
             $table->string('floorSum')->nullable();//ชั้นทั้งหมด
             $table->string('roomSum')->nullable();//ห้องทั้งหมด
-            $table->string('nameManager')->nullable();//ชื่อผู้จัดการ
-            $table->string('phoneManager')->nullable();//เบอร์โทรผู้จัดการ
-            $table->string('mailManager')->nullable();//เมลล์โทรผู้จัดการ
+            // $table->string('nameManager')->nullable();//ชื่อผู้จัดการ
+            // $table->string('phoneManager')->nullable();//เบอร์โทรผู้จัดการ
+            // $table->string('mailManager')->nullable();//เมลล์โทรผู้จัดการ
             $table->string('nameNiti')->nullable();//ชื่อนิติบุคคล
             $table->string('phoneNiti')->nullable();//เบอร์์นิติบุคคล
             $table->string('mailNiti')->nullable();//เมลล์์นิติบุคคล
-            $table->string('nameTechnician')->nullable();//ชื่อช่าง
-            $table->string('phoneTechnician')->nullable();//เบอร์์ช่าง
-            $table->string('mailTechnician')->nullable();//เมลล์์ช่าง
+            // $table->string('nameTechnician')->nullable();//ชื่อช่าง
+            // $table->string('phoneTechnician')->nullable();//เบอร์์ช่าง
+            // $table->string('mailTechnician')->nullable();//เมลล์์ช่าง
             $table->string('houseNumber')->nullable();//บ้านเลขที่
             $table->string('squadNumber')->nullable();//หมู่
             $table->string('alleyName')->nullable();//ซอย

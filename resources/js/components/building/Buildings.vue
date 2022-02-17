@@ -244,6 +244,7 @@
                                         </div>
                                         <div class="col-sm-5">
                                             <div class="input-group">
+                                            
                                                 <input
                                                     v-model="item.projectName"
                                                     type="text"
@@ -303,79 +304,6 @@
                                 </div>
                             </tab-content>
                             <tab-content title="Project Detail">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.nameManager"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="ชื่อผู้จัดการ"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'nameManager'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="nameManager"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <vue-phone-number-input
-                                                v-model="form.phoneManager"
-                                                size="sm"
-                                                :no-validator-state="true"
-                                                show-code-on-list
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'phoneManager'
-                                                    )
-                                                }"
-                                            />
-                                            <!-- <input
-                                                v-model="form.phoneManager"
-                                                type="tel"
-                                                class="form-control"
-                                                placeholder="เบอร์ผู้จัดการ"
-                                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'phoneManager'
-                                                    )
-                                                }"
-                                            /> -->
-                                            <has-error
-                                                :form="form"
-                                                field="phoneManager"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.mailManager"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="อีเมลล์ผู้จัดการ"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'mailManager'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="mailManager"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
@@ -444,79 +372,6 @@
                                             <has-error
                                                 :form="form"
                                                 field="mailNiti"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.nameTechnician"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="ชื่อช่าง"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'nameTechnician'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="nameTechnician"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <vue-phone-number-input
-                                                v-model="form.phoneTechnician"
-                                                show-code-on-list
-                                                size="sm"
-                                                :no-validator-state="true"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'phoneTechnician'
-                                                    )
-                                                }"
-                                            />
-                                            <!-- <input
-                                                v-model="form.phoneTechnician"
-                                                type="tel"
-                                                class="form-control"
-                                                placeholder="เบอร์ช่าง"
-                                                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'phoneTechnician'
-                                                    )
-                                                }"
-                                            /> -->
-                                            <has-error
-                                                :form="form"
-                                                field="phoneTechnician"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <input
-                                                v-model="form.mailTechnician"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="เมลล์ช่าง"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'mailTechnician'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="mailTechnician"
                                             ></has-error>
                                         </div>
                                     </div>
