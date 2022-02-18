@@ -307,6 +307,8 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
+                                        <label>Corporation Name</label>
+                                            <small>/ชื่อนิติบุคคล</small>
                                             <input
                                                 v-model="form.nameNiti"
                                                 type="text"
@@ -326,6 +328,8 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
+                                        <label>Corporation Phone</label>
+                                            <small>/เบอร์โทรนิติบุคคล</small>
                                             <vue-phone-number-input
                                                 v-model="form.phoneNiti"
                                                 show-code-on-list
@@ -358,6 +362,8 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
+                                        <label>Corporation Mail</label>
+                                            <small>/เมลล์นิติบุคคล</small>
                                             <input
                                                 v-model="form.mailNiti"
                                                 type="text"
@@ -379,6 +385,8 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
+                                        <label>House Number</label>
+                                            <small>/บ้านเลขที่</small>
                                             <input
                                                 v-model="form.houseNumber"
                                                 type="text"
@@ -398,6 +406,8 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
+                                        <label>Squad</label>
+                                            <small>/หมู่</small>
                                             <input
                                                 v-model="form.squadNumber"
                                                 type="text"
@@ -417,6 +427,8 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
+                                        <label>Alley</label>
+                                            <small>/ซอย</small>
                                             <input
                                                 v-model="form.alleyName"
                                                 type="text"
@@ -436,6 +448,8 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
+                                        <label>Road</label>
+                                            <small>/ซอย</small>
                                             <input
                                                 v-model="form.roadName"
                                                 type="text"
@@ -457,6 +471,8 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
+                                         <label>District</label>
+                                            <small>/ตำบล</small>
                                             <ThailandAutoComplete
                                                 v-model="form.districtName"
                                                 type="district"
@@ -474,6 +490,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
+                                        <label>County</label>
+                                            <small>/อำเภอ</small>
                                             <ThailandAutoComplete
                                                 v-model="form.countyName"
                                                 type="amphoe"
@@ -493,6 +511,8 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
+                                        <label>ProvinceN</label>
+                                            <small>/จังหวัด</small>
                                             <ThailandAutoComplete
                                                 v-model="form.provinceName"
                                                 type="province"
@@ -511,6 +531,8 @@
                                     <div class="col-lg-6">
                                         <!-- text input -->
                                         <div class="form-group">
+                                        <label>PostalCode</label>
+                                            <small>/รหัสไปรษณีย์</small>
                                             <ThailandAutoComplete
                                                 v-model="form.postalCode"
                                                 type="zipcode"
@@ -532,6 +554,8 @@
                                 >
                                     <div class="col-sm-6">
                                         <div class="form-group">
+                                        <label>latitude</label>
+                                            <small>/ละติจูด</small>
                                             <input
                                                 v-model="form.latitude"
                                                 type="text"
@@ -551,6 +575,8 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
+                                        <label>longitude</label>
+                                            <small>/ลองจิจูด</small>
                                             <div class="input-group mb-3">
                                                 <input
                                                     v-model="form.longitude"
@@ -576,6 +602,8 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
+                                        <label>SaleFm</label>
+                                            <small>/เซลล์</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.saleFm_id"
@@ -599,6 +627,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
+                                        <label>Contract StartDate</label>
+                                            <small>/วันเริ่มสัญญา</small>
                                             <input
                                                 v-model="form.contractStartDate"
                                                 type="date"
@@ -618,6 +648,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
+                                        <label>Contract EndDate</label>
+                                            <small>/วันสิ้นสุดสัญญา</small>
                                             <input
                                                 ref="contractEndDate"
                                                 v-model="form.contractEndDate"
@@ -638,6 +670,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
+                                        <label>Payment Type</label>
+                                            <small>/รูปแบบการชำระรายได้</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.paymentType_id"
@@ -663,12 +697,14 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
+                                        <label>Contract Term</label>
+                                            <small>/ระยะเวลสัญญา</small>
                                             <div class="input-group mb-3">
                                                 <input
                                                     v-model="form.contractTerm"
                                                     type="text"
                                                     class="form-control"
-                                                    placeholder="รูปแบบการชำระรายได้"
+                                                    placeholder="ระยะเวลสัญญา"
                                                     :class="{
                                                         'is-invalid': form.errors.has(
                                                             'contractTerm'
@@ -684,6 +720,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
+                                        <label>Balance</label>
+                                            <small>/ยอดเงิน</small>
                                             <input
                                                 v-model="form.balance"
                                                 type="text"
@@ -703,6 +741,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
+                                        <label>Balance</label>
+                                            <small>/ยอดเงิน</small>
                                             <select
                                                 type="text"
                                                 class="form-control"
@@ -728,6 +768,8 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
+                                        <label>Remark Contract</label>
+                                            <small>/รีมาค</small>
                                             <textarea
                                                 id="remark"
                                                 v-model="form.remarkContract"
@@ -751,8 +793,8 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <!-- <label>Area</label><br />
-                                            <small>/พื้นที่</small> -->
+                                            <label>Area</label><br />
+                                            <small>/พื้นที่</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areas_id"
@@ -776,8 +818,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <!-- <label>Area BBN</label><br />
-                                            <small>/พื้นที่ บบน.</small> -->
+                                            <label>Area BBN</label><br />
+                                            <small>/พื้นที่ บบน.</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.bbns_id"
@@ -803,8 +845,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <!-- <label>Area 3BB</label><br />
-                                            <small>/พื้นที่ สามบีบี</small> -->
+                                            <label>Area 3BB</label><br />
+                                            <small>/พื้นที่ สามบีบี</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.area3bb_id"
@@ -828,8 +870,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <!-- <label>Area TRUE</label><br />
-                                            <small>/พื้นที่ ทรู</small> -->
+                                            <label>Area TRUE</label><br />
+                                            <small>/พื้นที่ ทรู</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaTrue_id"
@@ -855,8 +897,8 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <!-- <label>Area TRUE NEW</label><br />
-                                            <small>/พื้นที่ ทรูใหม่</small> -->
+                                            <label>Area TRUE NEW</label><br />
+                                            <small>/พื้นที่ ทรูใหม่</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaTrueNew_id"
@@ -880,8 +922,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <!-- <label>Area AIS</label><br />
-                                            <small>/พื้นที่ เอไอเอส</small> -->
+                                            <label>Area AIS</label><br />
+                                            <small>/พื้นที่ เอไอเอส</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaAis_id"
@@ -905,8 +947,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <!-- <label>Area Fibernet</label><br />
-                                            <small>/พื้นที่ ไฟเบอเน็ต</small> -->
+                                            <label>Area Fibernet</label><br />
+                                            <small>/พื้นที่ ไฟเบอเน็ต</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.areaFibernet_id"
@@ -930,8 +972,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <!-- <label>Operating Time</label><br />
-                                            <small>/เวลาการเข้างาน</small> -->
+                                            <label>Operating Time</label><br />
+                                            <small>/เวลาการเข้างาน</small>
                                             <select
                                                 class="form-control"
                                                 v-model="form.workTime_id"
@@ -957,8 +999,8 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <!-- <label>Remark</label>
-                                            <small>/รีมาร์ค</small> -->
+                                            <label>Remark</label>
+                                            <small>/รีมาร์ค</small>
                                             <textarea
                                                 id="remark"
                                                 v-model="form.remark"
