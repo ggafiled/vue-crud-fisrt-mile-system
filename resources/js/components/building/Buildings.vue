@@ -163,7 +163,7 @@
                                                 v-model="form.subBuildingsum"
                                                 inline
                                                 controls
-                                                :min="1"
+                                                :min="0"
                                                 @change="onSubBuildingUpdate"
                                             ></number-input>
                                             <has-error
@@ -183,7 +183,7 @@
                                                 placeholder="ชั้น"
                                                 v-model="form.floorSum"
                                                 :disabled="
-                                                    form.subBuildingsum > 1
+                                                    form.subBuildingsum > 0
                                                 "
                                             />
                                             <has-error
@@ -203,7 +203,7 @@
                                                 placeholder="ห้อง"
                                                 v-model="form.roomSum"
                                                 :disabled="
-                                                    form.subBuildingsum > 1
+                                                    form.subBuildingsum > 0
                                                 "
                                             />
                                             <has-error
@@ -214,7 +214,7 @@
                                     </div>
                                 </div>
 
-                                <div v-show="form.subBuildingsum > 1">
+                                <div v-show="form.subBuildingsum > 0">
                                     <label class="text-danger"
                                         >***เงื่อนไข
                                         เมื่อกรอกจำนวนอาคารย่อยในพื้นที่โครงการ</label
@@ -244,7 +244,7 @@
                                         </div>
                                         <div class="col-sm-5">
                                             <div class="input-group">
-                                            
+
                                                 <input
                                                     v-model="item.projectName"
                                                     type="text"
@@ -265,7 +265,7 @@
                                                 <number-input
                                                     inline
                                                     v-model="item.floorSum"
-                                                    :min="1"
+                                                    :min="0"
                                                     placeholder="จำนวนชั้นของอาคาร"
                                                     :class="{
                                                         'is-invalid': form.errors.has(
@@ -284,7 +284,7 @@
                                                 <number-input
                                                     inline
                                                     v-model="item.roomSum"
-                                                    :min="1"
+                                                    :min="0"
                                                     required
                                                     placeholder="จำนวนห้องในชั้น"
                                                     :class="{
@@ -1114,7 +1114,7 @@ export default {
                 areaAis_id: "",
                 areaFibernet_id: "",
                 projectName: "",
-                subBuildingsum: 1,
+                subBuildingsum: 0,
                 floorSum: 0,
                 roomSum: 0,
                 roadName: "",
@@ -1194,28 +1194,24 @@ export default {
             }
         }
     },
-    methods: {
+     methods: {
         onSubBuildingUpdate(newVal, oldVal) {
             console.log(newVal, oldVal);
             if (this.subbuilding != newVal) {
-                if (newVal > oldVal) {
+                if (newVal >= oldVal) {
                     const loop = newVal - this.subbuilding;
-                    if (loop >= 1) {
+                    if (loop > 0) {
                         for (var i = 0; i < loop; i++) {
                             this.form.subbuilding.push({
                                 projectName: "",
-                                floorSum: 0,
-                                roomSum: 0
+                                floorSum: "",
+                                roomSum: ""
                             });
                         }
                     }
                 } else if (newVal < oldVal) {
                     const loop = this.subbuilding - newVal;
-                    console.log("onSubBuildingUpdate else" + loop);
-                    if (newVal == 1) {
-                        this.form.subbuilding = [];
-                    }
-                    if (loop >= 1) {
+                    if (loop > 0) {
                         for (var i = 0; i < loop; i++) {
                             this.form.subbuilding.pop();
                         }
@@ -1223,6 +1219,35 @@ export default {
                 }
             }
         },
+    // methods: {
+    //     onSubBuildingUpdate(newVal, oldVal) {
+    //         console.log(newVal, oldVal);
+    //         if (this.subbuilding != newVal) {
+    //             if (newVal > oldVal) {
+    //                 const loop = newVal - this.subbuilding;
+    //                 if (loop >= 1) {
+    //                     for (var i = 0; i < loop; i++) {
+    //                         this.form.subbuilding.push({
+    //                             projectName: "",
+    //                             floorSum: 0,
+    //                             roomSum: 0
+    //                         });
+    //                     }
+    //                 }
+    //             } else if (newVal < oldVal) {
+    //                 const loop = this.subbuilding - newVal;
+    //                 console.log("onSubBuildingUpdate else" + loop);
+    //                 if (newVal == 1) {
+    //                     this.form.subbuilding = [];
+    //                 }
+    //                 if (loop >= 1) {
+    //                     for (var i = 0; i < loop; i++) {
+    //                         this.form.subbuilding.pop();
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     },
         select(address) {
             this.form.districtName = address.district;
             this.form.countyName = address.amphoe;
@@ -1745,3 +1770,4 @@ export default {
     }
 };
 </script>
+
