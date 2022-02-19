@@ -24,19 +24,15 @@ class CreateBuildingsTable extends Migration
             $table->bigInteger('areaTrue_id')->unsigned();//รหัส_พื้นที่ทรู
             $table->bigInteger('areaTrueNew_id')->unsigned();//รหัส_พื้นที่ทรูใหม่
             $table->bigInteger('areaFibernet_id')->unsigned();//รหัส_พื้นที่ทไฟเน็ต
+            $table->bigInteger('areaTxrx_id')->unsigned();//รหัส_พื้นที่ททีเอกอาเอก
+            $table->bigInteger('areaSyphony_id')->unsigned();//รหัส_พื้นที่ทซิมโฟนี่
             $table->string('projectName')->nullable();//ชื่ออาคาร
             $table->string('subBuildingsum')->nullable();//อาคารทั้งหมด
             $table->string('floorSum')->nullable();//ชั้นทั้งหมด
             $table->string('roomSum')->nullable();//ห้องทั้งหมด
-            // $table->string('nameManager')->nullable();//ชื่อผู้จัดการ
-            // $table->string('phoneManager')->nullable();//เบอร์โทรผู้จัดการ
-            // $table->string('mailManager')->nullable();//เมลล์โทรผู้จัดการ
             $table->string('nameNiti')->nullable();//ชื่อนิติบุคคล
             $table->string('phoneNiti')->nullable();//เบอร์์นิติบุคคล
             $table->string('mailNiti')->nullable();//เมลล์์นิติบุคคล
-            // $table->string('nameTechnician')->nullable();//ชื่อช่าง
-            // $table->string('phoneTechnician')->nullable();//เบอร์์ช่าง
-            // $table->string('mailTechnician')->nullable();//เมลล์์ช่าง
             $table->string('houseNumber')->nullable();//บ้านเลขที่
             $table->string('squadNumber')->nullable();//หมู่
             $table->string('alleyName')->nullable();//ซอย
@@ -61,10 +57,6 @@ class CreateBuildingsTable extends Migration
             $table->softDeletes();
 
 
-            // $table->foreign('technician_id')
-            // ->references('id')
-            // ->on('technicians')
-            // ->onDelete('cascade');
 
             $table->foreign('areas_id')
             ->references('id')
@@ -97,6 +89,16 @@ class CreateBuildingsTable extends Migration
             ->onDelete('cascade');
 
             $table->foreign('areaFibernet_id')
+            ->references('id')
+            ->on('area_fiber_nets')
+            ->onDelete('cascade');
+
+            $table->foreign('areaTxrx_id')
+            ->references('id')
+            ->on('area_fiber_nets')
+            ->onDelete('cascade');
+
+            $table->foreign('areaSyphony_id')
             ->references('id')
             ->on('area_fiber_nets')
             ->onDelete('cascade');
