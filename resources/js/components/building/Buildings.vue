@@ -244,7 +244,6 @@
                                         </div>
                                         <div class="col-sm-5">
                                             <div class="input-group">
-
                                                 <input
                                                     v-model="item.projectName"
                                                     type="text"
@@ -307,7 +306,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                        <label>Corporation Name</label>
+                                            <label>Corporation Name</label>
                                             <small>/ชื่อนิติบุคคล</small>
                                             <input
                                                 v-model="form.nameNiti"
@@ -328,7 +327,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                        <label>Corporation Phone</label>
+                                            <label>Corporation Phone</label>
                                             <small>/เบอร์โทรนิติบุคคล</small>
                                             <vue-phone-number-input
                                                 v-model="form.phoneNiti"
@@ -362,7 +361,7 @@
                                     <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
-                                        <label>Corporation Mail</label>
+                                            <label>Corporation Mail</label>
                                             <small>/เมลล์นิติบุคคล</small>
                                             <input
                                                 v-model="form.mailNiti"
@@ -385,7 +384,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                        <label>House Number</label>
+                                            <label>House Number</label>
                                             <small>/บ้านเลขที่</small>
                                             <input
                                                 v-model="form.houseNumber"
@@ -406,7 +405,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                        <label>Squad</label>
+                                            <label>Squad</label>
                                             <small>/หมู่</small>
                                             <input
                                                 v-model="form.squadNumber"
@@ -427,7 +426,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                        <label>Alley</label>
+                                            <label>Alley</label>
                                             <small>/ซอย</small>
                                             <input
                                                 v-model="form.alleyName"
@@ -448,7 +447,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                        <label>Road</label>
+                                            <label>Road</label>
                                             <small>/ซอย</small>
                                             <input
                                                 v-model="form.roadName"
@@ -471,7 +470,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                         <label>District</label>
+                                            <label>District</label>
                                             <small>/ตำบล</small>
                                             <ThailandAutoComplete
                                                 v-model="form.districtName"
@@ -490,7 +489,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                        <label>County</label>
+                                            <label>County</label>
                                             <small>/อำเภอ</small>
                                             <ThailandAutoComplete
                                                 v-model="form.countyName"
@@ -511,7 +510,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                        <label>ProvinceN</label>
+                                            <label>ProvinceN</label>
                                             <small>/จังหวัด</small>
                                             <ThailandAutoComplete
                                                 v-model="form.provinceName"
@@ -531,7 +530,7 @@
                                     <div class="col-lg-6">
                                         <!-- text input -->
                                         <div class="form-group">
-                                        <label>PostalCode</label>
+                                            <label>PostalCode</label>
                                             <small>/รหัสไปรษณีย์</small>
                                             <ThailandAutoComplete
                                                 v-model="form.postalCode"
@@ -554,7 +553,7 @@
                                 >
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                        <label>latitude</label>
+                                            <label>latitude</label>
                                             <small>/ละติจูด</small>
                                             <input
                                                 v-model="form.latitude"
@@ -575,7 +574,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                        <label>longitude</label>
+                                            <label>longitude</label>
                                             <small>/ลองจิจูด</small>
                                             <div class="input-group mb-3">
                                                 <input
@@ -602,7 +601,7 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                        <label>SaleFm</label>
+                                            <label>SaleFm</label>
                                             <small>/เซลล์</small>
                                             <select
                                                 class="form-control"
@@ -627,7 +626,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                        <label>Contract StartDate</label>
+                                            <label>Contract StartDate</label>
                                             <small>/วันเริ่มสัญญา</small>
                                             <input
                                                 v-model="form.contractStartDate"
@@ -648,7 +647,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                        <label>Contract EndDate</label>
+                                            <label>Contract EndDate</label>
                                             <small>/วันสิ้นสุดสัญญา</small>
                                             <input
                                                 ref="contractEndDate"
@@ -670,7 +669,7 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                        <label>Payment Type</label>
+                                            <label>Payment Type</label>
                                             <small>/รูปแบบการชำระรายได้</small>
                                             <select
                                                 class="form-control"
@@ -681,7 +680,7 @@
                                                 </option>
                                                 <option
                                                     :value="item.id"
-                                                    v-for="item in paymentTypes"
+                                                    v-for="item in spendSpaces"
                                                     :key="item.id"
                                                 >
                                                     {{ item.paymentType }}
@@ -697,30 +696,37 @@
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                        <label>Contract Term</label>
+                                            <label>Contract Term</label>
                                             <small>/ระยะเวลสัญญา</small>
                                             <div class="input-group mb-3">
-                                                <input
-                                                    v-model="form.contractTerm"
-                                                    type="text"
+                                                <select
                                                     class="form-control"
-                                                    placeholder="ระยะเวลสัญญา"
-                                                    :class="{
-                                                        'is-invalid': form.errors.has(
-                                                            'contractTerm'
-                                                        )
-                                                    }"
-                                                />
+                                                    v-model="
+                                                        form.contractTerm_id
+                                                    "
+                                                >
+                                                    <option disabled value="">
+                                                        --- Select a Class ---
+                                                    </option>
+                                                    <option
+                                                        :value="item.id"
+                                                        v-for="item in contractTerms"
+                                                        :key="item.id"
+                                                    >
+                                                        {{ item.contractTerm }}
+                                                    </option>
+                                                </select>
+                                                <has-error
+                                                    :form="form"
+                                                    field="contractTerm"
+                                                ></has-error>
                                             </div>
-                                            <has-error
-                                                :form="form"
-                                                field="contractTerm"
-                                            ></has-error>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                        <label>Balance</label>
+                                            <label>Balance</label>
                                             <small>/ยอดเงิน</small>
                                             <input
                                                 v-model="form.balance"
@@ -741,14 +747,14 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                        <label>Balance</label>
+                                            <label>Balance</label>
                                             <small>/ยอดเงิน</small>
                                             <select
                                                 type="text"
                                                 class="form-control"
                                                 v-model="form.spendSpace"
                                             >
-                                                 <option disabled value=""
+                                                <option disabled value=""
                                                     >--- Select Type ---</option
                                                 >
                                                 <option value="ทำสัญญาแล้ว"
@@ -768,7 +774,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                        <label>Remark Contract</label>
+                                            <label>Remark Contract</label>
                                             <small>/รีมาค</small>
                                             <textarea
                                                 id="remark"
@@ -972,6 +978,56 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
+                                            <label>Area Txrx</label><br />
+                                            <small>/พื้นที่ ทีเอ็กอาเอ็ก</small>
+                                            <select
+                                                class="form-control"
+                                                v-model="form.areaTxrx_id"
+                                            >
+                                                <option value="" disabled>
+                                                    --- Select a Class ---
+                                                </option>
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in areaTxrxs"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.areaTxrx }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="areaTxrx"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Area Symphony</label><br />
+                                            <small>/พื้นที่ ซิมโฟนี่</small>
+                                            <select
+                                                class="form-control"
+                                                v-model="form.areaSymphony_id"
+                                            >
+                                                <option value="" disabled>
+                                                    --- Select a Class ---
+                                                </option>
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in areaSymphonys"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.areaSymphony }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="areaSymphony"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
                                             <label>Operating Time</label><br />
                                             <small>/เวลาการเข้างาน</small>
                                             <select
@@ -1101,8 +1157,11 @@ export default {
             areaTrueNews: [],
             areaAises: [],
             areaFiberNets: [],
+            areaTxrxs: [],
+            areaSymphonys: [],
             workTimes: [],
             spendSpaces: [],
+            contractTerms: [],
             saleFms: [],
             form: new Form({
                 id: "",
@@ -1113,6 +1172,9 @@ export default {
                 areaTrueNew_id: "",
                 areaAis_id: "",
                 areaFibernet_id: "",
+                areaTxrx_id: "",
+                areaSymphony_id: "",
+                contractTerm_id: "",
                 projectName: "",
                 subBuildingsum: 0,
                 floorSum: 0,
@@ -1194,7 +1256,7 @@ export default {
             }
         }
     },
-     methods: {
+    methods: {
         onSubBuildingUpdate(newVal, oldVal) {
             console.log(newVal, oldVal);
             if (this.subbuilding != newVal) {
@@ -1219,35 +1281,35 @@ export default {
                 }
             }
         },
-    // methods: {
-    //     onSubBuildingUpdate(newVal, oldVal) {
-    //         console.log(newVal, oldVal);
-    //         if (this.subbuilding != newVal) {
-    //             if (newVal > oldVal) {
-    //                 const loop = newVal - this.subbuilding;
-    //                 if (loop >= 1) {
-    //                     for (var i = 0; i < loop; i++) {
-    //                         this.form.subbuilding.push({
-    //                             projectName: "",
-    //                             floorSum: 0,
-    //                             roomSum: 0
-    //                         });
-    //                     }
-    //                 }
-    //             } else if (newVal < oldVal) {
-    //                 const loop = this.subbuilding - newVal;
-    //                 console.log("onSubBuildingUpdate else" + loop);
-    //                 if (newVal == 1) {
-    //                     this.form.subbuilding = [];
-    //                 }
-    //                 if (loop >= 1) {
-    //                     for (var i = 0; i < loop; i++) {
-    //                         this.form.subbuilding.pop();
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     },
+        // methods: {
+        //     onSubBuildingUpdate(newVal, oldVal) {
+        //         console.log(newVal, oldVal);
+        //         if (this.subbuilding != newVal) {
+        //             if (newVal > oldVal) {
+        //                 const loop = newVal - this.subbuilding;
+        //                 if (loop >= 1) {
+        //                     for (var i = 0; i < loop; i++) {
+        //                         this.form.subbuilding.push({
+        //                             projectName: "",
+        //                             floorSum: 0,
+        //                             roomSum: 0
+        //                         });
+        //                     }
+        //                 }
+        //             } else if (newVal < oldVal) {
+        //                 const loop = this.subbuilding - newVal;
+        //                 console.log("onSubBuildingUpdate else" + loop);
+        //                 if (newVal == 1) {
+        //                     this.form.subbuilding = [];
+        //                 }
+        //                 if (loop >= 1) {
+        //                     for (var i = 0; i < loop; i++) {
+        //                         this.form.subbuilding.pop();
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     },
         select(address) {
             this.form.districtName = address.district;
             this.form.countyName = address.amphoe;
@@ -1292,6 +1354,26 @@ export default {
         loadAreaFiberNet() {
             axios.get("/areaFiberNets").then(response => {
                 this.areaFiberNets = response.data.data;
+            });
+        },
+        loadAreaTxrx() {
+            axios.get("/areaTxrxs").then(response => {
+                this.areaTxrxs = response.data.data;
+            });
+        },
+        loadAreaSymphony() {
+            axios.get("/areaSymphonys").then(response => {
+                this.areaSymphonys = response.data.data;
+            });
+        },
+        loadContractTerm() {
+            axios.get("/contractTerms").then(response => {
+                this.contractTerms = response.data.data;
+            });
+        },
+        paymentType() {
+            axios.get("/workTimes").then(response => {
+                this.workTimes = response.data.data;
             });
         },
         loadWorkTime() {
@@ -1756,8 +1838,11 @@ export default {
         this.loadArea3BB();
         this.loadAreaTrue();
         this.loadAreaTrueNew();
+        this.loadAreaTxrx();
+        this.loadAreaSymphony();
         this.loadAreaAis();
         this.loadAreaFiberNet();
+        this.loadContractTerm();
         this.loadWorkTime();
         this.generateTable();
         // $("#addNew").on("hide.bs.modal", function() {
@@ -1770,4 +1855,3 @@ export default {
     }
 };
 </script>
-

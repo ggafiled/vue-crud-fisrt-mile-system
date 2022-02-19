@@ -17,13 +17,19 @@ class AreaTxrxSeeder extends Seeder
     {
         $AreaTxrxs = [
             [
-                'AreaAis' => 'YES',
+                'AreaTxrx' => 'YES',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
             ],
             [
-                'AreaAis' => 'N/A',
+                'AreaTxrx' => 'No',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+
+            ],
+            [
+                'AreaTxrx' => 'N/A',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
 

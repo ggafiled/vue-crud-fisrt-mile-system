@@ -26,6 +26,7 @@ class CreateBuildingsTable extends Migration
             $table->bigInteger('areaFibernet_id')->unsigned();//รหัส_พื้นที่ทไฟเน็ต
             $table->bigInteger('areaTxrx_id')->unsigned();//รหัส_พื้นที่ททีเอกอาเอก
             $table->bigInteger('areaSyphony_id')->unsigned();//รหัส_พื้นที่ทซิมโฟนี่
+            $table->bigInteger('contractTerm_id')->unsigned();//อายุสัญญา
             $table->string('projectName')->nullable();//ชื่ออาคาร
             $table->string('subBuildingsum')->nullable();//อาคารทั้งหมด
             $table->string('floorSum')->nullable();//ชั้นทั้งหมด
@@ -46,7 +47,7 @@ class CreateBuildingsTable extends Migration
             $table->date('contractStartDate')->nullable();//วันทำสัญยา
             $table->bigInteger('paymentType_id')->unsigned();//รหัส_ชนิดค่าใช้พื้นที่
             $table->bigInteger('saleFm_id')->unsigned();//รหัส_รายชื่อเซลล์
-            $table->string('contractTerm')->nullable();//อายุสัญญา
+            // $table->string('contractTerm')->nullable();//อายุสัญญา
             $table->date('contractEndDate')->nullable();//วันสิ้นสุดสัญญา
             $table->string('balance')->nullable();//ยอดเงิน
             $table->string('remarkContract')->nullable();//รายละเอียดสัญญา
@@ -95,12 +96,17 @@ class CreateBuildingsTable extends Migration
 
             $table->foreign('areaTxrx_id')
             ->references('id')
-            ->on('area_fiber_nets')
+            ->on('area_txrxes')
             ->onDelete('cascade');
 
             $table->foreign('areaSyphony_id')
             ->references('id')
-            ->on('area_fiber_nets')
+            ->on('area_symphonies')
+            ->onDelete('cascade');
+
+            $table->foreign('contractTerm_id')
+            ->references('id')
+            ->on('contract_terms')
             ->onDelete('cascade');
 
             $table->foreign('paymentType_id')

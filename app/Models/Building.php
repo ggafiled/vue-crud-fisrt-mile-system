@@ -21,6 +21,9 @@ class Building extends Model
         'areaTrue_id',
         'areaTrueNew_id',
         'areaFibernet_id',
+        'areaTxrx_id',
+        'areaSyphony_id',
+        'contractTerm_id',
         'projectName',
         'subBuildingsum',
         'floorSum',
@@ -47,7 +50,7 @@ class Building extends Model
         'contractStartDate',
         'paymentType_id',
         'saleFm_id',
-        'contractTerm',
+        // 'contractTerm',
         'contractEndDate',
         'balance',
         'remarkContract',
@@ -145,6 +148,21 @@ class Building extends Model
     public function areaFibernet()
     {
         return $this->hasOne('App\Models\AreaFiberNet', 'id', 'areaFibernet_id');
+    }
+
+    public function areaTxrx()
+    {
+        return $this->hasOne('App\Models\AreaTxrx', 'id', 'areaTxrx_id');
+    }
+
+    public function areaSymphony()
+    {
+        return $this->hasOne('App\Models\AreaSymphony', 'id', 'areaSymphony_id');
+    }
+
+    public function ContractTerm()
+    {
+        return $this->hasOne('App\Models\ContractTerm', 'id', 'contractTerm_id');
     }
 
     public function workTime()

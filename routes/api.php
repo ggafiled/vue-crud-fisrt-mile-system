@@ -36,6 +36,9 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('areaTrueNews', 'AreaTrueNewController@index');
     Route::get('areaAises', 'AreaAisController@index');
     Route::get('areaFiberNets', 'AreaFiberNetController@index');
+    Route::get('areaTxrxs', 'AreaTxrxController@index');
+    Route::get('areaSymphonys', 'AreaSymphonyController@index');
+    Route::get('contractTerms', 'ContractTermController@index');
     Route::get('workTimes', 'WorkTimeController@index');
     Route::get('saleFms', 'NameSaleController@index');
     Route::get('spendSpaces', 'PaymentController@index');
@@ -71,6 +74,9 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'areatruenew' => 'AreaTrueNewController',
         'areaais' => 'AreaAisController',
         'areafibernet' => 'AreaFiberNetController',
+        'areatxrx' => 'AreaTxrxController',
+        'areasymphony' => 'AreaSymphonyController',
+        'contractterm' => 'ContractTermController',
         'worktime' => 'WorkTimeController',
         'payment' => 'PaymentController',
         'salefm' => 'NameSaleController',
