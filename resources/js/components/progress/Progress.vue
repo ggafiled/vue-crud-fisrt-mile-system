@@ -46,6 +46,8 @@
                     <th>TRUE-Date</th>
                     <th>TXRX-Progress</th>
                     <th>TXRX-Date</th>
+                    <th>SYMPHONY-Progress</th>
+                    <th>SYMPHONY-Date</th>
                     <th>Create At</th>
                     <th>Update At</th>
                     <th>Action</th>
@@ -231,6 +233,45 @@
                   </div>
                 </div>
 
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <!-- ******************* EDIT TO SELECTION ******************* -->
+
+                      <label>True Progress :</label>
+                      <select
+                        class="form-control"
+                        v-model="form.trueProgress_id"
+                      >
+                        <option disabled value="">Select a Class</option>
+                        <option
+                          :value="item.id"
+                          v-for="item in generatingactions"
+                          :key="item.id"
+                        >
+                          {{ item.status }}
+                        </option>
+                      </select>
+                      <has-error :form="form" field="trueProgress"></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>True วันวางโครงข่าย :</label>
+                      <input
+                        v-model="form.dateTrue"
+                        type="date"
+                        class="form-control datepicker"
+                        placeholder="Enter your dateTrue..."
+                        :class="{
+                          'is-invalid': form.errors.has('dateTrue'),
+                        }"
+                      />
+                      <has-error :form="form" field="dateTrue"></has-error>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="row"> 
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -265,6 +306,41 @@
                         }"
                       />
                       <has-error :form="form" field="date3BB"></has-error>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>FiberNet Progress :</label>
+                      <select class="form-control" v-model="form.fnProgress_id">
+                        <option disabled value="">Select a Class</option>
+                        <option
+                          :value="item.id"
+                          v-for="item in generatingactions"
+                          :key="item.id"
+                        >
+                          {{ item.status }}
+                        </option>
+                      </select>
+                      <has-error :form="form" field="fnProgress"></has-error>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>FiberNet วันวางโครงข่าย :</label>
+                      <input
+                        v-model="form.dateFn"
+                        type="date"
+                        class="form-control datepicker"
+                        placeholder="Enter your dateSinet..."
+                        :class="{
+                          'is-invalid': form.errors.has('dateSinet'),
+                        }"
+                      />
+                      <has-error :form="form" field="dateFn"></has-error>
                     </div>
                   </div>
                 </div>
@@ -309,47 +385,10 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>FiberNet Progress :</label>
-                      <select class="form-control" v-model="form.fnProgress_id">
-                        <option disabled value="">Select a Class</option>
-                        <option
-                          :value="item.id"
-                          v-for="item in generatingactions"
-                          :key="item.id"
-                        >
-                          {{ item.status }}
-                        </option>
-                      </select>
-                      <has-error :form="form" field="fnProgress"></has-error>
-                    </div>
-                  </div>
-
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label>FiberNet วันวางโครงข่าย :</label>
-                      <input
-                        v-model="form.dateFn"
-                        type="date"
-                        class="form-control datepicker"
-                        placeholder="Enter your dateSinet..."
-                        :class="{
-                          'is-invalid': form.errors.has('dateSinet'),
-                        }"
-                      />
-                      <has-error :form="form" field="dateFn"></has-error>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <!-- ******************* EDIT TO SELECTION ******************* -->
-
-                      <label>True Progress :</label>
+                      <label>Symphony Progress :</label>
                       <select
                         class="form-control"
-                        v-model="form.trueProgress_id"
+                        v-model="form.symphonyProgress_id"
                       >
                         <option disabled value="">Select a Class</option>
                         <option
@@ -360,28 +399,50 @@
                           {{ item.status }}
                         </option>
                       </select>
-                      <has-error :form="form" field="trueProgress"></has-error>
+                      <has-error :form="form" field="txrtProgress"></has-error>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>True วันวางโครงข่าย :</label>
+                      <label>Symphony วันวางโครงข่าย :</label>
                       <input
-                        v-model="form.dateTrue"
+                        v-model="form.dateSymphony"
                         type="date"
                         class="form-control datepicker"
-                        placeholder="Enter your dateTrue..."
+                        placeholder="Enter your date Symphony..."
                         :class="{
-                          'is-invalid': form.errors.has('dateTrue'),
+                          'is-invalid': form.errors.has('dateTxrx'),
                         }"
                       />
-                      <has-error :form="form" field="dateTrue"></has-error>
+                      <has-error :form="form" field="dateSymphony"></has-error>
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-12">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Zone Progress</label>
+                      <select
+                        v-model="form.zones"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your type..."
+                        :class="{
+                          'is-invalid': form.errors.has('statusProgress'),
+                        }"
+                      >
+                        <option disabled value="">--- Select Type ---</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Unready">Unready</option>
+                      </select>
+                      <has-error
+                        :form="form"
+                        field="statusProgress"
+                      ></has-error>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <label>Status Progress</label>
                       <select
@@ -464,6 +525,7 @@ export default {
         fnProgress_id: "", //modelGeneratingaction->modelProgress GET field status
         trueProgress_id: "", //modelGeneratingaction->modelProgress GET field status
         txrtProgress_id: "", //modelGeneratingaction->modelProgress GET field status
+        symphonyProgress_id: "", //modelGeneratingaction->modelProgress GET field status
         projectName: "",
         fmProgress: "",
         totProgress: "",
@@ -473,6 +535,7 @@ export default {
         fnProgress: "",
         trueProgress: "",
         txrtProgress: "",
+        symphonyProgress: "",
         dateFm: new Date().toISOString().slice(0, 10),
         dateTot: new Date().toISOString().slice(0, 10),
         dateAis: new Date().toISOString().slice(0, 10),
@@ -481,6 +544,7 @@ export default {
         dateFn: new Date().toISOString().slice(0, 10),
         dateTrue: new Date().toISOString().slice(0, 10),
         dateTxrx: new Date().toISOString().slice(0, 10),
+        dateSymphony: new Date().toISOString().slice(0, 10),
       }),
     };
   },
@@ -497,6 +561,11 @@ export default {
     loadGeneratingaction() {
       axios.get("/generatingactions").then((response) => {
         this.generatingactions = response.data.data;
+      });
+    },
+    loadGeneratingaction() {
+      axios.get("/zones").then((response) => {
+        this.zones = response.data.data;
       });
     },
     loadBuildings() {
@@ -836,6 +905,21 @@ export default {
           },
           {
             data: "dateTrue",
+          },
+           {
+            data: "true_symphony.name",
+            render: function (data, type, row, meta) {
+              if (data == "") {
+                return (
+                  '<span class="text-danger">' + "ไม่ได้กรอกข้อมูล" + "</span>"
+                );
+              } else {
+                return "<span>" + data + "</span>";
+              }
+            },
+          },
+          {
+            data: "dateSymphony",
           },
           {
             data: "created_at",

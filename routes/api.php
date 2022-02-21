@@ -38,6 +38,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('areaFiberNets', 'AreaFiberNetController@index');
     Route::get('areaTxrxs', 'AreaTxrxController@index');
     Route::get('areaSymphonys', 'AreaSymphonyController@index');
+    Route::get('zones', 'ZoneController@index');
     Route::get('contractTerms', 'ContractTermController@index');
     Route::get('workTimes', 'WorkTimeController@index');
     Route::get('saleFms', 'NameSaleController@index');
@@ -76,6 +77,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'areafibernet' => 'AreaFiberNetController',
         'areatxrx' => 'AreaTxrxController',
         'areasymphony' => 'AreaSymphonyController',
+        'zone' => 'ZoneController',
         'contractterm' => 'ContractTermController',
         'worktime' => 'WorkTimeController',
         'payment' => 'PaymentController',

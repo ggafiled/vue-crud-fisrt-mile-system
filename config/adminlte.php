@@ -422,6 +422,14 @@ return [
             'roles' => ['superadministrator'],
             'active_url' => 'settings',
         ],
+        [
+            'text' => 'Zone Management',
+            'url' => '/settings?tab=building',
+            'icon' => 'bi bi-gear-fill',
+            'roles' => ['superadministrator'],
+            'active_url' => 'settings',
+        ],
+
 
     ],
 

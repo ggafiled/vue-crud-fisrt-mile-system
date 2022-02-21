@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\V1;
 use App\Models\Bbn;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\V1\BaseController;
+use Exception;
 
 class BbnController extends BaseController
 {

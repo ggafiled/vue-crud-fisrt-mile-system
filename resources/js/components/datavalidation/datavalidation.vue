@@ -169,8 +169,20 @@ export default {
                         title: "Area FiberNet(CRED)",
                         details: "แก้ไขข้อมูลพื้นที่ไฟเบอร์เน็ต"
                     },
-                    {
+                     {
                         id: 8,
+                        route: "/settings/area_txrx",
+                        title: "Area Txrx(CRED)",
+                        details: "แก้ไขข้อมูลพื้นที่ไฟเบอร์เน็ต"
+                    },
+                     {
+                        id: 9,
+                        route: "/settings/area_symphony",
+                        title: "Area Symphony(CRED)",
+                        details: "แก้ไขข้อมูลพื้นที่ไฟเบอร์เน็ต"
+                    },
+                    {
+                        id: 10,
                         route: "/settings/operating_time",
                         title: "Operating Time(CRED)",
                         details: "แก้ไขข้อมูลพื้นที่เวลาเข้างาน"

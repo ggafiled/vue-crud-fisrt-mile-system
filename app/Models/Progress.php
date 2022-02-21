@@ -13,6 +13,7 @@ class Progress extends Model
 
     protected $fillable = [
         'id',
+        'zone_id',
         'building_id',
         'constarution_id',
         'fmProgress_id',
@@ -22,6 +23,7 @@ class Progress extends Model
         'txrtProgress_id',
         'fnProgress_id',
         'trueProgress_id',
+        'symphonyProgress_id',
         'dateFm',
         'dateTot',
         'dateAis',
@@ -30,6 +32,7 @@ class Progress extends Model
         'dateFn',
         'dateTrue',
         'dateTxrx',
+        'dateSymphony',
         'statusProgress'
     ];
 
@@ -94,5 +97,10 @@ class Progress extends Model
     public function txrtProgress()
     {
         return $this->hasOne('App\Models\Generatingaction', 'id', 'txrtProgress_id');
+    }
+
+    public function zone()
+    {
+        return $this->hasOne('App\Models\Zone', 'id', 'zone_id');
     }
 }

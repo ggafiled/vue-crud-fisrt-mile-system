@@ -9,8 +9,7 @@ class Generatingaction extends Model
 {
     protected $fillable = [
         'id',
-        'status',
-
+        'status'
     ];
 
     public function progressFm()

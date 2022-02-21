@@ -30,4 +30,59 @@ class AreaTxrxController extends BaseController
             return $this->sendError([], trans('actions.get.failed'));
         }
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        try {
+            $areaTxrx = new AreaTxrx([
+                'AreaTxrx' => $request->input('AreaTxrx'),
+            ]);
+            $areaTxrx->save();
+            return $this->sendResponse($areaTxrx, trans('actions.created.success'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.created.failed'));
+        }
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        try {
+            $areaTxrx = AreaTxrx::find($id);
+            $areaTxrx->update($request->all());
+            return $this->sendResponse($areaTxrx, trans('actions.updated.success'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.updated.failed'));
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        try {
+            $areaTxrx = AreaTxrx::find($id);
+            $areaTxrx->delete();
+            return $this->sendResponse($areaTxrx, trans('actions.destroy.success'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.destroy.failed'));
+        }
+    }
 }

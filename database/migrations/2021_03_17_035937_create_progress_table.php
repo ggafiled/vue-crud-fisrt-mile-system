@@ -17,6 +17,7 @@ class CreateProgressTable extends Migration
         Schema::create('progress', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned()->nullable();
+            $table->bigInteger('zone_id')->unsigned()->nullable();
             $table->bigInteger('constarution_id')->unsigned()->nullable();
             $table->bigInteger('fmProgress_id')->unsigned()->nullable();
             $table->bigInteger('aisProgress_id')->unsigned()->nullable();
@@ -26,6 +27,7 @@ class CreateProgressTable extends Migration
             $table->bigInteger('fnProgress_id')->unsigned()->nullable();
             $table->bigInteger('trueProgress_id')->unsigned()->nullable();
             $table->bigInteger('txrtProgress_id')->unsigned()->nullable();
+            $table->bigInteger('symphonyProgress_id')->unsigned()->nullable();
             // $table->string('fmProgress')->nullable();
             $table->date('dateFm')->nullable();
             // $table->string('totProgress')->nullable();
@@ -41,6 +43,7 @@ class CreateProgressTable extends Migration
             // $table->string('trueProgress')->nullable();
             $table->date('dateTrue')->nullable();
             $table->date('dateTxrx')->nullable();
+            $table->date('dateSymphony')->nullable();
             $table->string('statusProgress')->nullable();//สถานะตึก
             $table->timestamps();
             $table->softDeletes();
@@ -82,6 +85,11 @@ class CreateProgressTable extends Migration
                 ->onDelete('cascade');
 
             $table->foreign('txrtProgress_id')
+                ->references('id')
+                ->on('generatingactions')
+                ->onDelete('cascade');
+
+            $table->foreign('symphonyProgress_id')
                 ->references('id')
                 ->on('generatingactions')
                 ->onDelete('cascade');

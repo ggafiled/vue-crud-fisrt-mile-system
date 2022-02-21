@@ -260,6 +260,16 @@ export default [{
                     .default
             },
             {
+                path: "area_txrx",
+                component: require("./components/datavalidation/building/AreaTxrx.vue")
+                    .default
+            },
+            {
+                path: "area_symphony",
+                component: require("./components/datavalidation/building/AreaSymphony.vue")
+                    .default
+            },
+            {
                 path: "area_fibernet",
                 component: require("./components/datavalidation/building/AreaFibernet.vue")
                     .default

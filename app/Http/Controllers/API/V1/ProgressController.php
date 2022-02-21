@@ -35,7 +35,8 @@ class ProgressController extends BaseController
             'Progress3bb:id,status as name',
             'fnProgress:id,status as name',
             'trueProgress:id,status as name',
-            'txrtProgress:id,status as name'
+            'txrtProgress:id,status as name',
+            'symphonyProgress:id,status as name'
             )->get();
             return $this->sendResponse($progress, trans('actions.get.success'));
         } catch (Exception $ex) {
@@ -83,6 +84,7 @@ class ProgressController extends BaseController
                 'fnProgress_id' => $request->input('fnProgress_id'),
                 'trueProgress_id' => $request->input('trueProgress_id'),
                 'txrtProgress_id' => $request->input('txrtProgress_id'),
+                'symphonyProgress_id' => $request->input('symphonyProgress_id'),
                 'dateFm' => $request->input('dateFm'),
                 'dateTot' => $request->input('dateTot'),
                 'dateAis' => $request->input('dateAis'),
@@ -91,6 +93,7 @@ class ProgressController extends BaseController
                 'dateFn' => $request->input('dateFn'),
                 'dateTrue' => $request->input('dateTrue'),
                 'dateTxrx' => $request->input('dateTxrx'),
+                'dateSymphony' => $request->input('dateSymphony'),
                 'statusProgress' => $request->input('statusProgress')
             ]);
             $progress->save();

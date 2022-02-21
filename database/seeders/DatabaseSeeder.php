@@ -41,6 +41,8 @@ class DatabaseSeeder extends Seeder
         $this->call(WorkTimeSeeder::class);
         $this->call(AreaSeeder::class);
         $this->call(BbnSeeder::class);
+        $this->call(ZoneSeeder::class);
+        $this->call(TeamZoneSeeder::class);
         $this->call(AgentSeeder::class);
         $this->call(LaratrustSeeder::class);
         // $this->call(AreaSeeder::class);
