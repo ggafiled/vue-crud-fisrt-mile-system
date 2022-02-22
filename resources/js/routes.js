@@ -222,6 +222,29 @@ export default [{
         }
     },
     {
+        path: "/zone_management",
+        component: require("./components/zonemanagement/zonemanagementCRED/zonemanagement.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user"]
+        }
+    },
+    {
+        path: "/zones",
+        component: require("./components/zonemanagement/zone.vue")
+            .default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user"]
+        },
+        children: [{
+                path: "zone_management",
+                component: require("./components/zonemanagement/zonemanagementCRED/zonemanagement.vue")
+                    .default
+            }
+        ]
+    },
+    {
         path: "/settings",
         component: require("./components/datavalidation/Datavalidation.vue")
             .default,
@@ -326,5 +349,6 @@ export default [{
             }
         ]
     },
+    
     { path: "*", component: require("./components/NotFound.vue").default }
 ];

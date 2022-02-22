@@ -24,4 +24,5 @@ class TeamZoneController extends BaseController
             return $this->sendError([], trans('actions.get.fialed'));
         }
     }
+
 }

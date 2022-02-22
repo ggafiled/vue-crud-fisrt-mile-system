@@ -85,4 +85,5 @@ class ZoneController extends BaseController
             return $this->sendError([], trans('actions.destroy.fialed'));
         }
     }
+
 }

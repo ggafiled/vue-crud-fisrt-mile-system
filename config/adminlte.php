@@ -424,9 +424,9 @@ return [
         ],
         [
             'text' => 'Zone Management',
-            'url' => '/settings?tab=building',
-            'icon' => 'bi bi-gear-fill',
-            'roles' => ['superadministrator'],
+            'url' => '/zones',
+            'icon' => 'bi bi-people-fill',
+            'roles' => ['superadministrator', 'administrator',],
             'active_url' => 'settings',
         ],
 
