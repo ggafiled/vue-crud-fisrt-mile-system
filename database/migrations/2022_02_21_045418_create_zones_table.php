@@ -18,6 +18,7 @@ class CreateZonesTable extends Migration
             $table->string('zoneName')->nullable();
             $table->string('zoneTel')->nullable();
             $table->string('zoneEmail')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

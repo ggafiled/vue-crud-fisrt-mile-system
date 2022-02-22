@@ -424,21 +424,21 @@
                     <div class="form-group">
                       <label>Zone Progress</label>
                       <select
-                        v-model="form.zones"
-                        type="text"
                         class="form-control"
-                        placeholder="Enter your type..."
-                        :class="{
-                          'is-invalid': form.errors.has('statusProgress'),
-                        }"
+                        v-model="form.zone_id"
                       >
-                        <option disabled value="">--- Select Type ---</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Unready">Unready</option>
+                        <option disabled value="">Select a Class</option>
+                        <option
+                          :value="item.id"
+                          v-for="item in zones"
+                          :key="item.id"
+                        >
+                          {{ item.zoneName }}
+                        </option>
                       </select>
                       <has-error
                         :form="form"
-                        field="statusProgress"
+                        field="zone"
                       ></has-error>
                     </div>
                   </div>
@@ -507,6 +507,7 @@ export default {
       selected: "",
       building: [],
       generatingactions: [],
+      zones: [],
       settings: {
         placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
         allowClear: false,
@@ -526,6 +527,7 @@ export default {
         trueProgress_id: "", //modelGeneratingaction->modelProgress GET field status
         txrtProgress_id: "", //modelGeneratingaction->modelProgress GET field status
         symphonyProgress_id: "", //modelGeneratingaction->modelProgress GET field status
+        zone_id: "",
         projectName: "",
         fmProgress: "",
         totProgress: "",
@@ -535,6 +537,7 @@ export default {
         fnProgress: "",
         trueProgress: "",
         txrtProgress: "",
+        zone:"",
         symphonyProgress: "",
         dateFm: new Date().toISOString().slice(0, 10),
         dateTot: new Date().toISOString().slice(0, 10),
@@ -563,7 +566,7 @@ export default {
         this.generatingactions = response.data.data;
       });
     },
-    loadGeneratingaction() {
+    loadZone() {
       axios.get("/zones").then((response) => {
         this.zones = response.data.data;
       });
@@ -1007,6 +1010,7 @@ export default {
   mounted() {
     this.loadGeneratingaction();
     this.generateTable();
+    this.loadZone();
     this.setSearchText(this.$route.query);
     $(".datepicker").datepicker({
       language: "th-th",

@@ -16,7 +16,7 @@ class GeneratingactionController extends BaseController
         $this->middleware('role:superadministrator|administrator')->only(['store', 'update', 'destroy']);
     }
 
- /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -31,7 +31,7 @@ class GeneratingactionController extends BaseController
         }
     }
 
-/**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

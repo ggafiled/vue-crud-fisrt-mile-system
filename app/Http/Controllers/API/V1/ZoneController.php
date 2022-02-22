@@ -23,16 +23,15 @@ class ZoneController extends BaseController
      */
     public function index()
     {
-
+        $zones = Zone::all();
+        return $this->sendResponse($zones, trans('actions.get.success'));
         try {
-            $zone = Zone::all();
-            return $this->sendResponse($zone, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.fialed'));
+            return $this->sendError([], trans('actions.get.failed'));
         }
     }
 
-     /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -52,7 +51,7 @@ class ZoneController extends BaseController
         }
     }
 
-     /**
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
