@@ -78,6 +78,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'areatxrx' => 'AreaTxrxController',
         'areasymphony' => 'AreaSymphonyController',
         'zone' => 'ZoneController',
+        'teamzone' => 'TeamZoneController',
         'contractterm' => 'ContractTermController',
         'worktime' => 'WorkTimeController',
         'payment' => 'PaymentController',

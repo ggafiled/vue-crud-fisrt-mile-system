@@ -241,6 +241,11 @@ export default [{
                 path: "zone_management",
                 component: require("./components/zonemanagement/zonemanagementCRED/zonemanagement.vue")
                     .default
+            },
+            {
+                path: "teamzone_management",
+                component: require("./components/zonemanagement/teamzonemanagementCRED/teamzonemanagement.vue")
+                    .default
             }
         ]
     },
