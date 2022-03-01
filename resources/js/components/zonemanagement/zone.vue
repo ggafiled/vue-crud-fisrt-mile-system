@@ -95,7 +95,7 @@ export default {
                 teamzone: [
                     {
                         id: 1,
-                        route: "/settings/generatingaction",
+                        route: "/zones/teamzone_management",
                         title: "Team Zone Management(CRED)",
                         details: "เพิ่มลบแก้ไขทีมประจำโซน"
                     }
