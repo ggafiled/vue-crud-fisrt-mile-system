@@ -430,12 +430,12 @@ return [
             'active_url' => 'settings',
         ],
         [
-            'text' => 'Deomo',
+            'text' => 'Demo',
             'url' => '/demo',
             'icon' => 'bi bi-people-fill',
             'roles' => ['superadministrator', 'administrator',],
             'active_url' => 'settings',
-        ],
+        ]
 
 
     ],
