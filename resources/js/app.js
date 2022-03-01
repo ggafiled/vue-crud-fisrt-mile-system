@@ -8,6 +8,7 @@ require("./bootstrap");
 
 window.Vue = require("vue");
 window.axios = require("axios");
+
 const { shortText } = require("limit-text-js");
 window.shortText = shortText;
 window.translate = require("./VueTranslation/Translation").default.translate;

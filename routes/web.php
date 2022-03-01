@@ -46,3 +46,7 @@ Route::get('/{vue_capture?}_window', function () {
 Route::get('/{vue_capture?}', function () {
     return view('home')->with("title", "Fist Mile ERP System");
 })->where('vue_capture', '[\/\w\.-]*');
+
+Route::get('file-import-export', [ContractorController::class, 'fileImportExport']);
+Route::post('file-import', [ContractorController::class, 'fileImport'])->name('file-import');
+Route::get('file-export', [ContractorController::class, 'fileExport'])->name('file-export');

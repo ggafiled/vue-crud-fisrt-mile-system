@@ -349,6 +349,15 @@ export default [{
             }
         ]
     },
-    
+
+    {
+        path: "/demo",
+        component: require("./components/importdemo/demo.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator"]
+        }
+    },
+
     { path: "*", component: require("./components/NotFound.vue").default }
 ];

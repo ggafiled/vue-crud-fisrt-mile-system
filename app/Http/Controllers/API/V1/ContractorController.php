@@ -112,4 +112,27 @@ class ContractorController extends BaseController
             return $this->sendError([], trans('actions.updated.failed'));
         }
     }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function fileImportExport()
+    {
+       return view('file-import');
+    }
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function fileImport(Request $request)
+    {
+        Excel::import(new ContractorsImport, $request->file('file')->store('temp'));
+        return back();
+    }
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function fileExport()
+    {
+        return Excel::download(new ContractorsExport, 'contractors-collection.xlsx');
+    }
 }
