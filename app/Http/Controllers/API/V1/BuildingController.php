@@ -6,6 +6,8 @@ use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Requests\Building\BuildingRequest;
 use App\Models\Building;
 use Exception;
+use App\Imports\BuildingsImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class Buildingcontroller extends BaseController
@@ -161,5 +163,17 @@ class Buildingcontroller extends BaseController
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.destroy.failed'));
         }
+    }
+
+    public function import(Request $request)
+    {
+         $request->validate([
+            'import_file' => 'required|file|mimes:xls,xlsx'
+        ]);
+
+        $path = $request->file('import_file');
+        $data = Excel::import(new BuildingsImport, $path);
+
+        return response()->json(['message' => 'uploaded successfully'], 200);
     }
 }

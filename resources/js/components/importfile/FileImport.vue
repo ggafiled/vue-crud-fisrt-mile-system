@@ -22,7 +22,7 @@
                                         & txt. Maximum file size allowed is 10MB
                                         (Megea Bytes). Please click
                                         <a
-                                            href="https://www.facebook.com/photo/?fbid=4102790519819775&set=a.102925693139631"
+                                            href="https://www.google.com/"
                                             target="_blank"
                                             >this link</a
                                         >
@@ -89,13 +89,13 @@ export default {
                 url: "/api/import/getInfo",
                 autoProcessQueue: false,
                 clickable: true,
-                thumbnailWidth: 150,
-                maxFilesize: 10000000,
+                thumbnailWidth: 200,
+                maxFilesize: 1000,
                 maxFiles: 1,
                 duplicateCheck: true,
                 addRemoveLinks: true,
                 acceptedFiles:".csv,.xlsx,.xls",
-                dictDefaultMessage: "<div class='row g-1'><div class='col-md-4 flex-grow-1'><img src='https://i.pinimg.com/originals/26/05/43/26054324d69957afdbc56e4c113592b5.png' class='img-fluid mb-3'/></div><div class='col-md-6'><div class='card-body'><br /><br /><br /><h1>Click or Drop</h1><p class='normal'style='color: Gray'>To upload your files</p></div></div></div>"
+                dictDefaultMessage: "<div class='row g-1'><div class='col-md-3 flex-grow-1'><img src='https://i.pinimg.com/originals/26/05/43/26054324d69957afdbc56e4c113592b5.png' class='img-fluid mb-3'/></div><div class='col-md-6'><div class='card-body'><br /><br /><br /><h1>Click or Drop</h1><p class='normal'style='color: Gray'>To upload your files</p></div></div></div>"
             }
         };
     },
@@ -126,6 +126,6 @@ p.normal {
 }
 
 p.normal2 {
-    font-size: 15px;
+    font-size: 10px;
 }
 </style>

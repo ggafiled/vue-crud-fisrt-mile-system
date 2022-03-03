@@ -429,7 +429,20 @@ return [
             'roles' => ['superadministrator', 'administrator',],
             'active_url' => 'settings',
         ],
-
+        [
+            'text' => 'Demo Management',
+            'url' => '/demo_management',
+            'icon' => 'bi bi-people-fill',
+            'roles' => ['superadministrator', 'administrator',],
+            'active_url' => 'settings',
+        ],
+        [
+            'text' => 'Building Import Demo',
+            'url' => '/building_management',
+            'icon' => 'bi bi-people-fill',
+            'roles' => ['superadministrator', 'administrator',],
+            'active_url' => 'settings',
+        ],
 
     ],
 

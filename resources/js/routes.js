@@ -6,6 +6,14 @@ export default [{
         }
     },
     {
+        path:'/uplord',
+        component: require("./components/admin/UploardComponent.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user"]
+        }
+    },
+    {
         path: "/building",
         component: require("./components/building/Buildings.vue").default,
         meta: {
@@ -353,6 +361,22 @@ export default [{
                     .default
             }
         ]
+    },
+    {
+        path: "/demo_management",
+        component: require("./components/demo/demo.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user"]
+        }
+    },
+    {
+        path: "/building_management",
+        component: require("./components/demo/BuildingImport.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user"]
+        }
     },
     
     { path: "*", component: require("./components/NotFound.vue").default }

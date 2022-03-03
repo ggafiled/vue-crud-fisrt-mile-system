@@ -12,7 +12,7 @@
     "devDependencies": {
         "@vue/composition-api": "^1.0.0",
         "autoprefixer": "^10.2.5",
-        "axios": "^0.21.1",
+        "axios": "^0.21.4",
         "bootstrap": "^4.6.1",
         "cross-env": "^5.1",
         "deepmerge": "^4.2.2",
@@ -132,7 +132,7 @@
         "vue-phone-number-input": "^1.1.12",
         "vue-progressbar": "^0.7.5",
         "vue-property-decorator": "^8.0.0",
-        "vue-router": "^3.5.1",
+        "vue-router": "^3.5.3",
         "vue-select2": "^0.2.6",
         "vue-step-wizard": "^0.1.17",
         "vue-thailand-address-autocomplete": "^0.1.1",
