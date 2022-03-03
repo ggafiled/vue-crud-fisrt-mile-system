@@ -430,7 +430,6 @@ return [
             'active_url' => 'settings',
         ],
         [
-<<<<<<< HEAD
             'text' => 'Demo Management',
             'url' => '/demo_management',
             'icon' => 'bi bi-people-fill',
@@ -444,15 +443,7 @@ return [
             'roles' => ['superadministrator', 'administrator',],
             'active_url' => 'settings',
         ],
-=======
-            'text' => 'Demo',
-            'url' => '/demo',
-            'icon' => 'bi bi-people-fill',
-            'roles' => ['superadministrator', 'administrator',],
-            'active_url' => 'settings',
-        ]
 
->>>>>>> f28dfeb234c5cd294e6f813950d80e0eb81aadf3
 
     ],
 
