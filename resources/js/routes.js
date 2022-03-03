@@ -362,7 +362,7 @@ export default [{
             }
         ]
     },
-<<<<<<< HEAD
+
     {
         path: "/demo_management",
         component: require("./components/demo/demo.vue").default,
@@ -380,17 +380,6 @@ export default [{
         }
     },
     
-=======
 
-    {
-        path: "/demo",
-        component: require("./components/importdemo/demo.vue").default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator", "administrator"]
-        }
-    },
-
->>>>>>> f28dfeb234c5cd294e6f813950d80e0eb81aadf3
     { path: "*", component: require("./components/NotFound.vue").default }
 ];
