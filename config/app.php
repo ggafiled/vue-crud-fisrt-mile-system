@@ -166,6 +166,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -237,8 +239,13 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'Avatar'    => Laravolt\Avatar\Facade::class,
+<<<<<<< HEAD
         'Image' => \Intervention\Image\Facades\Image::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+=======
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
+>>>>>>> f28dfeb234c5cd294e6f813950d80e0eb81aadf3
     ],
 
 ];
