@@ -443,6 +443,13 @@ return [
             'roles' => ['superadministrator', 'administrator',],
             'active_url' => 'settings',
         ],
+        [
+            'text' => 'Constrarution Import Demo',
+            'url' => '/constrarution_management',
+            'icon' => 'bi bi-people-fill',
+            'roles' => ['superadministrator', 'administrator',],
+            'active_url' => 'settings',
+        ],
 
 
     ],

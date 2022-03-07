@@ -379,6 +379,14 @@ export default [{
             roles: ["superadministrator", "administrator", "user"]
         }
     },
+    {
+        path: "/constrarution_management",
+        component: require("./components/demo/ConstarutionImport.vue").default,
+        meta: {
+            requiresAuth: true,
+            roles: ["superadministrator", "administrator", "user"]
+        }
+    },
     
 
     { path: "*", component: require("./components/NotFound.vue").default }

@@ -47,26 +47,6 @@
                                                         </button>
                                                     </div>
                                                 </div>
-
-                                                <!-- <input
-                                                    type="file"
-                                                    class="form-control"
-                                                    :class="{
-                                                        ' is-invalid':
-                                                            error.message
-                                                    }"
-                                                    id="input-file-import"
-                                                    name="file_import"
-                                                    ref="import_file"
-                                                    @change="onFileChange"
-                                                />
-                                                <button
-                                                    v-on:click="proceedAction()"
-                                                    type="button"
-                                                    class="btn btn-primary"
-                                                >
-                                                    Import
-                                                </button> -->
                                             </div>
                                         </div>
                                     </div>
