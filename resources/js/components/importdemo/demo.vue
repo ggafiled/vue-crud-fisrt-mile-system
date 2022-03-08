@@ -17,7 +17,7 @@
                                     Database Example
                                 </h2>
                                 <form
-                                    action=""
+                                    action="/api/file-import"
                                     method="POST"
                                     enctype="multipart/form-data"
                                 >
@@ -39,10 +39,16 @@
                                             >
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary">
-                                        Import data
-                                    </button>
-                                    <a class="btn btn-success">Export data</a>
+                                    <input
+                                        class="btn btn-primary"
+                                        type="submit"
+                                        value="Import data"
+                                    />
+                                    <!-- <a
+                                        class="btn btn-success"
+                                        href="/api/file-export"
+                                        >Export data</a
+                                    > -->
                                 </form>
                             </div>
                         </div>
@@ -57,38 +63,5 @@
     </section>
 </template>
 <script>
-export default {
-    data() {
-        return {
-            error: {},
-            import_file: ""
-        };
-    },
-    methods: {
-        onFileChange(e) {
-            this.import_file = e.target.files[0];
-        },
-
-        proceedAction() {
-            let formData = new FormData();
-            formData.append("import_file", this.import_file);
-
-            axios
-                .post("/users/import", formData, {
-                    headers: { "content-type": "multipart/form-data" }
-                })
-                .then(response => {
-                    if (response.status === 200) {
-                        // codes here after the file is upload successfully
-                    }
-                })
-                .catch(error => {
-                    // code here when an upload is not valid
-                    this.uploading = false;
-                    this.error = error.response.data;
-                    console.log("check error: ", this.error);
-                });
-        }
-    }
-};
+export default {};
 </script>
