@@ -15,10 +15,17 @@ class BuildingsImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
+        print_r($row);
         return new Building([
-            'projectName'  => $row['projectName'],
-            'mailManager' => $row['mailManager'],
-            'nameNiti' => $row['nameNiti']
+            'areas_id'  => $row['areas_id'],
+            'bbns_id'  => $row['bbns_id'],
+            'projectName'  => $row['projectname'],
+            'phoneNiti' => $row['phoneniti'],
+            'nameNiti' => $row['nameniti'],
         ]);
+
     }
 }
+// 'projectName'  => $row['Project'],
+// 'mailManager' => $row['Mail'],
+// 'nameNiti' => $row['Name']
