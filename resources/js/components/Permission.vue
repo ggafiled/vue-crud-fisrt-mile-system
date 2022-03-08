@@ -9,8 +9,15 @@
                                 <i class="bi bi-layers mr-1"></i
                                 >{{ translate("permission.header") }}
                             </h3>
-
                             <div class="card-tools">
+                                <button
+                                    type="button"
+                                    class="btn btn-sm btn-success"
+                                    @click="newModal2"
+                                >
+                                    <i class="fas fa-file-import"></i>
+                                    Import Excel
+                                </button>
                                 <button
                                     type="button"
                                     class="btn btn-sm btn-primary"
@@ -45,7 +52,6 @@
                     <!-- /.card -->
                 </div>
             </div>
-
             <!-- Modal -->
             <div
                 class="modal fade"
@@ -184,6 +190,68 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Modal2 -->
+            <div
+                class="modal fade"
+                id="addNew2"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="addNew2"
+                aria-hidden="true"
+                data-backdrop="static"
+                data-keyboard="false"
+            >
+                <div class="modal-dialog" role="dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">
+                                Import User Table Excel
+                            </h5>
+                            <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                            >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <!-- <form @submit.prevent="createRole"> -->
+
+                        <div class="modal-body">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input
+                                        type="file"
+                                        class="custom-file-input"
+                                        :class="{
+                                            ' is-invalid': error.message
+                                        }"
+                                        id="input-file-import"
+                                        name="file_import"
+                                        ref="import_file"
+                                        @change="onFileChange"
+                                    />
+                                    <label class="custom-file-label"
+                                        >Choose file</label
+                                    >
+                                </div>
+                                <div class="input-group-append">
+                                    <button
+                                        v-on:click="proceedAction()"
+                                        type="button"
+                                        class="btn btn-primary"
+                                    >
+                                        Upload
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div v-if="!$gate.isAdmin()">
             <not-found></not-found>
@@ -211,15 +279,46 @@ export default {
                 permissions: []
             }),
             permission: "",
+             error: {},
+            import_file: "",
             autocompleteItems: []
         };
     },
     methods: {
+        onFileChange(e) {
+            this.import_file = e.target.files[0];
+        },
+        proceedAction() {
+            let formData = new FormData();
+            formData.append("import_file", this.import_file);
+
+            axios
+                .post("/users/import", formData, {
+                    headers: { "content-type": "multipart/form-data" }
+                })
+                .then(response => {
+                    if (response.status === 200) {
+                        // codes here after the file is upload successfully
+                    }
+                })
+                .catch(error => {
+                    // code here when an upload is not valid
+                    this.uploading = false;
+                    this.error = error.response.data;
+                    console.log("check error: ", this.error);
+                });
+        },
+
         newModal() {
             this.editmode = false;
             this.selected = "";
             this.form.reset();
             $("#addNew").modal("show");
+        },
+        newModal2() {
+            this.selected = "";
+            this.form.reset();
+            $("#addNew2").modal("show");
         },
         deleteRole(item) {
             Swal.fire({
@@ -299,9 +398,7 @@ export default {
             this.$Progress.start();
 
             if (this.$gate.isAdmin()) {
-                axios
-                    .get("/role")
-                    .then(({ data }) => (this.roles = data.data));
+                axios.get("/role").then(({ data }) => (this.roles = data.data));
             }
 
             this.$Progress.finish();
