@@ -59,12 +59,9 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('/progress/retrieveBuilding', 'ProgressController@queryProgress');
     Route::get('/planing/retrieveBuilding', 'PlaningController@queryPlaning');
     Route::post('/import/getInfo', 'ImPortFileController@getInfo');
+    Route::post('/buildings/import','BuildingController@import');
+    Route::post('/constalutions/import','ConstarutionImportController@import');
     Route::post('/users/import','UsersController@import');
-
-    Route::get('/file-import-export','ContractorController@fileImportExport');
-    Route::post('/file-import','ContractorController@fileImport');
-    Route::get('/file-export','ContractorController@fileExport');
-
     // Route::post('close_ticket/{ticket_id}', 'TicketsController@close'); // ปิดตั๋ว
     // Route::get('my_tickets', 'TicketsController@userTickets'); // แสดงตั๋วของผู้ใช้งานคนนั้นๆ
     // Route::get('tickets/{ticket_id}', 'TicketsController@show'); // แสดงหน้าตั๋วอันเดียวตาม ไอดี ที่ส่งมา
@@ -108,6 +105,6 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         // 'tickets' => 'TicketsController',
         'backup' => 'BackupController',
         'logs' => 'LogsController',
-
+        'photo' => 'API\PhotoController',
     ]);
 });

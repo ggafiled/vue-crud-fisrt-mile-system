@@ -1,15 +1,12 @@
 <?php
-
 namespace App\Http\Controllers\API\V1;
-
 use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
-Use App\Models\Photo;
+use Illuminate\Http\Request;
 
-class UsersController   extends BaseController
+class UsersController extends BaseController
 {
-    // function to store file in 'upload' folder
     public function import(Request $request)
     {
          $request->validate([
@@ -21,4 +18,6 @@ class UsersController   extends BaseController
 
         return response()->json(['message' => 'uploaded successfully'], 200);
     }
+
 }
+

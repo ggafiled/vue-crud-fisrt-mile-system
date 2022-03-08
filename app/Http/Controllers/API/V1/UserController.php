@@ -9,6 +9,10 @@ use App\Models\Role;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class UserController extends BaseController
 {
@@ -147,5 +151,17 @@ class UserController extends BaseController
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.destroy.failed'));
         }
+    }
+
+    public function import(Request $request)
+    {
+         $request->validate([
+            'import_file' => 'required|file|mimes:xls,xlsx'
+        ]);
+
+        $path = $request->file('import_file');
+        $data = Excel::import(new UsersImport, $path);
+
+        return response()->json(['message' => 'uploaded successfully'], 200);
     }
 }

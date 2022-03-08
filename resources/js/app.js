@@ -151,6 +151,7 @@ import routes from "./routes";
 import Vue from "vue";
 
 const router = new VueRouter({
+    mode: 'hash',
     mode: "history",
     routes
 });

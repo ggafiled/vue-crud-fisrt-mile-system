@@ -36,11 +36,9 @@
                                         @selectedFile="selectedFile"
                                     />
                                 </tab-content>
+                                
                                 <tab-content title="Select Sheet">
                                     <SheetsSelect :sheetsList="spreadsheet" @selectedSheet="selectedSheetHandler"/>
-                                </tab-content>
-                                <tab-content title="Map Fields">
-                                    <MapSheet />
                                 </tab-content>
                                 <tab-content title="Review&Upload">
                                     <ReviewUpload />
@@ -90,13 +88,11 @@
 <script>
 import FileImport from "./FileImport.vue";
 import SheetsSelect from "./SheetsSelect.vue";
-import MapSheet from "./MapSheet.vue";
 import ReviewUpload from "./ReviewUpload.vue";
 export default {
     components: {
         FileImport,
         SheetsSelect,
-        MapSheet,
         ReviewUpload
     },
     data() {
