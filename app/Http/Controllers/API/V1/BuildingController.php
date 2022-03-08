@@ -165,7 +165,7 @@ class Buildingcontroller extends BaseController
         }
     }
 
-    public function import(Request $request)
+    public function importbuilding(Request $request)
     {
          $request->validate([
             'import_file' => 'required|file|mimes:xls,xlsx'

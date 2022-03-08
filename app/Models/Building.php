@@ -11,6 +11,11 @@ use Spatie\Activitylog\LogOptions;
 class Building extends Model
 {
     use HasFactory, SoftDeletes, LogsActivity;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'id',
         // 'technician_id',

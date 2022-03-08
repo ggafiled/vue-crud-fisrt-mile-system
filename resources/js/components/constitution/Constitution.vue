@@ -9,17 +9,14 @@
                             {{ translate("constitution.header") }}
                         </h2>
                         <div class="card-tools">
-                            <a
-                                href="/dowloadConstitutionTemplate"
-                                class="btn btn-sm btn-primary"
-                                target="blank"
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-success"
+                                @click="newModal2"
                             >
-                                <i
-                                    class="fa fa-download"
-                                    aria-hidden="true"
-                                ></i>
-                                {{ translate("constitution.download") }}
-                            </a>
+                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                Import data form Constarution Table
+                            </button>
                             <button
                                 type="button"
                                 class="btn btn-sm btn-primary"
@@ -32,21 +29,6 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="card-body m-0">
-                            <div class="row">
-                                <button
-                                    type="button"
-                                    class="dt-button"
-                                    @click.prevent="goToImportPanel"
-                                >
-                                    <i
-                                        class="fa fa-upload"
-                                        aria-hidden="true"
-                                    ></i>
-                                    {{ translate("constitution.import") }}
-                                </button>
-                            </div>
-                        </div>
                         <div class="table-responsive">
                             <table
                                 id="constarution"
@@ -299,7 +281,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                 <div class="row">
+                                <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label
@@ -321,7 +303,9 @@
                                                 />ต่างชื่อกัน
                                             </label>
                                             <input
-                                                v-model="form.projectNameFiberNet"
+                                                v-model="
+                                                    form.projectNameFiberNet
+                                                "
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="ชื่อโครงการของสามบีบี"
@@ -811,15 +795,18 @@
                                                         )
                                                     }"
                                                 >
-                                                <option disabled value=""
-                                                    >--- Select Type ---</option
-                                                >
-                                                <option value="4"
-                                                    >4</option
-                                                >
-                                                <option value="12">12</option>
-                                                <option value="24">24</option>
-                                            </select>
+                                                    <option disabled value=""
+                                                        >--- Select Type
+                                                        ---</option
+                                                    >
+                                                    <option value="4">4</option>
+                                                    <option value="12"
+                                                        >12</option
+                                                    >
+                                                    <option value="24"
+                                                        >24</option
+                                                    >
+                                                </select>
                                             </div>
                                             <has-error
                                                 :form="form"
@@ -1051,14 +1038,19 @@
                                                         )
                                                     }"
                                                 >
-                                                <option disabled value=""
-                                                    >--- Select Type ---</option
-                                                >
-                                                <option value="1">1</option>
-                                                <option value="4">4</option>
-                                                <option value="12">12</option>
-                                                <option value="24">24</option>
-                                            </select>
+                                                    <option disabled value=""
+                                                        >--- Select Type
+                                                        ---</option
+                                                    >
+                                                    <option value="1">1</option>
+                                                    <option value="4">4</option>
+                                                    <option value="12"
+                                                        >12</option
+                                                    >
+                                                    <option value="24"
+                                                        >24</option
+                                                    >
+                                                </select>
                                             </div>
                                             <has-error
                                                 :form="form"
@@ -1150,6 +1142,68 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Modal2 -->
+            <div
+                class="modal fade"
+                id="addNew2"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="addNew2"
+                aria-hidden="true"
+                data-backdrop="static"
+                data-keyboard="false"
+            >
+                <div class="modal-dialog" role="dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">
+                                Import Constarution Table Excel
+                            </h5>
+                            <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                            >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <!-- <form @submit.prevent="createRole"> -->
+
+                        <div class="modal-body">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input
+                                        type="file"
+                                        class="custom-file-input"
+                                        :class="{
+                                            ' is-invalid': error.message
+                                        }"
+                                        id="input-file-import"
+                                        name="file_import"
+                                        ref="import_file"
+                                        @change="onFileChange"
+                                    />
+                                    <label class="custom-file-label"
+                                        >Choose file</label
+                                    >
+                                </div>
+                                <div class="input-group-append">
+                                    <button
+                                        v-on:click="proceedAction()"
+                                        type="button"
+                                        class="btn btn-primary"
+                                    >
+                                        Upload
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -1164,6 +1218,8 @@ export default {
     components: { Select2, Uploader, NumberInput },
     data() {
         return {
+            error: {},
+            import_file: "",
             loader: null,
             openWindowPortal: false,
             editmode: false,
@@ -1239,8 +1295,31 @@ export default {
         };
     },
     methods: {
-        goToImportPanel(){
-            this.$router.push({  path: "importData"});
+        onFileChange(e) {
+            this.import_file = e.target.files[0];
+        },
+        proceedAction() {
+            let formData = new FormData();
+            formData.append("import_file", this.import_file);
+
+            axios
+                .post("/constalutions/import", formData, {
+                    headers: { "content-type": "multipart/form-data" }
+                })
+                .then(response => {
+                    if (response.status === 200) {
+                        // codes here after the file is upload successfully
+                    }
+                })
+                .catch(error => {
+                    // code here when an upload is not valid
+                    this.uploading = false;
+                    this.error = error.response.data;
+                    console.log("check error: ", this.error);
+                });
+        },
+        goToImportPanel() {
+            this.$router.push({ path: "importData" });
         },
         dowloadExcelTemplate() {
             const workbook = ExcelJS.Workbook();
@@ -1331,6 +1410,11 @@ export default {
             this.selected = "";
             this.form.reset();
             $("#addNew").modal("show");
+        },
+        newModal2() {
+            this.selected = "";
+            this.form.reset();
+            $("#addNew2").modal("show");
         },
         deleteConstarution(item) {
             Swal.fire({
