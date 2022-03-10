@@ -221,5 +221,16 @@ class ConstarutionController extends BaseController
         }
     }
 
+    public function importconstalution(Request $request)
+    {
+         $request->validate([
+            'import_file' => 'required|file|mimes:xls,xlsx'
+        ]);
+
+        $path = $request->file('import_file');
+        $data = Excel::import(new ConstarutionsImport, $path);
+
+        return response()->json(['message' => 'uploaded successfully'], 200);
+    }
     
 }

@@ -60,6 +60,8 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('/planing/retrieveBuilding', 'PlaningController@queryPlaning');
     Route::post('/import/getInfo', 'ImPortFileController@getInfo');
     Route::post('/buildings/import','BuildingController@importbuilding');
+    Route::post('/constalutions/import','ConstarutionController@importconstalution');
+    Route::post('/progresss/import','ProgressController@importprogress');
     Route::post('/users/import','UsersController@import');
     // Route::post('close_ticket/{ticket_id}', 'TicketsController@close'); // ปิดตั๋ว
     // Route::get('my_tickets', 'TicketsController@userTickets'); // แสดงตั๋วของผู้ใช้งานคนนั้นๆ
