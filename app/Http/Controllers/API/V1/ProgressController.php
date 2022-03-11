@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Progress;
 use App\Models\Building;
 use App\Models\Constarution;
+use App\Imports\ProgressImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\Progress\ProgressRequest;
 
 class ProgressController extends BaseController
@@ -160,5 +162,17 @@ class ProgressController extends BaseController
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.destroy.failed'));
         }
+    }
+
+    public function importbuilding(Request $request)
+    {
+         $request->validate([
+            'import_file' => 'required|file|mimes:xls,xlsx'
+        ]);
+
+        $path = $request->file('import_file');
+        $data = Excel::import(new ProgressImport, $path);
+
+        return response()->json(['message' => 'uploaded successfully'], 200);
     }
 }
