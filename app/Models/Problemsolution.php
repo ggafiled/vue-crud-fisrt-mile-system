@@ -15,9 +15,9 @@ class Problemsolution extends Model
     ];
 
 
-    public function Contractor()
+    public function Planing()
     {
-        return $this->belongsTo('App\Models\Contractor', 'problemsolution_id', 'id');
+        return $this->belongsTo('App\Models\Planing', 'problemsolution_id', 'id');
     }
 
 }

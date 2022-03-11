@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use App\Imports\PlaningsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PlaningController extends BaseController
 {
@@ -154,6 +156,18 @@ class PlaningController extends BaseController
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.destroy.failed'));
         }
+    }
+
+    public function importplanning(Request $request)
+    {
+         $request->validate([
+            'import_file' => 'required|file|mimes:xls,xlsx'
+        ]);
+
+        $path = $request->file('import_file');
+        $data = Excel::import(new PlaningsImport, $path);
+
+        return response()->json(['message' => 'uploaded successfully'], 200);
     }
 
     /**
