@@ -279,7 +279,7 @@ export default {
                 permissions: []
             }),
             permission: "",
-             error: {},
+            error: {},
             import_file: "",
             autocompleteItems: []
         };
