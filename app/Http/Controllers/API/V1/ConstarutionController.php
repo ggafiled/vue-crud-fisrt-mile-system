@@ -41,7 +41,7 @@ class ConstarutionController extends BaseController
     public function queryBuilding()
     {
         try {
-            $constarution = Building::where('statusBuilding', '=', 'Complete' )->get();
+            $constarution = Building::all();
             return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([], trans('actions.get.failed'));

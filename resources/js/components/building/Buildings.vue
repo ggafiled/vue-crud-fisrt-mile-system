@@ -44,15 +44,9 @@
                                             <th>SubBuilding Sum</th>
                                             <th>Floor Sum</th>
                                             <th>Room Sum</th>
-                                            <th>Manager Name</th>
-                                            <th>Phone Manager</th>
-                                            <th>Mail Manager</th>
                                             <th>Niti Name</th>
                                             <th>Phone Niti</th>
                                             <th>Mail Niti</th>
-                                            <th>Technician Name</th>
-                                            <th>Phone Technician</th>
-                                            <th>Mail Technician</th>
                                             <th>House Number</th>
                                             <th>Squad Number</th>
                                             <th>Alley Name</th>
@@ -181,7 +175,7 @@
                                                 placeholder="ชั้น"
                                                 v-model="form.floorSum"
                                                 :disabled="
-                                                    form.subBuildingsum > 0
+                                                    form.subBuildingsum > -1
                                                 "
                                             />
                                             <has-error
@@ -201,7 +195,7 @@
                                                 placeholder="ห้อง"
                                                 v-model="form.roomSum"
                                                 :disabled="
-                                                    form.subBuildingsum > 0
+                                                    form.subBuildingsum > -1
                                                 "
                                             />
                                             <has-error
@@ -1005,7 +999,7 @@
                                             <small>/พื้นที่ ซิมโฟนี่</small>
                                             <select
                                                 class="form-control"
-                                                v-model="form.areaSymphony_id"
+                                                v-model="form.areaSyphony_id"
                                             >
                                                 <option value="" disabled>
                                                     --- Select a Class ---
@@ -1235,22 +1229,16 @@ export default {
                 areaAis_id: "",
                 areaFibernet_id: "",
                 areaTxrx_id: "",
-                areaSymphony_id: "",
+                areaSyphony_id: "",
                 contractTerm_id: "",
                 projectName: "",
                 subBuildingsum: 0,
                 floorSum: 0,
                 roomSum: 0,
                 roadName: "",
-                nameManager: "",
-                phoneManager: "",
-                mailManager: "",
                 nameNiti: "",
                 phoneNiti: "",
                 mailNiti: "",
-                nameTechnician: "",
-                phoneTechnician: "",
-                mailTechnician: "",
                 houseNumber: "",
                 squadNumber: "",
                 alleyName: "",
@@ -1768,16 +1756,6 @@ export default {
                     {
                         data: "roomSum"
                     },
-
-                    {
-                        data: "nameManager"
-                    },
-                    {
-                        data: "phoneManager"
-                    },
-                    {
-                        data: "mailManager"
-                    },
                     {
                         data: "nameNiti"
                     },
@@ -1786,15 +1764,6 @@ export default {
                     },
                     {
                         data: "mailNiti"
-                    },
-                    {
-                        data: "nameTechnician"
-                    },
-                    {
-                        data: "phoneTechnician"
-                    },
-                    {
-                        data: "mailTechnician"
                     },
                     {
                         data: "houseNumber"
@@ -1830,7 +1799,7 @@ export default {
                         data: "contractStartDate"
                     },
                     {
-                        data: "contractTerm"
+                        data: "contractTerm.name"
                     },
                     {
                         data: "contractEndDate"

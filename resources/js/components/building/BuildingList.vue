@@ -553,7 +553,7 @@ export default {
             data: "contractStartDate",
           },
           {
-            data: "contractTerm",
+            data: "contractTerm.name",
           },
           {
             data: "contractEndDate",

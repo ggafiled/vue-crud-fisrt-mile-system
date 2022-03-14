@@ -18,19 +18,19 @@
                             </button> -->
                             <button
                                 type="button"
-                                class="btn btn-sm btn-primary"
-                                @click="newModal"
-                            >
-                                <i class="fa fa-plus-square"></i>
-                                {{ translate("progress.addnew") }}
-                            </button>
-                            <button
-                                type="button"
                                 class="btn btn-sm btn-success"
                                 @click="newModal2"
                             >
                                 <i class="fa fa-upload" aria-hidden="true"></i>
                                 Import data form Progress Table
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-primary"
+                                @click="newModal"
+                            >
+                                <i class="fa fa-plus-square"></i>
+                                {{ translate("progress.addnew") }}
                             </button>
                         </div>
                     </div>

@@ -17,9 +17,14 @@ class Zone extends Model
         'zoneEmail',
     ];
 
-    public function progress()
+    public function planning()
     {
-        return $this->belongsTo('App\Models\Progress', 'id', 'zone_id');
+        return $this->belongsTo('App\Models\Planing', 'id', 'zone_id');
+    }
+
+    public function planning2()
+    {
+        return $this->belongsTo('App\Models\Planing', 'id', 'zone_id2');
     }
 
     // public function teamzone()

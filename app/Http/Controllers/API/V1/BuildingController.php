@@ -112,7 +112,7 @@ class Buildingcontroller extends BaseController
 
             return $this->sendResponse($buiding, trans('actions.created.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
+            return $this->sendError([$ex], trans('actions.created.failed'));
         }
     }
 
