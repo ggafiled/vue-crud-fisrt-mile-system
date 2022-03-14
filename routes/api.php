@@ -62,7 +62,9 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::post('/buildings/import','BuildingController@importbuilding');
     Route::post('/constalutions/import','ConstarutionController@importconstalution');
     Route::post('/progresss/import','ProgressController@importprogress');
+    Route::post('/plannings/import','PlaningController@importplanning');
     Route::post('/users/import','UsersController@import');
+
     // Route::post('close_ticket/{ticket_id}', 'TicketsController@close'); // ปิดตั๋ว
     // Route::get('my_tickets', 'TicketsController@userTickets'); // แสดงตั๋วของผู้ใช้งานคนนั้นๆ
     // Route::get('tickets/{ticket_id}', 'TicketsController@show'); // แสดงหน้าตั๋วอันเดียวตาม ไอดี ที่ส่งมา
@@ -96,6 +98,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
         'dashboard' => 'DashboardController',
         'problemsolution' => 'ProblemsolutionController',
         'technician' => 'TechnicianController',
+        'zone' => 'ZoneController',
         'callvers' => 'CallverController',
         'callverstatuses' => 'CallverstatusController',
         'generatingaction' => 'GeneratingactionController',

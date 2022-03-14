@@ -356,14 +356,28 @@ export default {
                 .then(response => {
                     if (response.status === 200) {
                         // codes here after the file is upload successfully
+                        Toast.fire({
+                            icon: "success",
+                            title: response.data.message
+                        });
                     }
                 })
-                .catch(error => {
-                    // code here when an upload is not valid
-                    this.uploading = false;
-                    this.error = error.response.data;
+                .catch(() => {
+                    Toast.fire({
+                        icon: "error",
+                        title: "Some error occured! Please try again"
+                    });
                     console.log("check error: ", this.error);
                 });
+            setTimeout(() => {
+                this.onprogress = false;
+            }, 2000);
+            // .catch(error => {
+            //     // code here when an upload is not valid
+            //     this.uploading = false;
+            //     this.error = error.response.data;
+            //     console.log("check error: ", this.error);
+            // });
         },
         updateUser() {
             this.$Progress.start();

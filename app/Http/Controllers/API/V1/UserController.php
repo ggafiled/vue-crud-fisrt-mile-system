@@ -153,7 +153,7 @@ class UserController extends BaseController
         }
     }
 
-    public function import(Request $request)
+    public function importuser(Request $request)
     {
          $request->validate([
             'import_file' => 'required|file|mimes:xls,xlsx'

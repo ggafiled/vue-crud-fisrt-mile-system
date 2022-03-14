@@ -13,7 +13,7 @@
                                             class="btn btn-sm btn-primary"
                                             @click="newModal"
                                         >
-                                             <i class="fas fa-file-import"></i>
+                                            <i class="fas fa-file-import"></i>
                                             Add New Project Building
                                         </button>
                                         <button
@@ -25,7 +25,7 @@
                                                 class="fa fa-upload"
                                                 aria-hidden="true"
                                             ></i>
-                                           Import data form Building Table
+                                            Import data form Building Table
                                         </button>
                                     </div>
                                 </div>
@@ -1319,7 +1319,7 @@ export default {
         }
     },
     methods: {
-         onFileChange(e) {
+        onFileChange(e) {
             this.import_file = e.target.files[0];
         },
         proceedAction() {
@@ -1333,14 +1333,27 @@ export default {
                 .then(response => {
                     if (response.status === 200) {
                         // codes here after the file is upload successfully
+                        Toast.fire({
+                            icon: "success",
+                            title: response.data.message
+                        });
                     }
                 })
-                .catch(error => {
-                    // code here when an upload is not valid
-                    this.uploading = false;
-                    this.error = error.response.data;
-                    console.log("check error: ", this.error);
+                .catch(() => {
+                    Toast.fire({
+                        icon: "error",
+                        title: "Some error occured! Please try again"
+                    });
                 });
+            setTimeout(() => {
+                this.onprogress = false;
+            }, 2000);
+            // .catch(error => {
+            //     // code here when an upload is not valid
+            //     this.uploading = false;
+            //     this.error = error.response.data;
+            //     console.log("check error: ", this.error);
+            // });
         },
         onSubBuildingUpdate(newVal, oldVal) {
             console.log(newVal, oldVal);
@@ -1586,6 +1599,7 @@ export default {
                     $("#addNew").modal("hide");
                     Toast.fire({
                         icon: "success",
+                        title: "Import Successfull",
                         title: response.data.message
                     });
                     this.$Progress.finish();

@@ -17,25 +17,41 @@ class ZoneSeeder extends Seeder
     {
         $Zone = [
             [
-                'zoneName' => 'NameTest1',
-                'zoneTel' => 'TelTest1',
-                'zoneEmail' => 'EmailTest1',
+                'zoneName' => 'DCL',
+                'zoneTel' => '-',
+                'zoneEmail' => '-',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
             ],
             [
-                'zoneName' => 'NameTest2',
-                'zoneTel' => 'TelTest2',
-                'zoneEmail' => 'EmailTest2',
+                'zoneName' => 'LKB',
+                'zoneTel' => '-',
+                'zoneEmail' => '-',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
 
             ],
             [
-                'zoneName' => 'NameTest3',
-                'zoneTel' => 'TelTest3',
-                'zoneEmail' => 'EmailTest3',
+                'zoneName' => 'PKR',
+                'zoneTel' => '-',
+                'zoneEmail' => '-',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+
+            ],
+            [
+                'zoneName' => 'KTW',
+                'zoneTel' => '-',
+                'zoneEmail' => '-',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+
+            ],
+            [
+                'zoneName' => 'PTN',
+                'zoneTel' => '-',
+                'zoneEmail' => '-',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
 

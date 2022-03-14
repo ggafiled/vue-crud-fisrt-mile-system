@@ -9,17 +9,14 @@
                             {{ translate("CUSTOMER MANAGEMENT") }}
                         </h2>
                         <div class="card-tools">
-                            <a
-                                href="/dowloadCustomerTemplate"
-                                class="btn btn-sm btn-primary"
-                                target="blank"
+                            <button
+                                type="button"
+                                class="btn btn-sm btn-success"
+                                @click="newModal2"
                             >
-                                <i
-                                    class="fa fa-download"
-                                    aria-hidden="true"
-                                ></i>
-                                {{ translate("constitution.download") }}
-                            </a>
+                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                Import data form Customer Table
+                            </button>
                             <button
                                 type="button"
                                 class="btn btn-sm btn-primary"
@@ -90,8 +87,8 @@
                                         <th>ประเภทงาน</th>
                                         <th>วันที่นัดหมาย</th>
                                         <th>เวลานัดหมาย</th>
-                                        <th>ช่างทีมที่1</th>
-                                        <th>ช่างทีมที่2</th>
+                                        <th>zone</th>
+                                        <th>zone2</th>
                                         <th>เบอร์โทร</th>
                                         <th>อีเมลล์</th>
                                         <th>ผู้ให้บริการ</th>
@@ -752,46 +749,48 @@
                                             <label>ชื่อช่าง Planing</label>
                                             <select
                                                 class="form-control"
-                                                v-model="form.technician_id"
+                                                v-model="form.zone_id"
                                             >
                                                 <option value="" disabled>
                                                     --- Select a Class ---
                                                 </option>
                                                 <option
                                                     :value="item.id"
-                                                    v-for="item in technicians"
+                                                    v-for="item in zones"
                                                     :key="item.id"
                                                 >
-                                                    {{ item.teamTechnician }}
+                                                    {{ item.zoneName }}
                                                 </option>
                                             </select>
                                             <has-error
                                                 :form="form"
-                                                field="technician"
+                                                field="zone"
                                             ></has-error>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>ชื่อช่าง Planing ทีมที่2</label>
+                                            <label
+                                                >ชื่อช่าง Planing ทีมที่2</label
+                                            >
                                             <select
                                                 class="form-control"
-                                                v-model="form.technician2_id"
+                                                v-model="form.zone2_id"
                                             >
                                                 <option value="" disabled>
                                                     --- Select a Class ---
                                                 </option>
                                                 <option
                                                     :value="item.id"
-                                                    v-for="item in technicians"
+                                                    v-for="item in zones"
                                                     :key="item.id"
                                                 >
-                                                    {{ item.teamTechnician }}
+                                                    {{ item.zoneName }}
                                                 </option>
                                             </select>
                                             <has-error
                                                 :form="form"
-                                                field="technician2"
+                                                field="zone2"
                                             ></has-error>
                                         </div>
                                     </div>
@@ -947,6 +946,67 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal2 -->
+            <div
+                class="modal fade"
+                id="addNew2"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="addNew2"
+                aria-hidden="true"
+                data-backdrop="static"
+                data-keyboard="false"
+            >
+                <div class="modal-dialog" role="dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">
+                                Import Customer Table Excel
+                            </h5>
+                            <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                            >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <!-- <form @submit.prevent="createRole"> -->
+
+                        <div class="modal-body">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input
+                                        type="file"
+                                        class="custom-file-input"
+                                        :class="{
+                                            ' is-invalid': error.message
+                                        }"
+                                        id="input-file-import"
+                                        name="file_import"
+                                        ref="import_file"
+                                        @change="onFileChange"
+                                    />
+                                    <label class="custom-file-label"
+                                        >Choose file</label
+                                    >
+                                </div>
+                                <div class="input-group-append">
+                                    <button
+                                        v-on:click="proceedAction()"
+                                        type="button"
+                                        class="btn btn-primary"
+                                    >
+                                        Upload
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -970,12 +1030,14 @@ export default {
         return {
             // en: en,
             // th: th,
+            error: {},
+            import_file: "",
             loader: null,
             editmode: false,
             onprogress: false,
             selected: "",
             building: [],
-            technician: [],
+            zone: [],
             jobtpyes: [],
             isps: [],
             settings: {
@@ -989,15 +1051,15 @@ export default {
                 isp_id: "",
                 agentDetail_id: "",
                 jobtype_id: "",
-                technician_id: "",
-                technician2_id: "",
+                zone_id: "",
+                zone2_id: "",
                 ispId_id: "",
                 projectName: "",
                 isp: "",
                 agentDetail: "",
                 jobtype: "",
-                technician: "",
-                technician2: "",
+                zone: "",
+                zone2: "",
                 ispId: "",
                 type: "",
                 name: "",
@@ -1020,6 +1082,36 @@ export default {
         };
     },
     methods: {
+        onFileChange(e) {
+            this.import_file = e.target.files[0];
+        },
+        proceedAction() {
+            let formData = new FormData();
+            formData.append("import_file", this.import_file);
+
+            axios
+                .post("/plannings/import", formData, {
+                    headers: { "content-type": "multipart/form-data" }
+                })
+                .then(response => {
+                    if (response.status === 200) {
+                        // codes here after the file is upload successfully
+                        Toast.fire({
+                            icon: "success",
+                            title: response.data.message
+                        });
+                    }
+                })
+                .catch(() => {
+                    Toast.fire({
+                        icon: "error",
+                        title: "Some error occured! Please try again"
+                    });
+                });
+            setTimeout(() => {
+                this.onprogress = false;
+            }, 2000);
+        },
         goToImportPanel() {
             this.$router.push({ path: "importData" });
         },
@@ -1060,9 +1152,9 @@ export default {
                 this.problemsolutions = response.data.data;
             });
         },
-        loadTachnician() {
-            axios.get("/technicians").then(response => {
-                this.technicians = response.data.data;
+        loadZone() {
+            axios.get("/zones").then(response => {
+                this.zones = response.data.data;
             });
         },
         loadJobType() {
@@ -1129,6 +1221,11 @@ export default {
             this.selected = "";
             this.form.reset();
             $("#addNew").modal("show");
+        },
+        newModal2() {
+            this.selected = "";
+            this.form.reset();
+            $("#addNew2").modal("show");
         },
         deleteCustomer(id) {
             Swal.fire({
@@ -1729,7 +1826,7 @@ export default {
                             }
                         }
                     },
-                     {
+                    {
                         data: "technician.teamTechnician",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
@@ -1899,7 +1996,7 @@ export default {
     mounted() {
         this.loadProblemsolution();
         this.generateTable();
-        this.loadTachnician();
+        this.loadZone();
         this.loadJobType();
         this.loadIsp();
         this.loadCallver();
