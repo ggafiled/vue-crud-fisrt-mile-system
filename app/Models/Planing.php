@@ -36,7 +36,6 @@ class Planing extends Model
         'subStatus',
         'reMark',
 
-
         'callver_id',
         'callverStatus_id',
         'problemsolution_id',

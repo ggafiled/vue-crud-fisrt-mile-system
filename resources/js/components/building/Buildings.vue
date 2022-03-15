@@ -1321,11 +1321,11 @@ export default {
                 .then(response => {
                     if (response.status === 200) {
                         // codes here after the file is upload successfully
-                        Toast.fire({
-                            icon: "success",
-                            title: response.data.message
-                        });
+                       
+                        
                     }
+                     this.$Progress.finish();
+                    this.loadBuildings();
                 })
                 .catch(() => {
                     Toast.fire({

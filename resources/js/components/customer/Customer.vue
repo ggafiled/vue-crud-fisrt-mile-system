@@ -87,10 +87,10 @@
                                         <th>ประเภทงาน</th>
                                         <th>วันที่นัดหมาย</th>
                                         <th>เวลานัดหมาย</th>
-                                        <th>zone</th>
+                                        <!-- <th>zone</th>
                                         <th>zone2</th>
                                         <th>เบอร์โทร</th>
-                                        <th>อีเมลล์</th>
+                                        <th>อีเมลล์</th> -->
                                         <th>ผู้ให้บริการ</th>
                                         <th>status</th>
                                         <th>sub-Status</th>
@@ -885,6 +885,576 @@
                                     </div>
                                 </div>
                             </tab-content>
+
+                            <tab-content title="Progress">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Callver</label>
+                                            <small>/โทรยืนยัดนัดหมาย</small>
+                                            <select
+                                                class="form-control"
+                                                disabled
+                                                v-model="form.callver_id"
+                                            >
+                                                <option disabled value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in callvers"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.callVer }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="callver"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Appointment Time</label>
+                                            <small>/เวลานัดหมาย ในระบบ</small>
+                                            <input
+                                                v-model="
+                                                    form.appointmentTimeCustomer
+                                                "
+                                                type="time"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="เวลานัดหมาย ในระบบ"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'appointmentTimeCustomer'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="appointmentTimeCustomer"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Callver Status</label>
+                                            <small
+                                                >/สถานะการยืนยันนัดหมาย</small
+                                            >
+                                            <select
+                                                class="form-control"
+                                                disabled
+                                                v-model="form.callverStatus_id"
+                                            >
+                                                <option disabled value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in callverstatuses"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.callVerStatus }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="callverStatus"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>ID Required</label>
+                                            <small>/ID ที่ต้องใช้</small>
+                                            <input
+                                                v-model="form.idRequired"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="ID ที่ต้องใช้"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'idRequired'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="idRequired"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Problemsolution</label>
+                                            <small>/สถานะงาน</small>
+                                            <select
+                                                class="form-control"
+                                                disabled
+                                                v-model="
+                                                    form.problemsolution_id
+                                                "
+                                            >
+                                                <option disabled value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in problemsolutions"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.problemSolution }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="problemsolution"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Confirm Appointment</label>
+                                            <small>/วันนัดหมาย</small>
+                                            <input
+                                                v-model="
+                                                    form.confirmAppointment
+                                                "
+                                                disabled
+                                                type="date"
+                                                class="form-control"
+                                                placeholder="สถานะการยืนยันนัดหมาย"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'confirmAppointment'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="confirmAppointment"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label
+                                                >Confirm Appointment Time</label
+                                            >
+                                            <small>/เวลานัดหมาย</small>
+                                            <input
+                                                v-model="
+                                                    form.confirmAppointmentTime
+                                                "
+                                                disabled
+                                                type="time"
+                                                class="form-control"
+                                                placeholder="สถานะการยืนยันนัดหมาย"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'confirmAppointmentTime'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="confirmAppointmentTime"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Remark (For Zone)</label>
+                                            <small>/รีมาร์ค</small>
+                                            <textarea
+                                                disabled
+                                                v-model="form.reMarkzone"
+                                                class="form-control"
+                                                placeholder="-"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'reMarkzone'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="reMarkzone"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tab-content>
+                            <tab-content title="Sale Detail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label
+                                                >Installation equipment 1</label
+                                            >
+                                            <small
+                                                >/อุปกรณ์ที่ใช้ติดตั้ง 1</small
+                                            >
+                                            <input
+                                                v-model="form.equipmentInstall1"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="อุปกรณ์ที่ใช้ติดตั้ง 1"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'equipmentInstall1'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="equipmentInstall1"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>S/N used to install 1</label>
+                                            <small>/ S/N ที่ใช้ติดตั้ง 1</small>
+                                            <input
+                                                v-model="form.snInstall1"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="S/N ที่ใช้ติดตั้ง 1"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'snInstall1'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="snInstall1"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label
+                                                >Installation equipment 2</label
+                                            >
+                                            <small
+                                                >/อุปกรณ์ที่ใช้ติดตั้ง 2</small
+                                            >
+                                            <input
+                                                v-model="form.equipmentInstall2"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="อุปกรณ์ที่ใช้ติดตั้ง 2"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'equipmentInstall2'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="equipmentInstall2"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>S/N used to install 2</label>
+                                            <small>/S/N ที่ใช้ติดตั้ง 2</small>
+                                            <input
+                                                v-model="form.snInstall2"
+                                                disabled
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="S/N ที่ใช้ติดตั้ง 2"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'snInstall2'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="snInstall2"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label
+                                                >Installation equipment 3</label
+                                            >
+                                            <small
+                                                >/อุปกรณ์ที่ใช้ติดตั้ง 3</small
+                                            >
+                                            <input
+                                                v-model="form.equipmentInstall3"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="อุปกรณ์ที่ใช้ติดตั้ง 3"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'equipmentInstall3'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="equipmentInstall3"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>S/N used to install 3</label>
+                                            <small>/S/N ที่ใช้ติดตั้ง 3</small>
+                                            <input
+                                                v-model="form.snInstall3"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="S/N ที่ใช้ติดตั้ง 3"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'snInstall3'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="snInstall3"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label
+                                                >Installation equipment 4</label
+                                            >
+                                            <small
+                                                >/อุปกรณ์ที่ใช้ติดตั้ง 4</small
+                                            >
+                                            <input
+                                                v-model="form.equipmentInstall4"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="อุปกรณ์ที่ใช้ติดตั้ง 4"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'equipmentInstall4'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="equipmentInstall4"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>S/N used to install 4</label>
+                                            <small>/S/N ที่ใช้ติดตั้ง 4</small>
+                                            <input
+                                                v-model="form.snInstall4"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="S/N ที่ใช้ติดตั้ง 4"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'snInstall4'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="snInstall4"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label
+                                                >Installation equipment 5</label
+                                            >
+                                            <small
+                                                >/อุปกรณ์ที่ใช้ติดตั้ง 5</small
+                                            >
+                                            <input
+                                                v-model="form.equipmentInstall5"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="อุปกรณ์ที่ใช้ติดตั้ง 5"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'equipmentInstall5'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="equipmentInstall5"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>S/N used to install 5</label>
+                                            <small>/S/N ที่ใช้ติดตั้ง 5</small>
+                                            <input
+                                                v-model="form.snInstall5"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="S/N ที่ใช้ติดตั้ง 5"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'snInstall5'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="snInstall5"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label
+                                                >Installation equipment 6</label
+                                            >
+                                            <small
+                                                >/อุปกรณ์ที่ใช้ติดตั้ง 6</small
+                                            >
+                                            <input
+                                                v-model="form.equipmentInstall6"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="อุปกรณ์ที่ใช้ติดตั้ง 6"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'equipmentInstall6'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="equipmentInstall6"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>S/N used to install 6</label>
+                                            <small>/S/N ที่ใช้ติดตั้ง 6</small>
+                                            <input
+                                                v-model="form.snInstall6"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="S/N ที่ใช้ติดตั้ง 6"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'snInstall6'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="snInstall6"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label
+                                                >Installation equipment 7</label
+                                            >
+                                            <small
+                                                >/อุปกรณ์ที่ใช้ติดตั้ง 7</small
+                                            >
+                                            <input
+                                                v-model="form.equipmentInstall7"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="อุปกรณ์ที่ใช้ติดตั้ง 7"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'equipmentInstall7'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="equipmentInstall7"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>S/N used to install 7</label>
+                                            <small>/S/N ที่ใช้ติดตั้ง 7</small>
+                                            <input
+                                                v-model="form.snInstall7"
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="S/N ที่ใช้ติดตั้ง 7"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'snInstall7'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="snInstall7"
+                                            ></has-error>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tab-content>
+
                             <template slot="footer" slot-scope="props">
                                 <div class="wizard-footer-left">
                                     <wizard-button
@@ -947,66 +1517,7 @@
                 </div>
             </div>
             <!-- Modal2 -->
-            <div
-                class="modal fade"
-                id="addNew2"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="addNew2"
-                aria-hidden="true"
-                data-backdrop="static"
-                data-keyboard="false"
-            >
-                <div class="modal-dialog" role="dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">
-                                Import Customer Table Excel
-                            </h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <!-- <form @submit.prevent="createRole"> -->
-
-                        <div class="modal-body">
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input
-                                        type="file"
-                                        class="custom-file-input"
-                                        :class="{
-                                            ' is-invalid': error.message
-                                        }"
-                                        id="input-file-import"
-                                        name="file_import"
-                                        ref="import_file"
-                                        @change="onFileChange"
-                                    />
-                                    <label class="custom-file-label"
-                                        >Choose file</label
-                                    >
-                                </div>
-                                <div class="input-group-append">
-                                    <button
-                                        v-on:click="proceedAction()"
-                                        type="button"
-                                        class="btn btn-primary"
-                                    >
-                                        Upload
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!--  -->
         </div>
     </section>
 </template>
@@ -1077,7 +1588,37 @@ export default {
                     .format("H:mm"),
                 status: "-",
                 subStatus: "-",
-                reMark: "-"
+                reMark: "-",
+
+                callver_id: "",
+                callver: "",
+                callverStatus_id: "",
+                callverStatus: "",
+                problemsolution_id: "",
+                appointmentTimeCustomer:  moment()
+                    .add(10 - (new Date().getMinutes() % 10), "minutes")
+                    .format("H:mm"),
+                problemsolution: "",
+                idRequired: "",
+                confirmAppointment: new Date().toISOString().slice(0, 10),
+                confirmAppointmentTime: moment()
+                    .add(10 - (new Date().getMinutes() % 10), "minutes")
+                    .format("H:mm"),
+                reMarkzone: "",
+                equipmentInstall1: "",
+                snInstall1: "",
+                equipmentInstall2: "",
+                snInstall2: "",
+                equipmentInstall3: "",
+                snInstall3: "",
+                equipmentInstall4: "",
+                snInstall4: "",
+                equipmentInstall5: "",
+                snInstall5: "",
+                equipmentInstall6: "",
+                snInstall6: "",
+                equipmentInstall7: "",
+                snInstall7: ""
             })
         };
     },
@@ -1811,66 +2352,66 @@ export default {
                             }
                         }
                     },
-                    {
-                        data: "technician.teamTechnician",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "technician.teamTechnician",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "technician.phoneTechnician",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "technician.emailTechnician",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
+                    // {
+                    //     data: "technician.teamTechnician",
+                    //     className: "text-capitalize",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "" || data == null) {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 "ไม่ได้กรอกข้อมูล" +
+                    //                 "</span>"
+                    //             );
+                    //         } else {
+                    //             return "<span>" + data + "</span>";
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "technician.teamTechnician",
+                    //     className: "text-capitalize",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "" || data == null) {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 "ไม่ได้กรอกข้อมูล" +
+                    //                 "</span>"
+                    //             );
+                    //         } else {
+                    //             return "<span>" + data + "</span>";
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "technician.phoneTechnician",
+                    //     className: "text-capitalize",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "" || data == null) {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 "ไม่ได้กรอกข้อมูล" +
+                    //                 "</span>"
+                    //             );
+                    //         } else {
+                    //             return "<span>" + data + "</span>";
+                    //         }
+                    //     }
+                    // },
+                    // {
+                    //     data: "technician.emailTechnician",
+                    //     className: "text-capitalize",
+                    //     render: function(data, type, row, meta) {
+                    //         if (data == "" || data == null) {
+                    //             return (
+                    //                 '<span class="text-danger">' +
+                    //                 "ไม่ได้กรอกข้อมูล" +
+                    //                 "</span>"
+                    //             );
+                    //         } else {
+                    //             return "<span>" + data + "</span>";
+                    //         }
+                    //     }
+                    // },
                     {
                         data: null,
                         title: "ผู้ให้บริการ",
