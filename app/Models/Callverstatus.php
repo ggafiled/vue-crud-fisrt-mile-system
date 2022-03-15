@@ -15,9 +15,9 @@ class Callverstatus extends Model
     ];
 
 
-    public function Contractor()
+    public function Planing()
     {
-        return $this->belongsTo('App\Models\Contractor', 'callverStatus_id', 'id');
+        return $this->belongsTo('App\Models\Planing', 'callverStatus_id', 'id');
     }
 
 }
