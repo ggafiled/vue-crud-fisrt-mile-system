@@ -106,11 +106,6 @@ class CreatePlaningsTable extends Migration
             ->on('callverstatuses')
             ->onDelete('cascade');
 
-            $table->foreign('technicians_id')
-            ->references('id')
-            ->on('technicians')
-            ->onDelete('cascade');
-
             $table->foreign('problemsolution_id')
             ->references('id')
             ->on('problemsolutions')

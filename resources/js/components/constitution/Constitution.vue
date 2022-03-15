@@ -1412,8 +1412,6 @@ export default {
             $("#addNew").modal("show");
         },
         newModal2() {
-            this.selected = "";
-            this.form.reset();
             $("#addNew2").modal("show");
         },
         deleteConstarution(item) {
