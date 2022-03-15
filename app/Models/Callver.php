@@ -15,9 +15,9 @@ class Callver extends Model
     ];
 
 
-    public function Contractor()
+    public function Planing()
     {
-        return $this->hasOne('App\Models\Contractor', 'callver_id', 'id');
+        return $this->hasOne('App\Models\Planing', 'callver_id', 'id');
     }
 
 }
