@@ -61,7 +61,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::post('/import/getInfo', 'ImPortFileController@getInfo');
     Route::post('/buildings/import','BuildingController@importbuilding');
     Route::post('/constalutions/import','ConstarutionController@importconstalution');
-    Route::post('/progresss/import','ProgressController@importprogress');
+    Route::post('/progress/import','ProgressController@importprogress');
     Route::post('/plannings/import','PlaningController@importplanning');
     Route::post('/users/import','UsersController@import');
 

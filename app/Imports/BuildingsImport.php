@@ -43,6 +43,7 @@ class BuildingsImport implements ToModel, WithHeadingRow
             'roadName' => $row['roadname'],
             'districtName' => $row['districtname'],
             'provinceName' => $row['provincename'],
+            'countyName' => $row['countyname'],
             'postalCode' => $row['postalcode'],
             'latitude' => $row['latitude'],
             'longitude' => $row['longitude'],

@@ -32,16 +32,6 @@ class Generatingaction extends Model
         return $this->belongsTo('App\Models\Progress', 'progress3bb_id', 'id');
     }
 
-    public function sinetProgress()
-    {
-        return $this->belongsTo('App\Models\Progress', 'sinetProgress_id', 'id');
-    }
-
-    public function fnProgress()
-    {
-        return $this->belongsTo('App\Models\Progress', 'fnProgress_id', 'id');
-    }
-
     public function trueProgress()
     {
         return $this->belongsTo('App\Models\Progress', 'trueProgress_id', 'id');
@@ -50,6 +40,11 @@ class Generatingaction extends Model
     public function txrxProgress()
     {
         return $this->belongsTo('App\Models\Progress', 'txrtProgress_id', 'id');
+    }
+
+    public function symphonyProgress()
+    {
+        return $this->belongsTo('App\Models\Progress', 'symphonyProgress_id', 'id');
     }
 
     public function ifcc()

@@ -13,27 +13,22 @@ class Progress extends Model
 
     protected $fillable = [
         'id',
-        'zone_id',
         'building_id',
-        'constarution_id',
+        'zone_id',
         'fmProgress_id',
-        'totProgress_id',
-        'aisProgress_id',
-        'progress3bb_id',
-        'txrtProgress_id',
-        'fnProgress_id',
-        'trueProgress_id',
-        'symphonyProgress_id',
         'dateFm',
-        'dateTot',
+        'aisProgress_id',
         'dateAis',
+        'totProgress_id',
+        'dateTot',
+        'progress3bb_id',
         'date3BB',
-        'dateSinet',
-        'dateFn',
+        'trueProgress_id',
         'dateTrue',
+        'txrtProgress_id',
         'dateTxrx',
+        'symphonyProgress_id',
         'dateSymphony',
-        'statusProgress'
     ];
 
     public function getActivitylogOptions(): LogOptions
@@ -52,11 +47,6 @@ class Progress extends Model
     public function building()
     {
         return $this->belongsTo('App\Models\Building', 'building_id', 'id');
-    }
-
-    public function constarution()
-    {
-        return $this->belongsTo('App\Models\Constarution', 'constarution_id', 'id');
     }
 
     public function fmProgress()
@@ -79,16 +69,6 @@ class Progress extends Model
         return $this->hasOne('App\Models\Generatingaction', 'id', 'progress3bb_id');
     }
 
-    public function sinetProgress()
-    {
-        return $this->hasOne('App\Models\Generatingaction', 'id', 'sinetProgress_id');
-    }
-
-    public function fnProgress()
-    {
-        return $this->hasOne('App\Models\Generatingaction', 'id', 'fnProgress_id');
-    }
-
     public function trueProgress()
     {
         return $this->hasOne('App\Models\Generatingaction', 'id', 'trueProgress_id');
@@ -97,6 +77,11 @@ class Progress extends Model
     public function txrtProgress()
     {
         return $this->hasOne('App\Models\Generatingaction', 'id', 'txrtProgress_id');
+    }
+
+    public function symphonyProgress()
+    {
+        return $this->hasOne('App\Models\Generatingaction', 'id', 'symphonyProgress_id');
     }
 
     public function zone()

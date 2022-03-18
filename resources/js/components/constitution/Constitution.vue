@@ -46,6 +46,7 @@
                                         <th>Project Name Ais</th>
                                         <th>Project Name FiberNet</th>
                                         <th>Project Name Txrx</th>
+                                        <th>Project Name Symphony</th>
                                         <!-- <th>Building Sum</th>
                                         <th>Building Number</th>
                                         <th>Building Floor</th>
@@ -152,19 +153,7 @@
                                                 ชื่อโครงการของทีโอที</label
                                             >
                                             <br />
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="totName"
-                                                    checked
-                                                />ชื่อเดียวกัน
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="totName"
-                                                />ต่างชื่อกัน
-                                            </label>
+            
                                             <input
                                                 v-model="form.projectNameTot"
                                                 type="text"
@@ -185,19 +174,6 @@
                                                 ชื่อโครงการของเอไอเอส</label
                                             >
                                             <br />
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="aisName"
-                                                    checked
-                                                />ชื่อเดียวกัน
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="aisName"
-                                                />ต่างชื่อกัน
-                                            </label>
                                             <input
                                                 v-model="form.projectNameAis"
                                                 type="text"
@@ -221,19 +197,6 @@
                                                 ชื่อโครงการของสามบีบี</label
                                             >
                                             <br />
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="tbbName"
-                                                    checked
-                                                />ชื่อเดียวกัน
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="tbbName"
-                                                />ต่างชื่อกัน
-                                            </label>
                                             <input
                                                 v-model="form.projectName3bb"
                                                 type="text"
@@ -254,19 +217,6 @@
                                                 ชื่อโครงการของทรู</label
                                             >
                                             <br />
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="trueName"
-                                                    checked
-                                                />ชื่อเดียวกัน
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="trueName"
-                                                />ต่างชื่อกัน
-                                            </label>
                                             <input
                                                 v-model="form.projectNameTrue"
                                                 type="text"
@@ -289,19 +239,6 @@
                                                 ชื่อโครงการของไฟเบอเน็ต</label
                                             >
                                             <br />
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="tbbName"
-                                                    checked
-                                                />ชื่อเดียวกัน
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="tbbName"
-                                                />ต่างชื่อกัน
-                                            </label>
                                             <input
                                                 v-model="
                                                     form.projectNameFiberNet
@@ -324,19 +261,6 @@
                                                 ชื่อโครงการของทีเอ็กอาเอ็ก</label
                                             >
                                             <br />
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="trueName"
-                                                    checked
-                                                />ชื่อเดียวกัน
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input
-                                                    type="radio"
-                                                    name="trueName"
-                                                />ต่างชื่อกัน
-                                            </label>
                                             <input
                                                 v-model="form.projectNameTxrt"
                                                 type="text"
@@ -345,6 +269,30 @@
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'projectNameTxrt'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label
+                                                >Project Name Symphony /
+                                                ชื่อโครงการของซิมโฟนี่เน็ต</label
+                                            >
+                                            <br />                                          
+                                            <input
+                                                v-model="
+                                                    form.projectNameSymphony
+                                                "
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="ชื่อโครงการของสามบีบี"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'projectNameSymphony'
                                                     )
                                                 }"
                                             />
@@ -1253,6 +1201,7 @@ export default {
                 projectNameAis: "",
                 projectNameFiberNet: "",
                 projectNameTxrt: "",
+                projectNameSymphony:"",
                 buildingSum: "",
                 buildingNumber: "",
                 buildingFloor: "",
@@ -1309,14 +1258,29 @@ export default {
                 .then(response => {
                     if (response.status === 200) {
                         // codes here after the file is upload successfully
+                        Toast.fire({
+                        icon: "success",
+                        title: response.data.message
+                    });
                     }
+                    this.loadBuildings();
+                    this.loadConstarution();
                 })
-                .catch(error => {
-                    // code here when an upload is not valid
-                    this.uploading = false;
-                    this.error = error.response.data;
-                    console.log("check error: ", this.error);
+                .catch(() => {
+                    Toast.fire({
+                        icon: "error",
+                        title: "Some error occured! Please try again"
+                    });
                 });
+            setTimeout(() => {
+                this.onprogress = false;
+            }, 2000);
+            // .catch(error => {
+            //     // code here when an upload is not valid
+            //     this.uploading = false;
+            //     this.error = error.response.data;
+            //     console.log("check error: ", this.error);
+            // });
         },
         goToImportPanel() {
             this.$router.push({ path: "importData" });
@@ -1660,6 +1624,9 @@ export default {
                     },
                     {
                         data: "projectNameTxrt"
+                    },
+                    {
+                        data: "projectNameSymphony"
                     },
                     // {
                     //     data: "buildingSum"
