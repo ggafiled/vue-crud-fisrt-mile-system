@@ -17,8 +17,8 @@ class Planing extends Model
         'isp_id',
         'agentDetail_id',
         'jobtype_id',
-        'Zone_id',
-        'Zone2_id',
+        'zone_id',
+        'zone2_id',
         'ispId_id',
         'type',
         'name',
@@ -86,12 +86,12 @@ class Planing extends Model
 
     public function zone()
     {
-        return $this->hasOne('App\Models\Zone', 'id', 'Zone_id');
+        return $this->hasOne('App\Models\Zone', 'id', 'zone_id');
     }
 
     public function zone2()
     {
-        return $this->hasOne('App\Models\Zone', 'id', 'Zone2_id');
+        return $this->hasOne('App\Models\Zone', 'id', 'zone2_id');
     }
 
     public function ispId()

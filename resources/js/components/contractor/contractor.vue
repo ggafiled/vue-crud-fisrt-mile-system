@@ -6,7 +6,7 @@
                     <div class="card-header">
                         <h2 class="card-title">
                             <i class="fas fa-fw bi bi-people"></i>
-                            {{ translate("CONTRACTOR MANAGEMENT") }}
+                            {{ translate("CUSTOMER MANAGEMENT") }}
                         </h2>
                         <div class="card-tools">
                             <button
@@ -17,14 +17,14 @@
                                 <i class="fa fa-upload" aria-hidden="true"></i>
                                 Import data form Customer Table
                             </button>
-                            <!-- <button
+                            <button
                                 type="button"
                                 class="btn btn-sm btn-primary"
                                 @click="newModal"
                             >
                                 <i class="fa fa-plus-square"></i>
                                 Add New
-                            </button> -->
+                            </button>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -54,47 +54,34 @@
                                 <thead>
                                     <tr class="info">
                                         <th></th>
-                                        <th>
-                                            {{
-                                                translate(
-                                                    "planing.planing_task_number"
-                                                )
-                                            }}
-                                        </th>
+
                                         <th>Type</th>
                                         <th>ชื่อ/บริษัท</th>
                                         <th>นามสกุล</th>
                                         <th>เบอร์โทร</th>
-                                        <th>เบอร์โทร2</th>
-                                        <th>ชื่อตึก</th>
-                                        <th>บ้านเลขที่</th>
-                                        <th>ซอย</th>
-                                        <th>หมู่</th>
-                                        <th>ถนน</th>
-                                        <th>อำเภอ</th>
-                                        <th>จังหวัด</th>
-                                        <th>ตำบล</th>
-                                        <th>รหัสไปรษณีย์</th>
-                                        <th>Longitude</th>
-                                        <th>Latitude</th>
-                                        <th>จำนวนอาคาร</th>
-                                        <th>จำนวนชั้น</th>
-                                        <th>จำนวนห้อง</th>
-                                        <th>เครือข่ายที่ติดตั้ง</th>
-                                        <th>รายละเอียดตัวแทน</th>
-                                        <th>เลข circuit</th>
-                                        <th>ค่าธรรมเนียมแรกเข้า</th>
-                                        <th>ประเภทงาน</th>
-                                        <th>วันที่นัดหมาย</th>
+                                        <th>โทรยืนยัดนัดหมาย</th>
+                                        <th>เวลานัดหมายในระบบ</th>
+                                        <th>สถานะการยืนยันนัดหมาย</th>
+                                        <th>ทีมช่าง</th>
+                                        <th>ID ที่ต้องใช้</th>
+                                        <th>สถานะงาน</th>
+                                        <th>วันนัดหมาย</th>
                                         <th>เวลานัดหมาย</th>
-                                        <!-- <th>zone</th>
-                                        <th>zone2</th>
-                                        <th>เบอร์โทร</th>
-                                        <th>อีเมลล์</th> -->
-                                        <th>ผู้ให้บริการ</th>
-                                        <th>status</th>
-                                        <th>sub-Status</th>
-                                        <th>รีมาร์ค (For Admin)</th>
+                                        <th>รีมาร์ค (For Zone)</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง1</th>
+                                        <th>S/Nที่ใช้ติดตั้ง1</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง2</th>
+                                        <th>S/Nที่ใช้ติดตั้ง2</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง3</th>
+                                        <th>S/Nที่ใช้ติดตั้ง3</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง4</th>
+                                        <th>S/Nที่ใช้ติดตั้ง4</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง5</th>
+                                        <th>S/Nที่ใช้ติดตั้ง5</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง6</th>
+                                        <th>S/Nที่ใช้ติดตั้ง6</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง7</th>
+                                        <th>S/Nที่ใช้ติดตั้ง7</th>
                                         <th>Create At</th>
                                         <th>Updated At</th>
                                         <th>Action</th>
@@ -174,8 +161,8 @@
                                             <label>Tpye*</label>
                                             <select
                                                 type="text"
-                                                disabled
                                                 class="form-control"
+                                                disabled
                                                 placeholder="FM-Progress"
                                                 :class="
                                                     hasError('type')
@@ -223,8 +210,8 @@
                                                 )
                                             }}</label>
                                             <input
-                                                disabled
                                                 type="text"
+                                                disabled
                                                 class="form-control"
                                                 placeholder="Enter your Name..."
                                                 :class="
@@ -258,8 +245,8 @@
                                             }}</label>
                                             <input
                                                 v-model="form.surname"
-                                                type="text"
                                                 disabled
+                                                type="text"
                                                 class="form-control"
                                                 placeholder="Enter your surname..."
                                                 :class="
@@ -292,8 +279,8 @@
                                             }}</label>
                                             <input
                                                 v-model="form.tel"
-                                                type="text"
                                                 disabled
+                                                type="text"
                                                 class="form-control"
                                                 placeholder="Enter your tel..."
                                                 :class="
@@ -324,8 +311,8 @@
                                             }}</label>
                                             <input
                                                 v-model="form.tel2"
-                                                type="text"
                                                 disabled
+                                                type="text"
                                                 class="form-control"
                                                 placeholder="Enter your tel2..."
                                                 :class="
@@ -363,8 +350,8 @@
                                                 )
                                             }}</label>
                                             <Select2
-                                                disabled
                                                 v-model="form.building_id"
+                                                disabled
                                                 :options="building"
                                                 :settings="settings"
                                                 :class="
@@ -392,519 +379,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label
-                                                ><th>
-                                                    {{
-                                                        translate(
-                                                            "planing.planing_theBuilding"
-                                                        )
-                                                    }}
-                                                </th></label
-                                            >
-                                            <input
-                                                v-model="form.theBuilding"
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                placeholder="Enter your building..."
-                                                :class="
-                                                    hasError('theBuilding')
-                                                        ? 'is-invalid'
-                                                        : ''
-                                                "
-                                            />
-                                            <div
-                                                v-if="hasError('theBuilding')"
-                                                class="invalid-feedback"
-                                            >
-                                                <div
-                                                    class="error"
-                                                    v-if="
-                                                        !$v.form.theBuilding
-                                                            .required
-                                                    "
-                                                >
-                                                    Please provide a valid
-                                                    theBuilding.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "planing.planing_floor"
-                                                )
-                                            }}</label>
-                                            <input
-                                                v-model="form.floor"
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                placeholder="Enter your floor..."
-                                                :class="
-                                                    hasError('floor')
-                                                        ? 'is-invalid'
-                                                        : ''
-                                                "
-                                            />
-                                            <div
-                                                v-if="hasError('floor')"
-                                                class="invalid-feedback"
-                                            >
-                                                <div
-                                                    class="error"
-                                                    v-if="
-                                                        !$v.form.floor.required
-                                                    "
-                                                >
-                                                    Please provide a valid
-                                                    floor.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "planing.planing_room"
-                                                )
-                                            }}</label>
-                                            <input
-                                                v-model="form.room"
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                placeholder="Enter your room..."
-                                                :class="
-                                                    hasError('room')
-                                                        ? 'is-invalid'
-                                                        : ''
-                                                "
-                                            />
-                                            <div
-                                                v-if="hasError('room')"
-                                                class="invalid-feedback"
-                                            >
-                                                <div
-                                                    class="error"
-                                                    v-if="
-                                                        !$v.form.room.required
-                                                    "
-                                                >
-                                                    Please provide a valid room.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate("planing.planing_isp")
-                                            }}</label>
-                                            <select
-                                                disabled
-                                                class="form-control"
-                                                :class="
-                                                    hasError('isp_id')
-                                                        ? 'is-invalid'
-                                                        : ''
-                                                "
-                                                v-model="form.isp_id"
-                                            >
-                                                <option value="" >
-                                                    --- Select a Class ---
-                                                </option>
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in isps"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.isp }}
-                                                </option>
-                                            </select>
-                                            <div
-                                                v-if="hasError('isp_id')"
-                                                class="invalid-feedback"
-                                            >
-                                                <div
-                                                    class="error"
-                                                    v-if="
-                                                        !$v.form.isp_id.required
-                                                    "
-                                                >
-                                                    Please provide a valid
-                                                    isp_id.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "planing.planing_agentdetail"
-                                                )
-                                            }}</label>
-                                            <select
-                                                disabled
-                                                class="form-control"
-                                                v-model="form.agentDetail_id"
-                                                :class="
-                                                    hasError('agentDetail_id')
-                                                        ? 'is-invalid'
-                                                        : ''
-                                                "
-                                            >
-                                                <option value="" >
-                                                    --- Select a Class ---
-                                                </option>
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in agents"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.agentDetail }}
-                                                </option>
-                                            </select>
-                                            <div
-                                                v-if="
-                                                    hasError('agentDetail_id')
-                                                "
-                                                class="invalid-feedback"
-                                            >
-                                                <div
-                                                    class="error"
-                                                    v-if="
-                                                        !$v.form.agentDetail_id
-                                                            .required
-                                                    "
-                                                >
-                                                    Please provide a valid
-                                                    agentDetail_id.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "planing.planing_circuit"
-                                                )
-                                            }}</label>
-                                            <input
-                                                v-model="form.circuit"
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                placeholder="Enter your circuit..."
-                                                :class="
-                                                    hasError('circuit')
-                                                        ? 'is-invalid'
-                                                        : ''
-                                                "
-                                            />
-                                            <div
-                                                v-if="hasError('circuit')"
-                                                class="invalid-feedback"
-                                            >
-                                                <div
-                                                    class="error"
-                                                    v-if="
-                                                        !$v.form.circuit
-                                                            .required
-                                                    "
-                                                >
-                                                    Please provide a valid
-                                                    circuit.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "planing.planing_entrancefee"
-                                                )
-                                            }}</label>
-                                            <input
-                                                v-model="form.entranceFee"
-                                                type="text"
-                                                disabled
-                                                class="form-control"
-                                                placeholder="Enter your entrance fee..."
-                                                :class="
-                                                    hasError('entranceFee')
-                                                        ? 'is-invalid'
-                                                        : ''
-                                                "
-                                            />
-                                            <div
-                                                v-if="hasError('entranceFee')"
-                                                class="invalid-feedback"
-                                            >
-                                                <div
-                                                    class="error"
-                                                    v-if="
-                                                        !$v.form.entranceFee
-                                                            .required
-                                                    "
-                                                >
-                                                    Please provide a valid
-                                                    entranceFee.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </tab-content>
-                            <tab-content title="Project Detail">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "planing.planing_jobtype"
-                                                )
-                                            }}</label>
-                                            <select
-                                                disabled
-                                                class="form-control"
-                                                v-model="form.jobtype_id"
-                                            >
-                                                <option value="" >
-                                                    --- Select a Class ---
-                                                </option>
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in jobtpyes"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.jobType }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="jobType"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "planing.planing_appointmentdate"
-                                                )
-                                            }}</label>
-                                            <input
-                                                v-model="form.appointmentDate"
-                                                type="date"
-                                                disabled
-                                                class="form-control"
-                                                placeholder="Enter your appointmentDate..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'appointmentDate'
-                                                    )
-                                                }"
-                                            />
-                                            <!-- <datepicker class="form-control" v-model="form.appointmentDate" :language="th"></datepicker> -->
-                                            <has-error
-                                                :form="form"
-                                                field="appointmentDate"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>{{
-                                                translate(
-                                                    "planing.planing_appointmenttime"
-                                                )
-                                            }}</label>
-                                            <vue-timepicker
-                                                format="HH:mm"
-                                                drop-direction="auto"
-                                                fixed-dropdown-button
-                                                hide-clear-button
-                                                v-model="form.appointmentTime"
-                                                :minute-interval="10"
-                                                class="w-100"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'appointmentTime'
-                                                    )
-                                                }"
-                                            >
-                                                <template v-slot:dropdownButton>
-                                                    <i class="bi bi-clock"></i>
-                                                </template>
-                                            </vue-timepicker>
-                                            <has-error
-                                                :form="form"
-                                                field="appointmentTime"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>ชื่อช่าง Planing</label>
-                                            <select
-                                                disabled
-                                                class="form-control"
-                                                v-model="form.zone_id"
-                                            >
-                                                <option value="" >
-                                                    --- Select a Class ---
-                                                </option>
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in zones"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.zoneName }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="zone"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label
-                                                >ชื่อช่าง Planing ทีมที่2</label
-                                            >
-                                            <select
-                                                disabled
-                                                class="form-control"
-                                                v-model="form.zone2_id"
-                                            >
-                                                <option value="" >
-                                                    --- Select a Class ---
-                                                </option>
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in zones"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.zoneName }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="zone2"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>ID ที่ต้องใช้</label>
-                                            <select
-                                                disabled
-                                                class="form-control"
-                                                v-model="form.ispId_id"
-                                            >
-                                                <option value="" >
-                                                    --- Select a Class ---
-                                                </option>
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in isps"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.isp }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="idRequired"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Status</label>
-                                            <input
-                                                disabled
-                                                v-model="form.status"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your sub status..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'status'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="status"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Sub Status</label>
-                                            <input
-                                                disabled
-                                                v-model="form.subStatus"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your sub status..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'subStatus'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="subStatus"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label>Remark</label>
-                                            <small>/รีมาร์ค</small>
-                                            <textarea
-                                                id="remark"
-                                                disabled
-                                                v-model="form.reMark"
-                                                class="form-control"
-                                                placeholder="-"
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'reMark'
-                                                    )
-                                                }"
-                                            />
-                                            <has-error
-                                                :form="form"
-                                                field="reMark"
-                                            ></has-error>
-                                        </div>
-                                    </div>
-                                </div>
                             </tab-content>
 
                             <tab-content title="Progress">
@@ -915,10 +389,9 @@
                                             <small>/โทรยืนยัดนัดหมาย</small>
                                             <select
                                                 class="form-control"
-                                                
                                                 v-model="form.callver_id"
                                             >
-                                                <option  value=""
+                                                <option disabled value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -944,7 +417,6 @@
                                                     form.appointmentTimeCustomer
                                                 "
                                                 type="time"
-                                                
                                                 class="form-control"
                                                 placeholder="เวลานัดหมาย ในระบบ"
                                                 :class="{
@@ -968,10 +440,9 @@
                                             >
                                             <select
                                                 class="form-control"
-                                                
                                                 v-model="form.callverStatus_id"
                                             >
-                                                <option  value=""
+                                                <option value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -997,7 +468,6 @@
                                             <input
                                                 v-model="form.idRequired"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="ID ที่ต้องใช้"
                                                 :class="{
@@ -1019,12 +489,11 @@
                                             <small>/สถานะงาน</small>
                                             <select
                                                 class="form-control"
-                                                
                                                 v-model="
                                                     form.problemsolution_id
                                                 "
                                             >
-                                                <option  value=""
+                                                <option value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -1050,7 +519,6 @@
                                                 v-model="
                                                     form.confirmAppointment
                                                 "
-                                                
                                                 type="date"
                                                 class="form-control"
                                                 placeholder="สถานะการยืนยันนัดหมาย"
@@ -1077,7 +545,6 @@
                                                 v-model="
                                                     form.confirmAppointmentTime
                                                 "
-                                                
                                                 type="time"
                                                 class="form-control"
                                                 placeholder="สถานะการยืนยันนัดหมาย"
@@ -1100,7 +567,6 @@
                                             <label>Remark (For Zone)</label>
                                             <small>/รีมาร์ค</small>
                                             <textarea
-                                                
                                                 v-model="form.reMarkzone"
                                                 class="form-control"
                                                 placeholder="-"
@@ -1131,7 +597,6 @@
                                             <input
                                                 v-model="form.equipmentInstall1"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="อุปกรณ์ที่ใช้ติดตั้ง 1"
                                                 :class="{
@@ -1153,7 +618,6 @@
                                             <input
                                                 v-model="form.snInstall1"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="S/N ที่ใช้ติดตั้ง 1"
                                                 :class="{
@@ -1182,7 +646,6 @@
                                             <input
                                                 v-model="form.equipmentInstall2"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="อุปกรณ์ที่ใช้ติดตั้ง 2"
                                                 :class="{
@@ -1203,7 +666,6 @@
                                             <small>/S/N ที่ใช้ติดตั้ง 2</small>
                                             <input
                                                 v-model="form.snInstall2"
-                                                
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="S/N ที่ใช้ติดตั้ง 2"
@@ -1233,7 +695,6 @@
                                             <input
                                                 v-model="form.equipmentInstall3"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="อุปกรณ์ที่ใช้ติดตั้ง 3"
                                                 :class="{
@@ -1255,7 +716,6 @@
                                             <input
                                                 v-model="form.snInstall3"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="S/N ที่ใช้ติดตั้ง 3"
                                                 :class="{
@@ -1283,7 +743,6 @@
                                             <input
                                                 v-model="form.equipmentInstall4"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="อุปกรณ์ที่ใช้ติดตั้ง 4"
                                                 :class="{
@@ -1305,7 +764,6 @@
                                             <input
                                                 v-model="form.snInstall4"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="S/N ที่ใช้ติดตั้ง 4"
                                                 :class="{
@@ -1334,7 +792,6 @@
                                             <input
                                                 v-model="form.equipmentInstall5"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="อุปกรณ์ที่ใช้ติดตั้ง 5"
                                                 :class="{
@@ -1356,7 +813,6 @@
                                             <input
                                                 v-model="form.snInstall5"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="S/N ที่ใช้ติดตั้ง 5"
                                                 :class="{
@@ -1385,7 +841,6 @@
                                             <input
                                                 v-model="form.equipmentInstall6"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="อุปกรณ์ที่ใช้ติดตั้ง 6"
                                                 :class="{
@@ -1407,7 +862,6 @@
                                             <input
                                                 v-model="form.snInstall6"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="S/N ที่ใช้ติดตั้ง 6"
                                                 :class="{
@@ -1436,7 +890,6 @@
                                             <input
                                                 v-model="form.equipmentInstall7"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="อุปกรณ์ที่ใช้ติดตั้ง 7"
                                                 :class="{
@@ -1458,7 +911,6 @@
                                             <input
                                                 v-model="form.snInstall7"
                                                 type="text"
-                                                
                                                 class="form-control"
                                                 placeholder="S/N ที่ใช้ติดตั้ง 7"
                                                 :class="{
@@ -1611,12 +1063,12 @@ export default {
                 subStatus: "-",
                 reMark: "-",
 
-                callver_id: "",
-                callver: "",
-                callverStatus_id: "",
+                callver_id: "1",
+                callver: "1",
+                callverStatus_id: "1",
                 callverStatus: "",
-                problemsolution_id: "",
-                appointmentTimeCustomer:  moment()
+                problemsolution_id: "1",
+                appointmentTimeCustomer: moment()
                     .add(10 - (new Date().getMinutes() % 10), "minutes")
                     .format("H:mm"),
                 problemsolution: "",
@@ -1955,16 +1407,16 @@ export default {
                         defaultContent: "",
                         className: "dt-body-center"
                     },
-                    {
-                        data: "task_id",
-                        render: function(data, type, row, meta) {
-                            return (
-                                `<a href="/progress?task=${data}" target="blank">` +
-                                `#${data}` +
-                                "</a>"
-                            );
-                        }
-                    },
+                    // {
+                    //     data: "task_id",
+                    //     render: function(data, type, row, meta) {
+                    //         return (
+                    //             `<a href="/progress?task=${data}" target="blank">` +
+                    //             `#${data}` +
+                    //             "</a>"
+                    //         );
+                    //     }
+                    // },
                     {
                         data: "type",
                         className: "text-capitalize",
@@ -1993,6 +1445,21 @@ export default {
                                     data +
                                     "</span>"
                                 );
+                            }
+                        }
+                    },
+                    {
+                        data: "building.projectName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
                             }
                         }
                     },
@@ -2046,26 +1513,7 @@ export default {
                         }
                     },
                     {
-                        data: "tel2",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger"><i class="bi bi-file-person pr-2"></i>' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span><i class="bi bi-file-person pr-2"></i>' +
-                                    data +
-                                    "</span>"
-                                );
-                            }
-                        }
-                    },
-                    {
-                        data: "building.projectName",
+                        data: "callver_id",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2080,7 +1528,7 @@ export default {
                         }
                     },
                     {
-                        data: "building.houseNumber",
+                        data: "callverStatus_id",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2095,7 +1543,7 @@ export default {
                         }
                     },
                     {
-                        data: "building.squadNumber",
+                        data: "problemsolution_id",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2110,7 +1558,7 @@ export default {
                         }
                     },
                     {
-                        data: "building.alleyName",
+                        data: "appointmentTimeCustomer",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2125,7 +1573,7 @@ export default {
                         }
                     },
                     {
-                        data: "building.roadName",
+                        data: "idRequired",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2140,7 +1588,7 @@ export default {
                         }
                     },
                     {
-                        data: "building.districtName",
+                        data: "confirmAppointment",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2155,7 +1603,7 @@ export default {
                         }
                     },
                     {
-                        data: "building.countyName",
+                        data: "confirmAppointmentTime",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2170,7 +1618,7 @@ export default {
                         }
                     },
                     {
-                        data: "building.provinceName",
+                        data: "reMarkzone",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2185,7 +1633,7 @@ export default {
                         }
                     },
                     {
-                        data: "building.postalCode",
+                        data: "equipmentInstall1",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2200,35 +1648,7 @@ export default {
                         }
                     },
                     {
-                        data: "building.longitude",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "building.latitude",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "theBuilding",
+                        data: "snInstall1",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2243,7 +1663,7 @@ export default {
                         }
                     },
                     {
-                        data: "floor",
+                        data: "equipmentInstall2",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2258,7 +1678,7 @@ export default {
                         }
                     },
                     {
-                        data: "room",
+                        data: "snInstall2",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2273,35 +1693,7 @@ export default {
                         }
                     },
                     {
-                        data: null,
-                        render: function(data, type, row, meta) {
-                            if (data.isp) {
-                                return (
-                                    '<span class="badge text-white" style="background: ' +
-                                    data.isp.isps_color +
-                                    '">' +
-                                    data.isp.name +
-                                    "</span>"
-                                );
-                            }
-                        }
-                    },
-                    {
-                        data: "agent_detail.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "circuit",
+                        data: "equipmentInstall3",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2316,35 +1708,7 @@ export default {
                         }
                     },
                     {
-                        data: "entranceFee",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "฿" + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "jobtype.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger"><i class="bi bi-phone pr-2"></i>' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "appointmentDate",
+                        data: "snInstall3",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2359,97 +1723,7 @@ export default {
                         }
                     },
                     {
-                        data: "appointmentTime",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    // {
-                    //     data: "technician.teamTechnician",
-                    //     className: "text-capitalize",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "" || data == null) {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 "ไม่ได้กรอกข้อมูล" +
-                    //                 "</span>"
-                    //             );
-                    //         } else {
-                    //             return "<span>" + data + "</span>";
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "technician.teamTechnician",
-                    //     className: "text-capitalize",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "" || data == null) {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 "ไม่ได้กรอกข้อมูล" +
-                    //                 "</span>"
-                    //             );
-                    //         } else {
-                    //             return "<span>" + data + "</span>";
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "technician.phoneTechnician",
-                    //     className: "text-capitalize",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "" || data == null) {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 "ไม่ได้กรอกข้อมูล" +
-                    //                 "</span>"
-                    //             );
-                    //         } else {
-                    //             return "<span>" + data + "</span>";
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "technician.emailTechnician",
-                    //     className: "text-capitalize",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "" || data == null) {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 "ไม่ได้กรอกข้อมูล" +
-                    //                 "</span>"
-                    //             );
-                    //         } else {
-                    //             return "<span>" + data + "</span>";
-                    //         }
-                    //     }
-                    // },
-                    {
-                        data: null,
-                        title: "ผู้ให้บริการ",
-                        render: function(data, type, row, meta) {
-                            if (data.isp_id) {
-                                return (
-                                    '<span class="badge text-white" style="background: ' +
-                                    data.isp_id.isps_color +
-                                    '">' +
-                                    data.isp_id.name +
-                                    "</span>"
-                                );
-                            }
-                        }
-                    },
-                    {
-                        data: "status",
+                        data: "equipmentInstall4",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2464,7 +1738,7 @@ export default {
                         }
                     },
                     {
-                        data: "subStatus",
+                        data: "snInstall4",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {
@@ -2479,7 +1753,82 @@ export default {
                         }
                     },
                     {
-                        data: "reMark",
+                        data: "equipmentInstall5",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "snInstall5",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "equipmentInstall6",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "snInstall6",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "equipmentInstall7",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "snInstall7",
                         className: "text-capitalize",
                         render: function(data, type, row, meta) {
                             if (data == "" || data == null) {

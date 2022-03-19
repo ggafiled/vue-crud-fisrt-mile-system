@@ -32,9 +32,9 @@ class PlaningController extends BaseController
 
         try {
             $planing = Planing::with(
-                'building', 'technician',
-                'technician:id,teamTechnician as name',
-                'technician2:id,teamTechnician as name',
+                'building','zone',
+                'zone:id,zoneName as name',
+                'zone2:id,zoneName as name',
                 'isp:id,isps_color,isp as name',
                 'agentDetail:id,agentDetail as name',
                 'jobtype:id,jobType as name',
@@ -70,8 +70,8 @@ class PlaningController extends BaseController
                 'isp_id' => $request->input('isp_id'),
                 'agentDetail_id' => $request->input('agentDetail_id'),
                 'jobtype_id' => $request->input('jobtype_id'),
-                'technician_id' => $request->input('technician_id'),
-                'technician2_id' => $request->input('technician2_id'),
+                'zone_id' => $request->input('zone_id'),
+                'zone2_id' => $request->input('zone2_id'),
                 'callver_id' => $request->input('callver_id'),
                 'callverStatus_id' => $request->input('callverStatus_id'),
                 'ispId_id' => $request->input('ispId_id'),
@@ -119,43 +119,43 @@ class PlaningController extends BaseController
         } catch (ValidationException $ex) {
             return $this->sendError($ex, trans('actions.created.failed'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
+            return $this->sendError([$ex], trans('actions.created.failed'));
         }
     }
 
-    public function store2(PlaningRequest $request)
-    {
-        try {
-            $planing = Planing::create([
-                'callver_id' => $request->input('callver_id'),
-                'callverStatus_id' => $request->input('callverStatus_id'),
-                'problemsolution_id' => $request->input('problemsolution_id'),
-                'appointmentTimeCustomer' => $request->input('appointmentTimeCustomer'),
-                'idRequired' => $request->input('idRequired'),
-                'confirmAppointment' => $request->input('confirmAppointment'),
-                'confirmAppointmentTime' => $request->input('confirmAppointmentTime'),
-                'equipmentInstall1' => $request->input('equipmentInstall1'),
-                'snInstall1' => $request->input('snInstall1'),
-                'equipmentInstall2' => $request->input('equipmentInstall2'),
-                'snInstall2' => $request->input('snInstall2'),
-                'equipmentInstall3' => $request->input('equipmentInstall3'),
-                'snInstall3' => $request->input('snInstall3'),
-                'equipmentInstall4' => $request->input('equipmentInstall4'),
-                'snInstall4' => $request->input('snInstall4'),
-                'equipmentInstall5' => $request->input('equipmentInstall5'),
-                'snInstall5' => $request->input('snInstall5'),
-                'equipmentInstall6' => $request->input('equipmentInstall6'),
-                'snInstall6' => $request->input('snInstall6'),
-                'equipmentInstall7' => $request->input('equipmentInstall7'),
-                'snInstall7' => $request->input('snInstall7'),
-            ]);
-            return $this->sendResponse($planing, trans('actions.created.success'));
-        } catch (ValidationException $ex) {
-            return $this->sendError($ex, trans('actions.created.failed'));
-        } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
-        }
-    }
+    // public function store2(PlaningRequest $request)
+    // {
+    //     try {
+    //         $planing = Planing::create([
+    //             'callver_id' => $request->input('callver_id'),
+    //             'callverStatus_id' => $request->input('callverStatus_id'),
+    //             'problemsolution_id' => $request->input('problemsolution_id'),
+    //             'appointmentTimeCustomer' => $request->input('appointmentTimeCustomer'),
+    //             'idRequired' => $request->input('idRequired'),
+    //             'confirmAppointment' => $request->input('confirmAppointment'),
+    //             'confirmAppointmentTime' => $request->input('confirmAppointmentTime'),
+    //             'equipmentInstall1' => $request->input('equipmentInstall1'),
+    //             'snInstall1' => $request->input('snInstall1'),
+    //             'equipmentInstall2' => $request->input('equipmentInstall2'),
+    //             'snInstall2' => $request->input('snInstall2'),
+    //             'equipmentInstall3' => $request->input('equipmentInstall3'),
+    //             'snInstall3' => $request->input('snInstall3'),
+    //             'equipmentInstall4' => $request->input('equipmentInstall4'),
+    //             'snInstall4' => $request->input('snInstall4'),
+    //             'equipmentInstall5' => $request->input('equipmentInstall5'),
+    //             'snInstall5' => $request->input('snInstall5'),
+    //             'equipmentInstall6' => $request->input('equipmentInstall6'),
+    //             'snInstall6' => $request->input('snInstall6'),
+    //             'equipmentInstall7' => $request->input('equipmentInstall7'),
+    //             'snInstall7' => $request->input('snInstall7'),
+    //         ]);
+    //         return $this->sendResponse($planing, trans('actions.created.success'));
+    //     } catch (ValidationException $ex) {
+    //         return $this->sendError($ex, trans('actions.created.failed'));
+    //     } catch (Exception $ex) {
+    //         return $this->sendError([], trans('actions.created.failed'));
+    //     }
+    // }
 
     /**\
      * Display the specified resource.

@@ -18,7 +18,7 @@ class CreateContractorsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();//ชื่อตึก
             $table->bigInteger('callver_id')->unsigned();// โทรยืนยัดนัดหมาย
-            $table->time('appointmentTimeCustomer')->nullable();//เวลานัดหมาย ในระบบ
+            $table->time('appointmentTimeCustomer')->nullable();//เวลานัดหมายในระบบ
             $table->bigInteger('callverStatus_id')->unsigned();//สถานะการยืนยันนัดหมาย
             $table->bigInteger('technicians_id')->unsigned();//ทีมช่าง
             $table->string('idRequired')->nullable();//ID ที่ต้องใช้
