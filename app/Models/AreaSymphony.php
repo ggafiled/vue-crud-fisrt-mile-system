@@ -15,7 +15,7 @@ class AreaSymphony extends Model
 
     public function building()
     {
-        return $this->belongsTo('App\Models\AreaSymphony', 'id', 'areaSyphony_id');
+        return $this->belongsTo('App\Models\AreaSymphony', 'id', 'areaSymphony_id');
     }
 
 }

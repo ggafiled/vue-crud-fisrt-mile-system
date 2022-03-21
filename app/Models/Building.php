@@ -27,7 +27,7 @@ class Building extends Model
         'areaTrueNew_id',
         'areaFibernet_id',
         'areaTxrx_id',
-        'areaSyphony_id',
+        'areaSymphony_id',
         'contractTerm_id',
         'projectName',
         'subBuildingsum',

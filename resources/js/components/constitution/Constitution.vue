@@ -9,22 +9,42 @@
                             {{ translate("constitution.header") }}
                         </h2>
                         <div class="card-tools">
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-success"
-                                @click="newModal2"
-                            >
-                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                Import data form Constarution Table
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-primary"
-                                @click="newModal"
-                            >
-                                <i class="fa fa-plus-square"></i>
-                                {{ translate("constitution.addnew") }}
-                            </button>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input
+                                        type="file"
+                                        class="custom-file-input"
+                                        :class="{
+                                            ' is-invalid': error.message
+                                        }"
+                                        id="input-file-import"
+                                        name="file_import"
+                                        ref="import_file"
+                                        @change="onFileChange"
+                                    />
+                                    <label class="custom-file-label"
+                                        >Choose file for import</label
+                                    >
+                                </div>
+                                <div class="input-group-append">
+                                    <button
+                                        v-on:click="proceedAction()"
+                                        type="button"
+                                        class="btn btn-primary"
+                                    >
+                                        Upload
+                                    </button>
+                                    &nbsp;
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-primary"
+                                        @click="newModal"
+                                    >
+                                        <i class="fa fa-plus-square"></i>
+                                        {{ translate("constitution.addnew") }}
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -47,15 +67,33 @@
                                         <th>Project Name FiberNet</th>
                                         <th>Project Name Txrx</th>
                                         <th>Project Name Symphony</th>
-                                        <!-- <th>Building Sum</th>
+                                        <th>Building Sum</th>
                                         <th>Building Number</th>
                                         <th>Building Floor</th>
-                                        <th>Unit Floor</th> -->
+                                        <th>Unit Floor</th>
                                         <th>Fm Progress</th>
                                         <th>Team Serway</th>
                                         <th>Surwey Date</th>
                                         <th>Ifccc Type</th>
                                         <th>Ifccc Status</th>
+                                        <th>Walbox Type</th>
+                                        <th>Walbox Status</th>
+                                        <th>Microduct Type</th>
+                                        <th>Microduct Status</th>
+                                        <th>Microduct Type1</th>
+                                        <th>Microduct Type2</th>
+                                        <th>Microduct Size</th>
+                                        <th>Microduct Floor</th>
+                                        <th>Blow Status</th>
+                                        <th>Blow Core</th>
+                                        <th>Convertional Type</th>
+                                        <th>Convertional Floor</th>
+                                        <th>Vertically</th>
+                                        <th>Vertically Type</th>
+                                        <th>Building Status</th>
+                                        <th>Building Date</th>
+                                        <th>Splice Status</th>
+                                        <th>Splice Core</th>
                                         <th>Update At</th>
                                         <th>Action</th>
                                     </tr>
@@ -153,7 +191,7 @@
                                                 ชื่อโครงการของทีโอที</label
                                             >
                                             <br />
-            
+
                                             <input
                                                 v-model="form.projectNameTot"
                                                 type="text"
@@ -282,7 +320,7 @@
                                                 >Project Name Symphony /
                                                 ชื่อโครงการของซิมโฟนี่เน็ต</label
                                             >
-                                            <br />                                          
+                                            <br />
                                             <input
                                                 v-model="
                                                     form.projectNameSymphony
@@ -1090,68 +1128,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Modal2 -->
-            <div
-                class="modal fade"
-                id="addNew2"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="addNew2"
-                aria-hidden="true"
-                data-backdrop="static"
-                data-keyboard="false"
-            >
-                <div class="modal-dialog" role="dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">
-                                Import Constarution Table Excel
-                            </h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <!-- <form @submit.prevent="createRole"> -->
-
-                        <div class="modal-body">
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input
-                                        type="file"
-                                        class="custom-file-input"
-                                        :class="{
-                                            ' is-invalid': error.message
-                                        }"
-                                        id="input-file-import"
-                                        name="file_import"
-                                        ref="import_file"
-                                        @change="onFileChange"
-                                    />
-                                    <label class="custom-file-label"
-                                        >Choose file</label
-                                    >
-                                </div>
-                                <div class="input-group-append">
-                                    <button
-                                        v-on:click="proceedAction()"
-                                        type="button"
-                                        class="btn btn-primary"
-                                    >
-                                        Upload
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 </template>
@@ -1201,7 +1177,7 @@ export default {
                 projectNameAis: "",
                 projectNameFiberNet: "",
                 projectNameTxrt: "",
-                projectNameSymphony:"",
+                projectNameSymphony: "",
                 buildingSum: "",
                 buildingNumber: "",
                 buildingFloor: "",
@@ -1259,9 +1235,9 @@ export default {
                     if (response.status === 200) {
                         // codes here after the file is upload successfully
                         Toast.fire({
-                        icon: "success",
-                        title: response.data.message
-                    });
+                            icon: "success",
+                            title: response.data.message
+                        });
                     }
                     this.loadBuildings();
                     this.loadConstarution();
@@ -1374,9 +1350,6 @@ export default {
             this.selected = "";
             this.form.reset();
             $("#addNew").modal("show");
-        },
-        newModal2() {
-            $("#addNew2").modal("show");
         },
         deleteConstarution(item) {
             Swal.fire({
@@ -1628,40 +1601,40 @@ export default {
                     {
                         data: "projectNameSymphony"
                     },
-                    // {
-                    //     data: "buildingSum"
-                    // },
-                    // {
-                    //     data: "buildingNumber",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    //     // visible: false
-                    // },
-                    // {
-                    //     data: "buildingFloor",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
-                    // {
-                    //     data: "unitFloor",
-                    //     render: function(data, type, row, meta) {
-                    //         if (!data) {
-                    //             return "ไม่ได้ระบุ";
-                    //         } else {
-                    //             return data;
-                    //         }
-                    //     }
-                    // },
+                    {
+                        data: "buildingSum"
+                    },
+                    {
+                        data: "buildingNumber",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                        // visible: false
+                    },
+                    {
+                        data: "buildingFloor",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: "unitFloor",
+                        render: function(data, type, row, meta) {
+                            if (!data) {
+                                return "ไม่ได้ระบุ";
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
                     {
                         data: "fmProgress",
                         render: function(data, type, row, meta) {
@@ -1699,6 +1672,78 @@ export default {
                     },
                     {
                         data: "ifcccStatus"
+                        // visible: false
+                    },
+                    {
+                        data: "wallboxType"
+                        // visible: false
+                    },
+                    {
+                        data: "wallboxStatus"
+                        // visible: false
+                    },
+                    {
+                        data: "microductType"
+                        // visible: false
+                    },
+                    {
+                        data: "microductStatus"
+                        // visible: false
+                    },
+                    {
+                        data: "microductType1"
+                        // visible: false
+                    },
+                    {
+                        data: "microductType2"
+                        // visible: false
+                    },
+                    {
+                        data: "microductSize"
+                        // visible: false
+                    },
+                    {
+                        data: "microductFloor"
+                        // visible: false
+                    },
+                    {
+                        data: "blowStatus"
+                        // visible: false
+                    },
+                    {
+                        data: "blowCore"
+                        // visible: false
+                    },
+                    {
+                        data: "convertionalType"
+                        // visible: false
+                    },
+                    {
+                        data: "convertionalFloor"
+                        // visible: false
+                    },
+                    {
+                        data: "vertically"
+                        // visible: false
+                    },
+                    {
+                        data: "verticallyType"
+                        // visible: false
+                    },
+                    {
+                        data: "buildingStatus"
+                        // visible: false
+                    },
+                    {
+                        data: "buildingDate"
+                        // visible: false
+                    },
+                    {
+                        data: "spliceStatus"
+                        // visible: false
+                    },
+                    {
+                        data: "spliceCore"
                         // visible: false
                     },
                     {

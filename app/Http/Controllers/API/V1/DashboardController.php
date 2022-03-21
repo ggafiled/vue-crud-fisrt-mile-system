@@ -80,6 +80,16 @@ class DashboardController extends BaseController
                         ->join('generatingactions', 'generatingactions.id','=','progress.trueProgress_id')
                         ->groupBy('generatingactions.status')
                         ->get(),
+                    'TXRX Progress' => DB::table('progress')
+                        ->select('generatingactions.status', DB::raw('count(*) as total'))
+                        ->join('generatingactions', 'generatingactions.id','=','progress.txrtProgress_id')
+                        ->groupBy('generatingactions.status')
+                        ->get(),
+                    'SYMPHONY Progress' => DB::table('progress')
+                        ->select('generatingactions.status', DB::raw('count(*) as total'))
+                        ->join('generatingactions', 'generatingactions.id','=','progress.symphonyProgress_id')
+                        ->groupBy('generatingactions.status')
+                        ->get(),
                     // 'FM Progress' => [10,5,4,7,8,6,3],
                     // 'TOT Progress' => [10,5,4,7,8,6,3],
                     // 'AIS Progress' => [10,5,4,7,8,6,3],

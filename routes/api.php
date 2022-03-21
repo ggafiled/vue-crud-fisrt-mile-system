@@ -62,7 +62,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::post('/buildings/import','BuildingController@importbuilding');
     Route::post('/constalutions/import','ConstarutionController@importconstalution');
     Route::post('/progress/import','ProgressController@importprogress');
-    Route::post('/plannings/import','PlaningController@importplanning');
+    Route::post('/customers/import','PlaningController@importcustomer');
     Route::post('/users/import','UsersController@import');
 
     // Route::post('close_ticket/{ticket_id}', 'TicketsController@close'); // ปิดตั๋ว

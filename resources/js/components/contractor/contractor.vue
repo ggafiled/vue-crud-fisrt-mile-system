@@ -6,25 +6,45 @@
                     <div class="card-header">
                         <h2 class="card-title">
                             <i class="fas fa-fw bi bi-people"></i>
-                            {{ translate("CUSTOMER MANAGEMENT") }}
+                            CONTRACTOR MANAGEMENT
                         </h2>
                         <div class="card-tools">
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-success"
-                                @click="newModal2"
-                            >
-                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                Import data form Customer Table
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-primary"
-                                @click="newModal"
-                            >
-                                <i class="fa fa-plus-square"></i>
-                                Add New
-                            </button>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input
+                                        type="file"
+                                        class="custom-file-input"
+                                        :class="{
+                                            ' is-invalid': error.message
+                                        }"
+                                        id="input-file-import"
+                                        name="file_import"
+                                        ref="import_file"
+                                        @change="onFileChange"
+                                    />
+                                    <label class="custom-file-label"
+                                        >Choose file for import</label
+                                    >
+                                </div>
+                                <div class="input-group-append">
+                                    <button
+                                        v-on:click="proceedAction()"
+                                        type="button"
+                                        class="btn btn-primary"
+                                    >
+                                        Upload
+                                    </button>
+                                    &nbsp;
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-primary"
+                                        @click="newModal"
+                                    >
+                                        <i class="fa fa-plus-square"></i>
+                                        Add New
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -55,7 +75,7 @@
                                     <tr class="info">
                                         <th></th>
 
-                                        <th>Type</th>
+                                        <th>ประเภทงาน</th>
                                         <th>ชื่อ/บริษัท</th>
                                         <th>นามสกุล</th>
                                         <th>เบอร์โทร</th>
@@ -989,8 +1009,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal2 -->
-            <!--  -->
         </div>
     </section>
 </template>
@@ -1235,11 +1253,6 @@ export default {
             this.selected = "";
             this.form.reset();
             $("#addNew").modal("show");
-        },
-        newModal2() {
-            this.selected = "";
-            this.form.reset();
-            $("#addNew2").modal("show");
         },
         deleteCustomer(id) {
             Swal.fire({

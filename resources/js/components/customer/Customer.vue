@@ -9,22 +9,42 @@
                             {{ translate("CUSTOMER MANAGEMENT") }}
                         </h2>
                         <div class="card-tools">
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-success"
-                                @click="newModal2"
-                            >
-                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                Import data form Customer Table
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-primary"
-                                @click="newModal"
-                            >
-                                <i class="fa fa-plus-square"></i>
-                                Add New
-                            </button>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input
+                                        type="file"
+                                        class="custom-file-input"
+                                        :class="{
+                                            ' is-invalid': error.message
+                                        }"
+                                        id="input-file-import"
+                                        name="file_import"
+                                        ref="import_file"
+                                        @change="onFileChange"
+                                    />
+                                    <label class="custom-file-label"
+                                        >Choose file for import</label
+                                    >
+                                </div>
+                                <div class="input-group-append">
+                                    <button
+                                        v-on:click="proceedAction()"
+                                        type="button"
+                                        class="btn btn-primary"
+                                    >
+                                        Upload
+                                    </button>
+                                    &nbsp;
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-primary"
+                                        @click="newModal"
+                                    >
+                                        <i class="fa fa-plus-square"></i>
+                                        Add New
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -67,7 +87,6 @@
                                         <th>ชื่อ/บริษัท</th>
                                         <th>นามสกุล</th>
                                         <th>เบอร์โทร</th>
-
                                         <th>โทรยืนยัดนัดหมาย</th>
                                         <th>เวลานัดหมาย ในระบบ</th>
                                         <th>สถานะการยืนยันนัดหมาย</th>
@@ -947,8 +966,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal2 -->
-            <!--  -->
         </div>
     </section>
 </template>
@@ -1026,7 +1043,7 @@ export default {
                 callverStatus_id: "1",
                 callverStatus: "",
                 problemsolution_id: "1",
-                appointmentTimeCustomer:  moment()
+                appointmentTimeCustomer: moment()
                     .add(10 - (new Date().getMinutes() % 10), "minutes")
                     .format("H:mm"),
                 problemsolution: "",
@@ -1062,7 +1079,7 @@ export default {
             formData.append("import_file", this.import_file);
 
             axios
-                .post("/plannings/import", formData, {
+                .post("/customers/import", formData, {
                     headers: { "content-type": "multipart/form-data" }
                 })
                 .then(response => {
@@ -1193,11 +1210,6 @@ export default {
             this.selected = "";
             this.form.reset();
             $("#addNew").modal("show");
-        },
-        newModal2() {
-            this.selected = "";
-            this.form.reset();
-            $("#addNew2").modal("show");
         },
         deleteCustomer(id) {
             Swal.fire({
@@ -1407,10 +1419,10 @@ export default {
                         }
                     },
                     {
-                        data: "zone.name",
+                        data: "zone.name"
                     },
                     {
-                        data: "zone.name",
+                        data: "zone.name"
                     },
                     {
                         data: "name",

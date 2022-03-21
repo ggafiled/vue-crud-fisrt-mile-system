@@ -25,7 +25,7 @@ class BuildingsImport implements ToModel, WithHeadingRow
             'areaTrueNew_id'  => $row['areatruenew_id'],
             'areaFibernet_id'  => $row['areafibernet_id'],
             'areaTxrx_id'  => $row['areatxrx_id'],
-            'areaSyphony_id'  => $row['areasyphony_id'],
+            'areaSymphony_id'  => $row['areasymphony_id'],
             'contractTerm_id'  => $row['contractterm_id'],
             'paymentType_id'  => $row['paymenttype_id'],
             'saleFm_id'  => $row['salefm_id'],

@@ -9,29 +9,42 @@
                             {{ translate("progress.header") }}
                         </h3>
                         <div class="card-tools">
-                            <!-- <button
-                                type="button"
-                                class="btn btn-sm btn-primary"
-                            >
-                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                {{ translate("constitution.import") }}
-                            </button> -->
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-success"
-                                @click="newModal2"
-                            >
-                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                Import data form Progress Table
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-primary"
-                                @click="newModal"
-                            >
-                                <i class="fa fa-plus-square"></i>
-                                {{ translate("progress.addnew") }}
-                            </button>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input
+                                        type="file"
+                                        class="custom-file-input"
+                                        :class="{
+                                            ' is-invalid': error.message
+                                        }"
+                                        id="input-file-import"
+                                        name="file_import"
+                                        ref="import_file"
+                                        @change="onFileChange"
+                                    />
+                                    <label class="custom-file-label"
+                                        >Choose file for import</label
+                                    >
+                                </div>
+                                <div class="input-group-append">
+                                    <button
+                                        v-on:click="proceedAction()"
+                                        type="button"
+                                        class="btn btn-primary"
+                                    >
+                                        Upload
+                                    </button>
+                                    &nbsp;
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-primary"
+                                        @click="newModal"
+                                    >
+                                        <i class="fa fa-plus-square"></i>
+                                        {{ translate("progress.addnew") }}
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -594,67 +607,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal2 -->
-            <div
-                class="modal fade"
-                id="addNew2"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="addNew2"
-                aria-hidden="true"
-                data-backdrop="static"
-                data-keyboard="false"
-            >
-                <div class="modal-dialog" role="dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">
-                                Import Progress Table Excel
-                            </h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <!-- <form @submit.prevent="createRole"> -->
-
-                        <div class="modal-body">
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input
-                                        type="file"
-                                        class="custom-file-input"
-                                        :class="{
-                                            ' is-invalid': error.message
-                                        }"
-                                        id="input-file-import"
-                                        name="file_import"
-                                        ref="import_file"
-                                        @change="onFileChange"
-                                    />
-                                    <label class="custom-file-label"
-                                        >Choose file</label
-                                    >
-                                </div>
-                                <div class="input-group-append">
-                                    <button
-                                        v-on:click="proceedAction()"
-                                        type="button"
-                                        class="btn btn-primary"
-                                    >
-                                        Upload
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 </template>
@@ -754,11 +706,6 @@ export default {
             //     this.error = error.response.data;
             //     console.log("check error: ", this.error);
             // });
-        },
-        newModal2() {
-            this.selected = "";
-            this.form.reset();
-            $("#addNew2").modal("show");
         },
         setSearchText(query) {
             if (!!query.task) {

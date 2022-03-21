@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\API\V1\BaseController;
+use App\Imports\CustomersImport;
 use App\Http\Requests\Planing\PlaningRequest;
 use App\Models\Planing;
 use Carbon\Carbon;
@@ -215,18 +216,6 @@ class PlaningController extends BaseController
         }
     }
 
-    public function importplanning(Request $request)
-    {
-         $request->validate([
-            'import_file' => 'required|file|mimes:xls,xlsx'
-        ]);
-
-        $path = $request->file('import_file');
-        $data = Excel::import(new PlaningsImport, $path);
-
-        return response()->json(['message' => 'uploaded successfully'], 200);
-    }
-
     /**
      * get lantitude and longitude from planning item depending on building information.
      *
@@ -295,5 +284,17 @@ class PlaningController extends BaseController
         } catch (Exception $ex) {
             return $this->sendError([$ex], trans('actions.get.failed'));
         }
+    }
+
+    public function importcustomer(Request $request)
+    {
+         $request->validate([
+            'import_file' => 'required|file|mimes:xls,xlsx'
+        ]);
+
+        $path = $request->file('import_file');
+        $data = Excel::import(new CustomersImport, $path);
+
+        return response()->json(['message' => 'uploaded successfully'], 200);
     }
 }

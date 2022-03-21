@@ -4,32 +4,51 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="card-body m-0">
-                                <div class="row">
-                                    <div class="card-tools">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <span class="fas fa-fw bi bi-building"></span>
+                                {{ translate("building.header") }}
+                            </h3>
+                            <div class="card-tools">
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input
+                                            type="file"
+                                            class="custom-file-input"
+                                            :class="{
+                                                ' is-invalid': error.message
+                                            }"
+                                            id="input-file-import"
+                                            name="file_import"
+                                            ref="import_file"
+                                            @change="onFileChange"
+                                        />
+                                        <label class="custom-file-label"
+                                            >Choose file for import</label
+                                        >
+                                    </div>
+                                    <div class="input-group-append">
+                                        <button
+                                            v-on:click="proceedAction()"
+                                            type="button"
+                                            class="btn btn-primary"
+                                        >
+                                            Upload
+                                        </button>
+                                        &nbsp;
                                         <button
                                             type="button"
                                             class="btn btn-sm btn-primary"
                                             @click="newModal"
                                         >
                                             <i class="fas fa-file-import"></i>
-                                            Add New Project Building
-                                        </button>
-                                        <button
-                                            type="button"
-                                            class="btn btn-sm btn-success"
-                                            @click="newModal2"
-                                        >
-                                            <i
-                                                class="fa fa-upload"
-                                                aria-hidden="true"
-                                            ></i>
-                                            Import data form Building Table
+                                            Add New
                                         </button>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-body">
                             <div class="table-responsive">
                                 <table
                                     id="buildings"
@@ -64,6 +83,15 @@
                                             <th>Remark Contract</th>
                                             <th>Remark</th>
                                             <th>spendSpace</th>
+                                            <th>Area</th>
+                                            <th>Bbns</th>
+                                            <th>Area3BB</th>
+                                            <th>AreaAIS</th>
+                                            <th>AreaTrue</th>
+                                            <th>AreaTrue New</th>
+                                            <th>AreaFibernet</th>
+                                            <th>AreaTxrx</th>
+                                            <th>AreaSymphony</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -1125,68 +1153,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Modal2 -->
-            <div
-                class="modal fade"
-                id="addNew2"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="addNew2"
-                aria-hidden="true"
-                data-backdrop="static"
-                data-keyboard="false"
-            >
-                <div class="modal-dialog" role="dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">
-                                Import Building Table Excel
-                            </h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <!-- <form @submit.prevent="createRole"> -->
-
-                        <div class="modal-body">
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input
-                                        type="file"
-                                        class="custom-file-input"
-                                        :class="{
-                                            ' is-invalid': error.message
-                                        }"
-                                        id="input-file-import"
-                                        name="file_import"
-                                        ref="import_file"
-                                        @change="onFileChange"
-                                    />
-                                    <label class="custom-file-label"
-                                        >Choose file</label
-                                    >
-                                </div>
-                                <div class="input-group-append">
-                                    <button
-                                        v-on:click="proceedAction()"
-                                        type="button"
-                                        class="btn btn-primary"
-                                    >
-                                        Upload
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 </template>
@@ -1322,11 +1288,11 @@ export default {
                     if (response.status === 200) {
                         // codes here after the file is upload successfully
                         Toast.fire({
-                        icon: "success",
-                        title: response.data.message
-                    });
+                            icon: "success",
+                            title: response.data.message
+                        });
                     }
-                     this.$Progress.finish();
+                    this.$Progress.finish();
                     this.loadBuildings();
                 })
                 .catch(() => {
@@ -1398,11 +1364,6 @@ export default {
         //             }
         //         }
         //     },
-        newModal2() {
-            this.selected = "";
-            this.form.reset();
-            $("#addNew2").modal("show");
-        },
         select(address) {
             this.form.districtName = address.district;
             this.form.countyName = address.amphoe;
@@ -1622,7 +1583,7 @@ export default {
                 fixedColumns: true,
                 fixedColumns: {
                     leftColumns: 2,
-                    rightColumns: 2
+                    rightColumns: 1
                 },
                 scrollX: true,
                 scrollCollapse: true,
@@ -1801,7 +1762,7 @@ export default {
                         data: "contractStartDate"
                     },
                     {
-                        data: "contractTerm.name"
+                        data: "contract_term.name"
                     },
                     {
                         data: "contractEndDate"
@@ -1832,6 +1793,33 @@ export default {
                                 );
                             }
                         }
+                    },
+                    {
+                        data: "areas.name"
+                    },
+                    {
+                        data: "bbns.name"
+                    },
+                    {
+                        data: "area3bb.name"
+                    },
+                    {
+                        data: "area_ais.name"
+                    },
+                    {
+                        data: "area_true.name"
+                    },
+                    {
+                        data: "area_true_new.name"
+                    },
+                    {
+                        data: "area_fibernet.name"
+                    },
+                    {
+                        data: "area_txrx.name"
+                    },
+                    {
+                        data: "area_symphony.name"
                     },
                     // {
                     //     data: "created_at",
