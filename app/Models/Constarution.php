@@ -20,6 +20,7 @@ class Constarution extends Model
         'projectNameAis',
         'projectNameFiberNet',
         'projectNameTxrt',
+        'projectNameSymphony',
         'buildingSum',
         'buildingNumber',
         'buildingFloor',
@@ -54,10 +55,6 @@ class Constarution extends Model
         return $this->belongsTo('App\Models\Building', 'building_id', 'id');
     }
 
-    public function progress()
-    {
-        return $this->hasOne('App\Models\Progress', 'constarution_id', 'id');
-    }
 
 
 }

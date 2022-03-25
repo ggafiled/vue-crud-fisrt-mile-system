@@ -46,7 +46,7 @@ class CreatePlaningsTable extends Migration
             $table->time('appointmentTimeCustomer')->nullable();//เวลานัดหมาย ในระบบ
             $table->string('idRequired')->nullable();//ID ที่ต้องใช้
             $table->date('confirmAppointment')->nullable();//วันนัดหมาย
-            $table->date('confirmAppointmentTime')->nullable();//เวลานัดหมาย
+            $table->time('confirmAppointmentTime')->nullable();//เวลานัดหมาย
             $table->string('reMarkzone')->nullable();//รีมาร์ค (For Zone)
             $table->string('equipmentInstall1')->nullable();//อุปกรณ์ที่ใช้ติดตั้ง1
             $table->string('snInstall1')->nullable();// S/Nที่ใช้ติดตั้ง1

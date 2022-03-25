@@ -9,22 +9,42 @@
                             {{ translate("CUSTOMER MANAGEMENT") }}
                         </h2>
                         <div class="card-tools">
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-success"
-                                @click="newModal2"
-                            >
-                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                Import data form Customer Table
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-primary"
-                                @click="newModal"
-                            >
-                                <i class="fa fa-plus-square"></i>
-                                Add New
-                            </button>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input
+                                        type="file"
+                                        class="custom-file-input"
+                                        :class="{
+                                            ' is-invalid': error.message
+                                        }"
+                                        id="input-file-import"
+                                        name="file_import"
+                                        ref="import_file"
+                                        @change="onFileChange"
+                                    />
+                                    <label class="custom-file-label"
+                                        >Choose file for import</label
+                                    >
+                                </div>
+                                <div class="input-group-append">
+                                    <button
+                                        v-on:click="proceedAction()"
+                                        type="button"
+                                        class="btn btn-primary"
+                                    >
+                                        Upload
+                                    </button>
+                                    &nbsp;
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-primary"
+                                        @click="newModal"
+                                    >
+                                        <i class="fa fa-plus-square"></i>
+                                        Add New
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -54,25 +74,27 @@
                                 <thead>
                                     <tr class="info">
                                         <th></th>
-                                        <th>
+                                        <!-- <th>
                                             {{
                                                 translate(
                                                     "planing.planing_task_number"
                                                 )
                                             }}
-                                        </th>
-                                        <th>Type</th>
+                                        </th> -->
+                                        <th>ประเภทงาน</th>
+                                        <th>หน้าร้าน</th>
+                                        <th>หน้าร้าน2</th>
                                         <th>ชื่อ/บริษัท</th>
                                         <th>นามสกุล</th>
                                         <th>เบอร์โทร</th>
-                                        <th>เบอร์โทร2</th>
-                                        <th>ชื่อตึก</th>
-                                        <th>บ้านเลขที่</th>
-                                        <th>ซอย</th>
-                                        <th>หมู่</th>
-                                        <th>ถนน</th>
-                                        <th>อำเภอ</th>
-                                        <th>จังหวัด</th>
+                                        <th>โทรยืนยัดนัดหมาย</th>
+                                        <th>เวลานัดหมาย ในระบบ</th>
+                                        <th>สถานะการยืนยันนัดหมาย</th>
+                                        <th>ทีมช่าง</th>
+                                        <th>ID ที่ต้องใช้</th>
+                                        <th>สถานะงาน</th>
+                                        <th>วันนัดหมาย</th>
+                                        <th>เวลานัดหมาย</th>
                                         <th>ตำบล</th>
                                         <th>รหัสไปรษณีย์</th>
                                         <th>Longitude</th>
@@ -91,6 +113,7 @@
                                         <th>status</th>
                                         <th>sub-Status</th>
                                         <th>รีมาร์ค (For Admin)</th>
+
                                         <th>Create At</th>
                                         <th>Updated At</th>
                                         <th>Action</th>
@@ -881,6 +904,7 @@
                                     </div>
                                 </div>
                             </tab-content>
+
                             <template slot="footer" slot-scope="props">
                                 <div class="wizard-footer-left">
                                     <wizard-button
@@ -942,8 +966,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal2 -->
-
         </div>
     </section>
 </template>
@@ -1014,7 +1036,37 @@ export default {
                     .format("H:mm"),
                 status: "-",
                 subStatus: "-",
-                reMark: "-"
+                reMark: "-",
+
+                callver_id: "1",
+                callver: "1",
+                callverStatus_id: "1",
+                callverStatus: "",
+                problemsolution_id: "1",
+                appointmentTimeCustomer: moment()
+                    .add(10 - (new Date().getMinutes() % 10), "minutes")
+                    .format("H:mm"),
+                problemsolution: "",
+                idRequired: "",
+                confirmAppointment: new Date().toISOString().slice(0, 10),
+                confirmAppointmentTime: moment()
+                    .add(10 - (new Date().getMinutes() % 10), "minutes")
+                    .format("H:mm"),
+                reMarkzone: "",
+                equipmentInstall1: "",
+                snInstall1: "",
+                equipmentInstall2: "",
+                snInstall2: "",
+                equipmentInstall3: "",
+                snInstall3: "",
+                equipmentInstall4: "",
+                snInstall4: "",
+                equipmentInstall5: "",
+                snInstall5: "",
+                equipmentInstall6: "",
+                snInstall6: "",
+                equipmentInstall7: "",
+                snInstall7: ""
             })
         };
     },
@@ -1027,7 +1079,7 @@ export default {
             formData.append("import_file", this.import_file);
 
             axios
-                .post("/plannings/import", formData, {
+                .post("/customers/import", formData, {
                     headers: { "content-type": "multipart/form-data" }
                 })
                 .then(response => {
@@ -1158,11 +1210,6 @@ export default {
             this.selected = "";
             this.form.reset();
             $("#addNew").modal("show");
-        },
-        newModal2() {
-            this.selected = "";
-            this.form.reset();
-            $("#addNew2").modal("show");
         },
         deleteCustomer(id) {
             Swal.fire({
@@ -1330,16 +1377,16 @@ export default {
                         defaultContent: "",
                         className: "dt-body-center"
                     },
-                    {
-                        data: "task_id",
-                        render: function(data, type, row, meta) {
-                            return (
-                                `<a href="/progress?task=${data}" target="blank">` +
-                                `#${data}` +
-                                "</a>"
-                            );
-                        }
-                    },
+                    // {
+                    //     data: "task_id",
+                    //     render: function(data, type, row, meta) {
+                    //         return (
+                    //             `<a href="/progress?task=${data}" target="blank">` +
+                    //             `#${data}` +
+                    //             "</a>"
+                    //         );
+                    //     }
+                    // },
                     {
                         data: "type",
                         className: "text-capitalize",
@@ -1370,6 +1417,12 @@ export default {
                                 );
                             }
                         }
+                    },
+                    {
+                        data: "zone.name"
+                    },
+                    {
+                        data: "zone.name"
                     },
                     {
                         data: "name",
@@ -1748,7 +1801,6 @@ export default {
                             }
                         }
                     },
-
                     {
                         data: null,
                         title: "ผู้ให้บริการ",

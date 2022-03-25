@@ -35,24 +35,23 @@ class ProgressController extends BaseController
             'totProgress:id,status as name',
             'aisProgress:id,status as name',
             'Progress3bb:id,status as name',
-            'fnProgress:id,status as name',
             'trueProgress:id,status as name',
             'txrtProgress:id,status as name',
             'symphonyProgress:id,status as name'
             )->get();
             return $this->sendResponse($progress, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.failed'));
+            return $this->sendError([$ex], trans('actions.get.failed'));
         }
     }
 
     public function queryProgress()
     {
         try {
-            $constarution = Constarution::all();
+            $constarution = Building::all();
             return $this->sendResponse($constarution, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.failed'));
+            return $this->sendError([$ex], trans('actions.get.failed'));
         }
     }
 
@@ -79,11 +78,11 @@ class ProgressController extends BaseController
         try {
             $progress = new Progress([
                 'building_id' => $request->input('building_id'),
+                'zone_id' => $request->input('zone_id'),
                 'fmProgress_id' => $request->input('fmProgress_id'),
                 'aisProgress_id' => $request->input('aisProgress_id'),
                 'totProgress_id' => $request->input('totProgress_id'),
                 'progress3bb_id' => $request->input('progress3bb_id'),
-                'fnProgress_id' => $request->input('fnProgress_id'),
                 'trueProgress_id' => $request->input('trueProgress_id'),
                 'txrtProgress_id' => $request->input('txrtProgress_id'),
                 'symphonyProgress_id' => $request->input('symphonyProgress_id'),
@@ -92,11 +91,9 @@ class ProgressController extends BaseController
                 'dateAis' => $request->input('dateAis'),
                 'date3BB' => $request->input('date3BB'),
                 'dateSinet' => $request->input('dateSinet'),
-                'dateFn' => $request->input('dateFn'),
                 'dateTrue' => $request->input('dateTrue'),
                 'dateTxrx' => $request->input('dateTxrx'),
                 'dateSymphony' => $request->input('dateSymphony'),
-                'statusProgress' => $request->input('statusProgress')
             ]);
             $progress->save();
             return $this->sendResponse($progress, trans('actions.created.success'));
@@ -164,7 +161,7 @@ class ProgressController extends BaseController
         }
     }
 
-    public function importbuilding(Request $request)
+    public function importprogress(Request $request)
     {
          $request->validate([
             'import_file' => 'required|file|mimes:xls,xlsx'

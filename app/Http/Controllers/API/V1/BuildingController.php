@@ -45,7 +45,7 @@ class Buildingcontroller extends BaseController
         return $this->sendResponse($buiding, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.failed'));
+            return $this->sendError([$ex], trans('actions.get.failed'));
         }
     }
 
@@ -68,7 +68,7 @@ class Buildingcontroller extends BaseController
                 'areaTrueNew_id' => $request->input('areaTrueNew_id'),
                 'areaFibernet_id' => $request->input('areaFibernet_id'),
                 'areaTxrx_id' => $request->input('areaTxrx_id'),
-                'areaSyphony_id' => $request->input('areaSyphony_id'),
+                'areaSymphony_id' => $request->input('areaSymphony_id'),
                 'contractTerm_id' => $request->input('contractTerm_id'),
                 'projectName' => $request->input('projectName'),
                 'subBuildingsum' => $request->input('subBuildingsum'),

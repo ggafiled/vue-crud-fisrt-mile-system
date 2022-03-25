@@ -9,29 +9,42 @@
                             {{ translate("progress.header") }}
                         </h3>
                         <div class="card-tools">
-                            <!-- <button
-                                type="button"
-                                class="btn btn-sm btn-primary"
-                            >
-                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                {{ translate("constitution.import") }}
-                            </button> -->
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-success"
-                                @click="newModal2"
-                            >
-                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                Import data form Progress Table
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-primary"
-                                @click="newModal"
-                            >
-                                <i class="fa fa-plus-square"></i>
-                                {{ translate("progress.addnew") }}
-                            </button>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input
+                                        type="file"
+                                        class="custom-file-input"
+                                        :class="{
+                                            ' is-invalid': error.message
+                                        }"
+                                        id="input-file-import"
+                                        name="file_import"
+                                        ref="import_file"
+                                        @change="onFileChange"
+                                    />
+                                    <label class="custom-file-label"
+                                        >Choose file for import</label
+                                    >
+                                </div>
+                                <div class="input-group-append">
+                                    <button
+                                        v-on:click="proceedAction()"
+                                        type="button"
+                                        class="btn btn-primary"
+                                    >
+                                        Upload
+                                    </button>
+                                    &nbsp;
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-primary"
+                                        @click="newModal"
+                                    >
+                                        <i class="fa fa-plus-square"></i>
+                                        {{ translate("progress.addnew") }}
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -55,12 +68,10 @@
                                         <th>AIS-Date</th>
                                         <th>3BB-Progress</th>
                                         <th>3BB-Date</th>
-                                        <th>SINET-Progress</th>
-                                        <th>SINET-Date</th>
-                                        <th>TRUE-Progress</th>
-                                        <th>TRUE-Date</th>
                                         <th>TXRX-Progress</th>
                                         <th>TXRX-Date</th>
+                                        <th>TRUE-Progress</th>
+                                        <th>TRUE-Date</th>
                                         <th>SYMPHONY-Progress</th>
                                         <th>SYMPHONY-Date</th>
                                         <th>Create At</th>
@@ -566,36 +577,6 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Status Progress</label>
-                                            <select
-                                                v-model="form.statusProgress"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your type..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'statusProgress'
-                                                    )
-                                                }"
-                                            >
-                                                <option disabled value=""
-                                                    >--- Select Type ---</option
-                                                >
-                                                <option value="Completed"
-                                                    >Completed</option
-                                                >
-                                                <option value="Unready"
-                                                    >Unready</option
-                                                >
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="statusProgress"
-                                            ></has-error>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -623,91 +604,6 @@
                                 </button>
                             </div>
                         </form>
-                    </div>
-                </div>
-
-                <div class="modal-dialog modal-xl" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">
-                                {{ translate("progress.create.header") }}
-                            </h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <!-- <form @submit.prevent="createUser"> -->
-
-                        <form>
-                            <div class="modal-body"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal2 -->
-            <div
-                class="modal fade"
-                id="addNew2"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="addNew2"
-                aria-hidden="true"
-                data-backdrop="static"
-                data-keyboard="false"
-            >
-                <div class="modal-dialog" role="dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">
-                                Import Progress Table Excel
-                            </h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <!-- <form @submit.prevent="createRole"> -->
-
-                        <div class="modal-body">
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input
-                                        type="file"
-                                        class="custom-file-input"
-                                        :class="{
-                                            ' is-invalid': error.message
-                                        }"
-                                        id="input-file-import"
-                                        name="file_import"
-                                        ref="import_file"
-                                        @change="onFileChange"
-                                    />
-                                    <label class="custom-file-label"
-                                        >Choose file</label
-                                    >
-                                </div>
-                                <div class="input-group-append">
-                                    <button
-                                        v-on:click="proceedAction()"
-                                        type="button"
-                                        class="btn btn-primary"
-                                    >
-                                        Upload
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -745,8 +641,6 @@ export default {
                 totProgress_id: "", //modelGeneratingaction->modelProgress GET field status
                 aisProgress_id: "", //modelGeneratingaction->modelProgress GET field status
                 progress3bb_id: "", //modelGeneratingaction->modelProgress GET field status
-                sinetProgress_id: "", //modelGeneratingaction->modelProgress GET field status
-                fnProgress_id: "", //modelGeneratingaction->modelProgress GET field status
                 trueProgress_id: "", //modelGeneratingaction->modelProgress GET field status
                 txrtProgress_id: "", //modelGeneratingaction->modelProgress GET field status
                 symphonyProgress_id: "", //modelGeneratingaction->modelProgress GET field status
@@ -756,8 +650,6 @@ export default {
                 totProgress: "",
                 aisProgress: "",
                 Progress3bb: "",
-                sinetProgress: "",
-                fnProgress: "",
                 trueProgress: "",
                 txrtProgress: "",
                 zone: "",
@@ -766,8 +658,6 @@ export default {
                 dateTot: new Date().toISOString().slice(0, 10),
                 dateAis: new Date().toISOString().slice(0, 10),
                 date3BB: new Date().toISOString().slice(0, 10),
-                dateSinet: new Date().toISOString().slice(0, 10),
-                dateFn: new Date().toISOString().slice(0, 10),
                 dateTrue: new Date().toISOString().slice(0, 10),
                 dateTxrx: new Date().toISOString().slice(0, 10),
                 dateSymphony: new Date().toISOString().slice(0, 10)
@@ -793,19 +683,29 @@ export default {
                 .then(response => {
                     if (response.status === 200) {
                         // codes here after the file is upload successfully
+                        Toast.fire({
+                            icon: "success",
+                            title: response.data.message
+                        });
                     }
+                    this.$Progress.finish();
+                    this.loadProgress();
                 })
-                .catch(error => {
-                    // code here when an upload is not valid
-                    this.uploading = false;
-                    this.error = error.response.data;
-                    console.log("check error: ", this.error);
+                .catch(() => {
+                    Toast.fire({
+                        icon: "error",
+                        title: "Some error occured! Please try again"
+                    });
                 });
-        },
-        newModal2() {
-            this.selected = "";
-            this.form.reset();
-            $("#addNew2").modal("show");
+            setTimeout(() => {
+                this.onprogress = false;
+            }, 2000);
+            // .catch(error => {
+            //     // code here when an upload is not valid
+            //     this.uploading = false;
+            //     this.error = error.response.data;
+            //     console.log("check error: ", this.error);
+            // });
         },
         setSearchText(query) {
             if (!!query.task) {
@@ -1147,38 +1047,7 @@ export default {
                         }
                     },
                     {
-                        data: "dateSinet"
-                    },
-                    // {
-                    //     data: "fn_progress.name",
-                    //     render: function(data, type, row, meta) {
-                    //         if (data == "") {
-                    //             return (
-                    //                 '<span class="text-danger">' +
-                    //                 "ไม่ได้กรอกข้อมูล" +
-                    //                 "</span>"
-                    //             );
-                    //         } else {
-                    //             return "<span>" + data + "</span>";
-                    //         }
-                    //     }
-                    // },
-                    {
-                        data: "true_progress.name",
-                        render: function(data, type, row, meta) {
-                            if (data == "") {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "dateTrue"
+                        data: "dateTxrx"
                     },
                     {
                         data: "true_progress.name",
@@ -1198,7 +1067,7 @@ export default {
                         data: "dateTrue"
                     },
                     {
-                        data: "true_symphony.name",
+                        data: "symphony_progress.name",
                         render: function(data, type, row, meta) {
                             if (data == "") {
                                 return (

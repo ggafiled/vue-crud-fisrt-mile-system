@@ -25,7 +25,7 @@ class CreateBuildingsTable extends Migration
             $table->bigInteger('areaTrueNew_id')->unsigned();//รหัส_พื้นที่ทรูใหม่
             $table->bigInteger('areaFibernet_id')->unsigned();//รหัส_พื้นที่ทไฟเน็ต
             $table->bigInteger('areaTxrx_id')->unsigned();//รหัส_พื้นที่ททีเอกอาเอก
-            $table->bigInteger('areaSyphony_id')->unsigned();//รหัส_พื้นที่ทซิมโฟนี่
+            $table->bigInteger('areaSymphony_id')->unsigned();//รหัส_พื้นที่ทซิมโฟนี่
             $table->bigInteger('contractTerm_id')->unsigned();//อายุสัญญา
             $table->string('projectName')->nullable();//ชื่ออาคาร
             $table->string('subBuildingsum')->nullable();//อาคารทั้งหมด
@@ -99,7 +99,7 @@ class CreateBuildingsTable extends Migration
             ->on('area_txrxes')
             ->onDelete('cascade');
 
-            $table->foreign('areaSyphony_id')
+            $table->foreign('areaSymphony_id')
             ->references('id')
             ->on('area_symphonies')
             ->onDelete('cascade');

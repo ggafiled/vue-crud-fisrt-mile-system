@@ -5,65 +5,111 @@
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">
-                            <i class="fas fa-fw bi bi-aspect-ratio"></i>
-                            Contractor Management
+                            <i class="fas fa-fw bi bi-people"></i>
+                            CONTRACTOR MANAGEMENT
                         </h2>
                         <div class="card-tools">
-                            <button
-                                type="button"
-                                class="btn btn-sm btn-primary"
-                                @click="newModal"
-                            >
-                                <i class="fa fa-plus-square"></i>
-                                {{ translate("constitution.addnew") }}
-                            </button>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <input
+                                        type="file"
+                                        class="custom-file-input"
+                                        :class="{
+                                            ' is-invalid': error.message
+                                        }"
+                                        id="input-file-import"
+                                        name="file_import"
+                                        ref="import_file"
+                                        @change="onFileChange"
+                                    />
+                                    <label class="custom-file-label"
+                                        >Choose file for import</label
+                                    >
+                                </div>
+                                <div class="input-group-append">
+                                    <button
+                                        v-on:click="proceedAction()"
+                                        type="button"
+                                        class="btn btn-primary"
+                                    >
+                                        Upload
+                                    </button>
+                                    &nbsp;
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-primary"
+                                        @click="newModal"
+                                    >
+                                        <i class="fa fa-plus-square"></i>
+                                        Add New
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        <div class="card-body m-0">
+                            <div class="row">
+                                <button
+                                    type="button"
+                                    class="dt-button"
+                                    @click.prevent="goToImportPanel"
+                                >
+                                    <i
+                                        class="fa fa-upload"
+                                        aria-hidden="true"
+                                    ></i>
+                                    {{ translate("constitution.import") }}
+                                </button>
+                            </div>
+                        </div>
                         <div class="table-responsive">
                             <table
-                                id="contractor"
-                                ref="contractor"
+                                id="customer"
+                                ref="customer"
                                 class="display nowrap"
                                 style="width: 100%"
                             >
                                 <thead>
                                     <tr class="info">
                                         <th></th>
-                                        <th>Project Name</th>
-                                        <th>Callver</th>
-                                        <th>Appointment Time Customer</th>
-                                        <th>Callver Status</th>
-                                        <th>Technicians</th>
-                                        <th>ID Required</th>
-                                        <th>Problemsolution</th>
-                                        <th>Confirm Appointment</th>
-                                        <th>Confirm Appointment Time</th>
-                                        <th>ReMark Zone</th>
-                                        <th>EquipmentInstall1</th>
-                                        <th>SnInstall1</th>
-                                        <th>EquipmentInstall2</th>
-                                        <th>SnInstall2</th>
-                                        <th>EquipmentInstall3</th>
-                                        <th>SnInstall3</th>
-                                        <th>EquipmentInstall4</th>
-                                        <th>SnInstall4</th>
-                                        <th>EquipmentInstall5</th>
-                                        <th>SnInstall5</th>
-                                        <th>EquipmentInstall6</th>
-                                        <th>SnInstall6</th>
-                                        <th>EquipmentInstall7</th>
-                                        <th>SnInstall7</th>
-                                        <th>Update At</th>
+
+                                        <th>ประเภทงาน</th>
+                                        <th>ชื่อ/บริษัท</th>
+                                        <th>นามสกุล</th>
+                                        <th>เบอร์โทร</th>
+                                        <th>โทรยืนยัดนัดหมาย</th>
+                                        <th>เวลานัดหมายในระบบ</th>
+                                        <th>สถานะการยืนยันนัดหมาย</th>
+                                        <th>ทีมช่าง</th>
+                                        <th>ID ที่ต้องใช้</th>
+                                        <th>สถานะงาน</th>
+                                        <th>วันนัดหมาย</th>
+                                        <th>เวลานัดหมาย</th>
+                                        <th>รีมาร์ค (For Zone)</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง1</th>
+                                        <th>S/Nที่ใช้ติดตั้ง1</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง2</th>
+                                        <th>S/Nที่ใช้ติดตั้ง2</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง3</th>
+                                        <th>S/Nที่ใช้ติดตั้ง3</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง4</th>
+                                        <th>S/Nที่ใช้ติดตั้ง4</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง5</th>
+                                        <th>S/Nที่ใช้ติดตั้ง5</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง6</th>
+                                        <th>S/Nที่ใช้ติดตั้ง6</th>
+                                        <th>อุปกรณ์ที่ใช้ติดตั้ง7</th>
+                                        <th>S/Nที่ใช้ติดตั้ง7</th>
+                                        <th>Create At</th>
+                                        <th>Updated At</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                             </table>
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
                 </div>
             </div>
 
@@ -82,19 +128,13 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
-                                {{ translate("constitution.create.header") }}
+                                Create New Customer
                             </h5>
                             <h5 class="modal-title" v-show="editmode">
-                                {{ translate("constitution.update.header") }}
+                                Update Customer's Info
                             </h5>
                             <div
-                                class="
-                  d-flex
-                  flex-row
-                  justify-space-between
-                  align-items-center
-                  text-wrap
-                "
+                                class="d-flex flex-row justify-space-between align-items-center text-wrap"
                             >
                                 <h5
                                     class="text-muted mr-2"
@@ -131,25 +171,237 @@
                                 :index="props.index"
                             >
                             </wizard-step>
-                            <tab-content title="Project Names" :selected="true">
+                            <tab-content
+                                title="Customer Detail"
+                                :selected="true"
+                            >
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Project Name</label>
-                                            <small>/ชื่อโปรเจ็ค</small>
-                                            <Select2
-                                                v-model="form.building_id"
-                                                :options="building"
-                                                :settings="settings"
+                                            <label>Tpye*</label>
+                                            <select
+                                                type="text"
+                                                class="form-control"
+                                                disabled
+                                                placeholder="FM-Progress"
+                                                :class="
+                                                    hasError('type')
+                                                        ? 'is-invalid'
+                                                        : ''
+                                                "
+                                                v-model="form.type"
                                             >
-                                            </Select2>
-                                            <has-error
-                                                :form="form"
-                                                field="projectName"
-                                            ></has-error>
+                                                <option disabled value=""
+                                                    >--- Select Type ---</option
+                                                >
+                                                <option value="ติดตั้ง"
+                                                    >ติดตั้ง</option
+                                                >
+                                                <option value=" ซ่อม"
+                                                    >ซ่อม</option
+                                                >
+                                                <option value="Blow Fiber"
+                                                    >Blow Fiber</option
+                                                >
+                                                <option value="ซ่อมแซมฝ้า"
+                                                    >ซ่อมแซมฝ้า</option
+                                                >
+                                            </select>
+                                            <div
+                                                v-if="hasError('type')"
+                                                class="invalid-feedback"
+                                            >
+                                                <div
+                                                    class="error"
+                                                    v-if="
+                                                        !$v.form.type.required
+                                                    "
+                                                >
+                                                    Please provide a valid type.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_name"
+                                                )
+                                            }}</label>
+                                            <input
+                                                type="text"
+                                                disabled
+                                                class="form-control"
+                                                placeholder="Enter your Name..."
+                                                :class="
+                                                    hasError('name')
+                                                        ? 'is-invalid'
+                                                        : ''
+                                                "
+                                                v-model="form.name"
+                                            />
+                                            <div
+                                                v-if="hasError('name')"
+                                                class="invalid-feedback"
+                                            >
+                                                <div
+                                                    class="error"
+                                                    v-if="
+                                                        !$v.form.name.required
+                                                    "
+                                                >
+                                                    Please provide a valid name.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_surname"
+                                                )
+                                            }}</label>
+                                            <input
+                                                v-model="form.surname"
+                                                disabled
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your surname..."
+                                                :class="
+                                                    hasError('surname')
+                                                        ? 'is-invalid'
+                                                        : ''
+                                                "
+                                            />
+                                            <div
+                                                v-if="hasError('surname')"
+                                                class="invalid-feedback"
+                                            >
+                                                <div
+                                                    class="error"
+                                                    v-if="
+                                                        !$v.form.surname
+                                                            .required
+                                                    "
+                                                >
+                                                    Please provide a valid
+                                                    surname.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>{{
+                                                translate("planing.planing_tel")
+                                            }}</label>
+                                            <input
+                                                v-model="form.tel"
+                                                disabled
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your tel..."
+                                                :class="
+                                                    hasError('tel')
+                                                        ? 'is-invalid'
+                                                        : ''
+                                                "
+                                            />
+                                            <div
+                                                v-if="hasError('tel')"
+                                                class="invalid-feedback"
+                                            >
+                                                <div
+                                                    class="error"
+                                                    v-if="!$v.form.tel.required"
+                                                >
+                                                    Please provide a valid tel.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>{{
+                                                translate(
+                                                    "planing.planing_tel2"
+                                                )
+                                            }}</label>
+                                            <input
+                                                v-model="form.tel2"
+                                                disabled
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your tel2..."
+                                                :class="
+                                                    hasError('tel2')
+                                                        ? 'is-invalid'
+                                                        : ''
+                                                "
+                                            />
+                                            <div
+                                                v-if="hasError('tel2')"
+                                                class="invalid-feedback"
+                                            >
+                                                <div
+                                                    class="error"
+                                                    v-if="
+                                                        !$v.form.tel2.required
+                                                    "
+                                                >
+                                                    Please provide a valid tel2.
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div
+                                        :class="[
+                                            editmode ? 'col-sm-12' : 'col-sm-12'
+                                        ]"
+                                    >
+                                        <div class="form-group">
+                                            <label>{{
+                                                translate(
+                                                    "planing.building_project"
+                                                )
+                                            }}</label>
+                                            <Select2
+                                                v-model="form.building_id"
+                                                disabled
+                                                :options="building"
+                                                :settings="settings"
+                                                :class="
+                                                    hasError('building_id')
+                                                        ? 'is-invalid'
+                                                        : ''
+                                                "
+                                            >
+                                            </Select2>
+                                            <div
+                                                v-if="hasError('building_id')"
+                                                class="invalid-feedback"
+                                            >
+                                                <div
+                                                    class="error"
+                                                    v-if="
+                                                        !$v.form.building_id
+                                                            .required
+                                                    "
+                                                >
+                                                    Please provide a valid
+                                                    building_id.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tab-content>
+
+                            <tab-content title="Progress">
                                 <div class="row">
                                     <div class="col-sm-3">
                                         <div class="form-group">
@@ -164,7 +416,7 @@
                                                 >
                                                 <option
                                                     :value="item.id"
-                                                    v-for="item in callver"
+                                                    v-for="item in callvers"
                                                     :key="item.id"
                                                 >
                                                     {{ item.callVer }}
@@ -210,12 +462,12 @@
                                                 class="form-control"
                                                 v-model="form.callverStatus_id"
                                             >
-                                                <option disabled value=""
+                                                <option value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
                                                     :value="item.id"
-                                                    v-for="item in callverStatus"
+                                                    v-for="item in callverstatuses"
                                                     :key="item.id"
                                                 >
                                                     {{ item.callVerStatus }}
@@ -228,34 +480,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </tab-content>
-                            <tab-content title="Progress">
                                 <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="form-group">
-                                            <label>Technician</label>
-                                            <small>/ทีมช่าง</small>
-                                            <select
-                                                class="form-control"
-                                                v-model="form.technicians_id"
-                                            >
-                                                <option disabled value=""
-                                                    >Select a Class</option
-                                                >
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in technicians"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.teamTechnician }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="technicians"
-                                            ></has-error>
-                                        </div>
-                                    </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>ID Required</label>
@@ -288,7 +513,7 @@
                                                     form.problemsolution_id
                                                 "
                                             >
-                                                <option disabled value=""
+                                                <option value=""
                                                     >Select a Class</option
                                                 >
                                                 <option
@@ -332,7 +557,9 @@
                                     <div class="col-sm-3">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label>Confirm Appointment Time</label>
+                                            <label
+                                                >Confirm Appointment Time</label
+                                            >
                                             <small>/เวลานัดหมาย</small>
                                             <input
                                                 v-model="
@@ -720,6 +947,7 @@
                                     </div>
                                 </div>
                             </tab-content>
+
                             <template slot="footer" slot-scope="props">
                                 <div class="wizard-footer-left">
                                     <wizard-button
@@ -741,7 +969,7 @@
                                         v-show="editmode && props.isLastStep"
                                         class="wizard-footer-right finish-button"
                                         :style="props.fillButtonStyle"
-                                        @click.native="updateConstarution()"
+                                        @click.native="updateCustomer()"
                                         :disabled="onprogress"
                                     >
                                         <span
@@ -760,7 +988,7 @@
                                         v-show="!editmode && props.isLastStep"
                                         class="wizard-footer-right finish-button"
                                         :style="props.fillButtonStyle"
-                                        @click.native="createContractor()"
+                                        @click.native="createCustomer()"
                                         :disabled="onprogress"
                                     >
                                         <span
@@ -786,50 +1014,87 @@
 </template>
 
 <script>
+// import {en, th} from 'vuejs-datepicker/dist/locale';
 import Select2 from "v-select2-component";
-import Uploader from "vux-uploader-component";
-import { mapGetters, mapState } from "vuex";
-import NumberInput from "../partials/NumberInput.vue";
+import { ValidationHelper } from "vue-step-wizard";
+import "vue-step-wizard/dist/vue-step-wizard.css";
+import { required } from "vuelidate/lib/validators";
+import { email } from "vuelidate/lib/validators";
+import { numeric } from "vuelidate/lib/validators";
+// import Datepicker from 'vuejs-datepicker';
 
 export default {
-    title: "Constarution -",
-    components: { Select2, Uploader, NumberInput },
-
+    title: "Customer -",
+    name: "StepFormValidation",
+    components: { Select2 /*Datepicker*/ },
+    mixins: [ValidationHelper],
     data() {
         return {
+            // en: en,
+            // th: th,
+            error: {},
+            import_file: "",
             loader: null,
-            openWindowPortal: false,
             editmode: false,
             onprogress: false,
             selected: "",
             building: [],
-            callver: [],
-            callverStatus: [],
-            technicians: [],
-            problemsolution: [],
-            fileList: [],
+            zone: [],
+            jobtpyes: [],
+            isps: [],
             settings: {
                 placeholder: { id: "-1", text: "-----กรุณาเลือกโครงการ-----" },
                 allowClear: false,
                 dropdownParent: ".modal"
             },
-            sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
             form: new Form({
                 id: "",
                 building_id: "",
+                isp_id: "",
+                agentDetail_id: "",
+                jobtype_id: "",
+                zone_id: "",
+                zone2_id: "",
+                ispId_id: "",
                 projectName: "",
-                customer_id: "",
-                callver_id: "",
-                callver: "",
-                callverStatus_id: "",
+                isp: "",
+                agentDetail: "",
+                jobtype: "",
+                zone: "",
+                zone2: "",
+                ispId: "",
+                type: "",
+                name: "",
+                surname: "",
+                tel: "",
+                tel2: "",
+                theBuilding: "",
+                floor: "",
+                room: "",
+                circuit: "",
+                entranceFee: "",
+                appointmentDate: new Date().toISOString().slice(0, 10),
+                appointmentTime: moment()
+                    .add(10 - (new Date().getMinutes() % 10), "minutes")
+                    .format("H:mm"),
+                status: "-",
+                subStatus: "-",
+                reMark: "-",
+
+                callver_id: "1",
+                callver: "1",
+                callverStatus_id: "1",
                 callverStatus: "",
-                problemsolution_id: "",
+                problemsolution_id: "1",
+                appointmentTimeCustomer: moment()
+                    .add(10 - (new Date().getMinutes() % 10), "minutes")
+                    .format("H:mm"),
                 problemsolution: "",
-                technicians_id: "",
-                technicians: "",
-                confirmAppointment: "",
-                confirmAppointmentTime: "",
-                appointmentTimeCustomer: "",
+                idRequired: "",
+                confirmAppointment: new Date().toISOString().slice(0, 10),
+                confirmAppointmentTime: moment()
+                    .add(10 - (new Date().getMinutes() % 10), "minutes")
+                    .format("H:mm"),
                 reMarkzone: "",
                 equipmentInstall1: "",
                 snInstall1: "",
@@ -849,19 +1114,69 @@ export default {
         };
     },
     methods: {
-        loadcallver() {
+        onFileChange(e) {
+            this.import_file = e.target.files[0];
+        },
+        proceedAction() {
+            let formData = new FormData();
+            formData.append("import_file", this.import_file);
+
+            axios
+                .post("/plannings/import", formData, {
+                    headers: { "content-type": "multipart/form-data" }
+                })
+                .then(response => {
+                    if (response.status === 200) {
+                        // codes here after the file is upload successfully
+                        Toast.fire({
+                            icon: "success",
+                            title: response.data.message
+                        });
+                    }
+                })
+                .catch(() => {
+                    Toast.fire({
+                        icon: "error",
+                        title: "Some error occured! Please try again"
+                    });
+                });
+            setTimeout(() => {
+                this.onprogress = false;
+            }, 2000);
+        },
+        goToImportPanel() {
+            this.$router.push({ path: "importData" });
+        },
+        dowloadExcelTemplate() {
+            const workbook = ExcelJS.Workbook();
+            workbook.creator = "Firstmile System";
+            workbook.created = new Date();
+            workbook.modified = new Date();
+            const customerSheet = workbook.addWorksheet("customer");
+            customerSheet.columns = [
+                { header: "Name", key: "name" },
+                { header: "Surname", key: "surname" },
+                { header: "Tel.", key: "tel" },
+                { header: "Tel2.", key: "tel2" }
+            ];
+            workbook.xlsx.writeFile("customer");
+        },
+        loadBuildings() {
+            axios.get("/building").then(
+                response =>
+                    (this.building = response.data.data.map(a => {
+                        return { text: a.projectName, id: a.id };
+                    }))
+            );
+        },
+        loadCallver() {
             axios.get("/callvers").then(response => {
-                this.callver = response.data.data;
+                this.callvers = response.data.data;
             });
         },
-        loadcallverStatus() {
+        loadCallverstatus() {
             axios.get("/callverstatuses").then(response => {
-                this.callverStatus = response.data.data;
-            });
-        },
-        loadTechnicians() {
-            axios.get("/technicians").then(response => {
-                this.technicians = response.data.data;
+                this.callverstatuses = response.data.data;
             });
         },
         loadProblemsolution() {
@@ -869,31 +1184,42 @@ export default {
                 this.problemsolutions = response.data.data;
             });
         },
-        loadBuildings() {
-            axios.get("/constarution/retrieveBuilding").then(
-                response =>
-                    (this.building = response.data.data.map(a => {
-                        return { text: a.projectName, id: a.id };
-                    }))
-            );
+        loadZone() {
+            axios.get("/zones").then(response => {
+                this.zones = response.data.data;
+            });
         },
-        loadContractor() {
+        loadJobType() {
+            axios.get("/jobtpyes").then(response => {
+                this.jobtpyes = response.data.data;
+            });
+        },
+        loadIsp() {
+            axios.get("/isps").then(response => {
+                this.isps = response.data.data;
+            });
+        },
+        loadAgent() {
+            axios.get("/agents").then(response => {
+                this.agents = response.data.data;
+            });
+        },
+        loadPlaning() {
             this.$Progress.start();
-
             if (this.$gate.isAdmin()) {
-                $("#contractor")
+                this.$store.dispatch("GET_BUILDINGS");
+                $("#customer")
                     .DataTable()
                     .ajax.reload();
             }
-
             this.$Progress.finish();
         },
-        async updateContractor() {
+        updateCustomer() {
             this.$Progress.start();
-            // console.log('Editing data');
             this.onprogress = true;
-            await this.form
-                .put("/contractor/" + this.form.id)
+            // console.log('Editing data');
+            this.form
+                .put("/planing/" + this.form.id)
                 .then(response => {
                     // success
                     $("#addNew").modal("hide");
@@ -903,8 +1229,7 @@ export default {
                     });
                     this.$Progress.finish();
                     //  Fire.$emit('AfterCreate');
-
-                    this.loadContractor();
+                    this.loadPlaning();
                 })
                 .catch(() => {
                     this.$Progress.fail();
@@ -913,13 +1238,15 @@ export default {
                 this.onprogress = false;
             }, 2000);
         },
-        editModal(Contractor) {
+        editModal(planing) {
             this.editmode = true;
             this.form.reset();
             this.form.errors.clear();
-            console.log(Contractor);
+            // console.log(planing);
+            planing.isp_id = planing.isp.id;
+            // planing.projectName = planing.building[0].projectName;
             $("#addNew").modal("show");
-            this.form.fill(Contractor);
+            this.form.fill(planing);
         },
         newModal() {
             this.editmode = false;
@@ -927,42 +1254,27 @@ export default {
             this.form.reset();
             $("#addNew").modal("show");
         },
-        deleteContractor(item) {
+        deleteCustomer(id) {
             Swal.fire({
-                title: window.translate(
-                    "constitution.alert.delete_building_title"
-                ),
-                text:
-                    window.translate(
-                        "constitution.alert.delete_building_text"
-                    ) + ` [${item.building.projectName}]`,
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
                 showCancelButton: true,
                 confirmButtonColor: "#d33",
                 cancelButtonColor: "#3085d6",
-                cancelButtonText: window.translate(
-                    "constitution.alert.delete_building_cancel_button_text"
-                ),
-                confirmButtonText: window.translate(
-                    "constitution.alert.delete_building_confirm_button_text"
-                )
+                confirmButtonText: "Yes, delete it!"
             }).then(result => {
                 // Send request to the server
                 if (result.value) {
                     this.form
-                        .delete("/contractor/" + item.id)
+                        .delete("/planing/" + id)
                         .then(() => {
                             Swal.fire(
-                                window.translate(
-                                    "constitution.alert.comfirm_delete_title"
-                                ),
-                                window.translate(
-                                    "constitution.alert.confirm_delete_message"
-                                ),
+                                "Deleted!",
+                                "Your file has been deleted.",
                                 "success"
                             );
                             // Fire.$emit('AfterCreate');
-                            this.loadBuildings();
-                            this.loadContractor();
+                            this.loadPlaning();
                         })
                         .catch(data => {
                             Swal.fire("Failed!", data.message, "warning");
@@ -970,19 +1282,21 @@ export default {
                 }
             });
         },
-        async createContractor() {
+        createCustomer() {
             if (this.selected == null || this.selected == undefined)
                 return false;
             this.onprogress = true;
-            await this.form
-                .post("/contractor")
+            // console.log(this.form);
+            this.form
+                .post("/planing")
                 .then(response => {
                     $("#addNew").modal("hide");
                     Toast.fire({
                         icon: "success",
                         title: response.data.message
                     });
-                    this.loadContractor();
+                    this.$Progress.finish();
+                    this.loadPlaning();
                 })
                 .catch(() => {
                     Toast.fire({
@@ -996,9 +1310,9 @@ export default {
         },
         generateTable() {
             var vm = this;
-            var table = $(this.$refs.contractor).DataTable({
+            var table = $(this.$refs.customer).DataTable({
                 dom: "Blfrtip",
-                ajax: "/api/contractor",
+                ajax: "/api/planing",
                 responsive: true,
                 processing: true,
                 pageLength: 10,
@@ -1009,20 +1323,18 @@ export default {
                 fixedHeader: true,
                 fixedColumns: true,
                 fixedColumns: {
-                    leftColumns: 2,
-                    rightColumns: 1
+                    leftColumns: 3,
+                    rightColumns: 3
                 },
                 scrollX: true,
                 scrollCollapse: true,
-                select: true,
                 buttons: [
                     "colvis",
+                    "copy",
+                    "csv",
                     {
-                        extend: "copy",
-                        text: "<i class='bi bi-clipboard mr-1'></i>Copy",
-                        exportOptions: {
-                            columns: "th:not(.notexport)"
-                        }
+                        extend: "print",
+                        text: "<i class='bi bi-printer mr-1'></i>Print"
                     },
                     {
                         extend: "excelHtml5",
@@ -1035,51 +1347,57 @@ export default {
                         }
                     },
                     {
-                        extend: "print",
-                        text: "<i class='bi bi-printer mr-1'></i>Print"
+                        className: "bg-success",
+                        text: "<i class='bi bi-file-text mr-1'></i>AIS",
+                        action: function(e, dt, node, config) {
+                            dt.column(21)
+                                .search("Ais")
+                                .draw();
+                        }
                     },
                     {
-                        text:
-                            "<i class='bi bi-list-check mr-1'></i>" +
-                            window.translate(
-                                "datatables.alert.display_selected_record_title"
-                            ) +
-                            "",
+                        className: "bg-danger",
+                        text: "<i class='bi bi-file-text mr-1'></i>TRUE",
                         action: function(e, dt, node, config) {
-                            var rowsel = dt
-                                .rows({ selected: true })
-                                .data()
-                                .map(function(item) {
-                                    return item.id;
-                                })
-                                .join(",");
-                            if (!rowsel.length) {
-                                return Swal.fire({
-                                    title: window.translate(
-                                        "datatables.alert.display_selected_record_empty_title"
-                                    ),
-                                    text: window.translate(
-                                        "datatables.alert.display_selected_record_empty_text"
-                                    ),
-                                    timer: 2000,
-                                    showCancelButton: false,
-                                    showConfirmButton: false
-                                });
-                            }
-                            $.fn.dataTable.ext.search.pop();
-                            $.fn.dataTable.ext.search.push(function(
-                                settings,
-                                data,
-                                dataIndex
-                            ) {
-                                return $(table.row(dataIndex).node()).hasClass(
-                                    "selected"
-                                )
-                                    ? true
-                                    : false;
-                            });
-
-                            table.draw();
+                            dt.column(21)
+                                .search("TRUE")
+                                .draw();
+                        }
+                    },
+                    {
+                        className: "bg-primary",
+                        text: "<i class='bi bi-file-text mr-1'></i>TOT",
+                        action: function(e, dt, node, config) {
+                            dt.column(21)
+                                .search("TOT")
+                                .draw();
+                        }
+                    },
+                    {
+                        className: "bg-danger",
+                        text: "<i class='bi bi-file-text mr-1'></i>FINET",
+                        action: function(e, dt, node, config) {
+                            dt.column(21)
+                                .search("Fibernet")
+                                .draw();
+                        }
+                    },
+                    {
+                        className: "bg-warning",
+                        text: "<i class='bi bi-file-text mr-1'></i>FN",
+                        action: function(e, dt, node, config) {
+                            dt.column(21)
+                                .search("FN")
+                                .draw();
+                        }
+                    },
+                    {
+                        className: "bg-danger",
+                        text: "<i class='bi bi-file-text mr-1'></i>3BB",
+                        action: function(e, dt, node, config) {
+                            dt.column(21)
+                                .search("3BB")
+                                .draw();
                         }
                     },
                     {
@@ -1100,79 +1418,448 @@ export default {
                     {
                         data: null,
                         defaultContent: "",
-                        className: "dt-body-center notexport"
+                        className: "dt-body-center"
+                    },
+                    // {
+                    //     data: "task_id",
+                    //     render: function(data, type, row, meta) {
+                    //         return (
+                    //             `<a href="/progress?task=${data}" target="blank">` +
+                    //             `#${data}` +
+                    //             "</a>"
+                    //         );
+                    //     }
+                    // },
+                    {
+                        data: "type",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "ซ่อม") {
+                                return (
+                                    '<span class="badge rounded-pill bg-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ติดตั้ง") {
+                                return (
+                                    '<span class="badge rounded-pill bg-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "ซ่อมแซมฝ้า") {
+                                return (
+                                    '<span class="badge rounded-pill bg-info text-dark">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else if (data == "Blow Fiber") {
+                                return (
+                                    '<span class="badge rounded-pill bg-primary">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                     },
                     {
-                        data: "building.projectName"
+                        data: "building.projectName",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "callver_id"
+                        data: "name",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "appointmentTimeCustomer"
+                        data: "surname",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "callverStatus_id"
+                        data: "tel",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger"><i class="bi bi-file-person pr-2"></i>' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span><i class="bi bi-file-person pr-2"></i>' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
                     },
                     {
-                        data: "technicians_id"
+                        data: "callver_id",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "idRequired"
+                        data: "callverStatus_id",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "problemsolution_id"
+                        data: "problemsolution_id",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "confirmAppointment"
+                        data: "appointmentTimeCustomer",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "confirmAppointmentTime"
+                        data: "idRequired",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "reMarkzone"
+                        data: "confirmAppointment",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "equipmentInstall1"
+                        data: "confirmAppointmentTime",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "snInstall1"
+                        data: "reMarkzone",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "equipmentInstall2"
+                        data: "equipmentInstall1",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "snInstall2"
+                        data: "snInstall1",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "equipmentInstall3"
+                        data: "equipmentInstall2",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "snInstall3"
+                        data: "snInstall2",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "equipmentInstall4"
+                        data: "equipmentInstall3",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "snInstall4"
+                        data: "snInstall3",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "equipmentInstall5"
+                        data: "equipmentInstall4",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "snInstall5"
+                        data: "snInstall4",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "equipmentInstall6"
+                        data: "equipmentInstall5",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "snInstall6"
+                        data: "snInstall5",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "equipmentInstall7"
+                        data: "equipmentInstall6",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
                     },
                     {
-                        data: "snInstall7"
+                        data: "snInstall6",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "equipmentInstall7",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "snInstall7",
+                        className: "text-capitalize",
+                        render: function(data, type, row, meta) {
+                            if (data == "" || data == null) {
+                                return (
+                                    '<span class="text-danger">' +
+                                    "ไม่ได้กรอกข้อมูล" +
+                                    "</span>"
+                                );
+                            } else {
+                                return "<span>" + data + "</span>";
+                            }
+                        }
+                    },
+                    {
+                        data: "created_at",
+                        render: function(data, type, row, meta) {
+                            return moment(data).format("MM/DD/YYYY HH:MM");
+                        }
                     },
                     {
                         data: "updated_at",
@@ -1182,9 +1869,9 @@ export default {
                     },
                     {
                         data: null,
-                        className: "dt-body-center notexport",
+                        className: "dt-body-center",
                         render: function(data, type, row, meta) {
-                            return "<a class='edit-Contractor btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-Contractor btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
+                            return "<a class='edit-customer' href='#'><i class='fa fa-edit blue'></i> </a> / <a class='delete-customer' href='#'> <i class='fa fa-trash red'></i> </a>";
                         }
                     }
                 ],
@@ -1202,10 +1889,9 @@ export default {
                 select: { selector: "td:not(:last-child)", style: "os" },
                 order: [[1, "desc"]]
             });
-
-            $("tbody", this.$refs.Contractor).on(
+            $("tbody", this.$refs.planing).on(
                 "click",
-                ".edit-Contractor",
+                ".edit-customer",
                 function(e) {
                     e.preventDefault();
                     var tr = $(this).closest("tr");
@@ -1213,15 +1899,14 @@ export default {
                     vm.editModal(row.data());
                 }
             );
-
-            $("tbody", this.$refs.Contractor).on(
+            $("tbody", this.$refs.planing).on(
                 "click",
-                ".delete-Contractor",
+                ".delete-customer",
                 function(e) {
                     e.preventDefault();
                     var tr = $(this).closest("tr");
                     var row = table.row(tr);
-                    vm.deleteContractor(row.data());
+                    vm.deleteCustomer(row.data().id);
                 }
             );
         }
@@ -1233,16 +1918,14 @@ export default {
         this.$Progress.finish();
     },
     mounted() {
-        this.generateTable();
-        this.loadcallver();
-        this.loadcallverStatus();
-        this.loadTechnicians();
         this.loadProblemsolution();
-        $(".datepicker").datepicker({
-            language: "th-th",
-            format: "dd/mm/yyyy",
-            autoclose: true
-        });
+        this.generateTable();
+        this.loadZone();
+        this.loadJobType();
+        this.loadIsp();
+        this.loadCallver();
+        this.loadCallverstatus();
+        this.loadAgent();
         setTimeout(() => {
             LoadingWait.close();
         }, 2000);

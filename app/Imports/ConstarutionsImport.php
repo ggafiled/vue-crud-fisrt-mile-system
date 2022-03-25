@@ -16,6 +16,7 @@ class ConstarutionsImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
+        print_r($row);
         return new Constarution([
             'building_id'  => $row['building_id'],
             'projectNameTot' => $row['projectnametot'],
@@ -24,6 +25,7 @@ class ConstarutionsImport implements ToModel, WithHeadingRow
             'projectNameAis' => $row['projectnameais'],
             'projectNameFiberNet' => $row['projectnamefibernet'],
             'projectNameTxrt' => $row['projectnametxrt'],
+            'projectNameSymphony' => $row['projectnamesymphony'],
             'buildingSum' => $row['buildingsum'],
             'buildingNumber' => $row['buildingnumber'],
             'buildingFloor' => $row['buildingfloor'],
