@@ -65,7 +65,6 @@ class CreateConstarutionsTable extends Migration
             // $table->bigInteger('spliceStatus_id')->unsigned();
             $table->string('spliceStatus')->nullable();
             $table->string('spliceCore')->nullable();
-            
             $table->timestamps();
             $table->softDeletes();
 

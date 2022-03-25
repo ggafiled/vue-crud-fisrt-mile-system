@@ -53,9 +53,13 @@ class TeamZoneController extends BaseController
             $teamZone = TeamZone::create([
                 'zone_id' => $request->input('zone_id'),
                 'name' => $request->input('name'),
+                'surname' => $request->input('surname'),
+                'date' => $request->input('date'),
                 'tel' => $request->input('tel'),
+                'tel2' => $request->input('tel2'),
                 'email' => $request->input('email'),
                 'status' => $request->input('status'),
+                'remark' => $request->input('remark'),
             ]);
             return $this->sendResponse($teamZone, trans('actions.created.success'));
         } catch (Exception $ex) {

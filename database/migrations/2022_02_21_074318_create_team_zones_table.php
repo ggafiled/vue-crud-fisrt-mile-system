@@ -17,9 +17,13 @@ class CreateTeamZonesTable extends Migration
             $table->id();
             $table->foreignId('zone_id')->constrained();
             $table->string('name')->nullable();
+            $table->string('surname')->nullable();
+            $table->date('date')->nullable();
             $table->string('tel')->nullable();
+            $table->string('tel2')->nullable();
             $table->string('email')->nullable();
             $table->string('status')->nullable();
+            $table->string('remark')->nullable();
             $table->timestamps();
         });
     }

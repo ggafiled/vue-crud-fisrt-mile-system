@@ -127,15 +127,6 @@ export default [{
             roles: ["superadministrator", "administrator"]
         }
     },
-    // {
-    //     path: "/customer/treeview",
-    //     component: require("./components/customer/CustomerTreeView.vue")
-    //         .default,
-    //     meta: {
-    //         requiresAuth: true,
-    //         roles: ["superadministrator", "administrator"]
-    //     }
-    // },
     {
         path: "/planing/map",
         component: require("./components/planing/planing_map.vue").default,
@@ -160,20 +151,6 @@ export default [{
             roles: ["superadministrator", "administrator"]
         }
     },
-    // {
-    //     path: "/issue-tickets",
-    //     component: require("./components/issue/IssueTickets.vue").default,
-    //     meta: {
-    //         requiresAuth: true
-    //     }
-    // },
-    // {
-    //     path: "/issue-tickets/:id",
-    //     component: require("./components/issue/IssueTicketShow.vue").default,
-    //     meta: {
-    //         requiresAuth: true
-    //     }
-    // },
     {
         path: "/console-log",
         component: require("./components/consolelog/ConsoleLog.vue").default,
@@ -230,32 +207,12 @@ export default [{
         }
     },
     {
-        path: "/zone_management",
-        component: require("./components/zonemanagement/zonemanagementCRED/zonemanagement.vue").default,
+        path: "/teamzone",
+        component: require("./components/teamzone/teamzone.vue").default,
         meta: {
             requiresAuth: true,
-            roles: ["superadministrator", "administrator", "user"]
+            roles: ["superadministrator", "administrator"]
         }
-    },
-    {
-        path: "/zones",
-        component: require("./components/zonemanagement/zone.vue")
-            .default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator", "administrator", "user"]
-        },
-        children: [{
-                path: "zone_management",
-                component: require("./components/zonemanagement/zonemanagementCRED/zonemanagement.vue")
-                    .default
-            },
-            {
-                path: "teamzone_management",
-                component: require("./components/zonemanagement/teamzonemanagementCRED/teamzonemanagement.vue")
-                    .default
-            }
-        ]
     },
     {
         path: "/settings",
@@ -341,6 +298,11 @@ export default [{
                     .default
             },
             {
+                path: "zonemanagement",
+                component: require("./components/datavalidation/progress/zonemanagement.vue")
+                    .default
+            },
+            {
                 path: "serwayteam",
                 component: require("./components/datavalidation/constalution/TeamSerway.vue")
                     .default
@@ -363,31 +325,6 @@ export default [{
         ]
     },
 
-    {
-        path: "/demo_management",
-        component: require("./components/demo/demo.vue").default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator", "administrator", "user"]
-        }
-    },
-    {
-        path: "/building_management",
-        component: require("./components/demo/BuildingImport.vue").default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator", "administrator", "user"]
-        }
-    },
-    {
-        path: "/constrarution_management",
-        component: require("./components/demo/ConstarutionImport.vue").default,
-        meta: {
-            requiresAuth: true,
-            roles: ["superadministrator", "administrator", "user"]
-        }
-    },
-    
 
     { path: "*", component: require("./components/NotFound.vue").default }
 ];

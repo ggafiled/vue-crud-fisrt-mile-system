@@ -17,28 +17,14 @@ class TeamZoneSeeder extends Seeder
         $teamzones = [
             [
                 'zone_id' => '1',
-                'name' => 'member1',
+                'name' => 'testname',
+                'surname' => 'testsurname',
                 'tel' => '123',
+                'tel2' => '123',
+
                 'email' => '1@test.com',
                 'status' => '-',
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            ],
-            [
-                'zone_id' => '1',
-                'name' => 'member2',
-                'tel' => '123',
-                'email' => '2@test.com',
-                'status' => '-',
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            ],
-            [
-                'zone_id' => '2',
-                'name' => 'member1',
-                'tel' => '456',
-                'email' => '1@test.com',
-                'status' => '-',
+                'remark' => '-',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],

@@ -293,12 +293,6 @@ return [
                     'roles' => ["superadministrator", "administrator"],
                     'active_url' => 'customer'
                 ],
-                // [
-                //     'text' => 'New Customer Managment', //customer
-                //     'url' => '/customer/treeview',
-                //     'icon' => 'fas fa-fw fas fa-users',
-                //     'roles' => ["superadministrator", "administrator"],
-                // ],
                 [
                     'text' => 'planning_managment', //planing
                     'url' => '/planing/map',
@@ -364,6 +358,12 @@ return [
                 // ],
             ],
         ],
+        [
+            'text' => 'Zone Team',
+            'url' => '/teamzone',
+            'icon' => 'fas fa-fw bi bi-kanban',
+            'active_url' => 'dashboard'
+        ],
         // [
         //     'text' => 'issue_tickets',
         //     'url'  => '/issue-tickets',
@@ -420,13 +420,6 @@ return [
             'url' => '/settings?tab=building',
             'icon' => 'bi bi-gear-fill',
             'roles' => ['superadministrator'],
-            'active_url' => 'settings',
-        ],
-        [
-            'text' => 'Zone Management',
-            'url' => '/zones',
-            'icon' => 'bi bi-people-fill',
-            'roles' => ['superadministrator', 'administrator',],
             'active_url' => 'settings',
         ],
         // [

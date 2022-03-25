@@ -226,7 +226,13 @@ export default {
                         route: "/settings/generatingaction",
                         title: "Generatingaction(CRED)",
                         details: "แก้ไขข้อมูลสถานะการเชื่อมโครงข่าย"
-                    }
+                    },
+                    {
+                        id: 2,
+                        route: "/settings/zonemanagement",
+                        title: "Zone Management(CRED)",
+                        details: "เพิ่มลบแก้ไขโซน"
+                    },
                 ],
                 constarution: [
                     {

@@ -13,9 +13,12 @@ class TeamZone extends Model
         'id',
         'zone_id',
         'name',
+        'surname',
         'tel',
+        'tel2',
         'email',
         'status',
+        'remark',
         'created_at',
         'updated_at',
         'deleted_at'
