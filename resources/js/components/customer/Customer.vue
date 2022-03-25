@@ -87,10 +87,6 @@
                                         <th>ประเภทงาน</th>
                                         <th>วันที่นัดหมาย</th>
                                         <th>เวลานัดหมาย</th>
-                                        <th>zone</th>
-                                        <th>zone2</th>
-                                        <th>เบอร์โทร</th>
-                                        <th>อีเมลล์</th>
                                         <th>ผู้ให้บริการ</th>
                                         <th>status</th>
                                         <th>sub-Status</th>
@@ -947,66 +943,7 @@
                 </div>
             </div>
             <!-- Modal2 -->
-            <div
-                class="modal fade"
-                id="addNew2"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="addNew2"
-                aria-hidden="true"
-                data-backdrop="static"
-                data-keyboard="false"
-            >
-                <div class="modal-dialog" role="dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">
-                                Import Customer Table Excel
-                            </h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
 
-                        <!-- <form @submit.prevent="createRole"> -->
-
-                        <div class="modal-body">
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input
-                                        type="file"
-                                        class="custom-file-input"
-                                        :class="{
-                                            ' is-invalid': error.message
-                                        }"
-                                        id="input-file-import"
-                                        name="file_import"
-                                        ref="import_file"
-                                        @change="onFileChange"
-                                    />
-                                    <label class="custom-file-label"
-                                        >Choose file</label
-                                    >
-                                </div>
-                                <div class="input-group-append">
-                                    <button
-                                        v-on:click="proceedAction()"
-                                        type="button"
-                                        class="btn btn-primary"
-                                    >
-                                        Upload
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 </template>
@@ -1811,66 +1748,7 @@ export default {
                             }
                         }
                     },
-                    {
-                        data: "technician.teamTechnician",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "technician.teamTechnician",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "technician.phoneTechnician",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
-                    {
-                        data: "technician.emailTechnician",
-                        className: "text-capitalize",
-                        render: function(data, type, row, meta) {
-                            if (data == "" || data == null) {
-                                return (
-                                    '<span class="text-danger">' +
-                                    "ไม่ได้กรอกข้อมูล" +
-                                    "</span>"
-                                );
-                            } else {
-                                return "<span>" + data + "</span>";
-                            }
-                        }
-                    },
+
                     {
                         data: null,
                         title: "ผู้ให้บริการ",
