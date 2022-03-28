@@ -13,10 +13,16 @@ class TeamZone extends Model
         'id',
         'zone_id',
         'name',
+<<<<<<< HEAD
         // 'surname',
+=======
+        'surname',
+>>>>>>> a851f1d1d36e11641d33720a955c1c0e15223a47
         'tel',
+        'tel2',
         'email',
         'status',
+        'remark',
         'created_at',
         'updated_at',
         'deleted_at'

@@ -93,6 +93,7 @@ class PlaningController extends BaseController
                 'subStatus' => $request->input('subStatus'),
                 'reMark' => $request->input('reMark'),
 
+
                 'callver_id' => $request->input('callver_id'),
                 'callverStatus_id' => $request->input('callverStatus_id'),
                 'problemsolution_id' => $request->input('problemsolution_id'),
@@ -134,27 +135,7 @@ class PlaningController extends BaseController
     // {
     //     try {
     //         $planing = Planing::create([
-    //             'callver_id' => $request->input('callver_id'),
-    //             'callverStatus_id' => $request->input('callverStatus_id'),
-    //             'problemsolution_id' => $request->input('problemsolution_id'),
-    //             'appointmentTimeCustomer' => $request->input('appointmentTimeCustomer'),
-    //             'idRequired' => $request->input('idRequired'),
-    //             'confirmAppointment' => $request->input('confirmAppointment'),
-    //             'confirmAppointmentTime' => $request->input('confirmAppointmentTime'),
-    //             'equipmentInstall1' => $request->input('equipmentInstall1'),
-    //             'snInstall1' => $request->input('snInstall1'),
-    //             'equipmentInstall2' => $request->input('equipmentInstall2'),
-    //             'snInstall2' => $request->input('snInstall2'),
-    //             'equipmentInstall3' => $request->input('equipmentInstall3'),
-    //             'snInstall3' => $request->input('snInstall3'),
-    //             'equipmentInstall4' => $request->input('equipmentInstall4'),
-    //             'snInstall4' => $request->input('snInstall4'),
-    //             'equipmentInstall5' => $request->input('equipmentInstall5'),
-    //             'snInstall5' => $request->input('snInstall5'),
-    //             'equipmentInstall6' => $request->input('equipmentInstall6'),
-    //             'snInstall6' => $request->input('snInstall6'),
-    //             'equipmentInstall7' => $request->input('equipmentInstall7'),
-    //             'snInstall7' => $request->input('snInstall7'),
+
     //         ]);
     //         return $this->sendResponse($planing, trans('actions.created.success'));
     //     } catch (ValidationException $ex) {
@@ -240,7 +221,7 @@ class PlaningController extends BaseController
                     ->with(
                         ['building:id,workTime_id,longitude,latitude,projectName as name',
                             'building.workTime:id,workTime as name',
-                            'isp','technician'])
+                            'isp','zone'])
                     ->whereHas('building', function ($query) {
                         return $query->where('longitude', '!=', 0)->where('latitude', '!=', 0);
                     })
@@ -252,8 +233,8 @@ class PlaningController extends BaseController
                             <p class='p-0 m-0'>ชื่อ: " . $item->name . " นามสกุล : " . $item->surname . "</p>
                             <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
                             <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
-                            <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->technician->teamTechnician . "</p>
-                            <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->technician2->teamTechnician2 . "</p>
+                            <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->zone->zone . "</p>
+                            <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->zone2->zone2 . "</p>
                             <p class='p-0 m-0'>แก้ไขทีมช่าง: <a href='/customer' target='_blank'>Click.</a></p>
                             </div>";
                         $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];
@@ -264,7 +245,7 @@ class PlaningController extends BaseController
                 $planing["coordinate"] = Planing::with(
                     ['building:id,workTime_id,longitude,latitude,projectName as name',
                         'building.workTime:id,workTime as name',
-                        'isp','technician'])
+                        'isp','zone'])
                     ->whereHas('building', function ($query) {
                         return $query->where('longitude', '!=', 0)->where('latitude', '!=', 0);
                     })
@@ -276,8 +257,8 @@ class PlaningController extends BaseController
                             <p class='p-0 m-0'>ชื่อ: " . $item->name . " นามสกุล : " . $item->surname . "</p>
                             <p class='p-0 m-0'>วันที่นัดหมาย: " . $item->appointmentDate . " เวลา : " . $item->appointmentTime . "</p>
                             <p class='p-0 m-0'>ผู้ให้บริการ: " . $item->isp->isp . "</p>
-                            <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->technician->teamTechnician . "</p>
-                            <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->technician2->teamTechnician . "</p>
+                            <p class='p-0 m-0'>ชื่อช่าง Planing: " . $item->zone->zone . "</p>
+                            <p class='p-0 m-0'>ชื่อช่าง Planing2: " . $item->zone2->zone . "</p>
                             <p class='p-0 m-0'>แก้ไขทีมช่าง: <a href='/customer' target='_blank'>Click.</a></p>
                             </div>";
                         $collection["options"]["icon"] = ["url" => $item->isp->isps_map_icon, "offset" => ["x" => 12, "y" => 45]];

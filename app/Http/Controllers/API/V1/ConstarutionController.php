@@ -234,5 +234,4 @@ class ConstarutionController extends BaseController
 
         return response()->json(['message' => 'uploaded successfully'], 200);
     }
-    
 }

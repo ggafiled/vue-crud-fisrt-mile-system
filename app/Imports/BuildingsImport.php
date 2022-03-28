@@ -57,6 +57,4 @@ class BuildingsImport implements ToModel, WithHeadingRow
 
     }
 }
-// 'projectName'  => $row['Project'],
-// 'mailManager' => $row['Mail'],
-// 'nameNiti' => $row['Name']
+

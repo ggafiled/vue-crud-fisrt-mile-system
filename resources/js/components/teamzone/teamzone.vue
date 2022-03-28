@@ -32,9 +32,14 @@
                                         <tr class="info">
                                             <th></th>
                                             <th>Zone Name</th>
-                                            <th>Team Zone Name</th>
-                                            <th>Team Zone Tel</th>
-                                            <th>Team Zone Email</th>
+                                            <th>Name</th>
+                                            <th>Surname</th>
+                                            <th>Date</th>
+                                            <th>Tel</th>
+                                            <th>Tel2</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                            <th>Remark</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
                                             <th>Avaiable</th>
@@ -57,7 +62,7 @@
                 aria-labelledby="addNew"
                 aria-hidden="true"
             >
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" v-show="!editmode">
@@ -84,9 +89,9 @@
                         >
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-2">
                                         <div class="form-group">
-                                            <label>Zone</label>
+                                            <label>Zone Progress</label>
                                             <select
                                                 class="form-control"
                                                 v-model="form.zone_id"
@@ -108,11 +113,31 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label>Team Zone Name</label>
+<<<<<<< HEAD:resources/js/components/zonemanagement/teamzonemanagementCRED/teamzonemanagement.vue
+                                            <label>Zone</label>
+                                            <select
+                                                class="form-control"
+                                                v-model="form.zone_id"
+                                            >
+                                                <option disabled value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in zones"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.zoneName }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="zone"
+                                            ></has-error>
+=======
+                                            <label>Name</label>
                                             <input
                                                 v-model="form.name"
                                                 type="text"
@@ -124,11 +149,30 @@
                                                     )
                                                 }"
                                             />
+>>>>>>> a851f1d1d36e11641d33720a955c1c0e15223a47:resources/js/components/teamzone/teamzone.vue
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label>Zone Tel</label>
+                                            <label>Surname</label>
+                                            <input
+                                                v-model="form.surname"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your zone surname..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'surname'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Tel</label>
                                             <input
                                                 v-model="form.tel"
                                                 type="text"
@@ -142,9 +186,43 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Zone Eamil</label>
+                                            <label>Tel2</label>
+                                            <input
+                                                v-model="form.tel2"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your zone tel2..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'tel2'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>Date</label>
+                                            <input
+                                                v-model="form.date"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter your  date..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'date'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <label>Email</label>
                                             <input
                                                 v-model="form.email"
                                                 type="text"
@@ -158,9 +236,9 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label>Zone Status</label>
+                                            <label>Status</label>
                                             <input
                                                 v-model="form.status"
                                                 type="text"
@@ -172,6 +250,27 @@
                                                     )
                                                 }"
                                             />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Remark Contract</label>
+                                            <textarea
+                                                id="remark"
+                                                class="form-control"
+                                                placeholder="-"
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'remark'
+                                                    )
+                                                }"
+                                            />
+                                            <has-error
+                                                :form="form"
+                                                field="remark"
+                                            ></has-error>
                                         </div>
                                     </div>
                                 </div>
@@ -212,9 +311,13 @@ export default {
     title: "Area 3BB -",
     data() {
         return {
+<<<<<<< HEAD:resources/js/components/zonemanagement/teamzonemanagementCRED/teamzonemanagement.vue
             error: {},
             import_file: "",
             loader: null,
+=======
+            zones: [],
+>>>>>>> a851f1d1d36e11641d33720a955c1c0e15223a47:resources/js/components/teamzone/teamzone.vue
             editmode: false,
             selected: "",
             zones: [],
@@ -229,9 +332,13 @@ export default {
                 zone_id: "",
                 zone: "",
                 name: "",
+                surname: "",
+                date: "",
                 tel: "",
+                tel2: "",
                 email: "",
                 status: "",
+                remark: "",
                 created_at: "",
                 updated: "",
                 deleted_at: ""
@@ -239,6 +346,11 @@ export default {
         };
     },
     methods: {
+        loadZone() {
+            axios.get("/zones").then(response => {
+                this.zones = response.data.data;
+            });
+        },
         loadItem() {
             this.$Progress.start();
             $("#items")
@@ -404,13 +516,25 @@ export default {
                         data: "name"
                     },
                     {
+                        data: "surname"
+                    },
+                    {
+                        data: "date"
+                    },
+                    {
                         data: "tel"
+                    },
+                    {
+                        data: "tel2"
                     },
                     {
                         data: "email"
                     },
                     {
                         data: "status"
+                    },
+                    {
+                        data: "remark"
                     },
                     {
                         data: "created_at",
@@ -494,7 +618,11 @@ export default {
     },
     mounted() {
         this.generateTable();
+<<<<<<< HEAD:resources/js/components/zonemanagement/teamzonemanagementCRED/teamzonemanagement.vue
         this.loadZone()
+=======
+        this.loadZone();
+>>>>>>> a851f1d1d36e11641d33720a955c1c0e15223a47:resources/js/components/teamzone/teamzone.vue
     }
 };
 </script>
