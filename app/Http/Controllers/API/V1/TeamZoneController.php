@@ -17,11 +17,14 @@ class TeamZoneController extends BaseController
      */
     public function index()
     {
-        $teamzones = TeamZone::all();
+        $teamzones = TeamZone::with(
+            'zone',
+            'zone_id:id,status as name'
+        );
         return $this->sendResponse($teamzones, trans('actions.get.success'));
         try {
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.failed'));
+            return $this->sendError([$ex], trans('actions.get.failed'));
         }
         // try {
         //     $teamzone = TeamZone::where("zone_id","=",request("zone_id"))->get();
@@ -41,7 +44,7 @@ class TeamZoneController extends BaseController
         }
     }
 
-     /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -101,5 +104,4 @@ class TeamZoneController extends BaseController
             return $this->sendError([], trans('actions.destroy.fialed'));
         }
     }
-
 }

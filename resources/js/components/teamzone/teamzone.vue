@@ -31,7 +31,7 @@
                                     <thead>
                                         <tr class="info">
                                             <th></th>
-                                            <th>Zone Name</th>
+                                            <th>Zone</th>
                                             <th>Name</th>
                                             <th>Surname</th>
                                             <th>Date</th>
@@ -113,30 +113,8 @@
                                             ></has-error>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
-<<<<<<< HEAD:resources/js/components/zonemanagement/teamzonemanagementCRED/teamzonemanagement.vue
-                                            <label>Zone</label>
-                                            <select
-                                                class="form-control"
-                                                v-model="form.zone_id"
-                                            >
-                                                <option disabled value=""
-                                                    >Select a Class</option
-                                                >
-                                                <option
-                                                    :value="item.id"
-                                                    v-for="item in zones"
-                                                    :key="item.id"
-                                                >
-                                                    {{ item.zoneName }}
-                                                </option>
-                                            </select>
-                                            <has-error
-                                                :form="form"
-                                                field="zone"
-                                            ></has-error>
-=======
                                             <label>Name</label>
                                             <input
                                                 v-model="form.name"
@@ -149,10 +127,9 @@
                                                     )
                                                 }"
                                             />
->>>>>>> a851f1d1d36e11641d33720a955c1c0e15223a47:resources/js/components/teamzone/teamzone.vue
                                         </div>
                                     </div>
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Surname</label>
                                             <input
@@ -163,6 +140,22 @@
                                                 :class="{
                                                     'is-invalid': form.errors.has(
                                                         'surname'
+                                                    )
+                                                }"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Date</label>
+                                            <input
+                                                v-model="form.date"
+                                                type="date"
+                                                class="form-control"
+                                                placeholder="Enter your  date..."
+                                                :class="{
+                                                    'is-invalid': form.errors.has(
+                                                        'date'
                                                     )
                                                 }"
                                             />
@@ -204,24 +197,6 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Date</label>
-                                            <input
-                                                v-model="form.date"
-                                                type="text"
-                                                class="form-control"
-                                                placeholder="Enter your  date..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'date'
-                                                    )
-                                                }"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="form-group">
                                             <label>Email</label>
                                             <input
                                                 v-model="form.email"
@@ -236,7 +211,7 @@
                                             />
                                         </div>
                                     </div>
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>Status</label>
                                             <input
@@ -311,13 +286,10 @@ export default {
     title: "Area 3BB -",
     data() {
         return {
-<<<<<<< HEAD:resources/js/components/zonemanagement/teamzonemanagementCRED/teamzonemanagement.vue
             error: {},
             import_file: "",
             loader: null,
-=======
             zones: [],
->>>>>>> a851f1d1d36e11641d33720a955c1c0e15223a47:resources/js/components/teamzone/teamzone.vue
             editmode: false,
             selected: "",
             zones: [],
@@ -509,9 +481,9 @@ export default {
                         defaultContent: "",
                         className: "dt-body-center notexport"
                     },
-                    // {
-                    //     data: "zone_id"
-                    // },
+                    {
+                        data: "zone.zoneName"
+                    },
                     {
                         data: "name"
                     },
@@ -618,11 +590,7 @@ export default {
     },
     mounted() {
         this.generateTable();
-<<<<<<< HEAD:resources/js/components/zonemanagement/teamzonemanagementCRED/teamzonemanagement.vue
         this.loadZone()
-=======
-        this.loadZone();
->>>>>>> a851f1d1d36e11641d33720a955c1c0e15223a47:resources/js/components/teamzone/teamzone.vue
     }
 };
 </script>
