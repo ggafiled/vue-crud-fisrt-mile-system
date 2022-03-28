@@ -86,18 +86,26 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label>Zone Name</label>
-                                            <input
-                                                v-model="form.zoneName"
-                                                type="text"
+                                            <label>Zone</label>
+                                            <select
                                                 class="form-control"
-                                                placeholder="Enter your name zone..."
-                                                :class="{
-                                                    'is-invalid': form.errors.has(
-                                                        'zoneName'
-                                                    )
-                                                }"
-                                            />
+                                                v-model="form.zone_id"
+                                            >
+                                                <option disabled value=""
+                                                    >Select a Class</option
+                                                >
+                                                <option
+                                                    :value="item.id"
+                                                    v-for="item in zones"
+                                                    :key="item.id"
+                                                >
+                                                    {{ item.zoneName }}
+                                                </option>
+                                            </select>
+                                            <has-error
+                                                :form="form"
+                                                field="zone"
+                                            ></has-error>
                                         </div>
                                     </div>
                                 </div>
@@ -204,11 +212,22 @@ export default {
     title: "Area 3BB -",
     data() {
         return {
+            error: {},
+            import_file: "",
+            loader: null,
             editmode: false,
             selected: "",
+            zones: [],
+            settings: {
+                placeholder: { id: "-1", text: "-----กรุณาเลือกหน้าร้าน-----" },
+                allowClear: false,
+                dropdownParent: ".modal"
+            },
+            sportsData: ["Badminton", "Cricket", "Football", "Golf", "Tennis"],
             form: new Form({
                 id: "",
-                // zone_id: "",
+                zone_id: "",
+                zone: "",
                 name: "",
                 tel: "",
                 email: "",
@@ -259,6 +278,11 @@ export default {
             this.selected = "";
             this.form.reset();
             $("#addNew").modal("show");
+        },
+        loadZone() {
+            axios.get("/zones").then(response => {
+                this.zones = response.data.data;
+            });
         },
         deleteItem(item) {
             Swal.fire({
@@ -376,7 +400,7 @@ export default {
                     // {
                     //     data: "zone_id"
                     // },
-                     {
+                    {
                         data: "name"
                     },
                     {
@@ -470,6 +494,7 @@ export default {
     },
     mounted() {
         this.generateTable();
+        this.loadZone()
     }
 };
 </script>

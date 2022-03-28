@@ -62,8 +62,9 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::post('/buildings/import','BuildingController@importbuilding');
     Route::post('/constalutions/import','ConstarutionController@importconstalution');
     Route::post('/progress/import','ProgressController@importprogress');
-    Route::post('/customers/import','PlaningController@importcustomer');
+    Route::post('/customers/import','PlaningController@importplaning');
     Route::post('/users/import','UsersController@import');
+    Route::get('/zonename/retrievezone', 'ProgressController@queryZone');
 
     // Route::post('close_ticket/{ticket_id}', 'TicketsController@close'); // ปิดตั๋ว
     // Route::get('my_tickets', 'TicketsController@userTickets'); // แสดงตั๋วของผู้ใช้งานคนนั้นๆ

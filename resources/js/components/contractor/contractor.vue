@@ -35,35 +35,20 @@
                                         Upload
                                     </button>
                                     &nbsp;
-                                    <button
+                                    <!-- <button
                                         type="button"
                                         class="btn btn-sm btn-primary"
                                         @click="newModal"
                                     >
                                         <i class="fa fa-plus-square"></i>
                                         Add New
-                                    </button>
+                                    </button> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="card-body m-0">
-                            <div class="row">
-                                <button
-                                    type="button"
-                                    class="dt-button"
-                                    @click.prevent="goToImportPanel"
-                                >
-                                    <i
-                                        class="fa fa-upload"
-                                        aria-hidden="true"
-                                    ></i>
-                                    {{ translate("constitution.import") }}
-                                </button>
-                            </div>
-                        </div>
                         <div class="table-responsive">
                             <table
                                 id="customer"
@@ -74,7 +59,7 @@
                                 <thead>
                                     <tr class="info">
                                         <th></th>
-
+                                        <th>Project Name</th>
                                         <th>ประเภทงาน</th>
                                         <th>ชื่อ/บริษัท</th>
                                         <th>นามสกุล</th>
@@ -1430,6 +1415,9 @@ export default {
                     //         );
                     //     }
                     // },
+                    {
+                        data: "building.projectName"
+                    },
                     {
                         data: "type",
                         className: "text-capitalize",

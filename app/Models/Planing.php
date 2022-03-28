@@ -57,7 +57,13 @@ class Planing extends Model
         'equipmentInstall6',
         'snInstall6',
         'equipmentInstall7',
-        'snInstall7'
+        'snInstall7',
+
+        'statusContrater',
+        'dateConnect',
+        'dateDisconnect',
+        'workSheet',
+        'reMarkAccount'
     ];
 
     public function getActivitylogOptions(): LogOptions
@@ -117,5 +123,10 @@ class Planing extends Model
     public function problemSolution()
     {
         return $this->hasOne('App\Models\Problemsolution', 'id', 'problemsolution_id');
+    }
+
+    public function Accountant()
+    {
+        return $this->hasOne('App\Models\Accountant', 'id', 'planning_id');
     }
 }

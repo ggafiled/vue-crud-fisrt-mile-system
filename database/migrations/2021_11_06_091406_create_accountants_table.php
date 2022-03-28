@@ -17,6 +17,7 @@ class CreateAccountantsTable extends Migration
         Schema::create('accountants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('building_id')->unsigned();//ชื่อตึก
+            $table->bigInteger('planning_id')->unsigned();//ชื่อตึก
             $table->string('statusContrater')->nullable();// สถานะ
             $table->date('dateConnect')->nullable();//Date Connect
             $table->date('dateDisconnect')->nullable();//Date Disconnect
@@ -29,6 +30,11 @@ class CreateAccountantsTable extends Migration
             $table->foreign('building_id')
             ->references('id')
             ->on('buildings')
+            ->onDelete('cascade');
+
+            $table->foreign('planning_id')
+            ->references('id')
+            ->on('planings')
             ->onDelete('cascade');
 
         });

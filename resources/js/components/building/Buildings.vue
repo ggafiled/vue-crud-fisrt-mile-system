@@ -48,6 +48,110 @@
                                 </div>
                             </div>
                         </div>
+                        <div
+                            class="modal fade"
+                            id="nonContractAlert"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-labelledby="nonContractAlert"
+                            aria-hidden="true"
+                        >
+                            <div
+                                class="modal-dialog modal-dialog-centered"
+                                role="document"
+                            >
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5
+                                            class="modal-title"
+                                            id="exampleModalLongTitle"
+                                        >
+                                            {{
+                                                translate(
+                                                    "building.alert.contract_notification"
+                                                )
+                                            }}
+                                            <img
+                                                class="mx-auto"
+                                                src="https://www.oncb.go.th/welcomePage/welcomepage_canEdit/thainiyom/images/new-gif-image-6.gif"
+                                                width="48px"
+                                                height="28px"
+                                            />
+                                        </h5>
+                                        <button
+                                            type="button"
+                                            class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close"
+                                        >
+                                            <span aria-hidden="true"
+                                                >&times;</span
+                                            >
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div
+                                            v-for="(item,
+                                            index) in not_do_contract_yet"
+                                            :key="item.id"
+                                        >
+                                            {{ item.building.projectName }}
+                                            <hr
+                                                v-if="
+                                                    index !=
+                                                        not_do_contract_yet.length -
+                                                            1
+                                                "
+                                            />
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="modal-footer justify-content-between"
+                                    >
+                                        <div
+                                            class="form-check cursor-pointer"
+                                            @click="
+                                                hideNonContract = !hideNonContract
+                                            "
+                                        >
+                                            <input
+                                                class="form-check-input cursor-pointer"
+                                                type="checkbox"
+                                                value=""
+                                                id="hideNonContractCheck"
+                                                v-model="hideNonContract"
+                                            />
+                                            <label
+                                                class="form-check-label"
+                                                for="defaultCheck1"
+                                            >
+                                                <span
+                                                    class="cursor-pointer"
+                                                    style="user-select: none"
+                                                    >{{
+                                                        translate(
+                                                            "building.alert.do_not_show_today"
+                                                        )
+                                                    }}</span
+                                                >
+                                            </label>
+                                        </div>
+
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            data-dismiss="modal"
+                                        >
+                                            {{
+                                                translate(
+                                                    "building.actions.close"
+                                                )
+                                            }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table
@@ -60,6 +164,7 @@
                                         <tr class="info">
                                             <th></th>
                                             <th>Project Name</th>
+                                            <th>Contact Status</th>
                                             <th>SubBuilding Sum</th>
                                             <th>Floor Sum</th>
                                             <th>Room Sum</th>
@@ -82,7 +187,6 @@
                                             <th>Balance</th>
                                             <th>Remark Contract</th>
                                             <th>Remark</th>
-                                            <th>spendSpace</th>
                                             <th>Area</th>
                                             <th>Bbns</th>
                                             <th>Area3BB</th>
@@ -767,8 +871,8 @@
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
-                                            <label>Balance</label>
-                                            <small>/ยอดเงิน</small>
+                                            <label>Contract Status</label>
+                                            <small>/สถานะการทำสัญญา</small>
                                             <select
                                                 type="text"
                                                 class="form-control"
@@ -1273,6 +1377,20 @@ export default {
         }
     },
     methods: {
+        async notdocontractyet() {
+            await axios
+                .get("/buildinglist/nonContract")
+                .then(response => {
+                    this.not_do_contract_yet = response.data.data;
+                    if (
+                        !this.hideNonContract &&
+                        this.not_do_contract_yet.length > 0
+                    ) {
+                        $("#nonContractAlert").modal("show");
+                    }
+                })
+                .catch(() => console.warn("Oh. Something went wrong"));
+        },
         onFileChange(e) {
             this.import_file = e.target.files[0];
         },
@@ -1582,7 +1700,7 @@ export default {
                 fixedHeader: true,
                 fixedColumns: true,
                 fixedColumns: {
-                    leftColumns: 2,
+                    leftColumns: 3,
                     rightColumns: 1
                 },
                 scrollX: true,
@@ -1623,7 +1741,7 @@ export default {
                         text:
                             "<i class='bi bi-file-text mr-1'></i>ยังไม่ทำสัญญา",
                         action: function(e, dt, node, config) {
-                            dt.columns(4)
+                            dt.columns(1)
                                 .search("ยังไม่ได้ทำสัญญา")
                                 .draw();
                         }
@@ -1703,6 +1821,24 @@ export default {
                         }
                     },
                     {
+                        data: "spendSpace",
+                        render: function(data, type, row, meta) {
+                            if (data == "ยังไม่ทำสัญญา") {
+                                return (
+                                    '<span class="badge badge-danger">' +
+                                    data +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span class="badge badge-success">' +
+                                    data +
+                                    "</span>"
+                                );
+                            }
+                        }
+                    },
+                    {
                         data: "subBuildingsum",
                         render: function(data, type, row, meta) {
                             return (
@@ -1775,24 +1911,6 @@ export default {
                     },
                     {
                         data: "remark"
-                    },
-                    {
-                        data: "spendSpace",
-                        render: function(data, type, row, meta) {
-                            if (data == "ยังไม่ทำสัญญา") {
-                                return (
-                                    '<span class="badge badge-danger">' +
-                                    data +
-                                    "</span>"
-                                );
-                            } else {
-                                return (
-                                    '<span class="badge badge-success">' +
-                                    data +
-                                    "</span>"
-                                );
-                            }
-                        }
                     },
                     {
                         data: "areas.name"

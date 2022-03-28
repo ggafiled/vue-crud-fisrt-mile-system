@@ -53,7 +53,8 @@ class CreateBuildingsTable extends Migration
             $table->string('remarkContract')->nullable();//รายละเอียดสัญญา
             $table->bigInteger('workTime_id')->unsigned();//
             $table->string('remark')->nullable();//รายละเอียด
-            $table->string('spendSpace')->nullable();//สถานะการทำสัญญา
+            $table->string('spendSpace')->nullable();//รูปแบบการชำระรายได้
+            $table->string('contractStatus')->nullable();//สถานะการทำสัญญา
             $table->timestamps();
             $table->softDeletes();
 

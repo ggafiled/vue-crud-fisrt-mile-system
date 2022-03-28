@@ -13,6 +13,7 @@ class TeamZone extends Model
         'id',
         'zone_id',
         'name',
+        // 'surname',
         'tel',
         'email',
         'status',

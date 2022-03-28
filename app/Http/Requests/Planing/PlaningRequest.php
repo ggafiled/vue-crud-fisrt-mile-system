@@ -68,7 +68,7 @@ class PlaningRequest extends FormRequest
             'isp_id' => "required|numeric",
             'agentDetail_id' => "required|numeric",
             'jobtype_id' => "required|numeric",
-            'technician_id' => "required|numeric",
+            // 'technician_id' => "required|numeric",
             'ispId_id' => "required|numeric",
             'name' => "string|max:191",
             'surname' => "string|max:191",

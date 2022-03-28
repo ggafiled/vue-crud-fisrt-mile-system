@@ -29,8 +29,6 @@ class BuildingListController extends BaseController
                 'progress.totProgress',
                 'progress.aisProgress',
                 'progress.Progress3bb',
-                'progress.sinetProgress',
-                'progress.fnProgress',
                 'progress.trueProgress',
                 'constarution',
                 'saleFm:id,nameSale as name',
@@ -43,7 +41,7 @@ class BuildingListController extends BaseController
                 'workTime:id,worktime as name')->get();
             return $this->sendResponse($buildings, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.failed'));
+            return $this->sendError([$ex], trans('actions.get.failed'));
         }
     }
 

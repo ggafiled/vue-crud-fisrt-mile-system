@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\V1;
 use App\Http\Controllers\API\V1\BaseController;
 use App\Http\Requests\Building\BuildingRequest;
 use App\Models\Building;
+use App\Models\Progress;
 use Exception;
 use App\Imports\BuildingsImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -97,7 +98,7 @@ class Buildingcontroller extends BaseController
                 'remarkContract' => $request->input('remarkContract'),
                 'workTime_id' => $request->input('workTime_id'),
                 'remark' => $request->input('remark'),
-                'spendSpace' => $request->input('spendSpace'),
+                'spendSpace' => $request->input('spendSpace')
             ]);
 
             if ((int) $request->input('subBuildingsum') > 0) {
@@ -115,6 +116,8 @@ class Buildingcontroller extends BaseController
             return $this->sendError([$ex], trans('actions.created.failed'));
         }
     }
+
+    
 
     /**
      * Update the specified resource in storage.
@@ -176,4 +179,17 @@ class Buildingcontroller extends BaseController
 
         return response()->json(['message' => 'uploaded successfully'], 200);
     }
+
+    public function nonContract()
+    {
+        try {
+            $buildings_non_contract = Progress::whereHas('building', function ($query) {
+                $query->where('spendSpace', '=', 'ยังไม่ทำสัญญา');
+            })->with('building')->get();
+            return $this->sendResponse($buildings_non_contract, trans('actions.get.success'));
+        } catch (Exception $ex) {
+            return $this->sendError([], trans('actions.created.failed'));
+        }
+    }
+    
 }

@@ -12,6 +12,7 @@ class Accountant extends Model
     protected $fillable = [
         'id',
         'building_id',
+        'planning_id',
         'statusContrater',
         'dateConnect',
         'dateDisconnect',
@@ -21,7 +22,12 @@ class Accountant extends Model
 
     public function building()
     {
-        return $this->belongsTo('App\Models\Building', 'building_id', 'id');
+        return $this->belongsTo('App\Models\Planing', 'planning_id', 'id');
+    }
+
+    public function accountant()
+    {
+        return $this->belongsTo('App\Models\Planing', 'planning_id', 'id');
     }
 
 }

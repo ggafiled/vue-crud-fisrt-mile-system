@@ -37,7 +37,7 @@ class TeamZoneController extends BaseController
             $teamzone = Zone::all();
             return $this->sendResponse($teamzone, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.get.failed'));
+            return $this->sendError([$ex], trans('actions.get.failed'));
         }
     }
 

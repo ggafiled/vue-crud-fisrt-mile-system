@@ -62,6 +62,13 @@ class CreatePlaningsTable extends Migration
             $table->string('snInstall6')->nullable();// S/Nที่ใช้ติดตั้ง6
             $table->string('equipmentInstall7')->nullable();//อุปกรณ์ที่ใช้ติดตั้ง7
             $table->string('snInstall7')->nullable();// S/Nที่ใช้ติดตั้ง7
+
+
+            $table->string('statusContrater')->nullable();// สถานะ
+            $table->date('dateConnect')->nullable();//Date Connect
+            $table->date('dateDisconnect')->nullable();//Date Disconnect
+            $table->string('workSheet')->nullable();// ใบงาน
+            $table->string('reMarkAccount')->nullable();// รีมาร์ค (บัญชี)
             $table->timestamps();
             $table->softDeletes();
 

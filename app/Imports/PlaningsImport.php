@@ -38,7 +38,36 @@ class PlaningsImport implements ToModel
             'appointmentTime' => $row['appointmenttime'],
             'status' => $row['status'],
             'subStatus' => $row['substatus'],
-            'reMark' => $row['remark']
+            'reMark' => $row['remark'],
+
+            'callver_id' => $row['callver_id'],
+            'callverStatus_id' => $row['callverstatus_id'],
+            'problemsolution_id' => $row['problemsolution_id'],
+            'appointmentTimeCustomer' => $row['appointmenttimecustomer'],
+            'idRequired' => $row['idrequired'],
+            'confirmAppointment' => $row['confirmappointment'],
+            'confirmAppointmentTime' => $row['confirmappointmenttime'],
+            'reMarkzone' => $row['remarkzone'],
+            'equipmentInstall1' => $row['equipmentinstall1'],
+            'snInstall1' => $row['sninstall1'],
+            'equipmentInstall2' => $row['equipmentinstall2'],
+            'snInstall2' => $row['sninstall2'],
+            'equipmentInstall3' => $row['equipmentinstall3'],
+            'snInstall3' => $row['sninstall3'],
+            'equipmentInstall4' => $row['equipmentinstall4'],
+            'snInstall4' => $row['sninstall4'],
+            'equipmentInstall5' => $row['equipmentinstall5'],
+            'snInstall5' => $row['sninstall5'],
+            'equipmentInstall6' => $row['equipmentinstall6'],
+            'snInstall6' => $row['sninstall6'],
+            'equipmentInstall7' => $row['equipmentinstall7'],
+            'snInstall7' => $row['sninstall7'],
+
+            'statusContrater' => $row['statuscontrater'],
+            'dateConnect' => $row['dateconnect'],
+            'dateDisconnect' => $row['datedisconnect'],
+            'workSheet' => $row['worksheet'],
+            'reMarkAccount' => $row['remarkaccount'],
         ]);
     }
 }

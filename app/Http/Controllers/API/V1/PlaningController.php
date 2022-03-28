@@ -115,6 +115,12 @@ class PlaningController extends BaseController
                 'snInstall6' => $request->input('snInstall6'),
                 'equipmentInstall7' => $request->input('equipmentInstall7'),
                 'snInstall7' => $request->input('snInstall7'),
+
+                'statusContrater' => $request->input('statusContrater'),
+                'dateConnect' => $request->input('dateConnect'),
+                'dateDisconnect' => $request->input('dateDisconnect'),
+                'workSheet' => $request->input('workSheet'),
+                'reMarkAccount' => $request->input('reMarkAccount')
             ]);
             return $this->sendResponse($planing, trans('actions.created.success'));
         } catch (ValidationException $ex) {
@@ -286,14 +292,14 @@ class PlaningController extends BaseController
         }
     }
 
-    public function importcustomer(Request $request)
+    public function importplaning(Request $request)
     {
          $request->validate([
             'import_file' => 'required|file|mimes:xls,xlsx'
         ]);
 
         $path = $request->file('import_file');
-        $data = Excel::import(new CustomersImport, $path);
+        $data = Excel::import(new PlaningsImport, $path);
 
         return response()->json(['message' => 'uploaded successfully'], 200);
     }
