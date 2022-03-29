@@ -164,7 +164,8 @@
                                         <tr class="info">
                                             <th></th>
                                             <th>Project Name</th>
-                                            <th>Contact Status</th>
+                                            <!-- <th>Contact Status</th> -->
+                                            <th>SpendSpace</th>
                                             <th>SubBuilding Sum</th>
                                             <th>Floor Sum</th>
                                             <th>Room Sum</th>
@@ -1269,6 +1270,54 @@ export default {
     components: { NumberInput },
     data() {
         return {
+            not_do_contract_yet: [],
+            get hideNonContract() {
+                const itemStr = localStorage.getItem("hideNonContract");
+                if (!itemStr) {
+                    const item = {
+                        value: false,
+                        expiry: moment
+                            .utc()
+                            .endOf("day")
+                            .unix()
+                    };
+                    localStorage.setItem(
+                        "hideNonContract",
+                        JSON.stringify(item)
+                    );
+                    return false;
+                }
+
+                const item = JSON.parse(itemStr);
+                const now = new Date();
+
+                // compare the expiry time of the item with the current time
+                if (moment().unix() > item.expiry) {
+                    const item = {
+                        value: false,
+                        expiry: moment
+                            .utc()
+                            .endOf("day")
+                            .unix()
+                    };
+                    localStorage.setItem(
+                        "hideNonContract",
+                        JSON.stringify(item)
+                    );
+                    return false;
+                }
+                return item.value;
+            },
+            set hideNonContract(value) {
+                const item = {
+                    value: value,
+                    expiry: moment
+                        .utc()
+                        .endOf("day")
+                        .unix()
+                };
+                localStorage.setItem("hideNonContract", JSON.stringify(item));
+            },
             error: {},
             import_file: "",
             loader: null,
@@ -1379,7 +1428,7 @@ export default {
     methods: {
         async notdocontractyet() {
             await axios
-                .get("/buildinglist/nonContract")
+                .get("building/nonContract")
                 .then(response => {
                     this.not_do_contract_yet = response.data.data;
                     if (

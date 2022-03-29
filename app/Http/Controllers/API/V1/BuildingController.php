@@ -180,7 +180,7 @@ class Buildingcontroller extends BaseController
         return response()->json(['message' => 'uploaded successfully'], 200);
     }
 
-    public function nonContract()
+    public function nonContractBuilding()
     {
         try {
             $buildings_non_contract = Progress::whereHas('building', function ($query) {
@@ -188,7 +188,7 @@ class Buildingcontroller extends BaseController
             })->with('building')->get();
             return $this->sendResponse($buildings_non_contract, trans('actions.get.success'));
         } catch (Exception $ex) {
-            return $this->sendError([], trans('actions.created.failed'));
+            return $this->sendError([$ex], trans('actions.created.failed'));
         }
     }
     

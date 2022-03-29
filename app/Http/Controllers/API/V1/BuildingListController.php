@@ -25,7 +25,8 @@ class BuildingListController extends BaseController
     public function index()
     {
         try {
-            $buildings = Building::with('progress.fmProgress',
+            $buildings = Building::with(
+                'progress.fmProgress',
                 'progress.totProgress',
                 'progress.aisProgress',
                 'progress.Progress3bb',
@@ -33,12 +34,18 @@ class BuildingListController extends BaseController
                 'constarution',
                 'saleFm:id,nameSale as name',
                 'paymentType:id,paymentType as name',
-                'areas:id,name', 'bbns:id,name',
+                'areas:id,name',
+                'bbns:id,name',
                 'area3bb:id,area3BB as name',
                 'areaTrue:id,areaTrue as name',
+                'areaTrueNew:id,areaTrueNew as name',
                 'areaAis:id,areaAis as name',
                 'areaFibernet:id,areaFibernet as name',
-                'workTime:id,worktime as name')->get();
+                'areaTxrx:id,areaTxrx as name',
+                'areaSymphony:id,areaSymphony as name',
+                'contractTerm:id,contractTerm as name',
+                'workTime:id,worktime as name'
+            )->get();
             return $this->sendResponse($buildings, trans('actions.get.success'));
         } catch (Exception $ex) {
             return $this->sendError([$ex], trans('actions.get.failed'));
@@ -64,7 +71,6 @@ class BuildingListController extends BaseController
      */
     public function create()
     {
-
     }
 
     /**

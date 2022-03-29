@@ -362,7 +362,6 @@ return [
             'text' => 'Zone Team',
             'url' => '/teamzone',
             'icon' => 'fas fa-fw bi bi-kanban',
-            'active_url' => 'dashboard'
         ],
         // [
         //     'text' => 'issue_tickets',

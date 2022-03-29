@@ -52,7 +52,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('permission/list', 'PermissionController@list');
     Route::get('user/list', 'UserController@list');
     Route::get('team/list', 'TeamController@list');
-    Route::get('buildinglist/nonContract', 'BuildingListController@nonContract');
+    Route::get('building/nonContract', 'BuildingController@nonContractBuilding');
     Route::post('planing/loadCoordinatePlanningOfBuilding', 'PlaningController@loadCoordinatePlanningOfBuilding');
     Route::post('backup/actionBackup', 'BackupController@actionBackup');
     Route::get('/constarution/retrieveBuilding', 'ConstarutionController@queryBuilding');

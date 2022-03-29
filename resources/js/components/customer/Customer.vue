@@ -49,7 +49,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="card-body m-0">
+                        <!-- <div class="card-body m-0">
                             <div class="row">
                                 <button
                                     type="button"
@@ -63,7 +63,7 @@
                                     {{ translate("constitution.import") }}
                                 </button>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="table-responsive">
                             <table
                                 id="customer"
