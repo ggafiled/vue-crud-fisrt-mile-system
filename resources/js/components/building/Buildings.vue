@@ -197,6 +197,7 @@
                                             <th>AreaFibernet</th>
                                             <th>AreaTxrx</th>
                                             <th>AreaSymphony</th>
+                                            <th>Avaiable</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -1750,7 +1751,7 @@ export default {
                 fixedColumns: true,
                 fixedColumns: {
                     leftColumns: 3,
-                    rightColumns: 1
+                    rightColumns: 2
                 },
                 scrollX: true,
                 scrollCollapse: true,
@@ -1988,18 +1989,14 @@ export default {
                     {
                         data: "area_symphony.name"
                     },
-                    // {
-                    //     data: "created_at",
-                    //     render: function(data, type, row, meta) {
-                    //         return moment(data).format("MM/DD/YYYY HH:MM");
-                    //     }
-                    // },
-                    // {
-                    //     data: "updated_at",
-                    //     render: function(data, type, row, meta) {
-                    //         return moment(data).format("MM/DD/YYYY HH:MM");
-                    //     }
-                    // },
+                    {
+                        data: "deleted_at",
+                        render: function(data, type, row, meta) {
+                            return data !== null
+                                ? '<i class="fas fa-times red"></i><span class="invisible">disable</span>'
+                                : '<i class="fas fa-check green"></i><span class="invisible">enable</span>';
+                        }
+                    },
                     {
                         data: null,
                         className: "dt-body-center notexport",

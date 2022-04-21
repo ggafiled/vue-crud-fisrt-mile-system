@@ -29,40 +29,26 @@ class CreateConstarutionsTable extends Migration
             $table->string('buildingFloor')->nullable();
             $table->string('unitFloor')->nullable();
             $table->string('fmProgress')->nullable();
-            // $table->bigInteger('fmProgress_id')->unsigned();
-            // $table->bigInteger('teamserway_id')->unsigned();
             $table->string('teamserway')->nullable();
             $table->date('surweyDate')->nullable();
             $table->string('ifcccType')->nullable();
             $table->string('ifcccStatus')->nullable();
-            // $table->bigInteger('ifcccStatus_id')->unsigned();
             $table->string('wallboxType')->nullable();
             $table->string('wallboxStatus')->nullable();
-            // $table->bigInteger('wallboxStatus_id')->unsigned();
             $table->string('microductType')->nullable();
             $table->string('microductStatus')->nullable();
-            // $table->bigInteger('microductStatus_id')->unsigned();
-
             $table->string('microductType1')->nullable();//blow
             $table->string('microductType2')->nullable();//blow
             $table->string('microductSize')->nullable();//blow
             $table->string('microductFloor')->nullable();//blow
-
-            // $table->bigInteger('blowStatus_id')->unsigned();
             $table->string('blowStatus')->nullable();//blow
             $table->string('blowCore')->nullable();//blow
-
             $table->string('convertionalType')->nullable();//convertional
             $table->string('convertionalFloor')->nullable();//convertional
-
             $table->string('vertically')->nullable();//convertional
             $table->string('verticallyType')->nullable();//convertional
-            // $table->bigInteger('verticallyType_id')->unsigned();
-
             $table->string('buildingStatus')->nullable();//convertional
             $table->string('buildingDate')->nullable();//convertional
-
-            // $table->bigInteger('spliceStatus_id')->unsigned();
             $table->string('spliceStatus')->nullable();
             $table->string('spliceCore')->nullable();
             $table->timestamps();

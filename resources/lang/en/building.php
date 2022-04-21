@@ -12,11 +12,6 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'project' => 'Project Name',
-    'subbuildingsum' => 'Sub Buildings',
-    'floorsum' => 'Floors',
-    'roomsum' => 'Rooms',
-    'technician' => 'Technician Name',
     'area' => 'Area',
     'areabbn' => 'Area BBN',
     'areatbb' => 'Area 3BB',
@@ -24,15 +19,15 @@ return [
     'areaTnew' => 'Area TRUE NEW',
     'areaais' => 'Area AIS',
     'areafibernet' => 'Area FIBERNET',
-    'managername' => 'Manager name',
-    'managerphone' => 'Manager phone',
-    'manageremail' => 'Manager email',
+    'areatxrx' => 'Area TXRX',
+    'areasymphony' => 'Area Symphony',
+    'project' => 'Project Name',
+    'subbuildingsum' => 'Sub Buildings',
+    'floorsum' => 'Floors',
+    'roomsum' => 'Rooms',
     'corporationname' => 'Corporation name',
     'corporationphone' => 'Corporation phone',
     'corporationemail' => 'Corporation email',
-    'technicianname' => 'Technician name',
-    'technicianphone' => 'Technician phone',
-    'technicianemail' => 'Technician email',
     'housenumber' => 'House Number',
     'swine' => 'Swine',
     'alley' => 'Alley',
@@ -43,15 +38,16 @@ return [
     'postalcode' => 'Postal Code',
     'latitude' => 'Latitude',
     'longitude' => 'Longitude',
-
     'contractstartdate' => 'Date Contact Start',
     'paymenttype' => 'Payment Type',
     'salename' => 'Sale Name',
-    'contractterm' => 'Contract Term',
     'dateendcontact' => 'Date Contact End',
     'balance' => 'Balance',
+    'remarkcontract' => 'Remark Contract',
     'operatingtime' => 'Operating Time',
     'remark' => 'Remark',
+    'spendspace' => 'Spend Space',
+    'Contract Status' => 'Contract Status',
 
 
 

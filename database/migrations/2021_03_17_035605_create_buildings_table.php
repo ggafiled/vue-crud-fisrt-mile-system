@@ -16,7 +16,6 @@ class CreateBuildingsTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('buildings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->bigInteger('technician_id')->unsigned();//รหัส_ช่าง
             $table->bigInteger('areas_id')->unsigned();//รหัส_พื้นที่
             $table->bigInteger('bbns_id')->unsigned();//รหัส_พื้นที่bbn
             $table->bigInteger('area3bb_id')->unsigned();//รหัส_พื้นที่สามบีบี
@@ -47,7 +46,6 @@ class CreateBuildingsTable extends Migration
             $table->date('contractStartDate')->nullable();//วันทำสัญยา
             $table->bigInteger('paymentType_id')->unsigned();//รหัส_ชนิดค่าใช้พื้นที่
             $table->bigInteger('saleFm_id')->unsigned();//รหัส_รายชื่อเซลล์
-            // $table->string('contractTerm')->nullable();//อายุสัญญา
             $table->date('contractEndDate')->nullable();//วันสิ้นสุดสัญญา
             $table->string('balance')->nullable();//ยอดเงิน
             $table->string('remarkContract')->nullable();//รายละเอียดสัญญา

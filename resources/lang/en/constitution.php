@@ -18,6 +18,9 @@ return [
     'constrution_true' => 'Project TRUE Name',
     'constrution_ais' => 'Project Ais Name',
     'constrution_fribernet' => 'Project Fribernet Name',
+    'constrution_txrx' => 'Project Txrx Name',
+    'constrution_symphony' => 'Project Symphony Name',
+    
     'constrution_desing' => 'Desing',
     'constrution_survey' => 'Survey Desing',
     'constrution_surveydate' => 'Survey Date',

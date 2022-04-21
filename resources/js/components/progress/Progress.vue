@@ -76,6 +76,7 @@
                                         <th>SYMPHONY-Date</th>
                                         <th>Create At</th>
                                         <th>Update At</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -1093,6 +1094,13 @@ export default {
                         data: "updated_at",
                         render: function(data, type, row, meta) {
                             return moment(data).format("MM/DD/YYYY HH:MM");
+                        }
+                    },
+                    {
+                        data: {},
+                        className: "dt-body-center notexport",
+                        render: function(data, type, row, meta) {
+                            return "<a class='edit-progress btn btn-success btn-sm p-1 m-0' href='#'><i class='bi bi-pen'></i> </a> <a class='delete-progress btn btn-danger btn-sm p-1 m-0' href='#'> <i class='bi bi-trash'></i> </a>";
                         }
                     },
                     {
